@@ -18,10 +18,10 @@ export const ScheduleSection: React.FC = () => {
         <div className="flex-1 h-[4px] sm:h-[6px] xl:h-[8px] bg-[#efbf04] rounded-l-full shadow-sm" />
       </div>
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8">
         {/* Featured Live Service Banner / Stage Preview */}
         <div className="max-w-[1140px] mx-auto">
-          <div className="relative w-full aspect-[1140/475] rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 group">
+          <div className="relative w-full aspect-[16/11] sm:aspect-[16/9] md:aspect-[1140/520] min-h-[260px] sm:min-h-[380px] md:min-h-[500px] rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 group">
             <video
               autoPlay
               loop
@@ -38,9 +38,9 @@ export const ScheduleSection: React.FC = () => {
         </div>
 
         {/* Two Schedule Cards (Weekly Services & Daily Prayer Programs) */}
-        <div className="mt-8 sm:mt-12 max-w-[1140px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+        <div className="mt-6 sm:mt-10 max-w-[1140px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
           {/* Card 1: Weekly Services */}
-          <div className="bg-[#122f4a] rounded-[16px] sm:rounded-[20px] p-5 sm:p-8 text-white relative overflow-hidden shadow-xl border border-white/5 flex flex-col justify-between min-h-[220px] sm:min-h-[240px]">
+          <div className="bg-[#122f4a] rounded-[16.8px] p-4 sm:p-7 md:p-8 text-white relative overflow-hidden shadow-xl border border-white/5 flex flex-col justify-between">
             {/* Background decorative curved lines vector */}
             <div className="absolute inset-0 pointer-events-none opacity-25 overflow-hidden">
               <Image
@@ -53,53 +53,53 @@ export const ScheduleSection: React.FC = () => {
 
             <div className="relative z-10">
               {/* Header row with Yellow Dashed Line */}
-              <div className="flex items-center justify-between gap-4 mb-5 sm:mb-6">
-                <h3 className="font-poppins font-bold text-[#efbf04] text-lg sm:text-2xl whitespace-nowrap">
+              <div className="flex items-center justify-between gap-3 sm:gap-4 mb-3.5 sm:mb-5">
+                <h3 className="font-poppins font-bold text-[#efbf04] text-[15px] sm:text-2xl whitespace-nowrap">
                   Weekly Services
                 </h3>
                 {/* Yellow Dashed Pattern */}
-                <div className="flex-1 h-2 max-w-[280px] bg-[radial-gradient(#efbf04_2px,transparent_2px)] [background-size:8px_8px] opacity-80" />
+                <div className="flex-1 h-2 sm:h-3 max-w-[180px] sm:max-w-[280px] bg-[radial-gradient(#efbf04_2px,transparent_2px)] [background-size:6px_6px] sm:[background-size:8px_8px] opacity-90" />
               </div>
 
               {/* 2x2 Service Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 sm:gap-y-4 pb-3 sm:pb-4">
+              <div className="grid grid-cols-2 gap-x-3 sm:gap-x-6 gap-y-2 sm:gap-y-3 pb-2 sm:pb-3">
                 <div>
-                  <h4 className="font-poppins font-bold text-white text-sm sm:text-lg">
+                  <h4 className="font-poppins font-bold text-white text-[12px] sm:text-lg leading-snug">
                     Sunday Morning Service
                   </h4>
-                  <p className="font-poppins text-xs sm:text-sm text-slate-200 mt-0.5">
+                  <p className="font-poppins text-[10px] sm:text-sm text-slate-200 mt-0.5 whitespace-nowrap">
                     10:30 AM – 2:30 PM <span className="text-white font-medium">(IST)</span>
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="font-poppins font-bold text-white text-sm sm:text-lg">
+                  <h4 className="font-poppins font-bold text-white text-[12px] sm:text-lg leading-snug">
                     Sunday Morning Service
                   </h4>
-                  <p className="font-poppins text-xs sm:text-sm text-slate-200 mt-0.5">
+                  <p className="font-poppins text-[10px] sm:text-sm text-slate-200 mt-0.5 whitespace-nowrap">
                     10:30 AM – 2:30 PM <span className="text-white font-medium">(IST)</span>
                   </p>
                 </div>
               </div>
 
               {/* Horizontal Divider Line */}
-              <div className="w-full h-px bg-white/20 my-2" />
+              <div className="w-full h-px bg-white/15 my-2 sm:my-3" />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 sm:gap-y-4 pt-2 sm:pt-3">
+              <div className="grid grid-cols-2 gap-x-3 sm:gap-x-6 gap-y-2 sm:gap-y-3 pt-1.5 sm:pt-2">
                 <div>
-                  <h4 className="font-poppins font-bold text-white text-sm sm:text-lg">
+                  <h4 className="font-poppins font-bold text-white text-[12px] sm:text-lg leading-snug">
                     Sunday Morning Service
                   </h4>
-                  <p className="font-poppins text-xs sm:text-sm text-slate-200 mt-0.5">
+                  <p className="font-poppins text-[10px] sm:text-sm text-slate-200 mt-0.5 whitespace-nowrap">
                     10:30 AM – 2:30 PM <span className="text-white font-medium">(IST)</span>
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="font-poppins font-bold text-white text-sm sm:text-lg">
+                  <h4 className="font-poppins font-bold text-white text-[12px] sm:text-lg leading-snug">
                     Sunday Morning Service
                   </h4>
-                  <p className="font-poppins text-xs sm:text-sm text-slate-200 mt-0.5">
+                  <p className="font-poppins text-[10px] sm:text-sm text-slate-200 mt-0.5 whitespace-nowrap">
                     10:30 AM – 2:30 PM <span className="text-white font-medium">(IST)</span>
                   </p>
                 </div>
@@ -108,7 +108,7 @@ export const ScheduleSection: React.FC = () => {
           </div>
 
           {/* Card 2: Daily Prayer Programs */}
-          <div className="bg-[#122f4a] rounded-[16px] sm:rounded-[20px] p-5 sm:p-8 text-white relative overflow-hidden shadow-xl border border-white/5 flex flex-col justify-between min-h-[220px] sm:min-h-[240px]">
+          <div className="bg-[#122f4a] rounded-[16.8px] p-4 sm:p-7 md:p-8 text-white relative overflow-hidden shadow-xl border border-white/5 flex flex-col justify-between">
             {/* Background decorative curved lines vector */}
             <div className="absolute inset-0 pointer-events-none opacity-25 overflow-hidden">
               <Image
@@ -121,53 +121,53 @@ export const ScheduleSection: React.FC = () => {
 
             <div className="relative z-10">
               {/* Header row with Yellow Dashed Line */}
-              <div className="flex items-center justify-between gap-4 mb-5 sm:mb-6">
-                <h3 className="font-poppins font-bold text-[#efbf04] text-lg sm:text-2xl whitespace-nowrap">
+              <div className="flex items-center justify-between gap-3 sm:gap-4 mb-3.5 sm:mb-5">
+                <h3 className="font-poppins font-bold text-[#efbf04] text-[15px] sm:text-2xl whitespace-nowrap">
                   Daily Prayer Programs
                 </h3>
                 {/* Yellow Dashed Pattern */}
-                <div className="flex-1 h-2 max-w-[230px] bg-[radial-gradient(#efbf04_2px,transparent_2px)] [background-size:8px_8px] opacity-80" />
+                <div className="flex-1 h-2 sm:h-3 max-w-[160px] sm:max-w-[240px] bg-[radial-gradient(#efbf04_2px,transparent_2px)] [background-size:6px_6px] sm:[background-size:8px_8px] opacity-90" />
               </div>
 
               {/* 2x2 Service Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 sm:gap-y-4 pb-3 sm:pb-4">
+              <div className="grid grid-cols-2 gap-x-3 sm:gap-x-6 gap-y-2 sm:gap-y-3 pb-2 sm:pb-3">
                 <div>
-                  <h4 className="font-poppins font-bold text-white text-sm sm:text-lg">
+                  <h4 className="font-poppins font-bold text-white text-[12px] sm:text-lg leading-snug">
                     Sunday Morning Service
                   </h4>
-                  <p className="font-poppins text-xs sm:text-sm text-slate-200 mt-0.5">
+                  <p className="font-poppins text-[10px] sm:text-sm text-slate-200 mt-0.5 whitespace-nowrap">
                     10:30 AM – 2:30 PM <span className="text-white font-medium">(IST)</span>
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="font-poppins font-bold text-white text-sm sm:text-lg">
+                  <h4 className="font-poppins font-bold text-white text-[12px] sm:text-lg leading-snug">
                     Sunday Morning Service
                   </h4>
-                  <p className="font-poppins text-xs sm:text-sm text-slate-200 mt-0.5">
+                  <p className="font-poppins text-[10px] sm:text-sm text-slate-200 mt-0.5 whitespace-nowrap">
                     10:30 AM – 2:30 PM <span className="text-white font-medium">(IST)</span>
                   </p>
                 </div>
               </div>
 
               {/* Horizontal Divider Line */}
-              <div className="w-full h-px bg-white/20 my-2" />
+              <div className="w-full h-px bg-white/15 my-2 sm:my-3" />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 sm:gap-y-4 items-center pt-2 sm:pt-3">
+              <div className="grid grid-cols-2 gap-x-3 sm:gap-x-6 gap-y-2 sm:gap-y-3 items-center pt-1.5 sm:pt-2">
                 <div>
-                  <h4 className="font-poppins font-bold text-white text-sm sm:text-lg">
+                  <h4 className="font-poppins font-bold text-white text-[12px] sm:text-lg leading-snug">
                     Sunday Morning Service
                   </h4>
-                  <p className="font-poppins text-xs sm:text-sm text-slate-200 mt-0.5">
+                  <p className="font-poppins text-[10px] sm:text-sm text-slate-200 mt-0.5 whitespace-nowrap">
                     10:30 AM – 2:30 PM <span className="text-white font-medium">(IST)</span>
                   </p>
                 </div>
 
                 {/* Join the Live Now CTA Button */}
-                <div className="flex sm:justify-end mt-2 sm:mt-0">
+                <div className="flex items-center justify-end">
                   <Link
                     href="/live"
-                    className="inline-flex items-center justify-center bg-[#efbf04] text-[#0b0c1c] font-poppins font-semibold text-xs sm:text-base px-6 sm:px-7 py-2.5 sm:py-3 rounded-full hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-md whitespace-nowrap w-full sm:w-auto"
+                    className="inline-flex items-center justify-center bg-[#efbf04] text-[#0b0c1c] font-poppins font-bold text-[12px] sm:text-base px-3 sm:px-7 h-[36px] sm:h-[46px] rounded-full hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-md whitespace-nowrap w-full text-center"
                   >
                     Join the Live Now
                   </Link>

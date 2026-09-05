@@ -12,10 +12,8 @@ interface GalleryItem {
 }
 
 export const ManOfGodSection: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [viewportWidth, setViewportWidth] = useState(1440)
-  const [viewportHeight, setViewportHeight] = useState(850)
   const [currentX, setCurrentX] = useState(0)
   const [activeIndex, setActiveIndex] = useState(0)
 
@@ -74,11 +72,10 @@ export const ManOfGodSection: React.FC = () => {
     },
   ]
 
-  // Track responsive screen width and height
+  // Track responsive screen width
   useEffect(() => {
     const updateDimensions = () => {
       setViewportWidth(window.innerWidth)
-      setViewportHeight(window.innerHeight)
     }
     updateDimensions()
     window.addEventListener('resize', updateDimensions)
@@ -97,24 +94,25 @@ export const ManOfGodSection: React.FC = () => {
   let maxTravel: number
 
   if (isMobile) {
-    cardHeight = Math.min(Math.round(viewportHeight * 0.44), 340)
-    cardWidth = Math.min(Math.round(viewportWidth * 0.72), Math.round(cardHeight / 1.16))
-    sidePadding = Math.round((viewportWidth - cardWidth) / 2)
+    // 2 full cards in the center with 1 card half-peeking on left and right
+    cardWidth = Math.round(viewportWidth * 0.44)
+    cardHeight = Math.round(cardWidth * 0.65)
+    sidePadding = Math.round((viewportWidth - (2 * cardWidth + cardGap)) / 2)
     availableWidth = viewportWidth
     const step = cardWidth + cardGap
-    maxTravel = Math.max(0, (galleryItems.length - 1) * step)
+    maxTravel = Math.max(0, (galleryItems.length - 2) * step)
   } else if (isTablet) {
     sidePadding = 24
     availableWidth = viewportWidth - 2 * sidePadding
     cardWidth = (availableWidth - 2 * cardGap) / 3
-    cardHeight = Math.min(Math.round(viewportHeight * 0.42), Math.round(cardWidth * 1.25), 340)
+    cardHeight = Math.min(Math.round(cardWidth * 0.65), 260)
     const step = cardWidth + cardGap
     maxTravel = Math.max(0, (galleryItems.length - 3) * step)
   } else {
     sidePadding = 32
     availableWidth = viewportWidth - 2 * sidePadding
     cardWidth = (availableWidth - 3 * cardGap) / 4
-    cardHeight = Math.min(Math.round(viewportHeight * 0.42), Math.round(cardWidth * 1.2), 360)
+    cardHeight = Math.min(Math.round(cardWidth * 0.65), 260)
     const step = cardWidth + cardGap
     maxTravel = Math.max(0, (galleryItems.length - 4) * step)
   }
@@ -177,27 +175,14 @@ export const ManOfGodSection: React.FC = () => {
     isHorizontalSwipeRef.current = null
   }
 
-  // Smooth LERP (Linear Interpolation) Loop with Scroll Pinning Sync
+  // Smooth LERP (Linear Interpolation) Loop for Touch/Swipe & Button Navigation
   useEffect(() => {
     let animationFrameId: number
-
-    const handleScroll = () => {
-      if (!sectionRef.current || isDraggingRef.current) return
-      const rect = sectionRef.current.getBoundingClientRect()
-      const totalDistance = sectionRef.current.offsetHeight - window.innerHeight
-      if (totalDistance <= 0) return
-
-      // Scroll progress locked between 0 and 1 while the section is pinned
-      const scrolled = -rect.top
-      const progress = Math.min(Math.max(scrolled / totalDistance, 0), 1)
-
-      targetScrollRef.current = progress * maxTravel
-    }
 
     const lerpLoop = () => {
       const diff = targetScrollRef.current - currentScrollRef.current
       if (Math.abs(diff) > 0.05) {
-        currentScrollRef.current += diff * 0.12
+        currentScrollRef.current += diff * 0.14
         setCurrentX(currentScrollRef.current)
         const currentActive = Math.min(
           galleryItems.length - 1,
@@ -208,24 +193,16 @@ export const ManOfGodSection: React.FC = () => {
       animationFrameId = requestAnimationFrame(lerpLoop)
     }
 
-    window.addEventListener('scroll', handleScroll, { passive: true })
     animationFrameId = requestAnimationFrame(lerpLoop)
-    handleScroll()
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
       cancelAnimationFrame(animationFrameId)
     }
-  }, [galleryItems.length, maxTravel, step])
+  }, [galleryItems.length, step])
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative bg-white"
-      style={{ height: isMobile ? '240vh' : '280vh' }}
-    >
-      {/* Sticky Viewport Container: Locks in view while film reel pans */}
-      <div className="sticky top-0 h-screen flex flex-col justify-between py-6 sm:py-8 md:py-10 overflow-hidden">
+    <section className="relative py-10 sm:py-14 md:py-20 bg-white overflow-hidden">
+      <div className="w-full flex flex-col items-center gap-5 sm:gap-7 md:gap-9">
         {/* Section Header */}
         <div className="w-full flex items-center justify-between flex-shrink-0">
           <div className="flex-1 min-w-[8px] sm:min-w-[32px] h-[3px] sm:h-[5px] xl:h-[6px] bg-[#efbf04] rounded-r-full pointer-events-none" />
@@ -263,7 +240,7 @@ export const ManOfGodSection: React.FC = () => {
         </div>
 
         {/* Film Reel 3D Stage Viewport */}
-        <div className="relative flex-shrink-0 my-auto py-1">
+        <div className="relative flex-shrink-0 w-full py-1">
           {/* Left Arrow Button */}
           <button
             type="button"
@@ -300,7 +277,7 @@ export const ManOfGodSection: React.FC = () => {
             style={{
               width: `${availableWidth}px`,
               maxWidth: '100%',
-              height: `${cardHeight + (isMobile ? 20 : 44)}px`,
+              height: `${cardHeight + (isMobile ? 16 : 44)}px`,
               perspective: '1200px',
               perspectiveOrigin: '50% 50%',
             }}
@@ -310,8 +287,6 @@ export const ManOfGodSection: React.FC = () => {
               style={{
                 transform: `translate3d(-${currentX}px, 0, 0)`,
                 transformStyle: 'preserve-3d',
-                paddingLeft: isMobile ? `${sidePadding}px` : undefined,
-                paddingRight: isMobile ? `${sidePadding}px` : undefined,
               }}
             >
               {galleryItems.map((item, idx) => {
@@ -323,18 +298,18 @@ export const ManOfGodSection: React.FC = () => {
                 const uSq = Math.min(2.0, u * u) // Quadratic curve for smooth, unbroken parabolic arc
 
                 // Continuous Tangent 3D Inward Rotation:
-                const kAngle = isMobile ? 15 : 28
+                const kAngle = isMobile ? 12 : 28
                 const rotateY = -u * kAngle
 
                 // Continuous Unbroken Parabolic Arc Elevation (Y = -Ky * u^2):
-                const kY = isMobile ? 8 : 22
+                const kY = isMobile ? 6 : 22
                 const translateY = -kY * uSq
 
                 // Center scaling: subtle on mobile, amphitheater on desktop
-                const scale = isMobile ? 0.94 + 0.1 * Math.min(1.0, uSq) : 0.84 + 0.2 * Math.min(1.0, uSq)
+                const scale = isMobile ? 0.96 + 0.08 * Math.min(1.0, uSq) : 0.84 + 0.2 * Math.min(1.0, uSq)
 
                 // Depth adjustment following the amphitheater arc
-                const translateZ = uSq * (isMobile ? 6 : 20)
+                const translateZ = uSq * (isMobile ? 4 : 20)
 
                 return (
                   <div
@@ -400,23 +375,23 @@ export const ManOfGodSection: React.FC = () => {
 
         {/* Pastor Info & Bio */}
         <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 text-center flex-shrink-0">
-          <h3 className="font-poppins font-bold text-[#003471] text-base sm:text-2xl md:text-[26px] tracking-tight">
+          <h3 className="font-poppins font-bold text-[#003471] text-lg sm:text-2xl md:text-[26px] tracking-tight">
             Apostle Dr. Ankur Yoseph Narula
           </h3>
-          <p className="font-poppins font-medium text-[#122f4a] text-xs sm:text-sm md:text-[15px] mt-0.5">
+          <p className="font-poppins font-medium text-[#122f4a] text-sm sm:text-sm md:text-[15px] mt-0.5">
             Founder &amp; Senior Pastor
           </p>
 
-          <p className="font-poppins text-[#334155] text-xs sm:text-sm md:text-[14px] leading-relaxed mt-1 sm:mt-2 max-w-xl mx-auto line-clamp-2 sm:line-clamp-none">
+          <p className="font-poppins text-[#334155] text-sm sm:text-sm md:text-[14px] leading-relaxed mt-1.5 sm:mt-2 max-w-xl mx-auto line-clamp-3 sm:line-clamp-none">
             Apostle Dr. Ankur Yoseph Narula is the Founder and Overseer of The Church of Signs and Wonders{' '}
             Ankur Narula Ministries, which is one of the fastest-growing churches in India.
           </p>
 
           {/* Know More Button */}
-          <div className="mt-2 sm:mt-3.5">
+          <div className="mt-2.5 sm:mt-3.5">
             <Link
               href="/about"
-              className="inline-flex items-center justify-center bg-[#efbf04] hover:bg-[#dfaf00] text-[#0b0c1c] font-poppins font-semibold text-xs sm:text-sm md:text-base px-6 sm:px-8 py-1.5 sm:py-2.5 rounded-full transition-all duration-200 shadow-sm active:scale-95"
+              className="inline-flex items-center justify-center bg-[#efbf04] hover:bg-[#dfaf00] text-[#0b0c1c] font-poppins font-semibold text-sm sm:text-sm md:text-base px-7 sm:px-8 py-2 sm:py-2.5 rounded-full transition-all duration-200 shadow-sm active:scale-95"
             >
               Know More
             </Link>
