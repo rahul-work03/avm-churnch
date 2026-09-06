@@ -1,12 +1,10 @@
 import React from 'react'
-import { ChurchNavbar } from './Navbar'
 import { HeroSection } from './HeroSection'
 import { ManOfGodSection } from './ManOfGodSection'
 import { ActionCardsSection } from './ActionCardsSection'
 import { ScheduleSection } from './ScheduleSection'
 import { SocialSection } from './SocialSection'
 import { SermonsSection } from './SermonsSection'
-import { FooterSection } from './FooterSection'
 
 export const ChurchHomepage: React.FC = () => {
   return (
@@ -19,9 +17,6 @@ export const ChurchHomepage: React.FC = () => {
           backgroundSize: '100% 1106px',
         }}
       >
-        {/* Floating Pill Navigation */}
-        <ChurchNavbar />
-
         {/* Hero Headline & 200+ Churches Banner */}
         <HeroSection />
       </div>
@@ -40,9 +35,6 @@ export const ChurchHomepage: React.FC = () => {
 
       {/* Watch Our Latest Sermons */}
       <SermonsSection />
-
-      {/* Official 4-Column Church Footer */}
-      <FooterSection />
     </main>
   )
 }

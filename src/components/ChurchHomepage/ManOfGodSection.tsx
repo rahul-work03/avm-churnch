@@ -201,42 +201,54 @@ export const ManOfGodSection: React.FC = () => {
   }, [galleryItems.length, step])
 
   return (
-    <section className="relative py-10 sm:py-14 md:py-20 bg-white overflow-hidden">
+    <section className="relative py-10 sm:py-14 md:py-20 bg-white overflow-hidden" data-node-id="238:1747">
       <div className="w-full flex flex-col items-center gap-5 sm:gap-7 md:gap-9">
         {/* Section Header */}
         <div className="w-full flex items-center justify-between flex-shrink-0">
-          <div className="flex-1 min-w-[8px] sm:min-w-[32px] h-[3px] sm:h-[5px] xl:h-[6px] bg-[#efbf04] rounded-r-full pointer-events-none" />
+          <div className="flex-1 min-w-[8px] sm:min-w-[32px] h-[3px] sm:h-[5px] xl:h-[6px] bg-[#efbf04] rounded-r-full pointer-events-none" data-node-id="238:1742" />
 
           <div className="text-center px-2 sm:px-8 md:px-12 flex-shrink min-w-0">
-            <h2 className="font-philosopher font-bold text-[#003471] text-base sm:text-2xl md:text-[32px] leading-tight tracking-tight">
+            <h2 className="font-philosopher font-bold text-[#003471] text-base sm:text-2xl md:text-[32px] leading-tight tracking-tight" data-node-id="238:1747">
               The church of signs and wonders
             </h2>
 
             {/* Man Of God with Golden Emblems on both sides */}
             <div className="flex items-center justify-center gap-1.5 sm:gap-3 md:gap-4 mt-0.5 sm:mt-1.5">
-              <div className="relative w-4 h-4 sm:w-7 sm:h-7 md:w-8 md:h-8 flex-shrink-0">
-                <Image
-                  src="/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png"
-                  alt=""
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <span className="font-poppins font-bold text-[#efbf04] text-sm sm:text-xl md:text-[28px] tracking-wide">
+              <div
+                className="relative w-4 h-4 sm:w-7 sm:h-7 md:w-8 md:h-8 flex-shrink-0 bg-[#efbf04]"
+                data-node-id="238:1983"
+                style={{
+                  maskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
+                  WebkitMaskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
+                  maskSize: 'contain',
+                  WebkitMaskSize: 'contain',
+                  maskRepeat: 'no-repeat',
+                  WebkitMaskRepeat: 'no-repeat',
+                  maskPosition: 'center',
+                  WebkitMaskPosition: 'center',
+                }}
+              />
+              <span className="font-poppins font-bold text-[#efbf04] text-sm sm:text-xl md:text-[28px] tracking-wide" data-node-id="238:1752">
                 Man Of God
               </span>
-              <div className="relative w-4 h-4 sm:w-7 sm:h-7 md:w-8 md:h-8 flex-shrink-0">
-                <Image
-                  src="/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png"
-                  alt=""
-                  fill
-                  className="object-contain scale-x-[-1]"
-                />
-              </div>
+              <div
+                className="relative w-4 h-4 sm:w-7 sm:h-7 md:w-8 md:h-8 flex-shrink-0 bg-[#efbf04] scale-x-[-1]"
+                data-node-id="238:1986"
+                style={{
+                  maskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
+                  WebkitMaskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
+                  maskSize: 'contain',
+                  WebkitMaskSize: 'contain',
+                  maskRepeat: 'no-repeat',
+                  WebkitMaskRepeat: 'no-repeat',
+                  maskPosition: 'center',
+                  WebkitMaskPosition: 'center',
+                }}
+              />
             </div>
           </div>
 
-          <div className="flex-1 min-w-[8px] sm:min-w-[32px] h-[3px] sm:h-[5px] xl:h-[6px] bg-[#efbf04] rounded-l-full pointer-events-none" />
+          <div className="flex-1 min-w-[8px] sm:min-w-[32px] h-[3px] sm:h-[5px] xl:h-[6px] bg-[#efbf04] rounded-l-full pointer-events-none" data-node-id="238:1744" />
         </div>
 
         {/* Film Reel 3D Stage Viewport */}
