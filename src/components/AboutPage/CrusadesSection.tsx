@@ -29,7 +29,7 @@ export const CrusadesSection: React.FC = () => {
   const startScrollRef = useRef(0)
   const isHorizontalSwipeRef = useRef<boolean | null>(null)
 
-  // 9 Crusade Showcase Images matching Figma nodes 218-2522 to 218-2530
+  // 9 Crusade Showcase Images
   const crusadeImages: CrusadeItem[] = [
     {
       id: 1,
@@ -110,7 +110,7 @@ export const CrusadesSection: React.FC = () => {
   const isMobile = viewportWidth < 640
   const isTablet = viewportWidth >= 640 && viewportWidth < 1024
 
-  const cardGap = isMobile ? 12 : isTablet ? 18 : 24
+  const cardGap = isMobile ? 10 : isTablet ? 16 : 22
   let cardWidth: number
   let cardHeight: number
   let sidePadding: number
@@ -118,8 +118,7 @@ export const CrusadesSection: React.FC = () => {
   let maxTravel: number
 
   if (isMobile) {
-    // 2 full cards in the center with peek on sides
-    cardWidth = Math.round(viewportWidth * 0.52)
+    cardWidth = Math.round(viewportWidth * 0.48)
     cardHeight = Math.round(cardWidth * 1.25)
     sidePadding = Math.round((viewportWidth - (cardWidth + cardGap)) / 2)
     availableWidth = viewportWidth
@@ -225,28 +224,28 @@ export const CrusadesSection: React.FC = () => {
   }, [crusadeImages.length, step])
 
   return (
-    <section className="py-12 md:py-20 bg-white overflow-hidden select-none">
-      {/* Dark Navy Crusade Header Bar */}
-      <div className="bg-[#122f4a] py-6 sm:py-8 text-white relative shadow-sm">
+    <section className="py-8 sm:py-14 md:py-20 bg-white overflow-hidden select-none" data-node-id="275:810">
+      {/* Dark Navy Crusade Header Bar (Figma 275:993, 275:995, 275:996, 275:998) */}
+      <div className="bg-[#122f4a] py-5 sm:py-7 md:py-8 text-white relative shadow-sm">
         <div className="w-full flex items-center justify-between">
-          <div className="flex-1 h-[4px] sm:h-[6px] md:h-[8px] bg-[#efbf04] rounded-r-full" />
+          <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-r-full flex-shrink-0" />
 
-          <h2 className="font-poppins font-semibold text-white text-base sm:text-2xl md:text-[28px] text-center px-4 sm:px-8 md:px-12 tracking-wide flex-shrink min-w-0">
+          <h2 className="font-poppins font-medium text-white text-sm sm:text-2xl md:text-[28px] text-center px-3 sm:px-8 md:px-12 tracking-wide flex-shrink min-w-0">
             The Largest ankur narula ministries Crusades
           </h2>
 
-          <div className="flex-1 h-[4px] sm:h-[6px] md:h-[8px] bg-[#efbf04] rounded-l-full" />
+          <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-l-full flex-shrink-0" />
         </div>
       </div>
 
       {/* Panoramic 3D Stage Viewport */}
-      <div className="relative mt-8 sm:mt-12 w-full py-4">
+      <div className="relative mt-6 sm:mt-10 md:mt-12 w-full py-2 sm:py-4">
         {/* Left Arrow Button */}
         <button
           type="button"
           onClick={scrollPrev}
           disabled={currentX <= 5}
-          className="absolute left-2 sm:left-6 md:left-10 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 backdrop-blur-md text-[#122f4a] border border-slate-200 shadow-xl flex items-center justify-center disabled:opacity-0 disabled:pointer-events-none hover:bg-[#efbf04] hover:text-[#0b0c1c] transition-all duration-300 active:scale-95"
+          className="absolute left-2 sm:left-6 md:left-10 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 backdrop-blur-md text-[#122f4a] border border-slate-200 shadow-xl flex items-center justify-center disabled:opacity-0 disabled:pointer-events-none hover:bg-[#efbf04] hover:text-[#0b0c1c] transition-all duration-300 active:scale-95 cursor-pointer"
           aria-label="Previous crusade image"
         >
           <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -257,7 +256,7 @@ export const CrusadesSection: React.FC = () => {
           type="button"
           onClick={scrollNext}
           disabled={currentX >= maxTravel - 5}
-          className="absolute right-2 sm:right-6 md:right-10 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 backdrop-blur-md text-[#122f4a] border border-slate-200 shadow-xl flex items-center justify-center disabled:opacity-0 disabled:pointer-events-none hover:bg-[#efbf04] hover:text-[#0b0c1c] transition-all duration-300 active:scale-95"
+          className="absolute right-2 sm:right-6 md:right-10 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 backdrop-blur-md text-[#122f4a] border border-slate-200 shadow-xl flex items-center justify-center disabled:opacity-0 disabled:pointer-events-none hover:bg-[#efbf04] hover:text-[#0b0c1c] transition-all duration-300 active:scale-95 cursor-pointer"
           aria-label="Next crusade image"
         >
           <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -277,7 +276,7 @@ export const CrusadesSection: React.FC = () => {
           style={{
             width: `${availableWidth}px`,
             maxWidth: '100%',
-            height: `${cardHeight + (isMobile ? 24 : 50)}px`,
+            height: `${cardHeight + (isMobile ? 18 : 46)}px`,
             perspective: '1300px',
             perspectiveOrigin: '50% 50%',
           }}
@@ -287,29 +286,22 @@ export const CrusadesSection: React.FC = () => {
             style={{
               transform: `translate3d(-${currentX}px, 0, 0)`,
               transformStyle: 'preserve-3d',
+              paddingLeft: isMobile ? `${sidePadding}px` : '16px',
             }}
           >
             {crusadeImages.map((item, idx) => {
-              // Exact center of this card in screen coordinates
               const cardScreenCenter = sidePadding + idx * step + cardWidth / 2 - currentX
-
-              // Continuous normalized ratio relative to screen center (-1.0 = left edge, 0.0 = center, +1.0 = right edge)
               const u = (cardScreenCenter - screenCenter) / (viewportWidth / 2)
-              const uSq = Math.min(2.0, u * u) // Quadratic curve for parabolic arc
+              const uSq = Math.min(2.0, u * u)
 
-              // Continuous Tangent 3D Inward Rotation:
-              const kAngle = isMobile ? 14 : 26
+              const kAngle = isMobile ? 12 : 24
               const rotateY = -u * kAngle
 
-              // Continuous Parabolic Arc Elevation (Y = -Ky * u^2):
-              const kY = isMobile ? 8 : 20
+              const kY = isMobile ? 6 : 18
               const translateY = -kY * uSq
 
-              // Center scaling
-              const scale = isMobile ? 0.94 + 0.1 * Math.min(1.0, uSq) : 0.86 + 0.18 * Math.min(1.0, uSq)
-
-              // Depth adjustment following the panoramic arc
-              const translateZ = uSq * (isMobile ? 6 : 24)
+              const scale = isMobile ? 0.95 + 0.08 * Math.min(1.0, uSq) : 0.88 + 0.16 * Math.min(1.0, uSq)
+              const translateZ = uSq * (isMobile ? 5 : 22)
 
               return (
                 <div
@@ -325,8 +317,7 @@ export const CrusadesSection: React.FC = () => {
                     transformStyle: 'preserve-3d',
                   }}
                 >
-                  {/* Card Container with Rounded Borders & Shadow */}
-                  <div className="relative w-full h-full rounded-[16px] sm:rounded-[22px] overflow-hidden shadow-xl border border-slate-200/60 bg-slate-900 transition-all duration-300 group-hover:shadow-2xl">
+                  <div className="relative w-full h-full rounded-[14px] sm:rounded-[20px] overflow-hidden shadow-xl border border-slate-200/60 bg-slate-900 transition-all duration-300 group-hover:shadow-2xl">
                     <Image
                       src={item.src}
                       alt={item.alt}
@@ -336,10 +327,8 @@ export const CrusadesSection: React.FC = () => {
                       priority={idx < 4}
                     />
 
-                    {/* Gradient Overlay for visual depth */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
-                    {/* Subtle angle shading for realistic amphitheater illumination */}
                     {Math.abs(u) > 0.25 && (
                       <div
                         className="absolute inset-0 pointer-events-none transition-opacity duration-300"
@@ -352,7 +341,6 @@ export const CrusadesSection: React.FC = () => {
                       />
                     )}
 
-                    {/* Bottom Caption Pill */}
                     <div className="absolute bottom-0 inset-x-0 p-3 sm:p-4 text-white pointer-events-none">
                       {item.title && (
                         <p className="font-poppins font-semibold text-xs sm:text-sm md:text-[15px] text-[#efbf04] tracking-wide line-clamp-1">
@@ -373,13 +361,13 @@ export const CrusadesSection: React.FC = () => {
         </div>
 
         {/* Carousel Pagination Dots */}
-        <div className="flex items-center justify-center gap-1.5 sm:gap-2 mt-4 sm:mt-6">
+        <div className="flex items-center justify-center gap-1.5 sm:gap-2 mt-3 sm:mt-5">
           {crusadeImages.map((_, i) => (
             <button
               key={i}
               type="button"
               onClick={() => scrollToIndex(i)}
-              className={`transition-all duration-300 rounded-full ${
+              className={`transition-all duration-300 rounded-full cursor-pointer ${
                 activeIndex === i
                   ? 'w-6 sm:w-9 h-1.5 sm:h-2 bg-[#efbf04]'
                   : 'w-1.5 sm:w-2 h-1.5 sm:h-2 bg-slate-300 hover:bg-slate-400'

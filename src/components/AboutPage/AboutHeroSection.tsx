@@ -3,13 +3,13 @@ import Image from 'next/image'
 
 export const AboutHeroSection: React.FC = () => {
   return (
-    <section className="relative pt-24 pb-12 sm:pt-28 md:pt-32 md:pb-16 bg-transparent">
+    <section className="relative pt-20 pb-8 sm:pt-28 sm:pb-12 md:pt-32 md:pb-16 bg-transparent" data-node-id="275:810">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* "About us" Header with Golden Emblems on both sides */}
-        <div className="text-center px-4 pt-4 sm:pt-8">
-          <div className="flex items-center justify-center gap-3 sm:gap-4">
+        {/* "About us" Header with Golden Emblems on both sides (Figma 275:825) */}
+        <div className="text-center px-2 pt-2 sm:pt-6">
+          <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4">
             <div
-              className="relative w-7 h-7 sm:w-9 sm:h-9 flex-shrink-0 bg-[#efbf04]"
+              className="relative w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 flex-shrink-0 bg-[#efbf04]"
               style={{
                 maskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
                 WebkitMaskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
@@ -21,11 +21,11 @@ export const AboutHeroSection: React.FC = () => {
                 WebkitMaskPosition: 'center',
               }}
             />
-            <h1 className="font-philosopher font-bold text-[#003471] text-3xl sm:text-4xl md:text-[42px] tracking-tight">
-              About Us
+            <h1 className="font-philosopher font-bold text-[#122f4a] text-2xl sm:text-3xl md:text-[38px] tracking-tight">
+              About us
             </h1>
             <div
-              className="relative w-7 h-7 sm:w-9 sm:h-9 flex-shrink-0 bg-[#efbf04] scale-x-[-1]"
+              className="relative w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 flex-shrink-0 bg-[#efbf04] scale-x-[-1]"
               style={{
                 maskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
                 WebkitMaskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
@@ -39,16 +39,16 @@ export const AboutHeroSection: React.FC = () => {
             />
           </div>
 
-          <p className="font-poppins text-[#0b0c1c] text-xs sm:text-base md:text-[18px] leading-relaxed max-w-4xl mx-auto mt-4 sm:mt-6 text-balance">
+          <p className="font-poppins text-[#0b0c1c] text-xs sm:text-sm md:text-[18px] leading-relaxed max-w-4xl mx-auto mt-2.5 sm:mt-5 text-balance">
             The Church of Signs and Wonders (Ankur Narula Ministries) is a global revival ministry dedicated to spreading the Gospel of Jesus
             Christ through the power of the Holy Spirit. Founded in 2004 in Punjab, India, the ministry has grown from three members into a
             worldwide movement bringing healing, deliverance, and transformed lives.
           </p>
         </div>
 
-        {/* Featured Large Hero Photo / Stage Banner */}
-        <div className="mt-8 sm:mt-12 max-w-[1140px] mx-auto">
-          <div className="relative w-full aspect-[1140/583] rounded-[16px] sm:rounded-[24px] md:rounded-[32px] overflow-hidden shadow-2xl border border-amber-200/40 bg-slate-900 group">
+        {/* Featured Large Hero Photo / Stage Banner (Figma 275:828) */}
+        <div className="mt-6 sm:mt-10 md:mt-12 max-w-[1140px] mx-auto">
+          <div className="relative w-full aspect-[16/9] sm:aspect-[1140/583] rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-2xl border border-amber-200/40 bg-slate-900 group">
             <Image
               src="/figma-assets/457a3354faefcf652c2110710588f40233c79c64.png"
               alt="Ankur Narula Ministries Ministry Congregation"

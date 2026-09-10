@@ -5,26 +5,26 @@ import Image from 'next/image'
 
 export const WorshipTeamSection: React.FC = () => {
   return (
-    <section className="relative pt-6 pb-16 sm:pb-20 md:pb-24 bg-transparent">
-      {/* Full-width Navy Header Bar matching Figma 245:49 & 245:187 */}
-      <div className="w-full bg-[#122f4a] py-3 sm:py-5 md:py-6 shadow-md mb-8 sm:mb-12">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-3 sm:gap-6">
-          {/* Left Gold Accent Line */}
-          <div className="flex-1 max-w-[60px] sm:max-w-[160px] md:max-w-[320px] h-[3px] sm:h-[5px] md:h-[6px] bg-[#efbf04] rounded-full" />
+    <section className="relative pt-4 pb-16 sm:pb-20 md:pb-24 bg-transparent" data-node-id="277:1632">
+      {/* Full-width Navy Header Bar matching Figma 277:1632 (Desktop) & 277:1740 (Mobile) */}
+      <div className="w-full bg-[#122f4a] py-4 sm:py-5 md:py-6 text-white relative shadow-sm mb-8 sm:mb-12">
+        <div className="w-full flex items-center justify-between">
+          {/* Left Gold Accent Bar */}
+          <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-r-full flex-shrink-0" />
 
           {/* Heading */}
-          <h2 className="font-poppins font-medium text-white text-sm sm:text-xl md:text-2xl lg:text-[28px] tracking-wide text-center whitespace-nowrap">
+          <h2 className="font-poppins font-medium text-white text-sm sm:text-xl md:text-2xl lg:text-[28px] tracking-wide text-center px-3 sm:px-8 md:px-12 flex-shrink min-w-0">
             Our Worship Team
           </h2>
 
-          {/* Right Gold Accent Line */}
-          <div className="flex-1 max-w-[60px] sm:max-w-[160px] md:max-w-[320px] h-[3px] sm:h-[5px] md:h-[6px] bg-[#efbf04] rounded-full" />
+          {/* Right Gold Accent Bar */}
+          <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-l-full flex-shrink-0" />
         </div>
       </div>
 
       <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Large Featured Worship Team Stage Visual */}
-        <div className="relative w-full aspect-[1140/534] rounded-[14px] sm:rounded-[18px] md:rounded-[20px] overflow-hidden shadow-xl border border-slate-200 bg-slate-950 group">
+        <div className="relative w-full aspect-[1140/534] rounded-[14px] sm:rounded-[18px] md:rounded-[20px] overflow-hidden shadow-2xl border border-[#d4af37]/30 bg-slate-950 group">
           <Image
             src="/figma-assets/74e8182af8627fad3ae428aad2b17d4eca519897.png"
             alt="ANM Worship Team Leading Spirit-Filled Praise"

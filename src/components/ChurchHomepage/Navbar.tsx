@@ -1,28 +1,68 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
+
+interface NavItem {
+  label: string
+  href: string
+  children?: {
+    label: string
+    href: string
+  }[]
+}
 
 export const ChurchNavbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false)
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false)
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const pathname = usePathname()
 
-  // Automatically close mobile menu on route change
+  // Automatically close mobile menu & dropdowns on route change
   useEffect(() => {
     setMobileMenuOpen(false)
+    setDesktopDropdownOpen(false)
+    setMobileDropdownOpen(false)
   }, [pathname])
 
-  const navLinks = [
+  const navLinks: NavItem[] = [
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
-    { label: 'Ministries', href: '/ministries' },
+    {
+      label: 'Ministries & More',
+      href: '/ministries',
+      children: [
+        { label: 'Ministries', href: '/ministries' },
+        { label: 'Prayer Mountain', href: '/prayer-mountain' },
+        { label: 'Prayer House', href: '/prayer-house' },
+        { label: 'Bible College', href: '/bible-college' },
+        { label: 'Church Branches', href: '/church-branches' },
+        { label: 'Sunday School', href: '/sunday-school' },
+        { label: 'Sophia Institute', href: '/sophia-institute' },
+      ],
+    },
     { label: 'Events', href: '/events' },
     { label: 'Gallery', href: '/gallery' },
+    { label: 'Testimonials', href: '/testimonials' },
     { label: 'Give', href: '/give' },
   ]
+
+  const handleMouseEnter = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current)
+    }
+    setDesktopDropdownOpen(true)
+  }
+
+  const handleMouseLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setDesktopDropdownOpen(false)
+    }, 150)
+  }
 
   return (
     <>
@@ -47,7 +87,65 @@ export const ChurchNavbar: React.FC = () => {
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-7">
             {navLinks.map((item) => {
-              const isActive = pathname === item.href || (item.href !== '/' && pathname?.startsWith(item.href))
+              const hasChildren = Boolean(item.children && item.children.length > 0)
+              const isDirectActive = pathname === item.href
+              const isChildActive = hasChildren && item.children?.some((c) => pathname === c.href || pathname?.startsWith(c.href))
+              const isActive = isDirectActive || isChildActive
+
+              if (hasChildren) {
+                return (
+                  <div
+                    key={item.label}
+                    className="relative group py-2"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setDesktopDropdownOpen((prev) => !prev)}
+                      className={`font-poppins text-[15px] transition-colors flex items-center gap-1.5 cursor-pointer ${
+                        isActive
+                          ? 'text-[#efbf04] font-semibold'
+                          : 'text-white/90 hover:text-[#efbf04]'
+                      }`}
+                      aria-expanded={desktopDropdownOpen}
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown
+                        size={15}
+                        className={`transition-transform duration-200 ${
+                          desktopDropdownOpen ? 'rotate-180 text-[#efbf04]' : ''
+                        }`}
+                      />
+                    </button>
+
+                    {/* Desktop Dropdown Menu */}
+                    {desktopDropdownOpen && (
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50 min-w-[180px] animate-in fade-in slide-in-from-top-1.5 duration-150">
+                        <div className="bg-[#122f4a] rounded-xl p-1.5 shadow-xl border border-white/10">
+                          {item.children?.map((child) => {
+                            const isSubActive = pathname === child.href || (child.href !== '/' && pathname?.startsWith(child.href))
+                            return (
+                              <Link
+                                key={child.label}
+                                href={child.href}
+                                className={`block px-3.5 py-2 rounded-lg transition-colors duration-150 font-poppins text-[14px] ${
+                                  isSubActive
+                                    ? 'text-[#efbf04] font-medium bg-white/5'
+                                    : 'text-white/85 hover:text-[#efbf04] hover:bg-white/5 font-normal'
+                                }`}
+                              >
+                                {child.label}
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )
+              }
+
               return (
                 <Link
                   key={item.label}
@@ -91,7 +189,57 @@ export const ChurchNavbar: React.FC = () => {
           <div className="lg:hidden mt-3 max-w-[1140px] mx-auto bg-[#122f4a] rounded-2xl p-6 shadow-2xl border border-white/10 flex flex-col gap-4 relative z-50 animate-in fade-in slide-in-from-top-4 duration-200">
             <nav className="flex flex-col gap-2">
               {navLinks.map((item) => {
-                const isActive = pathname === item.href || (item.href !== '/' && pathname?.startsWith(item.href))
+                const hasChildren = Boolean(item.children && item.children.length > 0)
+                const isDirectActive = pathname === item.href
+                const isChildActive = hasChildren && item.children?.some((c) => pathname === c.href || pathname?.startsWith(c.href))
+                const isActive = isDirectActive || isChildActive
+
+                if (hasChildren) {
+                  return (
+                    <div key={item.label} className="flex flex-col">
+                      <button
+                        type="button"
+                        onClick={() => setMobileDropdownOpen((prev) => !prev)}
+                        className={`font-poppins text-base py-2.5 px-4 rounded-xl transition-colors cursor-pointer flex items-center justify-between w-full ${
+                          isActive
+                            ? 'bg-white/10 text-[#efbf04] font-semibold'
+                            : 'text-white hover:bg-white/5 hover:text-[#efbf04]'
+                        }`}
+                      >
+                        <span>{item.label}</span>
+                        <ChevronDown
+                          size={18}
+                          className={`transition-transform duration-200 ${
+                            mobileDropdownOpen ? 'rotate-180 text-[#efbf04]' : ''
+                          }`}
+                        />
+                      </button>
+
+                      {/* Mobile Accordion Sub-links */}
+                      {mobileDropdownOpen && (
+                        <div className="pl-4 pr-1 py-1 flex flex-col gap-1 border-l-2 border-[#efbf04]/40 ml-4 mt-1">
+                          {item.children?.map((child) => {
+                            const isSubActive = pathname === child.href || (child.href !== '/' && pathname?.startsWith(child.href))
+                            return (
+                              <Link
+                                key={child.label}
+                                href={child.href}
+                                className={`font-poppins text-sm py-2 px-3 rounded-lg transition-colors block ${
+                                  isSubActive
+                                    ? 'text-[#efbf04] font-medium bg-white/5'
+                                    : 'text-white/80 hover:text-[#efbf04] hover:bg-white/5'
+                                }`}
+                              >
+                                {child.label}
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  )
+                }
+
                 return (
                   <Link
                     key={item.label}

@@ -7,7 +7,6 @@ interface PresencePhoto {
   alt: string
   title: string
   country: string
-  nodeId?: string
 }
 
 export const InternationalPresenceSection: React.FC = () => {
@@ -19,7 +18,6 @@ export const InternationalPresenceSection: React.FC = () => {
       alt: 'International Delegation and Diplomatic Meeting',
       title: 'Global Leadership Exchange',
       country: 'United Kingdom',
-      nodeId: '218:2276',
     },
     {
       id: 'r1-2',
@@ -27,7 +25,6 @@ export const InternationalPresenceSection: React.FC = () => {
       alt: 'Apostle Dr. Ankur Narula with World Leaders',
       title: 'Honorary Recognition Assembly',
       country: 'United States',
-      nodeId: '218:2278',
     },
     {
       id: 'r1-3',
@@ -35,7 +32,6 @@ export const InternationalPresenceSection: React.FC = () => {
       alt: 'Overseas Mission Outreach Fellowship',
       title: 'Apostolic Mission Outreach',
       country: 'Canada',
-      nodeId: '218:2281',
     },
     {
       id: 'r1-4',
@@ -43,7 +39,6 @@ export const InternationalPresenceSection: React.FC = () => {
       alt: 'Global Doctorate and Faith Citation',
       title: 'International Theological Honors',
       country: 'Europe',
-      nodeId: '218:2282',
     },
     {
       id: 'r1-5',
@@ -51,7 +46,6 @@ export const InternationalPresenceSection: React.FC = () => {
       alt: 'Revival Summit and Global Delegation',
       title: 'Worldwide Revival Summit',
       country: 'Middle East & Asia',
-      nodeId: '218:2280',
     },
   ]
 
@@ -63,7 +57,6 @@ export const InternationalPresenceSection: React.FC = () => {
       alt: 'Worldwide Gospel Crusade and Mass Gathering',
       title: 'Global Revival Crusade',
       country: 'International Arena',
-      nodeId: '218:2277',
     },
     {
       id: 'r2-2',
@@ -71,7 +64,6 @@ export const InternationalPresenceSection: React.FC = () => {
       alt: 'International Believers and Ministers Assembly',
       title: 'Global Ministers Fellowship',
       country: 'Australia & Pacific',
-      nodeId: '218:2284',
     },
     {
       id: 'r2-3',
@@ -79,7 +71,6 @@ export const InternationalPresenceSection: React.FC = () => {
       alt: 'Atmosphere of Fire International Convention',
       title: 'Supernatural Fire Conference',
       country: 'Africa Mission',
-      nodeId: '218:2276',
     },
     {
       id: 'r2-4',
@@ -87,7 +78,6 @@ export const InternationalPresenceSection: React.FC = () => {
       alt: 'Signs and Wonders International Gathering',
       title: 'Signs & Wonders Gathering',
       country: 'Global Network',
-      nodeId: '218:2278',
     },
     {
       id: 'r2-5',
@@ -95,67 +85,42 @@ export const InternationalPresenceSection: React.FC = () => {
       alt: 'Overseas Gospel Miracle Gathering',
       title: 'International Miracle Night',
       country: 'Worldwide',
-      nodeId: '218:2281',
     },
   ]
 
-  // Duplicate arrays to create seamless, continuous infinite loops
   const row1Duplicated = [...row1Photos, ...row1Photos]
   const row2Duplicated = [...row2Photos, ...row2Photos]
 
   return (
-    <section className="py-14 md:py-24 bg-[#fdfbf3] overflow-hidden select-none" data-node-id="218:2276">
-      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Section Header with Golden Emblems on both sides */}
-        <div className="flex items-center justify-center gap-2 sm:gap-3">
-          <div
-            className="relative w-5 h-5 sm:w-7 sm:h-7 flex-shrink-0 bg-[#efbf04]"
-            style={{
-              maskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
-              WebkitMaskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
-              maskSize: 'contain',
-              WebkitMaskSize: 'contain',
-              maskRepeat: 'no-repeat',
-              WebkitMaskRepeat: 'no-repeat',
-              maskPosition: 'center',
-              WebkitMaskPosition: 'center',
-            }}
-          />
+    <section className="py-8 sm:py-14 md:py-20 bg-[#fdfbf3] overflow-hidden select-none" data-node-id="275:810">
+      {/* Dark Navy Section Header Bar (Figma 275:994, 275:997, 275:999, 275:1009) */}
+      <div className="bg-[#122f4a] py-5 sm:py-7 md:py-8 text-white relative shadow-sm">
+        <div className="w-full flex items-center justify-between">
+          <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-r-full flex-shrink-0" />
 
-          <h2 className="font-poppins font-bold text-[#003471] text-xl sm:text-2xl md:text-[32px] tracking-wide uppercase">
-            MAN OF GOD INTERNATIONAL PRESENCE
+          <h2 className="font-poppins font-bold text-white text-sm sm:text-2xl md:text-[28px] text-center px-3 sm:px-8 md:px-12 tracking-wide flex-shrink min-w-0">
+            Man Of God International Presence
           </h2>
 
-          <div
-            className="relative w-5 h-5 sm:w-7 sm:h-7 flex-shrink-0 bg-[#efbf04] scale-x-[-1]"
-            style={{
-              maskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
-              WebkitMaskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
-              maskSize: 'contain',
-              WebkitMaskSize: 'contain',
-              maskRepeat: 'no-repeat',
-              WebkitMaskRepeat: 'no-repeat',
-              maskPosition: 'center',
-              WebkitMaskPosition: 'center',
-            }}
-          />
+          <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-l-full flex-shrink-0" />
         </div>
+      </div>
 
-        <p className="font-poppins text-slate-600 text-sm sm:text-base md:text-[17px] mt-2 sm:mt-3 max-w-2xl mx-auto">
+      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 text-center pt-6 sm:pt-8">
+        <p className="font-poppins text-slate-600 text-xs sm:text-base md:text-[17px] max-w-2xl mx-auto">
           Spreading the revival fire, establishing branches, and connecting with global leadership across continents.
         </p>
       </div>
 
       {/* Bidirectional Infinite Moving Sliders */}
-      <div className="relative mt-8 sm:mt-14 w-full overflow-hidden space-y-4 sm:space-y-6">
+      <div className="relative mt-6 sm:mt-10 md:mt-12 w-full overflow-hidden space-y-4 sm:space-y-6">
         {/* Row 1: Moving LEFT */}
         <div className="relative w-full overflow-hidden">
           <div className="animate-marquee-left flex gap-4 sm:gap-6 py-1">
             {row1Duplicated.map((photo, idx) => (
               <div
                 key={`${photo.id}-${idx}`}
-                className="relative flex-shrink-0 w-[240px] sm:w-[320px] md:w-[380px] h-[160px] sm:h-[210px] md:h-[250px] rounded-[14px] sm:rounded-[18px] overflow-hidden shadow-md sm:shadow-lg border border-amber-200/50 bg-slate-900 group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
-                data-node-id={photo.nodeId}
+                className="relative flex-shrink-0 w-[240px] sm:w-[320px] md:w-[380px] h-[155px] sm:h-[210px] md:h-[240px] rounded-[14px] sm:rounded-[18px] overflow-hidden shadow-md sm:shadow-lg border border-amber-200/50 bg-slate-900 group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
               >
                 <Image
                   src={photo.src}
@@ -186,8 +151,7 @@ export const InternationalPresenceSection: React.FC = () => {
             {row2Duplicated.map((photo, idx) => (
               <div
                 key={`${photo.id}-${idx}`}
-                className="relative flex-shrink-0 w-[240px] sm:w-[320px] md:w-[380px] h-[160px] sm:h-[210px] md:h-[250px] rounded-[14px] sm:rounded-[18px] overflow-hidden shadow-md sm:shadow-lg border border-amber-200/50 bg-slate-900 group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
-                data-node-id={photo.nodeId}
+                className="relative flex-shrink-0 w-[240px] sm:w-[320px] md:w-[380px] h-[155px] sm:h-[210px] md:h-[240px] rounded-[14px] sm:rounded-[18px] overflow-hidden shadow-md sm:shadow-lg border border-amber-200/50 bg-slate-900 group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
               >
                 <Image
                   src={photo.src}

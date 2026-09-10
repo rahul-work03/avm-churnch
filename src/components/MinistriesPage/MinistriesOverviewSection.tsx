@@ -113,16 +113,16 @@ export const MinistriesOverviewSection: React.FC = () => {
   }
 
   return (
-    <section className="relative py-10 sm:py-16 md:py-20 bg-transparent overflow-hidden">
-      {/* Section Header with Golden Accent Lines and Emblems */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-center gap-3 sm:gap-6 mb-10 sm:mb-16">
-          {/* Left Gold Line (Hidden or small on mobile, spans outwards on desktop) */}
-          <div className="flex-1 max-w-[80px] sm:max-w-[200px] md:max-w-[320px] h-[4px] sm:h-[6px] md:h-[8px] bg-[#efbf04] rounded-full" />
+    <section className="relative py-10 sm:py-16 md:py-24 bg-transparent overflow-hidden" data-node-id="277:1632">
+      {/* Section Header with Golden Accent Lines and Emblems (Figma 277:1646, 277:1647, 277:1648) */}
+      <div className="w-full flex items-center justify-between mb-8 sm:mb-12 md:mb-16">
+        {/* Left Gold Bar */}
+        <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[5px] sm:h-[6px] md:h-[8px] bg-[#efbf04] rounded-r-full shadow-sm flex-shrink-0" />
 
-          {/* Left Golden Emblem */}
+        {/* Center Title with Golden Emblems */}
+        <div className="flex items-center justify-center gap-2 sm:gap-4 px-2 sm:px-6 flex-shrink min-w-0">
           <div
-            className="w-7 h-7 sm:w-10 sm:h-10 md:w-14 md:h-14 bg-[#efbf04] flex-shrink-0"
+            className="relative w-5 h-5 sm:w-7 sm:h-7 md:w-9 md:h-9 bg-[#efbf04] flex-shrink-0"
             style={{
               maskImage: "url('/figma-assets/fef4ed678da919c6b52b3c402e3d3f41e5084014.png')",
               WebkitMaskImage: "url('/figma-assets/fef4ed678da919c6b52b3c402e3d3f41e5084014.png')",
@@ -135,15 +135,12 @@ export const MinistriesOverviewSection: React.FC = () => {
             }}
           />
 
-          {/* Heading (Desktop: "Ministries of Over View", Mobile: "Ministry Statistics") */}
-          <h2 className="font-poppins font-bold text-[#003471] text-base sm:text-2xl md:text-3xl lg:text-[34px] tracking-tight text-center whitespace-nowrap">
-            <span className="hidden sm:inline">Ministries of Over View</span>
-            <span className="sm:hidden">Ministry Statistics</span>
+          <h2 className="font-poppins font-semibold text-[#003471] text-base sm:text-2xl md:text-[34px] tracking-tight text-center whitespace-nowrap">
+            Ministries of Over View
           </h2>
 
-          {/* Right Golden Emblem */}
           <div
-            className="w-7 h-7 sm:w-10 sm:h-10 md:w-14 md:h-14 bg-[#efbf04] flex-shrink-0 scale-x-[-1]"
+            className="relative w-5 h-5 sm:w-7 sm:h-7 md:w-9 md:h-9 bg-[#efbf04] flex-shrink-0 scale-x-[-1]"
             style={{
               maskImage: "url('/figma-assets/fef4ed678da919c6b52b3c402e3d3f41e5084014.png')",
               WebkitMaskImage: "url('/figma-assets/fef4ed678da919c6b52b3c402e3d3f41e5084014.png')",
@@ -155,20 +152,22 @@ export const MinistriesOverviewSection: React.FC = () => {
               WebkitMaskPosition: 'center',
             }}
           />
-
-          {/* Right Gold Line */}
-          <div className="flex-1 max-w-[80px] sm:max-w-[200px] md:max-w-[320px] h-[4px] sm:h-[6px] md:h-[8px] bg-[#efbf04] rounded-full" />
         </div>
 
-        {/* 6-Card Grid: 1 col on mobile, 2 col on tablet, 3 col on desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-[1140px] mx-auto">
+        {/* Right Gold Bar */}
+        <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[5px] sm:h-[6px] md:h-[8px] bg-[#efbf04] rounded-l-full shadow-sm flex-shrink-0" />
+      </div>
+
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* 6-Card Grid: 1 col on mobile, 2 col on tablet, 3 col on desktop (Figma 277:1649 - 277:1672) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-[1140px] mx-auto justify-items-center">
           {ministryData.map((item) => (
             <div
               key={item.id}
-              className="bg-white border border-[#eee] rounded-[20px] p-5 sm:p-6 flex flex-col items-center text-center shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 group"
+              className="w-full max-w-[380px] md:max-w-[367px] h-auto md:h-[451px] bg-white border border-[#eee] rounded-[20px] p-5 sm:p-6 flex flex-col items-center text-center shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 group"
             >
               {/* Card Image */}
-              <div className="relative w-full aspect-[315/241] rounded-[12px] overflow-hidden bg-slate-100 mb-5">
+              <div className="relative w-full h-[220px] sm:h-[241px] rounded-[12px] overflow-hidden bg-slate-100 mb-4 flex-shrink-0">
                 <Image
                   src={item.image}
                   alt={item.title}
@@ -178,21 +177,21 @@ export const MinistriesOverviewSection: React.FC = () => {
               </div>
 
               {/* Title */}
-              <h3 className="font-poppins font-bold text-[#003471] text-lg sm:text-[18px] tracking-wide mb-2">
+              <h3 className="font-poppins font-bold text-[#003471] text-base sm:text-[18px] tracking-wide mb-1.5">
                 {item.title}
               </h3>
 
               {/* Description */}
-              <p className="font-poppins text-[#333333] text-sm sm:text-[16px] leading-relaxed mb-6 max-w-[300px]">
+              <p className="font-poppins text-[#333333] text-xs sm:text-[16px] leading-relaxed mb-4 max-w-[290px] line-clamp-2">
                 {item.subtitle}
               </p>
 
-              {/* Learn More Button */}
-              <div className="mt-auto pt-2">
+              {/* Learn More Button (Figma 277:1787: 138px x 44px rounded-[100px]) */}
+              <div className="mt-auto pt-1">
                 <button
                   type="button"
                   onClick={() => handleOpenDetail(item)}
-                  className="bg-[#efbf04] hover:bg-yellow-400 text-white font-poppins font-semibold text-sm sm:text-[16px] px-8 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-200 transform active:scale-95 cursor-pointer"
+                  className="w-[138px] h-[44px] bg-[#efbf04] hover:bg-[#dfaf00] text-white font-poppins font-semibold text-xs sm:text-[14px] rounded-full shadow-md hover:shadow-lg transition-all duration-200 transform active:scale-95 cursor-pointer flex items-center justify-center"
                 >
                   Learn More
                 </button>

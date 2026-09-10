@@ -14,15 +14,15 @@ interface GalleryItem {
 export const GalleryGrid: React.FC = () => {
   const [selectedPhoto, setSelectedPhoto] = useState<GalleryItem | null>(null)
 
-  // 16 Exact High-Resolution Figma Gallery Assets matching nodes 228:641 (Desktop) and 228:705 (Mobile)
-  const photoArch = {
+  // 16 Unique High-Resolution Ministry Gallery Assets
+  const photoArch: GalleryItem = {
     id: 'arch-leaders',
     src: '/figma-assets/45bec61b214b67c667153f241277fe878b702ad9.png',
-    alt: 'Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula under Blue Floral Arch',
+    alt: 'Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula under Floral Arch',
     caption: 'Apostle Dr. Ankur Yoseph Narula & Pastor Sonia Yoseph Narula - Ankur Narula Ministries',
   }
 
-  const photoPodiumHero = {
+  const photoPodiumHero: GalleryItem = {
     id: 'podium-hero',
     src: '/figma-assets/4df0fea0316253c732268b8cea549e1e2e66ff56.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula Preaching with Signs and Wonders',
@@ -125,40 +125,41 @@ export const GalleryGrid: React.FC = () => {
     },
     {
       id: 'bot-right-2',
-      src: '/figma-assets/3bf5187d2c81a326176bf967e4f68ddc522f2d87.png',
-      alt: 'Cross Worship Atmosphere',
+      src: '/figma-assets/85761e6b2486d02d0c483eb7871b0ab19ace8c46.png',
+      alt: 'Atmosphere of Prayer and Devotion',
       caption: 'Atmosphere of Praise and Worship at Ankur Narula Ministries',
     },
     {
       id: 'bot-right-3',
-      src: '/figma-assets/91a48d8819d4a79ed4de540109e29c8b41950461.png',
+      src: '/figma-assets/a12f7a8578aca49746f879f50d3567e9cc929dad.png',
       alt: 'Pastoral Leaders Fellowship',
       caption: 'Leadership Devotion and Ministry Milestones',
     },
     {
       id: 'bot-right-4',
-      src: '/figma-assets/e3a1ee00f87a2759a0968e2f45aadffe3e59db3a.png',
-      alt: 'Pastor Sonia Narula Blessing the Gathering',
-      caption: 'Prayers of Blessing and Faith for All Believers',
+      src: '/figma-assets/ff7b25464623ab07ec009c6cc6d0508eb168c5a7.png',
+      alt: 'Mass Crusade Miracle Service',
+      caption: 'Miracles, Signs, and Wonders across Multitudes',
     },
   ]
 
   return (
-    <section className="relative pt-28 pb-7 sm:pt-32 sm:pb-10 md:pt-36 md:pb-14 bg-transparent" data-node-id="228:641">
-      <div className="max-w-[1140px] mx-auto px-2.5 sm:px-6 lg:px-8">
-        {/* Dynamic 5-Column Mosaic Layout matching Figma Desktop (228:641) & Mobile (228:705) */}
-        <div className="flex flex-col gap-1.5 sm:gap-3 md:gap-3.5">
-          {/* 1. TOP BLOCK: Hero Photo Left (2/5 cols) + 6 Stacked Photos Right (3/5 cols) */}
-          <div className="grid grid-cols-5 gap-1.5 sm:gap-3 md:gap-3.5 items-stretch">
-            {/* Left Dominant Focal Portrait (Arch Photo, 2 of 5 columns) */}
+    <section className="relative pt-24 pb-8 sm:pt-32 sm:pb-12 md:pt-36 md:pb-16 bg-transparent" data-node-id="228:641">
+      <div className="max-w-[1140px] mx-auto px-3 sm:px-6 lg:px-0">
+        {/* Unified 5-Column Grid Track System */}
+        <div className="flex flex-col gap-2 sm:gap-3 md:gap-3.5">
+          {/* 1. TOP MOSAIC: Left Arch Hero (2 Cols x 2 Rows) + Right 6 Cards (3 Cols x 2 Rows) */}
+          <div className="grid grid-cols-5 grid-rows-2 gap-2 sm:gap-3 md:gap-3.5 h-[260px] sm:h-[400px] md:h-[480px] lg:h-[520px]">
+            {/* Left Arch Hero (Cols 1-2, Rows 1-2) */}
             <div
               onClick={() => setSelectedPhoto(photoArch)}
-              className="col-span-2 relative aspect-[154/150] sm:aspect-[463/455] rounded-[8px] sm:rounded-[16px] md:rounded-[20px] overflow-hidden shadow-md sm:shadow-xl border border-amber-200/40 bg-slate-900 group cursor-pointer"
+              className="col-span-2 row-span-2 relative h-full w-full rounded-[8px] sm:rounded-[16px] md:rounded-[20px] overflow-hidden shadow-md sm:shadow-xl border border-amber-200/40 bg-slate-900 group cursor-pointer"
             >
               <Image
                 src={photoArch.src}
                 alt={photoArch.alt}
                 fill
+                sizes="(max-width: 768px) 40vw, 460px"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 priority
               />
@@ -169,42 +170,18 @@ export const GalleryGrid: React.FC = () => {
               </div>
             </div>
 
-            {/* Right 3x2 Grid of 6 Photos (3 of 5 columns) */}
-            <div className="col-span-3 grid grid-cols-3 gap-1.5 sm:gap-3 md:gap-3.5">
-              {topRowSidePhotos.map((photo) => (
-                <div
-                  key={photo.id}
-                  onClick={() => setSelectedPhoto(photo)}
-                  className="relative aspect-[72/76] sm:aspect-[215/225] rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
-                >
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
-                      <ZoomIn size={14} />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* 2. MIDDLE ROW: Full-Width Strip of 5 Photos */}
-          <div className="grid grid-cols-5 gap-1.5 sm:gap-3 md:gap-3.5">
-            {middleRowPhotos.map((photo) => (
+            {/* Right 6 Cards (Cols 3-5, Rows 1-2) */}
+            {topRowSidePhotos.map((photo) => (
               <div
                 key={photo.id}
                 onClick={() => setSelectedPhoto(photo)}
-                className="relative aspect-[72/78] sm:aspect-[215/225] rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
+                className="col-span-1 row-span-1 relative h-full w-full rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
               >
                 <Image
                   src={photo.src}
                   alt={photo.alt}
                   fill
+                  sizes="(max-width: 768px) 20vw, 225px"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
@@ -216,40 +193,80 @@ export const GalleryGrid: React.FC = () => {
             ))}
           </div>
 
-          {/* 3. BOTTOM BLOCK: Left 1 Col (2 Photos) + Center Hero (2 Cols) + Right 2 Cols (4 Photos) */}
-          <div className="grid grid-cols-5 gap-1.5 sm:gap-3 md:gap-3.5 items-stretch">
-            {/* Left 2 Stacked Photos (1 of 5 columns) */}
-            <div className="col-span-1 grid grid-cols-1 gap-1.5 sm:gap-3 md:gap-3.5">
-              {bottomRowSidePhotosLeft.map((photo) => (
-                <div
-                  key={photo.id}
-                  onClick={() => setSelectedPhoto(photo)}
-                  className="relative aspect-[72/76] sm:aspect-[215/225] rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
-                >
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
-                      <ZoomIn size={14} />
-                    </div>
+          {/* 2. MIDDLE STRIP: 5 Uniform Horizontal Cards */}
+          <div className="grid grid-cols-5 gap-2 sm:gap-3 md:gap-3.5 h-[130px] sm:h-[200px] md:h-[240px] lg:h-[260px]">
+            {middleRowPhotos.map((photo) => (
+              <div
+                key={photo.id}
+                onClick={() => setSelectedPhoto(photo)}
+                className="col-span-1 relative h-full w-full rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(max-width: 768px) 20vw, 225px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
+                    <ZoomIn size={14} />
                   </div>
                 </div>
-              ))}
+              </div>
+            ))}
+          </div>
+
+          {/* 3. BOTTOM MOSAIC: Left (Col 1 x 2 Rows) + Center Podium Hero (Cols 2-3 x 2 Rows) + Right (Cols 4-5 x 2 Rows) */}
+          <div className="grid grid-cols-5 grid-rows-2 gap-2 sm:gap-3 md:gap-3.5 h-[260px] sm:h-[400px] md:h-[480px] lg:h-[520px]">
+            {/* Left Col 1, Row 1 */}
+            <div
+              onClick={() => setSelectedPhoto(bottomRowSidePhotosLeft[0])}
+              className="col-start-1 row-start-1 relative h-full w-full rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
+            >
+              <Image
+                src={bottomRowSidePhotosLeft[0].src}
+                alt={bottomRowSidePhotosLeft[0].alt}
+                fill
+                sizes="(max-width: 768px) 20vw, 225px"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
+                  <ZoomIn size={14} />
+                </div>
+              </div>
             </div>
 
-            {/* Center Dominant Focal Portrait (Podium Hero, 2 of 5 columns) */}
+            {/* Left Col 1, Row 2 */}
+            <div
+              onClick={() => setSelectedPhoto(bottomRowSidePhotosLeft[1])}
+              className="col-start-1 row-start-2 relative h-full w-full rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
+            >
+              <Image
+                src={bottomRowSidePhotosLeft[1].src}
+                alt={bottomRowSidePhotosLeft[1].alt}
+                fill
+                sizes="(max-width: 768px) 20vw, 225px"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
+                  <ZoomIn size={14} />
+                </div>
+              </div>
+            </div>
+
+            {/* Center Podium Hero (Cols 2-3, Rows 1-2) */}
             <div
               onClick={() => setSelectedPhoto(photoPodiumHero)}
-              className="col-span-2 relative aspect-[154/155] sm:aspect-[463/470] rounded-[8px] sm:rounded-[16px] md:rounded-[20px] overflow-hidden shadow-md sm:shadow-2xl border border-amber-200/50 bg-slate-900 group cursor-pointer"
+              className="col-start-2 col-span-2 row-start-1 row-span-2 relative h-full w-full rounded-[8px] sm:rounded-[16px] md:rounded-[20px] overflow-hidden shadow-md sm:shadow-2xl border border-amber-200/50 bg-slate-900 group cursor-pointer"
             >
               <Image
                 src={photoPodiumHero.src}
                 alt={photoPodiumHero.alt}
                 fill
+                sizes="(max-width: 768px) 40vw, 460px"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 priority
               />
@@ -260,27 +277,80 @@ export const GalleryGrid: React.FC = () => {
               </div>
             </div>
 
-            {/* Right 4 Photos (2 of 5 columns, 2x2 grid) */}
-            <div className="col-span-2 grid grid-cols-2 gap-1.5 sm:gap-3 md:gap-3.5">
-              {bottomRowSidePhotosRight.map((photo) => (
-                <div
-                  key={photo.id}
-                  onClick={() => setSelectedPhoto(photo)}
-                  className="relative aspect-[72/76] sm:aspect-[215/225] rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
-                >
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
-                      <ZoomIn size={14} />
-                    </div>
-                  </div>
+            {/* Right Col 4, Row 1 */}
+            <div
+              onClick={() => setSelectedPhoto(bottomRowSidePhotosRight[0])}
+              className="col-start-4 row-start-1 relative h-full w-full rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
+            >
+              <Image
+                src={bottomRowSidePhotosRight[0].src}
+                alt={bottomRowSidePhotosRight[0].alt}
+                fill
+                sizes="(max-width: 768px) 20vw, 225px"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
+                  <ZoomIn size={14} />
                 </div>
-              ))}
+              </div>
+            </div>
+
+            {/* Right Col 5, Row 1 */}
+            <div
+              onClick={() => setSelectedPhoto(bottomRowSidePhotosRight[1])}
+              className="col-start-5 row-start-1 relative h-full w-full rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
+            >
+              <Image
+                src={bottomRowSidePhotosRight[1].src}
+                alt={bottomRowSidePhotosRight[1].alt}
+                fill
+                sizes="(max-width: 768px) 20vw, 225px"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
+                  <ZoomIn size={14} />
+                </div>
+              </div>
+            </div>
+
+            {/* Right Col 4, Row 2 */}
+            <div
+              onClick={() => setSelectedPhoto(bottomRowSidePhotosRight[2])}
+              className="col-start-4 row-start-2 relative h-full w-full rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
+            >
+              <Image
+                src={bottomRowSidePhotosRight[2].src}
+                alt={bottomRowSidePhotosRight[2].alt}
+                fill
+                sizes="(max-width: 768px) 20vw, 225px"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
+                  <ZoomIn size={14} />
+                </div>
+              </div>
+            </div>
+
+            {/* Right Col 5, Row 2 */}
+            <div
+              onClick={() => setSelectedPhoto(bottomRowSidePhotosRight[3])}
+              className="col-start-5 row-start-2 relative h-full w-full rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
+            >
+              <Image
+                src={bottomRowSidePhotosRight[3].src}
+                alt={bottomRowSidePhotosRight[3].alt}
+                fill
+                sizes="(max-width: 768px) 20vw, 225px"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
+                  <ZoomIn size={14} />
+                </div>
+              </div>
             </div>
           </div>
         </div>

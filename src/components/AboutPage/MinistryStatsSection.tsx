@@ -17,14 +17,14 @@ export const MinistryStatsSection: React.FC = () => {
   ]
 
   return (
-    <section className="relative py-12 md:py-16 bg-[#122f4a] text-white overflow-hidden">
-      {/* Section Header with Left & Right Gold Bars and Emblems spanning full width of viewport */}
+    <section className="relative py-8 sm:py-10 md:py-12 bg-[#122f4a] text-white overflow-hidden my-6 sm:my-10 md:my-14" data-node-id="275:831">
+      {/* Section Header with Left & Right Gold Bars (Figma 275:836, 275:838, 275:849) */}
       <div className="w-full flex items-center justify-between">
-        <div className="flex-1 h-[4px] sm:h-[6px] md:h-[8px] xl:h-[10px] bg-[#efbf04] rounded-r-full shadow-sm" />
+        <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-r-full shadow-sm flex-shrink-0" />
 
         <div className="flex items-center justify-center gap-2 sm:gap-4 px-3 sm:px-6 md:px-8 flex-shrink min-w-0">
           <div
-            className="relative w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 flex-shrink-0 bg-[#efbf04]"
+            className="relative w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 flex-shrink-0 bg-[#efbf04]"
             style={{
               maskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
               WebkitMaskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
@@ -36,11 +36,11 @@ export const MinistryStatsSection: React.FC = () => {
               WebkitMaskPosition: 'center',
             }}
           />
-          <h2 className="font-poppins font-semibold text-white text-xl sm:text-2xl md:text-[34px] tracking-tight text-center">
+          <h2 className="font-poppins font-semibold text-white text-xl sm:text-2xl md:text-[34px] tracking-tight text-center whitespace-nowrap">
             Ministry Statistics
           </h2>
           <div
-            className="relative w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 flex-shrink-0 bg-[#efbf04] scale-x-[-1]"
+            className="relative w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 flex-shrink-0 bg-[#efbf04] scale-x-[-1]"
             style={{
               maskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
               WebkitMaskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
@@ -54,23 +54,23 @@ export const MinistryStatsSection: React.FC = () => {
           />
         </div>
 
-        <div className="flex-1 h-[4px] sm:h-[6px] md:h-[8px] xl:h-[10px] bg-[#efbf04] rounded-l-full shadow-sm" />
+        <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-l-full shadow-sm flex-shrink-0" />
       </div>
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* 3 Stats Columns: Single Row with Vertical Dividers across Mobile and Desktop */}
-        <div className="mt-8 sm:mt-12 max-w-[1040px] mx-auto grid grid-cols-3 gap-1 sm:gap-4 items-center">
+        {/* 3 Stats Columns: Single Row with Vertical Dividers across Mobile and Desktop (Figma 275:850-858) */}
+        <div className="mt-6 sm:mt-8 md:mt-10 max-w-[1040px] mx-auto grid grid-cols-3 gap-2 sm:gap-4 items-center">
           {stats.map((stat, idx) => (
             <div
               key={idx}
-              className={`text-center px-1 sm:px-4 ${
+              className={`text-center px-2 sm:px-6 ${
                 idx !== stats.length - 1 ? 'border-r border-white/20' : ''
               }`}
             >
-              <p className="font-poppins font-bold text-[#efbf04] text-base sm:text-2xl md:text-3xl lg:text-[40px] tracking-tight">
+              <p className="font-poppins font-semibold sm:font-bold text-[#efbf04] text-lg sm:text-2xl md:text-3xl lg:text-[36px] xl:text-[40px] tracking-tight">
                 {stat.value}
               </p>
-              <p className="font-poppins text-slate-200 text-[11px] sm:text-sm md:text-lg lg:text-[22px] mt-1 sm:mt-2 leading-tight">
+              <p className="font-poppins text-slate-200 text-xs sm:text-base md:text-xl lg:text-[24px] mt-1 sm:mt-2 leading-tight">
                 {stat.label}
               </p>
             </div>

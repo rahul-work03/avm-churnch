@@ -9,6 +9,7 @@ interface GalleryItem {
   id: number
   src: string
   alt: string
+  isOuter?: boolean
 }
 
 export const ManOfGodSection: React.FC = () => {
@@ -28,47 +29,31 @@ export const ManOfGodSection: React.FC = () => {
   const startScrollRef = useRef(0)
   const isHorizontalSwipeRef = useRef<boolean | null>(null)
 
-  // 8 stage images using the official Man of God portrait
+  // 4 authentic Figma stage images of Apostle Dr. Ankur Yoseph Narula
   const galleryItems: GalleryItem[] = [
     {
       id: 1,
-      src: '/figma-assets/man_of_god_image_1.jpg',
-      alt: 'Apostle Dr. Ankur Yoseph Narula Preaching - Stage 1',
+      src: '/figma-assets/5015189f303ab5f84079babded9d65c9ccc48184.png',
+      alt: 'Apostle Dr. Ankur Yoseph Narula Preaching at Pulpit - Left Stage',
+      isOuter: true,
     },
     {
       id: 2,
-      src: '/figma-assets/man_of_god_image_1.jpg',
-      alt: 'Apostle Dr. Ankur Yoseph Narula Preaching - Stage 2',
+      src: '/figma-assets/6febc49876ea0f4082d17b9f97eb203fb3eef625.png',
+      alt: 'Apostle Dr. Ankur Yoseph Narula Preaching - Center Left Stage',
+      isOuter: false,
     },
     {
       id: 3,
-      src: '/figma-assets/man_of_god_image_1.jpg',
-      alt: 'Apostle Dr. Ankur Yoseph Narula Preaching - Stage 3',
+      src: '/figma-assets/37779cc2b561e1d01c410bf39a3933217872a623.png',
+      alt: 'Apostle Dr. Ankur Yoseph Narula at Transparent Podium - Center Right Stage',
+      isOuter: false,
     },
     {
       id: 4,
-      src: '/figma-assets/man_of_god_image_1.jpg',
-      alt: 'Apostle Dr. Ankur Yoseph Narula Preaching - Stage 4',
-    },
-    {
-      id: 5,
-      src: '/figma-assets/man_of_god_image_1.jpg',
-      alt: 'Apostle Dr. Ankur Yoseph Narula Preaching - Stage 5',
-    },
-    {
-      id: 6,
-      src: '/figma-assets/man_of_god_image_1.jpg',
-      alt: 'Apostle Dr. Ankur Yoseph Narula Preaching - Stage 6',
-    },
-    {
-      id: 7,
-      src: '/figma-assets/man_of_god_image_1.jpg',
-      alt: 'Apostle Dr. Ankur Yoseph Narula Preaching - Stage 7',
-    },
-    {
-      id: 8,
-      src: '/figma-assets/man_of_god_image_1.jpg',
-      alt: 'Apostle Dr. Ankur Yoseph Narula Preaching - Stage 8',
+      src: '/figma-assets/a33b36b60d3d30d692518d269fef4f654949cbb1.png',
+      alt: 'Apostle Dr. Ankur Yoseph Narula Preaching - Right Stage',
+      isOuter: true,
     },
   ]
 
@@ -82,11 +67,10 @@ export const ManOfGodSection: React.FC = () => {
     return () => window.removeEventListener('resize', updateDimensions)
   }, [])
 
-  // Film Reel dimension calculations
   const isMobile = viewportWidth < 640
   const isTablet = viewportWidth >= 640 && viewportWidth < 1024
 
-  const cardGap = isMobile ? 12 : isTablet ? 16 : 20
+  const cardGap = isMobile ? 8 : isTablet ? 16 : 24
   let cardWidth: number
   let cardHeight: number
   let sidePadding: number
@@ -94,9 +78,9 @@ export const ManOfGodSection: React.FC = () => {
   let maxTravel: number
 
   if (isMobile) {
-    // 2 full cards in the center with 1 card half-peeking on left and right
+    // Mobile: 2 center cards visible, outer cards slightly peeking (~125px-135px height)
     cardWidth = Math.round(viewportWidth * 0.44)
-    cardHeight = Math.round(cardWidth * 0.65)
+    cardHeight = Math.round(cardWidth * 0.78)
     sidePadding = Math.round((viewportWidth - (2 * cardWidth + cardGap)) / 2)
     availableWidth = viewportWidth
     const step = cardWidth + cardGap
@@ -104,15 +88,16 @@ export const ManOfGodSection: React.FC = () => {
   } else if (isTablet) {
     sidePadding = 24
     availableWidth = viewportWidth - 2 * sidePadding
-    cardWidth = (availableWidth - 2 * cardGap) / 3
-    cardHeight = Math.min(Math.round(cardWidth * 0.65), 260)
+    cardWidth = Math.round((availableWidth - 2 * cardGap) / 3)
+    cardHeight = Math.min(Math.round(cardWidth * 0.95), 360)
     const step = cardWidth + cardGap
     maxTravel = Math.max(0, (galleryItems.length - 3) * step)
   } else {
+    // Desktop
     sidePadding = 32
-    availableWidth = viewportWidth - 2 * sidePadding
-    cardWidth = (availableWidth - 3 * cardGap) / 4
-    cardHeight = Math.min(Math.round(cardWidth * 0.65), 260)
+    availableWidth = Math.min(1440, viewportWidth)
+    cardWidth = Math.round((availableWidth - 3 * cardGap - 2 * sidePadding) / 4)
+    cardHeight = Math.min(Math.round(cardWidth * 1.3), 460)
     const step = cardWidth + cardGap
     maxTravel = Math.max(0, (galleryItems.length - 4) * step)
   }
@@ -201,81 +186,96 @@ export const ManOfGodSection: React.FC = () => {
   }, [galleryItems.length, step])
 
   return (
-    <section className="relative py-10 sm:py-14 md:py-20 bg-white overflow-hidden" data-node-id="238:1747">
-      <div className="w-full flex flex-col items-center gap-5 sm:gap-7 md:gap-9">
-        {/* Section Header */}
-        <div className="w-full flex items-center justify-between flex-shrink-0">
-          <div className="flex-1 min-w-[8px] sm:min-w-[32px] h-[3px] sm:h-[5px] xl:h-[6px] bg-[#efbf04] rounded-r-full pointer-events-none" data-node-id="238:1742" />
+    <section className="relative bg-white overflow-hidden" data-node-id="274:3">
+      {/* ==================== SECTION HEADER ==================== */}
+      {/* Desktop Header: Full-width Dark Navy Bar (Figma Node 274:8, 274:24, 274:26, 274:29) */}
+      <div className="hidden md:flex w-full bg-[#122f4a] h-[80px] items-center justify-between px-0 relative z-10 shadow-md">
+        {/* Left Gold Bar */}
+        <div className="w-[180px] lg:w-[280px] xl:w-[323px] h-[8px] bg-[#efbf04] rounded-r-full shadow-sm" data-node-id="274:24" />
 
-          <div className="text-center px-2 sm:px-8 md:px-12 flex-shrink min-w-0">
-            <h2 className="font-philosopher font-bold text-[#003471] text-base sm:text-2xl md:text-[32px] leading-tight tracking-tight" data-node-id="238:1747">
-              The church of signs and wonders
-            </h2>
+        {/* Center Title Text */}
+        <h2 className="font-philosopher font-bold text-white text-2xl lg:text-[34px] xl:text-[38px] tracking-tight text-center px-4 whitespace-nowrap">
+          The church of signs and wonders
+        </h2>
 
-            {/* Man Of God with Golden Emblems on both sides */}
-            <div className="flex items-center justify-center gap-1.5 sm:gap-3 md:gap-4 mt-0.5 sm:mt-1.5">
-              <div
-                className="relative w-4 h-4 sm:w-7 sm:h-7 md:w-8 md:h-8 flex-shrink-0 bg-[#efbf04]"
-                data-node-id="238:1983"
-                style={{
-                  maskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
-                  WebkitMaskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
-                  maskSize: 'contain',
-                  WebkitMaskSize: 'contain',
-                  maskRepeat: 'no-repeat',
-                  WebkitMaskRepeat: 'no-repeat',
-                  maskPosition: 'center',
-                  WebkitMaskPosition: 'center',
-                }}
-              />
-              <span className="font-poppins font-bold text-[#efbf04] text-sm sm:text-xl md:text-[28px] tracking-wide" data-node-id="238:1752">
-                Man Of God
-              </span>
-              <div
-                className="relative w-4 h-4 sm:w-7 sm:h-7 md:w-8 md:h-8 flex-shrink-0 bg-[#efbf04] scale-x-[-1]"
-                data-node-id="238:1986"
-                style={{
-                  maskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
-                  WebkitMaskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
-                  maskSize: 'contain',
-                  WebkitMaskSize: 'contain',
-                  maskRepeat: 'no-repeat',
-                  WebkitMaskRepeat: 'no-repeat',
-                  maskPosition: 'center',
-                  WebkitMaskPosition: 'center',
-                }}
-              />
-            </div>
-          </div>
+        {/* Right Gold Bar */}
+        <div className="w-[180px] lg:w-[280px] xl:w-[323px] h-[8px] bg-[#efbf04] rounded-l-full shadow-sm" data-node-id="274:26" />
+      </div>
 
-          <div className="flex-1 min-w-[8px] sm:min-w-[32px] h-[3px] sm:h-[5px] xl:h-[6px] bg-[#efbf04] rounded-l-full pointer-events-none" data-node-id="238:1744" />
+      {/* Mobile Header: Gold Bars flanking Title (Figma Node 274:321, 274:324, 274:329) */}
+      <div className="md:hidden w-full flex items-center justify-between pt-4 pb-2 px-0">
+        <div className="w-[44px] h-[5px] bg-[#efbf04] rounded-r-full" data-node-id="274:321" />
+        <h2 className="font-philosopher font-bold text-[#003471] text-base sm:text-lg tracking-tight text-center px-2">
+          The church of signs and wonders
+        </h2>
+        <div className="w-[44px] h-[5px] bg-[#efbf04] rounded-l-full" data-node-id="274:324" />
+      </div>
+
+      <div className="pt-2 sm:pt-6 md:pt-12 pb-8 sm:pb-14 md:pb-24">
+        {/* Man Of God with Golden Torch / Flare Emblems on both sides (Figma 274:34, 274:331-337) */}
+        <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 mb-3 sm:mb-6 md:mb-10">
+          <div
+            className="relative w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 flex-shrink-0 bg-[#efbf04]"
+            data-node-id="274:334"
+            style={{
+              maskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
+              WebkitMaskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
+              maskSize: 'contain',
+              WebkitMaskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              WebkitMaskRepeat: 'no-repeat',
+              maskPosition: 'center',
+              WebkitMaskPosition: 'center',
+            }}
+          />
+          <span className="font-poppins font-bold text-[#d5582a] md:text-[#d5582a] text-base sm:text-2xl md:text-[34px] tracking-wide" data-node-id="274:34">
+            Man Of God
+          </span>
+          <div
+            className="relative w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 flex-shrink-0 bg-[#efbf04] scale-x-[-1]"
+            data-node-id="274:337"
+            style={{
+              maskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
+              WebkitMaskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
+              maskSize: 'contain',
+              WebkitMaskSize: 'contain',
+              maskRepeat: 'no-repeat',
+              WebkitMaskRepeat: 'no-repeat',
+              maskPosition: 'center',
+              WebkitMaskPosition: 'center',
+            }}
+          />
         </div>
 
-        {/* Film Reel 3D Stage Viewport */}
-        <div className="relative flex-shrink-0 w-full py-1">
-          {/* Left Arrow Button */}
-          <button
-            type="button"
-            onClick={scrollPrev}
-            disabled={currentX <= 5}
-            className="absolute left-1 sm:left-6 top-1/2 -translate-y-1/2 z-40 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/90 backdrop-blur-sm text-[#003471] border border-slate-200 flex items-center justify-center disabled:opacity-0 disabled:pointer-events-none shadow-sm transition-opacity"
-            aria-label="Previous image"
-          >
-            <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
-          </button>
+        {/* ==================== AMPHITHEATER 3D STAGE CAROUSEL ==================== */}
+        <div className="relative w-full py-1 sm:py-3 md:py-4">
+          {/* Left Arrow Button (visible if scrollable) */}
+          {maxTravel > 0 && (
+            <button
+              type="button"
+              onClick={scrollPrev}
+              disabled={currentX <= 5}
+              className="absolute left-1 sm:left-6 lg:left-8 top-1/2 -translate-y-1/2 z-40 w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-white/95 backdrop-blur-sm text-[#003471] border border-slate-200 flex items-center justify-center disabled:opacity-0 disabled:pointer-events-none shadow-md transition-all hover:scale-110 active:scale-95 cursor-pointer"
+              aria-label="Previous stage photo"
+            >
+              <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
+            </button>
+          )}
 
-          {/* Right Arrow Button */}
-          <button
-            type="button"
-            onClick={scrollNext}
-            disabled={currentX >= maxTravel - 5}
-            className="absolute right-1 sm:right-6 top-1/2 -translate-y-1/2 z-40 w-8 h-8 sm:w-11 sm:h-11 rounded-full bg-white/90 backdrop-blur-sm text-[#003471] border border-slate-200 flex items-center justify-center disabled:opacity-0 disabled:pointer-events-none shadow-sm transition-opacity"
-            aria-label="Next image"
-          >
-            <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
-          </button>
+          {/* Right Arrow Button (visible if scrollable) */}
+          {maxTravel > 0 && (
+            <button
+              type="button"
+              onClick={scrollNext}
+              disabled={currentX >= maxTravel - 5}
+              className="absolute right-1 sm:right-6 lg:right-8 top-1/2 -translate-y-1/2 z-40 w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-white/95 backdrop-blur-sm text-[#003471] border border-slate-200 flex items-center justify-center disabled:opacity-0 disabled:pointer-events-none shadow-md transition-all hover:scale-110 active:scale-95 cursor-pointer"
+              aria-label="Next stage photo"
+            >
+              <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
+            </button>
+          )}
 
-          {/* Film Reel Strip Container - Clipped precisely to visible cards */}
+          {/* Amphitheater Strip Container */}
           <div
             ref={containerRef}
             onMouseDown={handleTouchStart}
@@ -289,8 +289,8 @@ export const ManOfGodSection: React.FC = () => {
             style={{
               width: `${availableWidth}px`,
               maxWidth: '100%',
-              height: `${cardHeight + (isMobile ? 16 : 44)}px`,
-              perspective: '1200px',
+              height: `${cardHeight + (isMobile ? 12 : 54)}px`,
+              perspective: '1400px',
               perspectiveOrigin: '50% 50%',
             }}
           >
@@ -299,64 +299,57 @@ export const ManOfGodSection: React.FC = () => {
               style={{
                 transform: `translate3d(-${currentX}px, 0, 0)`,
                 transformStyle: 'preserve-3d',
+                paddingLeft: isMobile ? `${sidePadding}px` : '16px',
               }}
             >
               {galleryItems.map((item, idx) => {
-                // Exact center of this card in screen coordinates
                 const cardScreenCenter = sidePadding + idx * step + cardWidth / 2 - currentX
-
-                // Continuous normalized ratio relative to screen center (-1.0 = left edge, 0.0 = center, +1.0 = right edge)
                 const u = (cardScreenCenter - screenCenter) / (viewportWidth / 2)
-                const uSq = Math.min(2.0, u * u) // Quadratic curve for smooth, unbroken parabolic arc
+                const uSq = Math.min(2.0, u * u)
 
-                // Continuous Tangent 3D Inward Rotation:
-                const kAngle = isMobile ? 12 : 28
+                const kAngle = isMobile ? 8 : 20
                 const rotateY = -u * kAngle
 
-                // Continuous Unbroken Parabolic Arc Elevation (Y = -Ky * u^2):
-                const kY = isMobile ? 6 : 22
+                const kY = isMobile ? 3 : 14
                 const translateY = -kY * uSq
 
-                // Center scaling: subtle on mobile, amphitheater on desktop
-                const scale = isMobile ? 0.96 + 0.08 * Math.min(1.0, uSq) : 0.84 + 0.2 * Math.min(1.0, uSq)
+                const scale = isMobile ? 0.97 + 0.04 * Math.min(1.0, uSq) : 0.92 + 0.12 * Math.min(1.0, uSq)
+                const translateZ = uSq * (isMobile ? 4 : 24)
 
-                // Depth adjustment following the amphitheater arc
-                const translateZ = uSq * (isMobile ? 4 : 20)
+                const itemHeight = !isMobile && item.isOuter ? cardHeight + 40 : cardHeight
 
                 return (
                   <div
                     key={item.id}
                     onClick={() => scrollToIndex(idx)}
-                    className="relative flex-shrink-0 will-change-transform cursor-pointer"
+                    className="relative flex-shrink-0 will-change-transform cursor-pointer transition-shadow"
                     style={{
                       width: `${cardWidth}px`,
-                      height: `${cardHeight}px`,
+                      height: `${itemHeight}px`,
                       marginRight: `${cardGap}px`,
                       transform: `translateY(${translateY}px) rotateY(${rotateY}deg) translateZ(${translateZ}px) scale(${scale})`,
                       transformOrigin: 'center center',
                       transformStyle: 'preserve-3d',
                     }}
                   >
-                    {/* Clean Non-Overlapping Film Frame: Zero border-radius, pure image panel */}
-                    <div className="relative w-full h-full bg-black overflow-hidden">
+                    <div className="relative w-full h-full bg-slate-900 overflow-hidden shadow-md sm:shadow-2xl rounded-sm">
                       <Image
                         src={item.src}
                         alt={item.alt}
                         fill
                         draggable={false}
-                        className="object-cover object-center pointer-events-none"
+                        className="object-cover object-top pointer-events-none"
                         priority={idx < 4}
                       />
 
-                      {/* Subtle angle shading for realistic amphitheater illumination */}
-                      {Math.abs(u) > 0.25 && (
+                      {Math.abs(u) > 0.2 && (
                         <div
                           className="absolute inset-0 pointer-events-none"
                           style={{
                             background:
                               u < 0
-                                ? 'linear-gradient(to right, transparent 20%, rgba(0,0,0,0.3) 100%)'
-                                : 'linear-gradient(to left, transparent 20%, rgba(0,0,0,0.3) 100%)',
+                                ? 'linear-gradient(to right, transparent 30%, rgba(0,0,0,0.25) 100%)'
+                                : 'linear-gradient(to left, transparent 30%, rgba(0,0,0,0.25) 100%)',
                           }}
                         />
                       )}
@@ -368,42 +361,43 @@ export const ManOfGodSection: React.FC = () => {
           </div>
 
           {/* Carousel Pagination Dots */}
-          <div className="flex items-center justify-center gap-1.5 sm:gap-2 mt-2 sm:mt-3">
+          <div className="flex items-center justify-center gap-2 mt-2 sm:mt-4 md:mt-6">
             {galleryItems.map((_, i) => (
               <button
                 key={i}
                 type="button"
                 onClick={() => scrollToIndex(i)}
-                className={`transition-all duration-300 rounded-full ${
+                className={`transition-all duration-300 rounded-full cursor-pointer ${
                   activeIndex === i
-                    ? 'w-5 sm:w-8 h-1.5 sm:h-2 bg-[#efbf04]'
-                    : 'w-1.5 sm:w-2 h-1.5 sm:h-2 bg-slate-300'
+                    ? 'w-5 sm:w-9 h-1.5 sm:h-2 bg-[#efbf04]'
+                    : 'w-1.5 sm:w-2 h-1.5 sm:h-2 bg-slate-300 hover:bg-slate-400'
                 }`}
-                aria-label={`Go to slide ${i + 1}`}
+                aria-label={`Go to stage photo ${i + 1}`}
               />
             ))}
           </div>
         </div>
 
-        {/* Pastor Info & Bio */}
-        <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 text-center flex-shrink-0">
-          <h3 className="font-poppins font-bold text-[#003471] text-lg sm:text-2xl md:text-[26px] tracking-tight">
+        {/* ==================== PASTOR BIO & CTA ==================== */}
+        <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 text-center mt-4 sm:mt-8 md:mt-14">
+          <h3 className="font-poppins font-semibold text-[#003471] sm:text-[#d5582a] text-base sm:text-2xl md:text-[28px] tracking-tight" data-node-id="274:35">
             Apostle Dr. Ankur Yoseph Narula
           </h3>
-          <p className="font-poppins font-medium text-[#122f4a] text-sm sm:text-sm md:text-[15px] mt-0.5">
+          <p className="font-poppins font-semibold sm:font-medium text-[#122f4a] sm:text-[#8c8c8c] text-xs sm:text-base md:text-[18px] mt-0.5 sm:mt-1.5" data-node-id="274:37">
             Founder &amp; Senior Pastor
           </p>
 
-          <p className="font-poppins text-[#334155] text-sm sm:text-sm md:text-[14px] leading-relaxed mt-1.5 sm:mt-2 max-w-xl mx-auto line-clamp-3 sm:line-clamp-none">
+          <p className="font-poppins font-light sm:font-normal text-[#0b0c1c] text-xs sm:text-sm md:text-[18px] leading-relaxed mt-1.5 sm:mt-3 max-w-2xl mx-auto text-balance" data-node-id="274:38">
             Apostle Dr. Ankur Yoseph Narula is the Founder and Overseer of The Church of Signs and Wonders{' '}
             Ankur Narula Ministries, which is one of the fastest-growing churches in India.
           </p>
 
-          {/* Know More Button */}
-          <div className="mt-2.5 sm:mt-3.5">
+          {/* Know More Pill CTA Button (Figma 274:17, 274:19, 274:345) */}
+          <div className="mt-3 sm:mt-5 md:mt-7 flex justify-center">
             <Link
               href="/about"
-              className="inline-flex items-center justify-center bg-[#efbf04] hover:bg-[#dfaf00] text-[#0b0c1c] font-poppins font-semibold text-sm sm:text-sm md:text-base px-7 sm:px-8 py-2 sm:py-2.5 rounded-full transition-all duration-200 shadow-sm active:scale-95"
+              className="inline-flex items-center justify-center bg-[#efbf04] hover:bg-[#dfaf00] text-[#0b0c1c] font-poppins font-semibold text-xs sm:text-base md:text-[18px] w-[140px] sm:w-[174px] h-[38px] sm:h-[48px] rounded-full transition-all duration-200 shadow-md hover:shadow-lg active:scale-95"
+              data-node-id="274:17"
             >
               Know More
             </Link>
