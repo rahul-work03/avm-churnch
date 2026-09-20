@@ -3,49 +3,113 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { getMediaUrl } from '@/utilities/getMediaUrl'
 
-export const FooterSection: React.FC = () => {
-  const pagesList = [
-    { label: 'Branches', href: '/church-branches' },
-    { label: 'Prayer Request', href: '/prayer-request' },
-    { label: 'Give', href: '/give' },
-    { label: 'Prayer Mountain', href: '/prayer-mountain' },
-    { label: 'Prayer House', href: '/prayer-house' },
-    { label: 'Sunday School', href: '/sunday-school' },
-    { label: 'Bible College', href: '/bible-college' },
-    { label: 'Sophia Institute', href: '/sophia-institute' },
-  ]
+export interface FooterPageLink {
+  label: string
+  href: string
+}
 
-  const socialLinks = [
-    {
-      name: 'Instagram',
-      icon: '/figma-assets/e3e25b6c010b5aa006f29088b8dae7f2466bf8f3.png',
-      url: 'https://www.instagram.com/ankurnarulaministries?igsh=NmEzcDFsYnc4YWEw',
-      width: 27,
-      height: 27,
-    },
-    {
-      name: 'YouTube',
-      icon: '/figma-assets/65d53a88c2c188c19f670266ce9b27e83745bb6b.png',
-      url: 'https://www.youtube.com/channel/UCYwyl0lfL0UzP-1LMtcoH-w',
-      width: 25,
-      height: 24,
-    },
-    {
-      name: 'Facebook',
-      icon: '/figma-assets/29c9c3a1ebaf7d9b300e03952a2750d7b8131f18.png',
-      url: 'https://www.facebook.com/ankurnarulaministries',
-      width: 26,
-      height: 27,
-    },
-    {
-      name: 'X Twitter',
-      icon: '/figma-assets/ff7b25464623ab07ec009c6cc6d0508eb168c5a7.png',
-      url: 'https://x.com/apostleankur',
-      width: 27,
-      height: 27,
-    },
-  ]
+export interface FooterSocialLink {
+  name: string
+  icon?: any
+  iconFallback?: string | null
+  url: string
+  width?: number | null
+  height?: number | null
+}
+
+export interface FooterData {
+  logo?: any
+  logoFallback?: string | null
+  ministryName?: string | null
+  aboutText?: string | null
+  contactEmail?: string | null
+  contactPhone?: string | null
+  privacyPolicyUrl?: string | null
+  termsUrl?: string | null
+  pagesList?: FooterPageLink[] | null
+  socialLinks?: FooterSocialLink[] | null
+  mapEmbedUrl?: string | null
+  mapImage?: any
+  mapImageFallback?: string | null
+  mapUrl?: string | null
+  copyrightText?: string | null
+}
+
+const DEFAULT_MAP_EMBED_URL =
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.0915173016306!2d75.56058437539549!3d31.273563674328035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5b93663a625d%3A0x77a5a7c6551686f1!2sKhambra%20Church!5e0!3m2!1sen!2sin!4v1789922592786!5m2!1sen!2sin'
+
+const DEFAULT_PAGES_LIST: FooterPageLink[] = [
+  { label: 'Branches', href: '/church-branches' },
+  { label: 'Prayer Request', href: '/prayer-request' },
+  { label: 'Give', href: '/give' },
+  { label: 'Prayer Mountain', href: '/prayer-mountain' },
+  { label: 'Prayer House', href: '/prayer-house' },
+  { label: 'Sunday School', href: '/sunday-school' },
+  { label: 'Bible College', href: '/bible-college' },
+  { label: 'Sophia Institute', href: '/sophia-institute' },
+]
+
+const DEFAULT_SOCIAL_LINKS: FooterSocialLink[] = [
+  {
+    name: 'Instagram',
+    iconFallback: '/instagram_logo_footer.png',
+    url: 'https://www.instagram.com/ankurnarulaministries?igsh=NmEzcDFsYnc4YWEw',
+    width: 27,
+    height: 27,
+  },
+  {
+    name: 'YouTube',
+    iconFallback: '/youtube_logo_footer.png',
+    url: 'https://www.youtube.com/channel/UCYwyl0lfL0UzP-1LMtcoH-w',
+    width: 25,
+    height: 24,
+  },
+  {
+    name: 'Facebook',
+    iconFallback: '/facebook_logo_footer.png',
+    url: 'https://www.facebook.com/ankurnarulaministries',
+    width: 26,
+    height: 27,
+  },
+  {
+    name: 'X Twitter',
+    iconFallback: '/twitter_logo_footer.png',
+    url: 'https://x.com/apostleankur',
+    width: 27,
+    height: 27,
+  },
+]
+
+interface FooterSectionProps {
+  data?: FooterData | null
+}
+
+export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
+  const logoUrl = getMediaUrl(
+    data?.logo,
+    data?.logoFallback || '/avm_church_logo.webp'
+  )
+  const ministryName = data?.ministryName || 'Ankur Narula Ministries'
+  const aboutText =
+    data?.aboutText ||
+    'The Church of Signs and Wonders is the biggest and fastest growing church ministry in World. Apostle Ankur Narula is the Senior Pastor and Overseer in The Church of Signs and Wonders.'
+  const contactEmail = data?.contactEmail || 'info@ankurnarula.org'
+  const contactPhone = data?.contactPhone || 'Phone: 0181-520-7777'
+  const privacyPolicyUrl = data?.privacyPolicyUrl || '/privacy-policy'
+  const termsUrl = data?.termsUrl || '/terms-and-conditions'
+  const pagesList = data?.pagesList && data.pagesList.length > 0 ? data.pagesList : DEFAULT_PAGES_LIST
+  const socialLinks =
+    data?.socialLinks && data.socialLinks.length > 0 ? data.socialLinks : DEFAULT_SOCIAL_LINKS
+  const mapEmbedUrl = data?.mapEmbedUrl || DEFAULT_MAP_EMBED_URL
+  const mapImageUrl = getMediaUrl(
+    data?.mapImage,
+    data?.mapImageFallback || '/figma-assets/f1c7c30e211dc39094fc986db7a7e7d876202f58.png'
+  )
+  const mapUrl =
+    data?.mapUrl || 'https://maps.google.com/?q=The+Church+of+Signs+and+Wonders+Khambra+Jalandhar'
+  const copyrightText = data?.copyrightText || '© 2026 Ankur Narula Ministries. All Rights Reserved.'
 
   return (
     <footer
@@ -69,17 +133,17 @@ export const FooterSection: React.FC = () => {
           <div className="w-[380px] flex flex-col items-center text-center px-2 flex-shrink-0">
             <div className="relative w-[202px] h-[83px] drop-shadow-[0px_4px_8px_rgba(0,0,0,0.25)] flex-shrink-0">
               <Image
-                src="/figma-assets/25bc14240aaecc3fd8f585377e7e9865df659462.png"
-                alt="Ankur Narula Ministries Logo"
+                src={logoUrl}
+                alt={ministryName}
                 fill
                 className="object-contain"
               />
             </div>
             <h3 className="font-lato font-bold text-[24px] text-white text-center mt-3 whitespace-nowrap">
-              Ankur Narula Ministries
+              {ministryName}
             </h3>
             <p className="font-lato font-normal text-[15px] text-white text-center leading-[1.35] w-[374px] mt-2">
-              The Church of Signs and Wonders is the biggest and fastest growing church ministry in World. Apostle Ankur Narula is the Senior Pastor and Overseer in The Church of Signs and Wonders.
+              {aboutText}
             </p>
           </div>
 
@@ -94,13 +158,13 @@ export const FooterSection: React.FC = () => {
                 Contact Us
               </h4>
               <p className="font-lato font-normal text-[20px] text-white text-center mt-2.5">
-                <a href="mailto:info@ankurnarula.org" className="hover:text-[#efbf04] transition">
-                  info@ankurnarula.org
+                <a href={`mailto:${contactEmail}`} className="hover:text-[#efbf04] transition">
+                  {contactEmail}
                 </a>
               </p>
               <p className="font-lato font-normal text-[20px] text-white text-center mt-1">
-                <a href="tel:01815207777" className="hover:text-[#efbf04] transition">
-                  Phone: 0181-520-7777
+                <a href={`tel:${contactPhone.replace(/[^0-9]/g, '')}`} className="hover:text-[#efbf04] transition">
+                  {contactPhone}
                 </a>
               </p>
             </div>
@@ -111,13 +175,13 @@ export const FooterSection: React.FC = () => {
                 Links
               </h4>
               <p className="font-lato font-normal text-[20px] text-white text-center mt-2.5">
-                <Link href="/privacy-policy" className="hover:text-[#efbf04] transition">
+                <Link href={privacyPolicyUrl} className="hover:text-[#efbf04] transition">
                   Privacy Policy
                 </Link>
               </p>
               <p className="font-lato font-normal text-[20px] text-white text-center mt-1">
-                <Link href="/terms-and-conditions" className="hover:text-[#efbf04] transition">
-                  Terms an Conditions
+                <Link href={termsUrl} className="hover:text-[#efbf04] transition">
+                  Terms and Conditions
                 </Link>
               </p>
             </div>
@@ -156,25 +220,31 @@ export const FooterSection: React.FC = () => {
                 Social Media Platforms
               </h4>
               <div className="flex items-center justify-center gap-3.5 mt-2.5">
-                {socialLinks.map((item, idx) => (
-                  <a
-                    key={idx}
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative flex items-center justify-center hover:opacity-85 transition transform hover:scale-110 flex-shrink-0"
-                    style={{ width: `${item.width}px`, height: `${item.height}px` }}
-                    aria-label={item.name}
-                  >
-                    <Image
-                      src={item.icon}
-                      alt={item.name}
-                      width={item.width}
-                      height={item.height}
-                      className="object-contain"
-                    />
-                  </a>
-                ))}
+                {socialLinks.map((item, idx) => {
+                  const iconUrl = getMediaUrl(item.icon, item.iconFallback || '')
+                  const w = item.width || 26
+                  const h = item.height || 26
+
+                  return (
+                    <a
+                      key={idx}
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative flex items-center justify-center hover:opacity-85 transition transform hover:scale-110 flex-shrink-0"
+                      style={{ width: `${w}px`, height: `${h}px` }}
+                      aria-label={item.name}
+                    >
+                      <Image
+                        src={iconUrl}
+                        alt={item.name}
+                        width={w}
+                        height={h}
+                        className="object-contain"
+                      />
+                    </a>
+                  )
+                })}
               </div>
             </div>
 
@@ -183,19 +253,19 @@ export const FooterSection: React.FC = () => {
               <h4 className="font-lato font-bold text-[24px] text-white text-center">
                 Locate Us
               </h4>
-              <a
-                href="https://maps.google.com/?q=The+Church+of+Signs+and+Wonders+Khambra+Jalandhar"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block relative w-[282px] h-[174px] mt-2 overflow-hidden shadow-md group cursor-pointer"
-              >
-                <Image
-                  src="/figma-assets/f1c7c30e211dc39094fc986db7a7e7d876202f58.png"
-                  alt="Church Location Map - Khambra, Jalandhar"
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+              <div className="relative w-[282px] h-[174px] mt-2 overflow-hidden rounded-md shadow-md bg-black/20">
+                <iframe
+                  src={mapEmbedUrl}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="Church Location Map - Khambra, Jalandhar"
+                  className="w-full h-full border-0"
                 />
-              </a>
+              </div>
             </div>
           </div>
         </div>
@@ -203,7 +273,7 @@ export const FooterSection: React.FC = () => {
         {/* Bottom Copyright Bar (Figma 305:6559) */}
         <div className="pt-4 text-center">
           <p className="font-lato font-normal text-[20px] text-white text-center">
-            © 2026 Ankur Narula Ministries. All Rights Reserved.
+            {copyrightText}
           </p>
         </div>
       </div>
@@ -224,17 +294,17 @@ export const FooterSection: React.FC = () => {
           <div className="flex flex-col items-center text-center space-y-3">
             <div className="relative w-[180px] h-[75px] drop-shadow-[0px_4px_8px_rgba(0,0,0,0.25)]">
               <Image
-                src="/figma-assets/25bc14240aaecc3fd8f585377e7e9865df659462.png"
-                alt="Ankur Narula Ministries"
+                src={logoUrl}
+                alt={ministryName}
                 fill
                 className="object-contain"
               />
             </div>
             <h3 className="font-lato font-bold text-[22px] text-white">
-              Ankur Narula Ministries
+              {ministryName}
             </h3>
             <p className="font-lato font-normal text-[14px] text-white leading-relaxed max-w-[340px]">
-              The Church of Signs and Wonders is the biggest and fastest growing church ministry in World. Apostle Ankur Narula is the Senior Pastor and Overseer in The Church of Signs and Wonders.
+              {aboutText}
             </p>
           </div>
 
@@ -243,19 +313,19 @@ export const FooterSection: React.FC = () => {
             <div>
               <h4 className="font-lato font-bold text-[22px] text-white">Contact Us</h4>
               <p className="font-lato font-normal text-[18px] text-white mt-1.5">
-                <a href="mailto:info@ankurnarula.org" className="hover:text-[#efbf04]">info@ankurnarula.org</a>
+                <a href={`mailto:${contactEmail}`} className="hover:text-[#efbf04]">{contactEmail}</a>
               </p>
               <p className="font-lato font-normal text-[18px] text-white mt-0.5">
-                <a href="tel:01815207777" className="hover:text-[#efbf04]">Phone: 0181-520-7777</a>
+                <a href={`tel:${contactPhone.replace(/[^0-9]/g, '')}`} className="hover:text-[#efbf04]">{contactPhone}</a>
               </p>
             </div>
             <div>
               <h4 className="font-lato font-bold text-[22px] text-white">Links</h4>
               <p className="font-lato font-normal text-[18px] text-white mt-1.5">
-                <Link href="/privacy-policy" className="hover:text-[#efbf04]">Privacy Policy</Link>
+                <Link href={privacyPolicyUrl} className="hover:text-[#efbf04]">Privacy Policy</Link>
               </p>
               <p className="font-lato font-normal text-[18px] text-white mt-0.5">
-                <Link href="/terms-and-conditions" className="hover:text-[#efbf04]">Terms an Conditions</Link>
+                <Link href={termsUrl} className="hover:text-[#efbf04]">Terms and Conditions</Link>
               </p>
             </div>
           </div>
@@ -279,38 +349,50 @@ export const FooterSection: React.FC = () => {
             <div>
               <h4 className="font-lato font-bold text-[22px] text-white mb-2">Social Media Platforms</h4>
               <div className="flex items-center justify-center gap-3">
-                {socialLinks.map((item, idx) => (
-                  <a
-                    key={idx}
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="relative hover:opacity-85 transition"
-                    style={{ width: `${item.width}px`, height: `${item.height}px` }}
-                  >
-                    <Image src={item.icon} alt={item.name} width={item.width} height={item.height} className="object-contain" />
-                  </a>
-                ))}
+                {socialLinks.map((item, idx) => {
+                  const iconUrl = getMediaUrl(item.icon, item.iconFallback || '')
+                  const w = item.width || 26
+                  const h = item.height || 26
+
+                  return (
+                    <a
+                      key={idx}
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative hover:opacity-85 transition"
+                      style={{ width: `${w}px`, height: `${h}px` }}
+                      aria-label={item.name}
+                    >
+                      <Image src={iconUrl} alt={item.name} width={w} height={h} className="object-contain" />
+                    </a>
+                  )
+                })}
               </div>
             </div>
 
             <div>
               <h4 className="font-lato font-bold text-[22px] text-white mb-2">Locate Us</h4>
-              <a
-                href="https://maps.google.com/?q=The+Church+of+Signs+and+Wonders+Khambra+Jalandhar"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block relative w-[240px] h-[140px] rounded-lg overflow-hidden shadow"
-              >
-                <Image src="/figma-assets/f1c7c30e211dc39094fc986db7a7e7d876202f58.png" alt="Map" fill className="object-cover" />
-              </a>
+              <div className="relative w-[240px] h-[140px] rounded-lg overflow-hidden shadow bg-black/20">
+                <iframe
+                  src={mapEmbedUrl}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  title="Church Location Map"
+                  className="w-full h-full border-0"
+                />
+              </div>
             </div>
           </div>
         </div>
 
         <div className="pt-4 text-center border-t border-white/10">
           <p className="font-lato font-normal text-[18px] text-white">
-            © 2026 Ankur Narula Ministries. All Rights Reserved.
+            {copyrightText}
           </p>
         </div>
       </div>
@@ -321,17 +403,17 @@ export const FooterSection: React.FC = () => {
         <div className="flex flex-col items-center justify-center space-y-2.5">
           <div className="relative w-[160px] h-[65px] drop-shadow-[0px_4px_8px_rgba(0,0,0,0.25)]">
             <Image
-              src="/figma-assets/25bc14240aaecc3fd8f585377e7e9865df659462.png"
-              alt="Ankur Narula Ministries"
+              src={logoUrl}
+              alt={ministryName}
               fill
               className="object-contain"
             />
           </div>
           <span className="font-lato font-bold text-white text-[20px]">
-            Ankur Narula Ministries
+            {ministryName}
           </span>
           <p className="font-lato font-normal text-[13px] text-white max-w-[340px] leading-relaxed">
-            The Church of Signs and Wonders is the biggest and fastest growing church ministry in World. Apostle Ankur Narula is the Senior Pastor and Overseer in The Church of Signs and Wonders.
+            {aboutText}
           </p>
         </div>
 
@@ -343,13 +425,13 @@ export const FooterSection: React.FC = () => {
           <div className="text-left pl-2">
             <h4 className="font-lato font-bold text-[17px] text-white">Contact Us</h4>
             <p className="font-lato font-normal text-[14px] text-white mt-1.5">
-              <a href="mailto:info@ankurnarula.org" className="hover:text-[#efbf04]">
-                info@ankurnarula.org
+              <a href={`mailto:${contactEmail}`} className="hover:text-[#efbf04]">
+                {contactEmail}
               </a>
             </p>
             <p className="font-lato font-normal text-[14px] text-white mt-1">
-              <a href="tel:01815207777" className="hover:text-[#efbf04]">
-                Phone: 0181-520-7777
+              <a href={`tel:${contactPhone.replace(/[^0-9]/g, '')}`} className="hover:text-[#efbf04]">
+                {contactPhone}
               </a>
             </p>
           </div>
@@ -360,13 +442,13 @@ export const FooterSection: React.FC = () => {
           <div className="text-right pr-2">
             <h4 className="font-lato font-bold text-[17px] text-white">Links</h4>
             <p className="font-lato font-normal text-[14px] text-white mt-1.5">
-              <Link href="/privacy-policy" className="hover:text-[#efbf04]">
+              <Link href={privacyPolicyUrl} className="hover:text-[#efbf04]">
                 Privacy Policy
               </Link>
             </p>
             <p className="font-lato font-normal text-[14px] text-white mt-1">
-              <Link href="/terms-and-conditions" className="hover:text-[#efbf04]">
-                Terms an Conditions
+              <Link href={termsUrl} className="hover:text-[#efbf04]">
+                Terms and Conditions
               </Link>
             </p>
           </div>
@@ -396,25 +478,31 @@ export const FooterSection: React.FC = () => {
         <div>
           <h4 className="font-lato font-bold text-[18px] text-white">Social Media Platforms</h4>
           <div className="flex items-center justify-center gap-3.5 mt-3">
-            {socialLinks.map((item, idx) => (
-              <a
-                key={idx}
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative flex items-center justify-center hover:opacity-85 transition"
-                style={{ width: `${item.width}px`, height: `${item.height}px` }}
-                aria-label={item.name}
-              >
-                <Image
-                  src={item.icon}
-                  alt={item.name}
-                  width={item.width}
-                  height={item.height}
-                  className="object-contain"
-                />
-              </a>
-            ))}
+            {socialLinks.map((item, idx) => {
+              const iconUrl = getMediaUrl(item.icon, item.iconFallback || '')
+              const w = item.width || 26
+              const h = item.height || 26
+
+              return (
+                <a
+                  key={idx}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative flex items-center justify-center hover:opacity-85 transition"
+                  style={{ width: `${w}px`, height: `${h}px` }}
+                  aria-label={item.name}
+                >
+                  <Image
+                    src={iconUrl}
+                    alt={item.name}
+                    width={w}
+                    height={h}
+                    className="object-contain"
+                  />
+                </a>
+              )
+            })}
           </div>
         </div>
 
@@ -424,19 +512,19 @@ export const FooterSection: React.FC = () => {
         {/* Location */}
         <div>
           <h4 className="font-lato font-bold text-[18px] text-white">Locate Us</h4>
-          <a
-            href="https://maps.google.com/?q=The+Church+of+Signs+and+Wonders+Khambra+Jalandhar"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block mt-3 relative w-[220px] h-[135px] mx-auto rounded-lg overflow-hidden shadow-md"
-          >
-            <Image
-              src="/figma-assets/f1c7c30e211dc39094fc986db7a7e7d876202f58.png"
-              alt="Church Location Map"
-              fill
-              className="object-cover"
+          <div className="mt-3 relative w-[220px] h-[135px] mx-auto rounded-lg overflow-hidden shadow-md bg-black/20">
+            <iframe
+              src={mapEmbedUrl}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="Church Location Map"
+              className="w-full h-full border-0"
             />
-          </a>
+          </div>
         </div>
 
         {/* Divider */}
@@ -444,7 +532,7 @@ export const FooterSection: React.FC = () => {
 
         {/* Copyright */}
         <p className="font-lato font-normal text-[15px] text-white pb-2">
-          © 2026 Ankur Narula Ministries. All Rights Reserved.
+          {copyrightText}
         </p>
       </div>
     </footer>

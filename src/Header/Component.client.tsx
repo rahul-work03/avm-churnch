@@ -2,12 +2,13 @@
 
 import React from 'react'
 import { ChurchNavbar } from '@/components/ChurchHomepage/Navbar'
-import type { Header } from '@/payload-types'
 
 interface HeaderClientProps {
-  data?: Header
+  data?: any
 }
 
-export const HeaderClient: React.FC<HeaderClientProps> = () => {
-  return <ChurchNavbar />
+export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
+  return <ChurchNavbar data={data} />
 }
+
+export default HeaderClient

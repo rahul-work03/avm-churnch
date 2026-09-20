@@ -1,5 +1,5 @@
 export interface Testimony {
-  id: string
+  id: string | number
   slug: string
   title: string
   person: string
@@ -7,9 +7,12 @@ export interface Testimony {
   englishHeadline: string
   shortDescription: string
   fullStory: string
-  image: string
+  image?: any
+  imageFallback?: string | null
   category: string
-  verse?: string
+  verse?: string | null
+  isFeatured?: boolean | null
+  order?: number | null
 }
 
 export const testimonialsData: Testimony[] = [

@@ -1,6 +1,11 @@
 import React from 'react'
 import type { Metadata } from 'next'
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
 import { EventsPage } from '@/components/EventsPage'
+
+export const dynamic = 'force-static'
+export const revalidate = 600
 
 export const metadata: Metadata = {
   title: 'Events | Ankur Narula Ministries',
@@ -8,6 +13,13 @@ export const metadata: Metadata = {
     'Join upcoming crusades, live services, and revival gatherings with Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula.',
 }
 
-export default function Page() {
-  return <EventsPage />
+export default async function Page() {
+  const payload = await getPayload({ config: configPromise })
+  const data = await payload.findGlobal({
+    slug: 'events-page',
+    depth: 1,
+  })
+
+  return <EventsPage data={data} />
 }
+

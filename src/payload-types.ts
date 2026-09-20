@@ -69,6 +69,12 @@ export interface Config {
   collections: {
     pages: Page;
     posts: Post;
+    sermons: Sermon;
+    testimonials: Testimonial;
+    'prayer-requests': PrayerRequest;
+    'zoom-registrations': ZoomRegistration;
+    products: Product;
+    orders: Order;
     media: Media;
     categories: Category;
     users: User;
@@ -86,6 +92,12 @@ export interface Config {
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
+    sermons: SermonsSelect<false> | SermonsSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
+    'prayer-requests': PrayerRequestsSelect<false> | PrayerRequestsSelect<true>;
+    'zoom-registrations': ZoomRegistrationsSelect<false> | ZoomRegistrationsSelect<true>;
+    products: ProductsSelect<false> | ProductsSelect<true>;
+    orders: OrdersSelect<false> | OrdersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
@@ -106,10 +118,48 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    homepage: Homepage;
+    'about-page': AboutPage;
+    'ministries-page': MinistriesPage;
+    'prayer-mountain-page': PrayerMountainPage;
+    'prayer-house-page': PrayerHousePage;
+    'bible-college-page': BibleCollegePage;
+    'sophia-institute-page': SophiaInstitutePage;
+    'sunday-school-page': SundaySchoolPage;
+    'church-branches-page': ChurchBranchesPage;
+    'events-page': EventsPage;
+    'gallery-page': GalleryPage;
+    'testimonials-page': TestimonialsPage;
+    'give-page': GivePage;
+    'contact-page': ContactPage;
+    'prayer-request-page': PrayerRequestPage;
+    'zoom-lay-hand-page': ZoomLayHandPage;
+    'store-page': StorePage;
+    'privacy-policy-page': PrivacyPolicyPage;
+    'terms-page': TermsPage;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    homepage: HomepageSelect<false> | HomepageSelect<true>;
+    'about-page': AboutPageSelect<false> | AboutPageSelect<true>;
+    'ministries-page': MinistriesPageSelect<false> | MinistriesPageSelect<true>;
+    'prayer-mountain-page': PrayerMountainPageSelect<false> | PrayerMountainPageSelect<true>;
+    'prayer-house-page': PrayerHousePageSelect<false> | PrayerHousePageSelect<true>;
+    'bible-college-page': BibleCollegePageSelect<false> | BibleCollegePageSelect<true>;
+    'sophia-institute-page': SophiaInstitutePageSelect<false> | SophiaInstitutePageSelect<true>;
+    'sunday-school-page': SundaySchoolPageSelect<false> | SundaySchoolPageSelect<true>;
+    'church-branches-page': ChurchBranchesPageSelect<false> | ChurchBranchesPageSelect<true>;
+    'events-page': EventsPageSelect<false> | EventsPageSelect<true>;
+    'gallery-page': GalleryPageSelect<false> | GalleryPageSelect<true>;
+    'testimonials-page': TestimonialsPageSelect<false> | TestimonialsPageSelect<true>;
+    'give-page': GivePageSelect<false> | GivePageSelect<true>;
+    'contact-page': ContactPageSelect<false> | ContactPageSelect<true>;
+    'prayer-request-page': PrayerRequestPageSelect<false> | PrayerRequestPageSelect<true>;
+    'zoom-lay-hand-page': ZoomLayHandPageSelect<false> | ZoomLayHandPageSelect<true>;
+    'store-page': StorePageSelect<false> | StorePageSelect<true>;
+    'privacy-policy-page': PrivacyPolicyPageSelect<false> | PrivacyPolicyPageSelect<true>;
+    'terms-page': TermsPageSelect<false> | TermsPageSelect<true>;
   };
   locale: null;
   widgets: {
@@ -375,6 +425,7 @@ export interface Category {
 export interface User {
   id: number;
   name?: string | null;
+  roles?: ('admin' | 'editor')[] | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -729,6 +780,162 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sermons".
+ */
+export interface Sermon {
+  id: number;
+  title: string;
+  youtubeUrl: string;
+  thumbnail?: (number | null) | Media;
+  /**
+   * Optional direct image URL or fallback path (e.g., /figma-assets/...)
+   */
+  customThumbnailUrl?: string | null;
+  speaker?: string | null;
+  publishedDate?: string | null;
+  isFeatured?: boolean | null;
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: number;
+  person: string;
+  title: string;
+  /**
+   * Unique URL identifier for the testimony detail page (/testimonials/[slug])
+   */
+  slug: string;
+  category: string;
+  image?: (number | null) | Media;
+  /**
+   * Optional path like /figma-assets/... if no media upload is provided.
+   */
+  imageFallback?: string | null;
+  hindiHeadline: string;
+  englishHeadline: string;
+  shortDescription: string;
+  fullStory: string;
+  verse?: string | null;
+  isFeatured?: boolean | null;
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prayer-requests".
+ */
+export interface PrayerRequest {
+  id: number;
+  fullName?: string | null;
+  firstName: string;
+  lastName: string;
+  gender: 'Male' | 'Female' | 'Other';
+  age: number;
+  nationality: string;
+  profession?: string | null;
+  phone: string;
+  email: string;
+  address: string;
+  relativesName?: string | null;
+  relativesPhone?: string | null;
+  relativesEmail?: string | null;
+  hasSickness?: ('Yes' | 'No') | null;
+  hospitalized?: string | null;
+  problemNature?: string | null;
+  problemDuration?: string | null;
+  medications?: string | null;
+  dailyLivingImpact?: string | null;
+  useBrace?: ('Yes' | 'No') | null;
+  useWalkingAid?: ('Yes' | 'No') | null;
+  useMedicalDevice?: ('Yes' | 'No') | null;
+  dailyActivitiesNormal?: ('Yes' | 'No') | null;
+  surgeryTherapyDetails?: string | null;
+  howDidYouHear?: string | null;
+  comments?: string | null;
+  status?: ('pending' | 'prayed' | 'contacted' | 'archived') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "zoom-registrations".
+ */
+export interface ZoomRegistration {
+  id: number;
+  fullName?: string | null;
+  firstName: string;
+  gender: 'Male' | 'Female' | 'Other';
+  age: number;
+  nationality: string;
+  profession: string;
+  email: string;
+  phone: string;
+  relativeName?: string | null;
+  relativePhone?: string | null;
+  relativeEmail?: string | null;
+  healthSituation: string;
+  address: string;
+  problemNature: string;
+  duration: string;
+  dailyLifeEffect: string;
+  hospitalized: 'Yes' | 'No';
+  medicalDevices: 'Yes' | 'No';
+  zoomAvailability: string;
+  additionalComments?: string | null;
+  status?: ('pending' | 'scheduled' | 'completed' | 'cancelled') | null;
+  scheduledZoomLink?: string | null;
+  scheduledDateTime?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products".
+ */
+export interface Product {
+  id: number;
+  title: string;
+  category: 'Book' | 'Hymnal' | 'Teaching' | 'Merchandise' | 'Other';
+  image?: (number | null) | Media;
+  imageFallback?: string | null;
+  originalPrice: number;
+  salePrice: number;
+  rating?: number | null;
+  description: string;
+  inStock?: boolean | null;
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "orders".
+ */
+export interface Order {
+  id: number;
+  orderNumber?: string | null;
+  productTitle: string;
+  quantity: number;
+  unitPrice?: number | null;
+  totalAmount: number;
+  customerName: string;
+  customerPhone: string;
+  customerEmail: string;
+  shippingAddress: string;
+  city: string;
+  pincode: string;
+  status?: ('pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -924,6 +1131,30 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'posts';
         value: number | Post;
+      } | null)
+    | ({
+        relationTo: 'sermons';
+        value: number | Sermon;
+      } | null)
+    | ({
+        relationTo: 'testimonials';
+        value: number | Testimonial;
+      } | null)
+    | ({
+        relationTo: 'prayer-requests';
+        value: number | PrayerRequest;
+      } | null)
+    | ({
+        relationTo: 'zoom-registrations';
+        value: number | ZoomRegistration;
+      } | null)
+    | ({
+        relationTo: 'products';
+        value: number | Product;
+      } | null)
+    | ({
+        relationTo: 'orders';
+        value: number | Order;
       } | null)
     | ({
         relationTo: 'media';
@@ -1161,6 +1392,147 @@ export interface PostsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sermons_select".
+ */
+export interface SermonsSelect<T extends boolean = true> {
+  title?: T;
+  youtubeUrl?: T;
+  thumbnail?: T;
+  customThumbnailUrl?: T;
+  speaker?: T;
+  publishedDate?: T;
+  isFeatured?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  person?: T;
+  title?: T;
+  slug?: T;
+  category?: T;
+  image?: T;
+  imageFallback?: T;
+  hindiHeadline?: T;
+  englishHeadline?: T;
+  shortDescription?: T;
+  fullStory?: T;
+  verse?: T;
+  isFeatured?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prayer-requests_select".
+ */
+export interface PrayerRequestsSelect<T extends boolean = true> {
+  fullName?: T;
+  firstName?: T;
+  lastName?: T;
+  gender?: T;
+  age?: T;
+  nationality?: T;
+  profession?: T;
+  phone?: T;
+  email?: T;
+  address?: T;
+  relativesName?: T;
+  relativesPhone?: T;
+  relativesEmail?: T;
+  hasSickness?: T;
+  hospitalized?: T;
+  problemNature?: T;
+  problemDuration?: T;
+  medications?: T;
+  dailyLivingImpact?: T;
+  useBrace?: T;
+  useWalkingAid?: T;
+  useMedicalDevice?: T;
+  dailyActivitiesNormal?: T;
+  surgeryTherapyDetails?: T;
+  howDidYouHear?: T;
+  comments?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "zoom-registrations_select".
+ */
+export interface ZoomRegistrationsSelect<T extends boolean = true> {
+  fullName?: T;
+  firstName?: T;
+  gender?: T;
+  age?: T;
+  nationality?: T;
+  profession?: T;
+  email?: T;
+  phone?: T;
+  relativeName?: T;
+  relativePhone?: T;
+  relativeEmail?: T;
+  healthSituation?: T;
+  address?: T;
+  problemNature?: T;
+  duration?: T;
+  dailyLifeEffect?: T;
+  hospitalized?: T;
+  medicalDevices?: T;
+  zoomAvailability?: T;
+  additionalComments?: T;
+  status?: T;
+  scheduledZoomLink?: T;
+  scheduledDateTime?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products_select".
+ */
+export interface ProductsSelect<T extends boolean = true> {
+  title?: T;
+  category?: T;
+  image?: T;
+  imageFallback?: T;
+  originalPrice?: T;
+  salePrice?: T;
+  rating?: T;
+  description?: T;
+  inStock?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "orders_select".
+ */
+export interface OrdersSelect<T extends boolean = true> {
+  orderNumber?: T;
+  productTitle?: T;
+  quantity?: T;
+  unitPrice?: T;
+  totalAmount?: T;
+  customerName?: T;
+  customerPhone?: T;
+  customerEmail?: T;
+  shippingAddress?: T;
+  city?: T;
+  pincode?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
@@ -1277,6 +1649,7 @@ export interface CategoriesSelect<T extends boolean = true> {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  roles?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -1563,26 +1936,25 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Header {
   id: number;
+  logo?: (number | null) | Media;
+  logoFallback?: string | null;
+  brandName?: string | null;
   navItems?:
     | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-        };
+        label: string;
+        href: string;
+        children?:
+          | {
+              label: string;
+              href: string;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
+  ctaButtonLabel?: string | null;
+  ctaButtonUrl?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1592,23 +1964,201 @@ export interface Header {
  */
 export interface Footer {
   id: number;
-  navItems?:
+  logo?: (number | null) | Media;
+  logoFallback?: string | null;
+  ministryName?: string | null;
+  aboutText?: string | null;
+  copyrightText?: string | null;
+  contactEmail?: string | null;
+  contactPhone?: string | null;
+  privacyPolicyUrl?: string | null;
+  termsUrl?: string | null;
+  pagesList?:
     | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-        };
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  socialLinks?:
+    | {
+        name: string;
+        icon?: (number | null) | Media;
+        iconFallback?: string | null;
+        url: string;
+        width?: number | null;
+        height?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  mapEmbedUrl?: string | null;
+  mapImage?: (number | null) | Media;
+  mapImageFallback?: string | null;
+  mapUrl?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "homepage".
+ */
+export interface Homepage {
+  id: number;
+  heroHeadline1?: string | null;
+  heroHeadline2?: string | null;
+  heroMobileHeadline2?: string | null;
+  heroDescription?: string | null;
+  heroBannerImage?: (number | null) | Media;
+  heroBannerFallback?: string | null;
+  heroBannerAlt?: string | null;
+  mogHeaderTitle?: string | null;
+  mogBadgeTitle?: string | null;
+  mogSlides?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        title?: string | null;
+        subtitle?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  leaderName?: string | null;
+  leaderRole?: string | null;
+  leaderBio?: string | null;
+  knowMoreLink?: string | null;
+  knowMoreLabel?: string | null;
+  actionCards?:
+    | {
+        title: string;
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        href: string;
+        buttonVariant?: ('solid' | 'outline') | null;
+        id?: string | null;
+      }[]
+    | null;
+  scheduleHeaderTitle?: string | null;
+  scheduleVideoBannerUrl?: string | null;
+  weeklyServices?:
+    | {
+        emoji?: string | null;
+        title: string;
+        time: string;
+        id?: string | null;
+      }[]
+    | null;
+  dailyPrograms?:
+    | {
+        emoji?: string | null;
+        title: string;
+        time: string;
+        id?: string | null;
+      }[]
+    | null;
+  joinLiveLink?: string | null;
+  joinLiveLabel?: string | null;
+  socialHeaderTitle?: string | null;
+  socialSubtitle?: string | null;
+  socialPlatforms?:
+    | {
+        name: string;
+        url: string;
+        icon?: (number | null) | Media;
+        iconFallback?: string | null;
+        /**
+         * e.g. linear-gradient(135deg, #dbe8fa 0%, #f0f5fd 50%, #ffffff 100%)
+         */
+        themeGradient?: string | null;
+        borderColor?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  sermonsHeaderTitle?: string | null;
+  sermonsFeaturedVideoImage?: (number | null) | Media;
+  sermonsFeaturedVideoFallback?: string | null;
+  sermonsFeaturedVideoAlt?: string | null;
+  sermonsFeaturedVideoUrl?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-page".
+ */
+export interface AboutPage {
+  id: number;
+  heroHeaderTitle?: string | null;
+  heroDescription?: string | null;
+  heroBannerImage?: (number | null) | Media;
+  heroBannerFallback?: string | null;
+  heroBannerAlt?: string | null;
+  vmIdentityBadge?: string | null;
+  vmHeaderTitle?: string | null;
+  visionTitle?: string | null;
+  visionDescription?: string | null;
+  missionTitle?: string | null;
+  missionDescription?: string | null;
+  leadersHeaderTitle?: string | null;
+  leaderImages?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        title?: string | null;
+        subtitle?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  leaderParagraph1?: string | null;
+  leaderParagraph2?: string | null;
+  leaderParagraph3?: string | null;
+  statsHeaderTitle?: string | null;
+  stats?:
+    | {
+        value: string;
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  resourcesHeaderTitle?: string | null;
+  resourcesDescription?: string | null;
+  resourcesStoreLink?: string | null;
+  resourcesStoreLabel?: string | null;
+  resourcesBgImage?: (number | null) | Media;
+  resourcesBgFallback?: string | null;
+  resourcesFgImage?: (number | null) | Media;
+  resourcesFgFallback?: string | null;
+  crusadesHeaderTitle?: string | null;
+  crusadeImages?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        title?: string | null;
+        location?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  presenceHeaderTitle?: string | null;
+  presenceSubtitle?: string | null;
+  presenceRow1?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        title?: string | null;
+        country?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  presenceRow2?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        title?: string | null;
+        country?: string | null;
+        alt?: string | null;
         id?: string | null;
       }[]
     | null;
@@ -1617,23 +2167,581 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ministries-page".
+ */
+export interface MinistriesPage {
+  id: number;
+  heroBadgeText?: string | null;
+  heroSubtitle?: string | null;
+  heroVideo?: (number | null) | Media;
+  heroVideoFallback?: string | null;
+  heroBannerImage?: (number | null) | Media;
+  heroBannerFallback?: string | null;
+  heroBannerAlt?: string | null;
+  overviewHeaderTitle?: string | null;
+  ministryCards?:
+    | {
+        title: string;
+        subtitle: string;
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        linkUrl: string;
+        buttonLabel?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  headChurchHeaderTitle?: string | null;
+  headChurchImage?: (number | null) | Media;
+  headChurchFallback?: string | null;
+  headChurchAlt?: string | null;
+  headChurchNarrative?: string | null;
+  worshipHeaderTitle?: string | null;
+  worshipImage?: (number | null) | Media;
+  worshipFallback?: string | null;
+  worshipAlt?: string | null;
+  worshipNarrative?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prayer-mountain-page".
+ */
+export interface PrayerMountainPage {
+  id: number;
+  heroHeaderTitle?: string | null;
+  heroDescription?: string | null;
+  heroBannerImage?: (number | null) | Media;
+  heroBannerFallback?: string | null;
+  heroBannerAlt?: string | null;
+  heroSubtitle?: string | null;
+  scenesHeaderTitle?: string | null;
+  scenesRow1?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  scenesRow2?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  whatIsCardTitle?: string | null;
+  whatIsCardDescription?: string | null;
+  visionCardTitle?: string | null;
+  purposeParagraph?: string | null;
+  visionParagraph?: string | null;
+  testimoniesHeaderTitle?: string | null;
+  testimonies?:
+    | {
+        person: string;
+        title: string;
+        summary: string;
+        slug?: string | null;
+        buttonLabel?: string | null;
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  joinHeaderTitle?: string | null;
+  timeCardTitle?: string | null;
+  timeCardDescription?: string | null;
+  locationCardTitle?: string | null;
+  locationCardDescription?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prayer-house-page".
+ */
+export interface PrayerHousePage {
+  id: number;
+  heroHeaderTitle?: string | null;
+  heroDescription?: string | null;
+  heroBannerImage?: (number | null) | Media;
+  heroBannerFallback?: string | null;
+  heroBannerAlt?: string | null;
+  heroSubtitle?: string | null;
+  scenesHeaderTitle?: string | null;
+  scenesRow1?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  scenesRow2?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  whatIsCardTitle?: string | null;
+  whatIsCardDescription?: string | null;
+  visionCardTitle?: string | null;
+  purposeParagraph?: string | null;
+  visionParagraph?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "bible-college-page".
+ */
+export interface BibleCollegePage {
+  id: number;
+  heroHeaderTitle?: string | null;
+  heroDescription?: string | null;
+  heroBannerImage?: (number | null) | Media;
+  heroBannerFallback?: string | null;
+  heroBannerAlt?: string | null;
+  heroSubtitle?: string | null;
+  scenesHeaderTitle?: string | null;
+  scenesRow1?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  scenesRow2?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  whatIsCardTitle?: string | null;
+  whatIsCardDescription?: string | null;
+  visionCardTitle?: string | null;
+  purposeParagraph?: string | null;
+  visionParagraph?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sophia-institute-page".
+ */
+export interface SophiaInstitutePage {
+  id: number;
+  heroHeaderTitle?: string | null;
+  heroDescription?: string | null;
+  heroBannerImage?: (number | null) | Media;
+  heroBannerFallback?: string | null;
+  heroBannerAlt?: string | null;
+  heroSubtitle?: string | null;
+  scenesHeaderTitle?: string | null;
+  scenesRow1?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  scenesRow2?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  whatIsCardTitle?: string | null;
+  whatIsCardDescription?: string | null;
+  visionCardTitle?: string | null;
+  purposeParagraph?: string | null;
+  visionParagraph?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sunday-school-page".
+ */
+export interface SundaySchoolPage {
+  id: number;
+  heroHeaderTitle?: string | null;
+  heroDescription?: string | null;
+  heroVideoUrl?: string | null;
+  heroSubtitle?: string | null;
+  scenesHeaderTitle?: string | null;
+  scenesRow1?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  scenesRow2?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  whatIsCardTitle?: string | null;
+  whatIsCardDescription?: string | null;
+  visionCardTitle?: string | null;
+  purposeParagraph?: string | null;
+  visionParagraph?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "church-branches-page".
+ */
+export interface ChurchBranchesPage {
+  id: number;
+  heroBannerImage?: (number | null) | Media;
+  heroBannerFallback?: string | null;
+  heroBannerAlt?: string | null;
+  headBranchTitle?: string | null;
+  /**
+   * Enter a Google Maps embed URL (https://www.google.com/maps/embed?...) or full <iframe> code. If provided, an interactive Google Map will be displayed.
+   */
+  headBranchMapIframe?: string | null;
+  headBranchMapImage?: (number | null) | Media;
+  headBranchMapFallback?: string | null;
+  headBranchHelperText?: string | null;
+  directoryHeaderTitle?: string | null;
+  nationalBranches?:
+    | {
+        name: string;
+        line1: string;
+        line2: string;
+        /**
+         * Custom Google Maps link for this branch. If empty, an automatic search link will be generated when clicked.
+         */
+        mapLink?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  internationalBranches?:
+    | {
+        name: string;
+        line1: string;
+        line2: string;
+        /**
+         * Custom Google Maps link for this branch. If empty, an automatic search link will be generated when clicked.
+         */
+        mapLink?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events-page".
+ */
+export interface EventsPage {
+  id: number;
+  recentHeaderTitle?: string | null;
+  recentEvents?:
+    | {
+        title: string;
+        poster?: (number | null) | Media;
+        posterFallback?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  upcomingHeaderTitle?: string | null;
+  featuredPoster?: (number | null) | Media;
+  featuredPosterFallback?: string | null;
+  featuredTitle?: string | null;
+  featuredLinkUrl?: string | null;
+  featuredButtonLabel?: string | null;
+  headingGreeting?: string | null;
+  announcementParagraph1?: string | null;
+  announcementParagraph2?: string | null;
+  announcementParagraph3?: string | null;
+  announcementParagraph4?: string | null;
+  scheduleDay?: string | null;
+  scheduleDate?: string | null;
+  scheduleTime?: string | null;
+  scheduleVenue?: string | null;
+  schedulePostedBy?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gallery-page".
+ */
+export interface GalleryPage {
+  id: number;
+  photoArch?: {
+    image?: (number | null) | Media;
+    imageFallback?: string | null;
+    alt?: string | null;
+    caption?: string | null;
+  };
+  topRowSidePhotos?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        alt?: string | null;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  middleRowPhotos?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        alt?: string | null;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  bottomRowSidePhotosLeft?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        alt?: string | null;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  photoPodiumHero?: {
+    image?: (number | null) | Media;
+    imageFallback?: string | null;
+    alt?: string | null;
+    caption?: string | null;
+  };
+  bottomRowSidePhotosRight?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        alt?: string | null;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials-page".
+ */
+export interface TestimonialsPage {
+  id: number;
+  headerTitle?: string | null;
+  headerSubtitle?: string | null;
+  ctaTitle?: string | null;
+  ctaQuote?: string | null;
+  ctaButton1Label?: string | null;
+  ctaButton1Url?: string | null;
+  ctaButton2Label?: string | null;
+  ctaButton2Url?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "give-page".
+ */
+export interface GivePage {
+  id: number;
+  heroTitle?: string | null;
+  scriptureVerse?: string | null;
+  purposeStatement?: string | null;
+  qrHeaderTitle?: string | null;
+  iciciQrImage?: (number | null) | Media;
+  iciciQrFallback?: string | null;
+  hdfcQrImage?: (number | null) | Media;
+  hdfcQrFallback?: string | null;
+  axisLogo?: (number | null) | Media;
+  axisLogoFallback?: string | null;
+  axisQrImage?: (number | null) | Media;
+  axisQrFallback?: string | null;
+  gpayQrImage?: (number | null) | Media;
+  gpayQrFallback?: string | null;
+  bankHeaderTitle?: string | null;
+  bankAccounts?:
+    | {
+        bankName: string;
+        logo?: (number | null) | Media;
+        logoFallback?: string | null;
+        accountHolder?: string | null;
+        accountNumber: string;
+        ifsc: string;
+        branch?: string | null;
+        borderColor?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-page".
+ */
+export interface ContactPage {
+  id: number;
+  heroTitle?: string | null;
+  heroSubtitle?: string | null;
+  heroImage?: (number | null) | Media;
+  heroImageFallback?: string | null;
+  heroImageBadgeTitle?: string | null;
+  heroImageBadgeSubtitle?: string | null;
+  formSuccessTitle?: string | null;
+  formSuccessMessage?: string | null;
+  infoSectionTitle?: string | null;
+  infoSectionSubtitle?: string | null;
+  generalInquiriesTitle?: string | null;
+  generalInquiriesEmail1?: string | null;
+  generalInquiriesEmail2?: string | null;
+  hospitalLineTitle?: string | null;
+  hospitalLineEmail?: string | null;
+  emergencyPrayersTitle?: string | null;
+  emergencyPrayersEmail?: string | null;
+  phoneSectionTitle?: string | null;
+  phoneNumber?: string | null;
+  addressSectionTitle?: string | null;
+  fullAddress?: string | null;
+  googleMapsUrl?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prayer-request-page".
+ */
+export interface PrayerRequestPage {
+  id: number;
+  heroBannerImage?: (number | null) | Media;
+  heroBannerFallback?: string | null;
+  headingTitle?: string | null;
+  headingSubtitle?: string | null;
+  helplineTitle?: string | null;
+  helplinePhone?: string | null;
+  helplineEmail?: string | null;
+  submitButtonText?: string | null;
+  successTitle?: string | null;
+  successMessage?: string | null;
+  successVerse?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "zoom-lay-hand-page".
+ */
+export interface ZoomLayHandPage {
+  id: number;
+  heroBannerImage?: (number | null) | Media;
+  heroBannerFallback?: string | null;
+  headingTitle?: string | null;
+  headingSubtitle?: string | null;
+  guidelinesTitle?: string | null;
+  guidelinesText?: string | null;
+  supportPhone?: string | null;
+  supportEmail?: string | null;
+  submitButtonText?: string | null;
+  successTitle?: string | null;
+  successMessage?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "store-page".
+ */
+export interface StorePage {
+  id: number;
+  headerTitle?: string | null;
+  headerSubtitle?: string | null;
+  fastDeliveryText?: string | null;
+  securePaymentText?: string | null;
+  supportPhone?: string | null;
+  supportEmail?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "privacy-policy-page".
+ */
+export interface PrivacyPolicyPage {
+  id: number;
+  pageTitle?: string | null;
+  introText?: string | null;
+  sections?:
+    | {
+        sectionTitle: string;
+        content: string;
+        id?: string | null;
+      }[]
+    | null;
+  contactEmail?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "terms-page".
+ */
+export interface TermsPage {
+  id: number;
+  pageTitle?: string | null;
+  introText?: string | null;
+  sections?:
+    | {
+        sectionTitle: string;
+        content: string;
+        id?: string | null;
+      }[]
+    | null;
+  contactEmail?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
+  logo?: T;
+  logoFallback?: T;
+  brandName?: T;
   navItems?:
     | T
     | {
-        link?:
+        label?: T;
+        href?: T;
+        children?:
           | T
           | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
               label?: T;
+              href?: T;
+              id?: T;
             };
         id?: T;
       };
+  ctaButtonLabel?: T;
+  ctaButtonUrl?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -1643,20 +2751,749 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  navItems?:
+  logo?: T;
+  logoFallback?: T;
+  ministryName?: T;
+  aboutText?: T;
+  copyrightText?: T;
+  contactEmail?: T;
+  contactPhone?: T;
+  privacyPolicyUrl?: T;
+  termsUrl?: T;
+  pagesList?:
     | T
     | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-            };
+        label?: T;
+        href?: T;
         id?: T;
       };
+  socialLinks?:
+    | T
+    | {
+        name?: T;
+        icon?: T;
+        iconFallback?: T;
+        url?: T;
+        width?: T;
+        height?: T;
+        id?: T;
+      };
+  mapEmbedUrl?: T;
+  mapImage?: T;
+  mapImageFallback?: T;
+  mapUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "homepage_select".
+ */
+export interface HomepageSelect<T extends boolean = true> {
+  heroHeadline1?: T;
+  heroHeadline2?: T;
+  heroMobileHeadline2?: T;
+  heroDescription?: T;
+  heroBannerImage?: T;
+  heroBannerFallback?: T;
+  heroBannerAlt?: T;
+  mogHeaderTitle?: T;
+  mogBadgeTitle?: T;
+  mogSlides?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        title?: T;
+        subtitle?: T;
+        alt?: T;
+        id?: T;
+      };
+  leaderName?: T;
+  leaderRole?: T;
+  leaderBio?: T;
+  knowMoreLink?: T;
+  knowMoreLabel?: T;
+  actionCards?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        imageFallback?: T;
+        href?: T;
+        buttonVariant?: T;
+        id?: T;
+      };
+  scheduleHeaderTitle?: T;
+  scheduleVideoBannerUrl?: T;
+  weeklyServices?:
+    | T
+    | {
+        emoji?: T;
+        title?: T;
+        time?: T;
+        id?: T;
+      };
+  dailyPrograms?:
+    | T
+    | {
+        emoji?: T;
+        title?: T;
+        time?: T;
+        id?: T;
+      };
+  joinLiveLink?: T;
+  joinLiveLabel?: T;
+  socialHeaderTitle?: T;
+  socialSubtitle?: T;
+  socialPlatforms?:
+    | T
+    | {
+        name?: T;
+        url?: T;
+        icon?: T;
+        iconFallback?: T;
+        themeGradient?: T;
+        borderColor?: T;
+        id?: T;
+      };
+  sermonsHeaderTitle?: T;
+  sermonsFeaturedVideoImage?: T;
+  sermonsFeaturedVideoFallback?: T;
+  sermonsFeaturedVideoAlt?: T;
+  sermonsFeaturedVideoUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-page_select".
+ */
+export interface AboutPageSelect<T extends boolean = true> {
+  heroHeaderTitle?: T;
+  heroDescription?: T;
+  heroBannerImage?: T;
+  heroBannerFallback?: T;
+  heroBannerAlt?: T;
+  vmIdentityBadge?: T;
+  vmHeaderTitle?: T;
+  visionTitle?: T;
+  visionDescription?: T;
+  missionTitle?: T;
+  missionDescription?: T;
+  leadersHeaderTitle?: T;
+  leaderImages?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        title?: T;
+        subtitle?: T;
+        alt?: T;
+        id?: T;
+      };
+  leaderParagraph1?: T;
+  leaderParagraph2?: T;
+  leaderParagraph3?: T;
+  statsHeaderTitle?: T;
+  stats?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        id?: T;
+      };
+  resourcesHeaderTitle?: T;
+  resourcesDescription?: T;
+  resourcesStoreLink?: T;
+  resourcesStoreLabel?: T;
+  resourcesBgImage?: T;
+  resourcesBgFallback?: T;
+  resourcesFgImage?: T;
+  resourcesFgFallback?: T;
+  crusadesHeaderTitle?: T;
+  crusadeImages?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        title?: T;
+        location?: T;
+        alt?: T;
+        id?: T;
+      };
+  presenceHeaderTitle?: T;
+  presenceSubtitle?: T;
+  presenceRow1?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        title?: T;
+        country?: T;
+        alt?: T;
+        id?: T;
+      };
+  presenceRow2?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        title?: T;
+        country?: T;
+        alt?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ministries-page_select".
+ */
+export interface MinistriesPageSelect<T extends boolean = true> {
+  heroBadgeText?: T;
+  heroSubtitle?: T;
+  heroVideo?: T;
+  heroVideoFallback?: T;
+  heroBannerImage?: T;
+  heroBannerFallback?: T;
+  heroBannerAlt?: T;
+  overviewHeaderTitle?: T;
+  ministryCards?:
+    | T
+    | {
+        title?: T;
+        subtitle?: T;
+        image?: T;
+        imageFallback?: T;
+        linkUrl?: T;
+        buttonLabel?: T;
+        id?: T;
+      };
+  headChurchHeaderTitle?: T;
+  headChurchImage?: T;
+  headChurchFallback?: T;
+  headChurchAlt?: T;
+  headChurchNarrative?: T;
+  worshipHeaderTitle?: T;
+  worshipImage?: T;
+  worshipFallback?: T;
+  worshipAlt?: T;
+  worshipNarrative?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prayer-mountain-page_select".
+ */
+export interface PrayerMountainPageSelect<T extends boolean = true> {
+  heroHeaderTitle?: T;
+  heroDescription?: T;
+  heroBannerImage?: T;
+  heroBannerFallback?: T;
+  heroBannerAlt?: T;
+  heroSubtitle?: T;
+  scenesHeaderTitle?: T;
+  scenesRow1?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        id?: T;
+      };
+  scenesRow2?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        id?: T;
+      };
+  whatIsCardTitle?: T;
+  whatIsCardDescription?: T;
+  visionCardTitle?: T;
+  purposeParagraph?: T;
+  visionParagraph?: T;
+  testimoniesHeaderTitle?: T;
+  testimonies?:
+    | T
+    | {
+        person?: T;
+        title?: T;
+        summary?: T;
+        slug?: T;
+        buttonLabel?: T;
+        image?: T;
+        imageFallback?: T;
+        id?: T;
+      };
+  joinHeaderTitle?: T;
+  timeCardTitle?: T;
+  timeCardDescription?: T;
+  locationCardTitle?: T;
+  locationCardDescription?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prayer-house-page_select".
+ */
+export interface PrayerHousePageSelect<T extends boolean = true> {
+  heroHeaderTitle?: T;
+  heroDescription?: T;
+  heroBannerImage?: T;
+  heroBannerFallback?: T;
+  heroBannerAlt?: T;
+  heroSubtitle?: T;
+  scenesHeaderTitle?: T;
+  scenesRow1?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        id?: T;
+      };
+  scenesRow2?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        id?: T;
+      };
+  whatIsCardTitle?: T;
+  whatIsCardDescription?: T;
+  visionCardTitle?: T;
+  purposeParagraph?: T;
+  visionParagraph?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "bible-college-page_select".
+ */
+export interface BibleCollegePageSelect<T extends boolean = true> {
+  heroHeaderTitle?: T;
+  heroDescription?: T;
+  heroBannerImage?: T;
+  heroBannerFallback?: T;
+  heroBannerAlt?: T;
+  heroSubtitle?: T;
+  scenesHeaderTitle?: T;
+  scenesRow1?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        id?: T;
+      };
+  scenesRow2?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        id?: T;
+      };
+  whatIsCardTitle?: T;
+  whatIsCardDescription?: T;
+  visionCardTitle?: T;
+  purposeParagraph?: T;
+  visionParagraph?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sophia-institute-page_select".
+ */
+export interface SophiaInstitutePageSelect<T extends boolean = true> {
+  heroHeaderTitle?: T;
+  heroDescription?: T;
+  heroBannerImage?: T;
+  heroBannerFallback?: T;
+  heroBannerAlt?: T;
+  heroSubtitle?: T;
+  scenesHeaderTitle?: T;
+  scenesRow1?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        id?: T;
+      };
+  scenesRow2?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        id?: T;
+      };
+  whatIsCardTitle?: T;
+  whatIsCardDescription?: T;
+  visionCardTitle?: T;
+  purposeParagraph?: T;
+  visionParagraph?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sunday-school-page_select".
+ */
+export interface SundaySchoolPageSelect<T extends boolean = true> {
+  heroHeaderTitle?: T;
+  heroDescription?: T;
+  heroVideoUrl?: T;
+  heroSubtitle?: T;
+  scenesHeaderTitle?: T;
+  scenesRow1?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        id?: T;
+      };
+  scenesRow2?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        id?: T;
+      };
+  whatIsCardTitle?: T;
+  whatIsCardDescription?: T;
+  visionCardTitle?: T;
+  purposeParagraph?: T;
+  visionParagraph?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "church-branches-page_select".
+ */
+export interface ChurchBranchesPageSelect<T extends boolean = true> {
+  heroBannerImage?: T;
+  heroBannerFallback?: T;
+  heroBannerAlt?: T;
+  headBranchTitle?: T;
+  headBranchMapIframe?: T;
+  headBranchMapImage?: T;
+  headBranchMapFallback?: T;
+  headBranchHelperText?: T;
+  directoryHeaderTitle?: T;
+  nationalBranches?:
+    | T
+    | {
+        name?: T;
+        line1?: T;
+        line2?: T;
+        mapLink?: T;
+        id?: T;
+      };
+  internationalBranches?:
+    | T
+    | {
+        name?: T;
+        line1?: T;
+        line2?: T;
+        mapLink?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events-page_select".
+ */
+export interface EventsPageSelect<T extends boolean = true> {
+  recentHeaderTitle?: T;
+  recentEvents?:
+    | T
+    | {
+        title?: T;
+        poster?: T;
+        posterFallback?: T;
+        id?: T;
+      };
+  upcomingHeaderTitle?: T;
+  featuredPoster?: T;
+  featuredPosterFallback?: T;
+  featuredTitle?: T;
+  featuredLinkUrl?: T;
+  featuredButtonLabel?: T;
+  headingGreeting?: T;
+  announcementParagraph1?: T;
+  announcementParagraph2?: T;
+  announcementParagraph3?: T;
+  announcementParagraph4?: T;
+  scheduleDay?: T;
+  scheduleDate?: T;
+  scheduleTime?: T;
+  scheduleVenue?: T;
+  schedulePostedBy?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gallery-page_select".
+ */
+export interface GalleryPageSelect<T extends boolean = true> {
+  photoArch?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        caption?: T;
+      };
+  topRowSidePhotos?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        caption?: T;
+        id?: T;
+      };
+  middleRowPhotos?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        caption?: T;
+        id?: T;
+      };
+  bottomRowSidePhotosLeft?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        caption?: T;
+        id?: T;
+      };
+  photoPodiumHero?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        caption?: T;
+      };
+  bottomRowSidePhotosRight?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        caption?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials-page_select".
+ */
+export interface TestimonialsPageSelect<T extends boolean = true> {
+  headerTitle?: T;
+  headerSubtitle?: T;
+  ctaTitle?: T;
+  ctaQuote?: T;
+  ctaButton1Label?: T;
+  ctaButton1Url?: T;
+  ctaButton2Label?: T;
+  ctaButton2Url?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "give-page_select".
+ */
+export interface GivePageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  scriptureVerse?: T;
+  purposeStatement?: T;
+  qrHeaderTitle?: T;
+  iciciQrImage?: T;
+  iciciQrFallback?: T;
+  hdfcQrImage?: T;
+  hdfcQrFallback?: T;
+  axisLogo?: T;
+  axisLogoFallback?: T;
+  axisQrImage?: T;
+  axisQrFallback?: T;
+  gpayQrImage?: T;
+  gpayQrFallback?: T;
+  bankHeaderTitle?: T;
+  bankAccounts?:
+    | T
+    | {
+        bankName?: T;
+        logo?: T;
+        logoFallback?: T;
+        accountHolder?: T;
+        accountNumber?: T;
+        ifsc?: T;
+        branch?: T;
+        borderColor?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-page_select".
+ */
+export interface ContactPageSelect<T extends boolean = true> {
+  heroTitle?: T;
+  heroSubtitle?: T;
+  heroImage?: T;
+  heroImageFallback?: T;
+  heroImageBadgeTitle?: T;
+  heroImageBadgeSubtitle?: T;
+  formSuccessTitle?: T;
+  formSuccessMessage?: T;
+  infoSectionTitle?: T;
+  infoSectionSubtitle?: T;
+  generalInquiriesTitle?: T;
+  generalInquiriesEmail1?: T;
+  generalInquiriesEmail2?: T;
+  hospitalLineTitle?: T;
+  hospitalLineEmail?: T;
+  emergencyPrayersTitle?: T;
+  emergencyPrayersEmail?: T;
+  phoneSectionTitle?: T;
+  phoneNumber?: T;
+  addressSectionTitle?: T;
+  fullAddress?: T;
+  googleMapsUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prayer-request-page_select".
+ */
+export interface PrayerRequestPageSelect<T extends boolean = true> {
+  heroBannerImage?: T;
+  heroBannerFallback?: T;
+  headingTitle?: T;
+  headingSubtitle?: T;
+  helplineTitle?: T;
+  helplinePhone?: T;
+  helplineEmail?: T;
+  submitButtonText?: T;
+  successTitle?: T;
+  successMessage?: T;
+  successVerse?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "zoom-lay-hand-page_select".
+ */
+export interface ZoomLayHandPageSelect<T extends boolean = true> {
+  heroBannerImage?: T;
+  heroBannerFallback?: T;
+  headingTitle?: T;
+  headingSubtitle?: T;
+  guidelinesTitle?: T;
+  guidelinesText?: T;
+  supportPhone?: T;
+  supportEmail?: T;
+  submitButtonText?: T;
+  successTitle?: T;
+  successMessage?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "store-page_select".
+ */
+export interface StorePageSelect<T extends boolean = true> {
+  headerTitle?: T;
+  headerSubtitle?: T;
+  fastDeliveryText?: T;
+  securePaymentText?: T;
+  supportPhone?: T;
+  supportEmail?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "privacy-policy-page_select".
+ */
+export interface PrivacyPolicyPageSelect<T extends boolean = true> {
+  pageTitle?: T;
+  introText?: T;
+  sections?:
+    | T
+    | {
+        sectionTitle?: T;
+        content?: T;
+        id?: T;
+      };
+  contactEmail?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "terms-page_select".
+ */
+export interface TermsPageSelect<T extends boolean = true> {
+  pageTitle?: T;
+  introText?: T;
+  sections?:
+    | T
+    | {
+        sectionTitle?: T;
+        content?: T;
+        id?: T;
+      };
+  contactEmail?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import { AboutHeroSection } from './AboutHeroSection'
 import { VisionMissionSection } from './VisionMissionSection'
@@ -10,35 +8,113 @@ import { FaithResourcesSection } from './FaithResourcesSection'
 import { CrusadesSection } from './CrusadesSection'
 import { InternationalPresenceSection } from './InternationalPresenceSection'
 
-export const AboutPage: React.FC = () => {
+export interface AboutPageProps {
+  aboutData?: any
+  scheduleData?: any
+}
+
+export const AboutPage: React.FC<AboutPageProps> = ({
+  aboutData,
+  scheduleData,
+}) => {
+  // Hero props
+  const heroProps = {
+    headerTitle: aboutData?.heroHeaderTitle,
+    description: aboutData?.heroDescription,
+    bannerImage: aboutData?.heroBannerImage,
+    bannerImageFallback: aboutData?.heroBannerFallback,
+    bannerAlt: aboutData?.heroBannerAlt,
+  }
+
+  // Vision & Mission props
+  const vmProps = {
+    identityBadge: aboutData?.vmIdentityBadge,
+    headerTitle: aboutData?.vmHeaderTitle,
+    visionTitle: aboutData?.visionTitle,
+    visionDescription: aboutData?.visionDescription,
+    missionTitle: aboutData?.missionTitle,
+    missionDescription: aboutData?.missionDescription,
+  }
+
+  // Our Leaders props
+  const leadersProps = {
+    headerTitle: aboutData?.leadersHeaderTitle,
+    leaderImages: aboutData?.leaderImages,
+    paragraph1: aboutData?.leaderParagraph1,
+    paragraph2: aboutData?.leaderParagraph2,
+    paragraph3: aboutData?.leaderParagraph3,
+  }
+
+  // Stats props
+  const statsProps = {
+    headerTitle: aboutData?.statsHeaderTitle,
+    stats: aboutData?.stats,
+  }
+
+  // Schedule props (reusable from scheduleData / homepage global)
+  const scheduleProps = {
+    headerTitle: scheduleData?.scheduleHeaderTitle,
+    videoBannerUrl: scheduleData?.scheduleVideoBannerUrl,
+    weeklyServices: scheduleData?.weeklyServices,
+    dailyPrograms: scheduleData?.dailyPrograms,
+    joinLiveLink: scheduleData?.joinLiveLink,
+    joinLiveLabel: scheduleData?.joinLiveLabel,
+  }
+
+  // Faith Resources props
+  const faithProps = {
+    headerTitle: aboutData?.resourcesHeaderTitle,
+    description: aboutData?.resourcesDescription,
+    storeLink: aboutData?.resourcesStoreLink,
+    storeLabel: aboutData?.resourcesStoreLabel,
+    bgImage: aboutData?.resourcesBgImage,
+    bgFallback: aboutData?.resourcesBgFallback,
+    fgImage: aboutData?.resourcesFgImage,
+    fgFallback: aboutData?.resourcesFgFallback,
+  }
+
+  // Crusades props
+  const crusadesProps = {
+    headerTitle: aboutData?.crusadesHeaderTitle,
+    crusadeImages: aboutData?.crusadeImages,
+  }
+
+  // International Presence props
+  const presenceProps = {
+    headerTitle: aboutData?.presenceHeaderTitle,
+    subtitle: aboutData?.presenceSubtitle,
+    row1Photos: aboutData?.presenceRow1,
+    row2Photos: aboutData?.presenceRow2,
+  }
+
   return (
     <main className="min-h-screen bg-white text-[#0b0c1c] antialiased selection:bg-[#efbf04]/30 selection:text-[#0b0c1c]">
       {/* Top Container: Warm Butter Cream Background (#ffffe9) spanning Hero & Vision/Mission */}
       <div className="bg-[#ffffe9] relative w-full overflow-hidden">
         {/* 1. Hero / Overview */}
-        <AboutHeroSection />
+        <AboutHeroSection {...heroProps} />
 
         {/* 2. Our Identity / Vision & Mission */}
-        <VisionMissionSection />
+        <VisionMissionSection {...vmProps} />
       </div>
 
       {/* 3. Our Leaders */}
-      <OurLeadersSection />
+      <OurLeadersSection {...leadersProps} />
 
       {/* 4. Ministry Statistics */}
-      <MinistryStatsSection />
+      <MinistryStatsSection {...statsProps} />
 
       {/* 5. Live Services Schedule */}
-      <ScheduleSection />
+      <ScheduleSection {...scheduleProps} />
 
       {/* 6. Faith Resources (Books & Media) */}
-      <FaithResourcesSection />
+      <FaithResourcesSection {...faithProps} />
 
       {/* 7. Largest Crusades */}
-      <CrusadesSection />
+      <CrusadesSection {...crusadesProps} />
 
       {/* 8. International Presence */}
-      <InternationalPresenceSection />
+      <InternationalPresenceSection {...presenceProps} />
     </main>
   )
 }

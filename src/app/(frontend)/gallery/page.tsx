@@ -1,6 +1,11 @@
 import React from 'react'
 import type { Metadata } from 'next'
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
 import { GalleryPage } from '@/components/GalleryPage'
+
+export const dynamic = 'force-static'
+export const revalidate = 600
 
 export const metadata: Metadata = {
   title: 'Gallery | Ankur Narula Ministries',
@@ -8,6 +13,13 @@ export const metadata: Metadata = {
     'Explore inspiring moments of worship, healing, ministry crusades, and global leadership with Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula.',
 }
 
-export default function Page() {
-  return <GalleryPage />
+export default async function Page() {
+  const payload = await getPayload({ config: configPromise })
+  const data = await payload.findGlobal({
+    slug: 'gallery-page',
+    depth: 1,
+  })
+
+  return <GalleryPage data={data} />
 }
+

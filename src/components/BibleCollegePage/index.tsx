@@ -5,19 +5,41 @@ import { BibleCollegeHeroSection } from './BibleCollegeHeroSection'
 import { BibleCollegeScenesSection } from './BibleCollegeScenesSection'
 import { BibleCollegeWhatIsSection } from './BibleCollegeWhatIsSection'
 
-export const BibleCollegePage: React.FC = () => {
+export interface BibleCollegePageProps {
+  data?: any
+}
+
+export const BibleCollegePage: React.FC<BibleCollegePageProps> = ({ data }) => {
   return (
     <main className="min-h-screen bg-white text-[#0b0c1c] antialiased selection:bg-[#efbf04]/30 selection:text-[#0b0c1c]">
       {/* 1. Hero / Overview */}
       <div className="bg-[#ffffe9] relative w-full overflow-hidden">
-        <BibleCollegeHeroSection />
+        <BibleCollegeHeroSection
+          headerTitle={data?.heroHeaderTitle}
+          description={data?.heroDescription}
+          bannerImage={data?.heroBannerImage}
+          bannerImageFallback={data?.heroBannerFallback}
+          bannerAlt={data?.heroBannerAlt}
+          subtitle={data?.heroSubtitle}
+        />
       </div>
 
       {/* 2. Scenes of Bible College (Dual Row Smooth Marquee Gallery) */}
-      <BibleCollegeScenesSection />
+      <BibleCollegeScenesSection
+        headerTitle={data?.scenesHeaderTitle}
+        row1Photos={data?.scenesRow1}
+        row2Photos={data?.scenesRow2}
+      />
 
       {/* 3. What is Bible College & Purpose / Vision Cards */}
-      <BibleCollegeWhatIsSection />
+      <BibleCollegeWhatIsSection
+        whatIsCardTitle={data?.whatIsCardTitle}
+        whatIsCardDescription={data?.whatIsCardDescription}
+        visionCardTitle={data?.visionCardTitle}
+        purposeParagraph={data?.purposeParagraph}
+        visionParagraph={data?.visionParagraph}
+      />
     </main>
   )
 }
+

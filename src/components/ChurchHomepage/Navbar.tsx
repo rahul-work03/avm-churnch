@@ -5,22 +5,69 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, ChevronDown } from 'lucide-react'
+import { getMediaUrl } from '@/utilities/getMediaUrl'
 
-interface NavItem {
+export interface NavChildItem {
   label: string
   href: string
-  children?: {
-    label: string
-    href: string
-  }[]
 }
 
-export const ChurchNavbar: React.FC = () => {
+export interface NavItem {
+  label: string
+  href: string
+  children?: NavChildItem[] | null
+}
+
+export interface HeaderData {
+  logo?: any
+  logoFallback?: string | null
+  brandName?: string | null
+  navItems?: NavItem[] | null
+  ctaButtonLabel?: string | null
+  ctaButtonUrl?: string | null
+}
+
+const DEFAULT_NAV_LINKS: NavItem[] = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  {
+    label: 'Ministries & More',
+    href: '/ministries',
+    children: [
+      { label: 'Ministries', href: '/ministries' },
+      { label: 'Prayer Mountain', href: '/prayer-mountain' },
+      { label: 'Prayer House', href: '/prayer-house' },
+      { label: 'Bible College', href: '/bible-college' },
+      { label: 'Church Branches', href: '/church-branches' },
+      { label: 'Sunday School', href: '/sunday-school' },
+      { label: 'Sophia Institute', href: '/sophia-institute' },
+    ],
+  },
+  { label: 'Events', href: '/events' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Testimonials', href: '/testimonials' },
+  { label: 'Give', href: '/give' },
+]
+
+interface ChurchNavbarProps {
+  data?: HeaderData | null
+}
+
+export const ChurchNavbar: React.FC<ChurchNavbarProps> = ({ data }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [desktopDropdownOpen, setDesktopDropdownOpen] = useState(false)
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false)
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const pathname = usePathname()
+
+  const brandName = data?.brandName || 'Ankur Narula Ministries'
+  const logoUrl = getMediaUrl(
+    data?.logo,
+    data?.logoFallback || '/figma-assets/a12f7a8578aca49746f879f50d3567e9cc929dad.png'
+  )
+  const navLinks = data?.navItems && data.navItems.length > 0 ? data.navItems : DEFAULT_NAV_LINKS
+  const ctaLabel = data?.ctaButtonLabel || 'Contact Us'
+  const ctaUrl = data?.ctaButtonUrl || '/contact'
 
   // Automatically close mobile menu & dropdowns on route change
   useEffect(() => {
@@ -28,28 +75,6 @@ export const ChurchNavbar: React.FC = () => {
     setDesktopDropdownOpen(false)
     setMobileDropdownOpen(false)
   }, [pathname])
-
-  const navLinks: NavItem[] = [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    {
-      label: 'Ministries & More',
-      href: '/ministries',
-      children: [
-        { label: 'Ministries', href: '/ministries' },
-        { label: 'Prayer Mountain', href: '/prayer-mountain' },
-        { label: 'Prayer House', href: '/prayer-house' },
-        { label: 'Bible College', href: '/bible-college' },
-        { label: 'Church Branches', href: '/church-branches' },
-        { label: 'Sunday School', href: '/sunday-school' },
-        { label: 'Sophia Institute', href: '/sophia-institute' },
-      ],
-    },
-    { label: 'Events', href: '/events' },
-    { label: 'Gallery', href: '/gallery' },
-    { label: 'Testimonials', href: '/testimonials' },
-    { label: 'Give', href: '/give' },
-  ]
 
   const handleMouseEnter = () => {
     if (dropdownTimeoutRef.current) {
@@ -72,15 +97,15 @@ export const ChurchNavbar: React.FC = () => {
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0">
               <Image
-                src="/figma-assets/a12f7a8578aca49746f879f50d3567e9cc929dad.png"
-                alt="Ankur Narula Ministries"
+                src={logoUrl}
+                alt={brandName}
                 fill
                 className="object-contain"
                 priority
               />
             </div>
             <span className="font-poppins font-semibold text-white text-sm sm:text-base tracking-wide whitespace-nowrap">
-              Ankur Narula Ministries
+              {brandName}
             </span>
           </Link>
 
@@ -89,7 +114,9 @@ export const ChurchNavbar: React.FC = () => {
             {navLinks.map((item) => {
               const hasChildren = Boolean(item.children && item.children.length > 0)
               const isDirectActive = pathname === item.href
-              const isChildActive = hasChildren && item.children?.some((c) => pathname === c.href || pathname?.startsWith(c.href))
+              const isChildActive =
+                hasChildren &&
+                item.children?.some((c) => pathname === c.href || (c.href !== '/' && pathname?.startsWith(c.href)))
               const isActive = isDirectActive || isChildActive
 
               if (hasChildren) {
@@ -124,7 +151,8 @@ export const ChurchNavbar: React.FC = () => {
                       <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50 min-w-[180px] animate-in fade-in slide-in-from-top-1.5 duration-150">
                         <div className="bg-[#122f4a] rounded-xl p-1.5 shadow-xl border border-white/10">
                           {item.children?.map((child) => {
-                            const isSubActive = pathname === child.href || (child.href !== '/' && pathname?.startsWith(child.href))
+                            const isSubActive =
+                              pathname === child.href || (child.href !== '/' && pathname?.startsWith(child.href))
                             return (
                               <Link
                                 key={child.label}
@@ -165,10 +193,10 @@ export const ChurchNavbar: React.FC = () => {
           {/* Contact Us CTA Button */}
           <div className="hidden lg:flex items-center">
             <Link
-              href="/contact"
+              href={ctaUrl}
               className="bg-[#efbf04] text-[#0b0c1c] font-poppins font-semibold text-sm px-6 py-2 rounded-full hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-md"
             >
-              Contact Us
+              {ctaLabel}
             </Link>
           </div>
 
@@ -191,7 +219,9 @@ export const ChurchNavbar: React.FC = () => {
               {navLinks.map((item) => {
                 const hasChildren = Boolean(item.children && item.children.length > 0)
                 const isDirectActive = pathname === item.href
-                const isChildActive = hasChildren && item.children?.some((c) => pathname === c.href || pathname?.startsWith(c.href))
+                const isChildActive =
+                  hasChildren &&
+                  item.children?.some((c) => pathname === c.href || (c.href !== '/' && pathname?.startsWith(c.href)))
                 const isActive = isDirectActive || isChildActive
 
                 if (hasChildren) {
@@ -219,7 +249,8 @@ export const ChurchNavbar: React.FC = () => {
                       {mobileDropdownOpen && (
                         <div className="pl-4 pr-1 py-1 flex flex-col gap-1 border-l-2 border-[#efbf04]/40 ml-4 mt-1">
                           {item.children?.map((child) => {
-                            const isSubActive = pathname === child.href || (child.href !== '/' && pathname?.startsWith(child.href))
+                            const isSubActive =
+                              pathname === child.href || (child.href !== '/' && pathname?.startsWith(child.href))
                             return (
                               <Link
                                 key={child.label}
@@ -256,10 +287,10 @@ export const ChurchNavbar: React.FC = () => {
               })}
             </nav>
             <Link
-              href="/contact"
+              href={ctaUrl}
               className="bg-[#efbf04] text-[#0b0c1c] font-poppins font-semibold text-center text-sm py-3 rounded-full hover:bg-yellow-400 transition shadow block cursor-pointer"
             >
-              Contact Us
+              {ctaLabel}
             </Link>
           </div>
         )}
@@ -276,3 +307,5 @@ export const ChurchNavbar: React.FC = () => {
     </>
   )
 }
+
+export default ChurchNavbar

@@ -2,12 +2,13 @@
 
 import React from 'react'
 import { FooterSection } from '@/components/ChurchHomepage/FooterSection'
-import type { Footer as FooterType } from '@/payload-types'
 
 interface FooterClientProps {
-  data?: FooterType
+  data?: any
 }
 
-export const FooterClient: React.FC<FooterClientProps> = () => {
-  return <FooterSection />
+export const FooterClient: React.FC<FooterClientProps> = ({ data }) => {
+  return <FooterSection data={data} />
 }
+
+export default FooterClient

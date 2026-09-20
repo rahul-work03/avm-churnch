@@ -1,10 +1,35 @@
+'use client'
+
 import React from 'react'
 import Image from 'next/image'
+import { RevealOnScroll } from '@/components/ui/reveal'
+import { getMediaUrl, getMediaAlt } from '@/utilities/getMediaUrl'
 
-export const HeroSection: React.FC = () => {
+export interface HeroSectionProps {
+  headline1?: string
+  headline2?: string
+  mobileHeadline2?: string
+  description?: string
+  bannerImage?: any
+  bannerImageFallback?: string
+  bannerAlt?: string
+}
+
+export const HeroSection: React.FC<HeroSectionProps> = ({
+  headline1 = 'Welcome to Ankur Narula Ministries',
+  headline2 = 'The Church Of Signs and Wonders',
+  mobileHeadline2 = 'Jesus Christ’s Power in Signs and Wonders',
+  description = 'Experience the power of Jesus Christ through signs, wonders, and faith. We believe in the living Word of God and in His mighty works among those who believe.',
+  bannerImage,
+  bannerImageFallback = '/homepage_banner.png',
+  bannerAlt = '200+ ANM Churches',
+}) => {
+  const resolvedBannerUrl = getMediaUrl(bannerImage, bannerImageFallback)
+  const resolvedBannerAlt = getMediaAlt(bannerImage, bannerAlt)
+
   return (
     <section className="relative pt-24 pb-8 sm:pt-28 sm:pb-14 md:pt-32 md:pb-16 overflow-hidden" data-node-id="274:3">
-      {/* Header Title with Flanking Gold Bars (Figma 274:23, 274:28 on Desktop / 274:320, 274:323 on Mobile) */}
+      {/* Header Title with Flanking Gold Bars */}
       <div className="w-full flex items-center justify-between py-2 sm:py-3 md:py-4">
         {/* Left Decorative Gold Bar */}
         <div
@@ -13,29 +38,28 @@ export const HeroSection: React.FC = () => {
         />
 
         {/* Main Title & Subtitle */}
-        <div className="text-center max-w-4xl mx-auto px-2 sm:px-6 md:px-10 flex-shrink min-w-0">
-          {/* Desktop Headline (Figma 274:3) */}
+        <RevealOnScroll direction="up" distance={20} duration={0.7} className="text-center max-w-4xl mx-auto px-2 sm:px-6 md:px-10 flex-shrink min-w-0">
+          {/* Desktop Headline */}
           <h1 className="hidden sm:block font-philosopher font-bold text-[#003471] text-2xl sm:text-3xl md:text-4xl lg:text-[46px] xl:text-[50px] leading-tight tracking-tight">
-            Welcome to Ankur Narula Ministries <br />
+            {headline1} <br />
             <span className="text-[#003471] block mt-1">
-              The Church Of Signs and Wonders
+              {headline2}
             </span>
           </h1>
 
-          {/* Mobile Headline (Figma 274:326) */}
+          {/* Mobile Headline */}
           <h1 className="sm:hidden font-philosopher font-bold text-[#003471] text-[22px] sm:text-[24px] leading-tight tracking-tight">
-            Welcome to Ankur Narula Ministries <br />
+            {headline1} <br />
             <span className="text-[#003471] block mt-0.5">
-              Jesus Christ’s Power in Signs and Wonders
+              {mobileHeadline2 || headline2}
             </span>
           </h1>
 
-          {/* Subtitle (Figma 274:22 / 274:327) */}
+          {/* Subtitle */}
           <p className="font-poppins font-light sm:font-normal text-[#0b0c1c] sm:text-[#8c8c8c] text-[12px] sm:text-base md:text-[18px] leading-relaxed max-w-3xl mx-auto mt-2 sm:mt-3 md:mt-4 text-balance px-1">
-            Experience the power of Jesus Christ through signs, wonders, and faith. We believe in the{' '}
-            living Word of God and in His mighty works among those who believe.
+            {description}
           </p>
-        </div>
+        </RevealOnScroll>
 
         {/* Right Decorative Gold Bar */}
         <div
@@ -45,15 +69,15 @@ export const HeroSection: React.FC = () => {
       </div>
 
       <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Featured 200+ ANM Churches Banner Card (1140px x 620px, rounded-[51px] on Desktop / 380px x 206px, rounded-[20px] on Mobile) (Figma 274:6 / 274:328) */}
-        <div className="mt-4 sm:mt-8 md:mt-10 max-w-[1140px] mx-auto">
+        {/* Featured 200+ ANM Churches Banner Card */}
+        <RevealOnScroll direction="up" distance={28} delay={0.15} duration={0.8} className="mt-4 sm:mt-8 md:mt-10 max-w-[1140px] mx-auto">
           <div
             className="relative w-full aspect-[380/206] sm:aspect-[1140/620] rounded-[20px] sm:rounded-[36px] md:rounded-[51px] overflow-hidden shadow-xl sm:shadow-2xl border border-amber-200/40 bg-slate-900 group"
             data-node-id="274:6"
           >
             <Image
-              src="/figma-assets/1293a243cd5f4ddaa9c70378ddffe38c61e7ffb6.png"
-              alt="200+ ANM Churches"
+              src={resolvedBannerUrl}
+              alt={resolvedBannerAlt}
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105"
               priority
@@ -65,7 +89,7 @@ export const HeroSection: React.FC = () => {
               <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white/40 backdrop-blur-sm cursor-pointer transition transform hover:scale-125 hover:bg-white/70" />
             </div>
           </div>
-        </div>
+        </RevealOnScroll>
       </div>
     </section>
   )

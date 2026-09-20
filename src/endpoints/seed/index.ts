@@ -48,9 +48,7 @@ export const seed = async ({
     globals.map((global) =>
       payload.updateGlobal({
         slug: global,
-        data: {
-          navItems: [],
-        },
+        data: {} as any,
         depth: 0,
         context: {
           disableRevalidate: true,
@@ -202,7 +200,7 @@ export const seed = async ({
 
   payload.logger.info(`— Seeding pages...`)
 
-  const [_, contactPage] = await Promise.all([
+  const [_, _contactPage] = await Promise.all([
     payload.create({
       collection: 'pages',
       depth: 0,
@@ -221,56 +219,18 @@ export const seed = async ({
     payload.updateGlobal({
       slug: 'header',
       data: {
-        navItems: [
-          {
-            link: {
-              type: 'custom',
-              label: 'Posts',
-              url: '/posts',
-            },
-          },
-          {
-            link: {
-              type: 'reference',
-              label: 'Contact',
-              reference: {
-                relationTo: 'pages',
-                value: contactPage.id,
-              },
-            },
-          },
-        ],
-      },
+        brandName: 'Ankur Narula Ministries',
+        ctaButtonLabel: 'Contact Us',
+        ctaButtonUrl: '/contact',
+      } as any,
     }),
     payload.updateGlobal({
       slug: 'footer',
       data: {
-        navItems: [
-          {
-            link: {
-              type: 'custom',
-              label: 'Admin',
-              url: '/admin',
-            },
-          },
-          {
-            link: {
-              type: 'custom',
-              label: 'Source Code',
-              newTab: true,
-              url: 'https://github.com/payloadcms/payload/tree/main/templates/website',
-            },
-          },
-          {
-            link: {
-              type: 'custom',
-              label: 'Payload',
-              newTab: true,
-              url: 'https://payloadcms.com/',
-            },
-          },
-        ],
-      },
+        ministryName: 'Ankur Narula Ministries',
+        contactEmail: 'info@ankurnarula.org',
+        contactPhone: 'Phone: 0181-520-7777',
+      } as any,
     }),
   ])
 
