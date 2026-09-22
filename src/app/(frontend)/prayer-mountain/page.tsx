@@ -23,8 +23,8 @@ export default async function Page() {
       slug: 'prayer-mountain-page' as any,
       depth: 1,
     })
-  } catch (error) {
-    console.error('Error loading prayer mountain data from Payload:', error)
+  } catch {
+    // Database empty or uninitialized during build
   }
 
   return <PrayerMountainPage data={prayerMountainData} />

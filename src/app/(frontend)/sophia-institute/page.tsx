@@ -23,8 +23,8 @@ export default async function Page() {
       slug: 'sophia-institute-page' as any,
       depth: 1,
     })
-  } catch (error) {
-    console.error('Error loading sophia institute data from Payload:', error)
+  } catch {
+    // Database empty or uninitialized during build
   }
 
   return <SophiaInstitutePage data={sophiaData} />

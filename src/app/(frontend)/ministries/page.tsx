@@ -23,8 +23,8 @@ export default async function Page() {
       slug: 'ministries-page' as any,
       depth: 1,
     })
-  } catch (error) {
-    console.error('Error loading ministries page data from Payload:', error)
+  } catch {
+    // Database empty or uninitialized during build
   }
 
   return <MinistriesPage ministriesData={ministriesData} />

@@ -29,8 +29,8 @@ export default async function Page() {
       slug: 'homepage' as any,
       depth: 1,
     })
-  } catch (error) {
-    console.error('Error loading about page data from Payload:', error)
+  } catch {
+    // Database empty or uninitialized during build
   }
 
   return <AboutPage aboutData={aboutData} scheduleData={scheduleData} />

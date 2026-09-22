@@ -14,10 +14,16 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const payload = await getPayload({ config })
-  const zoomPageData = await payload.findGlobal({
-    slug: 'zoom-lay-hand-page' as any,
-  })
+  let zoomPageData = null
+
+  try {
+    const payload = await getPayload({ config })
+    zoomPageData = await payload.findGlobal({
+      slug: 'zoom-lay-hand-page' as any,
+    })
+  } catch {
+    // Database empty or uninitialized during build
+  }
 
   return <ZoomLayHandPage data={zoomPageData as any} />
 }

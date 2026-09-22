@@ -35,8 +35,8 @@ export default async function Page() {
 
     docs = testimonialsResult.docs
     pageData = pageGlobalResult
-  } catch (error) {
-    console.error('Failed to fetch testimonials or global data from Payload:', error)
+  } catch {
+    // Database empty or uninitialized during build
   }
 
   const testimonials = docs.length > 0 ? docs : testimonialsData

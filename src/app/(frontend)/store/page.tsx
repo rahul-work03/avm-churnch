@@ -14,22 +14,32 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const payload = await getPayload({ config })
-  const [storeData, productsRes] = await Promise.all([
-    payload.findGlobal({
-      slug: 'store-page' as any,
-    }),
-    payload.find({
-      collection: 'products' as any,
-      limit: 50,
-      sort: 'order',
-    }),
-  ])
+  let storeData = null
+  let products: any[] = []
+
+  try {
+    const payload = await getPayload({ config })
+    const [storeRes, productsRes] = await Promise.all([
+      payload.findGlobal({
+        slug: 'store-page' as any,
+      }),
+      payload.find({
+        collection: 'products' as any,
+        limit: 50,
+        sort: 'order',
+      }),
+    ])
+
+    storeData = storeRes
+    products = productsRes.docs || []
+  } catch {
+    // Database empty or uninitialized during build
+  }
 
   return (
     <StorePage
       data={storeData as any}
-      products={productsRes.docs as any}
+      products={products as any}
     />
   )
 }

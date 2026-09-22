@@ -14,10 +14,16 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const payload = await getPayload({ config })
-  const termsData = await payload.findGlobal({
-    slug: 'terms-page' as any,
-  })
+  let termsData = null
+
+  try {
+    const payload = await getPayload({ config })
+    termsData = await payload.findGlobal({
+      slug: 'terms-page' as any,
+    })
+  } catch {
+    // Database empty or uninitialized during build
+  }
 
   return <TermsAndConditionsPage data={termsData as any} />
 }

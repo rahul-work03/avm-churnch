@@ -14,11 +14,17 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const payload = await getPayload({ config: configPromise })
-  const data = await payload.findGlobal({
-    slug: 'gallery-page',
-    depth: 1,
-  })
+  let data = null
+
+  try {
+    const payload = await getPayload({ config: configPromise })
+    data = await payload.findGlobal({
+      slug: 'gallery-page',
+      depth: 1,
+    })
+  } catch {
+    // Database empty or uninitialized during build
+  }
 
   return <GalleryPage data={data} />
 }

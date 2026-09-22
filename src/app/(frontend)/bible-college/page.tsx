@@ -23,8 +23,8 @@ export default async function Page() {
       slug: 'bible-college-page' as any,
       depth: 1,
     })
-  } catch (error) {
-    console.error('Error loading bible college data from Payload:', error)
+  } catch {
+    // Database empty or uninitialized during build
   }
 
   return <BibleCollegePage data={bibleCollegeData} />

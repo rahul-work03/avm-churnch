@@ -14,10 +14,16 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const payload = await getPayload({ config })
-  const prayerRequestData = await payload.findGlobal({
-    slug: 'prayer-request-page' as any,
-  })
+  let prayerRequestData = null
+
+  try {
+    const payload = await getPayload({ config })
+    prayerRequestData = await payload.findGlobal({
+      slug: 'prayer-request-page' as any,
+    })
+  } catch {
+    // Database empty or uninitialized during build
+  }
 
   return <PrayerRequestPage data={prayerRequestData as any} />
 }

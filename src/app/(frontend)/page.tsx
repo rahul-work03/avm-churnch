@@ -33,8 +33,8 @@ export default async function HomePage() {
     })
 
     sermonsData = sermonsResult?.docs || []
-  } catch (error) {
-    console.error('Error loading homepage data from Payload:', error)
+  } catch {
+    // Database empty or uninitialized during build
   }
 
   return <ChurchHomepage homepageData={homepageData} sermonsData={sermonsData} />

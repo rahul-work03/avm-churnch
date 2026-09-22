@@ -14,10 +14,16 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const payload = await getPayload({ config })
-  const privacyData = await payload.findGlobal({
-    slug: 'privacy-policy-page' as any,
-  })
+  let privacyData = null
+
+  try {
+    const payload = await getPayload({ config })
+    privacyData = await payload.findGlobal({
+      slug: 'privacy-policy-page' as any,
+    })
+  } catch {
+    // Database empty or uninitialized during build
+  }
 
   return <PrivacyPolicyPage data={privacyData as any} />
 }
