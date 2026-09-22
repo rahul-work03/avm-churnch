@@ -6,38 +6,26 @@ const DEFAULT_LEADER_IMAGES = [
   {
     imageFallback: '/figma-assets/our_leaders_image_1.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula',
-    title: 'Apostle Dr. Ankur & Pastor Sonia Narula',
-    subtitle: 'Spiritual Overseers & Senior Pastors',
   },
   {
     imageFallback: '/figma-assets/our_leaders_image_2.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula at Pulpit',
-    title: 'Word of Faith & Grace',
-    subtitle: 'Sunday Live Ministry',
   },
   {
     imageFallback: '/figma-assets/our_leaders_image_3.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula - Ministry Attire',
-    title: 'Apostolic Leadership',
-    subtitle: 'The Church of Signs and Wonders',
   },
   {
     imageFallback: '/figma-assets/man_of_god_image_1.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula Ministering at Main Stage',
-    title: 'Apostle Dr. Ankur Yoseph Narula',
-    subtitle: 'Anointed Stage Ministry',
   },
   {
     imageFallback: '/figma-assets/b833aca853efbb1993ea3ceec33bdb2370c72d55.png',
     alt: 'Pastor Sonia Yoseph Narula Preaching to Multitudes',
-    title: 'Pastor Sonia Yoseph Narula',
-    subtitle: 'Thursday Prophetic Service',
   },
   {
     imageFallback: '/figma-assets/0ad2c07b6a72c78c1e66fec5b816a26e3f587185.png',
     alt: 'Pastor Sonia Yoseph Narula Ministering at Podium',
-    title: 'Healing & Deliverance Ministry',
-    subtitle: 'Revival Word Proclamation',
   },
 ]
 
@@ -51,134 +39,88 @@ const DEFAULT_CRUSADES = [
   {
     imageFallback: '/crusades/image_1.jpeg',
     alt: 'Massive Miracle Crusade - Sea of Believers Gathering',
-    title: 'Global Miracle Crusade',
-    location: 'Main Stadium Grounds',
   },
   {
     imageFallback: '/crusades/image_2.jpeg',
     alt: 'Atmosphere of Fire and Deliverance Night',
-    title: 'Night of Deliverance',
-    location: 'Mega Arena Assembly',
   },
   {
     imageFallback: '/crusades/image_3.jpeg',
     alt: 'Supernatural Gathering & Holy Spirit Outpouring',
-    title: 'Revival Fire Outreach',
-    location: 'Grand Stadium',
   },
   {
     imageFallback: '/crusades/image_4.jpeg',
     alt: 'Multitude of Souls Worshipping in Power',
-    title: 'Signs & Wonders Convention',
-    location: 'National Sports Complex',
   },
   {
     imageFallback: '/crusades/image_5.jpeg',
     alt: 'Historic Ankur Narula Ministries Crusade',
-    title: 'Historic Revival Gathering',
-    location: 'International Stadium',
   },
   {
     imageFallback: '/crusades/image_6.jpeg',
     alt: 'Praise and Worship Unbroken Multitude',
-    title: 'Atmosphere of Praise',
-    location: 'Revival Pavilion',
   },
   {
     imageFallback: '/crusades/image_7.jpeg',
     alt: 'Apostle Dr. Ankur Yoseph Narula Preaching to Hundred Thousands',
-    title: 'Gospel Proclamation',
-    location: 'Global Outreach Field',
   },
   {
     imageFallback: '/crusades/image_8.jpeg',
     alt: 'Unprecedented Healing & Miracles Encounter',
-    title: 'Supernatural Healing Day',
-    location: 'Convention Center Arena',
   },
   {
     imageFallback: '/crusades/image_9.jpeg',
     alt: 'Overflowing Joy in the Holy Presence',
-    title: 'Festival of Life',
-    location: 'City Arena Grounds',
   },
   {
     imageFallback: '/crusades/image_10.jpeg',
     alt: 'Holy Spirit Fire Crusade',
-    title: 'Holy Spirit Fire Gathering',
-    location: 'National Assembly Arena',
   },
   {
     imageFallback: '/crusades/image_11.jpeg',
     alt: 'Great Harvest Crusade',
-    title: 'Great Harvest Crusade',
-    location: 'Victory Grounds',
   },
 ]
 
 const DEFAULT_ROW1_PRESENCE = [
   {
-    imageFallback: '/figma-assets/a12f7a8578aca49746f879f50d3567e9cc929dad.png',
-    alt: 'International Delegation and Diplomatic Meeting',
-    title: 'Global Leadership Exchange',
-    country: 'United Kingdom',
+    imageFallback: '/man_of_god_international_presence/image_1.png',
+    alt: 'Man of God International Presence 1',
   },
   {
-    imageFallback: '/figma-assets/c83b945c00cc8d9e53f94a7c5903ad702134ed2e.png',
-    alt: 'Apostle Dr. Ankur Narula with World Leaders',
-    title: 'Honorary Recognition Assembly',
-    country: 'United States',
+    imageFallback: '/man_of_god_international_presence/image_2.png',
+    alt: 'Man of God International Presence 2',
   },
   {
-    imageFallback: '/figma-assets/7943a96b8cbd9a1d629265528efec1a38a3d4265.png',
-    alt: 'Overseas Mission Outreach Fellowship',
-    title: 'Apostolic Mission Outreach',
-    country: 'Canada',
+    imageFallback: '/man_of_god_international_presence/image_3.png',
+    alt: 'Man of God International Presence 3',
   },
   {
-    imageFallback: '/figma-assets/65d53a88c2c188c19f670266ce9b27e83745bb6b.png',
-    alt: 'Global Doctorate and Faith Citation',
-    title: 'International Theological Honors',
-    country: 'Europe',
+    imageFallback: '/man_of_god_international_presence/image_4.png',
+    alt: 'Man of God International Presence 4',
   },
   {
-    imageFallback: '/figma-assets/57480aa2a936a6736575d4686f5155c1bef93b95.png',
-    alt: 'Revival Summit and Global Delegation',
-    title: 'Worldwide Revival Summit',
-    country: 'Middle East & Asia',
+    imageFallback: '/man_of_god_international_presence/image_5.png',
+    alt: 'Man of God International Presence 5',
   },
 ]
 
 const DEFAULT_ROW2_PRESENCE = [
   {
-    imageFallback: '/figma-assets/e3e25b6c010b5aa006f29088b8dae7f2466bf8f3.png',
-    alt: 'Worldwide Gospel Crusade and Mass Gathering',
-    title: 'Global Revival Crusade',
-    country: 'International Arena',
+    imageFallback: '/man_of_god_international_presence/image_6.png',
+    alt: 'Man of God International Presence 6',
   },
   {
-    imageFallback: '/figma-assets/1293a243cd5f4ddaa9c70378ddffe38c61e7ffb6.png',
-    alt: 'International Believers and Ministers Assembly',
-    title: 'Global Ministers Fellowship',
-    country: 'Australia & Pacific',
+    imageFallback: '/man_of_god_international_presence/image_7.png',
+    alt: 'Man of God International Presence 7',
   },
   {
-    imageFallback: '/figma-assets/f1c7c30e211dc39094fc986db7a7e7d876202f58.png',
-    alt: 'Atmosphere of Fire International Convention',
-    title: 'Supernatural Fire Conference',
-    country: 'Africa Mission',
+    imageFallback: '/man_of_god_international_presence/image_8.png',
+    alt: 'Man of God International Presence 8',
   },
   {
-    imageFallback: '/figma-assets/457a3354faefcf652c2110710588f40233c79c64.png',
-    alt: 'Signs and Wonders International Gathering',
-    title: 'Signs & Wonders Gathering',
-    country: 'Global Network',
-  },
-  {
-    imageFallback: '/figma-assets/ff7b25464623ab07ec009c6cc6d0508eb168c5a7.png',
-    alt: 'Overseas Gospel Miracle Gathering',
-    title: 'International Miracle Night',
-    country: 'Worldwide',
+    imageFallback: '/man_of_god_international_presence/image_9.png',
+    alt: 'Man of God International Presence 9',
   },
 ]
 

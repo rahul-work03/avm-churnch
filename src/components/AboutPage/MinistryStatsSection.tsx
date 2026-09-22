@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/ui/reveal'
+import { CountUp } from '@/components/ui/count-up'
 
 export interface StatItem {
   value: string
@@ -83,7 +84,11 @@ export const MinistryStatsSection: React.FC<MinistryStatsSectionProps> = ({
               }`}
             >
               <p className="font-poppins font-semibold sm:font-bold text-[#efbf04] text-lg sm:text-2xl md:text-3xl lg:text-[36px] xl:text-[40px] tracking-tight">
-                {stat.value}
+                <CountUp
+                  value={stat.value}
+                  duration={2.0}
+                  delay={0.2 + idx * 0.12}
+                />
               </p>
               <p className="font-poppins text-slate-200 text-xs sm:text-base md:text-xl lg:text-[24px] mt-1 sm:mt-2 leading-tight">
                 {stat.label}

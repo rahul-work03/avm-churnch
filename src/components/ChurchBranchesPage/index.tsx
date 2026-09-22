@@ -11,7 +11,7 @@ interface ChurchBranchesPageProps {
 
 export const ChurchBranchesPage: React.FC<ChurchBranchesPageProps> = ({ data }) => {
   return (
-    <main className="min-h-screen bg-[#f8fafc] text-[#0b0c1c] antialiased selection:bg-[#efbf04]/30 selection:text-[#0b0c1c] pb-16 sm:pb-24">
+    <main className="min-h-screen bg-white text-[#0b0c1c] antialiased selection:bg-[#efbf04]/30 selection:text-[#0b0c1c] pb-16 sm:pb-24">
       {/* 1. Hero / Overview (1140x620 Rounded Hero Banner) */}
       <BranchesHeroSection
         heroBannerImage={data?.heroBannerImage}

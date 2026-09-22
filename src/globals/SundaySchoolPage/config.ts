@@ -86,10 +86,28 @@ export const SundaySchoolPageGlobal: GlobalConfig = {
                 'Welcome to Sunday School, a place where the Word of God is taught with simplicity, love, and truth, helping hearts of all ages experience the presence of God in a personal way. Here, children, youth, and believers grow together in faith as the Scriptures come alive through teaching, stories, and fellowship.',
             },
             {
+              name: 'heroBannerImage',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Sunday School Hero Photo',
+            },
+            {
+              name: 'heroBannerFallback',
+              type: 'text',
+              label: 'Fallback Banner Image Path',
+              defaultValue: '/sunday_school_hero.png',
+            },
+            {
+              name: 'heroBannerAlt',
+              type: 'text',
+              label: 'Banner Alt Text',
+              defaultValue: 'Sunday School Ministries - Ankur Narula Ministries',
+            },
+            {
               name: 'heroVideoUrl',
               type: 'text',
-              label: 'Hero Video URL or Path',
-              defaultValue: '/figma-assets/schedule_banner.mp4',
+              label: 'Hero Video URL or Path (Optional)',
+              defaultValue: '',
             },
             {
               name: 'heroSubtitle',

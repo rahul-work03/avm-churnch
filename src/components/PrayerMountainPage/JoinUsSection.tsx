@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Clock, MapPin } from 'lucide-react'
+import { Clock, MapPin, ExternalLink } from 'lucide-react'
 import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/ui/reveal'
 
 export interface JoinUsSectionProps {
@@ -10,6 +10,7 @@ export interface JoinUsSectionProps {
   timeCardDescription?: string
   locationCardTitle?: string
   locationCardDescription?: string
+  locationUrl?: string
 }
 
 export const JoinUsSection: React.FC<JoinUsSectionProps> = ({
@@ -18,6 +19,7 @@ export const JoinUsSection: React.FC<JoinUsSectionProps> = ({
   timeCardDescription = 'Join in Person or Connect with The Ministry Broadcast Schedule.',
   locationCardTitle = 'LOCATION',
   locationCardDescription = 'Prayer Mountain, Ankur Narula Ministries, Punjab, India',
+  locationUrl = 'https://maps.google.com/?q=The+Church+of+Signs+and+Wonders+Khambra+Jalandhar+Punjab+India',
 }) => {
   return (
     <section className="py-8 sm:py-12 md:py-16 bg-white overflow-hidden select-none" data-node-id="279:2081">
@@ -60,24 +62,33 @@ export const JoinUsSection: React.FC<JoinUsSectionProps> = ({
             </div>
           </StaggerItem>
 
-          {/* Card 2: Location */}
+          {/* Card 2: Location (Clickable Link with target blank) */}
           <StaggerItem className="w-full max-w-[367px]">
-            <div className="w-full min-h-[185px] bg-[#e2e8f0] rounded-[20px] p-6 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md transition-all duration-300 group">
+            <a
+              href={locationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full min-h-[185px] bg-[#e2e8f0] hover:bg-[#d8e2ee] rounded-[20px] p-6 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group cursor-pointer block border border-transparent hover:border-[#122f4a]/20"
+              title="Open Location in Google Maps"
+            >
               {/* MapPin Icon Circle */}
-              <div className="w-[51px] h-[51px] rounded-full bg-[#122f4a] flex items-center justify-center text-white mb-3 group-hover:scale-105 transition-transform">
-                <MapPin className="w-6 h-6 text-white" />
+              <div className="w-[51px] h-[51px] rounded-full bg-[#122f4a] group-hover:bg-[#efbf04] group-hover:text-[#003370] flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-all duration-300 shadow-sm">
+                <MapPin className="w-6 h-6 transition-colors" />
               </div>
 
               {/* Title */}
-              <h3 className="font-poppins font-semibold text-[#003370] text-[18px] sm:text-[20px] tracking-tight mb-1">
-                {locationCardTitle}
-              </h3>
+              <div className="flex items-center justify-center gap-1.5 mb-1">
+                <h3 className="font-poppins font-semibold text-[#003370] text-[18px] sm:text-[20px] tracking-tight">
+                  {locationCardTitle}
+                </h3>
+                <ExternalLink className="w-4 h-4 text-[#003370]/60 group-hover:text-[#003370] transition-colors" />
+              </div>
 
               {/* Description */}
-              <p className="font-poppins text-[#08091b] text-xs sm:text-[16px] leading-relaxed max-w-[241px]">
+              <p className="font-poppins text-[#08091b] text-xs sm:text-[16px] leading-relaxed max-w-[241px] group-hover:text-[#003370] transition-colors">
                 {locationCardDescription}
               </p>
-            </div>
+            </a>
           </StaggerItem>
         </StaggerContainer>
       </div>

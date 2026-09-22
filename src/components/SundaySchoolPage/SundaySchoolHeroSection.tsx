@@ -1,11 +1,16 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 import { RevealOnScroll } from '@/components/ui/reveal'
+import { getMediaUrl, getMediaAlt } from '@/utilities/getMediaUrl'
 
 export interface SundaySchoolHeroSectionProps {
   heroHeaderTitle?: string | null
   heroDescription?: string | null
+  heroBannerImage?: any
+  heroBannerFallback?: string | null
+  heroBannerAlt?: string | null
   heroVideoUrl?: string | null
   heroSubtitle?: string | null
   headerTitle?: string | null
@@ -16,7 +21,10 @@ export interface SundaySchoolHeroSectionProps {
 export const SundaySchoolHeroSection: React.FC<SundaySchoolHeroSectionProps> = ({
   heroHeaderTitle,
   heroDescription,
-  heroVideoUrl = '/figma-assets/schedule_banner.mp4',
+  heroBannerImage,
+  heroBannerFallback = '/sunday_school_hero.png',
+  heroBannerAlt = 'Sunday School Ministries - Ankur Narula Ministries',
+  heroVideoUrl,
   heroSubtitle,
   headerTitle = 'SUNDAY SCHOOL MINISTRIES',
   description = 'Welcome to Sunday School, a place where the Word of God is taught with simplicity, love, and truth, helping hearts of all ages experience the presence of God in a personal way. Here, children, youth, and believers grow together in faith as the Scriptures come alive through teaching, stories, and fellowship.',
@@ -25,6 +33,9 @@ export const SundaySchoolHeroSection: React.FC<SundaySchoolHeroSectionProps> = (
   const displayTitle = heroHeaderTitle || headerTitle || 'SUNDAY SCHOOL MINISTRIES'
   const displayDesc = heroDescription || description || 'Welcome to Sunday School, a place where the Word of God is taught with simplicity, love, and truth, helping hearts of all ages experience the presence of God in a personal way. Here, children, youth, and believers grow together in faith as the Scriptures come alive through teaching, stories, and fellowship.'
   const displaySubtitle = heroSubtitle || subtitle || 'Empowering the next generation to walk in faith, truth, and the power of God.'
+  const resolvedBannerUrl = getMediaUrl(heroBannerImage, heroBannerFallback || '/sunday_school_hero.png')
+  const resolvedBannerAlt = getMediaAlt(heroBannerImage, heroBannerAlt || 'Sunday School Ministries - Ankur Narula Ministries')
+
   return (
     <section className="relative pt-20 pb-8 sm:pt-28 sm:pb-12 md:pt-32 md:pb-14 bg-transparent" data-node-id="289:3761">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,17 +80,27 @@ export const SundaySchoolHeroSection: React.FC<SundaySchoolHeroSectionProps> = (
           </RevealOnScroll>
         </div>
 
-        {/* Featured Large Hero Video / Photo Container */}
+        {/* Featured Large Hero Banner Container (1140x620) */}
         <RevealOnScroll direction="up" distance={28} duration={0.8} delay={0.15} className="mt-6 sm:mt-10 md:mt-12 max-w-[1140px] mx-auto">
-          <div className="relative w-full aspect-[16/9] sm:aspect-[1140/583] rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 group">
-            <video
-              src={heroVideoUrl || '/figma-assets/schedule_banner.mp4'}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
-            />
+          <div className="relative w-full aspect-[1140/620] rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 group">
+            {heroVideoUrl && !heroBannerImage && heroBannerFallback === null ? (
+              <video
+                src={heroVideoUrl}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover object-center"
+              />
+            ) : (
+              <Image
+                src={resolvedBannerUrl}
+                alt={resolvedBannerAlt}
+                fill
+                className="object-cover object-center"
+                priority
+              />
+            )}
           </div>
 
           {/* Subtitle Below Hero */}
@@ -95,4 +116,5 @@ export const SundaySchoolHeroSection: React.FC<SundaySchoolHeroSectionProps> = (
     </section>
   )
 }
+
 

@@ -232,7 +232,7 @@ export const ChurchBranchesPageGlobal: GlobalConfig = {
               name: 'heroBannerFallback',
               type: 'text',
               label: 'Fallback Banner Path',
-              defaultValue: '/figma-assets/4aed35d9c54e59fca1c3d6581cbb0e996ec31f05.png',
+              defaultValue: '/church_branches_hero.png',
             },
             {
               name: 'heroBannerAlt',

@@ -22,46 +22,51 @@ export interface BibleCollegeScenesSectionProps {
 const DEFAULT_ROW1_PHOTOS: BibleCollegeSceneItem[] = [
   {
     id: 'bc-1',
-    src: '/figma-assets/94a1faeb119e4d3406e3e61f9268b121e7b5496f.png',
-    alt: 'Bible College Lecture Hall and Smart Classroom',
+    src: '/scenes_of_bible_college/image_1.png',
+    alt: 'Bible College Scenic View 1',
   },
   {
     id: 'bc-2',
-    src: '/figma-assets/38c0e2d311bde0d312937a97c60e92a2e2d34116.png',
-    alt: 'Executive Study and Digital Workstation Room',
+    src: '/scenes_of_bible_college/image_2.png',
+    alt: 'Bible College Scenic View 2',
   },
   {
     id: 'bc-3',
-    src: '/figma-assets/55fa90036842a75181669f3a6aec9e0738913aee.png',
-    alt: 'Theological Library and Archives',
+    src: '/scenes_of_bible_college/image_3.png',
+    alt: 'Bible College Scenic View 3',
   },
   {
     id: 'bc-4',
-    src: '/figma-assets/6b099d6a283f967b4bf3ff1f51411f14a0fee0ac.png',
-    alt: 'Academic Campus and Facilities',
+    src: '/scenes_of_bible_college/image_4.png',
+    alt: 'Bible College Scenic View 4',
+  },
+  {
+    id: 'bc-5',
+    src: '/scenes_of_bible_college/image_5.png',
+    alt: 'Bible College Scenic View 5',
   },
 ]
 
 const DEFAULT_ROW2_PHOTOS: BibleCollegeSceneItem[] = [
   {
-    id: 'bc-5',
-    src: '/figma-assets/9969ab6a5c61f58502b9d0ffdb0cac71eff778d2.png',
-    alt: 'Computer Lab and Study Stations',
-  },
-  {
     id: 'bc-6',
-    src: '/figma-assets/dcd3dfff5990d32ed5316ae442144e3f269cdb3e.png',
-    alt: 'Student Discussion and Seminar Hall',
+    src: '/scenes_of_bible_college/image_6.png',
+    alt: 'Bible College Scenic View 6',
   },
   {
     id: 'bc-7',
-    src: '/figma-assets/36eda1c5a6d082acb6e73e8881c8595815a11a60.png',
-    alt: 'Campus Entrance Gate',
+    src: '/scenes_of_bible_college/image_7.png',
+    alt: 'Bible College Scenic View 7',
   },
   {
     id: 'bc-8',
-    src: '/figma-assets/74e8182af8627fad3ae428aad2b17d4eca519897.png',
-    alt: 'Chapel and Worship Center',
+    src: '/scenes_of_bible_college/image_8.png',
+    alt: 'Bible College Scenic View 8',
+  },
+  {
+    id: 'bc-9',
+    src: '/scenes_of_bible_college/image_9.png',
+    alt: 'Bible College Scenic View 9',
   },
 ]
 

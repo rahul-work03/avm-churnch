@@ -13,7 +13,7 @@ export const SophiaInstitutePage: React.FC<SophiaInstitutePageProps> = ({ data }
   return (
     <main className="min-h-screen bg-white text-[#0b0c1c] antialiased selection:bg-[#efbf04]/30 selection:text-[#0b0c1c]">
       {/* 1. Hero / Overview */}
-      <div className="bg-[#ffffe9] relative w-full overflow-hidden">
+      <div className="bg-white relative w-full overflow-hidden">
         <SophiaInstituteHeroSection
           headerTitle={data?.heroHeaderTitle}
           description={data?.heroDescription}

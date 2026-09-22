@@ -16,7 +16,7 @@ export interface HeadChurchSectionProps {
 export const HeadChurchSection: React.FC<HeadChurchSectionProps> = ({
   headerTitle = 'Our Head Church Jalandhar',
   image,
-  imageFallback = '/figma-assets/6b099d6a283f967b4bf3ff1f51411f14a0fee0ac.png',
+  imageFallback = '/head_church.png',
   alt = 'Head Church Jalandhar - Ankur Narula Ministries',
   narrative = 'Ankur Narula Ministries (The Church of Signs and Wonders) is the biggest and fastest growing church ministry in Punjab, India. Apostle Ankur Yoseph Narula is the Senior Pastor and Overseer in The Church of Signs and Wonders. The Church has become a channel of Salvation for India. Every Thursday and Sunday, our live services are broadcasted to millions around the globe through Anugrah TV, and the church is always filled more than capacity with overflows of people sitting outside the church on the roads and the empty plots. The church has become the biggest congregation of more than 300,000 people attending weekly services in The Church of Signs and Wonders.',
 }) => {
@@ -41,12 +41,13 @@ export const HeadChurchSection: React.FC<HeadChurchSectionProps> = ({
       <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Large Featured Head Church 3D Visual */}
         <RevealOnScroll direction="up" distance={24} duration={0.8} delay={0.1}>
-          <div className="relative w-full aspect-[1140/587] rounded-[14px] sm:rounded-[18px] md:rounded-[20px] overflow-hidden shadow-2xl border border-[#d4af37]/30 bg-slate-950 group">
+          <div className="relative w-full aspect-[16/9] rounded-[14px] sm:rounded-[18px] md:rounded-[20px] overflow-hidden shadow-2xl border border-[#d4af37]/30 bg-slate-950 group">
             <Image
               src={resolvedImg}
               alt={resolvedAlt}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-103"
+              priority
+              className="object-cover object-center transition-transform duration-700 group-hover:scale-103"
             />
           </div>
         </RevealOnScroll>

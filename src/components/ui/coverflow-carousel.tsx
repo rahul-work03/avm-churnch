@@ -340,13 +340,15 @@ export function CoverflowCarousel({
                   draggable={false}
                   className="h-full w-full select-none object-cover object-top"
                 />
-                {slide.title && (
+                {(slide.title || slide.subtitle) && (
                   <>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
                     <div className="absolute bottom-0 inset-x-0 p-3 sm:p-4 text-white pointer-events-none">
-                      <p className="font-poppins font-semibold text-xs sm:text-sm text-[#efbf04] leading-tight">
-                        {slide.title}
-                      </p>
+                      {slide.title && (
+                        <p className="font-poppins font-semibold text-xs sm:text-sm text-[#efbf04] leading-tight">
+                          {slide.title}
+                        </p>
+                      )}
                       {slide.subtitle && (
                         <p className="font-poppins text-[11px] sm:text-xs text-slate-200 mt-0.5">
                           {slide.subtitle}

@@ -16,7 +16,7 @@ export interface WorshipTeamSectionProps {
 export const WorshipTeamSection: React.FC<WorshipTeamSectionProps> = ({
   headerTitle = 'Our Worship Team',
   image,
-  imageFallback = '/figma-assets/74e8182af8627fad3ae428aad2b17d4eca519897.png',
+  imageFallback = '/choir_image.png',
   alt = 'ANM Worship Team Leading Spirit-Filled Praise',
   narrative = 'Our Worship Team leads the church in powerful and spirit-filled praise and worship. With dedication and passion, they help create an atmosphere where everyone can encounter God, express their faith, and grow deeper in their relationship with Christ.',
 }) => {
@@ -41,12 +41,13 @@ export const WorshipTeamSection: React.FC<WorshipTeamSectionProps> = ({
       <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Large Featured Worship Team Stage Visual */}
         <RevealOnScroll direction="up" distance={24} duration={0.8} delay={0.1}>
-          <div className="relative w-full aspect-[1140/534] rounded-[14px] sm:rounded-[18px] md:rounded-[20px] overflow-hidden shadow-2xl border border-[#d4af37]/30 bg-slate-950 group">
+          <div className="relative w-full aspect-[16/9] rounded-[14px] sm:rounded-[18px] md:rounded-[20px] overflow-hidden shadow-2xl border border-[#d4af37]/30 bg-slate-950 group">
             <Image
               src={resolvedImg}
               alt={resolvedAlt}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-103"
+              priority
+              className="object-cover object-center transition-transform duration-700 group-hover:scale-103"
             />
           </div>
         </RevealOnScroll>

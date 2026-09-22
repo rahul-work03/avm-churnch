@@ -901,6 +901,10 @@ export interface ZoomRegistration {
 export interface Product {
   id: number;
   title: string;
+  /**
+   * Direct link to external e-commerce store (e.g. Amazon, Flipkart, or online shop) that opens in a new tab.
+   */
+  productUrl?: string | null;
   category: 'Book' | 'Hymnal' | 'Teaching' | 'Merchandise' | 'Other';
   image?: (number | null) | Media;
   imageFallback?: string | null;
@@ -1499,6 +1503,7 @@ export interface ZoomRegistrationsSelect<T extends boolean = true> {
  */
 export interface ProductsSelect<T extends boolean = true> {
   title?: T;
+  productUrl?: T;
   category?: T;
   image?: T;
   imageFallback?: T;
@@ -2255,6 +2260,7 @@ export interface PrayerMountainPage {
   timeCardDescription?: string | null;
   locationCardTitle?: string | null;
   locationCardDescription?: string | null;
+  locationUrl?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2377,6 +2383,9 @@ export interface SundaySchoolPage {
   id: number;
   heroHeaderTitle?: string | null;
   heroDescription?: string | null;
+  heroBannerImage?: (number | null) | Media;
+  heroBannerFallback?: string | null;
+  heroBannerAlt?: string | null;
   heroVideoUrl?: string | null;
   heroSubtitle?: string | null;
   scenesHeaderTitle?: string | null;
@@ -2552,8 +2561,6 @@ export interface TestimonialsPage {
   ctaQuote?: string | null;
   ctaButton1Label?: string | null;
   ctaButton1Url?: string | null;
-  ctaButton2Label?: string | null;
-  ctaButton2Url?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -3039,6 +3046,7 @@ export interface PrayerMountainPageSelect<T extends boolean = true> {
   timeCardDescription?: T;
   locationCardTitle?: T;
   locationCardDescription?: T;
+  locationUrl?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -3161,6 +3169,9 @@ export interface SophiaInstitutePageSelect<T extends boolean = true> {
 export interface SundaySchoolPageSelect<T extends boolean = true> {
   heroHeaderTitle?: T;
   heroDescription?: T;
+  heroBannerImage?: T;
+  heroBannerFallback?: T;
+  heroBannerAlt?: T;
   heroVideoUrl?: T;
   heroSubtitle?: T;
   scenesHeaderTitle?: T;
@@ -3331,8 +3342,6 @@ export interface TestimonialsPageSelect<T extends boolean = true> {
   ctaQuote?: T;
   ctaButton1Label?: T;
   ctaButton1Url?: T;
-  ctaButton2Label?: T;
-  ctaButton2Url?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

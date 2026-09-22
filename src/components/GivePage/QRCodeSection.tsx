@@ -22,21 +22,18 @@ interface QRCodeSectionProps {
 export const QRCodeSection: React.FC<QRCodeSectionProps> = ({
   qrHeaderTitle = 'Scan QR Code For Tithes & Offerings',
   iciciQrImage,
-  iciciQrFallback = '/figma-assets/9ce6f198b6a68da7d3221e00ece757f36ade008a.png',
+  iciciQrFallback = '/give/icici_qr_card.png',
   hdfcQrImage,
-  hdfcQrFallback = '/figma-assets/c4a784737f0d99b16c4bca70fd3a0761ddffbdd4.png',
-  axisLogo,
-  axisLogoFallback = '/axis_bank_logo.png',
+  hdfcQrFallback = '/give/hdfc_qr_card.png',
   axisQrImage,
-  axisQrFallback = '/figma-assets/b0a41ad9e06351157c10e8cc25bcdb9d0fb1dc72.png',
+  axisQrFallback = '/give/axis_qr_card.png',
   gpayQrImage,
-  gpayQrFallback = '/figma-assets/02e16c4c34b9864ad41d3e1791f2d600620845e2.png',
+  gpayQrFallback = '/give/gpay_qr_card.png',
 }) => {
-  const iciciUrl = getMediaUrl(iciciQrImage, iciciQrFallback || '/figma-assets/9ce6f198b6a68da7d3221e00ece757f36ade008a.png')
-  const hdfcUrl = getMediaUrl(hdfcQrImage, hdfcQrFallback || '/figma-assets/c4a784737f0d99b16c4bca70fd3a0761ddffbdd4.png')
-  const axisLogoUrl = getMediaUrl(axisLogo, axisLogoFallback || '/axis_bank_logo.png')
-  const axisQrUrl = getMediaUrl(axisQrImage, axisQrFallback || '/figma-assets/b0a41ad9e06351157c10e8cc25bcdb9d0fb1dc72.png')
-  const gpayUrl = getMediaUrl(gpayQrImage, gpayQrFallback || '/figma-assets/02e16c4c34b9864ad41d3e1791f2d600620845e2.png')
+  const iciciUrl = getMediaUrl(iciciQrImage, iciciQrFallback || '/give/icici_qr_card.png')
+  const hdfcUrl = getMediaUrl(hdfcQrImage, hdfcQrFallback || '/give/hdfc_qr_card.png')
+  const axisQrUrl = getMediaUrl(axisQrImage, axisQrFallback || '/give/axis_qr_card.png')
+  const gpayUrl = getMediaUrl(gpayQrImage, gpayQrFallback || '/give/gpay_qr_card.png')
 
   return (
     <section className="relative py-10 sm:py-14 md:py-20 overflow-hidden" data-node-id="231:946">
@@ -142,31 +139,18 @@ export const QRCodeSection: React.FC<QRCodeSectionProps> = ({
 
               {/* Inner Phone Screen Content */}
               <div className="w-full flex-1 bg-white rounded-[18px] sm:rounded-[28px] md:rounded-[34px] p-1.5 sm:p-2.5 md:p-3 flex flex-col justify-between gap-2 sm:gap-3 shadow-xs border border-slate-100 overflow-hidden min-h-0">
-                {/* Card 1: Axis Bank Card (Nodes 231:964 & 231:965) */}
+                {/* Card 1: Axis Bank QR (Node 231:964) */}
                 <div
-                  className="relative w-full flex-1 rounded-md sm:rounded-lg overflow-hidden bg-white shadow-xs min-h-0 flex flex-col items-center justify-center gap-0.5 sm:gap-1.5 p-1 sm:p-1.5"
+                  className="relative w-full flex-1 rounded-md sm:rounded-lg overflow-hidden bg-white shadow-xs min-h-0"
                   data-node-id="231:964"
                 >
-                  {/* Axis Bank Logo Header */}
-                  <div className="relative w-20 sm:w-28 md:w-32 h-5 sm:h-7 md:h-8 flex-shrink-0">
-                    <Image
-                      src={axisLogoUrl}
-                      alt="Axis Bank Logo"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-
-                  {/* Axis Bank QR Code */}
-                  <div className="relative w-full flex-1 min-h-0">
-                    <Image
-                      src={axisQrUrl}
-                      alt="Axis Bank QR Code for Tithes and Offerings"
-                      fill
-                      className="object-contain"
-                      priority
-                    />
-                  </div>
+                  <Image
+                    src={axisQrUrl}
+                    alt="Axis Bank QR Code for Tithes and Offerings"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
                 </div>
 
                 {/* Card 2: Google Pay QR (Node 231:966) */}

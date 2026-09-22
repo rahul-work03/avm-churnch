@@ -1,6 +1,7 @@
 export interface ProductItem {
   id: string | number
   title: string
+  productUrl?: string | null
   category?: string | null
   image?: any
   imageFallback?: string | null

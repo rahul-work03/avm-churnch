@@ -71,12 +71,12 @@ export const SophiaInstituteHeroSection: React.FC<SophiaInstituteHeroSectionProp
 
         {/* Featured Large Hero Photo / Sophia Institute Facility */}
         <RevealOnScroll direction="up" distance={28} duration={0.8} delay={0.15} className="mt-6 sm:mt-10 md:mt-12 max-w-[1140px] mx-auto">
-          <div className="relative w-full aspect-[16/9] sm:aspect-[1140/583] rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 group">
+          <div className="relative w-full aspect-[1140/583] rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 group">
             <Image
               src={resolvedBannerUrl}
               alt={resolvedBannerAlt}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-cover object-center"
               priority
             />
           </div>

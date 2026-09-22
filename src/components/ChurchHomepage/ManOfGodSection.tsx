@@ -25,34 +25,24 @@ export interface ManOfGodSectionProps {
 
 const DEFAULT_SLIDES: CoverflowSlide[] = [
   {
-    src: '/man_of_god/image_1.jpeg',
+    src: '/man_of_god/image_1.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula Ministering at Pulpit',
-    title: 'Apostle Dr. Ankur Yoseph Narula',
-    subtitle: 'Senior Pastor & Overseer',
   },
   {
-    src: '/man_of_god/image_2.jpeg',
+    src: '/man_of_god/image_2.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula at Main Stage',
-    title: 'Word of Faith Proclamation',
-    subtitle: 'Sunday Live Service',
   },
   {
-    src: '/man_of_god/image_3.jpeg',
+    src: '/man_of_god/image_3.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula',
-    title: 'Prophetic Leadership',
-    subtitle: 'The Church of Signs and Wonders',
   },
   {
-    src: '/man_of_god/image_4.jpeg',
+    src: '/man_of_god/image_4.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula in Ministry Attire',
-    title: 'Global Revival Movement',
-    subtitle: 'Ankur Narula Ministries',
   },
   {
-    src: '/man_of_god/image_5.jpeg',
+    src: '/man_of_god/image_5.png',
     alt: 'Prophetic Impartation & Deliverance Ministry',
-    title: 'Healing & Deliverance Ministry',
-    subtitle: 'Signs, Wonders & Miracles',
   },
 ]
 
@@ -72,8 +62,8 @@ export const ManOfGodSection: React.FC<ManOfGodSectionProps> = ({
       ? slides.map((s) => ({
           src: getMediaUrl(s.image, s.imageFallback || '/man_of_god/image_1.png'),
           alt: s.alt || s.title || leaderName,
-          title: s.title || '',
-          subtitle: s.subtitle || '',
+          title: s.title || undefined,
+          subtitle: s.subtitle || undefined,
         }))
       : DEFAULT_SLIDES
 

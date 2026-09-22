@@ -20,6 +20,7 @@ export interface CardCarouselProps {
   autoplayDelay?: number
   showPagination?: boolean
   showNavigation?: boolean
+  pitchFactor?: number
   className?: string
 }
 
@@ -28,6 +29,7 @@ export const CardCarousel: React.FC<CardCarouselProps> = ({
   autoplayDelay = 3000,
   showPagination = true,
   showNavigation = true,
+  pitchFactor = 1.08,
   className,
 }) => {
   const count = images.length
@@ -61,8 +63,8 @@ export const CardCarousel: React.FC<CardCarouselProps> = ({
     const cardW = cardWidthRef.current
     if (!cardW || count === 0) return
 
-    // Card pitch spacing
-    const pitch = cardW * 0.78
+    // Card pitch spacing with clean clearance between cards
+    const pitch = cardW * pitchFactor
     const currentPos = posRef.current
 
     cardRefs.current.forEach((card, index) => {
@@ -85,7 +87,7 @@ export const CardCarousel: React.FC<CardCarouselProps> = ({
       card.style.opacity = String(opacity)
       card.style.zIndex = String(100 - Math.round(absOffset * 10))
     })
-  }, [count])
+  }, [count, pitchFactor])
 
   // Smooth Settle Animation
   const settle = useCallback(
@@ -189,7 +191,7 @@ export const CardCarousel: React.FC<CardCarouselProps> = ({
     if (!drag || drag.pointerId !== e.pointerId) return
 
     const cardW = cardWidthRef.current || 280
-    const pitch = cardW * 0.78
+    const pitch = cardW * pitchFactor
     const now = performance.now()
     const deltaX = e.clientX - drag.startX
     const dt = Math.max(1, now - drag.lastTime)
@@ -216,7 +218,7 @@ export const CardCarousel: React.FC<CardCarouselProps> = ({
 
   return (
     <div
-      className={cn("relative w-full max-w-[1240px] mx-auto px-2 sm:px-8 select-none", className)}
+      className={cn("relative w-full max-w-[1360px] mx-auto px-2 sm:px-6 select-none", className)}
       onMouseEnter={() => {
         isHoveredRef.current = true
       }}
@@ -231,7 +233,7 @@ export const CardCarousel: React.FC<CardCarouselProps> = ({
             <button
               type="button"
               onClick={() => nudge(-1)}
-              className="absolute left-1 sm:left-3 lg:left-5 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 backdrop-blur-md text-[#003471] shadow-xl border border-slate-200/80 flex items-center justify-center transition-all duration-200 hover:bg-[#efbf04] hover:text-[#0b0c1c] hover:scale-105 active:scale-95 cursor-pointer"
+              className="absolute left-1 sm:left-2 lg:left-3 top-1/2 -translate-y-1/2 z-50 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 backdrop-blur-md text-[#003471] shadow-xl border border-slate-200/80 flex items-center justify-center transition-all duration-200 hover:bg-[#efbf04] hover:text-[#0b0c1c] hover:scale-105 active:scale-95 cursor-pointer"
               aria-label="Previous leadership card"
             >
               <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -239,7 +241,7 @@ export const CardCarousel: React.FC<CardCarouselProps> = ({
             <button
               type="button"
               onClick={() => nudge(1)}
-              className="absolute right-1 sm:right-3 lg:right-5 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 backdrop-blur-md text-[#003471] shadow-xl border border-slate-200/80 flex items-center justify-center transition-all duration-200 hover:bg-[#efbf04] hover:text-[#0b0c1c] hover:scale-105 active:scale-95 cursor-pointer"
+              className="absolute right-1 sm:right-2 lg:right-3 top-1/2 -translate-y-1/2 z-50 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 backdrop-blur-md text-[#003471] shadow-xl border border-slate-200/80 flex items-center justify-center transition-all duration-200 hover:bg-[#efbf04] hover:text-[#0b0c1c] hover:scale-105 active:scale-95 cursor-pointer"
               aria-label="Next leadership card"
             >
               <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -288,13 +290,15 @@ export const CardCarousel: React.FC<CardCarouselProps> = ({
                   className="object-cover object-top pointer-events-none transition-transform duration-700 group-hover:scale-105"
                   priority={idx < 3}
                 />
-                {item.title && (
+                {(item.title || item.subtitle) && (
                   <>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
                     <div className="absolute bottom-0 inset-x-0 p-3.5 sm:p-5 text-white pointer-events-none">
-                      <p className="font-poppins font-semibold text-xs sm:text-sm md:text-base text-[#efbf04] leading-snug">
-                        {item.title}
-                      </p>
+                      {item.title && (
+                        <p className="font-poppins font-semibold text-xs sm:text-sm md:text-base text-[#efbf04] leading-snug">
+                          {item.title}
+                        </p>
+                      )}
                       {item.subtitle && (
                         <p className="font-poppins text-[11px] sm:text-xs md:text-sm text-slate-200 mt-0.5">
                           {item.subtitle}

@@ -22,46 +22,56 @@ export interface ScenesSectionProps {
 const DEFAULT_ROW1_PHOTOS: ScenePhotoItem[] = [
   {
     id: 'sc-1',
-    src: '/figma-assets/36eda1c5a6d082acb6e73e8881c8595815a11a60.png',
-    alt: 'Prayer Mountain Pathway and Gardens',
+    src: '/scenes_of_prayer_mountain/image_1.png',
+    alt: 'Prayer Mountain Scenic View 1',
   },
   {
     id: 'sc-2',
-    src: '/figma-assets/55fa90036842a75181669f3a6aec9e0738913aee.png',
-    alt: 'Prayer Mountain Scenic Bridge and Water Feature',
+    src: '/scenes_of_prayer_mountain/image_2.png',
+    alt: 'Prayer Mountain Scenic View 2',
   },
   {
     id: 'sc-3',
-    src: '/figma-assets/94a1faeb119e4d3406e3e61f9268b121e7b5496f.png',
-    alt: 'Paved Walkway and Palm Trees',
+    src: '/scenes_of_prayer_mountain/image_3.png',
+    alt: 'Prayer Mountain Scenic View 3',
   },
   {
     id: 'sc-4',
-    src: '/figma-assets/6b099d6a283f967b4bf3ff1f51411f14a0fee0ac.png',
-    alt: 'Sanctuary Lawn and Courtyard',
+    src: '/scenes_of_prayer_mountain/image_4.png',
+    alt: 'Prayer Mountain Scenic View 4',
+  },
+  {
+    id: 'sc-5',
+    src: '/scenes_of_prayer_mountain/image_5.png',
+    alt: 'Prayer Mountain Scenic View 5',
   },
 ]
 
 const DEFAULT_ROW2_PHOTOS: ScenePhotoItem[] = [
   {
-    id: 'sc-5',
-    src: '/figma-assets/38c0e2d311bde0d312937a97c60e92a2e2d34116.png',
-    alt: 'Prayer Pavilion and Floral Archway',
-  },
-  {
     id: 'sc-6',
-    src: '/figma-assets/9969ab6a5c61f58502b9d0ffdb0cac71eff778d2.png',
-    alt: 'Greenery and Meditation Walk',
+    src: '/scenes_of_prayer_mountain/image_6.png',
+    alt: 'Prayer Mountain Scenic View 6',
   },
   {
     id: 'sc-7',
-    src: '/figma-assets/74e8182af8627fad3ae428aad2b17d4eca519897.png',
-    alt: 'Evening Light on Prayer Altar',
+    src: '/scenes_of_prayer_mountain/image_7.png',
+    alt: 'Prayer Mountain Scenic View 7',
   },
   {
     id: 'sc-8',
-    src: '/figma-assets/dcd3dfff5990d32ed5316ae442144e3f269cdb3e.png',
-    alt: 'Retreat Complex Grounds',
+    src: '/scenes_of_prayer_mountain/image_8.png',
+    alt: 'Prayer Mountain Scenic View 8',
+  },
+  {
+    id: 'sc-9',
+    src: '/scenes_of_prayer_mountain/image_9.png',
+    alt: 'Prayer Mountain Scenic View 9',
+  },
+  {
+    id: 'sc-10',
+    src: '/scenes_of_prayer_mountain/image_10.png',
+    alt: 'Prayer Mountain Scenic View 10',
   },
 ]
 

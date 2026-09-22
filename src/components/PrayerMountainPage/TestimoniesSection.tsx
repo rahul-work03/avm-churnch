@@ -85,21 +85,21 @@ export const TestimoniesSection: React.FC<TestimoniesSectionProps> = ({
 
             return (
               <StaggerItem key={item.id || item.slug || index} className="h-full">
-                <div className="h-full bg-[#122f4a] rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-xl flex flex-col sm:flex-row items-center sm:items-stretch group border border-white/5 transition-transform duration-300 hover:shadow-2xl">
+                <div className="h-full bg-[#122f4a] rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-xl flex flex-col sm:flex-row items-stretch group border border-white/5 transition-transform duration-300 hover:shadow-2xl">
                   {/* Left Photo */}
-                  <div className="relative w-full sm:w-[270px] h-[220px] sm:h-[259px] bg-slate-900 shrink-0 overflow-hidden">
+                  <div className="relative w-full sm:w-[42%] min-h-[220px] sm:min-h-full self-stretch shrink-0 bg-slate-900 overflow-hidden">
                     <Image
                       src={photoUrl}
                       alt={item.person}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover object-center sm:object-top transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
 
                   {/* Right Content */}
-                  <div className="p-6 sm:p-7 flex flex-col justify-between flex-1 text-white text-left">
+                  <div className="p-6 sm:p-7 md:p-8 flex flex-col justify-between flex-1 text-white text-left">
                     <div>
-                      <p className="font-poppins text-white text-sm sm:text-[16px] leading-relaxed mb-6">
+                      <p className="font-poppins text-white text-sm sm:text-[15px] md:text-[16px] leading-relaxed mb-6">
                         {item.summary}
                       </p>
                     </div>

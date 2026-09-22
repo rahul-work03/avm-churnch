@@ -18,7 +18,7 @@ export const PrayerMountainHeroSection: React.FC<PrayerMountainHeroSectionProps>
   headerTitle = 'PRAYER MOUNTAIN',
   description = "The Prayer Mountain is a sacred place dedicated to prayer, meditation, and spiritual renewal. It is where believers gather to seek God's presence, intercede for their needs, and grow in faith. Here, individuals can experience deep encounters with God and leave spiritually rejuvenated.",
   bannerImage,
-  bannerImageFallback = '/figma-assets/36eda1c5a6d082acb6e73e8881c8595815a11a60.png',
+  bannerImageFallback = '/prayer_mountain_hero.png',
   bannerAlt = 'Prayer Mountain - Ankur Narula Ministries',
   subtitle = 'A consecrated place to seek God—daily at 8:00 PM we gather in expectation of His presence.',
 }) => {
@@ -71,12 +71,12 @@ export const PrayerMountainHeroSection: React.FC<PrayerMountainHeroSectionProps>
 
         {/* Featured Large Hero Photo / Mountain Panorama */}
         <RevealOnScroll direction="up" distance={28} duration={0.8} delay={0.15} className="mt-6 sm:mt-10 md:mt-12 max-w-[1140px] mx-auto">
-          <div className="relative w-full aspect-[16/9] sm:aspect-[1140/583] rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 group">
+          <div className="relative w-full aspect-[1140/583] rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 group">
             <Image
               src={resolvedBannerUrl}
               alt={resolvedBannerAlt}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-cover object-center"
               priority
             />
           </div>

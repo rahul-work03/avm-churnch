@@ -21,9 +21,6 @@ export const MinistriesHeroSection: React.FC<MinistriesHeroSectionProps> = ({
   heroVideo,
   heroVideoFallback = '/ministries_hero_video.mp4',
   bannerVideoUrl,
-  bannerImage,
-  bannerImageFallback = '/figma-assets/1293a243cd5f4ddaa9c70378ddffe38c61e7ffb6.png',
-  bannerAlt = 'Our Ministries - Ankur Narula Ministries',
 }) => {
   const resolvedVideoUrl =
     bannerVideoUrl ||
@@ -34,7 +31,7 @@ export const MinistriesHeroSection: React.FC<MinistriesHeroSectionProps> = ({
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <RevealOnScroll direction="up" distance={24} duration={0.8}>
           {/* Large Golden-Bordered Hero Banner Video Container */}
-          <div className="relative w-full max-w-[1140px] mx-auto aspect-[16/9] sm:aspect-[1140/580] min-h-[220px] sm:min-h-[340px] md:min-h-[460px] lg:min-h-[560px] rounded-[16px] sm:rounded-[20px] overflow-hidden border border-[#d4af37]/70 shadow-2xl bg-slate-950 group">
+          <div className="relative w-full max-w-[1140px] mx-auto aspect-[1140/580] rounded-[16px] sm:rounded-[20px] overflow-hidden border border-[#d4af37]/70 shadow-2xl bg-slate-950 group">
             {/* Hero Background Infinite Autoplay Video */}
             <video
               src={resolvedVideoUrl}
@@ -42,7 +39,7 @@ export const MinistriesHeroSection: React.FC<MinistriesHeroSectionProps> = ({
               muted
               loop
               playsInline
-              className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
+              className="w-full h-full object-cover object-center"
             />
 
             {/* Gradient Overlays for readable title badge */}

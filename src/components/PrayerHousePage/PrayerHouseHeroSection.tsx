@@ -18,7 +18,7 @@ export const PrayerHouseHeroSection: React.FC<PrayerHouseHeroSectionProps> = ({
   headerTitle = 'PRAYER HOUSE',
   description = 'Welcome to a dwelling of divine presence, where every soul finds rest and every prayer rises to heaven. This is not just a place, but a powerful encounter with the living God, where broken hearts are healed and weary spirits are strengthened. As you seek Him here, you will discover His love, His peace, and His transforming power working in your life. Come with expectation, and leave with a testimony of His goodness.',
   bannerImage,
-  bannerImageFallback = '/figma-assets/55fa90036842a75181669f3a6aec9e0738913aee.png',
+  bannerImageFallback = '/prayer_house_hero.png',
   bannerAlt = 'Prayer House - Ankur Narula Ministries',
   subtitle = 'Encounter God. Experience Healing. Walk in His Presence.',
 }) => {
@@ -71,12 +71,12 @@ export const PrayerHouseHeroSection: React.FC<PrayerHouseHeroSectionProps> = ({
 
         {/* Featured Large Hero Photo / Prayer House Facility */}
         <RevealOnScroll direction="up" distance={28} duration={0.8} delay={0.15} className="mt-6 sm:mt-10 md:mt-12 max-w-[1140px] mx-auto">
-          <div className="relative w-full aspect-[16/9] sm:aspect-[1140/583] rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 group">
+          <div className="relative w-full aspect-[1140/583] rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 group">
             <Image
               src={resolvedBannerUrl}
               alt={resolvedBannerAlt}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-cover object-center"
               priority
             />
           </div>

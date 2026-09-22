@@ -1,9 +1,9 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { X, Sparkles, Quote, ArrowRight, Share2, Check, ExternalLink } from 'lucide-react'
+import { Sparkles, ArrowRight } from 'lucide-react'
 import { Testimony, testimonialsData } from '@/data/testimonialsData'
 import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/ui/reveal'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
@@ -15,8 +15,6 @@ export interface TestimonialsPageGlobalData {
   ctaQuote?: string | null
   ctaButton1Label?: string | null
   ctaButton1Url?: string | null
-  ctaButton2Label?: string | null
-  ctaButton2Url?: string | null
 }
 
 interface TestimonialsPageProps {
@@ -30,8 +28,6 @@ export const TestimonialsPage: React.FC<TestimonialsPageProps> = ({
 }) => {
   const activeTestimonials =
     testimonials && testimonials.length > 0 ? testimonials : testimonialsData
-  const [selectedTestimony, setSelectedTestimony] = useState<Testimony | null>(null)
-  const [copied, setCopied] = useState(false)
 
   const headerTitle = pageData?.headerTitle || 'Wonderful Testimonies'
   const headerSubtitle =
@@ -43,18 +39,6 @@ export const TestimonialsPage: React.FC<TestimonialsPageProps> = ({
     '“They overcame him by the blood of the Lamb and by the word of their testimony.” — Revelation 12:11'
   const ctaButton1Label = pageData?.ctaButton1Label || 'Submit Prayer Request'
   const ctaButton1Url = pageData?.ctaButton1Url || '/prayer-request'
-  const ctaButton2Label = pageData?.ctaButton2Label || 'Register for Zoom Lay Hand'
-  const ctaButton2Url = pageData?.ctaButton2Url || '/zoom-lay-hand'
-
-  const handleShare = (testimony: Testimony) => {
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(
-        `${testimony.title} - Read this powerful testimony from The Church of Signs and Wonders: ${typeof window !== 'undefined' ? `${window.location.origin}/testimonials/${testimony.slug}` : ''}`
-      )
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    }
-  }
 
   return (
     <main className="min-h-screen bg-[#f8fafc] text-[#344054] antialiased pt-28 pb-16 sm:pt-36 sm:pb-24 select-none">
@@ -114,7 +98,7 @@ export const TestimonialsPage: React.FC<TestimonialsPageProps> = ({
                     </div>
 
                     {/* Read Full Testimony Action */}
-                    <div className="pt-2 flex items-center gap-3">
+                    <div className="pt-2">
                       <Link
                         href={`/testimonials/${item.slug}`}
                         className="w-full sm:w-auto bg-[#efbf04] hover:bg-[#dfaf00] text-[#003471] font-semibold text-[13px] px-5 py-2.5 rounded-[8px] uppercase tracking-wider inline-flex items-center justify-center gap-1.5 transition-all shadow-md hover:shadow-lg cursor-pointer"
@@ -122,14 +106,6 @@ export const TestimonialsPage: React.FC<TestimonialsPageProps> = ({
                         <span>Read Full Testimony</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
-
-                      <button
-                        onClick={() => setSelectedTestimony(item)}
-                        title="Quick Preview"
-                        className="hidden sm:inline-flex p-2.5 rounded-[8px] bg-white/10 hover:bg-white/20 text-white transition cursor-pointer"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -150,125 +126,17 @@ export const TestimonialsPage: React.FC<TestimonialsPageProps> = ({
             <p className="text-sm sm:text-base text-[#64748b] max-w-xl mx-auto">
               {ctaQuote}
             </p>
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="pt-2 flex items-center justify-center">
               <Link
                 href={ctaButton1Url}
                 className="w-full sm:w-auto px-6 py-3 rounded-lg bg-[#003471] hover:bg-[#002552] text-white font-medium text-sm transition text-center shadow"
               >
                 {ctaButton1Label}
               </Link>
-              <Link
-                href={ctaButton2Url}
-                className="w-full sm:w-auto px-6 py-3 rounded-lg border border-[#003471] text-[#003471] hover:bg-[#003471]/5 font-medium text-sm transition text-center"
-              >
-                {ctaButton2Label}
-              </Link>
             </div>
           </div>
         </RevealOnScroll>
       </div>
-
-      {/* Modal Dialog for Quick Preview Story */}
-      {selectedTestimony && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-white rounded-[20px] max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-100 flex flex-col relative">
-            {/* Header with Close */}
-            <div className="sticky top-0 bg-white border-b border-slate-100 p-4 sm:p-5 flex items-center justify-between z-10">
-              <div className="flex items-center gap-2">
-                <span className="px-3 py-1 rounded-full bg-[#efbf04]/20 text-[#003471] text-xs font-bold uppercase tracking-wider">
-                  {selectedTestimony.category || 'Supernatural Healing'}
-                </span>
-                <h3 className="text-base sm:text-lg font-bold text-[#003471] truncate max-w-[300px] sm:max-w-md">
-                  {selectedTestimony.person}
-                </h3>
-              </div>
-              <button
-                onClick={() => setSelectedTestimony(null)}
-                className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition cursor-pointer"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Modal Body */}
-            <div className="p-6 sm:p-8 space-y-6">
-              {/* Poster Image */}
-              <div className="relative w-full h-[240px] sm:h-[320px] rounded-[12px] overflow-hidden bg-slate-900 shadow-md">
-                <Image
-                  src={getMediaUrl(
-                    selectedTestimony.image,
-                    selectedTestimony.imageFallback ||
-                      (typeof selectedTestimony.image === 'string'
-                        ? selectedTestimony.image
-                        : '/figma-assets/88fe21040a6d042f53b945fa5a996447efd6bcfd.png')
-                  )}
-                  alt={selectedTestimony.title || selectedTestimony.person}
-                  fill
-                  className="object-contain bg-slate-950"
-                />
-              </div>
-
-              {/* Title */}
-              <h2 className="text-xl sm:text-2xl font-bold text-[#003471] leading-tight">
-                {selectedTestimony.title}
-              </h2>
-
-              {/* Hindi Highlight */}
-              <div className="p-4 bg-[#f8fafc] border-l-4 border-[#efbf04] rounded-r-lg">
-                <p className="text-sm sm:text-base text-[#344054] font-medium leading-relaxed">
-                  {selectedTestimony.hindiHeadline}
-                </p>
-              </div>
-
-              {/* English Narrative */}
-              <div className="space-y-3">
-                <h4 className="text-sm font-bold uppercase tracking-wider text-slate-400">
-                  Full Miracle
-                </h4>
-                <p className="text-sm sm:text-base text-[#475467] leading-relaxed">
-                  {selectedTestimony.fullStory}
-                </p>
-              </div>
-
-              {/* Scripture Verse */}
-              {selectedTestimony.verse && (
-                <div className="p-4 bg-[#003471]/5 border border-[#003471]/10 rounded-xl flex items-start gap-3">
-                  <Quote className="w-5 h-5 text-[#003471] flex-shrink-0 mt-0.5" />
-                  <p className="text-xs sm:text-sm italic text-[#003471] font-medium">
-                    {selectedTestimony.verse}
-                  </p>
-                </div>
-              )}
-            </div>
-
-            {/* Footer Buttons */}
-            <div className="sticky bottom-0 bg-slate-50 border-t border-slate-100 p-4 sm:p-5 flex items-center justify-between gap-3">
-              <button
-                onClick={() => handleShare(selectedTestimony)}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 text-xs sm:text-sm font-medium text-slate-700 hover:bg-slate-100 transition cursor-pointer"
-              >
-                {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Share2 className="w-4 h-4" />}
-                <span>{copied ? 'Copied!' : 'Share'}</span>
-              </button>
-
-              <div className="flex items-center gap-2">
-                <Link
-                  href={`/testimonials/${selectedTestimony.slug}`}
-                  className="px-4 py-2 rounded-lg bg-[#003471] hover:bg-[#002855] text-white font-medium text-xs sm:text-sm transition cursor-pointer"
-                >
-                  Open Dedicated Page
-                </Link>
-                <button
-                  onClick={() => setSelectedTestimony(null)}
-                  className="px-4 py-2 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold text-xs sm:text-sm transition cursor-pointer"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </main>
   )
 }

@@ -4,33 +4,23 @@ import { adminsOrEditors } from '../../access/adminsOrEditors'
 
 const DEFAULT_MOG_SLIDES = [
   {
-    imageFallback: '/man_of_god/image_1.jpeg',
-    title: 'Apostle Dr. Ankur Yoseph Narula',
-    subtitle: 'Senior Pastor & Overseer',
+    imageFallback: '/man_of_god/image_1.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula Ministering at Pulpit',
   },
   {
-    imageFallback: '/man_of_god/image_2.jpeg',
-    title: 'Word of Faith Proclamation',
-    subtitle: 'Sunday Live Service',
+    imageFallback: '/man_of_god/image_2.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula at Main Stage',
   },
   {
-    imageFallback: '/man_of_god/image_3.jpeg',
-    title: 'Prophetic Leadership',
-    subtitle: 'The Church of Signs and Wonders',
+    imageFallback: '/man_of_god/image_3.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula',
   },
   {
-    imageFallback: '/man_of_god/image_4.jpeg',
-    title: 'Global Revival Movement',
-    subtitle: 'Ankur Narula Ministries',
+    imageFallback: '/man_of_god/image_4.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula in Ministry Attire',
   },
   {
-    imageFallback: '/man_of_god/image_5.jpeg',
-    title: 'Healing & Deliverance Ministry',
-    subtitle: 'Signs, Wonders & Miracles',
+    imageFallback: '/man_of_god/image_5.png',
     alt: 'Prophetic Impartation & Deliverance Ministry',
   },
 ]

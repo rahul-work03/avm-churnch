@@ -191,7 +191,7 @@ export const MinistriesPageGlobal: GlobalConfig = {
               name: 'headChurchFallback',
               type: 'text',
               label: 'Fallback Photo Path',
-              defaultValue: '/figma-assets/6b099d6a283f967b4bf3ff1f51411f14a0fee0ac.png',
+              defaultValue: '/head_church.png',
             },
             {
               name: 'headChurchAlt',
@@ -227,7 +227,7 @@ export const MinistriesPageGlobal: GlobalConfig = {
               name: 'worshipFallback',
               type: 'text',
               label: 'Fallback Photo Path',
-              defaultValue: '/figma-assets/74e8182af8627fad3ae428aad2b17d4eca519897.png',
+              defaultValue: '/choir_image.png',
             },
             {
               name: 'worshipAlt',

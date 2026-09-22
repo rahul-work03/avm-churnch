@@ -22,46 +22,51 @@ export interface PrayerHouseScenesSectionProps {
 const DEFAULT_ROW1_PHOTOS: PrayerHouseSceneItem[] = [
   {
     id: 'ph-1',
-    src: '/figma-assets/55fa90036842a75181669f3a6aec9e0738913aee.png',
-    alt: 'Prayer House Grand Neoclassical Sanctuary',
+    src: '/scenes_of_prayer_house/image_1.png',
+    alt: 'Prayer House Scenic View 1',
   },
   {
     id: 'ph-2',
-    src: '/figma-assets/6b099d6a283f967b4bf3ff1f51411f14a0fee0ac.png',
-    alt: 'Prayer House Lighted Exterior Facade',
+    src: '/scenes_of_prayer_house/image_2.png',
+    alt: 'Prayer House Scenic View 2',
   },
   {
     id: 'ph-3',
-    src: '/figma-assets/94a1faeb119e4d3406e3e61f9268b121e7b5496f.png',
-    alt: 'Paved Tree-Lined Avenues and Grounds',
+    src: '/scenes_of_prayer_house/image_3.png',
+    alt: 'Prayer House Scenic View 3',
   },
   {
     id: 'ph-4',
-    src: '/figma-assets/38c0e2d311bde0d312937a97c60e92a2e2d34116.png',
-    alt: 'Sanctuary Lawns and Open Courtyard',
+    src: '/scenes_of_prayer_house/image_4.png',
+    alt: 'Prayer House Scenic View 4',
+  },
+  {
+    id: 'ph-5',
+    src: '/scenes_of_prayer_house/image_5.png',
+    alt: 'Prayer House Scenic View 5',
   },
 ]
 
 const DEFAULT_ROW2_PHOTOS: PrayerHouseSceneItem[] = [
   {
-    id: 'ph-5',
-    src: '/figma-assets/36eda1c5a6d082acb6e73e8881c8595815a11a60.png',
-    alt: 'Prayer Pavilion and Pathways',
-  },
-  {
     id: 'ph-6',
-    src: '/figma-assets/9969ab6a5c61f58502b9d0ffdb0cac71eff778d2.png',
-    alt: 'Greenery and Meditation Walkway',
+    src: '/scenes_of_prayer_house/image_6.png',
+    alt: 'Prayer House Scenic View 6',
   },
   {
     id: 'ph-7',
-    src: '/figma-assets/74e8182af8627fad3ae428aad2b17d4eca519897.png',
-    alt: 'Evening Illuminated Walkway',
+    src: '/scenes_of_prayer_house/image_7.png',
+    alt: 'Prayer House Scenic View 7',
   },
   {
     id: 'ph-8',
-    src: '/figma-assets/dcd3dfff5990d32ed5316ae442144e3f269cdb3e.png',
-    alt: 'Prayer House Retreat Complex',
+    src: '/scenes_of_prayer_house/image_8.png',
+    alt: 'Prayer House Scenic View 8',
+  },
+  {
+    id: 'ph-9',
+    src: '/scenes_of_prayer_house/image_9.png',
+    alt: 'Prayer House Scenic View 9',
   },
 ]
 

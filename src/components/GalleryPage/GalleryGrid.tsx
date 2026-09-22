@@ -26,14 +26,14 @@ interface GalleryGridProps {
 
 const DEFAULT_PHOTO_ARCH: GalleryPhotoItem = {
   id: 'arch-leaders',
-  imageFallback: '/figma-assets/45bec61b214b67c667153f241277fe878b702ad9.png',
+  imageFallback: '/gallery/arch_leaders.png',
   alt: 'Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula under Floral Arch',
   caption: 'Apostle Dr. Ankur Yoseph Narula & Pastor Sonia Yoseph Narula - Ankur Narula Ministries',
 }
 
 const DEFAULT_PHOTO_PODIUM_HERO: GalleryPhotoItem = {
   id: 'podium-hero',
-  imageFallback: '/figma-assets/4df0fea0316253c732268b8cea549e1e2e66ff56.png',
+  imageFallback: '/gallery/podium_hero.png',
   alt: 'Apostle Dr. Ankur Yoseph Narula Preaching with Signs and Wonders',
   caption: 'Man of God Apostle Dr. Ankur Yoseph Narula Delivering the Living Word of God',
 }
@@ -41,37 +41,37 @@ const DEFAULT_PHOTO_PODIUM_HERO: GalleryPhotoItem = {
 const DEFAULT_TOP_ROW_SIDE_PHOTOS: GalleryPhotoItem[] = [
   {
     id: 'top-1',
-    imageFallback: '/figma-assets/b833aca853efbb1993ea3ceec33bdb2370c72d55.png',
+    imageFallback: '/gallery/top_row_1.png',
     alt: 'Pastor Sonia Yoseph Narula Preaching Grace and Faith',
     caption: 'Pastor Sonia Yoseph Narula Ministering during Live Thursday Service',
   },
   {
     id: 'top-2',
-    imageFallback: '/figma-assets/c8bf30f9b8fba99b96a4a677bce778175f7ced54.png',
+    imageFallback: '/gallery/top_row_2.png',
     alt: 'Pastor Sonia Preaching with Illuminated Cross Backdrop',
     caption: 'Worship Atmosphere with the Glorious Cross in Signs & Wonders Church',
   },
   {
     id: 'top-3',
-    imageFallback: '/figma-assets/486004153a5fb17a63faceadf3329f632f2ca308.png',
+    imageFallback: '/gallery/top_row_3.png',
     alt: 'Pastor Sonia Preaching to Multitudes',
     caption: 'Pastor Sonia Yoseph Narula Ministering with Power and Grace',
   },
   {
     id: 'top-4',
-    imageFallback: '/figma-assets/6fe9bb9c428168edabd3bf3e9d70abf0e844aa67.png',
+    imageFallback: '/gallery/top_row_4.png',
     alt: 'Apostle Dr. Ankur Narula Delivering Prophetic Ministry',
     caption: 'Apostle Dr. Ankur Yoseph Narula Preaching under the Holy Spirit Anointing',
   },
   {
     id: 'top-5',
-    imageFallback: '/figma-assets/a0b9ad1da9274b9feeeec8bf6b846c7b4a65656e.png',
+    imageFallback: '/gallery/top_row_5.png',
     alt: 'Apostle Dr. Ankur Narula Leading Believers in Worship',
     caption: 'Prophetic Proclamation and Deliverance Ministry',
   },
   {
     id: 'top-6',
-    imageFallback: '/figma-assets/bc7ea4ca22ad61ffd9b4bd5b0288c00b0a12f9c3.png',
+    imageFallback: '/gallery/top_row_6.png',
     alt: 'Ministry Leadership Gathering and Blessings',
     caption: 'Apostle Dr. Ankur Yoseph Narula & Pastor Sonia Yoseph Narula Blessing Believers',
   },
@@ -80,31 +80,31 @@ const DEFAULT_TOP_ROW_SIDE_PHOTOS: GalleryPhotoItem[] = [
 const DEFAULT_MIDDLE_ROW_PHOTOS: GalleryPhotoItem[] = [
   {
     id: 'mid-1',
-    imageFallback: '/figma-assets/e3a1ee00f87a2759a0968e2f45aadffe3e59db3a.png',
+    imageFallback: '/gallery/middle_row_1.png',
     alt: 'Pastor Sonia Narula Ministering on Stage',
     caption: 'Preaching Healing and Deliverance to the Congregation',
   },
   {
     id: 'mid-2',
-    imageFallback: '/figma-assets/91a48d8819d4a79ed4de540109e29c8b41950461.png',
+    imageFallback: '/gallery/middle_row_2.png',
     alt: 'Worship Choir in Red Robes with Pastor Sonia',
     caption: 'The Anointed Signs and Wonders Worship Choir Leading Heavenly Praises',
   },
   {
     id: 'mid-3',
-    imageFallback: '/figma-assets/fe3431f583ff049d667066b50b2d048cf34afc72.png',
+    imageFallback: '/gallery/middle_row_3.png',
     alt: 'Pastor Sonia Preaching Live Service',
     caption: 'Live Service Broadcast across Nations',
   },
   {
     id: 'mid-4',
-    imageFallback: '/figma-assets/0ad2c07b6a72c78c1e66fec5b816a26e3f587185.png',
+    imageFallback: '/gallery/middle_row_4.png',
     alt: 'Pastor Sonia Preaching with Golden Bokeh Lights',
     caption: 'The Glorious Light of Christ Touching Hearts and Transforming Lives',
   },
   {
     id: 'mid-5',
-    imageFallback: '/figma-assets/3bf5187d2c81a326176bf967e4f68ddc522f2d87.png',
+    imageFallback: '/gallery/middle_row_5.png',
     alt: 'Glorious Illuminated Holy Cross Worship',
     caption: 'Reverent Worship before the Glorious Cross of Christ',
   },
@@ -113,13 +113,13 @@ const DEFAULT_MIDDLE_ROW_PHOTOS: GalleryPhotoItem[] = [
 const DEFAULT_BOTTOM_ROW_SIDE_PHOTOS_LEFT: GalleryPhotoItem[] = [
   {
     id: 'bot-left-1',
-    imageFallback: '/figma-assets/408cbe685022eb94200ab9e84237419210301602.png',
+    imageFallback: '/gallery/bottom_left_1.png',
     alt: 'Apostle Dr. Ankur Narula with Open Bible',
     caption: 'Teaching the Uncompromised Word of God with Power and Clarity',
   },
   {
     id: 'bot-left-2',
-    imageFallback: '/figma-assets/c979751e5b128a8dc12e9605e600298e99e9ff49.png',
+    imageFallback: '/gallery/bottom_left_2.png',
     alt: 'Apostle Dr. Ankur Narula on Stage',
     caption: 'Holy Spirit Fire and Apostolic Revival Gathering',
   },
@@ -128,25 +128,25 @@ const DEFAULT_BOTTOM_ROW_SIDE_PHOTOS_LEFT: GalleryPhotoItem[] = [
 const DEFAULT_BOTTOM_ROW_SIDE_PHOTOS_RIGHT: GalleryPhotoItem[] = [
   {
     id: 'bot-right-1',
-    imageFallback: '/figma-assets/74e8182af8627fad3ae428aad2b17d4eca519897.png',
+    imageFallback: '/gallery/bottom_right_1.png',
     alt: 'Mass Congregation Gathering at Signs and Wonders Church',
     caption: 'Hundreds of Thousands Gathering Weekly for Worship and Miracles',
   },
   {
     id: 'bot-right-2',
-    imageFallback: '/figma-assets/85761e6b2486d02d0c483eb7871b0ab19ace8c46.png',
+    imageFallback: '/gallery/bottom_right_2.png',
     alt: 'Atmosphere of Prayer and Devotion',
     caption: 'Atmosphere of Praise and Worship at Ankur Narula Ministries',
   },
   {
     id: 'bot-right-3',
-    imageFallback: '/figma-assets/a12f7a8578aca49746f879f50d3567e9cc929dad.png',
+    imageFallback: '/gallery/bottom_right_3.png',
     alt: 'Pastoral Leaders Fellowship',
     caption: 'Leadership Devotion and Ministry Milestones',
   },
   {
     id: 'bot-right-4',
-    imageFallback: '/figma-assets/ff7b25464623ab07ec009c6cc6d0508eb168c5a7.png',
+    imageFallback: '/gallery/bottom_right_4.png',
     alt: 'Mass Crusade Miracle Service',
     caption: 'Miracles, Signs, and Wonders across Multitudes',
   },

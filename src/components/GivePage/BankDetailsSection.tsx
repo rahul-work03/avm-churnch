@@ -11,7 +11,7 @@ const DEFAULT_BANK_ACCOUNTS: BankAccount[] = [
   {
     id: 'axis-bank',
     bankName: 'Axis Bank',
-    logoFallback: '/axis_bank_logo.png',
+    logoFallback: '/give/axis_bank_logo.png',
     accountHolder: 'ANKUR NARULA MINISTRY SOCIETY',
     accountNumber: '924010075067074',
     ifsc: 'UTIB0004459',
@@ -21,7 +21,7 @@ const DEFAULT_BANK_ACCOUNTS: BankAccount[] = [
   {
     id: 'hdfc-bank',
     bankName: 'HDFC Bank',
-    logoFallback: '/hdfc_bank_logo.png',
+    logoFallback: '/give/hdfc_bank_logo.png',
     accountHolder: 'ANKUR NARULA MINISTRY SOCIETY',
     accountNumber: '591300000000116',
     ifsc: 'HDFC0000341',
@@ -31,7 +31,7 @@ const DEFAULT_BANK_ACCOUNTS: BankAccount[] = [
   {
     id: 'icici-bank',
     bankName: 'ICICI Bank',
-    logoFallback: '/icici_bank_logo.png',
+    logoFallback: '/give/icici_bank_logo.png',
     accountHolder: 'ANKUR NARULA MINISTRY SOCIETY',
     accountNumber: '24680500116',
     ifsc: 'ICIC0002468',
@@ -90,10 +90,10 @@ export const BankDetailsSection: React.FC<BankDetailsSectionProps> = ({
             const ifscCopyId = `${accId}-ifsc`
             const defaultLogo =
               index === 0
-                ? '/axis_bank_logo.png'
+                ? '/give/axis_bank_logo.png'
                 : index === 1
-                ? '/hdfc_bank_logo.png'
-                : '/icici_bank_logo.png'
+                ? '/give/hdfc_bank_logo.png'
+                : '/give/icici_bank_logo.png'
             const logoUrl = getMediaUrl(account.logo, account.logoFallback || defaultLogo)
             const borderStyle = account.borderColor ? { borderColor: account.borderColor } : {}
 
@@ -104,12 +104,12 @@ export const BankDetailsSection: React.FC<BankDetailsSectionProps> = ({
                   className="relative bg-white rounded-[22px] p-6 sm:p-7 shadow-[0_8px_30px_rgba(0,0,0,0.06)] border-2 transition-all duration-300 hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)] hover:-translate-y-1 flex flex-col items-center text-center justify-between min-h-[310px] sm:min-h-[330px] h-full"
                 >
                   {/* Bank Logo Header (Uniform Fixed Box) */}
-                  <div className="relative w-full max-w-[220px] h-[56px] sm:h-[64px] flex-shrink-0 flex items-center justify-center">
+                  <div className="relative w-full max-w-[200px] h-[48px] sm:h-[54px] flex-shrink-0 flex items-center justify-center">
                     <Image
                       src={logoUrl}
                       alt={`${account.bankName || 'Bank'} Logo`}
                       fill
-                      className="object-contain"
+                      className="object-contain object-center"
                     />
                   </div>
 

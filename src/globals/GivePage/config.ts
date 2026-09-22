@@ -5,7 +5,7 @@ import { adminsOrEditors } from '../../access/adminsOrEditors'
 const DEFAULT_BANK_ACCOUNTS = [
   {
     bankName: 'Axis Bank',
-    logoFallback: '/axis_bank_logo.png',
+    logoFallback: '/give/axis_bank_logo.png',
     accountHolder: 'ANKUR NARULA MINISTRY SOCIETY',
     accountNumber: '924010075067074',
     ifsc: 'UTIB0004459',
@@ -14,7 +14,7 @@ const DEFAULT_BANK_ACCOUNTS = [
   },
   {
     bankName: 'HDFC Bank',
-    logoFallback: '/hdfc_bank_logo.png',
+    logoFallback: '/give/hdfc_bank_logo.png',
     accountHolder: 'ANKUR NARULA MINISTRY SOCIETY',
     accountNumber: '591300000000116',
     ifsc: 'HDFC0000341',
@@ -23,7 +23,7 @@ const DEFAULT_BANK_ACCOUNTS = [
   },
   {
     bankName: 'ICICI Bank',
-    logoFallback: '/icici_bank_logo.png',
+    logoFallback: '/give/icici_bank_logo.png',
     accountHolder: 'ANKUR NARULA MINISTRY SOCIETY',
     accountNumber: '24680500116',
     ifsc: 'ICIC0002468',
@@ -103,7 +103,7 @@ export const GivePageGlobal: GlobalConfig = {
               name: 'iciciQrFallback',
               type: 'text',
               label: 'ICICI Bank QR Fallback Path',
-              defaultValue: '/figma-assets/9ce6f198b6a68da7d3221e00ece757f36ade008a.png',
+              defaultValue: '/give/icici_qr_card.png',
             },
             {
               name: 'hdfcQrImage',
@@ -115,7 +115,7 @@ export const GivePageGlobal: GlobalConfig = {
               name: 'hdfcQrFallback',
               type: 'text',
               label: 'HDFC Bank QR Fallback Path',
-              defaultValue: '/figma-assets/c4a784737f0d99b16c4bca70fd3a0761ddffbdd4.png',
+              defaultValue: '/give/hdfc_qr_card.png',
             },
             {
               name: 'axisLogo',
@@ -127,7 +127,7 @@ export const GivePageGlobal: GlobalConfig = {
               name: 'axisLogoFallback',
               type: 'text',
               label: 'Axis Bank Logo Fallback Path',
-              defaultValue: '/axis_bank_logo.png',
+              defaultValue: '/give/axis_bank_logo.png',
             },
             {
               name: 'axisQrImage',
@@ -139,7 +139,7 @@ export const GivePageGlobal: GlobalConfig = {
               name: 'axisQrFallback',
               type: 'text',
               label: 'Axis Bank QR Fallback Path',
-              defaultValue: '/figma-assets/b0a41ad9e06351157c10e8cc25bcdb9d0fb1dc72.png',
+              defaultValue: '/give/axis_qr_card.png',
             },
             {
               name: 'gpayQrImage',
@@ -151,7 +151,7 @@ export const GivePageGlobal: GlobalConfig = {
               name: 'gpayQrFallback',
               type: 'text',
               label: 'Google Pay QR Fallback Path',
-              defaultValue: '/figma-assets/02e16c4c34b9864ad41d3e1791f2d600620845e2.png',
+              defaultValue: '/give/gpay_qr_card.png',
             },
           ],
         },

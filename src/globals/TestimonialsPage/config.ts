@@ -61,18 +61,6 @@ export const TestimonialsPageGlobal: GlobalConfig = {
               label: 'Primary Button Link URL',
               defaultValue: '/prayer-request',
             },
-            {
-              name: 'ctaButton2Label',
-              type: 'text',
-              label: 'Secondary Button Label',
-              defaultValue: 'Register for Zoom Lay Hand',
-            },
-            {
-              name: 'ctaButton2Url',
-              type: 'text',
-              label: 'Secondary Button Link URL',
-              defaultValue: '/zoom-lay-hand',
-            },
           ],
         },
       ],

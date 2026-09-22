@@ -39,7 +39,7 @@ export const HeadBranchSection: React.FC<HeadBranchSectionProps> = ({
     'https://www.google.com/maps/dir/?api=1&destination=The+Church+Of+Signs+And+Wonders+Khambra+Punjab'
 
   return (
-    <section className="relative py-4 sm:py-8 md:py-10 bg-[#f8fafc]" data-node-id="286:2996">
+    <section className="relative py-4 sm:py-8 md:py-10 bg-white" data-node-id="286:2996">
       {/* Full-width Navy Header Bar with edge-to-edge Gold Accent Bars (Figma 286:3010) */}
       <RevealOnScroll direction="up" delay={0.1}>
         <div className="w-full bg-[#122f4a] h-[60px] sm:h-[70px] md:h-[80px] text-white relative shadow-sm mb-8 sm:mb-12 flex items-center">

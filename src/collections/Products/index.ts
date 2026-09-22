@@ -5,7 +5,7 @@ export const Products: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     group: 'Ministry Operations',
-    defaultColumns: ['title', 'category', 'salePrice', 'originalPrice', 'rating', 'inStock', 'order'],
+    defaultColumns: ['title', 'category', 'salePrice', 'originalPrice', 'productUrl', 'inStock', 'order'],
   },
   access: {
     read: () => true,
@@ -16,6 +16,15 @@ export const Products: CollectionConfig = {
       type: 'text',
       label: 'Product Title',
       required: true,
+    },
+    {
+      name: 'productUrl',
+      type: 'text',
+      label: 'E-commerce / Buy URL (Redirect Link)',
+      admin: {
+        description: 'Direct link to external e-commerce store (e.g. Amazon, Flipkart, or online shop) that opens in a new tab.',
+      },
+      defaultValue: 'https://www.amazon.in/',
     },
     {
       name: 'category',

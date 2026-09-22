@@ -18,7 +18,7 @@ export const BibleCollegeHeroSection: React.FC<BibleCollegeHeroSectionProps> = (
   headerTitle = 'BIBLE COLLEGE',
   description = "Welcome to a place where the Word of God comes alive and transforms lives from within. Here, you will be grounded in truth, strengthened in faith, and equipped with spiritual wisdom to walk in God's purpose. Through dedicated teaching, revelation, and guidance, you will grow deeper in your relationship with Christ and discover the power of His Word working in your life. This is more than learning—it is a journey of becoming who God has called you to be.",
   bannerImage,
-  bannerImageFallback = '/figma-assets/94a1faeb119e4d3406e3e61f9268b121e7b5496f.png',
+  bannerImageFallback = '/bible_college_hero.png',
   bannerAlt = 'Bible College - Ankur Narula Ministries',
   subtitle = 'Equipping believers with the Word of God to walk in truth, power, and purpose.',
 }) => {
@@ -71,12 +71,12 @@ export const BibleCollegeHeroSection: React.FC<BibleCollegeHeroSectionProps> = (
 
         {/* Featured Large Hero Photo / Bible College Learning Environment */}
         <RevealOnScroll direction="up" distance={28} duration={0.8} delay={0.15} className="mt-6 sm:mt-10 md:mt-12 max-w-[1140px] mx-auto">
-          <div className="relative w-full aspect-[16/9] sm:aspect-[1140/583] rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 group">
+          <div className="relative w-full aspect-[1140/631] rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-2xl border border-slate-200 bg-slate-900 group">
             <Image
               src={resolvedBannerUrl}
               alt={resolvedBannerAlt}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-cover object-center"
               priority
             />
           </div>

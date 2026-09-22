@@ -25,38 +25,26 @@ const DEFAULT_LEADER_IMAGES: CardCarouselItem[] = [
   {
     src: '/figma-assets/our_leaders_image_1.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula',
-    title: 'Apostle Dr. Ankur & Pastor Sonia Narula',
-    subtitle: 'Spiritual Overseers & Senior Pastors',
   },
   {
     src: '/figma-assets/our_leaders_image_2.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula at Pulpit',
-    title: 'Word of Faith & Grace',
-    subtitle: 'Sunday Live Ministry',
   },
   {
     src: '/figma-assets/our_leaders_image_3.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula - Ministry Attire',
-    title: 'Apostolic Leadership',
-    subtitle: 'The Church of Signs and Wonders',
   },
   {
     src: '/figma-assets/man_of_god_image_1.png',
     alt: 'Apostle Dr. Ankur Yoseph Narula Ministering at Main Stage',
-    title: 'Apostle Dr. Ankur Yoseph Narula',
-    subtitle: 'Anointed Stage Ministry',
   },
   {
     src: '/figma-assets/b833aca853efbb1993ea3ceec33bdb2370c72d55.png',
     alt: 'Pastor Sonia Yoseph Narula Preaching to Multitudes',
-    title: 'Pastor Sonia Yoseph Narula',
-    subtitle: 'Thursday Prophetic Service',
   },
   {
     src: '/figma-assets/0ad2c07b6a72c78c1e66fec5b816a26e3f587185.png',
     alt: 'Pastor Sonia Yoseph Narula Ministering at Podium',
-    title: 'Healing & Deliverance Ministry',
-    subtitle: 'Revival Word Proclamation',
   },
 ]
 
@@ -72,8 +60,8 @@ export const OurLeadersSection: React.FC<OurLeadersSectionProps> = ({
       ? leaderImages.map((img) => ({
           src: getMediaUrl(img.image, img.imageFallback || '/figma-assets/our_leaders_image_1.png'),
           alt: img.alt || img.title || 'Leader',
-          title: img.title || '',
-          subtitle: img.subtitle || '',
+          title: img.title || undefined,
+          subtitle: img.subtitle || undefined,
         }))
       : DEFAULT_LEADER_IMAGES
 
