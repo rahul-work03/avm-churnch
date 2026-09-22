@@ -1,31 +1,42 @@
-version: '3'
-
 services:
-  payload:
-    image: node:18-alpine
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: avm-church-app
+    restart: unless-stopped
     ports:
-      - '3000:3000'
-    volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
-    working_dir: /home/node/app/
-    command: sh -c "yarn install && yarn dev"
-    depends_on:
-      - mongo
+      - "${PORT:-3000}:3000"
     env_file:
       - .env
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+    volumes:
+      - media_uploads:/app/public/media
+    depends_on:
+      mongo:
+        condition: service_healthy
 
   mongo:
-    image: mongo:latest
+    image: mongo:7.0
+    container_name: avm-church-mongo
+    restart: unless-stopped
+    command: --storageEngine=wiredTiger
     ports:
-      - '27017:27017'
-    command:
-      - --storageEngine=wiredTiger
+      - "127.0.0.1:27017:27017"
     volumes:
-      - data:/data/db
-    logging:
-      driver: none
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
 
 volumes:
-  data:
-  node_modules:
+  mongo_data:
+    driver: local
+  media_uploads:
+    driver: local
