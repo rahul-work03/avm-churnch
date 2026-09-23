@@ -28,19 +28,19 @@ const DEFAULT_MOG_SLIDES = [
 const DEFAULT_ACTION_CARDS = [
   {
     title: 'Prayer Request',
-    imageFallback: '/prayer_request.png',
+    imageFallback: '/prayer_request_homepage.png',
     href: '/prayer-request',
     buttonVariant: 'solid',
   },
   {
     title: 'Offerings',
-    imageFallback: '/offerings.png',
+    imageFallback: '/offerings_homepage.png',
     href: '/give',
     buttonVariant: 'outline',
   },
   {
     title: 'Zoom Lay Hand',
-    imageFallback: '/zoom_lay_hand.png',
+    imageFallback: '/zoom_lay_hand_homepage.png',
     href: '/zoom-lay-hand',
     buttonVariant: 'outline',
   },
@@ -59,29 +59,33 @@ const DEFAULT_DAILY_PROGRAMS = [
 
 const DEFAULT_SOCIAL_PLATFORMS = [
   {
-    name: 'Face book',
-    url: 'https://www.facebook.com/ankurnarulaministries',
-    iconFallback: '/figma-assets/facebook_logo.png',
-    themeGradient: 'linear-gradient(135deg, #dbe8fa 0%, #f0f5fd 50%, #ffffff 100%)',
-    borderColor: 'border-blue-100',
-  },
-  {
     name: 'Instagram',
-    url: 'https://www.instagram.com/ankurnarulaministries?igsh=NmEzcDFsYnc4YWEw',
+    url: 'https://www.instagram.com/ankurnarulaministries',
+    buttonImageFallback: '/figma-assets/social_btn_instagram.png',
     iconFallback: '/figma-assets/instagram_logo.png',
     themeGradient: 'linear-gradient(135deg, #fce1ee 0%, #fdf2f7 50%, #ffffff 100%)',
     borderColor: 'border-pink-100',
   },
   {
+    name: 'Facebook',
+    url: 'https://www.facebook.com/ankurnarulaministries/',
+    buttonImageFallback: '/figma-assets/social_btn_facebook.png',
+    iconFallback: '/figma-assets/facebook_logo.png',
+    themeGradient: 'linear-gradient(135deg, #dbe8fa 0%, #f0f5fd 50%, #ffffff 100%)',
+    borderColor: 'border-blue-100',
+  },
+  {
     name: 'YouTube',
-    url: 'https://www.youtube.com/channel/UCYwyl0lfL0UzP-1LMtcoH-w',
+    url: 'https://www.youtube.com/@ankurnarulaministries',
+    buttonImageFallback: '/figma-assets/social_btn_youtube.png',
     iconFallback: '/figma-assets/youtube_logo.png',
     themeGradient: 'linear-gradient(135deg, #fce0de 0%, #fdf1f0 50%, #ffffff 100%)',
     borderColor: 'border-red-100',
   },
   {
-    name: 'X - Twitter',
+    name: 'Twitter / X',
     url: 'https://x.com/apostleankur',
+    buttonImageFallback: '/figma-assets/social_btn_twitter.png',
     iconFallback: '/figma-assets/x_twitter_logo.png',
     themeGradient: 'linear-gradient(135deg, #9ca3af 0%, #cbd5e1 45%, #f1f5f9 85%, #ffffff 100%)',
     borderColor: 'border-slate-200',
@@ -362,7 +366,7 @@ export const Homepage: GlobalConfig = {
               name: 'joinLiveLink',
               type: 'text',
               label: 'Join Live Link URL',
-              defaultValue: '/live',
+              defaultValue: 'https://www.youtube.com/@ankurnarulaministries',
             },
             {
               name: 'joinLiveLabel',
@@ -410,18 +414,24 @@ export const Homepage: GlobalConfig = {
                   type: 'upload',
                   relationTo: 'media',
                   label: 'Platform Icon Image (Upload to replace fallback)',
+                  admin: {
+                    hidden: true,
+                  },
                 },
                 {
                   name: 'iconFallback',
                   type: 'text',
                   label: 'Fallback Icon Path',
+                  admin: {
+                    hidden: true,
+                  },
                 },
                 {
                   name: 'themeGradient',
                   type: 'text',
                   label: 'CSS Background Gradient',
                   admin: {
-                    description: 'e.g. linear-gradient(135deg, #dbe8fa 0%, #f0f5fd 50%, #ffffff 100%)',
+                    hidden: true,
                   },
                 },
                 {
@@ -429,6 +439,9 @@ export const Homepage: GlobalConfig = {
                   type: 'text',
                   label: 'Tailwind Border Color Class',
                   defaultValue: 'border-blue-100',
+                  admin: {
+                    hidden: true,
+                  },
                 },
               ],
             },
@@ -464,8 +477,8 @@ export const Homepage: GlobalConfig = {
             {
               name: 'sermonsFeaturedVideoUrl',
               type: 'text',
-              label: 'Featured Banner YouTube / Live URL',
-              defaultValue: 'https://www.youtube.com/@AnkurNarulaMinistries',
+              label: 'Featured Main Banner YouTube / Embed URL / iframe',
+              defaultValue: 'https://www.youtube.com/embed/CPIhQW-8bgo?si=cZrZoi8mfbTqkTYg',
             },
           ],
         },

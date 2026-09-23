@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/ui/reveal'
+import { TextWordReveal, GoldBarReveal } from '@/components/ui/text-reveal'
 import { CountUp } from '@/components/ui/count-up'
 
 export interface StatItem {
@@ -29,8 +30,13 @@ export const MinistryStatsSection: React.FC<MinistryStatsSectionProps> = ({
   return (
     <section className="relative py-8 sm:py-10 md:py-12 bg-[#122f4a] text-white overflow-hidden my-6 sm:my-10 md:my-14" data-node-id="275:831">
       {/* Section Header with Left & Right Gold Bars */}
-      <RevealOnScroll direction="none" duration={0.6} className="w-full flex items-center justify-between">
-        <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-r-full shadow-sm flex-shrink-0" />
+      <div className="w-full flex items-center justify-between">
+        <GoldBarReveal
+          direction="left"
+          duration={0.7}
+          delay={0.1}
+          className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-r-full shadow-sm flex-shrink-0"
+        />
 
         <div className="flex items-center justify-center gap-2 sm:gap-4 px-3 sm:px-6 md:px-8 flex-shrink min-w-0">
           <div
@@ -46,9 +52,14 @@ export const MinistryStatsSection: React.FC<MinistryStatsSectionProps> = ({
               WebkitMaskPosition: 'center',
             }}
           />
-          <h2 className="font-poppins font-semibold text-white text-xl sm:text-2xl md:text-[34px] tracking-tight text-center whitespace-nowrap">
+          <TextWordReveal
+            as="h2"
+            delay={0.1}
+            staggerDelay={0.04}
+            className="font-poppins font-semibold text-white text-xl sm:text-2xl md:text-[34px] tracking-tight text-center whitespace-nowrap"
+          >
             {headerTitle}
-          </h2>
+          </TextWordReveal>
           <div
             className="relative w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 flex-shrink-0 bg-[#efbf04] scale-x-[-1]"
             style={{
@@ -64,8 +75,13 @@ export const MinistryStatsSection: React.FC<MinistryStatsSectionProps> = ({
           />
         </div>
 
-        <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-l-full shadow-sm flex-shrink-0" />
-      </RevealOnScroll>
+        <GoldBarReveal
+          direction="right"
+          duration={0.7}
+          delay={0.1}
+          className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-l-full shadow-sm flex-shrink-0"
+        />
+      </div>
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* 3 Stats Columns */}

@@ -2,8 +2,8 @@
 
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/ui/reveal'
+import { TextWordReveal, GoldBarReveal } from '@/components/ui/text-reveal'
 
 export interface ServiceItem {
   emoji?: string
@@ -36,11 +36,15 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
   videoBannerUrl = '/homepage_schedule.mp4',
   weeklyServices,
   dailyPrograms,
-  joinLiveLink = '/live',
+  joinLiveLink = 'https://www.youtube.com/@ankurnarulaministries',
   joinLiveLabel = 'Join Live',
 }) => {
   const activeWeekly = weeklyServices && weeklyServices.length > 0 ? weeklyServices : DEFAULT_WEEKLY
   const activeDaily = dailyPrograms && dailyPrograms.length > 0 ? dailyPrograms : DEFAULT_DAILY
+  const effectiveJoinLiveLink =
+    !joinLiveLink || joinLiveLink === '/live'
+      ? 'https://www.youtube.com/@ankurnarulaministries'
+      : joinLiveLink
 
   // Split weekly services: first two in left col, 3rd in right col (if 3 items)
   const leftWeekly = activeWeekly.slice(0, 2)
@@ -49,23 +53,33 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
   return (
     <section className="relative bg-white overflow-hidden" data-node-id="274:3">
       {/* ==================== SECTION HEADER ==================== */}
-      {/* Desktop Header */}
-      <RevealOnScroll direction="none" duration={0.6} className="hidden md:flex w-full bg-[#122f4a] h-[80px] items-center justify-between px-0 relative z-10 shadow-md">
-        <div className="w-[180px] lg:w-[280px] xl:w-[323px] h-[8px] bg-[#efbf04] rounded-r-full shadow-sm" data-node-id="274:25" />
-        <h2 className="font-poppins font-semibold text-white text-2xl lg:text-[30px] xl:text-[32px] tracking-tight text-center px-4 whitespace-nowrap">
-          {headerTitle}
-        </h2>
-        <div className="w-[180px] lg:w-[280px] xl:w-[323px] h-[8px] bg-[#efbf04] rounded-l-full shadow-sm" data-node-id="274:27" />
-      </RevealOnScroll>
-
-      {/* Mobile Header */}
-      <RevealOnScroll direction="none" duration={0.5} className="md:hidden w-full flex items-center justify-between py-6 px-0">
-        <div className="w-[48px] h-[6px] bg-[#efbf04] rounded-r-full" data-node-id="274:322" />
-        <h2 className="font-philosopher font-bold text-[#003471] text-base sm:text-xl tracking-tight text-center px-2">
-          {headerTitle}
-        </h2>
-        <div className="w-[48px] h-[6px] bg-[#efbf04] rounded-l-full" data-node-id="274:325" />
-      </RevealOnScroll>
+      {/* Full-width Dark Navy Bar with Edge-to-Edge Gold Bars */}
+      <div className="w-full bg-[#122f4a] h-[52px] sm:h-[64px] md:h-[76px] lg:h-[80px] flex items-center justify-between px-0 relative z-10 shadow-md overflow-hidden">
+        <GoldBarReveal
+          direction="left"
+          duration={0.7}
+          delay={0.1}
+          className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[240px] xl:w-[323px] h-[5px] sm:h-[7px] lg:h-[8px] bg-[#efbf04] rounded-r-full shadow-sm flex-shrink-0"
+          data-node-id="274:25"
+        />
+        <div className="flex-1 min-w-0 px-2 sm:px-4 md:px-6 text-center">
+          <TextWordReveal
+            as="h2"
+            delay={0.15}
+            staggerDelay={0.035}
+            className="font-poppins font-semibold text-white text-sm sm:text-lg md:text-2xl lg:text-[30px] xl:text-[32px] tracking-tight uppercase leading-tight line-clamp-2"
+          >
+            {headerTitle}
+          </TextWordReveal>
+        </div>
+        <GoldBarReveal
+          direction="right"
+          duration={0.7}
+          delay={0.1}
+          className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[240px] xl:w-[323px] h-[5px] sm:h-[7px] lg:h-[8px] bg-[#efbf04] rounded-l-full shadow-sm flex-shrink-0"
+          data-node-id="274:27"
+        />
+      </div>
 
       <div className="pt-8 sm:pt-12 md:pt-16 pb-16 sm:pb-20 md:pb-28 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Featured Live Service Banner / Stage Preview (Figma Node 327:272) */}
@@ -217,12 +231,14 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
 
               {/* Centered Join Live CTA Button */}
               <div className="flex justify-center items-center pt-1">
-                <Link
-                  href={joinLiveLink}
-                  className="w-[160px] sm:w-[175px] h-[40px] sm:h-[46px] bg-[#efbf04] hover:bg-[#dfaf00] rounded-full flex items-center justify-center text-white font-poppins font-semibold text-sm sm:text-base md:text-[18px] shadow-md transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+                <a
+                  href={effectiveJoinLiveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-[160px] sm:w-[175px] h-[40px] sm:h-[46px] bg-[#efbf04] hover:bg-[#dfaf00] rounded-full flex items-center justify-center text-[#0f121e] font-poppins font-semibold text-sm sm:text-base md:text-[18px] shadow-md transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
                 >
                   <span>{joinLiveLabel}</span>
-                </Link>
+                </a>
               </div>
             </div>
           </StaggerItem>

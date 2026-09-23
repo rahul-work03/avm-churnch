@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { RevealOnScroll } from '@/components/ui/reveal'
+import { TextWordReveal, BlurTextReveal, GoldBarReveal } from '@/components/ui/text-reveal'
 
 export interface VisionMissionSectionProps {
   identityBadge?: string
@@ -27,19 +28,39 @@ export const VisionMissionSection: React.FC<VisionMissionSectionProps> = ({
         <RevealOnScroll direction="up" distance={20} duration={0.6} className="relative z-20">
           <div className="relative max-w-[754px] mx-auto bg-[#122f4a] rounded-[18px] sm:rounded-[36px] md:rounded-[44px] py-3.5 sm:py-5 md:py-6 px-0 text-center text-white shadow-xl -mb-6 sm:-mb-12 md:-mb-14 overflow-hidden flex items-center justify-between">
             {/* Decorative Gold Side Bar - Left */}
-            <div className="w-[36px] sm:w-[60px] md:w-[77px] h-[4px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-r-full pointer-events-none flex-shrink-0" />
+            <GoldBarReveal
+              direction="left"
+              duration={0.6}
+              delay={0.1}
+              className="w-[36px] sm:w-[60px] md:w-[77px] h-[4px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-r-full pointer-events-none flex-shrink-0"
+            />
 
             <div className="px-3 sm:px-6 md:px-8 flex-shrink min-w-0">
-              <p className="font-poppins font-medium text-slate-200 text-xs sm:text-lg md:text-[24px] lg:text-[28px]">
+              <TextWordReveal
+                as="p"
+                delay={0.1}
+                staggerDelay={0.04}
+                className="font-poppins font-medium text-slate-200 text-xs sm:text-lg md:text-[24px] lg:text-[28px]"
+              >
                 {identityBadge}
-              </p>
-              <h2 className="font-poppins font-semibold text-white text-sm sm:text-xl md:text-[28px] lg:text-[32px] mt-0.5 sm:mt-1">
+              </TextWordReveal>
+              <TextWordReveal
+                as="h2"
+                delay={0.2}
+                staggerDelay={0.035}
+                className="font-poppins font-semibold text-white text-sm sm:text-xl md:text-[28px] lg:text-[32px] mt-0.5 sm:mt-1"
+              >
                 {headerTitle}
-              </h2>
+              </TextWordReveal>
             </div>
 
             {/* Decorative Gold Side Bar - Right */}
-            <div className="w-[36px] sm:w-[60px] md:w-[77px] h-[4px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-l-full pointer-events-none flex-shrink-0" />
+            <GoldBarReveal
+              direction="right"
+              duration={0.6}
+              delay={0.1}
+              className="w-[36px] sm:w-[60px] md:w-[77px] h-[4px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-l-full pointer-events-none flex-shrink-0"
+            />
           </div>
         </RevealOnScroll>
 
@@ -47,23 +68,41 @@ export const VisionMissionSection: React.FC<VisionMissionSectionProps> = ({
         <div className="md:hidden space-y-3 pt-10">
           <RevealOnScroll direction="up" distance={20} duration={0.5}>
             <div className="bg-white border border-[#e7e7e7] rounded-[18px] p-5 shadow-sm text-left">
-              <h3 className="font-poppins font-semibold text-[#003471] text-[18px]">
+              <TextWordReveal
+                as="h3"
+                delay={0.05}
+                className="font-poppins font-semibold text-[#003471] text-[18px]"
+              >
                 {visionTitle}
-              </h3>
-              <p className="font-poppins text-[#333333] text-[12px] leading-relaxed mt-2">
+              </TextWordReveal>
+              <BlurTextReveal
+                as="p"
+                delay={0.15}
+                duration={0.6}
+                className="font-poppins text-[#333333] text-[12px] leading-relaxed mt-2"
+              >
                 {visionDescription}
-              </p>
+              </BlurTextReveal>
             </div>
           </RevealOnScroll>
 
           <RevealOnScroll direction="up" distance={20} duration={0.5} delay={0.1}>
             <div className="bg-white border border-[#e7e7e7] rounded-[18px] p-5 shadow-sm text-left">
-              <h3 className="font-poppins font-semibold text-[#003471] text-[18px]">
+              <TextWordReveal
+                as="h3"
+                delay={0.05}
+                className="font-poppins font-semibold text-[#003471] text-[18px]"
+              >
                 {missionTitle}
-              </h3>
-              <p className="font-poppins text-[#333333] text-[12px] leading-relaxed mt-2">
+              </TextWordReveal>
+              <BlurTextReveal
+                as="p"
+                delay={0.15}
+                duration={0.6}
+                className="font-poppins text-[#333333] text-[12px] leading-relaxed mt-2"
+              >
                 {missionDescription}
-              </p>
+              </BlurTextReveal>
             </div>
           </RevealOnScroll>
         </div>
@@ -74,12 +113,22 @@ export const VisionMissionSection: React.FC<VisionMissionSectionProps> = ({
             <div className="grid grid-cols-2 gap-8 lg:gap-12 relative">
               {/* Column 1: Our Vision */}
               <div className="text-left flex flex-col justify-start">
-                <h3 className="font-poppins font-semibold text-[#d5582a] text-[26px] lg:text-[32px] tracking-tight">
+                <TextWordReveal
+                  as="h3"
+                  delay={0.1}
+                  staggerDelay={0.04}
+                  className="font-poppins font-semibold text-[#d5582a] text-[26px] lg:text-[32px] tracking-tight"
+                >
                   {visionTitle}
-                </h3>
-                <p className="font-poppins text-[#333333] text-[15px] lg:text-[17px] leading-relaxed mt-3 lg:mt-4">
+                </TextWordReveal>
+                <BlurTextReveal
+                  as="p"
+                  delay={0.25}
+                  duration={0.65}
+                  className="font-poppins text-[#333333] text-[15px] lg:text-[17px] leading-relaxed mt-3 lg:mt-4"
+                >
                   {visionDescription}
-                </p>
+                </BlurTextReveal>
               </div>
 
               {/* Vertical Divider */}
@@ -87,12 +136,22 @@ export const VisionMissionSection: React.FC<VisionMissionSectionProps> = ({
 
               {/* Column 2: Our Mission */}
               <div className="text-left flex flex-col justify-start pl-2">
-                <h3 className="font-poppins font-semibold text-[#d5582a] text-[26px] lg:text-[32px] tracking-tight">
+                <TextWordReveal
+                  as="h3"
+                  delay={0.15}
+                  staggerDelay={0.04}
+                  className="font-poppins font-semibold text-[#d5582a] text-[26px] lg:text-[32px] tracking-tight"
+                >
                   {missionTitle}
-                </h3>
-                <p className="font-poppins text-[#333333] text-[15px] lg:text-[17px] leading-relaxed mt-3 lg:mt-4">
+                </TextWordReveal>
+                <BlurTextReveal
+                  as="p"
+                  delay={0.3}
+                  duration={0.65}
+                  className="font-poppins text-[#333333] text-[15px] lg:text-[17px] leading-relaxed mt-3 lg:mt-4"
+                >
                   {missionDescription}
-                </p>
+                </BlurTextReveal>
               </div>
             </div>
           </div>

@@ -3,6 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { RevealOnScroll } from '@/components/ui/reveal'
+import { TextWordReveal, GoldBarReveal } from '@/components/ui/text-reveal'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export interface SundaySchoolSceneItem {
@@ -73,6 +74,15 @@ const DEFAULT_ROW2_PHOTOS: SundaySchoolSceneItem[] = [
   },
 ]
 
+const buildSeamlessMarquee = (items: SundaySchoolSceneItem[], minHalfCount = 8) => {
+  if (!items || items.length === 0) return []
+  let oneHalf: SundaySchoolSceneItem[] = []
+  while (oneHalf.length < minHalfCount) {
+    oneHalf = [...oneHalf, ...items]
+  }
+  return [...oneHalf, ...oneHalf]
+}
+
 export const SundaySchoolScenesSection: React.FC<SundaySchoolScenesSectionProps> = ({
   headerTitle,
   scenesHeaderTitle,
@@ -87,23 +97,35 @@ export const SundaySchoolScenesSection: React.FC<SundaySchoolScenesSectionProps>
   const activeRow1 = list1 && list1.length > 0 ? list1 : DEFAULT_ROW1_PHOTOS
   const activeRow2 = list2 && list2.length > 0 ? list2 : DEFAULT_ROW2_PHOTOS
 
-  const row1Duplicated = [...activeRow1, ...activeRow1]
-  const row2Duplicated = [...activeRow2, ...activeRow2]
+  const row1Duplicated = buildSeamlessMarquee(activeRow1)
+  const row2Duplicated = buildSeamlessMarquee(activeRow2)
 
   return (
     <section className="py-6 sm:py-10 md:py-14 bg-white overflow-hidden select-none" data-node-id="289:3779">
-      {/* Full-width Dark Navy Header Bar */}
-      <RevealOnScroll direction="none" duration={0.6} className="bg-[#122f4a] py-4 sm:py-5 md:py-6 text-white relative shadow-sm mb-6 sm:mb-10 md:mb-12">
-        <div className="w-full flex items-center justify-between">
-          <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-r-full flex-shrink-0" />
+      {/* Full-width Dark Navy Header Bar with Edge-to-Edge Gold Bars */}
+      <div className="bg-[#122f4a] min-h-[52px] sm:min-h-[64px] md:min-h-[76px] lg:h-[80px] py-2 sm:py-3 md:py-0 text-white relative shadow-sm mb-6 sm:mb-10 md:mb-12 flex items-center justify-between overflow-hidden">
+        <GoldBarReveal
+          direction="left"
+          delay={0.1}
+          className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[260px] xl:w-[323px] h-[5px] sm:h-[10px] md:h-[16px] lg:h-[20px] bg-[#efbf04] rounded-r-full flex-shrink-0"
+        />
 
-          <h2 className="font-poppins font-semibold text-white text-sm sm:text-2xl md:text-[28px] text-center px-3 sm:px-8 md:px-12 tracking-wide uppercase flex-shrink min-w-0">
+        <div className="flex-1 min-w-0 px-2 sm:px-4 md:px-8 text-center">
+          <TextWordReveal
+            as="h2"
+            delay={0.15}
+            className="font-poppins font-semibold text-white text-xs xs:text-sm sm:text-xl md:text-[26px] lg:text-[28px] tracking-wide uppercase leading-tight line-clamp-2"
+          >
             {displayTitle}
-          </h2>
-
-          <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-l-full flex-shrink-0" />
+          </TextWordReveal>
         </div>
-      </RevealOnScroll>
+
+        <GoldBarReveal
+          direction="right"
+          delay={0.1}
+          className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[260px] xl:w-[323px] h-[5px] sm:h-[10px] md:h-[16px] lg:h-[20px] bg-[#efbf04] rounded-l-full flex-shrink-0"
+        />
+      </div>
 
       {/* 2-Row Opposite Direction Marquee Gallery */}
       <RevealOnScroll direction="up" distance={20} duration={0.7} delay={0.1} className="flex flex-col gap-4 sm:gap-6">

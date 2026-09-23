@@ -3,6 +3,7 @@
 import React from 'react'
 import { CardCarousel, type CardCarouselItem } from '@/components/ui/card-carousel'
 import { RevealOnScroll } from '@/components/ui/reveal'
+import { TextWordReveal, BlurTextReveal, GoldBarReveal } from '@/components/ui/text-reveal'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export interface LeaderImageItem {
@@ -68,17 +69,32 @@ export const OurLeadersSection: React.FC<OurLeadersSectionProps> = ({
   return (
     <section className="py-8 sm:py-12 md:py-16 bg-white overflow-hidden" data-node-id="275:810">
       {/* Section Header with Left & Right Gold Accent Bars */}
-      <RevealOnScroll direction="none" duration={0.6} className="w-full flex items-center justify-between mb-2 sm:mb-4">
-        <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[5px] sm:h-[6px] md:h-[8px] bg-[#efbf04] rounded-r-full shadow-sm flex-shrink-0" />
+      <div className="w-full flex items-center justify-between mb-2 sm:mb-4">
+        <GoldBarReveal
+          direction="left"
+          duration={0.7}
+          delay={0.1}
+          className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[5px] sm:h-[6px] md:h-[8px] bg-[#efbf04] rounded-r-full shadow-sm flex-shrink-0"
+        />
 
         <div className="text-center px-3 sm:px-6 md:px-10 flex-shrink min-w-0">
-          <h2 className="font-poppins font-semibold text-[#003471] text-xl sm:text-3xl md:text-[34px] leading-tight tracking-tight whitespace-nowrap">
+          <TextWordReveal
+            as="h2"
+            delay={0.15}
+            staggerDelay={0.04}
+            className="font-poppins font-semibold text-[#003471] text-xl sm:text-3xl md:text-[34px] leading-tight tracking-tight whitespace-nowrap"
+          >
             {headerTitle}
-          </h2>
+          </TextWordReveal>
         </div>
 
-        <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[5px] sm:h-[6px] md:h-[8px] bg-[#efbf04] rounded-l-full shadow-sm flex-shrink-0" />
-      </RevealOnScroll>
+        <GoldBarReveal
+          direction="right"
+          duration={0.7}
+          delay={0.1}
+          className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[5px] sm:h-[6px] md:h-[8px] bg-[#efbf04] rounded-l-full shadow-sm flex-shrink-0"
+        />
+      </div>
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* 6-Photo Symmetrical Swiper Card Carousel */}
@@ -92,19 +108,34 @@ export const OurLeadersSection: React.FC<OurLeadersSectionProps> = ({
         </RevealOnScroll>
 
         {/* Detailed Ministry Narrative Text Blocks */}
-        <RevealOnScroll direction="up" distance={20} duration={0.7} delay={0.2} className="mt-8 sm:mt-12 md:mt-14 max-w-4xl mx-auto text-center px-2 sm:px-4 space-y-4 sm:space-y-6">
-          <p className="font-poppins text-[#333333] text-xs sm:text-base md:text-[18px] leading-relaxed">
+        <div className="mt-8 sm:mt-12 md:mt-14 max-w-4xl mx-auto text-center px-2 sm:px-4 space-y-4 sm:space-y-6">
+          <BlurTextReveal
+            as="p"
+            delay={0.1}
+            duration={0.65}
+            className="font-poppins text-[#333333] text-xs sm:text-base md:text-[18px] leading-relaxed"
+          >
             {paragraph1}
-          </p>
+          </BlurTextReveal>
 
-          <p className="font-lato text-[#333333] text-xs sm:text-base md:text-[19px] leading-relaxed">
+          <BlurTextReveal
+            as="p"
+            delay={0.2}
+            duration={0.65}
+            className="font-lato text-[#333333] text-xs sm:text-base md:text-[19px] leading-relaxed"
+          >
             {paragraph2}
-          </p>
+          </BlurTextReveal>
 
-          <p className="font-lato text-[#333333] text-xs sm:text-base md:text-[19px] leading-relaxed">
+          <BlurTextReveal
+            as="p"
+            delay={0.3}
+            duration={0.65}
+            className="font-lato text-[#333333] text-xs sm:text-base md:text-[19px] leading-relaxed"
+          >
             {paragraph3}
-          </p>
-        </RevealOnScroll>
+          </BlurTextReveal>
+        </div>
       </div>
     </section>
   )

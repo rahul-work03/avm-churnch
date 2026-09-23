@@ -4,6 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { RevealOnScroll } from '@/components/ui/reveal'
+import { TextWordReveal, BlurTextReveal } from '@/components/ui/text-reveal'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export interface FaithResourcesSectionProps {
@@ -64,27 +65,37 @@ export const FaithResourcesSection: React.FC<FaithResourcesSectionProps> = ({
           </RevealOnScroll>
 
           {/* Text & Store CTA */}
-          <RevealOnScroll direction="up" distance={20} duration={0.7} delay={0.15} className="lg:col-span-5 text-center lg:text-left flex flex-col items-center lg:items-start justify-center">
+          <div className="lg:col-span-5 text-center lg:text-left flex flex-col items-center lg:items-start justify-center">
             {/* Heading */}
-            <h2 className="font-poppins font-semibold text-[#003471] text-2xl sm:text-3xl md:text-[38px] leading-tight tracking-tight">
+            <TextWordReveal
+              as="h2"
+              delay={0.05}
+              staggerDelay={0.04}
+              className="font-poppins font-semibold text-[#003471] text-2xl sm:text-3xl md:text-[38px] leading-tight tracking-tight"
+            >
               {headerTitle}
-            </h2>
+            </TextWordReveal>
 
             {/* Description Text */}
-            <p className="font-poppins text-[#333333] text-sm sm:text-base md:text-[18px] leading-relaxed mt-3 sm:mt-5 max-w-[420px]">
+            <BlurTextReveal
+              as="p"
+              delay={0.2}
+              duration={0.65}
+              className="font-poppins text-[#333333] text-sm sm:text-base md:text-[18px] leading-relaxed mt-3 sm:mt-5 max-w-[420px]"
+            >
               {description}
-            </p>
+            </BlurTextReveal>
 
             {/* Store Button */}
-            <div className="mt-6 sm:mt-8 w-full sm:w-auto">
+            <RevealOnScroll direction="up" distance={16} delay={0.3} duration={0.6} className="mt-6 sm:mt-8 w-full sm:w-auto">
               <Link
                 href={storeLink}
                 className="inline-flex items-center justify-center bg-[#efbf04] hover:bg-[#dfaf00] text-[#0b0c1c] font-poppins font-semibold text-sm sm:text-base md:text-[18px] w-full sm:w-[220px] md:w-[240px] h-[48px] sm:h-[54px] md:h-[58px] rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg"
               >
                 {storeLabel}
               </Link>
-            </div>
-          </RevealOnScroll>
+            </RevealOnScroll>
+          </div>
         </div>
       </div>
     </section>

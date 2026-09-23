@@ -20,15 +20,13 @@ export default async function Page() {
   try {
     const payload = await getPayload({ config: configPromise })
 
-    aboutData = await payload.findGlobal({
-      slug: 'about-page' as any,
-      depth: 1,
-    })
+    const [aboutResult, scheduleResult] = await Promise.all([
+      payload.findGlobal({ slug: 'about-page' as any, depth: 1 }),
+      payload.findGlobal({ slug: 'homepage' as any, depth: 1 }),
+    ])
 
-    scheduleData = await payload.findGlobal({
-      slug: 'homepage' as any,
-      depth: 1,
-    })
+    aboutData = aboutResult
+    scheduleData = scheduleResult
   } catch {
     // Database empty or uninitialized during build
   }

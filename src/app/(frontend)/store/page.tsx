@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Metadata } from 'next'
 import { getPayload } from 'payload'
-import config from '@/payload.config'
+import configPromise from '@payload-config'
 import { StorePage } from '@/components/StorePage'
 
 export const dynamic = 'force-static'
@@ -18,7 +18,7 @@ export default async function Page() {
   let products: any[] = []
 
   try {
-    const payload = await getPayload({ config })
+    const payload = await getPayload({ config: configPromise })
     const [storeRes, productsRes] = await Promise.all([
       payload.findGlobal({
         slug: 'store-page' as any,

@@ -28,7 +28,7 @@ export default async function HomePage() {
     const sermonsResult = await payload.find({
       collection: 'sermons' as any,
       depth: 1,
-      limit: 6,
+      limit: 50,
       sort: 'order',
     })
 

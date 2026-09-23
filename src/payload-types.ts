@@ -784,7 +784,13 @@ export interface Form {
  */
 export interface Sermon {
   id: number;
-  title: string;
+  /**
+   * Leave empty to automatically fetch the official video title from YouTube, or enter a custom title.
+   */
+  title?: string | null;
+  /**
+   * Paste YouTube video link (watch/share URL), embed URL, or complete <iframe> embed code.
+   */
   youtubeUrl: string;
   thumbnail?: (number | null) | Media;
   /**
@@ -1988,9 +1994,9 @@ export interface Footer {
   socialLinks?:
     | {
         name: string;
+        url: string;
         icon?: (number | null) | Media;
         iconFallback?: string | null;
-        url: string;
         width?: number | null;
         height?: number | null;
         id?: string | null;
@@ -2071,9 +2077,6 @@ export interface Homepage {
         url: string;
         icon?: (number | null) | Media;
         iconFallback?: string | null;
-        /**
-         * e.g. linear-gradient(135deg, #dbe8fa 0%, #f0f5fd 50%, #ffffff 100%)
-         */
         themeGradient?: string | null;
         borderColor?: string | null;
         id?: string | null;
@@ -2464,31 +2467,32 @@ export interface ChurchBranchesPage {
  */
 export interface EventsPage {
   id: number;
-  recentHeaderTitle?: string | null;
-  recentEvents?:
+  eventsSectionTitle?: string | null;
+  upcomingSectionTitle?: string | null;
+  events?:
     | {
         title: string;
-        poster?: (number | null) | Media;
-        posterFallback?: string | null;
+        cardPoster?: (number | null) | Media;
+        cardPosterFallback?: string | null;
+        buttonLabel?: string | null;
+        detailPoster?: (number | null) | Media;
+        detailPosterFallback?: string | null;
+        headingGreeting?: string | null;
+        subheading?: string | null;
+        announcementParagraph1: string;
+        announcementParagraph2?: string | null;
+        announcementParagraph3?: string | null;
+        announcementParagraph4?: string | null;
+        scheduleDay?: string | null;
+        scheduleDate?: string | null;
+        scheduleTime?: string | null;
+        scheduleVenue?: string | null;
+        schedulePostedBy?: string | null;
+        customLinkText?: string | null;
+        customLinkUrl?: string | null;
         id?: string | null;
       }[]
     | null;
-  upcomingHeaderTitle?: string | null;
-  featuredPoster?: (number | null) | Media;
-  featuredPosterFallback?: string | null;
-  featuredTitle?: string | null;
-  featuredLinkUrl?: string | null;
-  featuredButtonLabel?: string | null;
-  headingGreeting?: string | null;
-  announcementParagraph1?: string | null;
-  announcementParagraph2?: string | null;
-  announcementParagraph3?: string | null;
-  announcementParagraph4?: string | null;
-  scheduleDay?: string | null;
-  scheduleDate?: string | null;
-  scheduleTime?: string | null;
-  scheduleVenue?: string | null;
-  schedulePostedBy?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2778,9 +2782,9 @@ export interface FooterSelect<T extends boolean = true> {
     | T
     | {
         name?: T;
+        url?: T;
         icon?: T;
         iconFallback?: T;
-        url?: T;
         width?: T;
         height?: T;
         id?: T;
@@ -3241,31 +3245,32 @@ export interface ChurchBranchesPageSelect<T extends boolean = true> {
  * via the `definition` "events-page_select".
  */
 export interface EventsPageSelect<T extends boolean = true> {
-  recentHeaderTitle?: T;
-  recentEvents?:
+  eventsSectionTitle?: T;
+  upcomingSectionTitle?: T;
+  events?:
     | T
     | {
         title?: T;
-        poster?: T;
-        posterFallback?: T;
+        cardPoster?: T;
+        cardPosterFallback?: T;
+        buttonLabel?: T;
+        detailPoster?: T;
+        detailPosterFallback?: T;
+        headingGreeting?: T;
+        subheading?: T;
+        announcementParagraph1?: T;
+        announcementParagraph2?: T;
+        announcementParagraph3?: T;
+        announcementParagraph4?: T;
+        scheduleDay?: T;
+        scheduleDate?: T;
+        scheduleTime?: T;
+        scheduleVenue?: T;
+        schedulePostedBy?: T;
+        customLinkText?: T;
+        customLinkUrl?: T;
         id?: T;
       };
-  upcomingHeaderTitle?: T;
-  featuredPoster?: T;
-  featuredPosterFallback?: T;
-  featuredTitle?: T;
-  featuredLinkUrl?: T;
-  featuredButtonLabel?: T;
-  headingGreeting?: T;
-  announcementParagraph1?: T;
-  announcementParagraph2?: T;
-  announcementParagraph3?: T;
-  announcementParagraph4?: T;
-  scheduleDay?: T;
-  scheduleDate?: T;
-  scheduleTime?: T;
-  scheduleVenue?: T;
-  schedulePostedBy?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

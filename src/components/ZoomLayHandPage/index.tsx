@@ -119,7 +119,7 @@ export const ZoomLayHandPage: React.FC<ZoomLayHandPageProps> = ({ data }) => {
   }
 
   return (
-    <main className="min-h-screen bg-[#f8fafc] text-[#344054] antialiased pt-24 pb-16 sm:pt-32 sm:pb-24">
+    <main className="min-h-screen bg-[#f8fafc] text-[#344054] antialiased pt-28 pb-16 sm:pt-36 sm:pb-24">
       <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-0">
         {/* 1. Exact Figma 1140x620 Rounded Hero Banner */}
         <motion.div

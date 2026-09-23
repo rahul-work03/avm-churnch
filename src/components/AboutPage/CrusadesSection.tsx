@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState, useCallback, useLayoutEffect } from
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { RevealOnScroll } from '@/components/ui/reveal'
+import { TextWordReveal, GoldBarReveal } from '@/components/ui/text-reveal'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
@@ -259,6 +260,15 @@ export const CrusadesSection: React.FC<CrusadesSectionProps> = ({
     paint()
   }, [paint, viewportWidth])
 
+  // Cleanup animation frame on unmount
+  useEffect(() => {
+    return () => {
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current)
+      }
+    }
+  }, [])
+
   // Pointer drag/swipe gesture handlers
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (rafRef.current !== null) {
@@ -320,17 +330,32 @@ export const CrusadesSection: React.FC<CrusadesSectionProps> = ({
   return (
     <section className="py-8 sm:py-14 md:py-20 bg-white overflow-hidden select-none" data-node-id="275:810">
       {/* Dark Navy Crusade Header Bar */}
-      <RevealOnScroll direction="none" duration={0.6} className="bg-[#122f4a] py-5 sm:py-7 md:py-8 text-white relative shadow-sm">
+      <div className="bg-[#122f4a] py-5 sm:py-7 md:py-8 text-white relative shadow-sm">
         <div className="w-full flex items-center justify-between">
-          <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-r-full flex-shrink-0" />
+          <GoldBarReveal
+            direction="left"
+            duration={0.7}
+            delay={0.1}
+            className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-r-full flex-shrink-0"
+          />
 
-          <h2 className="font-poppins font-medium text-white text-sm sm:text-2xl md:text-[28px] text-center px-3 sm:px-8 md:px-12 tracking-wide flex-shrink min-w-0">
+          <TextWordReveal
+            as="h2"
+            delay={0.15}
+            staggerDelay={0.04}
+            className="font-poppins font-medium text-white text-sm sm:text-2xl md:text-[28px] text-center px-3 sm:px-8 md:px-12 tracking-wide flex-shrink min-w-0"
+          >
             {headerTitle}
-          </h2>
+          </TextWordReveal>
 
-          <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-l-full flex-shrink-0" />
+          <GoldBarReveal
+            direction="right"
+            duration={0.7}
+            delay={0.1}
+            className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-l-full flex-shrink-0"
+          />
         </div>
-      </RevealOnScroll>
+      </div>
 
       {/* Panoramic 3D Stage Viewport */}
       <RevealOnScroll direction="up" distance={24} duration={0.8} delay={0.1} className="relative mt-6 sm:mt-10 md:mt-12 w-full py-2 sm:py-4">

@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { RevealOnScroll } from '@/components/ui/reveal'
+import { TextWordReveal, BlurTextReveal, GoldBarReveal } from '@/components/ui/text-reveal'
 
 interface SundaySchoolWhatIsSectionProps {
   whatIsCardTitle?: string | null
@@ -23,52 +24,95 @@ export const SundaySchoolWhatIsSection: React.FC<SundaySchoolWhatIsSectionProps>
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
         {/* Block 1: What is Sunday School? Card (Figma 289:3800 / 289:3802 / 289:3804) */}
         <RevealOnScroll direction="up" delay={0.1}>
-          <div className="bg-[#122f4a] rounded-[24px] sm:rounded-[32px] md:rounded-[40px] overflow-hidden text-white shadow-xl max-w-[1140px] mx-auto border border-white/5">
+          <div className="bg-[#122f4a] rounded-[24px] sm:rounded-[32px] md:rounded-[40px] overflow-hidden text-white shadow-xl max-w-[1140px] mx-auto border border-white/5 transition-all duration-300 hover:shadow-2xl">
             {/* Header with Gold Bars touching the card's outer left and right edges */}
-            <div className="w-full flex items-center justify-between pt-8 sm:pt-10 mb-4 sm:mb-6">
-              <div className="w-[60px] sm:w-[160px] md:w-[260px] lg:w-[377px] h-[5px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-r-full flex-shrink-0" />
+            <div className="w-full flex items-center justify-between pt-6 sm:pt-8 md:pt-10 mb-4 sm:mb-6 overflow-hidden">
+              <GoldBarReveal
+                direction="left"
+                delay={0.1}
+                className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[280px] xl:w-[377px] h-[5px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-r-full flex-shrink-0"
+              />
 
-              <h2 className="font-poppins font-semibold text-white text-base sm:text-xl md:text-[24px] lg:text-[26px] text-center px-3 sm:px-6 tracking-tight whitespace-nowrap flex-shrink min-w-0">
-                {whatIsCardTitle || 'What is Sunday School?'}
-              </h2>
+              <div className="flex-1 min-w-0 px-2 sm:px-4 md:px-6 text-center">
+                <TextWordReveal
+                  as="h2"
+                  delay={0.1}
+                  className="font-poppins font-semibold text-white text-xs xs:text-sm sm:text-lg md:text-[22px] lg:text-[26px] tracking-tight uppercase leading-tight line-clamp-2"
+                >
+                  {whatIsCardTitle || 'What is Sunday School?'}
+                </TextWordReveal>
+              </div>
 
-              <div className="w-[60px] sm:w-[160px] md:w-[260px] lg:w-[377px] h-[5px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-l-full flex-shrink-0" />
+              <GoldBarReveal
+                direction="right"
+                delay={0.1}
+                className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[280px] xl:w-[377px] h-[5px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-l-full flex-shrink-0"
+              />
             </div>
 
             {/* Narrative Text */}
             <div className="px-6 sm:px-12 md:px-16 pb-8 sm:pb-12 text-center">
-              <p className="font-poppins text-white text-xs sm:text-base md:text-lg lg:text-[18px] leading-relaxed max-w-4xl mx-auto text-balance font-normal opacity-95">
+              <BlurTextReveal
+                as="p"
+                delay={0.2}
+                duration={0.7}
+                className="font-poppins text-white text-xs sm:text-base md:text-lg lg:text-[18px] leading-relaxed max-w-4xl mx-auto text-balance font-normal opacity-95"
+              >
                 {whatIsCardDescription}
-              </p>
+              </BlurTextReveal>
             </div>
           </div>
         </RevealOnScroll>
 
         {/* Block 2: Purpose & vision Card (Figma 289:3801 / 289:3803 / 289:3805) */}
         <RevealOnScroll direction="up" delay={0.2}>
-          <div className="bg-[#122f4a] rounded-[24px] sm:rounded-[32px] md:rounded-[40px] overflow-hidden text-white shadow-xl max-w-[1140px] mx-auto border border-white/5">
+          <div className="bg-[#122f4a] rounded-[24px] sm:rounded-[32px] md:rounded-[40px] overflow-hidden text-white shadow-xl max-w-[1140px] mx-auto border border-white/5 transition-all duration-300 hover:shadow-2xl">
             {/* Header with Gold Bars touching the card's outer left and right edges */}
-            <div className="w-full flex items-center justify-between pt-8 sm:pt-10 mb-4 sm:mb-6">
-              <div className="w-[60px] sm:w-[160px] md:w-[260px] lg:w-[377px] h-[5px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-r-full flex-shrink-0" />
+            <div className="w-full flex items-center justify-between pt-6 sm:pt-8 md:pt-10 mb-4 sm:mb-6 overflow-hidden">
+              <GoldBarReveal
+                direction="left"
+                delay={0.1}
+                className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[280px] xl:w-[377px] h-[5px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-r-full flex-shrink-0"
+              />
 
-              <h2 className="font-poppins font-semibold text-white text-base sm:text-xl md:text-[24px] lg:text-[26px] text-center px-3 sm:px-6 tracking-tight whitespace-nowrap flex-shrink min-w-0">
-                {visionCardTitle || 'Purpose & vision'}
-              </h2>
+              <div className="flex-1 min-w-0 px-2 sm:px-4 md:px-6 text-center">
+                <TextWordReveal
+                  as="h2"
+                  delay={0.1}
+                  className="font-poppins font-semibold text-white text-xs xs:text-sm sm:text-lg md:text-[22px] lg:text-[26px] tracking-tight uppercase leading-tight line-clamp-2"
+                >
+                  {visionCardTitle || 'Purpose & vision'}
+                </TextWordReveal>
+              </div>
 
-              <div className="w-[60px] sm:w-[160px] md:w-[260px] lg:w-[377px] h-[5px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-l-full flex-shrink-0" />
+              <GoldBarReveal
+                direction="right"
+                delay={0.1}
+                className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[280px] xl:w-[377px] h-[5px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-l-full flex-shrink-0"
+              />
             </div>
 
             {/* Narrative Text */}
             <div className="px-6 sm:px-12 md:px-16 pb-8 sm:pb-12 text-center space-y-4">
               {purposeParagraph && (
-                <p className="font-poppins text-white text-xs sm:text-base md:text-lg lg:text-[18px] leading-relaxed max-w-4xl mx-auto text-balance font-normal opacity-95">
+                <BlurTextReveal
+                  as="p"
+                  delay={0.2}
+                  duration={0.7}
+                  className="font-poppins text-white text-xs sm:text-base md:text-lg lg:text-[18px] leading-relaxed max-w-4xl mx-auto text-balance font-normal opacity-95"
+                >
                   {purposeParagraph}
-                </p>
+                </BlurTextReveal>
               )}
               {visionParagraph && (
-                <p className="font-poppins text-white text-xs sm:text-base md:text-lg lg:text-[18px] leading-relaxed max-w-4xl mx-auto text-balance font-normal opacity-95">
+                <BlurTextReveal
+                  as="p"
+                  delay={0.3}
+                  duration={0.7}
+                  className="font-poppins text-white text-xs sm:text-base md:text-lg lg:text-[18px] leading-relaxed max-w-4xl mx-auto text-balance font-normal opacity-95"
+                >
                   {visionParagraph}
-                </p>
+                </BlurTextReveal>
               )}
             </div>
           </div>
@@ -77,3 +121,4 @@ export const SundaySchoolWhatIsSection: React.FC<SundaySchoolWhatIsSectionProps>
     </section>
   )
 }
+

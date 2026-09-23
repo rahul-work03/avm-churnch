@@ -2,9 +2,21 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
+import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import { X, ZoomIn } from 'lucide-react'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
-import { RevealOnScroll } from '@/components/ui/reveal'
+
+const tierVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.65,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
 
 export interface GalleryPhotoItem {
   id?: string
@@ -182,12 +194,17 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
   }
 
   return (
-    <section className="relative pt-24 pb-8 sm:pt-32 sm:pb-12 md:pt-36 md:pb-16 bg-transparent" data-node-id="228:641">
+    <section className="relative pt-28 pb-8 sm:pt-32 sm:pb-12 md:pt-36 md:pb-16 bg-transparent select-none" data-node-id="228:641">
       <div className="max-w-[1140px] mx-auto px-3 sm:px-6 lg:px-0">
         {/* Unified 5-Column Grid Track System */}
         <div className="flex flex-col gap-2 sm:gap-3 md:gap-3.5">
           {/* 1. TOP MOSAIC: Left Arch Hero (2 Cols x 2 Rows) + Right 6 Cards (3 Cols x 2 Rows) */}
-          <RevealOnScroll direction="up" delay={0.1}>
+          <motion.div
+            variants={tierVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+          >
             <div className="grid grid-cols-5 grid-rows-2 gap-2 sm:gap-3 md:gap-3.5 h-[260px] sm:h-[400px] md:h-[480px] lg:h-[520px]">
               {/* Left Arch Hero (Cols 1-2, Rows 1-2) */}
               <div
@@ -244,10 +261,15 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                 )
               })}
             </div>
-          </RevealOnScroll>
+          </motion.div>
 
           {/* 2. MIDDLE STRIP: 5 Uniform Horizontal Cards */}
-          <RevealOnScroll direction="up" delay={0.15}>
+          <motion.div
+            variants={tierVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+          >
             <div className="grid grid-cols-5 gap-2 sm:gap-3 md:gap-3.5 h-[130px] sm:h-[200px] md:h-[240px] lg:h-[260px]">
               {activeMiddle.map((photo, index) => {
                 const photoSrc = getMediaUrl(
@@ -277,10 +299,15 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                 )
               })}
             </div>
-          </RevealOnScroll>
+          </motion.div>
 
           {/* 3. BOTTOM MOSAIC: Left (Col 1 x 2 Rows) + Center Podium Hero (Cols 2-3 x 2 Rows) + Right (Cols 4-5 x 2 Rows) */}
-          <RevealOnScroll direction="up" delay={0.2}>
+          <motion.div
+            variants={tierVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+          >
             <div className="grid grid-cols-5 grid-rows-2 gap-2 sm:gap-3 md:gap-3.5 h-[260px] sm:h-[400px] md:h-[480px] lg:h-[520px]">
               {/* Left Col 1, Row 1 */}
               {activeBottomLeft[0] && (
@@ -434,52 +461,62 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                 </div>
               )}
             </div>
-          </RevealOnScroll>
+          </motion.div>
         </div>
       </div>
 
       {/* Interactive Fullscreen Lightbox Modal */}
-      {selectedPhoto && (
-        <div
-          onClick={() => setSelectedPhoto(null)}
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 animate-in fade-in duration-200"
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="relative max-w-4xl w-full bg-slate-900 rounded-[20px] overflow-hidden shadow-2xl border border-white/20 flex flex-col"
+      <AnimatePresence>
+        {selectedPhoto && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setSelectedPhoto(null)}
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
           >
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedPhoto(null)}
-              className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-colors shadow"
-              aria-label="Close Lightbox"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.92, y: 15 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-4xl w-full bg-slate-900 rounded-[20px] overflow-hidden shadow-2xl border border-white/20 flex flex-col"
             >
-              <X size={22} />
-            </button>
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedPhoto(null)}
+                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-colors shadow cursor-pointer"
+                aria-label="Close Lightbox"
+              >
+                <X size={22} />
+              </button>
 
-            {/* Photo Container */}
-            <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-black">
-              <Image
-                src={selectedPhoto.src}
-                alt={selectedPhoto.alt}
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
+              {/* Photo Container */}
+              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-black">
+                <Image
+                  src={selectedPhoto.src}
+                  alt={selectedPhoto.alt}
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
 
-            {/* Caption Bar */}
-            <div className="p-4 sm:p-6 bg-[#122f4a] text-white">
-              <p className="font-poppins font-semibold text-base sm:text-lg">
-                {selectedPhoto.caption}
-              </p>
-              <p className="font-poppins text-slate-300 text-xs sm:text-sm mt-1">
-                Ankur Narula Ministries &mdash; The Church of Signs and Wonders
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
+              {/* Caption Bar */}
+              <div className="p-4 sm:p-6 bg-[#122f4a] text-white">
+                <p className="font-poppins font-semibold text-base sm:text-lg">
+                  {selectedPhoto.caption}
+                </p>
+                <p className="font-poppins text-slate-300 text-xs sm:text-sm mt-1">
+                  Ankur Narula Ministries &mdash; The Church of Signs and Wonders
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }

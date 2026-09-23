@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { anyone } from '../../access/anyone'
 import { adminsOrEditors } from '../../access/adminsOrEditors'
+import { fetchYouTubeMetadata } from './hooks/fetchYouTubeMetadata'
 
 export const Sermons: CollectionConfig = {
   slug: 'sermons',
@@ -14,19 +15,29 @@ export const Sermons: CollectionConfig = {
     defaultColumns: ['title', 'publishedDate', 'isFeatured', 'updatedAt'],
     useAsTitle: 'title',
   },
+  hooks: {
+    beforeChange: [fetchYouTubeMetadata],
+  },
   fields: [
     {
       name: 'title',
       type: 'text',
-      required: true,
-      label: 'Sermon Title',
+      required: false,
+      label: 'Sermon Title (Auto-fetched from YouTube if left empty)',
+      admin: {
+        description:
+          'Leave empty to automatically fetch the official video title from YouTube, or enter a custom title.',
+      },
     },
     {
       name: 'youtubeUrl',
       type: 'text',
       required: true,
-      label: 'YouTube Video or Channel URL',
-      defaultValue: 'https://www.youtube.com/@AnkurNarulaMinistries',
+      label: 'YouTube Video URL / Embed URL / iframe',
+      defaultValue: 'https://www.youtube.com/embed/uho9yd6qOwk?si=DwZIXkJ5U-D-RJqN',
+      admin: {
+        description: 'Paste YouTube video link (watch/share URL), embed URL, or complete <iframe> embed code.',
+      },
     },
     {
       name: 'thumbnail',

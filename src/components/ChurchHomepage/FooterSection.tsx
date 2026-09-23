@@ -3,6 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { MapPin } from 'lucide-react'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export interface FooterPageLink {
@@ -55,23 +56,23 @@ const DEFAULT_SOCIAL_LINKS: FooterSocialLink[] = [
   {
     name: 'Instagram',
     iconFallback: '/instagram_logo_footer.png',
-    url: 'https://www.instagram.com/ankurnarulaministries?igsh=NmEzcDFsYnc4YWEw',
+    url: 'https://www.instagram.com/ankurnarulaministries',
     width: 27,
+    height: 27,
+  },
+  {
+    name: 'Facebook',
+    iconFallback: '/facebook_logo_footer.png',
+    url: 'https://www.facebook.com/ankurnarulaministries/',
+    width: 26,
     height: 27,
   },
   {
     name: 'YouTube',
     iconFallback: '/youtube_logo_footer.png',
-    url: 'https://www.youtube.com/channel/UCYwyl0lfL0UzP-1LMtcoH-w',
+    url: 'https://www.youtube.com/@ankurnarulaministries',
     width: 25,
     height: 24,
-  },
-  {
-    name: 'Facebook',
-    iconFallback: '/facebook_logo_footer.png',
-    url: 'https://www.facebook.com/ankurnarulaministries',
-    width: 26,
-    height: 27,
   },
   {
     name: 'X Twitter',
@@ -81,6 +82,25 @@ const DEFAULT_SOCIAL_LINKS: FooterSocialLink[] = [
     height: 27,
   },
 ]
+
+const FooterMapEmbed: React.FC<{ src: string; className?: string }> = ({
+  src,
+  className = 'w-full h-full',
+}) => {
+  return (
+    <iframe
+      src={src}
+      width="100%"
+      height="100%"
+      style={{ border: 0 }}
+      allowFullScreen
+      loading="lazy"
+      referrerPolicy="strict-origin-when-cross-origin"
+      title="Church Location Map - Khambra, Jalandhar"
+      className={`${className} border-0`}
+    />
+  )
+}
 
 interface FooterSectionProps {
   data?: FooterData | null
@@ -254,17 +274,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
                 Locate Us
               </h4>
               <div className="relative w-[282px] h-[174px] mt-2 overflow-hidden rounded-md shadow-md bg-black/20">
-                <iframe
-                  src={mapEmbedUrl}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  title="Church Location Map - Khambra, Jalandhar"
-                  className="w-full h-full border-0"
-                />
+                <FooterMapEmbed src={mapEmbedUrl} />
               </div>
             </div>
           </div>
@@ -374,17 +384,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
             <div>
               <h4 className="font-lato font-bold text-[22px] text-white mb-2">Locate Us</h4>
               <div className="relative w-[240px] h-[140px] rounded-lg overflow-hidden shadow bg-black/20">
-                <iframe
-                  src={mapEmbedUrl}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  title="Church Location Map"
-                  className="w-full h-full border-0"
-                />
+                <FooterMapEmbed src={mapEmbedUrl} />
               </div>
             </div>
           </div>
@@ -513,17 +513,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
         <div>
           <h4 className="font-lato font-bold text-[18px] text-white">Locate Us</h4>
           <div className="mt-3 relative w-[220px] h-[135px] mx-auto rounded-lg overflow-hidden shadow-md bg-black/20">
-            <iframe
-              src={mapEmbedUrl}
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="strict-origin-when-cross-origin"
-              title="Church Location Map"
-              className="w-full h-full border-0"
-            />
+            <FooterMapEmbed src={mapEmbedUrl} />
           </div>
         </div>
 

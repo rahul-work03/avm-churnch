@@ -2,7 +2,8 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/ui/reveal'
+import { motion, type Variants } from 'framer-motion'
+import { TextWordReveal } from '@/components/ui/text-reveal'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 interface QRCodeSectionProps {
@@ -17,6 +18,30 @@ interface QRCodeSectionProps {
   axisQrFallback?: string | null
   gpayQrImage?: any
   gpayQrFallback?: string | null
+}
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.18,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+const phoneVariants: Variants = {
+  hidden: { opacity: 0, y: 35, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
 }
 
 export const QRCodeSection: React.FC<QRCodeSectionProps> = ({
@@ -36,24 +61,37 @@ export const QRCodeSection: React.FC<QRCodeSectionProps> = ({
   const gpayUrl = getMediaUrl(gpayQrImage, gpayQrFallback || '/give/gpay_qr_card.png')
 
   return (
-    <section className="relative py-10 sm:py-14 md:py-20 overflow-hidden" data-node-id="231:946">
+    <section className="relative py-10 sm:py-14 md:py-20 overflow-hidden select-none" data-node-id="231:946">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         {/* Section Heading */}
-        <RevealOnScroll direction="none" duration={0.6}>
-          <h2 className="font-poppins font-semibold text-2xl sm:text-3xl md:text-[30px] text-[#1f3a5f] text-center mb-8 sm:mb-14 tracking-tight">
+        <div className="mb-8 sm:mb-14 text-center">
+          <TextWordReveal
+            as="h2"
+            delay={0.05}
+            staggerDelay={0.035}
+            className="font-poppins font-semibold text-2xl sm:text-3xl md:text-[30px] text-[#1f3a5f] text-center tracking-tight justify-center"
+          >
             {qrHeaderTitle || 'Scan QR Code For Tithes & Offerings'}
-          </h2>
-        </RevealOnScroll>
+          </TextWordReveal>
+        </div>
 
         {/* Dual White iPhone XR Mockups Container */}
-        <StaggerContainer
-          staggerDelay={0.2}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
           className="grid grid-cols-2 gap-3.5 sm:gap-8 md:gap-12 items-stretch justify-center w-full max-w-[680px]"
         >
           {/* ===================== PHONE 1 (ICICI & HDFC) - Node 231:946 ===================== */}
-          <StaggerItem className="w-full">
+          <motion.div
+            variants={phoneVariants}
+            whileHover={{ y: -6, scale: 1.01 }}
+            transition={{ duration: 0.3 }}
+            className="w-full"
+          >
             <div
-              className="relative bg-[#fbfbfb] rounded-[28px] sm:rounded-[42px] md:rounded-[48px] p-2 sm:p-3.5 md:p-4 shadow-[0_15px_40px_rgba(0,0,0,0.1),0_4px_10px_rgba(0,0,0,0.04)] border-[4px] sm:border-[7px] md:border-[9px] border-[#eceef1] ring-1 ring-black/5 flex flex-col justify-between items-center transition-all duration-300 hover:shadow-[0_22px_55px_rgba(0,0,0,0.14)] hover:-translate-y-1 w-full aspect-[405/760]"
+              className="relative bg-[#fbfbfb] rounded-[28px] sm:rounded-[42px] md:rounded-[48px] p-2 sm:p-3.5 md:p-4 shadow-[0_15px_40px_rgba(0,0,0,0.1),0_4px_10px_rgba(0,0,0,0.04)] border-[4px] sm:border-[7px] md:border-[9px] border-[#eceef1] ring-1 ring-black/5 flex flex-col justify-between items-center transition-shadow duration-300 hover:shadow-[0_22px_55px_rgba(0,0,0,0.14)] w-full aspect-[405/760]"
               data-node-id="231:946"
             >
               {/* Left Side Volume Buttons */}
@@ -109,12 +147,17 @@ export const QRCodeSection: React.FC<QRCodeSectionProps> = ({
               {/* Bottom Home Indicator Bar */}
               <div className="w-12 sm:w-20 md:w-24 h-0.5 sm:h-1 bg-slate-300/80 rounded-full mt-1.5 sm:mt-2.5 flex-shrink-0" />
             </div>
-          </StaggerItem>
+          </motion.div>
 
           {/* ===================== PHONE 2 (Axis & Google Pay) - Node 231:954 ===================== */}
-          <StaggerItem className="w-full">
+          <motion.div
+            variants={phoneVariants}
+            whileHover={{ y: -6, scale: 1.01 }}
+            transition={{ duration: 0.3 }}
+            className="w-full"
+          >
             <div
-              className="relative bg-[#fbfbfb] rounded-[28px] sm:rounded-[42px] md:rounded-[48px] p-2 sm:p-3.5 md:p-4 shadow-[0_15px_40px_rgba(0,0,0,0.1),0_4px_10px_rgba(0,0,0,0.04)] border-[4px] sm:border-[7px] md:border-[9px] border-[#eceef1] ring-1 ring-black/5 flex flex-col justify-between items-center transition-all duration-300 hover:shadow-[0_22px_55px_rgba(0,0,0,0.14)] hover:-translate-y-1 w-full aspect-[405/760]"
+              className="relative bg-[#fbfbfb] rounded-[28px] sm:rounded-[42px] md:rounded-[48px] p-2 sm:p-3.5 md:p-4 shadow-[0_15px_40px_rgba(0,0,0,0.1),0_4px_10px_rgba(0,0,0,0.04)] border-[4px] sm:border-[7px] md:border-[9px] border-[#eceef1] ring-1 ring-black/5 flex flex-col justify-between items-center transition-shadow duration-300 hover:shadow-[0_22px_55px_rgba(0,0,0,0.14)] w-full aspect-[405/760]"
               data-node-id="231:954"
             >
               {/* Left Side Volume Buttons */}
@@ -170,8 +213,8 @@ export const QRCodeSection: React.FC<QRCodeSectionProps> = ({
               {/* Bottom Home Indicator Bar */}
               <div className="w-12 sm:w-20 md:w-24 h-0.5 sm:h-1 bg-slate-300/80 rounded-full mt-1.5 sm:mt-2.5 flex-shrink-0" />
             </div>
-          </StaggerItem>
-        </StaggerContainer>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

@@ -2,9 +2,10 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
+import { motion, type Variants } from 'framer-motion'
 import { Copy, Check } from 'lucide-react'
 import { BankAccount } from './GiveTypes'
-import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/ui/reveal'
+import { TextWordReveal, GoldBarReveal } from '@/components/ui/text-reveal'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 const DEFAULT_BANK_ACCOUNTS: BankAccount[] = [
@@ -45,6 +46,30 @@ interface BankDetailsSectionProps {
   bankAccounts?: BankAccount[] | null
 }
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
+
 export const BankDetailsSection: React.FC<BankDetailsSectionProps> = ({
   bankHeaderTitle = 'YOU CAN SEND OFFERING THROUGH WITH ALL THESE BANKS',
   bankAccounts,
@@ -64,24 +89,42 @@ export const BankDetailsSection: React.FC<BankDetailsSectionProps> = ({
   }
 
   return (
-    <section className="relative pt-10 sm:pt-14 md:pt-18 pb-16 sm:pb-24 md:pb-32 overflow-hidden bg-white">
+    <section className="relative pt-10 sm:pt-14 md:pt-18 pb-16 sm:pb-24 md:pb-32 overflow-hidden bg-white select-none">
       {/* Flanked Section Title with Golden Divider Bars */}
-      <RevealOnScroll direction="none" duration={0.6} className="w-full flex items-center justify-between mb-8 sm:mb-12 md:mb-16">
-        <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[5px] sm:h-[6px] md:h-[8px] bg-[#efbf04] rounded-r-full shadow-xs flex-shrink-0 pointer-events-none" />
+      <div className="w-full flex items-center justify-between mb-8 sm:mb-12 md:mb-16">
+        <GoldBarReveal
+          direction="left"
+          duration={0.6}
+          delay={0.1}
+          className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[240px] xl:w-[323px] h-[5px] sm:h-[7px] lg:h-[8px] bg-[#efbf04] rounded-r-full shadow-sm flex-shrink-0"
+        />
 
-        <div className="text-center px-3 sm:px-6 md:px-8 flex-shrink min-w-0">
-          <h2 className="font-poppins font-bold text-center text-sm sm:text-lg md:text-[22px] lg:text-[24px] text-[#1f3a5f] tracking-wide uppercase leading-snug max-w-[680px] mx-auto">
+        <div className="flex-1 min-w-0 px-2 sm:px-4 md:px-8 text-center">
+          <TextWordReveal
+            as="h2"
+            delay={0.08}
+            staggerDelay={0.035}
+            className="font-poppins font-bold text-center text-sm sm:text-lg md:text-[22px] lg:text-[24px] text-[#1f3a5f] tracking-wide uppercase leading-snug max-w-[680px] mx-auto justify-center line-clamp-2"
+          >
             {bankHeaderTitle || 'YOU CAN SEND OFFERING THROUGH WITH ALL THESE BANKS'}
-          </h2>
+          </TextWordReveal>
         </div>
 
-        <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[5px] sm:h-[6px] md:h-[8px] bg-[#efbf04] rounded-l-full shadow-xs flex-shrink-0 pointer-events-none" />
-      </RevealOnScroll>
+        <GoldBarReveal
+          direction="right"
+          duration={0.6}
+          delay={0.1}
+          className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[240px] xl:w-[323px] h-[5px] sm:h-[7px] lg:h-[8px] bg-[#efbf04] rounded-l-full shadow-sm flex-shrink-0"
+        />
+      </div>
 
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
         {/* Bank Detail Cards Grid */}
-        <StaggerContainer
-          staggerDelay={0.12}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 w-full max-w-[1180px] items-stretch"
         >
           {activeAccounts.map((account, index) => {
@@ -98,10 +141,16 @@ export const BankDetailsSection: React.FC<BankDetailsSectionProps> = ({
             const borderStyle = account.borderColor ? { borderColor: account.borderColor } : {}
 
             return (
-              <StaggerItem key={accId} className="h-full">
+              <motion.div
+                key={accId}
+                variants={cardVariants}
+                whileHover={{ y: -6, scale: 1.01 }}
+                transition={{ duration: 0.25 }}
+                className="h-full"
+              >
                 <div
                   style={borderStyle}
-                  className="relative bg-white rounded-[22px] p-6 sm:p-7 shadow-[0_8px_30px_rgba(0,0,0,0.06)] border-2 transition-all duration-300 hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)] hover:-translate-y-1 flex flex-col items-center text-center justify-between min-h-[310px] sm:min-h-[330px] h-full"
+                  className="relative bg-white rounded-[22px] p-6 sm:p-7 shadow-[0_8px_30px_rgba(0,0,0,0.06)] border-2 transition-shadow duration-300 hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)] flex flex-col items-center text-center justify-between min-h-[310px] sm:min-h-[330px] h-full"
                 >
                   {/* Bank Logo Header (Uniform Fixed Box) */}
                   <div className="relative w-full max-w-[200px] h-[48px] sm:h-[54px] flex-shrink-0 flex items-center justify-center">
@@ -129,9 +178,10 @@ export const BankDetailsSection: React.FC<BankDetailsSectionProps> = ({
                     </div>
 
                     {/* Account Number with Click-to-Copy */}
-                    <div
+                    <motion.div
+                      whileTap={{ scale: 0.95 }}
                       onClick={() => copyToClipboard(account.accountNumber, accCopyId)}
-                      className="group/acc cursor-pointer flex flex-col items-center justify-center py-1 px-3 rounded-lg hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all active:scale-95"
+                      className="group/acc cursor-pointer flex flex-col items-center justify-center py-1 px-3 rounded-lg hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all select-text"
                       title="Click to copy Account Number"
                     >
                       <p className="font-poppins font-bold text-xs sm:text-[13px] md:text-[14px] text-[#1f3a5f] tracking-wider uppercase">
@@ -147,12 +197,13 @@ export const BankDetailsSection: React.FC<BankDetailsSectionProps> = ({
                           <Copy size={13} className="text-slate-400 group-hover/acc:text-slate-600 transition-colors flex-shrink-0" />
                         )}
                       </div>
-                    </div>
+                    </motion.div>
 
                     {/* IFSC Code with Click-to-Copy */}
-                    <div
+                    <motion.div
+                      whileTap={{ scale: 0.95 }}
                       onClick={() => copyToClipboard(account.ifsc, ifscCopyId)}
-                      className="group/ifsc cursor-pointer inline-flex items-center justify-center gap-1.5 py-0.5 px-2 rounded-lg hover:bg-slate-50 transition-all active:scale-95"
+                      className="group/ifsc cursor-pointer inline-flex items-center justify-center gap-1.5 py-0.5 px-2 rounded-lg hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all select-text"
                       title="Click to copy IFSC Code"
                     >
                       <p className="font-poppins text-xs sm:text-[13px] md:text-[15px] text-[#333333]">
@@ -163,7 +214,7 @@ export const BankDetailsSection: React.FC<BankDetailsSectionProps> = ({
                       ) : (
                         <Copy size={12} className="text-slate-400 opacity-0 group-hover/ifsc:opacity-100 transition-opacity flex-shrink-0" />
                       )}
-                    </div>
+                    </motion.div>
 
                     {/* Branch */}
                     <p className="font-poppins text-xs sm:text-[13px] md:text-[15px] text-[#333333]">
@@ -171,10 +222,10 @@ export const BankDetailsSection: React.FC<BankDetailsSectionProps> = ({
                     </p>
                   </div>
                 </div>
-              </StaggerItem>
+              </motion.div>
             )
           })}
-        </StaggerContainer>
+        </motion.div>
       </div>
     </section>
   )

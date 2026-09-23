@@ -3,6 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { RevealOnScroll } from '@/components/ui/reveal'
+import { TextWordReveal, BlurTextReveal, GoldBarReveal } from '@/components/ui/text-reveal'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export interface PresencePhotoItem {
@@ -73,6 +74,15 @@ const DEFAULT_ROW2_PHOTOS: PresencePhotoItem[] = [
   },
 ]
 
+const buildSeamlessMarquee = (items: PresencePhotoItem[], minHalfCount = 8) => {
+  if (!items || items.length === 0) return []
+  let oneHalf: PresencePhotoItem[] = []
+  while (oneHalf.length < minHalfCount) {
+    oneHalf = [...oneHalf, ...items]
+  }
+  return [...oneHalf, ...oneHalf]
+}
+
 export const InternationalPresenceSection: React.FC<InternationalPresenceSectionProps> = ({
   headerTitle = 'Man Of God International Presence',
   subtitle = 'Spreading the revival fire, establishing branches, and connecting with global leadership across continents.',
@@ -82,30 +92,48 @@ export const InternationalPresenceSection: React.FC<InternationalPresenceSection
   const activeRow1 = row1Photos && row1Photos.length > 0 ? row1Photos : DEFAULT_ROW1_PHOTOS
   const activeRow2 = row2Photos && row2Photos.length > 0 ? row2Photos : DEFAULT_ROW2_PHOTOS
 
-  const row1Duplicated = [...activeRow1, ...activeRow1]
-  const row2Duplicated = [...activeRow2, ...activeRow2]
+  const row1Duplicated = buildSeamlessMarquee(activeRow1)
+  const row2Duplicated = buildSeamlessMarquee(activeRow2)
 
   return (
     <section className="pb-12 sm:pb-16 md:pb-24 bg-[#fdfbf3] overflow-hidden select-none" data-node-id="275:810">
       {/* Dark Navy Section Header Bar */}
-      <RevealOnScroll direction="none" duration={0.6} className="bg-[#122f4a] py-5 sm:py-7 md:py-8 text-white relative shadow-sm">
+      <div className="bg-[#122f4a] py-5 sm:py-7 md:py-8 text-white relative shadow-sm">
         <div className="w-full flex items-center justify-between">
-          <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-r-full flex-shrink-0" />
+          <GoldBarReveal
+            direction="left"
+            duration={0.7}
+            delay={0.1}
+            className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-r-full flex-shrink-0"
+          />
 
-          <h2 className="font-poppins font-bold text-white text-sm sm:text-2xl md:text-[28px] text-center px-3 sm:px-8 md:px-12 tracking-wide flex-shrink min-w-0">
+          <TextWordReveal
+            as="h2"
+            delay={0.15}
+            staggerDelay={0.04}
+            className="font-poppins font-bold text-white text-sm sm:text-2xl md:text-[28px] text-center px-3 sm:px-8 md:px-12 tracking-wide flex-shrink min-w-0"
+          >
             {headerTitle}
-          </h2>
+          </TextWordReveal>
 
-          <div className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-l-full flex-shrink-0" />
+          <GoldBarReveal
+            direction="right"
+            duration={0.7}
+            delay={0.1}
+            className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-l-full flex-shrink-0"
+          />
         </div>
-      </RevealOnScroll>
+      </div>
 
       <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 text-center pt-6 sm:pt-8">
-        <RevealOnScroll direction="up" distance={16} duration={0.6}>
-          <p className="font-poppins text-slate-600 text-xs sm:text-base md:text-[17px] max-w-2xl mx-auto">
-            {subtitle}
-          </p>
-        </RevealOnScroll>
+        <BlurTextReveal
+          as="p"
+          delay={0.1}
+          duration={0.6}
+          className="font-poppins text-slate-600 text-xs sm:text-base md:text-[17px] max-w-2xl mx-auto"
+        >
+          {subtitle}
+        </BlurTextReveal>
       </div>
 
       {/* Bidirectional Infinite Moving Sliders */}

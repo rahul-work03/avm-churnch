@@ -3,6 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { RevealOnScroll } from '@/components/ui/reveal'
+import { TextWordReveal, BlurTextReveal, GoldBarReveal } from '@/components/ui/text-reveal'
 import { getMediaUrl, getMediaAlt } from '@/utilities/getMediaUrl'
 
 export interface HeroSectionProps {
@@ -28,41 +29,77 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const resolvedBannerAlt = getMediaAlt(bannerImage, bannerAlt)
 
   return (
-    <section className="relative pt-24 pb-8 sm:pt-28 sm:pb-14 md:pt-32 md:pb-16 overflow-hidden" data-node-id="274:3">
+    <section className="relative pt-28 pb-8 sm:pt-32 sm:pb-14 md:pt-36 md:pb-16 overflow-hidden" data-node-id="274:3">
       {/* Header Title with Flanking Gold Bars */}
       <div className="w-full flex items-center justify-between py-2 sm:py-3 md:py-4">
         {/* Left Decorative Gold Bar */}
-        <div
+        <GoldBarReveal
+          direction="left"
+          duration={0.7}
+          delay={0.1}
           className="w-[48px] sm:w-[100px] md:w-[140px] lg:w-[164px] h-[6px] sm:h-[10px] lg:h-[14px] bg-[#efbf04] rounded-r-full shadow-sm pointer-events-none flex-shrink-0"
           data-node-id="274:23"
         />
 
         {/* Main Title & Subtitle */}
-        <RevealOnScroll direction="up" distance={20} duration={0.7} className="text-center max-w-4xl mx-auto px-2 sm:px-6 md:px-10 flex-shrink min-w-0">
+        <div className="text-center max-w-4xl mx-auto px-2 sm:px-6 md:px-10 flex-shrink min-w-0">
           {/* Desktop Headline */}
-          <h1 className="hidden sm:block font-philosopher font-bold text-[#003471] text-2xl sm:text-3xl md:text-4xl lg:text-[46px] xl:text-[50px] leading-tight tracking-tight">
-            {headline1} <br />
-            <span className="text-[#003471] block mt-1">
+          <div className="hidden sm:block">
+            <TextWordReveal
+              as="h1"
+              delay={0.05}
+              staggerDelay={0.04}
+              className="font-philosopher font-bold text-[#003471] text-2xl sm:text-3xl md:text-4xl lg:text-[46px] xl:text-[50px] leading-tight tracking-tight"
+            >
+              {headline1}
+            </TextWordReveal>
+            <TextWordReveal
+              as="span"
+              delay={0.25}
+              staggerDelay={0.04}
+              className="text-[#003471] block mt-1 font-philosopher font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[46px] xl:text-[50px] leading-tight tracking-tight"
+            >
               {headline2}
-            </span>
-          </h1>
+            </TextWordReveal>
+          </div>
 
           {/* Mobile Headline */}
-          <h1 className="sm:hidden font-philosopher font-bold text-[#003471] text-[22px] sm:text-[24px] leading-tight tracking-tight">
-            {headline1} <br />
-            <span className="text-[#003471] block mt-0.5">
+          <div className="sm:hidden">
+            <TextWordReveal
+              as="h1"
+              delay={0.05}
+              staggerDelay={0.035}
+              className="font-philosopher font-bold text-[#003471] text-[22px] sm:text-[24px] leading-tight tracking-tight"
+            >
+              {headline1}
+            </TextWordReveal>
+            <TextWordReveal
+              as="span"
+              delay={0.2}
+              staggerDelay={0.035}
+              className="text-[#003471] block mt-0.5 font-philosopher font-bold text-[22px] sm:text-[24px] leading-tight tracking-tight"
+            >
               {mobileHeadline2 || headline2}
-            </span>
-          </h1>
+            </TextWordReveal>
+          </div>
 
           {/* Subtitle */}
-          <p className="font-poppins font-light sm:font-normal text-[#0b0c1c] sm:text-[#8c8c8c] text-[12px] sm:text-base md:text-[18px] leading-relaxed max-w-3xl mx-auto mt-2 sm:mt-3 md:mt-4 text-balance px-1">
+          <BlurTextReveal
+            as="p"
+            delay={0.4}
+            duration={0.7}
+            distance={14}
+            className="font-poppins font-light sm:font-normal text-[#0b0c1c] sm:text-[#8c8c8c] text-[12px] sm:text-base md:text-[18px] leading-relaxed max-w-3xl mx-auto mt-2 sm:mt-3 md:mt-4 text-balance px-1"
+          >
             {description}
-          </p>
-        </RevealOnScroll>
+          </BlurTextReveal>
+        </div>
 
         {/* Right Decorative Gold Bar */}
-        <div
+        <GoldBarReveal
+          direction="right"
+          duration={0.7}
+          delay={0.1}
           className="w-[48px] sm:w-[100px] md:w-[140px] lg:w-[164px] h-[6px] sm:h-[10px] lg:h-[14px] bg-[#efbf04] rounded-l-full shadow-sm pointer-events-none flex-shrink-0"
           data-node-id="274:28"
         />

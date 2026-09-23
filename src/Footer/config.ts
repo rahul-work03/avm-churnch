@@ -16,23 +16,23 @@ const DEFAULT_SOCIAL_LINKS = [
   {
     name: 'Instagram',
     iconFallback: '/instagram_logo_footer.png',
-    url: 'https://www.instagram.com/ankurnarulaministries?igsh=NmEzcDFsYnc4YWEw',
+    url: 'https://www.instagram.com/ankurnarulaministries',
     width: 27,
+    height: 27,
+  },
+  {
+    name: 'Facebook',
+    iconFallback: '/facebook_logo_footer.png',
+    url: 'https://www.facebook.com/ankurnarulaministries/',
+    width: 26,
     height: 27,
   },
   {
     name: 'YouTube',
     iconFallback: '/youtube_logo_footer.png',
-    url: 'https://www.youtube.com/channel/UCYwyl0lfL0UzP-1LMtcoH-w',
+    url: 'https://www.youtube.com/@ankurnarulaministries',
     width: 25,
     height: 24,
-  },
-  {
-    name: 'Facebook',
-    iconFallback: '/facebook_logo_footer.png',
-    url: 'https://www.facebook.com/ankurnarulaministries',
-    width: 26,
-    height: 27,
   },
   {
     name: 'X Twitter',
@@ -198,33 +198,45 @@ export const Footer: GlobalConfig = {
                   required: true,
                 },
                 {
-                  name: 'icon',
-                  type: 'upload',
-                  relationTo: 'media',
-                  label: 'Platform Icon Image',
-                },
-                {
-                  name: 'iconFallback',
-                  type: 'text',
-                  label: 'Platform Icon Fallback Path',
-                },
-                {
                   name: 'url',
                   type: 'text',
                   label: 'Social Profile URL',
                   required: true,
                 },
                 {
+                  name: 'icon',
+                  type: 'upload',
+                  relationTo: 'media',
+                  label: 'Platform Icon Image',
+                  admin: {
+                    hidden: true,
+                  },
+                },
+                {
+                  name: 'iconFallback',
+                  type: 'text',
+                  label: 'Platform Icon Fallback Path',
+                  admin: {
+                    hidden: true,
+                  },
+                },
+                {
                   name: 'width',
                   type: 'number',
                   label: 'Icon Width (px)',
                   defaultValue: 26,
+                  admin: {
+                    hidden: true,
+                  },
                 },
                 {
                   name: 'height',
                   type: 'number',
                   label: 'Icon Height (px)',
                   defaultValue: 26,
+                  admin: {
+                    hidden: true,
+                  },
                 },
               ],
             },

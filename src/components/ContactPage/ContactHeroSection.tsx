@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import { ChevronDown, CheckCircle2, Loader2 } from 'lucide-react'
-import { RevealOnScroll } from '@/components/ui/reveal'
+import { TextWordReveal, BlurTextReveal } from '@/components/ui/text-reveal'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 const COUNTRY_CODES = [
@@ -74,40 +75,60 @@ export const ContactHeroSection: React.FC<ContactHeroSectionProps> = ({
   }
 
   return (
-    <section className="relative pt-24 sm:pt-28 md:pt-36 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto">
+    <section className="relative pt-24 sm:pt-30 md:pt-36 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 max-w-[1360px] mx-auto select-none">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-        {/* Left Side: Hero Image Card */}
-        <RevealOnScroll direction="left" duration={0.6} className="lg:col-span-6 w-full">
-          <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[560/760] rounded-[20px] sm:rounded-[24px] overflow-hidden shadow-2xl border border-amber-200/30 bg-slate-900 group">
+        {/* Left Side: Hero Image Card Optimized for Mobile and Desktop */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="lg:col-span-6 w-full"
+        >
+          <div className="relative w-full aspect-[4/5] sm:aspect-[4/5] lg:aspect-[580/724] min-h-[320px] sm:min-h-[440px] lg:min-h-[660px] rounded-[16px] sm:rounded-[24px] overflow-hidden shadow-2xl border border-amber-200/30 bg-slate-900 group">
             <Image
               src={heroPhotoUrl}
               alt="Ankur Narula Ministries Contact Us"
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 560px"
               priority
             />
             {/* Subtle Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#122f4a]/70 via-transparent to-transparent pointer-events-none" />
-            <div className="absolute bottom-6 left-6 right-6 text-white pointer-events-none hidden sm:block">
-              <h3 className="font-poppins font-semibold text-lg sm:text-xl text-white drop-shadow-md">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#122f4a]/85 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute bottom-3 left-3 right-3 sm:bottom-6 sm:left-6 sm:right-6 text-white pointer-events-none">
+              <h3 className="font-poppins font-semibold text-sm sm:text-lg lg:text-xl text-white drop-shadow-md">
                 {heroImageBadgeTitle || 'Ankur Narula Ministries'}
               </h3>
-              <p className="font-poppins text-xs sm:text-sm text-slate-200 mt-1 drop-shadow">
+              <p className="font-poppins text-[11px] sm:text-xs lg:text-sm text-slate-200 mt-0.5 sm:mt-1 drop-shadow">
                 {heroImageBadgeSubtitle || 'The Church of Signs and Wonders'}
               </p>
             </div>
           </div>
-        </RevealOnScroll>
+        </motion.div>
 
         {/* Right Side: Contact Form */}
-        <RevealOnScroll direction="right" duration={0.6} className="lg:col-span-6 flex flex-col justify-start">
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="lg:col-span-6 flex flex-col justify-start"
+        >
           <div className="mb-6 sm:mb-8">
-            <h1 className="font-poppins font-semibold text-[#003471] text-2xl sm:text-3xl md:text-4xl lg:text-[48px] lg:leading-[60px] tracking-tight">
+            <TextWordReveal
+              as="h1"
+              delay={0.05}
+              staggerDelay={0.035}
+              className="font-poppins font-semibold text-[#003471] text-2xl sm:text-3xl md:text-4xl lg:text-[48px] lg:leading-[60px] tracking-tight"
+            >
               {heroTitle || 'We Love To Hear From You.'}
-            </h1>
-            <p className="font-poppins font-medium text-[#344054] text-base sm:text-lg mt-2 sm:mt-3">
+            </TextWordReveal>
+            <BlurTextReveal
+              as="p"
+              delay={0.15}
+              className="font-poppins font-medium text-[#344054] text-base sm:text-lg mt-2 sm:mt-3"
+            >
               {heroSubtitle || 'Stay Connected With Us'}
-            </p>
+            </BlurTextReveal>
           </div>
 
           {isSuccess && (
@@ -276,8 +297,10 @@ export const ContactHeroSection: React.FC<ContactHeroSectionProps> = ({
               </button>
             </div>
           </form>
-        </RevealOnScroll>
+        </motion.div>
       </div>
     </section>
   )
 }
+
+export default ContactHeroSection

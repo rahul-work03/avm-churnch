@@ -1,12 +1,25 @@
 import React from 'react'
+import dynamic from 'next/dynamic'
 import { AboutHeroSection } from './AboutHeroSection'
 import { VisionMissionSection } from './VisionMissionSection'
 import { OurLeadersSection } from './OurLeadersSection'
 import { MinistryStatsSection } from './MinistryStatsSection'
 import { ScheduleSection } from '@/components/ChurchHomepage/ScheduleSection'
 import { FaithResourcesSection } from './FaithResourcesSection'
-import { CrusadesSection } from './CrusadesSection'
-import { InternationalPresenceSection } from './InternationalPresenceSection'
+
+const CrusadesSection = dynamic(
+  () => import('./CrusadesSection').then((mod) => mod.CrusadesSection),
+  {
+    loading: () => <div className="h-[400px] w-full animate-pulse bg-slate-900/50" />,
+  },
+)
+
+const InternationalPresenceSection = dynamic(
+  () => import('./InternationalPresenceSection').then((mod) => mod.InternationalPresenceSection),
+  {
+    loading: () => <div className="h-[350px] w-full animate-pulse bg-slate-100" />,
+  },
+)
 
 export interface AboutPageProps {
   aboutData?: any
@@ -89,8 +102,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({
 
   return (
     <main className="min-h-screen bg-white text-[#0b0c1c] antialiased selection:bg-[#efbf04]/30 selection:text-[#0b0c1c]">
-      {/* Top Container: Warm Butter Cream Background (#ffffe9) spanning Hero & Vision/Mission */}
-      <div className="bg-[#ffffe9] relative w-full overflow-hidden">
+      {/* Top Container: Clean Background spanning Hero & Vision/Mission */}
+      <div className="bg-white relative w-full overflow-hidden">
         {/* 1. Hero / Overview */}
         <AboutHeroSection {...heroProps} />
 

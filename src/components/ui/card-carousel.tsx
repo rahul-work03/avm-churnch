@@ -168,6 +168,15 @@ export const CardCarousel: React.FC<CardCarouselProps> = ({
     return () => clearInterval(interval)
   }, [autoplayDelay, count, nudge])
 
+  // Cleanup animation frame on unmount
+  useEffect(() => {
+    return () => {
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current)
+      }
+    }
+  }, [])
+
   // Touch / Drag Handlers
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (rafRef.current !== null) {

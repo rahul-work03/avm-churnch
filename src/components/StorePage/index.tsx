@@ -2,8 +2,9 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import { Star, ExternalLink, ShieldCheck, Truck, Phone, Mail } from 'lucide-react'
+import { TextWordReveal, BlurTextReveal, GoldBarReveal } from '@/components/ui/text-reveal'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 import type { ProductItem, StorePageData } from './StoreTypes'
 
@@ -39,6 +40,29 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
   },
 ]
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
+
 export const StorePage: React.FC<StorePageProps> = ({ data, products }) => {
   const productList = products && products.length > 0 ? products : DEFAULT_PRODUCTS
 
@@ -52,27 +76,53 @@ export const StorePage: React.FC<StorePageProps> = ({ data, products }) => {
   const supportEmail = data?.supportEmail || 'info@ankurnarula.org'
 
   return (
-    <main className="min-h-screen bg-[#f8fafc] text-[#252c32] antialiased pt-28 pb-16 sm:pt-36 sm:pb-24">
-      <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-0">
-        {/* Store Header Callout */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-10 sm:mb-14 px-2"
-        >
-          <h1 className="font-poppins font-bold text-2xl sm:text-3xl md:text-4xl text-[#003471] tracking-tight">
-            {headerTitle}
-          </h1>
-          {headerSubtitle && (
-            <p className="font-poppins text-sm sm:text-base text-slate-600 max-w-2xl mx-auto mt-2.5">
+    <main className="min-h-screen bg-[#f8fafc] text-[#252c32] antialiased pt-28 pb-16 sm:pt-36 sm:pb-24 select-none">
+      {/* 1. Full-Width Edge-to-Edge Title Header with Golden Bars */}
+      <div className="w-full overflow-hidden text-center space-y-3 mb-10 sm:mb-14">
+        <div className="w-full flex items-center justify-between">
+          <GoldBarReveal
+            direction="left"
+            duration={0.6}
+            delay={0.1}
+            className="flex-1 self-center h-[5px] sm:h-[7px] lg:h-[8px] bg-[#efbf04] rounded-r-full shadow-sm"
+          />
+          <div className="flex-initial self-center max-w-[80%] sm:max-w-none px-2 sm:px-6 md:px-8 text-center">
+            <TextWordReveal
+              as="h1"
+              className="font-poppins font-bold text-base sm:text-2xl md:text-3xl lg:text-[34px] text-[#003471] tracking-tight justify-center uppercase leading-tight line-clamp-2"
+            >
+              {headerTitle}
+            </TextWordReveal>
+          </div>
+          <GoldBarReveal
+            direction="right"
+            duration={0.6}
+            delay={0.1}
+            className="flex-1 self-center h-[5px] sm:h-[7px] lg:h-[8px] bg-[#efbf04] rounded-l-full shadow-sm"
+          />
+        </div>
+        {headerSubtitle && (
+          <div className="max-w-2xl mx-auto px-4">
+            <BlurTextReveal
+              as="p"
+              className="font-poppins text-sm sm:text-base text-slate-600 font-normal leading-relaxed justify-center"
+              delay={0.2}
+            >
               {headerSubtitle}
-            </p>
-          )}
-        </motion.div>
+            </BlurTextReveal>
+          </div>
+        )}
+      </div>
 
-        {/* Exact Figma 2-Column Product Grid (Figma 296:4333 & 296:4418) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12 lg:gap-14">
+      <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-0">
+        {/* Exact Figma 2-Column Product Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-12"
+        >
           {productList.map((product, idx) => {
             const imgSrc = getMediaUrl(
               product.image,
@@ -84,12 +134,12 @@ export const StorePage: React.FC<StorePageProps> = ({ data, products }) => {
             return (
               <motion.div
                 key={product.id || idx}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.15 }}
-                className="flex flex-col items-center text-center group bg-white p-6 sm:p-8 rounded-[24px] border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300"
+                variants={cardVariants}
+                whileHover={{ y: -6, scale: 1.01 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col items-center text-center group bg-white p-6 sm:p-8 rounded-[20px] sm:rounded-[24px] border border-slate-200/80 shadow-sm hover:shadow-xl transition-shadow duration-300"
               >
-                {/* Product Book Mockup Container (560px x 462px aspect ratio) */}
+                {/* Product Book Mockup Container */}
                 <a
                   href={targetUrl}
                   target="_blank"
@@ -106,29 +156,28 @@ export const StorePage: React.FC<StorePageProps> = ({ data, products }) => {
                   />
                 </a>
 
-                {/* Title (Figma 296:4353: Poppins SemiBold 24px #252c32) */}
+                {/* Title */}
                 <a
                   href={targetUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-[#003471] transition-colors"
                 >
-                  <h2 className="font-poppins font-semibold text-lg sm:text-xl md:text-[24px] text-[#252c32] mt-4 sm:mt-6 leading-tight tracking-[-0.528px] max-w-md">
+                  <h2 className="font-poppins font-semibold text-lg sm:text-xl md:text-[22px] text-[#252c32] mt-4 sm:mt-5 leading-tight tracking-[-0.528px] max-w-md">
                     {product.title}
                   </h2>
                 </a>
 
-                {/* Category (Figma 296:4355: Poppins SemiBold 18px #252c32) */}
-                <p className="font-poppins font-semibold text-base sm:text-[18px] text-slate-500 mt-1 tracking-[-0.396px]">
+                {/* Category */}
+                <p className="font-poppins font-semibold text-sm sm:text-[16px] text-slate-500 mt-1 tracking-[-0.396px]">
                   {product.category || 'Spiritual Book'}
                 </p>
 
-                {/* Price with Red Strike-Through (Figma 296:4357: ₹250.00 . ₹199.00) */}
-                <div className="flex items-center justify-center gap-1 font-poppins font-semibold text-base sm:text-[18px] text-[#252c32] mt-1 tracking-[-0.396px]">
+                {/* Price with Red Strike-Through */}
+                <div className="flex items-center justify-center gap-1 font-poppins font-semibold text-sm sm:text-[16px] text-[#252c32] mt-1 tracking-[-0.396px]">
                   {/* Struck-through original price */}
                   <span className="relative text-slate-400">
                     <span>₹{product.originalPrice}.00</span>
-                    {/* Diagonal / Cross Red Strike-through Line */}
                     <span className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[2px] bg-red-500 rotate-[-12deg]" />
                   </span>
                   <span>.</span>
@@ -141,7 +190,7 @@ export const StorePage: React.FC<StorePageProps> = ({ data, products }) => {
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      size={20}
+                      size={18}
                       className={
                         i < rating
                           ? 'fill-[#efbf04] text-[#efbf04]'
@@ -158,23 +207,33 @@ export const StorePage: React.FC<StorePageProps> = ({ data, products }) => {
                   </p>
                 )}
 
-                {/* Buy Now Button with Target Blank External Link */}
-                <a
-                  href={targetUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 sm:mt-5 w-[150px] h-[44px] rounded-[4px] bg-[#efbf04] hover:bg-[#dfaf00] text-[#0b0c1c] font-poppins font-bold text-base flex items-center justify-center gap-1.5 shadow-md hover:shadow-lg transition-all duration-200 transform active:scale-95 hover:scale-105 cursor-pointer no-underline"
-                >
-                  <span>Buy Now</span>
-                  <ExternalLink size={15} className="text-[#0b0c1c]" />
-                </a>
+                {/* Buy Now Button with Animated Hover/Tap */}
+                <div className="mt-4 sm:mt-5">
+                  <motion.a
+                    whileHover={{ scale: 1.04 }}
+                    whileTap={{ scale: 0.96 }}
+                    href={targetUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-[150px] h-[44px] rounded-[6px] bg-[#efbf04] hover:bg-[#dfaf00] text-[#003471] font-poppins font-bold text-sm sm:text-base flex items-center justify-center gap-1.5 shadow-md hover:shadow-lg transition-colors duration-200 cursor-pointer no-underline"
+                  >
+                    <span>Buy Now</span>
+                    <ExternalLink size={15} className="text-[#003471]" />
+                  </motion.a>
+                </div>
               </motion.div>
             )
           })}
-        </div>
+        </motion.div>
 
         {/* Bottom Trust & Support Information Bar */}
-        <div className="mt-14 sm:mt-18 pt-8 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-4 text-xs sm:text-sm text-slate-600 font-poppins">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-14 sm:mt-18 pt-8 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-4 text-xs sm:text-sm text-slate-600 font-poppins"
+        >
           <div className="flex items-center gap-2">
             <Truck className="w-4 h-4 text-[#003471]" />
             <span>{fastDeliveryText}</span>
@@ -195,7 +254,7 @@ export const StorePage: React.FC<StorePageProps> = ({ data, products }) => {
               <span>Email: {supportEmail}</span>
             </div>
           )}
-        </div>
+        </motion.div>
       </div>
     </main>
   )

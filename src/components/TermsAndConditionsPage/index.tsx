@@ -1,6 +1,9 @@
 'use client'
 
 import React from 'react'
+import { motion } from 'framer-motion'
+import { FileText, Mail, ArrowRight } from 'lucide-react'
+import { TextWordReveal, BlurTextReveal } from '@/components/ui/text-reveal'
 
 export interface TermsPageData {
   pageTitle?: string | null
@@ -58,28 +61,71 @@ export const TermsAndConditionsPage: React.FC<TermsProps> = ({ data }) => {
   const contactEmail = data?.contactEmail || 'anmbrightmedia5185@gmail.com'
 
   return (
-    <main className="min-h-screen bg-white text-[#040609] antialiased pt-28 pb-16 sm:pt-36 sm:pb-24 select-text">
-      <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8 font-poppins text-base sm:text-lg md:text-[20px] lg:text-[22px] leading-relaxed sm:leading-[1.7] space-y-6 sm:space-y-8">
-        {/* Document Title */}
-        <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl text-[#003471]">
-          {pageTitle}
-        </h1>
-
-        {/* Intro Paragraph */}
-        <p className="text-[#040609]">{introText}</p>
-
-        {/* Dynamic Clauses */}
-        {sections.map((sec, idx) => (
-          <div key={idx} className="space-y-2">
-            <h2 className="font-semibold text-lg sm:text-xl md:text-[22px] lg:text-[24px] text-[#003471]">
-              {sec.sectionTitle}
-            </h2>
-            <p className="text-[#252c32]">{sec.content}</p>
+    <main className="min-h-screen bg-slate-50/50 text-[#040609] antialiased pt-28 pb-16 sm:pt-36 sm:pb-24 select-text">
+      <div className="max-w-[1040px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-10">
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-sm"
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200/60 mb-4">
+            <FileText className="w-4 h-4 text-[#efbf04]" />
+            <span className="font-poppins text-xs font-semibold text-amber-900 tracking-wide uppercase">
+              Terms of Agreement
+            </span>
           </div>
-        ))}
+
+          <TextWordReveal
+            as="h1"
+            delay={0.05}
+            staggerDelay={0.03}
+            className="font-poppins font-bold text-2xl sm:text-3xl md:text-4xl text-[#003471] tracking-tight"
+          >
+            {pageTitle}
+          </TextWordReveal>
+
+          <BlurTextReveal
+            as="p"
+            delay={0.15}
+            duration={0.6}
+            className="font-poppins text-slate-700 text-sm sm:text-base md:text-lg leading-relaxed mt-4 pt-4 border-t border-slate-100"
+          >
+            {introText}
+          </BlurTextReveal>
+        </motion.div>
+
+        {/* Dynamic Clauses / Sections */}
+        <div className="space-y-4 sm:space-y-6">
+          {sections.map((sec, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: (idx % 4) * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              className="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-7 border border-slate-200/80 shadow-xs hover:border-amber-300/60 transition-colors"
+            >
+              <h2 className="font-poppins font-semibold text-base sm:text-lg md:text-xl text-[#003471] mb-2 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#efbf04] inline-block flex-shrink-0" />
+                {sec.sectionTitle}
+              </h2>
+              <p className="font-poppins text-slate-700 text-sm sm:text-base leading-relaxed pl-3.5 border-l border-slate-100">
+                {sec.content}
+              </p>
+            </motion.div>
+          ))}
+        </div>
 
         {/* Contact Us Clause */}
-        <p className="pt-4 border-t border-slate-200">
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="font-poppins text-slate-700 text-sm sm:text-base pt-6 border-t border-slate-200"
+        >
           If you have any questions or concerns, please contact us at{' '}
           <a
             href={`mailto:${contactEmail}`}
@@ -88,7 +134,7 @@ export const TermsAndConditionsPage: React.FC<TermsProps> = ({ data }) => {
             {contactEmail}
           </a>
           .
-        </p>
+        </motion.p>
       </div>
     </main>
   )
