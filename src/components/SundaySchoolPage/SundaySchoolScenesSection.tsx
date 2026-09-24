@@ -26,51 +26,46 @@ export interface SundaySchoolScenesSectionProps {
 const DEFAULT_ROW1_PHOTOS: SundaySchoolSceneItem[] = [
   {
     id: 'ss-1',
-    src: '/figma-assets/4d4761196131ce8961488f09c189e5a63809c918.png',
-    alt: 'Sunday School Children Reciting Scripture',
+    src: '/scenes_of_sunday_school/image_1.png',
+    alt: 'Sunday School Children Bible Activity 1',
   },
   {
     id: 'ss-2',
-    src: '/figma-assets/64e93a20b8fe749de6236fe02d70cbc7c38054f7.png',
-    alt: 'Sunday School Hall and Young Learners',
+    src: '/scenes_of_sunday_school/image_2.png',
+    alt: 'Sunday School Bible Learning and Worship 2',
   },
   {
     id: 'ss-3',
-    src: '/figma-assets/fc5850061a1b97083923002e17103dce8dbe7575.png',
-    alt: 'Greater Branch Sydney Sunday School Activity',
+    src: '/scenes_of_sunday_school/image_3.png',
+    alt: 'Sunday School Fellowship and Prayer 3',
   },
   {
     id: 'ss-4',
-    src: '/figma-assets/53cc1f23c0f197687452e0f24311e5e825b9c472.png',
-    alt: 'Kapurthala & Kharagpur Sunday School Group',
-  },
-  {
-    id: 'ss-5',
-    src: '/figma-assets/b806995f5a4cbef8775c01600f58b10ee5f1bab1.png',
-    alt: 'Sunday School Bible Learning & Singing',
+    src: '/scenes_of_sunday_school/image_4.png',
+    alt: 'Sunday School Young Believers Classroom 4',
   },
 ]
 
 const DEFAULT_ROW2_PHOTOS: SundaySchoolSceneItem[] = [
   {
+    id: 'ss-5',
+    src: '/scenes_of_sunday_school/image_5.png',
+    alt: 'Sunday School Scripture Recitation 5',
+  },
+  {
     id: 'ss-6',
-    src: '/figma-assets/46d77c804e9de83f316fa73a692abe284168ec06.png',
-    alt: 'Fatehabad & Gaya Bihar Sunday School Branch',
+    src: '/scenes_of_sunday_school/image_6.png',
+    alt: 'Sunday School Branch Students 6',
   },
   {
     id: 'ss-7',
-    src: '/figma-assets/eaf236190a0ded0162d655e3e94bd1278f7f66b3.png',
-    alt: 'Chandigarh & Chapra Bihar Sunday School Students',
+    src: '/scenes_of_sunday_school/image_7.png',
+    alt: 'Sunday School Youth Mentorship 7',
   },
   {
     id: 'ss-8',
-    src: '/figma-assets/53b701f138eda24b90a19105652d30788c7a52f5.png',
-    alt: 'Birmingham Sunday School Class',
-  },
-  {
-    id: 'ss-9',
-    src: '/figma-assets/7ac5e154d17617ec8deccc6a8263eee659bf249a.png',
-    alt: 'Mandi Dabwali & Rayya Sunday School Children',
+    src: '/scenes_of_sunday_school/image_8.png',
+    alt: 'Sunday School Praise and Fellowship 8',
   },
 ]
 
@@ -133,7 +128,7 @@ export const SundaySchoolScenesSection: React.FC<SundaySchoolScenesSectionProps>
         <div className="relative w-full overflow-hidden">
           <div className="animate-marquee-left flex gap-4 sm:gap-6 py-1">
             {row1Duplicated.map((photo, index) => {
-              const photoUrl = getMediaUrl(photo.image, photo.imageFallback || photo.src || '/figma-assets/4d4761196131ce8961488f09c189e5a63809c918.png')
+              const photoUrl = getMediaUrl(photo.image, photo.imageFallback || photo.src || '/scenes_of_sunday_school/image_1.png')
 
               return (
                 <div
@@ -156,7 +151,7 @@ export const SundaySchoolScenesSection: React.FC<SundaySchoolScenesSectionProps>
         <div className="relative w-full overflow-hidden">
           <div className="animate-marquee-right flex gap-4 sm:gap-6 py-1">
             {row2Duplicated.map((photo, index) => {
-              const photoUrl = getMediaUrl(photo.image, photo.imageFallback || photo.src || '/figma-assets/46d77c804e9de83f316fa73a692abe284168ec06.png')
+              const photoUrl = getMediaUrl(photo.image, photo.imageFallback || photo.src || '/scenes_of_sunday_school/image_5.png')
 
               return (
                 <div

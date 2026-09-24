@@ -132,14 +132,16 @@ export const Homepage: GlobalConfig = {
             {
               name: 'heroHeadline2',
               type: 'text',
-              label: 'Desktop Headline Second Line',
+              label: 'Headline Second Line',
               defaultValue: 'The Church Of Signs and Wonders',
             },
             {
               name: 'heroMobileHeadline2',
               type: 'text',
-              label: 'Mobile Headline Second Line',
-              defaultValue: 'Jesus Christ’s Power in Signs and Wonders',
+              label: 'Mobile Headline (Legacy / Hidden)',
+              admin: {
+                hidden: true,
+              },
             },
             {
               name: 'heroDescription',
@@ -149,10 +151,34 @@ export const Homepage: GlobalConfig = {
                 'Experience the power of Jesus Christ through signs, wonders, and faith. We believe in the living Word of God and in His mighty works among those who believe.',
             },
             {
+              name: 'heroVideoDesktop',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Hero Video (Desktop .mp4 - Upload to replace)',
+            },
+            {
+              name: 'heroVideoDesktopFallback',
+              type: 'text',
+              label: 'Fallback Hero Desktop Video Path',
+              defaultValue: '/homepage_hero.mp4',
+            },
+            {
+              name: 'heroVideoMobile',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Hero Video (Mobile .mp4 - Upload to replace)',
+            },
+            {
+              name: 'heroVideoMobileFallback',
+              type: 'text',
+              label: 'Fallback Hero Mobile Video Path',
+              defaultValue: '/homepage_hero_mobile.mp4',
+            },
+            {
               name: 'heroBannerImage',
               type: 'upload',
               relationTo: 'media',
-              label: 'Featured 200+ Churches Banner Image (Upload to replace)',
+              label: 'Hero Poster / Fallback Image (Upload to replace)',
             },
             {
               name: 'heroBannerFallback',
@@ -164,7 +190,7 @@ export const Homepage: GlobalConfig = {
               name: 'heroBannerAlt',
               type: 'text',
               label: 'Banner Alt Text',
-              defaultValue: '200+ ANM Churches',
+              defaultValue: 'Ankur Narula Ministries',
             },
           ],
         },

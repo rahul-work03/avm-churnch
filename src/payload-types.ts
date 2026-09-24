@@ -2019,6 +2019,10 @@ export interface Homepage {
   heroHeadline2?: string | null;
   heroMobileHeadline2?: string | null;
   heroDescription?: string | null;
+  heroVideoDesktop?: (number | null) | Media;
+  heroVideoDesktopFallback?: string | null;
+  heroVideoMobile?: (number | null) | Media;
+  heroVideoMobileFallback?: string | null;
   heroBannerImage?: (number | null) | Media;
   heroBannerFallback?: string | null;
   heroBannerAlt?: string | null;
@@ -2806,6 +2810,10 @@ export interface HomepageSelect<T extends boolean = true> {
   heroHeadline2?: T;
   heroMobileHeadline2?: T;
   heroDescription?: T;
+  heroVideoDesktop?: T;
+  heroVideoDesktopFallback?: T;
+  heroVideoMobile?: T;
+  heroVideoMobileFallback?: T;
   heroBannerImage?: T;
   heroBannerFallback?: T;
   heroBannerAlt?: T;

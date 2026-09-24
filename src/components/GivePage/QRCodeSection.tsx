@@ -83,7 +83,7 @@ export const QRCodeSection: React.FC<QRCodeSectionProps> = ({
           viewport={{ once: true, margin: '-50px' }}
           className="grid grid-cols-2 gap-3.5 sm:gap-8 md:gap-12 items-stretch justify-center w-full max-w-[680px]"
         >
-          {/* ===================== PHONE 1 (ICICI & HDFC) - Node 231:946 ===================== */}
+          {/* ===================== PHONE 1 (ICICI Bank QR) - Node 231:946 ===================== */}
           <motion.div
             variants={phoneVariants}
             whileHover={{ y: -6, scale: 1.01 }}
@@ -114,32 +114,18 @@ export const QRCodeSection: React.FC<QRCodeSectionProps> = ({
                 </div>
               </div>
 
-              {/* Inner Phone Screen Content */}
-              <div className="w-full flex-1 bg-white rounded-[18px] sm:rounded-[28px] md:rounded-[34px] p-1.5 sm:p-2.5 md:p-3 flex flex-col justify-between gap-2 sm:gap-3 shadow-xs border border-slate-100 overflow-hidden min-h-0">
-                {/* Card 1: ICICI Bank QR (Node 231:962) */}
+              {/* Inner Phone Screen Content: Single ICICI QR Card */}
+              <div className="w-full flex-1 bg-white rounded-[18px] sm:rounded-[28px] md:rounded-[34px] p-2 sm:p-3 md:p-4 flex items-center justify-center shadow-xs border border-slate-100 overflow-hidden min-h-0">
                 <div
-                  className="relative w-full flex-1 rounded-md sm:rounded-lg overflow-hidden bg-white shadow-xs min-h-0"
+                  className="relative w-full h-full rounded-md sm:rounded-lg overflow-hidden bg-white min-h-0 flex items-center justify-center"
                   data-node-id="231:962"
                 >
                   <Image
                     src={iciciUrl}
                     alt="ICICI Bank QR Code for Tithes and Offerings"
                     fill
-                    className="object-contain"
+                    className="object-contain object-center"
                     priority
-                  />
-                </div>
-
-                {/* Card 2: HDFC Bank QR (Node 231:963) */}
-                <div
-                  className="relative w-full flex-1 rounded-md sm:rounded-lg overflow-hidden bg-white shadow-xs min-h-0"
-                  data-node-id="231:963"
-                >
-                  <Image
-                    src={hdfcUrl}
-                    alt="HDFC Bank QR Code for Tithes and Offerings"
-                    fill
-                    className="object-contain"
                   />
                 </div>
               </div>
@@ -149,7 +135,7 @@ export const QRCodeSection: React.FC<QRCodeSectionProps> = ({
             </div>
           </motion.div>
 
-          {/* ===================== PHONE 2 (Axis & Google Pay) - Node 231:954 ===================== */}
+          {/* ===================== PHONE 2 (HDFC Bank QR) - Node 231:954 ===================== */}
           <motion.div
             variants={phoneVariants}
             whileHover={{ y: -6, scale: 1.01 }}
@@ -180,32 +166,18 @@ export const QRCodeSection: React.FC<QRCodeSectionProps> = ({
                 </div>
               </div>
 
-              {/* Inner Phone Screen Content */}
-              <div className="w-full flex-1 bg-white rounded-[18px] sm:rounded-[28px] md:rounded-[34px] p-1.5 sm:p-2.5 md:p-3 flex flex-col justify-between gap-2 sm:gap-3 shadow-xs border border-slate-100 overflow-hidden min-h-0">
-                {/* Card 1: Axis Bank QR (Node 231:964) */}
+              {/* Inner Phone Screen Content: Single HDFC QR Card */}
+              <div className="w-full flex-1 bg-white rounded-[18px] sm:rounded-[28px] md:rounded-[34px] p-2 sm:p-3 md:p-4 flex items-center justify-center shadow-xs border border-slate-100 overflow-hidden min-h-0">
                 <div
-                  className="relative w-full flex-1 rounded-md sm:rounded-lg overflow-hidden bg-white shadow-xs min-h-0"
-                  data-node-id="231:964"
+                  className="relative w-full h-full rounded-md sm:rounded-lg overflow-hidden bg-white min-h-0 flex items-center justify-center"
+                  data-node-id="231:963"
                 >
                   <Image
-                    src={axisQrUrl}
-                    alt="Axis Bank QR Code for Tithes and Offerings"
+                    src={hdfcUrl}
+                    alt="HDFC Bank QR Code for Tithes and Offerings"
                     fill
-                    className="object-contain"
+                    className="object-contain object-center"
                     priority
-                  />
-                </div>
-
-                {/* Card 2: Google Pay QR (Node 231:966) */}
-                <div
-                  className="relative w-full flex-1 rounded-md sm:rounded-lg overflow-hidden bg-white shadow-xs min-h-0"
-                  data-node-id="231:966"
-                >
-                  <Image
-                    src={gpayUrl}
-                    alt="Google Pay QR Code for Tithes and Offerings"
-                    fill
-                    className="object-contain"
                   />
                 </div>
               </div>

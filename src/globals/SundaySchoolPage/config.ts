@@ -4,43 +4,39 @@ import { adminsOrEditors } from '../../access/adminsOrEditors'
 
 const DEFAULT_SCENES_ROW1 = [
   {
-    imageFallback: '/figma-assets/4d4761196131ce8961488f09c189e5a63809c918.png',
-    alt: 'Sunday School Children Reciting Scripture',
+    imageFallback: '/scenes_of_sunday_school/image_1.png',
+    alt: 'Sunday School Children Bible Activity 1',
   },
   {
-    imageFallback: '/figma-assets/64e93a20b8fe749de6236fe02d70cbc7c38054f7.png',
-    alt: 'Sunday School Hall and Young Learners',
+    imageFallback: '/scenes_of_sunday_school/image_2.png',
+    alt: 'Sunday School Bible Learning and Worship 2',
   },
   {
-    imageFallback: '/figma-assets/fc5850061a1b97083923002e17103dce8dbe7575.png',
-    alt: 'Greater Branch Sydney Sunday School Activity',
+    imageFallback: '/scenes_of_sunday_school/image_3.png',
+    alt: 'Sunday School Fellowship and Prayer 3',
   },
   {
-    imageFallback: '/figma-assets/53cc1f23c0f197687452e0f24311e5e825b9c472.png',
-    alt: 'Kapurthala & Kharagpur Sunday School Group',
-  },
-  {
-    imageFallback: '/figma-assets/b806995f5a4cbef8775c01600f58b10ee5f1bab1.png',
-    alt: 'Sunday School Bible Learning & Singing',
+    imageFallback: '/scenes_of_sunday_school/image_4.png',
+    alt: 'Sunday School Young Believers Classroom 4',
   },
 ]
 
 const DEFAULT_SCENES_ROW2 = [
   {
-    imageFallback: '/figma-assets/46d77c804e9de83f316fa73a692abe284168ec06.png',
-    alt: 'Fatehabad & Gaya Bihar Sunday School Branch',
+    imageFallback: '/scenes_of_sunday_school/image_5.png',
+    alt: 'Sunday School Scripture Recitation 5',
   },
   {
-    imageFallback: '/figma-assets/eaf236190a0ded0162d655e3e94bd1278f7f66b3.png',
-    alt: 'Chandigarh & Chapra Bihar Sunday School Students',
+    imageFallback: '/scenes_of_sunday_school/image_6.png',
+    alt: 'Sunday School Branch Students 6',
   },
   {
-    imageFallback: '/figma-assets/53b701f138eda24b90a19105652d30788c7a52f5.png',
-    alt: 'Birmingham Sunday School Class',
+    imageFallback: '/scenes_of_sunday_school/image_7.png',
+    alt: 'Sunday School Youth Mentorship 7',
   },
   {
-    imageFallback: '/figma-assets/7ac5e154d17617ec8deccc6a8263eee659bf249a.png',
-    alt: 'Mandi Dabwali & Rayya Sunday School Children',
+    imageFallback: '/scenes_of_sunday_school/image_8.png',
+    alt: 'Sunday School Praise and Fellowship 8',
   },
 ]
 

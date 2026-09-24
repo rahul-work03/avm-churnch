@@ -1,16 +1,20 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
+import { Volume2, VolumeX, ChevronDown } from 'lucide-react'
+import { TextWordReveal } from '@/components/ui/text-reveal'
 import { RevealOnScroll } from '@/components/ui/reveal'
-import { TextWordReveal, BlurTextReveal, GoldBarReveal } from '@/components/ui/text-reveal'
 import { getMediaUrl, getMediaAlt } from '@/utilities/getMediaUrl'
 
 export interface HeroSectionProps {
   headline1?: string
   headline2?: string
-  mobileHeadline2?: string
   description?: string
+  videoDesktop?: any
+  videoDesktopFallback?: string
+  videoMobile?: any
+  videoMobileFallback?: string
   bannerImage?: any
   bannerImageFallback?: string
   bannerAlt?: string
@@ -19,115 +23,153 @@ export interface HeroSectionProps {
 export const HeroSection: React.FC<HeroSectionProps> = ({
   headline1 = 'Welcome to Ankur Narula Ministries',
   headline2 = 'The Church Of Signs and Wonders',
-  mobileHeadline2 = 'Jesus Christ’s Power in Signs and Wonders',
   description = 'Experience the power of Jesus Christ through signs, wonders, and faith. We believe in the living Word of God and in His mighty works among those who believe.',
+  videoDesktop,
+  videoDesktopFallback = '/homepage_hero.mp4',
+  videoMobile,
+  videoMobileFallback = '/homepage_hero_mobile.mp4',
   bannerImage,
-  bannerImageFallback = '/homepage_banner.png',
-  bannerAlt = '200+ ANM Churches',
+  bannerImageFallback = '',
+  bannerAlt = 'Ankur Narula Ministries',
 }) => {
-  const resolvedBannerUrl = getMediaUrl(bannerImage, bannerImageFallback)
-  const resolvedBannerAlt = getMediaAlt(bannerImage, bannerAlt)
+  const [isMuted, setIsMuted] = useState(true)
+  const desktopVideoRef = useRef<HTMLVideoElement>(null)
+  const mobileVideoRef = useRef<HTMLVideoElement>(null)
+
+  const resolvedDesktopVideo = getMediaUrl(videoDesktop, videoDesktopFallback)
+  const resolvedMobileVideo = getMediaUrl(videoMobile, videoMobileFallback)
+  const resolvedImageUrl = getMediaUrl(bannerImage, bannerImageFallback)
+  const resolvedImageAlt = getMediaAlt(bannerImage, bannerAlt)
+
+  const hasVideo = Boolean(resolvedDesktopVideo || resolvedMobileVideo)
+
+  const toggleMute = () => {
+    const nextMuted = !isMuted
+    setIsMuted(nextMuted)
+    if (desktopVideoRef.current) desktopVideoRef.current.muted = nextMuted
+    if (mobileVideoRef.current) mobileVideoRef.current.muted = nextMuted
+  }
+
+  useEffect(() => {
+    if (!hasVideo) return
+    const playSafe = async (video: HTMLVideoElement | null) => {
+      if (!video) return
+      try {
+        video.muted = isMuted
+        await video.play()
+      } catch {
+        // Safe catch for autoplay restrictions
+      }
+    }
+
+    playSafe(desktopVideoRef.current)
+    playSafe(mobileVideoRef.current)
+  }, [hasVideo, isMuted])
 
   return (
-    <section className="relative pt-28 pb-8 sm:pt-32 sm:pb-14 md:pt-36 md:pb-16 overflow-hidden" data-node-id="274:3">
-      {/* Header Title with Flanking Gold Bars */}
-      <div className="w-full flex items-center justify-between py-2 sm:py-3 md:py-4">
-        {/* Left Decorative Gold Bar */}
-        <GoldBarReveal
-          direction="left"
-          duration={0.7}
-          delay={0.1}
-          className="w-[48px] sm:w-[100px] md:w-[140px] lg:w-[164px] h-[6px] sm:h-[10px] lg:h-[14px] bg-[#efbf04] rounded-r-full shadow-sm pointer-events-none flex-shrink-0"
-          data-node-id="274:23"
-        />
+    <section className="relative w-full h-screen min-h-[100dvh] flex flex-col justify-center items-center overflow-hidden bg-[#071322] text-white select-none" data-node-id="274:3">
+      {/* ================= BACKGROUND FULL-SCREEN MEDIA (EITHER VIDEO OR IMAGE) ================= */}
+      {hasVideo ? (
+        <>
+          {/* Desktop Video (> sm screen) */}
+          {resolvedDesktopVideo && (
+            <video
+              ref={desktopVideoRef}
+              autoPlay
+              loop
+              muted={isMuted}
+              playsInline
+              preload="auto"
+              className="hidden sm:block absolute inset-0 w-full h-full object-cover z-0"
+            >
+              <source src={resolvedDesktopVideo} type="video/mp4" />
+            </video>
+          )}
 
+          {/* Mobile Video (< sm screen) */}
+          {resolvedMobileVideo && (
+            <video
+              ref={mobileVideoRef}
+              autoPlay
+              loop
+              muted={isMuted}
+              playsInline
+              preload="auto"
+              className="block sm:hidden absolute inset-0 w-full h-full object-cover z-0"
+            >
+              <source src={resolvedMobileVideo} type="video/mp4" />
+            </video>
+          )}
+        </>
+      ) : resolvedImageUrl ? (
+        <Image
+          src={resolvedImageUrl}
+          alt={resolvedImageAlt}
+          fill
+          priority
+          sizes="100vw"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+      ) : null}
+
+      {/* ================= CLEAN CRISP OVERLAY ================= */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/25 to-black/60 pointer-events-none z-10" />
+
+      {/* ================= HERO CONTENT OVERLAY ================= */}
+      <div className="relative z-20 w-full flex flex-col justify-center items-center px-4 sm:px-6 md:px-10 pt-16 sm:pt-20">
         {/* Main Title & Subtitle */}
-        <div className="text-center max-w-4xl mx-auto px-2 sm:px-6 md:px-10 flex-shrink min-w-0">
-          {/* Desktop Headline */}
-          <div className="hidden sm:block">
-            <TextWordReveal
-              as="h1"
-              delay={0.05}
-              staggerDelay={0.04}
-              className="font-philosopher font-bold text-[#003471] text-2xl sm:text-3xl md:text-4xl lg:text-[46px] xl:text-[50px] leading-tight tracking-tight"
-            >
-              {headline1}
-            </TextWordReveal>
-            <TextWordReveal
-              as="span"
-              delay={0.25}
-              staggerDelay={0.04}
-              className="text-[#003471] block mt-1 font-philosopher font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[46px] xl:text-[50px] leading-tight tracking-tight"
-            >
-              {headline2}
-            </TextWordReveal>
-          </div>
-
-          {/* Mobile Headline */}
-          <div className="sm:hidden">
-            <TextWordReveal
-              as="h1"
-              delay={0.05}
-              staggerDelay={0.035}
-              className="font-philosopher font-bold text-[#003471] text-[22px] sm:text-[24px] leading-tight tracking-tight"
-            >
-              {headline1}
-            </TextWordReveal>
-            <TextWordReveal
-              as="span"
-              delay={0.2}
-              staggerDelay={0.035}
-              className="text-[#003471] block mt-0.5 font-philosopher font-bold text-[22px] sm:text-[24px] leading-tight tracking-tight"
-            >
-              {mobileHeadline2 || headline2}
-            </TextWordReveal>
-          </div>
-
-          {/* Subtitle */}
-          <BlurTextReveal
-            as="p"
-            delay={0.4}
-            duration={0.7}
-            distance={14}
-            className="font-poppins font-light sm:font-normal text-[#0b0c1c] sm:text-[#8c8c8c] text-[12px] sm:text-base md:text-[18px] leading-relaxed max-w-3xl mx-auto mt-2 sm:mt-3 md:mt-4 text-balance px-1"
+        <div className="text-center max-w-4xl mx-auto flex-shrink min-w-0">
+          <TextWordReveal
+            as="h1"
+            delay={0.05}
+            staggerDelay={0.04}
+            className="font-philosopher font-bold text-white text-2xl sm:text-3xl md:text-4xl lg:text-[46px] xl:text-[50px] leading-tight tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]"
           >
-            {description}
-          </BlurTextReveal>
+            {headline1}
+          </TextWordReveal>
+          <TextWordReveal
+            as="span"
+            delay={0.25}
+            staggerDelay={0.04}
+            className="text-[#efbf04] block mt-1 sm:mt-1.5 font-philosopher font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[46px] xl:text-[50px] leading-tight tracking-tight drop-shadow-[0_2px_12px_rgba(239,191,4,0.45)]"
+          >
+            {headline2}
+          </TextWordReveal>
+
+          {/* Subtitle Description */}
+          <RevealOnScroll direction="up" delay={0.35} duration={0.6}>
+            <p className="font-poppins text-slate-100 text-[13px] sm:text-base md:text-[18px] leading-relaxed max-w-3xl mx-auto mt-3 sm:mt-4 md:mt-5 text-balance px-1 drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)] font-light sm:font-normal">
+              {description}
+            </p>
+          </RevealOnScroll>
         </div>
-
-        {/* Right Decorative Gold Bar */}
-        <GoldBarReveal
-          direction="right"
-          duration={0.7}
-          delay={0.1}
-          className="w-[48px] sm:w-[100px] md:w-[140px] lg:w-[164px] h-[6px] sm:h-[10px] lg:h-[14px] bg-[#efbf04] rounded-l-full shadow-sm pointer-events-none flex-shrink-0"
-          data-node-id="274:28"
-        />
       </div>
 
-      <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Featured 200+ ANM Churches Banner Card */}
-        <RevealOnScroll direction="up" distance={28} delay={0.15} duration={0.8} className="mt-4 sm:mt-8 md:mt-10 max-w-[1140px] mx-auto">
-          <div
-            className="relative w-full aspect-[380/206] sm:aspect-[1140/620] rounded-[20px] sm:rounded-[36px] md:rounded-[51px] overflow-hidden shadow-xl sm:shadow-2xl border border-amber-200/40 bg-slate-900 group"
-            data-node-id="274:6"
-          >
-            <Image
-              src={resolvedBannerUrl}
-              alt={resolvedBannerAlt}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
-              priority
-            />
-
-            {/* Carousel Pagination Dots */}
-            <div className="absolute bottom-2.5 sm:bottom-5 md:bottom-7 left-1/2 -translate-x-1/2 flex items-center gap-2 sm:gap-2.5 z-20">
-              <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white shadow-md cursor-pointer transition transform hover:scale-125" />
-              <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white/40 backdrop-blur-sm cursor-pointer transition transform hover:scale-125 hover:bg-white/70" />
-            </div>
-          </div>
-        </RevealOnScroll>
+      {/* ================= CENTER SCROLL DOWN ANIMATOR ================= */}
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-6 sm:bottom-8 z-20 pointer-events-none flex items-center justify-center">
+        <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/40 backdrop-blur-sm border border-white/25 flex items-center justify-center shadow-lg animate-bounce">
+          <ChevronDown className="w-5 h-5 text-[#efbf04]" />
+        </div>
       </div>
+
+      {/* ================= BOTTOM RIGHT AUDIO TOGGLE (ONLY WHEN VIDEO IS PRESENT) ================= */}
+      {hasVideo && (
+        <button
+          type="button"
+          onClick={toggleMute}
+          className="absolute right-5 sm:right-8 bottom-6 sm:bottom-8 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md text-white flex items-center justify-center shadow-2xl border border-white/20 transition-all transform hover:scale-110 active:scale-95 cursor-pointer select-none"
+          aria-label={isMuted ? 'Unmute video audio' : 'Mute video audio'}
+          title={isMuted ? 'Unmute video' : 'Mute video'}
+        >
+          {isMuted ? (
+            <VolumeX className="w-5 h-5 text-[#efbf04]" />
+          ) : (
+            <Volume2 className="w-5 h-5 text-[#efbf04]" />
+          )}
+        </button>
+      )}
     </section>
   )
 }
+
+export default HeroSection

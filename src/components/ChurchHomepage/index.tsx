@@ -19,8 +19,11 @@ export const ChurchHomepage: React.FC<ChurchHomepageProps> = ({
   const heroProps = {
     headline1: homepageData?.heroHeadline1,
     headline2: homepageData?.heroHeadline2,
-    mobileHeadline2: homepageData?.heroMobileHeadline2,
     description: homepageData?.heroDescription,
+    videoDesktop: homepageData?.heroVideoDesktop,
+    videoDesktopFallback: homepageData?.heroVideoDesktopFallback || '/homepage_hero.mp4',
+    videoMobile: homepageData?.heroVideoMobile,
+    videoMobileFallback: homepageData?.heroVideoMobileFallback || '/homepage_hero_mobile.mp4',
     bannerImage: homepageData?.heroBannerImage,
     bannerImageFallback: homepageData?.heroBannerFallback,
     bannerAlt: homepageData?.heroBannerAlt,
@@ -90,17 +93,8 @@ export const ChurchHomepage: React.FC<ChurchHomepageProps> = ({
 
   return (
     <main className="min-h-screen bg-white text-slate-900 selection:bg-[#efbf04] selection:text-black">
-      {/* Top Hero Container with Group 1 (1440px x 1106px Golden Silk Waves Background) */}
-      <div
-        className="relative overflow-hidden bg-no-repeat bg-top bg-[#fdfbf3]"
-        style={{
-          backgroundImage: "url('/figma-assets/hero_golden_silk_bg.png')",
-          backgroundSize: '100% 1106px',
-        }}
-      >
-        {/* Hero Headline & 200+ Churches Banner */}
-        <HeroSection {...heroProps} />
-      </div>
+      {/* Full-Screen Video Hero Section */}
+      <HeroSection {...heroProps} />
 
       {/* The Church of Signs & Wonders / Man of God Showcase */}
       <ManOfGodSection {...mogProps} />
