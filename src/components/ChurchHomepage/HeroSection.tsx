@@ -67,8 +67,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   }, [hasVideo, isMuted])
 
   return (
-    <section className="relative w-full h-screen min-h-[100dvh] flex flex-col justify-center items-center overflow-hidden bg-[#071322] text-white select-none" data-node-id="274:3">
-      {/* ================= BACKGROUND FULL-SCREEN MEDIA (EITHER VIDEO OR IMAGE) ================= */}
+    <section className="relative w-full h-screen min-h-[100dvh] flex flex-col justify-end items-center overflow-hidden bg-[#071322] text-white select-none" data-node-id="274:3">
+      {/* ================= BACKGROUND FULL-SCREEN MEDIA (ANCHORED TO TOP TO PREVENT CROPPING) ================= */}
       {hasVideo ? (
         <>
           {/* Desktop Video (> sm screen) */}
@@ -80,7 +80,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               muted={isMuted}
               playsInline
               preload="auto"
-              className="hidden sm:block absolute inset-0 w-full h-full object-cover z-0"
+              className="hidden sm:block absolute inset-0 w-full h-full object-cover object-top z-0"
             >
               <source src={resolvedDesktopVideo} type="video/mp4" />
             </video>
@@ -95,7 +95,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               muted={isMuted}
               playsInline
               preload="auto"
-              className="block sm:hidden absolute inset-0 w-full h-full object-cover z-0"
+              className="block sm:hidden absolute inset-0 w-full h-full object-cover object-top z-0"
             >
               <source src={resolvedMobileVideo} type="video/mp4" />
             </video>
@@ -108,17 +108,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           fill
           priority
           sizes="100vw"
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute inset-0 w-full h-full object-cover object-top z-0"
         />
       ) : null}
 
-      {/* ================= CLEAN CRISP OVERLAY ================= */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/25 to-black/60 pointer-events-none z-10" />
+      {/* ================= CLEAN CRISP OVERLAY WITH BOTTOM SHADOW FOR TEXT READABILITY ================= */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/50 pointer-events-none z-10" />
 
-      {/* ================= HERO CONTENT OVERLAY ================= */}
-      <div className="relative z-20 w-full flex flex-col justify-center items-center px-4 sm:px-6 md:px-10 pt-16 sm:pt-20">
+      {/* ================= HERO CONTENT OVERLAY (PUSHED FIRMLY TO BOTTOM) ================= */}
+      <div className="relative z-20 w-full flex flex-col justify-end items-center px-4 sm:px-6 md:px-10 pb-10 sm:pb-12 md:pb-14 max-w-5xl mx-auto">
         {/* Main Title & Subtitle */}
-        <div className="text-center max-w-4xl mx-auto flex-shrink min-w-0">
+        <div className="text-center w-full flex-shrink min-w-0">
           <TextWordReveal
             as="h1"
             delay={0.05}
@@ -138,7 +138,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Subtitle Description */}
           <RevealOnScroll direction="up" delay={0.35} duration={0.6}>
-            <p className="font-poppins text-slate-100 text-[13px] sm:text-base md:text-[18px] leading-relaxed max-w-3xl mx-auto mt-3 sm:mt-4 md:mt-5 text-balance px-1 drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)] font-light sm:font-normal">
+            <p className="font-poppins text-slate-100 text-[13px] sm:text-base md:text-[18px] leading-relaxed max-w-3xl mx-auto mt-2 sm:mt-3 md:mt-3.5 text-balance px-1 drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)] font-light sm:font-normal">
               {description}
             </p>
           </RevealOnScroll>
@@ -146,9 +146,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
 
       {/* ================= CENTER SCROLL DOWN ANIMATOR ================= */}
-      <div className="absolute left-1/2 -translate-x-1/2 bottom-6 sm:bottom-8 z-20 pointer-events-none flex items-center justify-center">
-        <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/40 backdrop-blur-sm border border-white/25 flex items-center justify-center shadow-lg animate-bounce">
-          <ChevronDown className="w-5 h-5 text-[#efbf04]" />
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-2 sm:bottom-3 z-20 pointer-events-none flex items-center justify-center">
+        <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/40 backdrop-blur-sm border border-white/25 flex items-center justify-center shadow-lg animate-bounce">
+          <ChevronDown className="w-4 h-4 text-[#efbf04]" />
         </div>
       </div>
 
@@ -157,14 +157,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <button
           type="button"
           onClick={toggleMute}
-          className="absolute right-5 sm:right-8 bottom-6 sm:bottom-8 z-20 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md text-white flex items-center justify-center shadow-2xl border border-white/20 transition-all transform hover:scale-110 active:scale-95 cursor-pointer select-none"
+          className="absolute right-4 sm:right-6 bottom-4 sm:bottom-5 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md text-white flex items-center justify-center shadow-2xl border border-white/20 transition-all transform hover:scale-110 active:scale-95 cursor-pointer select-none"
           aria-label={isMuted ? 'Unmute video audio' : 'Mute video audio'}
           title={isMuted ? 'Unmute video' : 'Mute video'}
         >
           {isMuted ? (
-            <VolumeX className="w-5 h-5 text-[#efbf04]" />
+            <VolumeX className="w-4 h-4 sm:w-5 sm:h-5 text-[#efbf04]" />
           ) : (
-            <Volume2 className="w-5 h-5 text-[#efbf04]" />
+            <Volume2 className="w-4 h-4 sm:w-5 sm:h-5 text-[#efbf04]" />
           )}
         </button>
       )}
