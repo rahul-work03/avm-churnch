@@ -123,7 +123,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             as="h1"
             delay={0.05}
             staggerDelay={0.04}
-            className="font-philosopher font-bold text-white text-2xl sm:text-3xl md:text-4xl lg:text-[46px] xl:text-[50px] leading-tight tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]"
+            className="font-philosopher font-medium text-white text-2xl sm:text-3xl md:text-4xl lg:text-[46px] xl:text-[50px] leading-tight tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]"
           >
             {headline1}
           </TextWordReveal>
