@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { RevealOnScroll } from '@/components/ui/reveal'
 import { TextWordReveal, GoldBarReveal } from '@/components/ui/text-reveal'
+import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
+import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
@@ -21,6 +23,7 @@ export interface CrusadeItem {
 
 export interface CrusadesSectionProps {
   headerTitle?: string
+  subTitle?: string
   crusadeImages?: CrusadeItem[]
 }
 
@@ -84,6 +87,7 @@ const DEFAULT_CRUSADES: CrusadeItem[] = [
 
 export const CrusadesSection: React.FC<CrusadesSectionProps> = ({
   headerTitle = 'The Largest ankur narula ministries Crusades',
+  subTitle = 'Calvary Crusades',
   crusadeImages,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -94,13 +98,13 @@ export const CrusadesSection: React.FC<CrusadesSectionProps> = ({
   const activeCrusades = crusadeImages && crusadeImages.length > 0 ? crusadeImages : DEFAULT_CRUSADES
   const count = activeCrusades.length
 
-  // Fractional continuous position around the infinite loop
+  // Fractional continuous position around the circular loop
   const posRef = useRef(0)
   const targetRef = useRef(0)
   const rafRef = useRef<number | null>(null)
   const isHoveredRef = useRef(false)
 
-  // Drag tracking
+  // Drag & touch tracking
   const dragRef = useRef<{
     id: number
     startX: number
@@ -121,42 +125,41 @@ export const CrusadesSection: React.FC<CrusadesSectionProps> = ({
     return () => window.removeEventListener('resize', updateDimensions)
   }, [])
 
-  // Panoramic sizing calculations: exactly 4 cards on desktop (2 center, 2 outer), 2 cards on mobile/tablet
+  // Responsive 3-Card Landscape Geometry (16:9 Aspect Ratio)
   const isMobile = viewportWidth < 640
   const isTablet = viewportWidth >= 640 && viewportWidth < 1024
 
-  const cardGap = isMobile ? 12 : isTablet ? 16 : 20
   let cardWidth: number
-  let cardHeight: number
-  let availableWidth: number
+  let pitchFactor: number
 
   if (isMobile) {
-    availableWidth = viewportWidth - 24
-    cardWidth = Math.round((availableWidth - cardGap) / 2.05)
-    cardHeight = Math.round(cardWidth * 1.25)
+    // Mobile: Center card occupies ~76% width, left and right flanking cards peek in on sides
+    cardWidth = Math.round(viewportWidth * 0.74)
+    pitchFactor = 0.82
   } else if (isTablet) {
-    availableWidth = viewportWidth - 48
-    cardWidth = Math.round((availableWidth - cardGap) / 2.1)
-    cardHeight = Math.min(Math.round(cardWidth * 1.22), 430)
+    // Tablet: Center card occupies ~64% width
+    cardWidth = Math.min(Math.round(viewportWidth * 0.62), 620)
+    pitchFactor = 0.76
   } else {
-    availableWidth = Math.min(viewportWidth - 64, 1380)
-    cardWidth = Math.round((availableWidth - 3 * cardGap) / 4)
-    cardHeight = Math.min(Math.round(cardWidth * 1.22), 460)
+    // Desktop: Center card max 720px width in landscape 16:9
+    cardWidth = Math.min(Math.round(viewportWidth * 0.5), 720)
+    pitchFactor = 0.74
   }
 
-  const pitch = cardWidth + cardGap
+  // Exact 16:9 Landscape Aspect Ratio
+  const cardHeight = Math.round(cardWidth / (16 / 9))
+  const pitch = Math.round(cardWidth * pitchFactor)
+  const stageHeight = cardHeight + (isMobile ? 24 : 40)
 
   const indexAt = useCallback(
     (pos: number) => ((Math.round(pos) % count) + count) % count,
     [count],
   )
 
-  // GPU paint function: projects cards in a symmetrical 2-in-middle concave amphitheater
+  // Direct GPU Paint Loop: Projects 3 landscape cards (1 sharp center, 2 flanking with depth/blur)
   const paint = useCallback(() => {
     if (!pitch || count === 0) return
     const pos = posRef.current
-    const kAngle = isMobile ? 12 : 16
-    const maxVisibleOffset = isMobile ? 0.9 : 1.9
 
     cardRefs.current.forEach((card, idx) => {
       if (!card) return
@@ -166,40 +169,44 @@ export const CrusadesSection: React.FC<CrusadesSectionProps> = ({
       offset = ((offset % count) + count) % count
       if (offset > count / 2) offset -= count
 
-      // Shift by -0.5 so two cards are centered symmetrically around the middle (relOffset: -0.5 and +0.5)
-      const relOffset = offset - 0.5
-      const absRel = Math.abs(relOffset)
+      const absOffset = Math.abs(offset)
 
-      // Cull cards outside the visible 4-card stage (or 2 on mobile) to eliminate any odd slivers/edges
-      if (absRel > maxVisibleOffset + 0.6) {
+      // Cull cards outside the 3 visible positions (strictly 3 cards visible)
+      if (absOffset > 1.45) {
         card.style.opacity = '0'
         card.style.pointerEvents = 'none'
-        card.style.transform = 'translateX(-50%) translateZ(-999px)'
+        card.style.transform = 'translateX(-50%) translateY(-50%) translateZ(-999px) scale(0.6)'
         return
       }
 
-      // Symmetrical concave amphitheater curve:
-      // Center cards (absRel = 0.5): scale 0.90, translateZ 0px (receded)
-      // Outer flanking cards (absRel = 1.5): scale 1.02, translateZ 42px (forward)
-      const curveRamp = Math.max(0, Math.min(1.0, (absRel - 0.5) / 1.0))
-      const scale = isMobile ? 0.94 + 0.06 * curveRamp : 0.90 + 0.12 * curveRamp
-      const translateZ = curveRamp * (isMobile ? 16 : 42)
-      const translateY = (1 - curveRamp) * (isMobile ? 3 : 8)
-      const rotateY = -relOffset * kAngle
+      // Card 3D Depth, Scaling & Inward Y-Rotation facing towards center
+      const rotateAngle = isMobile ? 22 : 28
+      const rotateY = -offset * rotateAngle
+      const scale = Math.max(0.78, 1 - absOffset * 0.16)
+      const translateX = offset * pitch
+      const translateZ = -absOffset * (isMobile ? 50 : 80)
 
-      const xPos = relOffset * pitch
+      card.style.transform = `translateX(calc(-50% + ${translateX}px)) translateY(-50%) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`
+      card.style.zIndex = String(Math.round(50 - absOffset * 20))
 
-      card.style.transform = `translateX(calc(-50% + ${xPos}px)) translateY(${translateY}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`
-      card.style.zIndex = String(Math.round(50 + (1 - curveRamp) * 10))
+      // Clean opacity & interaction
+      const opacity = Math.max(0, 1 - absOffset * 0.22)
+      card.style.opacity = String(opacity)
+      card.style.pointerEvents = absOffset < 1.3 ? 'auto' : 'none'
 
-      // Clean opacity clamping so no partial slivers bleed through when stationary
-      const edgeOpacity = Math.max(0, Math.min(1, (maxVisibleOffset + 0.3 - absRel) / 0.3))
-      card.style.opacity = String(edgeOpacity)
-      card.style.pointerEvents = edgeOpacity > 0.4 ? 'auto' : 'none'
+      // Inner card visual effects (blur & dark vignette for side cards facing inward)
+      const innerCard = card.firstElementChild as HTMLElement | null
+      if (innerCard) {
+        if (absOffset > 0.3) {
+          innerCard.style.filter = `blur(${Math.min(2.8, absOffset * 2.5)}px) brightness(${Math.max(0.55, 1 - absOffset * 0.4)})`
+        } else {
+          innerCard.style.filter = 'blur(0px) brightness(1)'
+        }
+      }
     })
   }, [count, isMobile, pitch])
 
-  // Settle animation loop with smooth damping
+  // Smooth Settle Animation
   const settle = useCallback(
     (target: number) => {
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
@@ -210,7 +217,6 @@ export const CrusadesSection: React.FC<CrusadesSectionProps> = ({
         const diff = targetRef.current - posRef.current
         if (Math.abs(diff) < 0.001) {
           posRef.current = targetRef.current
-          // Keep bounded within 0..count
           const norm = ((targetRef.current % count) + count) % count
           posRef.current = norm
           targetRef.current = norm
@@ -218,7 +224,7 @@ export const CrusadesSection: React.FC<CrusadesSectionProps> = ({
           rafRef.current = null
           return
         }
-        posRef.current += diff * 0.12
+        posRef.current += diff * 0.15
         paint()
         rafRef.current = requestAnimationFrame(step)
       }
@@ -245,17 +251,19 @@ export const CrusadesSection: React.FC<CrusadesSectionProps> = ({
     [count, settle],
   )
 
-  // Auto-scroll loop with infinite continuous rotation
+  // Auto-scroll loop with pause on hover/interaction
   useEffect(() => {
+    if (count <= 1) return
+
     const timer = setInterval(() => {
       if (dragRef.current !== null || isHoveredRef.current) return
       nudge(1)
-    }, 3200)
+    }, 3600)
 
     return () => clearInterval(timer)
-  }, [nudge])
+  }, [count, nudge])
 
-  // Sync paint on dimension changes
+  // Sync paint on dimension / pitch changes
   useIsoLayoutEffect(() => {
     paint()
   }, [paint, viewportWidth])
@@ -320,7 +328,7 @@ export const CrusadesSection: React.FC<CrusadesSectionProps> = ({
     dragRef.current = null
 
     if (drag.isHorizontal) {
-      const momentum = Math.max(-1.5, Math.min(1.5, drag.v * 0.12))
+      const momentum = Math.max(-1.5, Math.min(1.5, drag.v * 0.14))
       settle(Math.round(posRef.current + momentum))
     } else {
       settle(Math.round(posRef.current))
@@ -328,141 +336,135 @@ export const CrusadesSection: React.FC<CrusadesSectionProps> = ({
   }
 
   return (
-    <section className="py-8 sm:py-14 md:py-20 bg-white overflow-hidden select-none" data-node-id="275:810">
-      {/* Dark Navy Crusade Header Bar */}
-      <div className="bg-[#122f4a] py-5 sm:py-7 md:py-8 text-white relative shadow-sm">
-        <div className="w-full flex items-center justify-between">
-          <GoldBarReveal
-            direction="left"
-            duration={0.7}
-            delay={0.1}
-            className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-r-full flex-shrink-0"
-          />
+    <section className="relative overflow-hidden select-none" data-node-id="275:810">
+      {/* Luminous Sapphire Crusade Header Bar */}
+      <EditorialSectionHeader
+        eyebrow={subTitle || 'CALVARY CRUSADES'}
+        title={headerTitle}
+        variant="atmospheric"
+      />
 
-          <TextWordReveal
-            as="h2"
-            delay={0.15}
-            staggerDelay={0.04}
-            className="font-poppins font-medium text-white text-sm sm:text-2xl md:text-[28px] text-center px-3 sm:px-8 md:px-12 tracking-wide flex-shrink min-w-0"
+      <SacredCanvas tone="warm-alabaster" className="pt-4 sm:pt-6 pb-10 sm:pb-14 md:pb-16">
+        {/* 3-Card Landscape Carousel Stage */}
+        <RevealOnScroll direction="up" distance={20} duration={0.8} delay={0.1} className="relative mt-4 sm:mt-6 md:mt-8 w-full overflow-hidden">
+          {/* Relative Carousel Stage Wrapper */}
+          <div className="relative mx-auto max-w-[1440px] px-2 sm:px-4">
+          {/* Left Arrow Button (Floats on left flank) */}
+          <button
+            type="button"
+            onPointerDown={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              nudge(-1)
+            }}
+            className="absolute left-2 sm:left-6 md:left-10 lg:left-14 top-1/2 -translate-y-1/2 z-50 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#481a3d]/90 hover:bg-[#5a204d] text-white backdrop-blur-md shadow-2xl border border-white/20 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
+            aria-label="Previous crusade"
           >
-            {headerTitle}
-          </TextWordReveal>
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
 
-          <GoldBarReveal
-            direction="right"
-            duration={0.7}
-            delay={0.1}
-            className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-l-full flex-shrink-0"
-          />
-        </div>
-      </div>
+          {/* Right Arrow Button (Floats on right flank) */}
+          <button
+            type="button"
+            onPointerDown={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              nudge(1)
+            }}
+            className="absolute right-2 sm:right-6 md:right-10 lg:right-14 top-1/2 -translate-y-1/2 z-50 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#481a3d]/90 hover:bg-[#5a204d] text-white backdrop-blur-md shadow-2xl border border-white/20 flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
+            aria-label="Next crusade"
+          >
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
 
-      {/* Panoramic 3D Stage Viewport */}
-      <RevealOnScroll direction="up" distance={24} duration={0.8} delay={0.1} className="relative mt-6 sm:mt-10 md:mt-12 w-full py-2 sm:py-4">
-        {/* Left Arrow Button */}
-        <button
-          type="button"
-          onClick={() => nudge(-1)}
-          className="absolute left-2 sm:left-6 md:left-10 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 backdrop-blur-md text-[#122f4a] border border-slate-200 shadow-xl flex items-center justify-center hover:bg-[#efbf04] hover:text-[#0b0c1c] transition-all duration-300 active:scale-95 cursor-pointer"
-          aria-label="Previous crusade image"
-        >
-          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-        </button>
-
-        {/* Right Arrow Button */}
-        <button
-          type="button"
-          onClick={() => nudge(1)}
-          className="absolute right-2 sm:right-6 md:right-10 top-1/2 -translate-y-1/2 z-40 w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-white/95 backdrop-blur-md text-[#122f4a] border border-slate-200 shadow-xl flex items-center justify-center hover:bg-[#efbf04] hover:text-[#0b0c1c] transition-all duration-300 active:scale-95 cursor-pointer"
-          aria-label="Next crusade image"
-        >
-          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-        </button>
-
-        {/* Panoramic 3D Stage Container */}
-        <div
-          ref={containerRef}
-          onMouseEnter={() => {
-            isHoveredRef.current = true
-          }}
-          onMouseLeave={() => {
-            isHoveredRef.current = false
-          }}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={handlePointerEnd}
-          onPointerCancel={handlePointerEnd}
-          className="relative mx-auto overflow-hidden cursor-grab active:cursor-grabbing touch-pan-y"
-          style={{
-            width: `${availableWidth}px`,
-            maxWidth: '100%',
-            height: `${cardHeight + (isMobile ? 26 : 56)}px`,
-            perspective: '1400px',
-            perspectiveOrigin: '50% 50%',
-          }}
-        >
+          {/* Carousel Drag Container */}
           <div
-            className="relative w-full h-full flex items-center justify-center"
+            ref={containerRef}
+            onMouseEnter={() => {
+              isHoveredRef.current = true
+            }}
+            onMouseLeave={() => {
+              isHoveredRef.current = false
+            }}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerEnd}
+            onPointerCancel={handlePointerEnd}
+            className="relative mx-auto overflow-hidden cursor-grab active:cursor-grabbing touch-pan-y"
             style={{
-              transformStyle: 'preserve-3d',
+              width: '100%',
+              height: `${stageHeight}px`,
+              perspective: '1200px',
+              perspectiveOrigin: '50% 50%',
             }}
           >
-            {activeCrusades.map((item, idx) => {
-              const resolvedSrc = getMediaUrl(item.image, item.imageFallback || item.src || '/crusades/image_1.jpeg')
+            {/* Card Stage Wrapper */}
+            <div
+              className="relative w-full h-full"
+              style={{
+                transformStyle: 'preserve-3d',
+              }}
+            >
+              {activeCrusades.map((item, idx) => {
+                const resolvedSrc = getMediaUrl(item.image, item.imageFallback || item.src || '/crusades/image_1.jpeg')
 
-              return (
-                <div
-                  key={item.id || idx}
-                  ref={(el) => {
-                    cardRefs.current[idx] = el
-                  }}
-                  onClick={() => scrollToIndex(idx)}
-                  className="absolute left-1/2 top-1/2 -translate-y-1/2 will-change-transform cursor-pointer group select-none"
-                  style={{
-                    width: `${cardWidth}px`,
-                    height: `${cardHeight}px`,
-                    transformOrigin: 'center center',
-                    transformStyle: 'preserve-3d',
-                  }}
-                >
-                  <div className="relative w-full h-full rounded-[14px] sm:rounded-[20px] overflow-hidden shadow-lg border border-slate-200/70 bg-slate-900 transition-shadow duration-300 group-hover:shadow-2xl">
-                    <Image
-                      src={resolvedSrc}
-                      alt={item.alt || item.title || 'Crusade'}
-                      fill
-                      draggable={false}
-                      className="object-cover object-center pointer-events-none transition-transform duration-700 group-hover:scale-105"
-                      priority={idx < 4}
-                      sizes="(max-width: 640px) 70vw, (max-width: 1024px) 45vw, 30vw"
-                    />
+                return (
+                  <div
+                    key={item.id || idx}
+                    ref={(el) => {
+                      cardRefs.current[idx] = el
+                    }}
+                    onClick={() => scrollToIndex(idx)}
+                    className="absolute left-1/2 top-1/2 will-change-transform cursor-pointer group select-none"
+                    style={{
+                      width: `${cardWidth}px`,
+                      height: `${cardHeight}px`,
+                      transformOrigin: 'center center',
+                      transformStyle: 'preserve-3d',
+                    }}
+                  >
+                    <div className="relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-950 transition-all duration-300">
+                      <Image
+                        src={resolvedSrc}
+                        alt={item.alt || item.title || 'Crusade'}
+                        fill
+                        draggable={false}
+                        className="object-cover object-center pointer-events-none transition-transform duration-700 group-hover:scale-105"
+                        priority={idx < 3}
+                        sizes="(max-width: 640px) 76vw, (max-width: 1024px) 62vw, 720px"
+                      />
 
-                    {(item.title || item.location) && (
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
-                    )}
+                      {/* Gradient Overlay & Captions */}
+                      {(item.title || item.location) && (
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                      )}
 
-                    {(item.title || item.location) && (
-                      <div className="absolute bottom-0 inset-x-0 p-3 sm:p-4 text-white pointer-events-none">
-                        {item.title && (
-                          <p className="font-poppins font-semibold text-xs sm:text-sm md:text-[15px] text-[#efbf04] tracking-wide line-clamp-1">
-                            {item.title}
-                          </p>
-                        )}
-                        {item.location && (
-                          <p className="font-poppins text-[10px] sm:text-xs text-white/80 line-clamp-1 mt-0.5">
-                            {item.location}
-                          </p>
-                        )}
-                      </div>
-                    )}
+                      {(item.title || item.location) && (
+                        <div className="absolute bottom-0 inset-x-0 p-3 sm:p-5 text-white pointer-events-none">
+                          {item.title && (
+                            <p className="font-poppins font-semibold text-xs sm:text-sm md:text-base text-[#efbf04] tracking-wide line-clamp-1">
+                              {item.title}
+                            </p>
+                          )}
+                          {item.location && (
+                            <p className="font-poppins text-[10px] sm:text-xs text-white/80 line-clamp-1 mt-0.5">
+                              {item.location}
+                            </p>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              )
-            })}
+                )
+              })}
+            </div>
           </div>
         </div>
 
         {/* Carousel Pagination Dots */}
-        <div className="flex items-center justify-center gap-1.5 sm:gap-2 mt-3 sm:mt-5">
+        <div className="flex items-center justify-center gap-1.5 sm:gap-2 mt-4 sm:mt-6">
           {activeCrusades.map((_, i) => (
             <button
               key={i}
@@ -470,14 +472,15 @@ export const CrusadesSection: React.FC<CrusadesSectionProps> = ({
               onClick={() => scrollToIndex(i)}
               className={`transition-all duration-300 rounded-full cursor-pointer ${
                 activeIndex === i
-                  ? 'w-6 sm:w-9 h-1.5 sm:h-2 bg-[#efbf04]'
+                  ? 'w-7 sm:w-9 h-1.5 sm:h-2 bg-[#efbf04]'
                   : 'w-1.5 sm:w-2 h-1.5 sm:h-2 bg-slate-300 hover:bg-slate-400'
               }`}
               aria-label={`Go to crusade slide ${i + 1}`}
             />
           ))}
         </div>
-      </RevealOnScroll>
+        </RevealOnScroll>
+      </SacredCanvas>
     </section>
   )
 }

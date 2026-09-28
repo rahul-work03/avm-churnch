@@ -168,6 +168,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           )}
         </button>
       )}
+      {/* Bottom Cinematic Gradient Fade into Canvas */}
+      <div className="absolute bottom-0 inset-x-0 h-16 sm:h-24 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none z-10" />
     </section>
   )
 }

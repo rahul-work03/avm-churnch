@@ -1,15 +1,20 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
-import { CoverflowCarousel, type CoverflowSlide } from '@/components/ui/coverflow-carousel'
 import { RevealOnScroll } from '@/components/ui/reveal'
-import { TextWordReveal, BlurTextReveal, GoldBarReveal } from '@/components/ui/text-reveal'
-import { getMediaUrl } from '@/utilities/getMediaUrl'
+import { TextWordReveal, BlurTextReveal } from '@/components/ui/text-reveal'
+import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
+import { SacredCanvas } from '@/components/ui/sacred-canvas'
+import { getMediaUrl, getMediaAlt } from '@/utilities/getMediaUrl'
 
 export interface ManOfGodSectionProps {
   headerTitle?: string
   badgeTitle?: string
+  singleImage?: any
+  singleImageFallback?: string
+  singleImageAlt?: string
   slides?: Array<{
     image?: any
     imageFallback?: string
@@ -24,32 +29,12 @@ export interface ManOfGodSectionProps {
   knowMoreLabel?: string
 }
 
-const DEFAULT_SLIDES: CoverflowSlide[] = [
-  {
-    src: '/man_of_god/image_1.png',
-    alt: 'Apostle Dr. Ankur Yoseph Narula Ministering at Pulpit',
-  },
-  {
-    src: '/man_of_god/image_2.png',
-    alt: 'Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula at Main Stage',
-  },
-  {
-    src: '/man_of_god/image_3.png',
-    alt: 'Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula',
-  },
-  {
-    src: '/man_of_god/image_4.png',
-    alt: 'Apostle Dr. Ankur Yoseph Narula in Ministry Attire',
-  },
-  {
-    src: '/man_of_god/image_5.png',
-    alt: 'Prophetic Impartation & Deliverance Ministry',
-  },
-]
-
 export const ManOfGodSection: React.FC<ManOfGodSectionProps> = ({
-  headerTitle = 'The church of signs and wonders',
+  headerTitle = 'The Church of Signs and Wonders',
   badgeTitle = 'Man Of God',
+  singleImage,
+  singleImageFallback,
+  singleImageAlt,
   slides,
   leaderName = 'Apostle Dr. Ankur Yoseph Narula',
   leaderRole = 'Founder & Senior Pastor',
@@ -57,115 +42,51 @@ export const ManOfGodSection: React.FC<ManOfGodSectionProps> = ({
   knowMoreLink = '/about',
   knowMoreLabel = 'Know More',
 }) => {
-  // Format dynamic slides or use default authentic slides
-  const formattedSlides: CoverflowSlide[] =
-    slides && slides.length > 0
-      ? slides.map((s) => ({
-          src: getMediaUrl(s.image, s.imageFallback || '/man_of_god/image_1.png'),
-          alt: s.alt || s.title || leaderName,
-          title: s.title || undefined,
-          subtitle: s.subtitle || undefined,
-        }))
-      : DEFAULT_SLIDES
+  // Resolve single framed image URL with fallback to slides[0] or default asset
+  const firstSlide = slides && slides.length > 0 ? slides[0] : null
+  const resolvedImage = singleImage || firstSlide?.image
+  const fallbackSrc = singleImageFallback || firstSlide?.imageFallback || '/man_of_god/image_1.png'
+  const imageUrl = getMediaUrl(resolvedImage, fallbackSrc)
+  const imageAlt = singleImageAlt || getMediaAlt(resolvedImage, firstSlide?.alt || `${leaderName} - Man of God`)
 
   return (
-    <section className="relative bg-white overflow-hidden select-none" data-node-id="274:3">
-      {/* ==================== SECTION HEADER ==================== */}
-      {/* Full-width Dark Navy Bar with Edge-to-Edge Gold Bars */}
-      <div className="w-full bg-[#122f4a] h-[52px] sm:h-[64px] md:h-[76px] lg:h-[80px] flex items-center justify-between px-0 relative z-10 shadow-md overflow-hidden">
-        {/* Left Gold Bar */}
-        <GoldBarReveal
-          direction="left"
-          duration={0.7}
-          delay={0.1}
-          className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[240px] xl:w-[323px] h-[5px] sm:h-[7px] lg:h-[8px] bg-[#efbf04] rounded-r-full shadow-sm flex-shrink-0"
-          data-node-id="274:24"
-        />
-
-        {/* Center Title Text */}
-        <div className="flex-1 min-w-0 px-2 sm:px-4 md:px-6 text-center">
-          <TextWordReveal
-            as="h2"
-            delay={0.15}
-            staggerDelay={0.035}
-            className="font-philosopher font-bold text-white text-lg lg:text-[32px] xl:text-[36px] tracking-tight text-center px-4 whitespace-nowrap"
-          >
-            {headerTitle}
-          </TextWordReveal>
+    <section className="relative overflow-hidden select-none" data-node-id="274:3">
+      <SacredCanvas tone="warm-alabaster" className="py-10 sm:py-14 md:py-16">
+        {/* ==================== EDITORIAL SECTION HEADER (Full width edge-to-edge gold bars) ==================== */}
+        <div className="w-full mb-6 sm:mb-8 md:mb-10">
+          <EditorialSectionHeader
+            eyebrow="GLOBAL APOSTOLIC REVIVAL"
+            title={headerTitle}
+            variant="editorial"
+            align="center"
+          />
         </div>
 
-        {/* Right Gold Bar */}
-        <GoldBarReveal
-          direction="right"
-          duration={0.7}
-          delay={0.1}
-          className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[240px] xl:w-[323px] h-[5px] sm:h-[7px] lg:h-[8px] bg-[#efbf04] rounded-l-full shadow-sm flex-shrink-0"
-          data-node-id="274:26"
-        />
-      </div>
-
-      <div className="pt-4 sm:pt-6 md:pt-8 pb-8 sm:pb-12 md:pb-16">
-        {/* Man Of God with Golden Torch / Flare Emblems on both sides */}
-        <RevealOnScroll direction="up" distance={16} duration={0.6} className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-4 md:mb-6">
-          <div
-            className="relative w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 flex-shrink-0 bg-[#efbf04]"
-            data-node-id="274:334"
-            style={{
-              maskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
-              WebkitMaskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
-              maskSize: 'contain',
-              WebkitMaskSize: 'contain',
-              maskRepeat: 'no-repeat',
-              WebkitMaskRepeat: 'no-repeat',
-              maskPosition: 'center',
-              WebkitMaskPosition: 'center',
-            }}
-          />
-          <TextWordReveal
-            as="span"
-            delay={0.1}
-            staggerDelay={0.06}
-            className="font-poppins font-bold text-[#d5582a] text-lg sm:text-2xl md:text-[34px] tracking-wide"
-            data-node-id="274:34"
-          >
+        {/* Man Of God Sub-badge */}
+        <RevealOnScroll direction="up" distance={16} duration={0.6} className="text-center mb-4 sm:mb-6">
+          <span className="font-poppins font-bold text-[#d5582a] text-sm sm:text-base md:text-lg uppercase tracking-widest px-4 py-1 rounded-full bg-orange-50 border border-orange-200/60 inline-block shadow-sm">
             {badgeTitle}
-          </TextWordReveal>
-          <div
-            className="relative w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 flex-shrink-0 bg-[#efbf04] scale-x-[-1]"
-            data-node-id="274:337"
-            style={{
-              maskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
-              WebkitMaskImage: "url('/figma-assets/68690249a71ebf2948a99aeb3014bd566cb1a309.png')",
-              maskSize: 'contain',
-              WebkitMaskSize: 'contain',
-              maskRepeat: 'no-repeat',
-              WebkitMaskRepeat: 'no-repeat',
-              maskPosition: 'center',
-              WebkitMaskPosition: 'center',
-            }}
-          />
+          </span>
         </RevealOnScroll>
 
-        {/* ==================== COVERFLOW CAROUSEL ==================== */}
-        <RevealOnScroll direction="up" distance={24} duration={0.8} delay={0.1} className="w-full">
-          <CoverflowCarousel
-            slides={formattedSlides}
-            autoPlay={true}
-            autoPlayInterval={3000}
-            pauseOnHover={true}
-            loop={true}
-            showNavigation={true}
-            showPagination={true}
-            rotate={38}
-            depth={0.5}
-            perspective={3}
-            cardWidth="clamp(210px, 24vw, 290px)"
-            cardHeight="clamp(290px, 33vw, 400px)"
-          />
+        {/* ==================== RECTANGULAR HERO CONTINUATION FRAME ==================== */}
+        <RevealOnScroll direction="up" distance={20} duration={0.8} delay={0.1} className="w-full max-w-5xl mx-auto px-4 sm:px-6 relative">
+          <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] md:aspect-[16/7] min-h-[220px] sm:min-h-[300px] md:min-h-[380px] max-h-[460px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 bg-slate-950 group ring-1 ring-black/5">
+            <Image
+              src={imageUrl}
+              alt={imageAlt}
+              fill
+              priority
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1100px"
+              className="object-cover object-top sm:object-center transition-transform duration-700 group-hover:scale-105"
+            />
+            {/* Cinematic subtle vignette */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+          </div>
         </RevealOnScroll>
 
         {/* ==================== PASTOR BIO & CTA ==================== */}
-        <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 text-center mt-6 sm:mt-8 md:mt-10">
+        <div className="w-full max-w-3xl mx-auto px-4 sm:px-6 text-center mt-5 sm:mt-7 md:mt-8">
           <TextWordReveal
             as="h3"
             delay={0.1}
@@ -207,7 +128,7 @@ export const ManOfGodSection: React.FC<ManOfGodSectionProps> = ({
             </Link>
           </RevealOnScroll>
         </div>
-      </div>
+      </SacredCanvas>
     </section>
   )
 }

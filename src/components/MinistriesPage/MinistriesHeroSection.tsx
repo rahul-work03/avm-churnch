@@ -4,6 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { RevealOnScroll } from '@/components/ui/reveal'
 import { TextWordReveal, BlurTextReveal } from '@/components/ui/text-reveal'
+import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export interface MinistriesHeroSectionProps {
@@ -29,11 +30,14 @@ export const MinistriesHeroSection: React.FC<MinistriesHeroSectionProps> = ({
     getMediaUrl(heroVideo, heroVideoFallback || '/ministries_hero_video.mp4')
 
   return (
-    <section className="relative pt-28 pb-6 sm:pt-32 sm:pb-10 md:pt-36 md:pb-12 bg-transparent" data-node-id="277:1632">
+    <SacredCanvas
+      tone="warm-alabaster"
+      className="pt-28 pb-8 sm:pt-32 sm:pb-12 md:pt-36 md:pb-16"
+    >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <RevealOnScroll direction="up" distance={24} duration={0.8}>
-          {/* Large Golden-Bordered Hero Banner Video Container */}
-          <div className="relative w-full max-w-[1140px] mx-auto aspect-[1140/580] rounded-[16px] sm:rounded-[20px] overflow-hidden border border-[#d4af37]/70 shadow-2xl bg-slate-950 group">
+          {/* Large Hero Banner Video Container */}
+          <div className="relative w-full max-w-[1140px] mx-auto aspect-[1140/580] rounded-[18px] sm:rounded-[22px] overflow-hidden border border-slate-200/90 shadow-2xl bg-slate-950 group">
             {/* Hero Background Infinite Autoplay Video */}
             <video
               src={resolvedVideoUrl}
@@ -55,7 +59,7 @@ export const MinistriesHeroSection: React.FC<MinistriesHeroSectionProps> = ({
               className="absolute top-4 left-4 sm:top-8 sm:left-8 md:top-10 md:left-10 z-10"
             >
               {/* Pill Badge */}
-              <div className="inline-flex items-center justify-center bg-[#071d36]/90 backdrop-blur-md border border-[#d4af37]/80 rounded-full px-4 py-1.5 sm:px-7 sm:py-2 shadow-lg">
+              <div className="inline-flex items-center justify-center bg-[#071d36]/90 backdrop-blur-md border border-[#d4af37]/60 rounded-full px-4 py-1.5 sm:px-7 sm:py-2 shadow-lg">
                 <TextWordReveal
                   as="span"
                   delay={0.25}
@@ -79,7 +83,7 @@ export const MinistriesHeroSection: React.FC<MinistriesHeroSectionProps> = ({
           </div>
         </RevealOnScroll>
       </div>
-    </section>
+    </SacredCanvas>
   )
 }
 

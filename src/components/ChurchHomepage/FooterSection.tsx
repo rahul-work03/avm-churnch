@@ -38,8 +38,23 @@ export interface FooterData {
   copyrightText?: string | null
 }
 
+const DEFAULT_MAP_IFRAME =
+  '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.0779467068696!2d75.56073407539549!3d31.273939074327686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5b50b36a88a1%3A0x3d8b66ec2e189bf6!2sAnkur%20Narula%20Ministries!5e0!3m2!1sen!2sin!4v1790533216619!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>'
+
 const DEFAULT_MAP_EMBED_URL =
-  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.0915173016306!2d75.56058437539549!3d31.273563674328035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5b93663a625d%3A0x77a5a7c6551686f1!2sKhambra%20Church!5e0!3m2!1sen!2sin!4v1789922592786!5m2!1sen!2sin'
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.0779467068696!2d75.56073407539549!3d31.273939074327686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5b50b36a88a1%3A0x3d8b66ec2e189bf6!2sAnkur%20Narula%20Ministries!5e0!3m2!1sen!2sin!4v1790533216619!5m2!1sen!2sin'
+
+function getIframeSrc(input?: string | null): string {
+  const value = input && input.trim() ? input.trim() : DEFAULT_MAP_IFRAME
+  if (value.startsWith('<iframe')) {
+    const match = value.match(/src=["']([^"']+)["']/)
+    return match ? match[1] : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.0779467068696!2d75.56073407539549!3d31.273939074327686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5b50b36a88a1%3A0x3d8b66ec2e189bf6!2sAnkur%20Narula%20Ministries!5e0!3m2!1sen!2sin!4v1790533216619!5m2!1sen!2sin'
+  }
+  if (value.startsWith('http://') || value.startsWith('https://')) {
+    return value
+  }
+  return 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.0779467068696!2d75.56073407539549!3d31.273939074327686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5b50b36a88a1%3A0x3d8b66ec2e189bf6!2sAnkur%20Narula%20Ministries!5e0!3m2!1sen!2sin!4v1790533216619!5m2!1sen!2sin'
+}
 
 const DEFAULT_PAGES_LIST: FooterPageLink[] = [
   { label: 'Branches', href: '/church-branches' },
@@ -85,7 +100,7 @@ const DEFAULT_SOCIAL_LINKS: FooterSocialLink[] = [
 
 const FooterMapEmbed: React.FC<{ src: string; className?: string }> = ({
   src,
-  className = 'w-full h-full',
+  className = '',
 }) => {
   return (
     <iframe
@@ -96,8 +111,8 @@ const FooterMapEmbed: React.FC<{ src: string; className?: string }> = ({
       allowFullScreen
       loading="lazy"
       referrerPolicy="strict-origin-when-cross-origin"
-      title="Church Location Map - Khambra, Jalandhar"
-      className={`${className} border-0`}
+      title="Church Location Map - Ankur Narula Ministries"
+      className={`absolute inset-0 w-full h-full border-0 pointer-events-auto ${className}`}
     />
   )
 }
@@ -122,7 +137,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
   const pagesList = data?.pagesList && data.pagesList.length > 0 ? data.pagesList : DEFAULT_PAGES_LIST
   const socialLinks =
     data?.socialLinks && data.socialLinks.length > 0 ? data.socialLinks : DEFAULT_SOCIAL_LINKS
-  const mapEmbedUrl = data?.mapEmbedUrl || DEFAULT_MAP_EMBED_URL
+  const mapEmbedUrl = getIframeSrc(data?.mapEmbedUrl)
   const mapImageUrl = getMediaUrl(
     data?.mapImage,
     data?.mapImageFallback || '/figma-assets/f1c7c30e211dc39094fc986db7a7e7d876202f58.png'
@@ -133,7 +148,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
 
   return (
     <footer
-      className="bg-[#122f4a] text-white pt-6 pb-6 overflow-hidden relative select-none w-full"
+      className="bg-[#122f4a] text-white pt-6 pb-6 overflow-hidden relative w-full"
       data-node-id="305:6583"
     >
       {/* ===================== DESKTOP FOOTER (Exact Figma Node 305:6583) ===================== */}
@@ -141,48 +156,48 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
         {/* Top Gold Cross and Flanking Dividers (Figma 305:6565, 305:6569, 305:6570) */}
         <div className="flex items-center justify-center gap-4 mb-6">
           <div className="w-[251px] h-[1px] bg-[#efbf04]" />
-          <div className="text-[#efbf04] text-[34px] leading-none font-serif select-none drop-shadow-[0_2px_8px_rgba(239,191,4,0.4)] flex items-center justify-center">
+          <div className="text-[#efbf04] text-[30px] leading-none font-serif select-none drop-shadow-[0_2px_8px_rgba(239,191,4,0.4)] flex items-center justify-center">
             ✝
           </div>
           <div className="w-[250px] h-[1px] bg-[#efbf04]" />
         </div>
 
         {/* 4 Columns Container with 3 Exact Vertical Dividers */}
-        <div className="flex items-center justify-between pb-6">
+        <div className="flex items-start justify-between pb-6">
           {/* Column 1: Ministry Crest & Overview (Figma 305:6549, 305:6572, 305:6581) */}
-          <div className="w-[380px] flex flex-col items-center text-center px-2 flex-shrink-0">
-            <div className="relative w-[202px] h-[83px] drop-shadow-[0px_4px_8px_rgba(0,0,0,0.25)] flex-shrink-0">
+          <div className="w-[380px] flex flex-col items-start text-left px-2 flex-shrink-0">
+            <div className="relative w-[190px] h-[78px] drop-shadow-[0px_4px_8px_rgba(0,0,0,0.25)] flex-shrink-0">
               <Image
                 src={logoUrl}
                 alt={ministryName}
                 fill
-                className="object-contain"
+                className="object-contain object-left"
               />
             </div>
-            <h3 className="font-lato font-bold text-[24px] text-white text-center mt-3 whitespace-nowrap">
+            <h3 className="font-lato font-bold text-[19px] text-white text-left mt-3 whitespace-nowrap">
               {ministryName}
             </h3>
-            <p className="font-lato font-normal text-[15px] text-white text-center leading-[1.35] w-[374px] mt-2">
+            <p className="font-lato font-normal text-[14px] text-white/90 text-left leading-[1.4] w-[374px] mt-2">
               {aboutText}
             </p>
           </div>
 
-          {/* Vertical Divider 1 (Figma 305:6566 - h: 303px) */}
-          <div className="w-px h-[303px] bg-white/20 flex-shrink-0" />
+          {/* Vertical Divider 1 */}
+          <div className="w-px self-stretch min-h-[260px] bg-white/20 flex-shrink-0" />
 
           {/* Column 2: Contact Us & Links (Figma 305:6560, 305:6561, 305:6573, 305:6574, 305:6575) */}
-          <div className="w-[300px] flex flex-col items-center text-center px-2 flex-shrink-0">
+          <div className="w-[300px] flex flex-col items-start text-left px-2 flex-shrink-0">
             {/* Contact Us */}
-            <div>
-              <h4 className="font-lato font-bold text-[24px] text-white text-center">
+            <div className="w-full text-left">
+              <h4 className="font-lato font-bold text-[18px] text-white text-left">
                 Contact Us
               </h4>
-              <p className="font-lato font-normal text-[20px] text-white text-center mt-2.5">
+              <p className="font-lato font-normal text-[15px] text-white/90 text-left mt-2">
                 <a href={`mailto:${contactEmail}`} className="hover:text-[#efbf04] transition">
                   {contactEmail}
                 </a>
               </p>
-              <p className="font-lato font-normal text-[20px] text-white text-center mt-1">
+              <p className="font-lato font-normal text-[15px] text-white/90 text-left mt-1">
                 <a href={`tel:${contactPhone.replace(/[^0-9]/g, '')}`} className="hover:text-[#efbf04] transition">
                   {contactPhone}
                 </a>
@@ -190,16 +205,16 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
             </div>
 
             {/* Links */}
-            <div className="mt-6">
-              <h4 className="font-lato font-bold text-[24px] text-white text-center">
+            <div className="mt-5 w-full text-left">
+              <h4 className="font-lato font-bold text-[18px] text-white text-left">
                 Links
               </h4>
-              <p className="font-lato font-normal text-[20px] text-white text-center mt-2.5">
+              <p className="font-lato font-normal text-[15px] text-white/90 text-left mt-2">
                 <Link href={privacyPolicyUrl} className="hover:text-[#efbf04] transition">
                   Privacy Policy
                 </Link>
               </p>
-              <p className="font-lato font-normal text-[20px] text-white text-center mt-1">
+              <p className="font-lato font-normal text-[15px] text-white/90 text-left mt-1">
                 <Link href={termsUrl} className="hover:text-[#efbf04] transition">
                   Terms and Conditions
                 </Link>
@@ -207,20 +222,20 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
             </div>
           </div>
 
-          {/* Vertical Divider 2 (Figma 305:6567 - h: 301px) */}
-          <div className="w-px h-[301px] bg-white/20 flex-shrink-0" />
+          {/* Vertical Divider 2 */}
+          <div className="w-px self-stretch min-h-[260px] bg-white/20 flex-shrink-0" />
 
           {/* Column 3: Pages (Figma 305:6562, 305:6551 - 305:6558) */}
-          <div className="w-[240px] flex flex-col items-center text-center px-2 flex-shrink-0">
-            <h4 className="font-lato font-bold text-[24px] text-white text-center mb-1">
+          <div className="w-[240px] flex flex-col items-start text-left px-2 flex-shrink-0">
+            <h4 className="font-lato font-bold text-[18px] text-white text-left mb-2">
               Pages
             </h4>
-            <ul className="space-y-0.5">
+            <ul className="space-y-1 w-full text-left">
               {pagesList.map((page, idx) => (
-                <li key={idx}>
+                <li key={idx} className="text-left">
                   <Link
                     href={page.href}
-                    className="font-lato font-normal text-[20px] text-white hover:text-[#efbf04] transition block leading-tight py-0.5"
+                    className="font-lato font-normal text-[15px] text-white/90 hover:text-[#efbf04] transition block leading-tight py-0.5 text-left"
                   >
                     {page.label}
                   </Link>
@@ -229,21 +244,21 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
             </ul>
           </div>
 
-          {/* Vertical Divider 3 (Figma 305:6568 - h: 301px) */}
-          <div className="w-px h-[301px] bg-white/20 flex-shrink-0" />
+          {/* Vertical Divider 3 */}
+          <div className="w-px self-stretch min-h-[260px] bg-white/20 flex-shrink-0" />
 
           {/* Column 4: Social Media Platforms & Locate Us (Figma 305:6563, 305:6564, 305:6576-305:6580) */}
-          <div className="w-[340px] flex flex-col items-center text-center px-2 flex-shrink-0">
+          <div className="w-[340px] flex flex-col items-start text-left px-2 flex-shrink-0">
             {/* Social Media Platforms */}
-            <div>
-              <h4 className="font-lato font-bold text-[24px] text-white text-center">
+            <div className="w-full text-left">
+              <h4 className="font-lato font-bold text-[18px] text-white text-left">
                 Social Media Platforms
               </h4>
-              <div className="flex items-center justify-center gap-3.5 mt-2.5">
+              <div className="flex items-center justify-start gap-3 mt-2">
                 {socialLinks.map((item, idx) => {
                   const iconUrl = getMediaUrl(item.icon, item.iconFallback || '')
-                  const w = item.width || 26
-                  const h = item.height || 26
+                  const w = item.width || 24
+                  const h = item.height || 24
 
                   return (
                     <a
@@ -269,11 +284,11 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
             </div>
 
             {/* Locate Us */}
-            <div className="mt-4 flex flex-col items-center">
-              <h4 className="font-lato font-bold text-[24px] text-white text-center">
+            <div className="mt-4 flex flex-col items-start w-full text-left">
+              <h4 className="font-lato font-bold text-[18px] text-white text-left">
                 Locate Us
               </h4>
-              <div className="relative w-[282px] h-[174px] mt-2 overflow-hidden rounded-md shadow-md bg-black/20">
+              <div className="relative w-full max-w-[320px] h-[190px] mt-2 overflow-hidden rounded-lg shadow-md bg-black/20">
                 <FooterMapEmbed src={mapEmbedUrl} />
               </div>
             </div>
@@ -281,8 +296,8 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
         </div>
 
         {/* Bottom Copyright Bar (Figma 305:6559) */}
-        <div className="pt-4 text-center">
-          <p className="font-lato font-normal text-[20px] text-white text-center">
+        <div className="pt-4 text-center border-t border-white/10">
+          <p className="font-lato font-normal text-[14px] text-white/80 text-center">
             {copyrightText}
           </p>
         </div>
@@ -293,7 +308,7 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
         {/* Top Gold Cross and Flanking Dividers */}
         <div className="flex items-center justify-center gap-4 mb-6">
           <div className="w-[180px] h-[1px] bg-[#efbf04]" />
-          <div className="text-[#efbf04] text-[28px] font-serif select-none flex items-center justify-center">
+          <div className="text-[#efbf04] text-[26px] font-serif select-none flex items-center justify-center">
             ✝
           </div>
           <div className="w-[180px] h-[1px] bg-[#efbf04]" />
@@ -301,52 +316,52 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
 
         <div className="grid grid-cols-2 gap-8 pb-6">
           {/* Column 1: Ministry Crest & Overview */}
-          <div className="flex flex-col items-center text-center space-y-3">
-            <div className="relative w-[180px] h-[75px] drop-shadow-[0px_4px_8px_rgba(0,0,0,0.25)]">
+          <div className="flex flex-col items-start text-left space-y-2.5">
+            <div className="relative w-[170px] h-[70px] drop-shadow-[0px_4px_8px_rgba(0,0,0,0.25)]">
               <Image
                 src={logoUrl}
                 alt={ministryName}
                 fill
-                className="object-contain"
+                className="object-contain object-left"
               />
             </div>
-            <h3 className="font-lato font-bold text-[22px] text-white">
+            <h3 className="font-lato font-bold text-[18px] text-white text-left">
               {ministryName}
             </h3>
-            <p className="font-lato font-normal text-[14px] text-white leading-relaxed max-w-[340px]">
+            <p className="font-lato font-normal text-[13px] text-white/90 text-left leading-relaxed max-w-[340px]">
               {aboutText}
             </p>
           </div>
 
           {/* Column 2: Contact Us & Links */}
-          <div className="flex flex-col items-center text-center space-y-4">
-            <div>
-              <h4 className="font-lato font-bold text-[22px] text-white">Contact Us</h4>
-              <p className="font-lato font-normal text-[18px] text-white mt-1.5">
+          <div className="flex flex-col items-start text-left space-y-3.5">
+            <div className="w-full text-left">
+              <h4 className="font-lato font-bold text-[16px] text-white text-left">Contact Us</h4>
+              <p className="font-lato font-normal text-[14px] text-white/90 text-left mt-1.5">
                 <a href={`mailto:${contactEmail}`} className="hover:text-[#efbf04]">{contactEmail}</a>
               </p>
-              <p className="font-lato font-normal text-[18px] text-white mt-0.5">
+              <p className="font-lato font-normal text-[14px] text-white/90 text-left mt-0.5">
                 <a href={`tel:${contactPhone.replace(/[^0-9]/g, '')}`} className="hover:text-[#efbf04]">{contactPhone}</a>
               </p>
             </div>
-            <div>
-              <h4 className="font-lato font-bold text-[22px] text-white">Links</h4>
-              <p className="font-lato font-normal text-[18px] text-white mt-1.5">
+            <div className="w-full text-left">
+              <h4 className="font-lato font-bold text-[16px] text-white text-left">Links</h4>
+              <p className="font-lato font-normal text-[14px] text-white/90 text-left mt-1.5">
                 <Link href={privacyPolicyUrl} className="hover:text-[#efbf04]">Privacy Policy</Link>
               </p>
-              <p className="font-lato font-normal text-[18px] text-white mt-0.5">
+              <p className="font-lato font-normal text-[14px] text-white/90 text-left mt-0.5">
                 <Link href={termsUrl} className="hover:text-[#efbf04]">Terms and Conditions</Link>
               </p>
             </div>
           </div>
 
           {/* Column 3: Pages */}
-          <div className="flex flex-col items-center text-center">
-            <h4 className="font-lato font-bold text-[22px] text-white mb-2">Pages</h4>
-            <ul className="space-y-1 font-lato font-normal text-[18px] text-white">
+          <div className="flex flex-col items-start text-left">
+            <h4 className="font-lato font-bold text-[16px] text-white text-left mb-1.5">Pages</h4>
+            <ul className="space-y-1 font-lato font-normal text-[14px] text-white/90 text-left w-full">
               {pagesList.map((page, idx) => (
-                <li key={idx}>
-                  <Link href={page.href} className="hover:text-[#efbf04] transition">
+                <li key={idx} className="text-left">
+                  <Link href={page.href} className="hover:text-[#efbf04] transition text-left block">
                     {page.label}
                   </Link>
                 </li>
@@ -355,14 +370,14 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
           </div>
 
           {/* Column 4: Social Media & Locate Us */}
-          <div className="flex flex-col items-center text-center space-y-4">
-            <div>
-              <h4 className="font-lato font-bold text-[22px] text-white mb-2">Social Media Platforms</h4>
-              <div className="flex items-center justify-center gap-3">
+          <div className="flex flex-col items-start text-left space-y-3.5">
+            <div className="w-full text-left">
+              <h4 className="font-lato font-bold text-[16px] text-white text-left mb-1.5">Social Media Platforms</h4>
+              <div className="flex items-center justify-start gap-3">
                 {socialLinks.map((item, idx) => {
                   const iconUrl = getMediaUrl(item.icon, item.iconFallback || '')
-                  const w = item.width || 26
-                  const h = item.height || 26
+                  const w = item.width || 24
+                  const h = item.height || 24
 
                   return (
                     <a
@@ -381,9 +396,9 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
               </div>
             </div>
 
-            <div>
-              <h4 className="font-lato font-bold text-[22px] text-white mb-2">Locate Us</h4>
-              <div className="relative w-[240px] h-[140px] rounded-lg overflow-hidden shadow bg-black/20">
+            <div className="w-full text-left">
+              <h4 className="font-lato font-bold text-[16px] text-white text-left mb-1.5">Locate Us</h4>
+              <div className="relative w-full max-w-[280px] h-[160px] rounded-lg overflow-hidden shadow-md bg-black/20">
                 <FooterMapEmbed src={mapEmbedUrl} />
               </div>
             </div>
@@ -391,45 +406,45 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
         </div>
 
         <div className="pt-4 text-center border-t border-white/10">
-          <p className="font-lato font-normal text-[18px] text-white">
+          <p className="font-lato font-normal text-[13px] text-white/80 text-center">
             {copyrightText}
           </p>
         </div>
       </div>
 
       {/* ===================== MOBILE FOOTER (under md) ===================== */}
-      <div className="md:hidden max-w-[440px] mx-auto px-4 text-center space-y-6">
+      <div className="md:hidden max-w-[440px] mx-auto px-4 text-left space-y-5">
         {/* Brand Header with Emblem */}
-        <div className="flex flex-col items-center justify-center space-y-2.5">
-          <div className="relative w-[160px] h-[65px] drop-shadow-[0px_4px_8px_rgba(0,0,0,0.25)]">
+        <div className="flex flex-col items-start justify-start space-y-2 text-left">
+          <div className="relative w-[150px] h-[60px] drop-shadow-[0px_4px_8px_rgba(0,0,0,0.25)]">
             <Image
               src={logoUrl}
               alt={ministryName}
               fill
-              className="object-contain"
+              className="object-contain object-left"
             />
           </div>
-          <span className="font-lato font-bold text-white text-[20px]">
+          <span className="font-lato font-bold text-white text-[17px] text-left">
             {ministryName}
           </span>
-          <p className="font-lato font-normal text-[13px] text-white max-w-[340px] leading-relaxed">
+          <p className="font-lato font-normal text-[12.5px] text-white/90 text-left max-w-[340px] leading-relaxed">
             {aboutText}
           </p>
         </div>
 
         {/* Divider */}
-        <div className="w-full max-w-[280px] h-px bg-white/20 mx-auto" />
+        <div className="w-full max-w-[280px] h-px bg-white/20" />
 
         {/* 2-Column: Contact Us | Links */}
-        <div className="grid grid-cols-2 gap-4 relative">
-          <div className="text-left pl-2">
-            <h4 className="font-lato font-bold text-[17px] text-white">Contact Us</h4>
-            <p className="font-lato font-normal text-[14px] text-white mt-1.5">
+        <div className="grid grid-cols-2 gap-4 relative text-left">
+          <div className="text-left">
+            <h4 className="font-lato font-bold text-[15px] text-white text-left">Contact Us</h4>
+            <p className="font-lato font-normal text-[13px] text-white/90 text-left mt-1.5">
               <a href={`mailto:${contactEmail}`} className="hover:text-[#efbf04]">
                 {contactEmail}
               </a>
             </p>
-            <p className="font-lato font-normal text-[14px] text-white mt-1">
+            <p className="font-lato font-normal text-[13px] text-white/90 text-left mt-1">
               <a href={`tel:${contactPhone.replace(/[^0-9]/g, '')}`} className="hover:text-[#efbf04]">
                 {contactPhone}
               </a>
@@ -439,14 +454,14 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
           {/* Vertical Divider */}
           <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/20 -translate-x-1/2" />
 
-          <div className="text-right pr-2">
-            <h4 className="font-lato font-bold text-[17px] text-white">Links</h4>
-            <p className="font-lato font-normal text-[14px] text-white mt-1.5">
+          <div className="text-left pl-2">
+            <h4 className="font-lato font-bold text-[15px] text-white text-left">Links</h4>
+            <p className="font-lato font-normal text-[13px] text-white/90 text-left mt-1.5">
               <Link href={privacyPolicyUrl} className="hover:text-[#efbf04]">
                 Privacy Policy
               </Link>
             </p>
-            <p className="font-lato font-normal text-[14px] text-white mt-1">
+            <p className="font-lato font-normal text-[13px] text-white/90 text-left mt-1">
               <Link href={termsUrl} className="hover:text-[#efbf04]">
                 Terms and Conditions
               </Link>
@@ -455,15 +470,15 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
         </div>
 
         {/* Divider */}
-        <div className="w-full max-w-[200px] h-px bg-white/20 mx-auto" />
+        <div className="w-full max-w-[200px] h-px bg-white/20" />
 
         {/* Pages Section */}
-        <div>
-          <h4 className="font-lato font-bold text-[18px] text-white">Pages</h4>
-          <ul className="mt-2 space-y-1 font-lato font-normal text-[15px] text-white">
+        <div className="text-left">
+          <h4 className="font-lato font-bold text-[15px] text-white text-left">Pages</h4>
+          <ul className="mt-1.5 space-y-1 font-lato font-normal text-[13px] text-white/90 text-left">
             {pagesList.map((page, idx) => (
-              <li key={idx}>
-                <Link href={page.href} className="hover:text-[#efbf04] transition">
+              <li key={idx} className="text-left">
+                <Link href={page.href} className="hover:text-[#efbf04] transition block text-left">
                   {page.label}
                 </Link>
               </li>
@@ -472,16 +487,16 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
         </div>
 
         {/* Divider */}
-        <div className="w-full max-w-[200px] h-px bg-white/20 mx-auto" />
+        <div className="w-full max-w-[200px] h-px bg-white/20" />
 
         {/* Social Media Platforms */}
-        <div>
-          <h4 className="font-lato font-bold text-[18px] text-white">Social Media Platforms</h4>
-          <div className="flex items-center justify-center gap-3.5 mt-3">
+        <div className="text-left">
+          <h4 className="font-lato font-bold text-[15px] text-white text-left">Social Media Platforms</h4>
+          <div className="flex items-center justify-start gap-3 mt-2.5">
             {socialLinks.map((item, idx) => {
               const iconUrl = getMediaUrl(item.icon, item.iconFallback || '')
-              const w = item.width || 26
-              const h = item.height || 26
+              const w = item.width || 24
+              const h = item.height || 24
 
               return (
                 <a
@@ -507,21 +522,21 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
         </div>
 
         {/* Divider */}
-        <div className="w-full max-w-[200px] h-px bg-white/20 mx-auto" />
+        <div className="w-full max-w-[200px] h-px bg-white/20" />
 
         {/* Location */}
-        <div>
-          <h4 className="font-lato font-bold text-[18px] text-white">Locate Us</h4>
-          <div className="mt-3 relative w-[220px] h-[135px] mx-auto rounded-lg overflow-hidden shadow-md bg-black/20">
+        <div className="text-left">
+          <h4 className="font-lato font-bold text-[15px] text-white text-left">Locate Us</h4>
+          <div className="mt-2.5 relative w-full max-w-[280px] h-[155px] rounded-lg overflow-hidden shadow-md bg-black/20">
             <FooterMapEmbed src={mapEmbedUrl} />
           </div>
         </div>
 
         {/* Divider */}
-        <div className="w-full max-w-[300px] h-px bg-white/20 mx-auto" />
+        <div className="w-full max-w-[300px] h-px bg-white/20" />
 
         {/* Copyright */}
-        <p className="font-lato font-normal text-[15px] text-white pb-2">
+        <p className="font-lato font-normal text-[12px] text-white/80 pb-2 text-left">
           {copyrightText}
         </p>
       </div>

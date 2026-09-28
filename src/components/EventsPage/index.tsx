@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import { RecentEventsSection, type EventItem } from './RecentEventsSection'
-import { UpcomingEventsSection } from './UpcomingEventsSection'
+import { PrimaryEventHeroSection, type EventItem } from './PrimaryEventHeroSection'
+import { MoreEventsSection } from './MoreEventsSection'
 import { DEFAULT_EVENTS } from '@/globals/EventsPage/config'
 
 interface EventsPageProps {
@@ -19,21 +19,22 @@ export const EventsPage: React.FC<EventsPageProps> = ({ data }) => {
     eventsList[selectedEventIndex] || eventsList[0] || DEFAULT_EVENTS[0]
 
   return (
-    <main className="min-h-screen bg-white text-[#0b0c1c] antialiased selection:bg-[#efbf04]/30 selection:text-[#0b0c1c] relative w-full overflow-hidden">
-      {/* 1. Events Grid Showcase */}
-      <RecentEventsSection
-        headerTitle={data?.eventsSectionTitle || data?.recentHeaderTitle || 'Events'}
+    <main className="min-h-screen bg-white text-[#0b0c1c] antialiased selection:bg-[#efbf04]/30 selection:text-[#0b0c1c] relative w-full overflow-hidden pb-16 sm:pb-24">
+      {/* 1. Primary Event Hero (Wide Landscape Banner + Live Countdown + Narrative & Schedule) */}
+      <PrimaryEventHeroSection
+        sectionTitle={data?.eventsSectionTitle || 'UPCOMING PRIMARY EVENT'}
+        event={activeEvent}
+      />
+
+      {/* 2. More Events Directory Grid with 'See Details' Switcher */}
+      <MoreEventsSection
+        headerTitle={data?.upcomingSectionTitle || 'MORE EVENTS'}
         events={eventsList}
         selectedIndex={selectedEventIndex}
         onSelectEvent={(idx) => setSelectedEventIndex(idx)}
       />
-
-      {/* 2. Selected Event Detailed View & Schedule Breakdown */}
-      <UpcomingEventsSection
-        upcomingHeaderTitle={data?.upcomingSectionTitle || data?.upcomingHeaderTitle || 'Upcoming Events'}
-        event={activeEvent}
-      />
     </main>
   )
 }
+
 

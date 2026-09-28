@@ -89,6 +89,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({
   // Crusades props
   const crusadesProps = {
     headerTitle: aboutData?.crusadesHeaderTitle,
+    subTitle: aboutData?.crusadesSubTitle,
     crusadeImages: aboutData?.crusadeImages,
   }
 

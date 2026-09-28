@@ -4,6 +4,8 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/ui/reveal'
 import { TextWordReveal, GoldBarReveal } from '@/components/ui/text-reveal'
+import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
+import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { getYouTubeEmbedUrl } from '@/utilities/getYouTubeEmbedUrl'
 
 export interface SermonCardItem {
@@ -133,41 +135,21 @@ export const SermonsSection: React.FC<SermonsSectionProps> = ({
   )
 
   return (
-    <section className="relative bg-[#f8fafc] overflow-hidden" data-node-id="274:3">
+    <section className="relative overflow-hidden" data-node-id="274:3">
       {/* Upper Dark Background Container for Sermon Header & Big Banner */}
-      <div className="bg-[#0b131d] pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-20 md:pb-24 text-white">
-        {/* Section Header with Left & Right Gold Bars */}
-        <div className="w-full flex items-center justify-between mb-8 sm:mb-12 overflow-hidden">
-          <GoldBarReveal
-            direction="left"
-            duration={0.6}
-            delay={0.1}
-            className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[240px] xl:w-[323px] h-[5px] sm:h-[7px] lg:h-[8px] bg-[#efbf04] rounded-r-full shadow-sm flex-shrink-0"
-          />
-
-          <div className="flex-1 min-w-0 px-2 sm:px-4 md:px-8 text-center">
-            <TextWordReveal
-              as="h2"
-              delay={0.12}
-              staggerDelay={0.035}
-              className="font-poppins font-medium text-white  sm:text-xl md:text-3xl lg:text-[38px] xl:text-[40px] leading-tight tracking-tight uppercase line-clamp-2"
-            >
-              {headerTitle}
-            </TextWordReveal>
-          </div>
-
-          <GoldBarReveal
-            direction="right"
-            duration={0.6}
-            delay={0.1}
-            className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[240px] xl:w-[323px] h-[5px] sm:h-[7px] lg:h-[8px] bg-[#efbf04] rounded-l-full shadow-sm flex-shrink-0"
-          />
-        </div>
+      <div className="bg-gradient-to-b from-[#0a1724] via-[#0f243a] to-[#0a1724] pt-0 pb-10 sm:pb-14 md:pb-16 text-white">
+        {/* Section Header with Atmospheric Gradient */}
+        <EditorialSectionHeader
+          eyebrow="ANOINTED SERMONS & MESSAGES"
+          title={headerTitle}
+          variant="atmospheric"
+          className="mb-6 sm:mb-8 md:mb-10"
+        />
 
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Big Featured Worship Banner iFrame */}
-          <RevealOnScroll direction="up" distance={20} duration={0.6} delay={0.1} className="max-w-[1140px] mx-auto">
-            <div className="relative w-full aspect-[16/9] sm:aspect-[1140/625] rounded-[16px] sm:rounded-[20px] overflow-hidden shadow-2xl border border-white/10 bg-black">
+          <RevealOnScroll direction="up" distance={20} duration={0.6} delay={0.1} className="max-w-[1140px] mx-auto relative">
+            <div className="relative w-full aspect-[16/9] sm:aspect-[1140/625] rounded-[18px] sm:rounded-[24px] overflow-hidden shadow-2xl border border-white/20 bg-black">
               <iframe
                 src={bannerEmbedUrl}
                 title={headerTitle || 'Featured Sermon Video'}
@@ -183,60 +165,62 @@ export const SermonsSection: React.FC<SermonsSectionProps> = ({
       </div>
 
       {/* Grid of Sermon Video Cards with spacious layout */}
-      <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 md:py-24 relative z-10">
-        <StaggerContainer
-          staggerDelay={0.08}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-8 justify-items-center"
-        >
-          {activeSermons.map((card, idx) => {
-            const defaultItem = DEFAULT_SERMONS[idx % DEFAULT_SERMONS.length]
-            const defaultFallback =
-              defaultItem?.youtubeUrl ||
-              'https://www.youtube.com/embed/uho9yd6qOwk?si=DwZIXkJ5U-D-RJqN'
-            const defaultRedirect = defaultItem?.href || defaultFallback
-            const embedUrl = getYouTubeEmbedUrl(card.youtubeUrl || card.href, defaultFallback)
-            const targetHref = card.href || card.youtubeUrl || defaultRedirect
-            const title = card.title || `Sermon Video ${idx + 1}`
+      <SacredCanvas tone="pure-light" className="py-10 sm:py-14 md:py-16">
+        <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <StaggerContainer
+            staggerDelay={0.08}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-8 justify-items-center"
+          >
+            {activeSermons.map((card, idx) => {
+              const defaultItem = DEFAULT_SERMONS[idx % DEFAULT_SERMONS.length]
+              const defaultFallback =
+                defaultItem?.youtubeUrl ||
+                'https://www.youtube.com/embed/uho9yd6qOwk?si=DwZIXkJ5U-D-RJqN'
+              const defaultRedirect = defaultItem?.href || defaultFallback
+              const embedUrl = getYouTubeEmbedUrl(card.youtubeUrl || card.href, defaultFallback)
+              const targetHref = card.href || card.youtubeUrl || defaultRedirect
+              const title = card.title || `Sermon Video ${idx + 1}`
 
-            return (
-              <StaggerItem
-                key={card.id || idx}
-                direction="up"
-                distance={20}
-                duration={0.4}
-                className="w-full max-w-[380px] md:max-w-[367px] bg-white border border-[#f3f3f3] rounded-[20px] p-5 sm:p-6 shadow-[0px_12px_24px_rgba(0,0,0,0.06)] flex flex-col justify-between hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group"
-                data-node-id={card.id}
-              >
-                {/* Embedded Responsive YouTube Player / Thumbnail Facade */}
-                <div className="relative w-full aspect-[16/9] rounded-[16px] overflow-hidden bg-black flex-shrink-0 shadow-inner">
-                  <SermonVideoPlayer embedUrl={embedUrl} title={title} />
-                </div>
-
-                {/* Title */}
-                {card.title && (
-                  <div className="my-4 text-center px-1 min-h-[48px] flex items-center justify-center">
-                    <h4 className="font-poppins font-bold text-[#1f3a5f] text-xs sm:text-sm md:text-[15px] leading-snug line-clamp-2">
-                      {card.title}
-                    </h4>
+              return (
+                <StaggerItem
+                  key={card.id || idx}
+                  direction="up"
+                  distance={20}
+                  duration={0.4}
+                  className="w-full max-w-[380px] md:max-w-[367px] bg-white border border-slate-200/80 rounded-[20px] p-5 sm:p-6 shadow-[0px_4px_20px_rgba(0,0,0,0.05)] flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+                  data-node-id={card.id}
+                >
+                  {/* Embedded Responsive YouTube Player / Thumbnail Facade */}
+                  <div className="relative w-full aspect-[16/9] rounded-[16px] overflow-hidden bg-black flex-shrink-0 shadow-inner">
+                    <SermonVideoPlayer embedUrl={embedUrl} title={title} />
                   </div>
-                )}
 
-                {/* Gold Watch Now CTA Button */}
-                <div className="mt-auto flex justify-center pt-2">
-                  <a
-                    href={targetHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-[174px] h-[42px] bg-[#efbf04] hover:bg-[#dfaf00] text-[#0f121e] font-poppins font-semibold text-xs sm:text-[14px] rounded-full flex items-center justify-center shadow-sm transition-all duration-200 hover:shadow-md active:scale-95 cursor-pointer"
-                  >
-                    <span>Watch Now</span>
-                  </a>
-                </div>
-              </StaggerItem>
-            )
-          })}
-        </StaggerContainer>
-      </div>
+                  {/* Title */}
+                  {card.title && (
+                    <div className="my-4 text-center px-1 min-h-[48px] flex items-center justify-center">
+                      <h4 className="font-poppins font-bold text-[#1f3a5f] text-xs sm:text-sm md:text-[15px] leading-snug line-clamp-2">
+                        {card.title}
+                      </h4>
+                    </div>
+                  )}
+
+                  {/* Gold Watch Now CTA Button */}
+                  <div className="mt-auto flex justify-center pt-2">
+                    <a
+                      href={targetHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-[174px] h-[42px] bg-[#efbf04] hover:bg-[#dfaf00] text-[#0f121e] font-poppins font-semibold text-xs sm:text-[14px] rounded-full flex items-center justify-center shadow-sm transition-all duration-200 hover:shadow-md active:scale-95 cursor-pointer"
+                    >
+                      <span>Watch Now</span>
+                    </a>
+                  </div>
+                </StaggerItem>
+              )
+            })}
+          </StaggerContainer>
+        </div>
+      </SacredCanvas>
     </section>
   )
 }

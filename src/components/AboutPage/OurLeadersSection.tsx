@@ -4,6 +4,8 @@ import React from 'react'
 import { CardCarousel, type CardCarouselItem } from '@/components/ui/card-carousel'
 import { RevealOnScroll } from '@/components/ui/reveal'
 import { TextWordReveal, BlurTextReveal, GoldBarReveal } from '@/components/ui/text-reveal'
+import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
+import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export interface LeaderImageItem {
@@ -67,36 +69,19 @@ export const OurLeadersSection: React.FC<OurLeadersSectionProps> = ({
       : DEFAULT_LEADER_IMAGES
 
   return (
-    <section className="py-8 sm:py-12 md:py-16 bg-white overflow-hidden" data-node-id="275:810">
-      {/* Section Header with Left & Right Gold Accent Bars */}
-      <div className="w-full flex items-center justify-between mb-2 sm:mb-4">
-        <GoldBarReveal
-          direction="left"
-          duration={0.7}
-          delay={0.1}
-          className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[5px] sm:h-[6px] md:h-[8px] bg-[#efbf04] rounded-r-full shadow-sm flex-shrink-0"
-        />
-
-        <div className="text-center px-3 sm:px-6 md:px-10 flex-shrink min-w-0">
-          <TextWordReveal
-            as="h2"
-            delay={0.15}
-            staggerDelay={0.04}
-            className="font-poppins font-semibold text-[#003471] text-xl sm:text-3xl md:text-[34px] leading-tight tracking-tight whitespace-nowrap"
-          >
-            {headerTitle}
-          </TextWordReveal>
+    <section className="relative overflow-hidden" data-node-id="275:810">
+      <SacredCanvas tone="warm-alabaster" className="py-10 sm:py-12 md:py-16">
+        {/* Section Editorial Header (Full width edge-to-edge gold bars) */}
+        <div className="w-full mb-6 sm:mb-8 md:mb-10 text-center">
+          <EditorialSectionHeader
+            eyebrow="APOSTOLIC LEADERSHIP"
+            title={headerTitle}
+            variant="editorial"
+            align="center"
+          />
         </div>
 
-        <GoldBarReveal
-          direction="right"
-          duration={0.7}
-          delay={0.1}
-          className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[5px] sm:h-[6px] md:h-[8px] bg-[#efbf04] rounded-l-full shadow-sm flex-shrink-0"
-        />
-      </div>
-
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* 6-Photo Symmetrical Swiper Card Carousel */}
         <RevealOnScroll direction="up" distance={24} duration={0.8} delay={0.1} className="mt-4 sm:mt-6 md:mt-8">
           <CardCarousel
@@ -108,7 +93,7 @@ export const OurLeadersSection: React.FC<OurLeadersSectionProps> = ({
         </RevealOnScroll>
 
         {/* Detailed Ministry Narrative Text Blocks */}
-        <div className="mt-8 sm:mt-12 md:mt-14 max-w-4xl mx-auto text-center px-2 sm:px-4 space-y-4 sm:space-y-6">
+        <div className="mt-6 sm:mt-8 md:mt-10 max-w-4xl mx-auto text-center px-2 sm:px-4 space-y-3 sm:space-y-4 md:space-y-5">
           <BlurTextReveal
             as="p"
             delay={0.1}
@@ -136,7 +121,8 @@ export const OurLeadersSection: React.FC<OurLeadersSectionProps> = ({
             {paragraph3}
           </BlurTextReveal>
         </div>
-      </div>
+        </div>
+      </SacredCanvas>
     </section>
   )
 }

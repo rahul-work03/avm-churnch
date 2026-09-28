@@ -306,6 +306,46 @@ export const ChurchBranchesPageGlobal: GlobalConfig = {
           label: 'Hero & Banner',
           fields: [
             {
+              name: 'heroHeaderTitle',
+              type: 'text',
+              label: 'Hero Header Title',
+              defaultValue: 'OUR CHURCH BRANCHES',
+            },
+            {
+              name: 'heroSubtitle',
+              type: 'text',
+              label: 'Hero Subtitle / Eyebrow',
+              defaultValue: 'GLOBAL WORSHIP CENTERS',
+            },
+            {
+              name: 'heroDescription',
+              type: 'textarea',
+              label: 'Hero Description',
+              defaultValue:
+                'Connecting believers worldwide in worship, faith, and apostolic power. Locate our Apostolic Headquarters or find a church branch near you.',
+            },
+            {
+              name: 'heroVideo',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Hero Background Video (Optional MP4 / WebM)',
+              admin: {
+                description:
+                  'Upload an ambient background video for the hero banner. Takes precedence over banner image if provided.',
+              },
+            },
+            {
+              name: 'heroVideoFallback',
+              type: 'text',
+              label: 'Hero Video Fallback Path',
+              defaultValue: '/church_branches_hero.mp4',
+            },
+            {
+              name: 'bannerVideoUrl',
+              type: 'text',
+              label: 'External Video URL (Optional CDN / YouTube / MP4)',
+            },
+            {
               name: 'heroBannerImage',
               type: 'upload',
               relationTo: 'media',
@@ -343,7 +383,7 @@ export const ChurchBranchesPageGlobal: GlobalConfig = {
                   'Enter a Google Maps embed URL (https://www.google.com/maps/embed?...) or full <iframe> code. If provided, an interactive Google Map will be displayed.',
               },
               defaultValue:
-                'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3408.825651913988!2d75.54516317628807!3d31.308573957597147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5b8f6735c249%3A0x28eb2b90b8f10825!2sThe%20Church%20Of%20Signs%20And%20Wonders!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin',
+                '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.0779467068696!2d75.56073407539549!3d31.273939074327686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5b50b36a88a1%3A0x3d8b66ec2e189bf6!2sAnkur%20Narula%20Ministries!5e0!3m2!1sen!2sin!4v1790533216619!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>',
             },
             {
               name: 'headBranchMapImage',

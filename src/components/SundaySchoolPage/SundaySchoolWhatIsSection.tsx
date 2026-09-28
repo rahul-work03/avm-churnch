@@ -2,9 +2,13 @@
 
 import React from 'react'
 import { RevealOnScroll } from '@/components/ui/reveal'
-import { TextWordReveal, BlurTextReveal, GoldBarReveal } from '@/components/ui/text-reveal'
+import { BlurTextReveal } from '@/components/ui/text-reveal'
+import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
+import { SacredCanvas } from '@/components/ui/sacred-canvas'
+import { PatternedNavyCard } from '@/components/ui/patterned-navy-card'
+import { HeartHandshake, Sparkles } from 'lucide-react'
 
-interface SundaySchoolWhatIsSectionProps {
+export interface SundaySchoolWhatIsSectionProps {
   whatIsCardTitle?: string | null
   whatIsCardDescription?: string | null
   visionCardTitle?: string | null
@@ -20,105 +24,96 @@ export const SundaySchoolWhatIsSection: React.FC<SundaySchoolWhatIsSectionProps>
   visionParagraph = 'Our vision is to raise a generation rooted in God’s Word, filled with the knowledge of Jesus Christ, and guided by the Holy Spirit. We aim to prepare children and believers of all ages to live out their faith boldly, grow in godly character, and become light in their families, schools, and communities.',
 }) => {
   return (
-    <section className="bg-transparent py-8 sm:py-12 md:py-16 space-y-8 sm:space-y-12 select-none" data-node-id="289:3800">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-12">
-        {/* Block 1: What is Sunday School? Card (Figma 289:3800 / 289:3802 / 289:3804) */}
-        <RevealOnScroll direction="up" delay={0.1}>
-          <div className="bg-[#122f4a] rounded-[24px] sm:rounded-[32px] md:rounded-[40px] overflow-hidden text-white shadow-xl max-w-[1140px] mx-auto border border-white/5 transition-all duration-300 hover:shadow-2xl">
-            {/* Header with Gold Bars touching the card's outer left and right edges */}
-            <div className="w-full flex items-center justify-between pt-6 sm:pt-8 md:pt-10 mb-4 sm:mb-6 overflow-hidden">
-              <GoldBarReveal
-                direction="left"
-                delay={0.1}
-                className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[280px] xl:w-[377px] h-[5px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-r-full flex-shrink-0"
-              />
+    <SacredCanvas tone="warm-alabaster" className="py-12 sm:py-16 md:py-20 select-none" data-node-id="289:3800">
+      <div className="space-y-14 sm:space-y-16 md:space-y-20">
+        {/* ==================== BLOCK 1: WHAT IS SUNDAY SCHOOL ==================== */}
+        <div>
+          {/* Full-bleed Editorial Header with Edge-to-Edge Gold Bars */}
+          <div className="w-full text-center mb-6 sm:mb-8">
+            <EditorialSectionHeader
+              eyebrow="NURTURING FAITH & TRUTH"
+              title={whatIsCardTitle || 'What is Sunday School?'}
+              variant="editorial"
+              align="center"
+            />
+          </div>
 
-              <div className="flex-1 min-w-0 px-2 sm:px-4 md:px-6 text-center">
-                <TextWordReveal
-                  as="h2"
-                  delay={0.1}
-                  className="font-poppins font-semibold text-white text-xs xs:text-sm sm:text-lg md:text-[22px] lg:text-[26px] tracking-tight uppercase leading-tight line-clamp-2"
-                >
-                  {whatIsCardTitle || 'What is Sunday School?'}
-                </TextWordReveal>
-              </div>
-
-              <GoldBarReveal
-                direction="right"
-                delay={0.1}
-                className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[280px] xl:w-[377px] h-[5px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-l-full flex-shrink-0"
-              />
-            </div>
-
-            {/* Narrative Text */}
-            <div className="px-6 sm:px-12 md:px-16 pb-8 sm:pb-12 text-center">
-              <BlurTextReveal
-                as="p"
-                delay={0.2}
-                duration={0.7}
-                className="font-poppins text-white text-xs sm:text-base md:text-lg lg:text-[18px] leading-relaxed max-w-4xl mx-auto text-balance font-normal opacity-95"
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <RevealOnScroll direction="up" distance={20} duration={0.65} className="max-w-4xl mx-auto">
+              <PatternedNavyCard
+                patternId="pattern-ss-whatis"
+                className="text-center"
+                hoverEffect={false}
+                badgeText="Youth & Children Ministry"
+                badgeIcon={<Sparkles className="w-3.5 h-3.5 text-[#efbf04]" />}
               >
-                {whatIsCardDescription}
-              </BlurTextReveal>
-            </div>
-          </div>
-        </RevealOnScroll>
-
-        {/* Block 2: Purpose & vision Card (Figma 289:3801 / 289:3803 / 289:3805) */}
-        <RevealOnScroll direction="up" delay={0.2}>
-          <div className="bg-[#122f4a] rounded-[24px] sm:rounded-[32px] md:rounded-[40px] overflow-hidden text-white shadow-xl max-w-[1140px] mx-auto border border-white/5 transition-all duration-300 hover:shadow-2xl">
-            {/* Header with Gold Bars touching the card's outer left and right edges */}
-            <div className="w-full flex items-center justify-between pt-6 sm:pt-8 md:pt-10 mb-4 sm:mb-6 overflow-hidden">
-              <GoldBarReveal
-                direction="left"
-                delay={0.1}
-                className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[280px] xl:w-[377px] h-[5px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-r-full flex-shrink-0"
-              />
-
-              <div className="flex-1 min-w-0 px-2 sm:px-4 md:px-6 text-center">
-                <TextWordReveal
-                  as="h2"
-                  delay={0.1}
-                  className="font-poppins font-semibold text-white text-xs xs:text-sm sm:text-lg md:text-[22px] lg:text-[26px] tracking-tight uppercase leading-tight line-clamp-2"
+                <BlurTextReveal
+                  as="p"
+                  delay={0.15}
+                  duration={0.65}
+                  className="font-poppins text-slate-100 text-sm sm:text-base md:text-[18px] leading-relaxed sm:leading-[1.85] text-balance max-w-3xl mx-auto font-light"
                 >
-                  {visionCardTitle || 'Purpose & vision'}
-                </TextWordReveal>
-              </div>
+                  {whatIsCardDescription}
+                </BlurTextReveal>
+              </PatternedNavyCard>
+            </RevealOnScroll>
+          </div>
+        </div>
 
-              <GoldBarReveal
-                direction="right"
-                delay={0.1}
-                className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[280px] xl:w-[377px] h-[5px] sm:h-[8px] md:h-[10px] bg-[#efbf04] rounded-l-full flex-shrink-0"
-              />
-            </div>
+        {/* ==================== BLOCK 2: PURPOSE & VISION ==================== */}
+        <div>
+          {/* Full-bleed Editorial Header with Edge-to-Edge Gold Bars */}
+          <div className="w-full text-center mb-6 sm:mb-8">
+            <EditorialSectionHeader
+              eyebrow="OUR CALLING & MISSION"
+              title={visionCardTitle || 'Purpose & vision'}
+              variant="editorial"
+              align="center"
+            />
+          </div>
 
-            {/* Narrative Text */}
-            <div className="px-6 sm:px-12 md:px-16 pb-8 sm:pb-12 text-center space-y-4">
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto">
+              {/* Pillar 1: Purpose Card */}
               {purposeParagraph && (
-                <BlurTextReveal
-                  as="p"
-                  delay={0.2}
-                  duration={0.7}
-                  className="font-poppins text-white text-xs sm:text-base md:text-lg lg:text-[18px] leading-relaxed max-w-4xl mx-auto text-balance font-normal opacity-95"
-                >
-                  {purposeParagraph}
-                </BlurTextReveal>
+                <RevealOnScroll direction="up" distance={20} duration={0.65} delay={0.05} className="h-full">
+                  <PatternedNavyCard
+                    asPillar
+                    patternId="pattern-ss-purpose"
+                    pillarNumber="Pillar 01"
+                    title="Our Purpose"
+                    icon={<HeartHandshake className="w-5 h-5 text-[#efbf04]" />}
+                    className="h-full"
+                  >
+                    <p className="font-poppins text-slate-100 text-xs sm:text-sm md:text-[16px] lg:text-[18px] leading-relaxed font-light">
+                      {purposeParagraph}
+                    </p>
+                  </PatternedNavyCard>
+                </RevealOnScroll>
               )}
+
+              {/* Pillar 2: Vision Card */}
               {visionParagraph && (
-                <BlurTextReveal
-                  as="p"
-                  delay={0.3}
-                  duration={0.7}
-                  className="font-poppins text-white text-xs sm:text-base md:text-lg lg:text-[18px] leading-relaxed max-w-4xl mx-auto text-balance font-normal opacity-95"
-                >
-                  {visionParagraph}
-                </BlurTextReveal>
+                <RevealOnScroll direction="up" distance={20} duration={0.65} delay={0.12} className="h-full">
+                  <PatternedNavyCard
+                    asPillar
+                    patternId="pattern-ss-vision"
+                    pillarNumber="Pillar 02"
+                    title="Our Vision"
+                    icon={<Sparkles className="w-5 h-5 text-[#efbf04]" />}
+                    className="h-full"
+                  >
+                    <p className="font-poppins text-slate-100 text-xs sm:text-sm md:text-[16px] lg:text-[18px] leading-relaxed font-light">
+                      {visionParagraph}
+                    </p>
+                  </PatternedNavyCard>
+                </RevealOnScroll>
               )}
             </div>
           </div>
-        </RevealOnScroll>
+        </div>
       </div>
-    </section>
+    </SacredCanvas>
   )
 }
 

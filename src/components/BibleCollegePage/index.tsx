@@ -17,6 +17,9 @@ export const BibleCollegePage: React.FC<BibleCollegePageProps> = ({ data }) => {
         <BibleCollegeHeroSection
           headerTitle={data?.heroHeaderTitle}
           description={data?.heroDescription}
+          heroVideo={data?.heroVideo}
+          heroVideoFallback={data?.heroVideoFallback}
+          bannerVideoUrl={data?.bannerVideoUrl}
           bannerImage={data?.heroBannerImage}
           bannerImageFallback={data?.heroBannerFallback}
           bannerAlt={data?.heroBannerAlt}

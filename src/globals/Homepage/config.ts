@@ -210,9 +210,27 @@ export const Homepage: GlobalConfig = {
               defaultValue: 'Man Of God',
             },
             {
+              name: 'mogSingleImage',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Featured Framed Photo (Upload to replace)',
+            },
+            {
+              name: 'mogSingleImageFallback',
+              type: 'text',
+              label: 'Fallback Featured Photo Path',
+              defaultValue: '/man_of_god/image_1.png',
+            },
+            {
+              name: 'mogSingleImageAlt',
+              type: 'text',
+              label: 'Photo Alt Text',
+              defaultValue: 'Apostle Dr. Ankur Yoseph Narula - Man of God',
+            },
+            {
               name: 'mogSlides',
               type: 'array',
-              label: 'Coverflow Carousel Slides',
+              label: 'Coverflow Carousel Slides (Legacy fallback)',
               defaultValue: DEFAULT_MOG_SLIDES,
               fields: [
                 {

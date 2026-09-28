@@ -4,128 +4,82 @@ import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
-import { GoldBarReveal, TextWordReveal } from '@/components/ui/text-reveal'
+import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
+import { RevealOnScroll } from '@/components/ui/reveal'
 
 interface HeadBranchSectionProps {
   headBranchTitle?: string | null
+  headBranchSubtitle?: string | null
   headBranchMapIframe?: string | null
   headBranchMapImage?: any
   headBranchMapFallback?: string | null
   headBranchHelperText?: string | null
 }
 
+const DEFAULT_HEAD_BRANCH_IFRAME =
+  '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.0779467068696!2d75.56073407539549!3d31.273939074327686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5b50b36a88a1%3A0x3d8b66ec2e189bf6!2sAnkur%20Narula%20Ministries!5e0!3m2!1sen!2sin!4v1790533216619!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>'
+
 function getIframeSrc(input?: string | null): string | null {
-  if (!input || !input.trim()) return null
-  const trimmed = input.trim()
-  if (trimmed.startsWith('<iframe')) {
-    const match = trimmed.match(/src=["']([^"']+)["']/)
+  const value = input && input.trim() ? input.trim() : DEFAULT_HEAD_BRANCH_IFRAME
+  if (value.startsWith('<iframe')) {
+    const match = value.match(/src=["']([^"']+)["']/)
     return match ? match[1] : null
   }
-  if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
-    return trimmed
+  if (value.startsWith('http://') || value.startsWith('https://')) {
+    return value
   }
   return null
 }
 
 export const HeadBranchSection: React.FC<HeadBranchSectionProps> = ({
-  headBranchTitle = 'Head Branch Punjab Khambra',
-  headBranchMapIframe = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3408.825651913988!2d75.54516317628807!3d31.308573957597147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5b8f6735c249%3A0x28eb2b90b8f10825!2sThe%20Church%20Of%20Signs%20And%20Wonders!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin',
+  headBranchTitle = 'HEAD BRANCH PUNJAB KHAMBRA',
+  headBranchSubtitle = 'The Church of Signs and Wonders · Khambra, Jalandhar, Punjab',
+  headBranchMapIframe = DEFAULT_HEAD_BRANCH_IFRAME,
   headBranchMapImage,
   headBranchMapFallback = '/figma-assets/6627c47caaf2724af326c71d68ab4ef85b4bc42c.png',
-  headBranchHelperText = 'Here is a location pin to help you find us!',
 }) => {
   const iframeSrc = getIframeSrc(headBranchMapIframe)
   const mapSrc = getMediaUrl(headBranchMapImage, headBranchMapFallback || '')
-  const googleMapsDirectionsUrl =
-    'https://www.google.com/maps/dir/?api=1&destination=The+Church+Of+Signs+And+Wonders+Khambra+Punjab'
 
   return (
-    <section className="relative py-4 sm:py-8 md:py-10 bg-white" data-node-id="286:2996">
-      {/* Full-width Navy Header Bar with edge-to-edge Gold Accent Bars (Figma 286:3010) */}
-      <div className="w-full bg-[#122f4a] h-[60px] sm:h-[70px] md:h-[80px] text-white relative shadow-sm mb-8 sm:mb-12 flex items-center">
-        <div className="w-full flex items-center justify-between">
-          {/* Left Gold Accent Bar */}
-          <GoldBarReveal
-            direction="left"
-            delay={0.1}
-            className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[10px] sm:h-[16px] md:h-[20px] bg-[#efbf04] flex-shrink-0"
-          />
-
-          {/* Heading (Figma 286:3012: Poppins SemiBold 28px) */}
-          <TextWordReveal
-            as="h2"
-            delay={0.15}
-            className="font-poppins font-semibold text-white text-base sm:text-xl md:text-2xl lg:text-[28px] tracking-wide text-center px-2 sm:px-6 flex-shrink min-w-0"
-          >
-            {headBranchTitle || 'Head Branch Punjab Khambra'}
-          </TextWordReveal>
-
-          {/* Right Gold Accent Bar */}
-          <GoldBarReveal
-            direction="right"
-            delay={0.1}
-            className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[10px] sm:h-[16px] md:h-[20px] bg-[#efbf04] flex-shrink-0"
-          />
-        </div>
+    <section className="relative py-8 sm:py-12 md:py-16 bg-white select-none" data-node-id="286:2996">
+      {/* Full-width Atmospheric Section Header with Edge-to-Edge Golden Wing Bars */}
+      <div className="w-full text-center mb-8 sm:mb-12">
+        <EditorialSectionHeader
+          eyebrow="APOSTOLIC HEADQUARTERS"
+          title={headBranchTitle || 'HEAD BRANCH PUNJAB KHAMBRA'}
+          subtitle={headBranchSubtitle || undefined}
+          variant="atmospheric"
+          align="center"
+        />
       </div>
 
       <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-0">
-        {/* Exact Figma 1140x620 Map Satellite / Interactive Iframe Container (Figma 286:3009) */}
-        <motion.div
-          initial={{ opacity: 0, y: 25, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="relative w-full aspect-[1140/620] min-h-[300px] sm:min-h-[420px] md:min-h-[520px] rounded-[24px] sm:rounded-[30px] overflow-hidden shadow-lg border border-slate-200 bg-slate-900"
-        >
-          {iframeSrc ? (
-            <iframe
-              src={iframeSrc}
-              title={headBranchTitle || 'Head Branch Location Map'}
-              className="w-full h-full border-0 absolute inset-0"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          ) : (
-            <Image
-              src={mapSrc}
-              alt={headBranchTitle || 'Head Branch Map'}
-              fill
-              className="object-cover"
-            />
-          )}
-        </motion.div>
+        {/* Luxury Framed Map / Interactive Iframe Container */}
+        <RevealOnScroll direction="up" distance={24} duration={0.7} delay={0.1}>
+          <div className="relative w-full aspect-[1140/620] min-h-[320px] sm:min-h-[440px] md:min-h-[540px] rounded-[22px] sm:rounded-[28px] overflow-hidden shadow-2xl border border-slate-200/90 hover:border-[#d4af37]/40 transition-colors duration-500 bg-slate-900 group">
+            {iframeSrc ? (
+              <iframe
+                src={iframeSrc}
+                title={headBranchTitle || 'Head Branch Location Map'}
+                className="w-full h-full border-0 absolute inset-0"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+              />
+            ) : (
+              <Image
+                src={mapSrc}
+                alt={headBranchTitle || 'Head Branch Map'}
+                fill
+                className="object-cover"
+              />
+            )}
 
-        {/* Location Pin Helper Text (Figma 286:3017: 29px #003471) */}
-        {headBranchHelperText && (
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-30px' }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-6 sm:mt-8 md:mt-10 text-center"
-          >
-            <a
-              href={googleMapsDirectionsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 font-poppins text-[#003471] hover:text-[#efbf04] transition-colors text-base sm:text-2xl md:text-[29px] leading-tight group"
-              title="Open Head Branch in Google Maps"
-            >
-              <motion.span
-                whileHover={{ scale: 1.25, rotate: [0, -10, 10, -5, 0] }}
-                transition={{ duration: 0.4 }}
-                className="inline-block"
-              >
-                📍
-              </motion.span>
-              <span className="underline decoration-transparent group-hover:decoration-current transition-all">
-                {headBranchHelperText}
-              </span>
-            </a>
-          </motion.div>
-        )}
+            {/* Subtle internal gold hairline vignette */}
+            <div className="absolute inset-0 pointer-events-none rounded-[22px] sm:rounded-[28px] ring-1 ring-inset ring-white/10" />
+          </div>
+        </RevealOnScroll>
       </div>
     </section>
   )

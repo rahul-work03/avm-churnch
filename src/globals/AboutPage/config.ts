@@ -391,6 +391,12 @@ export const AboutPageGlobal: GlobalConfig = {
               defaultValue: 'The Largest ankur narula ministries Crusades',
             },
             {
+              name: 'crusadesSubTitle',
+              type: 'text',
+              label: 'Section Subtitle / Badge',
+              defaultValue: 'Calvary Crusades',
+            },
+            {
               name: 'crusadeImages',
               type: 'array',
               label: '3D Panoramic Crusade Items',

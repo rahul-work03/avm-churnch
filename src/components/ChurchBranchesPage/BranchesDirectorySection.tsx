@@ -3,7 +3,8 @@
 import React, { useState, useMemo } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence, type Variants } from 'framer-motion'
-import { GoldBarReveal, TextWordReveal } from '@/components/ui/text-reveal'
+import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
+import { RevealOnScroll } from '@/components/ui/reveal'
 
 interface ChurchBranch {
   id?: string
@@ -382,14 +383,14 @@ const containerVariants: Variants = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.035,
+      staggerChildren: 0.04,
       delayChildren: 0.05,
     },
   },
 }
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 18 },
+  hidden: { opacity: 0, y: 16 },
   show: {
     opacity: 1,
     y: 0,
@@ -401,7 +402,7 @@ const itemVariants: Variants = {
 }
 
 export const BranchesDirectorySection: React.FC<BranchesDirectorySectionProps> = ({
-  directoryHeaderTitle = 'ANM CHURCHES IN INDIA',
+  directoryHeaderTitle = 'CHURCH BRANCHES DIRECTORY',
   nationalBranches,
   internationalBranches,
 }) => {
@@ -425,112 +426,91 @@ export const BranchesDirectorySection: React.FC<BranchesDirectorySectionProps> =
   }, [currentDataset, searchQuery])
 
   return (
-    <section className="relative py-4 sm:py-8 md:py-10 bg-white" data-node-id="286:2998">
-      {/* Full-width Navy Header Bar with edge-to-edge Gold Accent Bars (Figma 286:3011) */}
-      <div className="w-full bg-[#122f4a] h-[60px] sm:h-[70px] md:h-[80px] text-white relative shadow-sm mb-8 sm:mb-12 flex items-center">
-        <div className="w-full flex items-center justify-between">
-          {/* Left Gold Accent Bar */}
-          <GoldBarReveal
-            direction="left"
-            delay={0.1}
-            className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[10px] sm:h-[16px] md:h-[20px] bg-[#efbf04] flex-shrink-0"
-          />
-
-          {/* Heading (Figma 286:3019: Poppins SemiBold 34px) */}
-          <TextWordReveal
-            as="h2"
-            delay={0.15}
-            className="font-poppins font-semibold text-white text-base sm:text-2xl md:text-[30px] lg:text-[34px] tracking-wide text-center px-2 sm:px-6 flex-shrink min-w-0 uppercase"
-          >
-            {directoryHeaderTitle || 'ANM CHURCHES IN INDIA'}
-          </TextWordReveal>
-
-          {/* Right Gold Accent Bar */}
-          <GoldBarReveal
-            direction="right"
-            delay={0.1}
-            className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[10px] sm:h-[16px] md:h-[20px] bg-[#efbf04] flex-shrink-0"
-          />
-        </div>
+    <section className="relative py-8 sm:py-12 md:py-16 bg-white select-none" data-node-id="286:2998">
+      {/* Full-width Atmospheric Section Header with Edge-to-Edge Golden Wing Bars */}
+      <div className="w-full text-center mb-8 sm:mb-12">
+        <EditorialSectionHeader
+          eyebrow="FIND A CHURCH NEAR YOU"
+          title={directoryHeaderTitle || 'CHURCH BRANCHES DIRECTORY'}
+          subtitle="Locate a worship center near you across India and internationally to join us in powerful praise and apostolic ministry."
+          variant="atmospheric"
+          align="center"
+        />
       </div>
 
       <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-0">
-        {/* Controls Row: Search Input (560px) + Switcher Pill (560px) (Figma 286:3020, 286:3021) */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-30px' }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-col lg:flex-row items-center justify-between gap-4 sm:gap-6 mb-10 sm:mb-14"
-        >
-          {/* Search Box */}
-          <div className="w-full lg:w-[560px] h-[64px] sm:h-[79px] rounded-[100px] border border-[#c3c3c3] bg-white px-5 sm:px-8 flex items-center gap-3 sm:gap-4 shadow-sm transition-all focus-within:border-[#efbf04] focus-within:ring-2 focus-within:ring-[#efbf04]/20">
-            <div className="relative w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0">
-              <Image
-                src="/figma-assets/4fd5f898eb3b4b7bbeeaaf6c3f1ebf7aa6384c08.svg"
-                alt="Search"
-                fill
-                className="object-contain"
+        {/* Controls Row: Search Input (560px) + Switcher Pill (560px) */}
+        <RevealOnScroll direction="up" distance={20} duration={0.5} delay={0.1}>
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-4 sm:gap-6 mb-10 sm:mb-14">
+            {/* Search Box */}
+            <div className="w-full lg:w-[560px] h-[64px] sm:h-[79px] rounded-[100px] border border-[#c3c3c3] bg-white px-5 sm:px-8 flex items-center gap-3 sm:gap-4 shadow-sm transition-all focus-within:border-[#efbf04] focus-within:ring-2 focus-within:ring-[#efbf04]/20">
+              <div className="relative w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0">
+                <Image
+                  src="/figma-assets/4fd5f898eb3b4b7bbeeaaf6c3f1ebf7aa6384c08.svg"
+                  alt="Search"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search our churches in all locations..........."
+                className="w-full bg-transparent font-poppins text-[#08091b] placeholder-[#6b6b6b] text-sm sm:text-[18px] focus:outline-none"
               />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="text-xs font-semibold text-slate-400 hover:text-slate-600 uppercase font-poppins transition-colors px-2 py-1"
+                >
+                  Clear
+                </button>
+              )}
             </div>
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search our churches in all locations..........."
-              className="w-full bg-transparent font-poppins text-[#08091b] placeholder-[#6b6b6b] text-sm sm:text-[18px] focus:outline-none"
-            />
-            {searchQuery && (
+
+            {/* National / International Pill Switcher Container (Clean Solid Navy & Gold Pill) */}
+            <div className="w-full lg:w-[560px] h-[64px] sm:h-[79px] rounded-[100px] bg-[#122f4a] p-1.5 sm:p-[10px] flex items-center justify-between shadow-md relative">
+              {/* National Tab */}
               <button
-                onClick={() => setSearchQuery('')}
-                className="text-xs font-semibold text-slate-400 hover:text-slate-600 uppercase font-poppins"
+                type="button"
+                onClick={() => setActiveTab('national')}
+                className={`relative z-10 w-1/2 h-[52px] sm:h-[59px] rounded-[100px] flex items-center justify-center font-poppins font-semibold text-base sm:text-[20px] transition-colors duration-300 ${
+                  activeTab === 'national' ? 'text-[#003370]' : 'text-[#8da2bb] hover:text-white'
+                }`}
               >
-                Clear
+                {activeTab === 'national' && (
+                  <motion.div
+                    layoutId="activeBranchTabPill"
+                    className="absolute inset-0 rounded-[100px] bg-[#efbf04] shadow-sm -z-10"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+                National
               </button>
-            )}
+
+              {/* International Tab */}
+              <button
+                type="button"
+                onClick={() => setActiveTab('international')}
+                className={`relative z-10 w-1/2 h-[52px] sm:h-[59px] rounded-[100px] flex items-center justify-center font-poppins font-semibold text-base sm:text-[20px] transition-colors duration-300 ${
+                  activeTab === 'international' ? 'text-[#003370]' : 'text-[#8da2bb] hover:text-white'
+                }`}
+              >
+                {activeTab === 'international' && (
+                  <motion.div
+                    layoutId="activeBranchTabPill"
+                    className="absolute inset-0 rounded-[100px] bg-[#efbf04] shadow-sm -z-10"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+                International
+              </button>
+            </div>
           </div>
+        </RevealOnScroll>
 
-          {/* National / International Pill Switcher Container (Figma 286:3021: 560px x 79px) */}
-          <div className="w-full lg:w-[560px] h-[64px] sm:h-[79px] rounded-[100px] bg-[#122f4a] p-1.5 sm:p-[10px] flex items-center justify-between shadow-md relative">
-            {/* National Tab */}
-            <button
-              type="button"
-              onClick={() => setActiveTab('national')}
-              className={`relative z-10 w-1/2 h-[52px] sm:h-[59px] rounded-[100px] flex items-center justify-center font-poppins font-semibold text-base sm:text-[20px] transition-colors duration-300 ${
-                activeTab === 'national' ? 'text-[#003370]' : 'text-[#5b718b] hover:text-white'
-              }`}
-            >
-              {activeTab === 'national' && (
-                <motion.div
-                  layoutId="activeBranchTabPill"
-                  className="absolute inset-0 rounded-[100px] bg-[#efbf04] shadow-sm -z-10"
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                />
-              )}
-              National
-            </button>
-
-            {/* International Tab */}
-            <button
-              type="button"
-              onClick={() => setActiveTab('international')}
-              className={`relative z-10 w-1/2 h-[52px] sm:h-[59px] rounded-[100px] flex items-center justify-center font-poppins font-semibold text-base sm:text-[20px] transition-colors duration-300 ${
-                activeTab === 'international' ? 'text-[#003370]' : 'text-[#5b718b] hover:text-white'
-              }`}
-            >
-              {activeTab === 'international' && (
-                <motion.div
-                  layoutId="activeBranchTabPill"
-                  className="absolute inset-0 rounded-[100px] bg-[#efbf04] shadow-sm -z-10"
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                />
-              )}
-              International
-            </button>
-          </div>
-        </motion.div>
-
-        {/* Exact Figma 3-Column Card Grid (Figma 286:3024 - 286:3190) */}
+        {/* 3-Column Card Grid with Circular Navy Pin Badges */}
         <AnimatePresence mode="wait">
           {filteredBranches.length > 0 ? (
             <motion.div
@@ -557,7 +537,7 @@ export const BranchesDirectorySection: React.FC<BranchesDirectorySectionProps> =
                       className="group flex flex-col w-full h-full min-h-[180px] sm:min-h-[195px] bg-[#e2e8f0] hover:bg-[#d8e2ed] rounded-[20px] p-5 sm:p-6 text-center shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer"
                       title={`Open ${branch.name} location in Google Maps`}
                     >
-                      {/* Circular Navy Pin Icon (Figma 286:3133: 51px x 51px) */}
+                      {/* Circular Navy Pin Icon Badge */}
                       <div className="w-[44px] h-[44px] sm:w-[51px] sm:h-[51px] rounded-full bg-[#003370] group-hover:bg-[#122f4a] group-hover:scale-110 transition-all duration-300 flex items-center justify-center mb-2.5 sm:mb-3 mx-auto shadow-inner flex-shrink-0">
                         <div className="relative w-5 h-5 sm:w-6 sm:h-6">
                           <Image
@@ -569,16 +549,20 @@ export const BranchesDirectorySection: React.FC<BranchesDirectorySectionProps> =
                         </div>
                       </div>
 
-                      {/* Branch Title (Figma 286:3104: Poppins SemiBold 20px #003370) */}
+                      {/* Branch Title */}
                       <h3 className="font-poppins font-semibold text-[#003370] group-hover:text-[#0a274c] text-base sm:text-[20px] leading-snug mb-1.5 uppercase tracking-tight">
                         {branch.name}
                       </h3>
 
-                      {/* Address (Figma 286:3160: Poppins Regular 16px #08091b) */}
+                      {/* Address */}
                       <p className="font-poppins font-normal text-[#08091b] text-xs sm:text-[15px] leading-relaxed">
                         {branch.line1}
-                        <br />
-                        {branch.line2}
+                        {branch.line2 && (
+                          <>
+                            <br />
+                            {branch.line2}
+                          </>
+                        )}
                       </p>
                     </motion.a>
                   </motion.div>

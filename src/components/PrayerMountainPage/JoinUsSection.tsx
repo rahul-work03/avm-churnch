@@ -1,142 +1,60 @@
 'use client'
 
 import React from 'react'
-import { Clock, MapPin, ExternalLink } from 'lucide-react'
-import { motion, type Variants } from 'framer-motion'
-import { TextWordReveal, GoldBarReveal } from '@/components/ui/text-reveal'
+import { Clock } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { RevealOnScroll } from '@/components/ui/reveal'
+import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
+import { SacredCanvas } from '@/components/ui/sacred-canvas'
 
 export interface JoinUsSectionProps {
   joinHeaderTitle?: string
   timeCardTitle?: string
   timeCardDescription?: string
-  locationCardTitle?: string
-  locationCardDescription?: string
-  locationUrl?: string
-}
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.1,
-    },
-  },
-}
-
-const cardVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 24,
-    scale: 0.96,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      type: 'spring',
-      damping: 24,
-      stiffness: 260,
-    },
-  },
 }
 
 export const JoinUsSection: React.FC<JoinUsSectionProps> = ({
   joinHeaderTitle = 'JOIN US IN PRAYERS',
   timeCardTitle = 'Time - Every Day at 8 PM',
   timeCardDescription = 'Join in Person or Connect with The Ministry Broadcast Schedule.',
-  locationCardTitle = 'LOCATION',
-  locationCardDescription = 'Prayer Mountain, Ankur Narula Ministries, Punjab, India',
-  locationUrl = 'https://maps.google.com/?q=The+Church+of+Signs+and+Wonders+Khambra+Jalandhar+Punjab+India',
 }) => {
   return (
-    <section className="py-8 sm:py-12 md:py-16 bg-white overflow-hidden select-none" data-node-id="279:2081">
-      {/* Dark Navy Section Header Bar */}
-      <div className="bg-[#122f4a] py-4 sm:py-5 md:py-6 text-white relative shadow-sm mb-8 sm:mb-12">
-        <div className="w-full flex items-center justify-between">
-          <GoldBarReveal
-            direction="left"
-            className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-r-full flex-shrink-0"
-          />
+    <section className="relative overflow-hidden select-none" data-node-id="279:2081">
+      {/* Luminous Sapphire Header Bar */}
+      <EditorialSectionHeader
+        eyebrow="DAILY GATHERINGS"
+        title={joinHeaderTitle}
+        variant="atmospheric"
+      />
 
-          <TextWordReveal
-            as="h2"
-            delay={0.05}
-            staggerDelay={0.035}
-            className="font-poppins font-semibold text-white text-sm sm:text-2xl md:text-[28px] text-center px-3 sm:px-8 md:px-12 tracking-wide uppercase flex-shrink min-w-0"
-          >
-            {joinHeaderTitle}
-          </TextWordReveal>
-
-          <GoldBarReveal
-            direction="right"
-            className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-l-full flex-shrink-0"
-          />
-        </div>
-      </div>
-
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* 2 Information Cards: Time & Location */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-[800px] mx-auto justify-items-center"
-        >
-          {/* Card 1: Time */}
-          <motion.div variants={cardVariants} whileHover={{ y: -5, transition: { duration: 0.25 } }} className="w-full max-w-[367px]">
-            <div className="w-full min-h-[185px] bg-[#e2e8f0] rounded-[20px] p-6 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md transition-shadow duration-300 group">
-              {/* Clock Icon Circle */}
-              <div className="w-[51px] h-[51px] rounded-full bg-[#122f4a] flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-transform">
-                <Clock className="w-6 h-6 text-white" />
+      <SacredCanvas tone="warm-alabaster" className="pt-8 sm:pt-10 md:pt-12 pb-12 sm:pb-16 md:pb-20">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex justify-center">
+          {/* Centered Schedule / Time Card */}
+          <RevealOnScroll direction="up" distance={20} duration={0.6} className="w-full max-w-md">
+            <motion.div
+              whileHover={{ y: -5, transition: { duration: 0.25 } }}
+              className="w-full bg-white border border-slate-200/90 rounded-[24px] p-7 sm:p-9 flex flex-col items-center justify-center text-center shadow-lg hover:shadow-2xl transition-all duration-300 group ring-1 ring-black/5"
+            >
+              {/* Clock Icon Circle with Rich Sapphire & Gold Ring */}
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#0c2238] to-[#122f4a] flex items-center justify-center text-white mb-4 shadow-md border-2 border-[#efbf04]/70 group-hover:scale-110 transition-transform duration-300">
+                <Clock className="w-8 h-8 text-[#efbf04]" />
               </div>
 
               {/* Title */}
-              <h3 className="font-poppins font-semibold text-[#003370] text-[18px] sm:text-[20px] tracking-tight mb-1">
+              <h3 className="font-philosopher font-bold text-[#003370] text-xl sm:text-2xl tracking-tight mb-2">
                 {timeCardTitle}
               </h3>
 
               {/* Description */}
-              <p className="font-poppins text-[#08091b] text-xs sm:text-[16px] leading-relaxed max-w-[274px]">
+              <p className="font-poppins text-slate-600 text-xs sm:text-[15px] leading-relaxed max-w-[320px]">
                 {timeCardDescription}
               </p>
-            </div>
-          </motion.div>
-
-          {/* Card 2: Location (Clickable Link with target blank) */}
-          <motion.div variants={cardVariants} whileHover={{ y: -5, transition: { duration: 0.25 } }} className="w-full max-w-[367px]">
-            <a
-              href={locationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full min-h-[185px] bg-[#e2e8f0] hover:bg-[#d8e2ee] rounded-[20px] p-6 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-lg transition-all duration-300 group cursor-pointer block border border-transparent hover:border-[#122f4a]/20"
-              title="Open Location in Google Maps"
-            >
-              {/* MapPin Icon Circle */}
-              <div className="w-[51px] h-[51px] rounded-full bg-[#122f4a] group-hover:bg-[#efbf04] group-hover:text-[#003370] flex items-center justify-center text-white mb-3 group-hover:scale-110 transition-all duration-300 shadow-sm">
-                <MapPin className="w-6 h-6 transition-colors" />
-              </div>
-
-              {/* Title */}
-              <div className="flex items-center justify-center gap-1.5 mb-1">
-                <h3 className="font-poppins font-semibold text-[#003370] text-[18px] sm:text-[20px] tracking-tight">
-                  {locationCardTitle}
-                </h3>
-                <ExternalLink className="w-4 h-4 text-[#003370]/60 group-hover:text-[#003370] transition-colors" />
-              </div>
-
-              {/* Description */}
-              <p className="font-poppins text-[#08091b] text-xs sm:text-[16px] leading-relaxed max-w-[241px] group-hover:text-[#003370] transition-colors">
-                {locationCardDescription}
-              </p>
-            </a>
-          </motion.div>
-        </motion.div>
-      </div>
+            </motion.div>
+          </RevealOnScroll>
+        </div>
+      </SacredCanvas>
     </section>
   )
 }
+
 

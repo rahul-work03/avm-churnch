@@ -33,6 +33,9 @@ export const ChurchHomepage: React.FC<ChurchHomepageProps> = ({
   const mogProps = {
     headerTitle: homepageData?.mogHeaderTitle,
     badgeTitle: homepageData?.mogBadgeTitle,
+    singleImage: homepageData?.mogSingleImage,
+    singleImageFallback: homepageData?.mogSingleImageFallback,
+    singleImageAlt: homepageData?.mogSingleImageAlt,
     slides: homepageData?.mogSlides,
     leaderName: homepageData?.leaderName,
     leaderRole: homepageData?.leaderRole,

@@ -4,6 +4,8 @@ import React from 'react'
 import Image from 'next/image'
 import { RevealOnScroll } from '@/components/ui/reveal'
 import { TextWordReveal, BlurTextReveal, GoldBarReveal } from '@/components/ui/text-reveal'
+import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
+import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export interface PresencePhotoItem {
@@ -96,45 +98,25 @@ export const InternationalPresenceSection: React.FC<InternationalPresenceSection
   const row2Duplicated = buildSeamlessMarquee(activeRow2)
 
   return (
-    <section className="pb-12 sm:pb-16 md:pb-24 bg-[#fdfbf3] overflow-hidden select-none" data-node-id="275:810">
-      {/* Dark Navy Section Header Bar */}
-      <div className="bg-[#122f4a] py-5 sm:py-7 md:py-8 text-white relative shadow-sm">
-        <div className="w-full flex items-center justify-between">
-          <GoldBarReveal
-            direction="left"
-            duration={0.7}
-            delay={0.1}
-            className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-r-full flex-shrink-0"
-          />
+    <section className="relative overflow-hidden select-none" data-node-id="275:810">
+      {/* Luminous Sapphire Header Bar */}
+      <EditorialSectionHeader
+        eyebrow="WORLDWIDE IMPACT"
+        title={headerTitle}
+        variant="atmospheric"
+      />
 
-          <TextWordReveal
-            as="h2"
-            delay={0.15}
-            staggerDelay={0.04}
-            className="font-poppins font-bold text-white text-sm sm:text-2xl md:text-[28px] text-center px-3 sm:px-8 md:px-12 tracking-wide flex-shrink min-w-0"
+      <SacredCanvas tone="warm-alabaster" className="pt-6 sm:pt-8 pb-12 sm:pb-16 md:pb-18">
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <BlurTextReveal
+            as="p"
+            delay={0.1}
+            duration={0.6}
+            className="font-poppins text-slate-600 text-xs sm:text-base md:text-[17px] max-w-2xl mx-auto"
           >
-            {headerTitle}
-          </TextWordReveal>
-
-          <GoldBarReveal
-            direction="right"
-            duration={0.7}
-            delay={0.1}
-            className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-l-full flex-shrink-0"
-          />
+            {subtitle}
+          </BlurTextReveal>
         </div>
-      </div>
-
-      <div className="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-8 text-center pt-6 sm:pt-8">
-        <BlurTextReveal
-          as="p"
-          delay={0.1}
-          duration={0.6}
-          className="font-poppins text-slate-600 text-xs sm:text-base md:text-[17px] max-w-2xl mx-auto"
-        >
-          {subtitle}
-        </BlurTextReveal>
-      </div>
 
       {/* Bidirectional Infinite Moving Sliders */}
       <RevealOnScroll direction="up" distance={24} duration={0.8} delay={0.1} className="relative mt-6 sm:mt-10 md:mt-12 w-full overflow-hidden space-y-4 sm:space-y-6">
@@ -224,6 +206,7 @@ export const InternationalPresenceSection: React.FC<InternationalPresenceSection
           </div>
         </div>
       </RevealOnScroll>
+      </SacredCanvas>
     </section>
   )
 }

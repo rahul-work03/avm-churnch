@@ -104,6 +104,22 @@ export const PrayerHousePageGlobal: GlobalConfig = {
               defaultValue: 'Prayer House - Ankur Narula Ministries',
             },
             {
+              name: 'heroVideo',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Hero Video (Optional - overrides image if provided)',
+            },
+            {
+              name: 'heroVideoFallback',
+              type: 'text',
+              label: 'Hero Video Fallback URL (Optional MP4/WebM)',
+            },
+            {
+              name: 'bannerVideoUrl',
+              type: 'text',
+              label: 'External Banner Video Stream URL (Optional)',
+            },
+            {
               name: 'heroSubtitle',
               type: 'text',
               label: 'Subtitle Under Hero Photo',

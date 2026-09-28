@@ -4,7 +4,9 @@ import React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { RevealOnScroll } from '@/components/ui/reveal'
-import { TextWordReveal, BlurTextReveal, GoldBarReveal } from '@/components/ui/text-reveal'
+import { BlurTextReveal } from '@/components/ui/text-reveal'
+import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
+import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { getMediaUrl, getMediaAlt } from '@/utilities/getMediaUrl'
 
 export interface HeadChurchSectionProps {
@@ -26,35 +28,23 @@ export const HeadChurchSection: React.FC<HeadChurchSectionProps> = ({
   const resolvedAlt = getMediaAlt(image, alt)
 
   return (
-    <section className="relative py-8 sm:py-12 md:py-16 bg-transparent" data-node-id="277:1632">
-      {/* Full-width Navy Header Bar */}
-      <div className="w-full bg-[#122f4a] py-4 sm:py-5 md:py-6 text-white relative shadow-sm mb-8 sm:mb-12">
-        <div className="w-full flex items-center justify-between">
-          <GoldBarReveal
-            direction="left"
-            className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-r-full flex-shrink-0"
-          />
-
-          <TextWordReveal
-            as="h2"
-            delay={0.05}
-            staggerDelay={0.035}
-            className="font-poppins font-medium text-white text-sm sm:text-xl md:text-2xl lg:text-[28px] tracking-wide text-center px-3 sm:px-8 md:px-12 flex-shrink min-w-0"
-          >
-            {headerTitle}
-          </TextWordReveal>
-
-          <GoldBarReveal
-            direction="right"
-            className="w-[48px] sm:w-[140px] md:w-[240px] lg:w-[323px] h-[6px] sm:h-[12px] md:h-[18px] lg:h-[20px] bg-[#efbf04] rounded-l-full flex-shrink-0"
-          />
-        </div>
-      </div>
+    <SacredCanvas
+      tone="warm-alabaster"
+      className="pb-12 sm:pb-16 md:pb-20"
+    >
+      {/* Edge-to-edge Atmospheric Header with Gold Wing Bars on Both Sides */}
+      <EditorialSectionHeader
+        variant="atmospheric"
+        align="center"
+        eyebrow="MOTHER CHURCH"
+        title={headerTitle}
+        className="mb-8 sm:mb-12"
+      />
 
       <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Large Featured Head Church 3D Visual */}
         <RevealOnScroll direction="up" distance={24} duration={0.8} delay={0.1}>
-          <div className="relative w-full aspect-[16/9] rounded-[14px] sm:rounded-[18px] md:rounded-[20px] overflow-hidden shadow-2xl border border-[#d4af37]/30 bg-slate-950 group">
+          <div className="relative w-full aspect-[16/9] rounded-[16px] sm:rounded-[22px] overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-950 group">
             <Image
               src={resolvedImg}
               alt={resolvedAlt}
@@ -66,17 +56,17 @@ export const HeadChurchSection: React.FC<HeadChurchSectionProps> = ({
         </RevealOnScroll>
 
         {/* Narrative Description Text */}
-        <div className="mt-6 sm:mt-10 md:mt-12 text-center max-w-5xl mx-auto">
+        <div className="mt-8 sm:mt-10 md:mt-12 text-center max-w-4xl mx-auto">
           <BlurTextReveal
             as="p"
             delay={0.2}
             duration={0.7}
-            className="font-poppins text-[#333333] text-xs sm:text-base md:text-xl lg:text-[22px] leading-relaxed sm:leading-[1.8] text-balance"
+            className="font-poppins text-slate-700 text-sm sm:text-base md:text-lg lg:text-[20px] leading-relaxed sm:leading-[1.85] text-balance"
           >
             {narrative}
           </BlurTextReveal>
         </div>
       </div>
-    </section>
+    </SacredCanvas>
   )
 }

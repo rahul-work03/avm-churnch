@@ -43,8 +43,10 @@ const DEFAULT_SOCIAL_LINKS = [
   },
 ]
 
-const DEFAULT_MAP_EMBED_URL =
-  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.0915173016306!2d75.56058437539549!3d31.273563674328035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5b93663a625d%3A0x77a5a7c6551686f1!2sKhambra%20Church!5e0!3m2!1sen!2sin!4v1789922592786!5m2!1sen!2sin'
+const DEFAULT_MAP_IFRAME =
+  '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.0779467068696!2d75.56073407539549!3d31.273939074327686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5b50b36a88a1%3A0x3d8b66ec2e189bf6!2sAnkur%20Narula%20Ministries!5e0!3m2!1sen!2sin!4v1790533216619!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>'
+
+const DEFAULT_MAP_EMBED_URL = DEFAULT_MAP_IFRAME
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
@@ -75,7 +77,7 @@ export const Footer: GlobalConfig = {
             doc.socialLinks && doc.socialLinks.length > 0
               ? doc.socialLinks
               : DEFAULT_SOCIAL_LINKS,
-          mapEmbedUrl: doc.mapEmbedUrl || DEFAULT_MAP_EMBED_URL,
+          mapEmbedUrl: doc.mapEmbedUrl || DEFAULT_MAP_IFRAME,
           mapImageFallback:
             doc.mapImageFallback || '/figma-assets/f1c7c30e211dc39094fc986db7a7e7d876202f58.png',
           mapUrl:
@@ -242,9 +244,13 @@ export const Footer: GlobalConfig = {
             },
             {
               name: 'mapEmbedUrl',
-              type: 'text',
-              label: 'Google Maps Embed URL (iframe src)',
-              defaultValue: DEFAULT_MAP_EMBED_URL,
+              type: 'textarea',
+              label: 'Google Maps Embed URL or <iframe> Code',
+              admin: {
+                description:
+                  'Enter a Google Maps embed URL (https://www.google.com/maps/embed?...) or full <iframe> code. An interactive Google Map will be displayed in the footer.',
+              },
+              defaultValue: DEFAULT_MAP_IFRAME,
             },
             {
               name: 'mapImage',

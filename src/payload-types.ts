@@ -2002,6 +2002,9 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Enter a Google Maps embed URL (https://www.google.com/maps/embed?...) or full <iframe> code. An interactive Google Map will be displayed in the footer.
+   */
   mapEmbedUrl?: string | null;
   mapImage?: (number | null) | Media;
   mapImageFallback?: string | null;
@@ -2028,6 +2031,9 @@ export interface Homepage {
   heroBannerAlt?: string | null;
   mogHeaderTitle?: string | null;
   mogBadgeTitle?: string | null;
+  mogSingleImage?: (number | null) | Media;
+  mogSingleImageFallback?: string | null;
+  mogSingleImageAlt?: string | null;
   mogSlides?:
     | {
         image?: (number | null) | Media;
@@ -2142,6 +2148,7 @@ export interface AboutPage {
   resourcesFgImage?: (number | null) | Media;
   resourcesFgFallback?: string | null;
   crusadesHeaderTitle?: string | null;
+  crusadesSubTitle?: string | null;
   crusadeImages?:
     | {
         image?: (number | null) | Media;
@@ -2223,6 +2230,9 @@ export interface PrayerMountainPage {
   id: number;
   heroHeaderTitle?: string | null;
   heroDescription?: string | null;
+  heroVideo?: (number | null) | Media;
+  heroVideoFallback?: string | null;
+  bannerVideoUrl?: string | null;
   heroBannerImage?: (number | null) | Media;
   heroBannerFallback?: string | null;
   heroBannerAlt?: string | null;
@@ -2282,6 +2292,9 @@ export interface PrayerHousePage {
   heroBannerImage?: (number | null) | Media;
   heroBannerFallback?: string | null;
   heroBannerAlt?: string | null;
+  heroVideo?: (number | null) | Media;
+  heroVideoFallback?: string | null;
+  bannerVideoUrl?: string | null;
   heroSubtitle?: string | null;
   scenesHeaderTitle?: string | null;
   scenesRow1?:
@@ -2319,6 +2332,9 @@ export interface BibleCollegePage {
   heroBannerImage?: (number | null) | Media;
   heroBannerFallback?: string | null;
   heroBannerAlt?: string | null;
+  heroVideo?: (number | null) | Media;
+  heroVideoFallback?: string | null;
+  bannerVideoUrl?: string | null;
   heroSubtitle?: string | null;
   scenesHeaderTitle?: string | null;
   scenesRow1?:
@@ -2356,6 +2372,9 @@ export interface SophiaInstitutePage {
   heroBannerImage?: (number | null) | Media;
   heroBannerFallback?: string | null;
   heroBannerAlt?: string | null;
+  heroVideo?: (number | null) | Media;
+  heroVideoFallback?: string | null;
+  bannerVideoUrl?: string | null;
   heroSubtitle?: string | null;
   scenesHeaderTitle?: string | null;
   scenesRow1?:
@@ -2393,6 +2412,9 @@ export interface SundaySchoolPage {
   heroBannerImage?: (number | null) | Media;
   heroBannerFallback?: string | null;
   heroBannerAlt?: string | null;
+  heroVideo?: (number | null) | Media;
+  heroVideoFallback?: string | null;
+  bannerVideoUrl?: string | null;
   heroVideoUrl?: string | null;
   heroSubtitle?: string | null;
   scenesHeaderTitle?: string | null;
@@ -2426,6 +2448,15 @@ export interface SundaySchoolPage {
  */
 export interface ChurchBranchesPage {
   id: number;
+  heroHeaderTitle?: string | null;
+  heroSubtitle?: string | null;
+  heroDescription?: string | null;
+  /**
+   * Upload an ambient background video for the hero banner. Takes precedence over banner image if provided.
+   */
+  heroVideo?: (number | null) | Media;
+  heroVideoFallback?: string | null;
+  bannerVideoUrl?: string | null;
   heroBannerImage?: (number | null) | Media;
   heroBannerFallback?: string | null;
   heroBannerAlt?: string | null;
@@ -2476,6 +2507,12 @@ export interface EventsPage {
   events?:
     | {
         title: string;
+        /**
+         * Used for live countdown timer. Format: YYYY-MM-DDTHH:MM:SS
+         */
+        eventTargetDate?: string | null;
+        landscapePoster?: (number | null) | Media;
+        landscapePosterFallback?: string | null;
         cardPoster?: (number | null) | Media;
         cardPosterFallback?: string | null;
         buttonLabel?: string | null;
@@ -2819,6 +2856,9 @@ export interface HomepageSelect<T extends boolean = true> {
   heroBannerAlt?: T;
   mogHeaderTitle?: T;
   mogBadgeTitle?: T;
+  mogSingleImage?: T;
+  mogSingleImageFallback?: T;
+  mogSingleImageAlt?: T;
   mogSlides?:
     | T
     | {
@@ -2933,6 +2973,7 @@ export interface AboutPageSelect<T extends boolean = true> {
   resourcesFgImage?: T;
   resourcesFgFallback?: T;
   crusadesHeaderTitle?: T;
+  crusadesSubTitle?: T;
   crusadeImages?:
     | T
     | {
@@ -3014,6 +3055,9 @@ export interface MinistriesPageSelect<T extends boolean = true> {
 export interface PrayerMountainPageSelect<T extends boolean = true> {
   heroHeaderTitle?: T;
   heroDescription?: T;
+  heroVideo?: T;
+  heroVideoFallback?: T;
+  bannerVideoUrl?: T;
   heroBannerImage?: T;
   heroBannerFallback?: T;
   heroBannerAlt?: T;
@@ -3073,6 +3117,9 @@ export interface PrayerHousePageSelect<T extends boolean = true> {
   heroBannerImage?: T;
   heroBannerFallback?: T;
   heroBannerAlt?: T;
+  heroVideo?: T;
+  heroVideoFallback?: T;
+  bannerVideoUrl?: T;
   heroSubtitle?: T;
   scenesHeaderTitle?: T;
   scenesRow1?:
@@ -3110,6 +3157,9 @@ export interface BibleCollegePageSelect<T extends boolean = true> {
   heroBannerImage?: T;
   heroBannerFallback?: T;
   heroBannerAlt?: T;
+  heroVideo?: T;
+  heroVideoFallback?: T;
+  bannerVideoUrl?: T;
   heroSubtitle?: T;
   scenesHeaderTitle?: T;
   scenesRow1?:
@@ -3147,6 +3197,9 @@ export interface SophiaInstitutePageSelect<T extends boolean = true> {
   heroBannerImage?: T;
   heroBannerFallback?: T;
   heroBannerAlt?: T;
+  heroVideo?: T;
+  heroVideoFallback?: T;
+  bannerVideoUrl?: T;
   heroSubtitle?: T;
   scenesHeaderTitle?: T;
   scenesRow1?:
@@ -3184,6 +3237,9 @@ export interface SundaySchoolPageSelect<T extends boolean = true> {
   heroBannerImage?: T;
   heroBannerFallback?: T;
   heroBannerAlt?: T;
+  heroVideo?: T;
+  heroVideoFallback?: T;
+  bannerVideoUrl?: T;
   heroVideoUrl?: T;
   heroSubtitle?: T;
   scenesHeaderTitle?: T;
@@ -3217,6 +3273,12 @@ export interface SundaySchoolPageSelect<T extends boolean = true> {
  * via the `definition` "church-branches-page_select".
  */
 export interface ChurchBranchesPageSelect<T extends boolean = true> {
+  heroHeaderTitle?: T;
+  heroSubtitle?: T;
+  heroDescription?: T;
+  heroVideo?: T;
+  heroVideoFallback?: T;
+  bannerVideoUrl?: T;
   heroBannerImage?: T;
   heroBannerFallback?: T;
   heroBannerAlt?: T;
@@ -3259,6 +3321,9 @@ export interface EventsPageSelect<T extends boolean = true> {
     | T
     | {
         title?: T;
+        eventTargetDate?: T;
+        landscapePoster?: T;
+        landscapePosterFallback?: T;
         cardPoster?: T;
         cardPosterFallback?: T;
         buttonLabel?: T;

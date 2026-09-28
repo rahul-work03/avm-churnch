@@ -4,29 +4,9 @@ import { adminsOrEditors } from '../../access/adminsOrEditors'
 
 export const DEFAULT_EVENTS = [
   {
-    title: 'Masihi Satsang - Apostle Dr. Ankur Yoseph Narula & Pastor Sonia Narula',
-    cardPosterFallback: '/figma-assets/9c4cf0e2f9397f119d80dde4d156bbaa56343330.png',
-    buttonLabel: 'See Details',
-    detailPosterFallback: '/figma-assets/9c4cf0e2f9397f119d80dde4d156bbaa56343330.png',
-    headingGreeting: 'HALLELUJAH!!',
-    subheading: 'Special Spiritual Gathering & Holy Communion',
-    announcementParagraph1:
-      'Join us for a spirit-filled Masihi Satsang with Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula. Come with hearts full of expectation to receive God’s miraculous blessing, divine touch, and life-transforming Word.',
-    announcementParagraph2:
-      'God is moving powerfully in our midst. Testimonies of healing, deliverance from generational bondage, and restoration of families are happening continuously through the power of Jesus Christ.',
-    announcementParagraph3:
-      'Invite your friends, relatives, and loved ones to witness the living power of God and partake in a joyful atmosphere of worship and fellowship.',
-    announcementParagraph4:
-      'Everyone is welcome. Experience salvation, peace, and spiritual revival in your life.',
-    scheduleDay: 'Wednesday & Thursday',
-    scheduleDate: 'Weekly Services',
-    scheduleTime: '10:00 AM onwards',
-    scheduleVenue:
-      'The Church of Signs and Wonders, Khambra, Near Lambra, Nakodar Road, Jalandhar, Punjab - 144026',
-    schedulePostedBy: 'By:- Church Media Team',
-  },
-  {
     title: 'Good News in Pathankot - 11 June 2026',
+    eventTargetDate: '2026-06-11T18:00:00',
+    landscapePosterFallback: '/figma-assets/85761e6b2486d02d0c483eb7871b0ab19ace8c46.png',
     cardPosterFallback: '/figma-assets/85761e6b2486d02d0c483eb7871b0ab19ace8c46.png',
     buttonLabel: 'See Details',
     detailPosterFallback: '/figma-assets/85761e6b2486d02d0c483eb7871b0ab19ace8c46.png',
@@ -48,7 +28,33 @@ export const DEFAULT_EVENTS = [
     schedulePostedBy: 'By:- Church Media Team',
   },
   {
+    title: 'Masihi Satsang - Apostle Dr. Ankur Yoseph Narula & Pastor Sonia Narula',
+    eventTargetDate: '2026-06-18T10:00:00',
+    landscapePosterFallback: '/figma-assets/9c4cf0e2f9397f119d80dde4d156bbaa56343330.png',
+    cardPosterFallback: '/figma-assets/9c4cf0e2f9397f119d80dde4d156bbaa56343330.png',
+    buttonLabel: 'See Details',
+    detailPosterFallback: '/figma-assets/9c4cf0e2f9397f119d80dde4d156bbaa56343330.png',
+    headingGreeting: 'HALLELUJAH!!',
+    subheading: 'Special Spiritual Gathering & Holy Communion',
+    announcementParagraph1:
+      'Join us for a spirit-filled Masihi Satsang with Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula. Come with hearts full of expectation to receive God’s miraculous blessing, divine touch, and life-transforming Word.',
+    announcementParagraph2:
+      'God is moving powerfully in our midst. Testimonies of healing, deliverance from generational bondage, and restoration of families are happening continuously through the power of Jesus Christ.',
+    announcementParagraph3:
+      'Invite your friends, relatives, and loved ones to witness the living power of God and partake in a joyful atmosphere of worship and fellowship.',
+    announcementParagraph4:
+      'Everyone is welcome. Experience salvation, peace, and spiritual revival in your life.',
+    scheduleDay: 'Wednesday & Thursday',
+    scheduleDate: 'Weekly Services',
+    scheduleTime: '10:00 AM onwards',
+    scheduleVenue:
+      'The Church of Signs and Wonders, Khambra, Near Lambra, Nakodar Road, Jalandhar, Punjab - 144026',
+    schedulePostedBy: 'By:- Church Media Team',
+  },
+  {
     title: 'Sunday Live Service - Ankur Narula Ministries',
+    eventTargetDate: '2026-06-14T08:30:00',
+    landscapePosterFallback: '/figma-assets/b3a0bba89e5f05b1a24ecbaec47a6c1170b270dc.png',
     cardPosterFallback: '/figma-assets/b3a0bba89e5f05b1a24ecbaec47a6c1170b270dc.png',
     buttonLabel: 'See Details',
     detailPosterFallback: '/figma-assets/b3a0bba89e5f05b1a24ecbaec47a6c1170b270dc.png',
@@ -103,14 +109,14 @@ export const EventsPageGlobal: GlobalConfig = {
             {
               name: 'eventsSectionTitle',
               type: 'text',
-              label: 'Top Events Grid Section Title',
-              defaultValue: 'Events',
+              label: 'Top Primary Event Section Title',
+              defaultValue: 'Upcoming Primary Event',
             },
             {
               name: 'upcomingSectionTitle',
               type: 'text',
-              label: 'Detail Section Header Title',
-              defaultValue: 'Upcoming Events',
+              label: 'More Events Directory Section Title',
+              defaultValue: 'More Events',
             },
           ],
         },
@@ -120,7 +126,7 @@ export const EventsPageGlobal: GlobalConfig = {
             {
               name: 'events',
               type: 'array',
-              label: 'Church Events (Grid & Detailed Views)',
+              label: 'Church Events',
               defaultValue: DEFAULT_EVENTS,
               labels: {
                 singular: 'Event',
@@ -134,13 +140,39 @@ export const EventsPageGlobal: GlobalConfig = {
                   required: true,
                 },
                 {
+                  name: 'eventTargetDate',
+                  type: 'text',
+                  label: 'Event Target Date / Time for Countdown (ISO format, e.g. 2026-06-11T18:00:00)',
+                  admin: {
+                    description: 'Used for live countdown timer. Format: YYYY-MM-DDTHH:MM:SS',
+                  },
+                },
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'landscapePoster',
+                      type: 'upload',
+                      relationTo: 'media',
+                      label: 'Hero Landscape Banner Image (16:9 / Wide)',
+                      admin: { width: '50%' },
+                    },
+                    {
+                      name: 'landscapePosterFallback',
+                      type: 'text',
+                      label: 'Landscape Banner Fallback Path',
+                      admin: { width: '50%' },
+                    },
+                  ],
+                },
+                {
                   type: 'row',
                   fields: [
                     {
                       name: 'cardPoster',
                       type: 'upload',
                       relationTo: 'media',
-                      label: 'Card Thumbnail Poster (Top Grid)',
+                      label: 'Card Poster (Directory Grid)',
                       admin: { width: '50%' },
                     },
                     {

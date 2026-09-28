@@ -5,8 +5,10 @@ import Image from 'next/image'
 import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/ui/reveal'
 import { TextWordReveal, GoldBarReveal } from '@/components/ui/text-reveal'
 
+import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
+import { SacredCanvas } from '@/components/ui/sacred-canvas'
+
 export interface ServiceItem {
-  emoji?: string
   title: string
   time: string
 }
@@ -18,17 +20,18 @@ export interface ScheduleSectionProps {
   dailyPrograms?: ServiceItem[]
   joinLiveLink?: string
   joinLiveLabel?: string
+  className?: string
 }
 
 const DEFAULT_WEEKLY: ServiceItem[] = [
-  { emoji: '🕊️', title: 'Sunday Morning Service', time: '10:30 AM – 2:30 PM (IST)' },
-  { emoji: '🌙', title: 'Sunday Evening Service', time: '10:30 AM – 2:30 PM (IST)' },
-  { emoji: '🔥', title: 'Thursday Service', time: '6:00 PM – 10:00 PM (IST)' },
+  { title: 'Sunday Morning Service', time: '10:30 AM – 2:30 PM (IST)' },
+  { title: 'Sunday Evening Service', time: '10:30 AM – 2:30 PM (IST)' },
+  { title: 'Thursday Service', time: '6:00 PM – 10:00 PM (IST)' },
 ]
 
 const DEFAULT_DAILY: ServiceItem[] = [
-  { emoji: '🍞', title: 'Everyday Manna', time: '10:30 AM – 2:30 PM (IST)' },
-  { emoji: '🙏', title: 'Prayer Mountain', time: '8:00 PM (Daily)' },
+  { title: 'Everyday Manna', time: '10:30 AM – 2:30 PM (IST)' },
+  { title: 'Prayer Mountain', time: '8:00 PM (Daily)' },
 ]
 
 export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
@@ -38,6 +41,7 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
   dailyPrograms,
   joinLiveLink = 'https://www.youtube.com/@ankurnarulaministries',
   joinLiveLabel = 'Join Live',
+  className = '',
 }) => {
   const activeWeekly = weeklyServices && weeklyServices.length > 0 ? weeklyServices : DEFAULT_WEEKLY
   const activeDaily = dailyPrograms && dailyPrograms.length > 0 ? dailyPrograms : DEFAULT_DAILY
@@ -51,38 +55,17 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
   const rightWeekly = activeWeekly.slice(2)
 
   return (
-    <section className="relative bg-white overflow-hidden" data-node-id="274:3">
-      {/* ==================== SECTION HEADER ==================== */}
-      {/* Full-width Dark Navy Bar with Edge-to-Edge Gold Bars */}
-      <div className="w-full bg-[#122f4a] h-[52px] sm:h-[64px] md:h-[76px] lg:h-[80px] flex items-center justify-between px-0 relative z-10 shadow-md overflow-hidden">
-        <GoldBarReveal
-          direction="left"
-          duration={0.7}
-          delay={0.1}
-          className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[240px] xl:w-[323px] h-[5px] sm:h-[7px] lg:h-[8px] bg-[#efbf04] rounded-r-full shadow-sm flex-shrink-0"
-          data-node-id="274:25"
-        />
-        <div className="flex-1 min-w-0 px-2 sm:px-4 md:px-6 text-center">
-          <TextWordReveal
-            as="h2"
-            delay={0.15}
-            staggerDelay={0.035}
-            className="font-poppins font-semibold text-white text-sm sm:text-lg md:text-2xl lg:text-[30px] xl:text-[32px] tracking-tight uppercase leading-tight line-clamp-2"
-          >
-            {headerTitle}
-          </TextWordReveal>
-        </div>
-        <GoldBarReveal
-          direction="right"
-          duration={0.7}
-          delay={0.1}
-          className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[240px] xl:w-[323px] h-[5px] sm:h-[7px] lg:h-[8px] bg-[#efbf04] rounded-l-full shadow-sm flex-shrink-0"
-          data-node-id="274:27"
-        />
-      </div>
+    <section className={`relative overflow-hidden select-none ${className}`} data-node-id="274:3">
+      {/* ==================== ATMOSPHERIC SAPPHIRE HEADER ==================== */}
+      <EditorialSectionHeader
+        eyebrow="GLOBAL BROADCASTS & TIMES"
+        title={headerTitle}
+        variant="atmospheric"
+      />
 
-      <div className="pt-8 sm:pt-12 md:pt-16 pb-16 sm:pb-20 md:pb-28 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Featured Live Service Banner / Stage Preview (Figma Node 327:272) */}
+      <SacredCanvas tone="warm-alabaster" className="pt-6 sm:pt-8 md:pt-10 pb-8 sm:pb-12 md:pb-14">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Featured Live Service Banner / Stage Preview */}
         <RevealOnScroll direction="up" distance={24} duration={0.8} className="max-w-[1140px] mx-auto">
           <div
             className="relative w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[1141/475] rounded-[20px] overflow-hidden shadow-2xl border-[4px] sm:border-[5px] border-[#d4af37] bg-slate-900 group"
@@ -105,18 +88,24 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
         {/* Two Schedule Cards (Weekly Services & Daily Prayer Programs) */}
         <StaggerContainer
           staggerDelay={0.15}
-          className="mt-8 sm:mt-12 md:mt-14 max-w-[1140px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch"
+          className="mt-6 sm:mt-8 md:mt-10 max-w-[1140px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-stretch"
         >
           {/* ==================== CARD 1: WEEKLY SERVICES ==================== */}
           <StaggerItem
             direction="up"
             distance={24}
             duration={0.6}
-            className="bg-[#122f4a] rounded-[16.8px] p-6 sm:p-8 text-white relative overflow-hidden shadow-xl border border-white/5 flex flex-col justify-between min-h-[240px]"
+            className="group bg-gradient-to-br from-[#0e2740] via-[#122f4a] to-[#173d61] rounded-[22px] p-6 sm:p-8 text-white relative overflow-hidden shadow-[0_16px_40px_rgba(14,39,64,0.18)] hover:shadow-[0_24px_60px_rgba(18,47,74,0.32),0_0_25px_rgba(239,191,4,0.12)] border border-white/15 hover:border-[#efbf04]/50 ring-1 ring-white/10 ring-inset flex flex-col justify-between min-h-[250px] transition-all duration-300 hover:-translate-y-1.5"
             data-node-id="274:81"
           >
+            {/* Top gold rim accent line */}
+            <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#efbf04]/70 to-transparent pointer-events-none" />
+
+            {/* Soft gold ambient radial glow behind icon */}
+            <div className="absolute -top-10 -left-10 w-48 h-48 bg-[#efbf04]/10 rounded-full blur-3xl pointer-events-none" />
+
             {/* Background vector */}
-            <div className="absolute inset-0 pointer-events-none opacity-25 overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none opacity-20 overflow-hidden">
               <Image
                 src="/figma-assets/13f61287f6bfa90b665e82c14641ea415f8c34e1.svg"
                 alt=""
@@ -124,20 +113,28 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
                 className="object-cover object-left-top"
               />
             </div>
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: 'linear-gradient(-35deg, rgb(18, 47, 74) 60%, rgba(18, 47, 74, 0) 100%)',
-              }}
-            />
+
+            {/* Sweeping specular hover light */}
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none rounded-[22px]" />
 
             <div className="relative z-10 flex flex-col justify-between h-full">
-              {/* Header row with Yellow Dotted Line */}
+              {/* Header row with Calendar Icon & Yellow Dotted Line */}
               <div className="flex items-center justify-between gap-3 sm:gap-4 mb-5 sm:mb-6">
-                <h3 className="font-poppins font-bold text-[#efbf04] text-xl sm:text-[24px] leading-tight whitespace-nowrap">
-                  Weekly Services
-                </h3>
-                <div className="flex-1 h-2 sm:h-2.5 max-w-[160px] sm:max-w-[285px] border-t-2 sm:border-t-[3px] border-b-2 sm:border-b-[3px] border-dashed border-[#efbf04] opacity-90 ml-2" />
+                <div className="flex items-center gap-2.5 sm:gap-3.5">
+                  <div className="relative w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 shrink-0 transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
+                    <Image
+                      src="/calender-icon.png"
+                      alt="Calendar"
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 640px) 28px, 36px"
+                    />
+                  </div>
+                  <h3 className="font-poppins font-bold text-[#efbf04] text-lg sm:text-xl md:text-[24px] leading-tight whitespace-nowrap tracking-wide drop-shadow-sm">
+                    Weekly Services
+                  </h3>
+                </div>
+                <div className="flex-1 h-2 sm:h-2.5 max-w-[140px] sm:max-w-[240px] border-t-2 sm:border-t-[3px] border-b-2 sm:border-b-[3px] border-dashed border-[#efbf04]/90 opacity-90 ml-2" />
               </div>
 
               {/* 2-Column Content Layout */}
@@ -146,13 +143,13 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
                 <div className="flex flex-col justify-center">
                   {leftWeekly.map((item, idx) => (
                     <React.Fragment key={idx}>
-                      {idx > 0 && <div className="w-full max-w-[263px] h-px bg-white/20 my-3" />}
-                      <div>
-                        <h4 className="font-lato font-bold text-white text-[15px] sm:text-[17px] md:text-[18px] leading-snug flex items-center gap-1.5">
-                          <span className="text-base sm:text-lg">{item.emoji || '🕊️'}</span>
+                      {idx > 0 && <div className="w-full max-w-[263px] h-px bg-white/15 my-3" />}
+                      <div className="transition-transform duration-200 hover:translate-x-1">
+                        <h4 className="font-lato font-bold text-white text-[15px] sm:text-[17px] md:text-[18px] leading-snug flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#efbf04] shrink-0 shadow-[0_0_8px_#efbf04]" />
                           <span>{item.title}</span>
                         </h4>
-                        <p className="font-poppins font-bold text-white text-[12px] sm:text-[13px] md:text-[14px] mt-1 pl-6 whitespace-nowrap">
+                        <p className="font-poppins font-semibold text-white/80 text-[12px] sm:text-[13px] md:text-[14px] mt-1 pl-3.5 whitespace-nowrap">
                           {item.time}
                         </p>
                       </div>
@@ -163,12 +160,12 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
                 {/* Right Column */}
                 <div className="flex flex-col justify-center sm:pl-2">
                   {rightWeekly.map((item, idx) => (
-                    <div key={idx}>
-                      <h4 className="font-lato font-bold text-white text-[15px] sm:text-[17px] md:text-[18px] leading-snug flex items-center gap-1.5">
-                        <span className="text-base sm:text-lg">{item.emoji || '🔥'}</span>
+                    <div key={idx} className="transition-transform duration-200 hover:translate-x-1">
+                      <h4 className="font-lato font-bold text-white text-[15px] sm:text-[17px] md:text-[18px] leading-snug flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#efbf04] shrink-0 shadow-[0_0_8px_#efbf04]" />
                         <span>{item.title}</span>
                       </h4>
-                      <p className="font-lato font-bold text-white text-[12px] sm:text-[13px] md:text-[14px] mt-1 pl-6 whitespace-nowrap">
+                      <p className="font-lato font-semibold text-white/80 text-[12px] sm:text-[13px] md:text-[14px] mt-1 pl-3.5 whitespace-nowrap">
                         {item.time}
                       </p>
                     </div>
@@ -183,11 +180,17 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
             direction="up"
             distance={24}
             duration={0.6}
-            className="bg-[#122f4a] rounded-[16.8px] p-6 sm:p-8 text-white relative overflow-hidden shadow-xl border border-white/5 flex flex-col justify-between min-h-[240px]"
+            className="group bg-gradient-to-br from-[#0e2740] via-[#122f4a] to-[#173d61] rounded-[22px] p-6 sm:p-8 text-white relative overflow-hidden shadow-[0_16px_40px_rgba(14,39,64,0.18)] hover:shadow-[0_24px_60px_rgba(18,47,74,0.32),0_0_25px_rgba(239,191,4,0.12)] border border-white/15 hover:border-[#efbf04]/50 ring-1 ring-white/10 ring-inset flex flex-col justify-between min-h-[250px] transition-all duration-300 hover:-translate-y-1.5"
             data-node-id="274:141"
           >
+            {/* Top gold rim accent line */}
+            <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#efbf04]/70 to-transparent pointer-events-none" />
+
+            {/* Soft gold ambient radial glow behind icon */}
+            <div className="absolute -top-10 -left-10 w-48 h-48 bg-[#efbf04]/10 rounded-full blur-3xl pointer-events-none" />
+
             {/* Background vector */}
-            <div className="absolute inset-0 pointer-events-none opacity-25 overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none opacity-20 overflow-hidden">
               <Image
                 src="/figma-assets/277acc8433e3273c56b4d00b7758461688cd2920.svg"
                 alt=""
@@ -195,31 +198,39 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
                 className="object-cover object-left-top"
               />
             </div>
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: 'linear-gradient(-35deg, rgb(18, 47, 74) 60%, rgba(18, 47, 74, 0) 100%)',
-              }}
-            />
+
+            {/* Sweeping specular hover light */}
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none rounded-[22px]" />
 
             <div className="relative z-10 flex flex-col justify-between h-full">
-              {/* Header row with Yellow Dotted Line */}
+              {/* Header row with Prayer Hands Icon & Yellow Dotted Line */}
               <div className="flex items-center justify-between gap-3 sm:gap-4 mb-5 sm:mb-6">
-                <h3 className="font-poppins font-bold text-[#efbf04] text-xl sm:text-[24px] leading-tight whitespace-nowrap">
-                  Daily Prayer Programs
-                </h3>
-                <div className="flex-1 h-2 sm:h-2.5 max-w-[140px] sm:max-w-[231px] border-t-2 sm:border-t-[3px] border-b-2 sm:border-b-[3px] border-dashed border-[#efbf04] opacity-90 ml-2" />
+                <div className="flex items-center gap-2.5 sm:gap-3.5">
+                  <div className="relative w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 shrink-0 transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
+                    <Image
+                      src="/prayer-hands.png"
+                      alt="Prayer Hands"
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 640px) 28px, 36px"
+                    />
+                  </div>
+                  <h3 className="font-poppins font-bold text-[#efbf04] text-lg sm:text-xl md:text-[24px] leading-tight whitespace-nowrap tracking-wide drop-shadow-sm">
+                    Daily Prayer Programs
+                  </h3>
+                </div>
+                <div className="flex-1 h-2 sm:h-2.5 max-w-[120px] sm:max-w-[200px] border-t-2 sm:border-t-[3px] border-b-2 sm:border-b-[3px] border-dashed border-[#efbf04]/90 opacity-90 ml-2" />
               </div>
 
               {/* 2-Column Upper Services Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                 {activeDaily.map((item, idx) => (
-                  <div key={idx}>
-                    <h4 className="font-lato font-bold text-white text-[15px] sm:text-[17px] md:text-[18px] leading-snug flex items-center gap-1.5">
-                      <span className="text-base sm:text-lg">{item.emoji || '🍞'}</span>
+                  <div key={idx} className="transition-transform duration-200 hover:translate-x-1">
+                    <h4 className="font-lato font-bold text-white text-[15px] sm:text-[17px] md:text-[18px] leading-snug flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#efbf04] shrink-0 shadow-[0_0_8px_#efbf04]" />
                       <span>{item.title}</span>
                     </h4>
-                    <p className="font-poppins font-bold text-white text-[12px] sm:text-[13px] md:text-[14px] mt-1 pl-6 whitespace-nowrap">
+                    <p className="font-poppins font-semibold text-white/80 text-[12px] sm:text-[13px] md:text-[14px] mt-1 pl-3.5 whitespace-nowrap">
                       {item.time}
                     </p>
                   </div>
@@ -227,7 +238,7 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
               </div>
 
               {/* Divider */}
-              <div className="w-full h-px bg-white/20 my-4" />
+              <div className="w-full h-px bg-white/15 my-4" />
 
               {/* Centered Join Live CTA Button */}
               <div className="flex justify-center items-center pt-1">
@@ -235,7 +246,7 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
                   href={effectiveJoinLiveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-[160px] sm:w-[175px] h-[40px] sm:h-[46px] bg-[#efbf04] hover:bg-[#dfaf00] rounded-full flex items-center justify-center text-[#0f121e] font-poppins font-semibold text-sm sm:text-base md:text-[18px] shadow-md transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+                  className="w-[160px] sm:w-[175px] h-[40px] sm:h-[46px] bg-[#efbf04] hover:bg-[#ffcf1a] rounded-full flex items-center justify-center text-[#0f121e] font-poppins font-semibold text-sm sm:text-base md:text-[17px] shadow-[0_4px_16px_rgba(239,191,4,0.35)] hover:shadow-[0_6px_22px_rgba(239,191,4,0.5)] transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
                 >
                   <span>{joinLiveLabel}</span>
                 </a>
@@ -243,7 +254,8 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
             </div>
           </StaggerItem>
         </StaggerContainer>
-      </div>
+        </div>
+      </SacredCanvas>
     </section>
   )
 }

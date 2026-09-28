@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, BookOpen } from 'lucide-react'
 import { RevealOnScroll } from '@/components/ui/reveal'
 import { TextWordReveal, BlurTextReveal } from '@/components/ui/text-reveal'
+import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export interface FaithResourcesSectionProps {
@@ -34,20 +35,12 @@ export const FaithResourcesSection: React.FC<FaithResourcesSectionProps> = ({
   const resolvedFgUrl = getMediaUrl(fgImage, fgFallback)
 
   return (
-    <section className="py-12 sm:py-16 md:py-24 bg-white overflow-hidden select-none" data-node-id="275:810">
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 lg:gap-16 items-center">
-          {/* Dual Overlapping 3D Animated Images Showcase */}
-          <div className="lg:col-span-7 relative flex items-center justify-center min-h-[320px] sm:min-h-[420px] md:min-h-[480px] lg:min-h-[520px]">
-            {/* Ambient Background Glow */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 0.15, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2 }}
-              className="absolute w-[300px] sm:w-[450px] h-[300px] sm:h-[450px] bg-[#efbf04] rounded-full blur-[100px] pointer-events-none -z-10"
-            />
-
+    <section className="relative overflow-hidden select-none" data-node-id="275:810">
+      <SacredCanvas tone="pure-light" className="py-10 sm:py-14 md:py-16">
+        <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 lg:gap-16 items-center">
+            {/* Dual Overlapping 3D Animated Images Showcase */}
+            <div className="lg:col-span-7 relative flex items-center justify-center min-h-[300px] sm:min-h-[380px] md:min-h-[440px] lg:min-h-[480px]">
             <div className="relative w-full max-w-[460px] sm:max-w-[540px] lg:max-w-[600px] h-[290px] sm:h-[390px] md:h-[450px] lg:h-[470px] mx-auto">
               {/* Background Book Image - Layer 1 */}
               <motion.div
@@ -164,8 +157,9 @@ export const FaithResourcesSection: React.FC<FaithResourcesSectionProps> = ({
               </motion.div>
             </motion.div>
           </motion.div>
+          </div>
         </div>
-      </div>
+      </SacredCanvas>
     </section>
   )
 }

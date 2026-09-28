@@ -20,6 +20,9 @@ export const SundaySchoolPage: React.FC<SundaySchoolPageProps> = ({ data }) => {
           heroBannerImage={data?.heroBannerImage}
           heroBannerFallback={data?.heroBannerFallback}
           heroBannerAlt={data?.heroBannerAlt}
+          heroVideo={data?.heroVideo}
+          heroVideoFallback={data?.heroVideoFallback}
+          bannerVideoUrl={data?.bannerVideoUrl}
           heroVideoUrl={data?.heroVideoUrl}
           heroSubtitle={data?.heroSubtitle}
         />

@@ -3,7 +3,8 @@
 import React from 'react'
 import Image from 'next/image'
 import { RevealOnScroll } from '@/components/ui/reveal'
-import { TextWordReveal, GoldBarReveal } from '@/components/ui/text-reveal'
+import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
+import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export interface SundaySchoolSceneItem {
@@ -96,80 +97,64 @@ export const SundaySchoolScenesSection: React.FC<SundaySchoolScenesSectionProps>
   const row2Duplicated = buildSeamlessMarquee(activeRow2)
 
   return (
-    <section className="py-6 sm:py-10 md:py-14 bg-white overflow-hidden select-none" data-node-id="289:3779">
-      {/* Full-width Dark Navy Header Bar with Edge-to-Edge Gold Bars */}
-      <div className="bg-[#122f4a] min-h-[52px] sm:min-h-[64px] md:min-h-[76px] lg:h-[80px] py-2 sm:py-3 md:py-0 text-white relative shadow-sm mb-6 sm:mb-10 md:mb-12 flex items-center justify-between overflow-hidden">
-        <GoldBarReveal
-          direction="left"
-          delay={0.1}
-          className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[260px] xl:w-[323px] h-[5px] sm:h-[10px] md:h-[16px] lg:h-[20px] bg-[#efbf04] rounded-r-full flex-shrink-0"
-        />
+    <section className="relative overflow-hidden select-none" data-node-id="289:3779">
+      {/* Luminous Atmospheric Header Bar */}
+      <EditorialSectionHeader
+        eyebrow="YOUTH FELLOWSHIP & CLASSROOMS"
+        title={displayTitle}
+        variant="atmospheric"
+      />
 
-        <div className="flex-1 min-w-0 px-2 sm:px-4 md:px-8 text-center">
-          <TextWordReveal
-            as="h2"
-            delay={0.15}
-            className="font-poppins font-semibold text-white text-xs xs:text-sm sm:text-xl md:text-[26px] lg:text-[28px] tracking-wide uppercase leading-tight line-clamp-2"
-          >
-            {displayTitle}
-          </TextWordReveal>
-        </div>
+      <SacredCanvas tone="pure-light" className="pt-6 sm:pt-8 md:pt-10 pb-10 sm:pb-14 md:pb-16">
+        {/* 2-Row Opposite Direction Marquee Gallery */}
+        <RevealOnScroll direction="up" distance={20} duration={0.7} delay={0.1} className="flex flex-col gap-4 sm:gap-6">
+          {/* Row 1: Leftward slider */}
+          <div className="relative w-full overflow-hidden">
+            <div className="animate-marquee-left flex gap-4 sm:gap-6 py-1">
+              {row1Duplicated.map((photo, index) => {
+                const photoUrl = getMediaUrl(photo.image, photo.imageFallback || photo.src || '/scenes_of_sunday_school/image_1.png')
 
-        <GoldBarReveal
-          direction="right"
-          delay={0.1}
-          className="w-[32px] sm:w-[80px] md:w-[160px] lg:w-[260px] xl:w-[323px] h-[5px] sm:h-[10px] md:h-[16px] lg:h-[20px] bg-[#efbf04] rounded-l-full flex-shrink-0"
-        />
-      </div>
-
-      {/* 2-Row Opposite Direction Marquee Gallery */}
-      <RevealOnScroll direction="up" distance={20} duration={0.7} delay={0.1} className="flex flex-col gap-4 sm:gap-6">
-        {/* Row 1: Leftward slider */}
-        <div className="relative w-full overflow-hidden">
-          <div className="animate-marquee-left flex gap-4 sm:gap-6 py-1">
-            {row1Duplicated.map((photo, index) => {
-              const photoUrl = getMediaUrl(photo.image, photo.imageFallback || photo.src || '/scenes_of_sunday_school/image_1.png')
-
-              return (
-                <div
-                  key={`ss-r1-${photo.id || index}-${index}`}
-                  className="relative flex-shrink-0 w-[220px] sm:w-[300px] md:w-[367px] h-[140px] sm:h-[180px] md:h-[220px] rounded-[14px] sm:rounded-[18px] md:rounded-[20px] overflow-hidden shadow-md border border-slate-200 bg-slate-900 group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
-                >
-                  <Image
-                    src={photoUrl}
-                    alt={photo.alt || 'Sunday School Scene'}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-              )
-            })}
+                return (
+                  <div
+                    key={`ss-r1-${photo.id || index}-${index}`}
+                    className="relative flex-shrink-0 w-[220px] sm:w-[300px] md:w-[367px] h-[140px] sm:h-[180px] md:h-[220px] rounded-[14px] sm:rounded-[18px] md:rounded-[20px] overflow-hidden shadow-md border border-slate-200 bg-slate-900 group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+                  >
+                    <Image
+                      src={photoUrl}
+                      alt={photo.alt || 'Sunday School Scene'}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                )
+              })}
+            </div>
           </div>
-        </div>
 
-        {/* Row 2: Rightward slider */}
-        <div className="relative w-full overflow-hidden">
-          <div className="animate-marquee-right flex gap-4 sm:gap-6 py-1">
-            {row2Duplicated.map((photo, index) => {
-              const photoUrl = getMediaUrl(photo.image, photo.imageFallback || photo.src || '/scenes_of_sunday_school/image_5.png')
+          {/* Row 2: Rightward slider */}
+          <div className="relative w-full overflow-hidden">
+            <div className="animate-marquee-right flex gap-4 sm:gap-6 py-1">
+              {row2Duplicated.map((photo, index) => {
+                const photoUrl = getMediaUrl(photo.image, photo.imageFallback || photo.src || '/scenes_of_sunday_school/image_5.png')
 
-              return (
-                <div
-                  key={`ss-r2-${photo.id || index}-${index}`}
-                  className="relative flex-shrink-0 w-[220px] sm:w-[300px] md:w-[367px] h-[140px] sm:h-[180px] md:h-[220px] rounded-[14px] sm:rounded-[18px] md:rounded-[20px] overflow-hidden shadow-md border border-slate-200 bg-slate-900 group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
-                >
-                  <Image
-                    src={photoUrl}
-                    alt={photo.alt || 'Sunday School Scene'}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-              )
-            })}
+                return (
+                  <div
+                    key={`ss-r2-${photo.id || index}-${index}`}
+                    className="relative flex-shrink-0 w-[220px] sm:w-[300px] md:w-[367px] h-[140px] sm:h-[180px] md:h-[220px] rounded-[14px] sm:rounded-[18px] md:rounded-[20px] overflow-hidden shadow-md border border-slate-200 bg-slate-900 group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"
+                  >
+                    <Image
+                      src={photoUrl}
+                      alt={photo.alt || 'Sunday School Scene'}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                )
+              })}
+            </div>
           </div>
-        </div>
-      </RevealOnScroll>
+        </RevealOnScroll>
+      </SacredCanvas>
     </section>
   )
 }

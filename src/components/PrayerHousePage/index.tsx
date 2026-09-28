@@ -17,6 +17,9 @@ export const PrayerHousePage: React.FC<PrayerHousePageProps> = ({ data }) => {
         <PrayerHouseHeroSection
           headerTitle={data?.heroHeaderTitle}
           description={data?.heroDescription}
+          heroVideo={data?.heroVideo}
+          heroVideoFallback={data?.heroVideoFallback}
+          bannerVideoUrl={data?.bannerVideoUrl}
           bannerImage={data?.heroBannerImage}
           bannerImageFallback={data?.heroBannerFallback}
           bannerAlt={data?.heroBannerAlt}

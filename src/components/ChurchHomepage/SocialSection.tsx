@@ -4,6 +4,8 @@ import React from 'react'
 import Image from 'next/image'
 import { motion, type Variants } from 'framer-motion'
 import { TextWordReveal, BlurTextReveal } from '@/components/ui/text-reveal'
+import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
+import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export interface SocialPlatformItem {
@@ -83,7 +85,7 @@ const itemVariants: Variants = {
 
 export const SocialSection: React.FC<SocialSectionProps> = ({
   headerTitle = 'Our Social Media Platforms',
-  subtitle = 'Be a Part of Our Family',
+  subtitle = 'Be a Part of Our Global Family',
   platforms,
 }) => {
   const activePlatforms =
@@ -91,31 +93,23 @@ export const SocialSection: React.FC<SocialSectionProps> = ({
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-white select-none py-12 sm:py-16 md:py-20"
+      className="relative w-full overflow-hidden select-none"
       data-node-id="361:24"
       data-name="Social"
     >
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Section Header Text */}
-        <div className="mb-8 sm:mb-12 max-w-3xl mx-auto text-center">
-          <TextWordReveal
-            as="h2"
-            delay={0.05}
-            staggerDelay={0.035}
-            className="font-poppins font-medium text-[#0b0c1c] text-2xl sm:text-3xl md:text-[32px] lg:text-[34px] tracking-tight leading-tight"
-          >
-            {headerTitle}
-          </TextWordReveal>
-
-          <BlurTextReveal
-            as="p"
-            delay={0.2}
-            duration={0.6}
-            className="font-poppins font-normal text-[#707e94] text-sm sm:text-base md:text-[17px] mt-1.5 sm:mt-2"
-          >
-            {subtitle}
-          </BlurTextReveal>
+      <SacredCanvas tone="pure-light" className="py-10 sm:py-12 md:py-16">
+        {/* Section Header Text (Full width edge-to-edge gold bars) */}
+        <div className="w-full mb-8 sm:mb-10 text-center">
+          <EditorialSectionHeader
+            eyebrow="CONNECT & FOLLOW"
+            title={headerTitle}
+            subtitle={subtitle}
+            variant="editorial"
+            align="center"
+          />
         </div>
+
+        <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
         {/* Framer Motion Staggered Social Buttons: Strictly 1 line on desktop, vertically stacked on mobile */}
         <motion.div
@@ -172,7 +166,8 @@ export const SocialSection: React.FC<SocialSectionProps> = ({
             )
           })}
         </motion.div>
-      </div>
+        </div>
+      </SacredCanvas>
     </section>
   )
 }

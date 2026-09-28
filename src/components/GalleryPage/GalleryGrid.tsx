@@ -5,14 +5,41 @@ import Image from 'next/image'
 import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import { X, ZoomIn } from 'lucide-react'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
+import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
+import { RevealOnScroll } from '@/components/ui/reveal'
 
-const tierVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+const heroTileVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.94, y: 25 },
+  visible: {
+    opacity: 1,
+    scale: 1,
     y: 0,
     transition: {
-      duration: 0.65,
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+}
+
+const tileVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.96, y: 15 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
       ease: [0.22, 1, 0.36, 1],
     },
   },
@@ -195,19 +222,31 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
 
   return (
     <section className="relative pt-28 pb-8 sm:pt-32 sm:pb-12 md:pt-36 md:pb-16 bg-transparent select-none" data-node-id="228:641">
+      {/* Full-bleed Editorial Section Header */}
+      <div className="w-full text-center pt-2 sm:pt-4 mb-6 sm:mb-10">
+        <EditorialSectionHeader
+          eyebrow="SACRED MOMENTS & SIGNS"
+          title="GALLERY OF FAITH"
+          subtitle="A visual chronicle of divine power, joyous worship, and life-transforming miracles at The Church of Signs and Wonders."
+          variant="editorial"
+          align="center"
+        />
+      </div>
+
       <div className="max-w-[1140px] mx-auto px-3 sm:px-6 lg:px-0">
         {/* Unified 5-Column Grid Track System */}
-        <div className="flex flex-col gap-2 sm:gap-3 md:gap-3.5">
+        <div className="flex flex-col gap-2.5 sm:gap-3.5 md:gap-4">
           {/* 1. TOP MOSAIC: Left Arch Hero (2 Cols x 2 Rows) + Right 6 Cards (3 Cols x 2 Rows) */}
           <motion.div
-            variants={tierVariants}
+            variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-40px' }}
           >
-            <div className="grid grid-cols-5 grid-rows-2 gap-2 sm:gap-3 md:gap-3.5 h-[260px] sm:h-[400px] md:h-[480px] lg:h-[520px]">
+            <div className="grid grid-cols-5 grid-rows-2 gap-2.5 sm:gap-3.5 md:gap-4 h-[260px] sm:h-[400px] md:h-[480px] lg:h-[520px]">
               {/* Left Arch Hero (Cols 1-2, Rows 1-2) */}
-              <div
+              <motion.div
+                variants={heroTileVariants}
                 onClick={() =>
                   setSelectedPhoto({
                     src: archSrc,
@@ -215,7 +254,7 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                     caption: activePhotoArch.caption || DEFAULT_PHOTO_ARCH.caption || '',
                   })
                 }
-                className="col-span-2 row-span-2 relative h-full w-full rounded-[8px] sm:rounded-[16px] md:rounded-[20px] overflow-hidden shadow-md sm:shadow-xl border border-amber-200/40 bg-slate-900 group cursor-pointer"
+                className="col-span-2 row-span-2 relative h-full w-full rounded-[12px] sm:rounded-[18px] md:rounded-[22px] overflow-hidden shadow-lg sm:shadow-2xl border border-slate-200/90 hover:border-[#d4af37]/70 transition-all duration-500 bg-slate-950 group cursor-pointer"
               >
                 <Image
                   src={archSrc}
@@ -225,12 +264,13 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   priority
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow-lg text-[#003471]">
+                {/* Ambient Golden Vignette & Zoom Indicator */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#0a192f]/85 backdrop-blur-md text-[#efbf04] border border-[#d4af37]/40 flex items-center justify-center transform scale-75 group-hover:scale-100 group-hover:rotate-6 transition-all duration-300 shadow-xl">
                     <ZoomIn size={18} />
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Right 6 Cards (Cols 3-5, Rows 1-2) */}
               {activeTopSide.map((photo, index) => {
@@ -240,10 +280,11 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                 )
 
                 return (
-                  <div
+                  <motion.div
                     key={photo.id || `top-${index}`}
+                    variants={tileVariants}
                     onClick={() => handleOpenPhoto(photo, DEFAULT_TOP_ROW_SIDE_PHOTOS[index % DEFAULT_TOP_ROW_SIDE_PHOTOS.length].imageFallback!)}
-                    className="col-span-1 row-span-1 relative h-full w-full rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
+                    className="col-span-1 row-span-1 relative h-full w-full rounded-[8px] sm:rounded-[14px] md:rounded-[18px] overflow-hidden shadow-sm sm:shadow-md border border-slate-200/90 hover:border-[#d4af37]/70 transition-all duration-300 bg-slate-950 group cursor-pointer"
                   >
                     <Image
                       src={photoSrc}
@@ -252,12 +293,12 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                       sizes="(max-width: 768px) 20vw, 225px"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                      <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#0a192f]/85 backdrop-blur-md text-[#efbf04] border border-[#d4af37]/40 flex items-center justify-center transform scale-75 group-hover:scale-100 transition-all duration-300 shadow-lg">
                         <ZoomIn size={14} />
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 )
               })}
             </div>
@@ -265,12 +306,12 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
 
           {/* 2. MIDDLE STRIP: 5 Uniform Horizontal Cards */}
           <motion.div
-            variants={tierVariants}
+            variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-40px' }}
           >
-            <div className="grid grid-cols-5 gap-2 sm:gap-3 md:gap-3.5 h-[130px] sm:h-[200px] md:h-[240px] lg:h-[260px]">
+            <div className="grid grid-cols-5 gap-2.5 sm:gap-3.5 md:gap-4 h-[130px] sm:h-[200px] md:h-[240px] lg:h-[260px]">
               {activeMiddle.map((photo, index) => {
                 const photoSrc = getMediaUrl(
                   photo.image,
@@ -278,10 +319,11 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                 )
 
                 return (
-                  <div
+                  <motion.div
                     key={photo.id || `mid-${index}`}
+                    variants={tileVariants}
                     onClick={() => handleOpenPhoto(photo, DEFAULT_MIDDLE_ROW_PHOTOS[index % DEFAULT_MIDDLE_ROW_PHOTOS.length].imageFallback!)}
-                    className="col-span-1 relative h-full w-full rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
+                    className="col-span-1 relative h-full w-full rounded-[8px] sm:rounded-[14px] md:rounded-[18px] overflow-hidden shadow-sm sm:shadow-md border border-slate-200/90 hover:border-[#d4af37]/70 transition-all duration-300 bg-slate-950 group cursor-pointer"
                   >
                     <Image
                       src={photoSrc}
@@ -290,12 +332,12 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                       sizes="(max-width: 768px) 20vw, 225px"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                      <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#0a192f]/85 backdrop-blur-md text-[#efbf04] border border-[#d4af37]/40 flex items-center justify-center transform scale-75 group-hover:scale-100 transition-all duration-300 shadow-lg">
                         <ZoomIn size={14} />
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 )
               })}
             </div>
@@ -303,17 +345,18 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
 
           {/* 3. BOTTOM MOSAIC: Left (Col 1 x 2 Rows) + Center Podium Hero (Cols 2-3 x 2 Rows) + Right (Cols 4-5 x 2 Rows) */}
           <motion.div
-            variants={tierVariants}
+            variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-40px' }}
           >
-            <div className="grid grid-cols-5 grid-rows-2 gap-2 sm:gap-3 md:gap-3.5 h-[260px] sm:h-[400px] md:h-[480px] lg:h-[520px]">
+            <div className="grid grid-cols-5 grid-rows-2 gap-2.5 sm:gap-3.5 md:gap-4 h-[260px] sm:h-[400px] md:h-[480px] lg:h-[520px]">
               {/* Left Col 1, Row 1 */}
               {activeBottomLeft[0] && (
-                <div
+                <motion.div
+                  variants={tileVariants}
                   onClick={() => handleOpenPhoto(activeBottomLeft[0], DEFAULT_BOTTOM_ROW_SIDE_PHOTOS_LEFT[0].imageFallback!)}
-                  className="col-start-1 row-start-1 relative h-full w-full rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
+                  className="col-start-1 row-start-1 relative h-full w-full rounded-[8px] sm:rounded-[14px] md:rounded-[18px] overflow-hidden shadow-sm sm:shadow-md border border-slate-200/90 hover:border-[#d4af37]/70 transition-all duration-300 bg-slate-950 group cursor-pointer"
                 >
                   <Image
                     src={getMediaUrl(activeBottomLeft[0].image, activeBottomLeft[0].imageFallback || activeBottomLeft[0].src || DEFAULT_BOTTOM_ROW_SIDE_PHOTOS_LEFT[0].imageFallback!)}
@@ -322,19 +365,20 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                     sizes="(max-width: 768px) 20vw, 225px"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#0a192f]/85 backdrop-blur-md text-[#efbf04] border border-[#d4af37]/40 flex items-center justify-center transform scale-75 group-hover:scale-100 transition-all duration-300 shadow-lg">
                       <ZoomIn size={14} />
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )}
 
               {/* Left Col 1, Row 2 */}
               {activeBottomLeft[1] && (
-                <div
+                <motion.div
+                  variants={tileVariants}
                   onClick={() => handleOpenPhoto(activeBottomLeft[1], DEFAULT_BOTTOM_ROW_SIDE_PHOTOS_LEFT[1].imageFallback!)}
-                  className="col-start-1 row-start-2 relative h-full w-full rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
+                  className="col-start-1 row-start-2 relative h-full w-full rounded-[8px] sm:rounded-[14px] md:rounded-[18px] overflow-hidden shadow-sm sm:shadow-md border border-slate-200/90 hover:border-[#d4af37]/70 transition-all duration-300 bg-slate-950 group cursor-pointer"
                 >
                   <Image
                     src={getMediaUrl(activeBottomLeft[1].image, activeBottomLeft[1].imageFallback || activeBottomLeft[1].src || DEFAULT_BOTTOM_ROW_SIDE_PHOTOS_LEFT[1].imageFallback!)}
@@ -343,16 +387,17 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                     sizes="(max-width: 768px) 20vw, 225px"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#0a192f]/85 backdrop-blur-md text-[#efbf04] border border-[#d4af37]/40 flex items-center justify-center transform scale-75 group-hover:scale-100 transition-all duration-300 shadow-lg">
                       <ZoomIn size={14} />
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )}
 
               {/* Center Podium Hero (Cols 2-3, Rows 1-2) */}
-              <div
+              <motion.div
+                variants={heroTileVariants}
                 onClick={() =>
                   setSelectedPhoto({
                     src: podiumSrc,
@@ -360,7 +405,7 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                     caption: activePodiumHero.caption || DEFAULT_PHOTO_PODIUM_HERO.caption || '',
                   })
                 }
-                className="col-start-2 col-span-2 row-start-1 row-span-2 relative h-full w-full rounded-[8px] sm:rounded-[16px] md:rounded-[20px] overflow-hidden shadow-md sm:shadow-2xl border border-amber-200/50 bg-slate-900 group cursor-pointer"
+                className="col-start-2 col-span-2 row-start-1 row-span-2 relative h-full w-full rounded-[12px] sm:rounded-[18px] md:rounded-[22px] overflow-hidden shadow-lg sm:shadow-2xl border border-slate-200/90 hover:border-[#d4af37]/70 transition-all duration-500 bg-slate-950 group cursor-pointer"
               >
                 <Image
                   src={podiumSrc}
@@ -370,18 +415,19 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   priority
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow-lg text-[#003471]">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-[#0a192f]/85 backdrop-blur-md text-[#efbf04] border border-[#d4af37]/40 flex items-center justify-center transform scale-75 group-hover:scale-100 group-hover:rotate-6 transition-all duration-300 shadow-xl">
                     <ZoomIn size={18} />
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Right Col 4, Row 1 */}
               {activeBottomRight[0] && (
-                <div
+                <motion.div
+                  variants={tileVariants}
                   onClick={() => handleOpenPhoto(activeBottomRight[0], DEFAULT_BOTTOM_ROW_SIDE_PHOTOS_RIGHT[0].imageFallback!)}
-                  className="col-start-4 row-start-1 relative h-full w-full rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
+                  className="col-start-4 row-start-1 relative h-full w-full rounded-[8px] sm:rounded-[14px] md:rounded-[18px] overflow-hidden shadow-sm sm:shadow-md border border-slate-200/90 hover:border-[#d4af37]/70 transition-all duration-300 bg-slate-950 group cursor-pointer"
                 >
                   <Image
                     src={getMediaUrl(activeBottomRight[0].image, activeBottomRight[0].imageFallback || activeBottomRight[0].src || DEFAULT_BOTTOM_ROW_SIDE_PHOTOS_RIGHT[0].imageFallback!)}
@@ -390,19 +436,20 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                     sizes="(max-width: 768px) 20vw, 225px"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#0a192f]/85 backdrop-blur-md text-[#efbf04] border border-[#d4af37]/40 flex items-center justify-center transform scale-75 group-hover:scale-100 transition-all duration-300 shadow-lg">
                       <ZoomIn size={14} />
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )}
 
               {/* Right Col 5, Row 1 */}
               {activeBottomRight[1] && (
-                <div
+                <motion.div
+                  variants={tileVariants}
                   onClick={() => handleOpenPhoto(activeBottomRight[1], DEFAULT_BOTTOM_ROW_SIDE_PHOTOS_RIGHT[1].imageFallback!)}
-                  className="col-start-5 row-start-1 relative h-full w-full rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
+                  className="col-start-5 row-start-1 relative h-full w-full rounded-[8px] sm:rounded-[14px] md:rounded-[18px] overflow-hidden shadow-sm sm:shadow-md border border-slate-200/90 hover:border-[#d4af37]/70 transition-all duration-300 bg-slate-950 group cursor-pointer"
                 >
                   <Image
                     src={getMediaUrl(activeBottomRight[1].image, activeBottomRight[1].imageFallback || activeBottomRight[1].src || DEFAULT_BOTTOM_ROW_SIDE_PHOTOS_RIGHT[1].imageFallback!)}
@@ -411,19 +458,20 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                     sizes="(max-width: 768px) 20vw, 225px"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#0a192f]/85 backdrop-blur-md text-[#efbf04] border border-[#d4af37]/40 flex items-center justify-center transform scale-75 group-hover:scale-100 transition-all duration-300 shadow-lg">
                       <ZoomIn size={14} />
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )}
 
               {/* Right Col 4, Row 2 */}
               {activeBottomRight[2] && (
-                <div
+                <motion.div
+                  variants={tileVariants}
                   onClick={() => handleOpenPhoto(activeBottomRight[2], DEFAULT_BOTTOM_ROW_SIDE_PHOTOS_RIGHT[2].imageFallback!)}
-                  className="col-start-4 row-start-2 relative h-full w-full rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
+                  className="col-start-4 row-start-2 relative h-full w-full rounded-[8px] sm:rounded-[14px] md:rounded-[18px] overflow-hidden shadow-sm sm:shadow-md border border-slate-200/90 hover:border-[#d4af37]/70 transition-all duration-300 bg-slate-950 group cursor-pointer"
                 >
                   <Image
                     src={getMediaUrl(activeBottomRight[2].image, activeBottomRight[2].imageFallback || activeBottomRight[2].src || DEFAULT_BOTTOM_ROW_SIDE_PHOTOS_RIGHT[2].imageFallback!)}
@@ -432,19 +480,20 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                     sizes="(max-width: 768px) 20vw, 225px"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#0a192f]/85 backdrop-blur-md text-[#efbf04] border border-[#d4af37]/40 flex items-center justify-center transform scale-75 group-hover:scale-100 transition-all duration-300 shadow-lg">
                       <ZoomIn size={14} />
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )}
 
               {/* Right Col 5, Row 2 */}
               {activeBottomRight[3] && (
-                <div
+                <motion.div
+                  variants={tileVariants}
                   onClick={() => handleOpenPhoto(activeBottomRight[3], DEFAULT_BOTTOM_ROW_SIDE_PHOTOS_RIGHT[3].imageFallback!)}
-                  className="col-start-5 row-start-2 relative h-full w-full rounded-[6px] sm:rounded-[12px] md:rounded-[16px] overflow-hidden shadow-sm sm:shadow-md border border-white/60 bg-slate-900 group cursor-pointer"
+                  className="col-start-5 row-start-2 relative h-full w-full rounded-[8px] sm:rounded-[14px] md:rounded-[18px] overflow-hidden shadow-sm sm:shadow-md border border-slate-200/90 hover:border-[#d4af37]/70 transition-all duration-300 bg-slate-950 group cursor-pointer"
                 >
                   <Image
                     src={getMediaUrl(activeBottomRight[3].image, activeBottomRight[3].imageFallback || activeBottomRight[3].src || DEFAULT_BOTTOM_ROW_SIDE_PHOTOS_RIGHT[3].imageFallback!)}
@@ -453,12 +502,12 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
                     sizes="(max-width: 768px) 20vw, 225px"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                    <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-75 group-hover:scale-100 shadow text-[#003471]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-[#0a192f]/85 backdrop-blur-md text-[#efbf04] border border-[#d4af37]/40 flex items-center justify-center transform scale-75 group-hover:scale-100 transition-all duration-300 shadow-lg">
                       <ZoomIn size={14} />
                     </div>
                   </div>
-                </div>
+                </motion.div>
               )}
             </div>
           </motion.div>
@@ -474,27 +523,27 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             onClick={() => setSelectedPhoto(null)}
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+            className="fixed inset-0 z-50 bg-[#030712]/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 select-text"
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.92, y: 15 }}
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92, y: 15 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              exit={{ opacity: 0, scale: 0.92, y: 20 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-4xl w-full bg-slate-900 rounded-[20px] overflow-hidden shadow-2xl border border-white/20 flex flex-col"
+              className="relative max-w-4xl w-full bg-[#0a192f] rounded-[24px] overflow-hidden shadow-2xl border border-[#d4af37]/40 flex flex-col"
             >
               {/* Close Button */}
               <button
                 onClick={() => setSelectedPhoto(null)}
-                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-colors shadow cursor-pointer"
+                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-[#0a192f]/80 hover:bg-[#0a192f] text-[#efbf04] border border-[#d4af37]/35 flex items-center justify-center transition-all shadow-lg hover:scale-110 cursor-pointer"
                 aria-label="Close Lightbox"
               >
-                <X size={22} />
+                <X size={20} />
               </button>
 
               {/* Photo Container */}
-              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-black">
+              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] bg-slate-950">
                 <Image
                   src={selectedPhoto.src}
                   alt={selectedPhoto.alt}
@@ -505,12 +554,12 @@ export const GalleryGrid: React.FC<GalleryGridProps> = ({
               </div>
 
               {/* Caption Bar */}
-              <div className="p-4 sm:p-6 bg-[#122f4a] text-white">
-                <p className="font-poppins font-semibold text-base sm:text-lg">
+              <div className="p-5 sm:p-7 bg-gradient-to-r from-[#0a192f] via-[#122f4a] to-[#0a192f] text-white border-t border-[#d4af37]/20">
+                <p className="font-poppins font-semibold text-base sm:text-lg text-white">
                   {selectedPhoto.caption}
                 </p>
-                <p className="font-poppins text-slate-300 text-xs sm:text-sm mt-1">
-                  Ankur Narula Ministries &mdash; The Church of Signs and Wonders
+                <p className="font-poppins text-[#efbf04] text-xs sm:text-sm mt-1 font-medium">
+                  The Church of Signs and Wonders &mdash; Ankur Narula Ministries
                 </p>
               </div>
             </motion.div>

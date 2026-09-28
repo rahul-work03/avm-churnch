@@ -67,8 +67,43 @@ const DEFAULT_TESTIMONIES = [
     imageFallback: '/figma-assets/6b7f869d048b1af39a42b08c4bacff57cb6ed577.png',
     buttonLabel: 'READ FULL TESTIMONY',
   },
+  {
+    person: 'Brother Gurpreet Singh',
+    title: 'Instant Miracle Healing from Chronic Spinal Cord Degeneration',
+    summary:
+      'AFTER SUFFERING INTENSE LOWER BACK PAIN AND SPINAL IMMOBILITY FOR OVER 4 YEARS, HE WAS SUPERNATURALLY HEALED AT PRAYER MOUNTAIN AND CAN NOW WALK FREELY WITHOUT ANY PAIN.',
+    slug: 'brother-gurpreet-healing',
+    imageFallback: '/figma-assets/88fe21040a6d042f53b945fa5a996447efd6bcfd.png',
+    buttonLabel: 'READ FULL TESTIMONY',
+  },
+  {
+    person: 'Sister Manpreet Kaur',
+    title: 'Divine Restoration of Broken Marriage & Peaceful Family Revival',
+    summary:
+      'FACING IMMINENT DIVORCE AND CONTINUOUS TURMOIL, SHE SOUGHT GOD AT PRAYER MOUNTAIN. GOD HEARD HER CRIES, RECONCILED HER MARRIAGE, AND FILLED HER HOME WITH HIS BLESSING.',
+    slug: 'sister-manpreet-deliverance',
+    imageFallback: '/figma-assets/6b7f869d048b1af39a42b08c4bacff57cb6ed577.png',
+    buttonLabel: 'READ FULL TESTIMONY',
+  },
+  {
+    person: 'Brother Harjit Singh',
+    title: 'Delivered from 12 Years of Severe Substance Addiction & Depression',
+    summary:
+      'BOUND IN ALCOHOLISM AND SUICIDAL DEPRESSION, HIS LIFE WAS SHATTERED. AFTER COMMITTING TO FASTING AND PRAYER ON THE MOUNTAIN, HE WAS TOTALLY SET FREE AND TRANSFORMED.',
+    slug: 'brother-harjit-deliverance',
+    imageFallback: '/figma-assets/88fe21040a6d042f53b945fa5a996447efd6bcfd.png',
+    buttonLabel: 'READ FULL TESTIMONY',
+  },
+  {
+    person: 'Sister Jaswinder Kaur',
+    title: 'Miraculous Childbirth Testimony after 8 Years of Barrenness',
+    summary:
+      'DOCTORS DECLARED IT MEDICALLY IMPOSSIBLE FOR HER TO CONCEIVE. SHE ANOINTED HERSELF AND WEPT BEFORE GOD AT PRAYER MOUNTAIN; WITHIN A YEAR, GOD BLESSED HER WITH A HEALTHY BABY BOY.',
+    slug: 'sister-jaswinder-healing',
+    imageFallback: '/figma-assets/6b7f869d048b1af39a42b08c4bacff57cb6ed577.png',
+    buttonLabel: 'READ FULL TESTIMONY',
+  },
 ]
-
 
 export const PrayerMountainPageGlobal: GlobalConfig = {
   slug: 'prayer-mountain-page',
@@ -113,6 +148,23 @@ export const PrayerMountainPageGlobal: GlobalConfig = {
                 "The Prayer Mountain is a sacred place dedicated to prayer, meditation, and spiritual renewal. It is where believers gather to seek God's presence, intercede for their needs, and grow in faith. Here, individuals can experience deep encounters with God and leave spiritually rejuvenated.",
             },
             {
+              name: 'heroVideo',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Hero Autoplay Video (Optional MP4)',
+            },
+            {
+              name: 'heroVideoFallback',
+              type: 'text',
+              label: 'Fallback Hero Video Path',
+              defaultValue: '/ministries_hero_video.mp4',
+            },
+            {
+              name: 'bannerVideoUrl',
+              type: 'text',
+              label: 'Direct Banner Video URL (Optional)',
+            },
+            {
               name: 'heroBannerImage',
               type: 'upload',
               relationTo: 'media',
@@ -133,7 +185,7 @@ export const PrayerMountainPageGlobal: GlobalConfig = {
             {
               name: 'heroSubtitle',
               type: 'text',
-              label: 'Subtitle Under Hero Photo',
+              label: 'Subtitle Under Hero Photo/Video',
               defaultValue:
                 'A consecrated place to seek God—daily at 8:00 PM we gather in expectation of His presence.',
             },
@@ -243,7 +295,7 @@ export const PrayerMountainPageGlobal: GlobalConfig = {
               name: 'testimoniesHeaderTitle',
               type: 'text',
               label: 'Section Header Title',
-              defaultValue: 'TESTIMONIES OF PRAYER MOUTAIN',
+              defaultValue: 'TESTIMONIES OF PRAYER MOUNTAIN',
             },
             {
               name: 'testimonies',
@@ -292,7 +344,6 @@ export const PrayerMountainPageGlobal: GlobalConfig = {
                   type: 'text',
                   label: 'Fallback Photo Path',
                 },
-
               ],
             },
           ],
@@ -321,21 +372,17 @@ export const PrayerMountainPageGlobal: GlobalConfig = {
             {
               name: 'locationCardTitle',
               type: 'text',
-              label: 'Location Card Title',
-              defaultValue: 'LOCATION',
+              admin: { hidden: true },
             },
             {
               name: 'locationCardDescription',
               type: 'text',
-              label: 'Location Card Description',
-              defaultValue: 'Prayer Mountain, Ankur Narula Ministries, Punjab, India',
+              admin: { hidden: true },
             },
             {
               name: 'locationUrl',
               type: 'text',
-              label: 'Location Google Maps / Directions Link',
-              defaultValue:
-                'https://maps.google.com/?q=The+Church+of+Signs+and+Wonders+Khambra+Jalandhar+Punjab+India',
+              admin: { hidden: true },
             },
           ],
         },
@@ -343,3 +390,4 @@ export const PrayerMountainPageGlobal: GlobalConfig = {
     },
   ],
 }
+
