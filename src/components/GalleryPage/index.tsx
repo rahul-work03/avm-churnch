@@ -3,7 +3,7 @@
 import React, { useState, useMemo, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react'
 import ParallaxUnfurlingGallery, {
   type GalleryPhotoItem,
   DEFAULT_GALLERY_ITEMS,
@@ -143,14 +143,38 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ data }) => {
       <div className="absolute top-[1000px] right-10 w-[550px] h-[550px] bg-[#efbf04]/5 rounded-full blur-[140px] pointer-events-none" />
 
       {/* 1. Full-Width Editorial Header with Edge-to-Edge Gold Wing Bars */}
-      <div className="w-full pt-28 sm:pt-36 pb-8 sm:pb-12 text-center relative z-10">
+      <div className="w-full pt-28 sm:pt-32 pb-2 sm:pb-3 text-center relative z-10">
         <EditorialSectionHeader
-          eyebrow="SACRED MOMENTS"
           title="Moments of Glory & Faith"
           subtitle="Experience the vibrant atmosphere of worship, miracle crusades, and apostolic revival with Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula."
           variant="editorial"
           align="center"
         />
+
+        {/* Ambient Gold Halo Effect in the gap */}
+        <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[550px] h-[120px] bg-[radial-gradient(ellipse_at_center,rgba(239,191,4,0.18),transparent_70%)] blur-[35px] pointer-events-none" />
+
+        {/* Floating Sacred Scroll Pill Indicator */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="mt-4 sm:mt-5 flex items-center justify-center relative z-20 pointer-events-none select-none"
+        >
+          <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-500/10 via-[#efbf04]/20 to-amber-500/10 border border-[#efbf04]/40 shadow-[0_4px_18px_rgba(239,191,4,0.15)] backdrop-blur-md">
+            <Sparkles className="w-3.5 h-3.5 text-[#efbf04] animate-pulse" />
+            <span className="text-[10px] sm:text-[11.5px] font-poppins font-semibold uppercase tracking-[0.18em] text-[#b8860b]">
+              Scroll to Unfurl Gallery
+            </span>
+            <motion.span
+              animate={{ y: [0, 3, 0] }}
+              transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+              className="text-[#c59b27] text-xs font-bold leading-none"
+            >
+              ↓
+            </motion.span>
+          </div>
+        </motion.div>
       </div>
 
       {/* 2. Immersive 3D Parallax Gallery (Starts Cleanly Below the Header) */}

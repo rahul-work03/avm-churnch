@@ -238,26 +238,26 @@ export default function ParallaxUnfurlingGallery({
   })
 
   // 3D Matrix Parallax transforms: smoothly unrolls from 3D angled view into a 100% straight flat view by 0.75-1.0
-  const rotateY = useTransform(smoothProgress, [0, 0.75, 1], [-28, 0, 0])
-  const rotateX = useTransform(smoothProgress, [0, 0.75, 1], [16, 0, 0])
-  const rotateZ = useTransform(smoothProgress, [0, 0.75, 1], [8, 0, 0])
-  const translateZ = useTransform(smoothProgress, [0, 0.75, 1], [-220, 0, 0])
+  const rotateY = useTransform(smoothProgress, [0, 0.75, 1], [-22, 0, 0])
+  const rotateX = useTransform(smoothProgress, [0, 0.75, 1], [10, 0, 0])
+  const rotateZ = useTransform(smoothProgress, [0, 0.75, 1], [4, 0, 0])
+  const translateZ = useTransform(smoothProgress, [0, 0.75, 1], [-180, 0, 0])
 
   // Scroll journey from Row 1 through Row 4:
-  // At progress = 0: Top row (Row 1) is visible
+  // At progress = 0: Top row starts fully in-frame with complete rounded borders (no clipping)
   // As user scrolls: Rows 1 -> 2 -> 3 -> 4 pan through with dynamic parallax shifts
-  // At progress = 1.0: Columns shift by -37.5% so Row 4 (the 4th and final row) is 100% FULLY and EVENLY displayed!
-  const yCol1 = useTransform(smoothProgress, [0, 0.4, 0.8, 1], ['37.5%', '10%', '-25%', '-37.5%'])
-  const yCol2 = useTransform(smoothProgress, [0, 0.4, 0.8, 1], ['25%', '-5%', '-45%', '-37.5%'])
-  const yCol3 = useTransform(smoothProgress, [0, 0.4, 0.8, 1], ['42%', '15%', '-20%', '-37.5%'])
-  const yCol4 = useTransform(smoothProgress, [0, 0.4, 0.8, 1], ['30%', '0%', '-40%', '-37.5%'])
+  // At progress = 1.0: Columns shift to -37.5% so Row 4 is 100% in view
+  const yCol1 = useTransform(smoothProgress, [0, 0.4, 0.8, 1], ['34%', '8%', '-20%', '-37.5%'])
+  const yCol2 = useTransform(smoothProgress, [0, 0.4, 0.8, 1], ['28%', '-2%', '-34%', '-37.5%'])
+  const yCol3 = useTransform(smoothProgress, [0, 0.4, 0.8, 1], ['38%', '12%', '-16%', '-37.5%'])
+  const yCol4 = useTransform(smoothProgress, [0, 0.4, 0.8, 1], ['30%', '2%', '-30%', '-37.5%'])
 
   return (
     <section
       ref={containerRef}
       className={`relative w-full h-[280vh] sm:h-[300vh] bg-transparent text-[#0b0c1c] selection:bg-[#efbf04]/30 selection:text-[#0b0c1c] ${className}`}
     >
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden">
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden pt-12 sm:pt-16 md:pt-20">
         {/* 4x4 3D Parallax Matrix -> Lands with Row 4 (4th row) fully in view */}
         <div
           className="absolute inset-0 flex justify-center items-center pointer-events-none"

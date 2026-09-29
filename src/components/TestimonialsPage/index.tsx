@@ -61,8 +61,8 @@ export const TestimonialsPage: React.FC<TestimonialsPageProps> = ({
   const ctaQuote =
     pageData?.ctaQuote ||
     '“They overcame him by the blood of the Lamb and by the word of their testimony.” — Revelation 12:11'
-  const ctaButton1Label = pageData?.ctaButton1Label || 'Submit Prayer Request'
-  const ctaButton1Url = pageData?.ctaButton1Url || '/prayer-request'
+  const ctaButton1Label = pageData?.ctaButton1Label || 'Contact Us'
+  const ctaButton1Url = pageData?.ctaButton1Url || '/contact-us'
 
   return (
     <main className="min-h-screen bg-[#f8fafc] text-[#344054] antialiased pt-28 pb-16 sm:pt-36 sm:pb-24 select-none">
@@ -165,13 +165,13 @@ export const TestimonialsPage: React.FC<TestimonialsPageProps> = ({
           })}
         </motion.div>
 
-        {/* Bottom Inspirational Quote Banner */}
+        {/* Bottom Inspirational Quote Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-12 bg-white border border-[#e5e7eb] rounded-[16px] p-6 sm:p-8 text-center space-y-4 shadow-sm hover:shadow-md transition-shadow"
+          className="mt-14 sm:mt-18 text-center space-y-4 max-w-2xl mx-auto"
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
@@ -199,7 +199,7 @@ export const TestimonialsPage: React.FC<TestimonialsPageProps> = ({
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href={ctaButton1Url}
-                className="w-full sm:w-auto px-6 py-3 rounded-lg bg-[#003471] hover:bg-[#002552] text-white font-medium text-sm transition text-center shadow inline-block"
+                className="w-full sm:w-auto px-7 py-3 rounded-lg bg-[#003471] hover:bg-[#002552] text-white font-medium text-sm transition text-center shadow-md hover:shadow-lg inline-block"
               >
                 {ctaButton1Label}
               </Link>

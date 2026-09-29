@@ -402,7 +402,7 @@ const itemVariants: Variants = {
 }
 
 export const BranchesDirectorySection: React.FC<BranchesDirectorySectionProps> = ({
-  directoryHeaderTitle = 'CHURCH BRANCHES DIRECTORY',
+  directoryHeaderTitle = 'ANM CHURCHES IN INDIA',
   nationalBranches,
   internationalBranches,
 }) => {
@@ -430,8 +430,7 @@ export const BranchesDirectorySection: React.FC<BranchesDirectorySectionProps> =
       {/* Full-width Atmospheric Section Header with Edge-to-Edge Golden Wing Bars */}
       <div className="w-full text-center mb-8 sm:mb-12">
         <EditorialSectionHeader
-          eyebrow="FIND A CHURCH NEAR YOU"
-          title={directoryHeaderTitle || 'CHURCH BRANCHES DIRECTORY'}
+          title={directoryHeaderTitle || 'ANM CHURCHES IN INDIA'}
           subtitle="Locate a worship center near you across India and internationally to join us in powerful praise and apostolic ministry."
           variant="atmospheric"
           align="center"
