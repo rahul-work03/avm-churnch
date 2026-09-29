@@ -25,14 +25,18 @@ export const PrayerMountainHeroSection: React.FC<PrayerMountainHeroSectionProps>
   headerTitle = 'PRAYER MOUNTAIN',
   description = "The Prayer Mountain is a sacred place dedicated to prayer, meditation, and spiritual renewal. It is where believers gather to seek God's presence, intercede for their needs, and grow in faith. Here, individuals can experience deep encounters with God and leave spiritually rejuvenated.",
   heroVideo,
-  heroVideoFallback,
+  heroVideoFallback = '/prayer_mountain_hero.mp4',
   bannerVideoUrl,
   bannerImage,
   bannerImageFallback = '/prayer_mountain_hero.png',
   bannerAlt = 'Prayer Mountain - Ankur Narula Ministries',
   subtitle = 'A consecrated place to seek God—daily at 8:00 PM we gather in expectation of His presence.',
 }) => {
-  const resolvedVideoUrl = bannerVideoUrl || (heroVideo ? getMediaUrl(heroVideo, heroVideoFallback || '/ministries_hero_video.mp4') : null)
+  const resolvedVideoUrl =
+    bannerVideoUrl ||
+    (heroVideo
+      ? getMediaUrl(heroVideo, heroVideoFallback || '/prayer_mountain_hero.mp4')
+      : (heroVideoFallback || '/prayer_mountain_hero.mp4'))
   const resolvedBannerUrl = getMediaUrl(bannerImage, bannerImageFallback)
   const resolvedBannerAlt = getMediaAlt(bannerImage, bannerAlt)
 

@@ -72,31 +72,32 @@ const DEFAULT_SOCIAL_LINKS: FooterSocialLink[] = [
     name: 'Instagram',
     iconFallback: '/instagram_logo_footer.png',
     url: 'https://www.instagram.com/ankurnarulaministries',
-    width: 27,
-    height: 27,
+    width: 36,
+    height: 36,
   },
   {
     name: 'Facebook',
     iconFallback: '/facebook_logo_footer.png',
     url: 'https://www.facebook.com/ankurnarulaministries/',
-    width: 26,
-    height: 27,
+    width: 36,
+    height: 36,
   },
   {
     name: 'YouTube',
     iconFallback: '/youtube_logo_footer.png',
     url: 'https://www.youtube.com/@ankurnarulaministries',
-    width: 25,
-    height: 24,
+    width: 36,
+    height: 36,
   },
   {
     name: 'X Twitter',
     iconFallback: '/twitter_logo_footer.png',
     url: 'https://x.com/apostleankur',
-    width: 27,
-    height: 27,
+    width: 36,
+    height: 36,
   },
 ]
+
 
 const FooterMapEmbed: React.FC<{ src: string; className?: string }> = ({
   src,
@@ -254,11 +255,9 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
               <h4 className="font-lato font-bold text-[18px] text-white text-left">
                 Social Media Platforms
               </h4>
-              <div className="flex items-center justify-start gap-3 mt-2">
+              <div className="flex items-center justify-start gap-3.5 mt-3">
                 {socialLinks.map((item, idx) => {
                   const iconUrl = getMediaUrl(item.icon, item.iconFallback || '')
-                  const w = item.width || 24
-                  const h = item.height || 24
 
                   return (
                     <a
@@ -266,16 +265,15 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="relative flex items-center justify-center hover:opacity-85 transition transform hover:scale-110 flex-shrink-0"
-                      style={{ width: `${w}px`, height: `${h}px` }}
+                      className="relative flex items-center justify-center w-8 h-8 md:w-9 md:h-9 transition-all duration-300 hover:scale-120 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] hover:drop-shadow-[0_0_12px_rgba(239,191,4,0.75)] flex-shrink-0"
                       aria-label={item.name}
                     >
                       <Image
                         src={iconUrl}
                         alt={item.name}
-                        width={w}
-                        height={h}
-                        className="object-contain"
+                        width={36}
+                        height={36}
+                        className="w-full h-full object-contain pointer-events-none select-none transition-all duration-300"
                       />
                     </a>
                   )
@@ -373,11 +371,9 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
           <div className="flex flex-col items-start text-left space-y-3.5">
             <div className="w-full text-left">
               <h4 className="font-lato font-bold text-[16px] text-white text-left mb-1.5">Social Media Platforms</h4>
-              <div className="flex items-center justify-start gap-3">
+              <div className="flex items-center justify-start gap-3 mt-2">
                 {socialLinks.map((item, idx) => {
                   const iconUrl = getMediaUrl(item.icon, item.iconFallback || '')
-                  const w = item.width || 24
-                  const h = item.height || 24
 
                   return (
                     <a
@@ -385,11 +381,16 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="relative hover:opacity-85 transition"
-                      style={{ width: `${w}px`, height: `${h}px` }}
+                      className="relative flex items-center justify-center w-8 h-8 transition-all duration-300 hover:scale-120 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] hover:drop-shadow-[0_0_10px_rgba(239,191,4,0.75)] flex-shrink-0"
                       aria-label={item.name}
                     >
-                      <Image src={iconUrl} alt={item.name} width={w} height={h} className="object-contain" />
+                      <Image
+                        src={iconUrl}
+                        alt={item.name}
+                        width={32}
+                        height={32}
+                        className="w-full h-full object-contain pointer-events-none select-none transition-all duration-300"
+                      />
                     </a>
                   )
                 })}
@@ -495,8 +496,6 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
           <div className="flex items-center justify-start gap-3 mt-2.5">
             {socialLinks.map((item, idx) => {
               const iconUrl = getMediaUrl(item.icon, item.iconFallback || '')
-              const w = item.width || 24
-              const h = item.height || 24
 
               return (
                 <a
@@ -504,16 +503,15 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative flex items-center justify-center hover:opacity-85 transition"
-                  style={{ width: `${w}px`, height: `${h}px` }}
+                  className="relative flex items-center justify-center w-8 h-8 transition-all duration-300 hover:scale-120 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] hover:drop-shadow-[0_0_10px_rgba(239,191,4,0.75)] flex-shrink-0"
                   aria-label={item.name}
                 >
                   <Image
                     src={iconUrl}
                     alt={item.name}
-                    width={w}
-                    height={h}
-                    className="object-contain"
+                    width={32}
+                    height={32}
+                    className="w-full h-full object-contain pointer-events-none select-none transition-all duration-300"
                   />
                 </a>
               )

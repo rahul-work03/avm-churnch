@@ -157,7 +157,7 @@ export const PrayerMountainPageGlobal: GlobalConfig = {
               name: 'heroVideoFallback',
               type: 'text',
               label: 'Fallback Hero Video Path',
-              defaultValue: '/ministries_hero_video.mp4',
+              defaultValue: '/prayer_mountain_hero.mp4',
             },
             {
               name: 'bannerVideoUrl',
