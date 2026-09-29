@@ -9,67 +9,184 @@ import React, {
 } from 'react'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 
-export const DEFAULT_GALLERY_IMAGES = [
-  'https://cdn.21st.dev/assets/mirror/a9/a9c2900d44fe6288b344f447cb12a05f7e64c439479a8ccb977d3b20eb371156.jpg',
-  'https://cdn.21st.dev/assets/mirror/29/29cf6ad39eb198c05b8d915fca0becfd3d270d510d32eaec1b886c426c681c67.jpg',
-  'https://cdn.21st.dev/assets/mirror/61/6154958e9df110914005256ff2319d43a2c2e0fc8bb54e9f8bce7b91fdce5df1.jpg',
-  'https://cdn.21st.dev/assets/mirror/6d/6db92aff3c02cce69e2c672a6dd4e99cbf5c55d68fbf08c460527e6c7c5b64ba.jpg',
-  'https://cdn.21st.dev/assets/mirror/42/42ad2d0680dba697d578434e5af5620c7ab1c7c55bc36cec3b55eec8b7a79cbf.jpg',
-  'https://cdn.21st.dev/assets/mirror/cd/cd3dc09b1bbed97cfc879e2c5e62fdbc68dc4070b6105e476410d70e31d1e459.jpg',
-  'https://cdn.21st.dev/assets/mirror/02/0232d63e3e0cb8d3599a77e29f87f8ec4b9fadfd031592296b3f19a730a5348c.jpg',
-  'https://cdn.21st.dev/assets/mirror/56/562b212caa6ec06d8b0b313660dac6aa0bbfb729092cc4f16d04558a319af6b1.jpg',
-  'https://cdn.21st.dev/assets/mirror/02/02cbcd62720734d469f2ea8e5ed7a212e18cb05e73457445b4d755ad0ae1fcd8.jpg',
-  'https://images.unsplash.com/photo-1550614000-4b95d4ed798a?auto=format&fit=crop&w=600&q=80',
-  'https://cdn.21st.dev/assets/mirror/c4/c42df7c9c444a1189dad0570c0d01986454cd6a10eaf253a9ab40eb921a5bae5.jpg',
-  'https://cdn.21st.dev/assets/mirror/27/275fbf3f84c5258c7a8235a8a47022f847d0f408c950288c532aefa83d072a2c.jpg',
-  'https://cdn.21st.dev/assets/mirror/7e/7e2fb073870b2f578a37a693b1e0c9402a98201149509b54da2f86a2ee6abf5e.jpg',
-  'https://cdn.21st.dev/assets/mirror/3d/3d74651780292fb5a2ba23e525d9d09860bb83fbfafc7ede17b8e3662d7b1022.jpg',
+export interface GalleryPhotoItem {
+  id?: string
+  src: string
+  alt?: string
+  caption?: string
+  category?: string
+}
+
+export const DEFAULT_GALLERY_ITEMS: GalleryPhotoItem[] = [
+  // Row 1 (Items 0, 1, 2, 3)
+  {
+    id: 'top-1',
+    src: '/gallery/top_row_1.png',
+    alt: 'Pastor Sonia Yoseph Narula Preaching Grace and Faith',
+    caption: 'Pastor Sonia Yoseph Narula Ministering during Live Thursday Service',
+    category: 'Worship & Faith',
+  },
+  {
+    id: 'top-2',
+    src: '/gallery/top_row_2.png',
+    alt: 'Pastor Sonia Preaching with Illuminated Cross Backdrop',
+    caption: 'Worship Atmosphere with the Glorious Cross in Signs & Wonders Church',
+    category: 'Sacred Sanctuary',
+  },
+  {
+    id: 'top-3',
+    src: '/gallery/top_row_3.png',
+    alt: 'Pastor Sonia Preaching to Multitudes',
+    caption: 'Pastor Sonia Yoseph Narula Ministering with Power and Grace',
+    category: 'Worship & Faith',
+  },
+  {
+    id: 'top-4',
+    src: '/gallery/top_row_4.png',
+    alt: 'Apostle Dr. Ankur Narula Delivering Prophetic Ministry',
+    caption: 'Apostle Dr. Ankur Yoseph Narula Preaching under the Holy Spirit Anointing',
+    category: 'Word & Revival',
+  },
+
+  // Row 2 (Items 4, 5, 6, 7)
+  {
+    id: 'mid-1',
+    src: '/gallery/middle_row_1.png',
+    alt: 'Pastor Sonia Narula Ministering on Stage',
+    caption: 'Preaching Healing and Deliverance to the Congregation',
+    category: 'Healing & Miracles',
+  },
+  {
+    id: 'mid-2',
+    src: '/gallery/middle_row_2.png',
+    alt: 'Worship Choir in Red Robes with Pastor Sonia',
+    caption: 'The Anointed Signs and Wonders Worship Choir Leading Heavenly Praises',
+    category: 'Heavenly Worship',
+  },
+  {
+    id: 'mid-3',
+    src: '/gallery/middle_row_3.png',
+    alt: 'Pastor Sonia Preaching Live Service',
+    caption: 'Live Service Broadcast across Nations',
+    category: 'Global Broadcast',
+  },
+  {
+    id: 'mid-4',
+    src: '/gallery/middle_row_4.png',
+    alt: 'Pastor Sonia Preaching with Golden Bokeh Lights',
+    caption: 'The Glorious Light of Christ Touching Hearts and Transforming Lives',
+    category: 'Sacred Sanctuary',
+  },
+
+  // Row 3 (Items 8, 9, 10, 11)
+  {
+    id: 'bot-left-1',
+    src: '/gallery/bottom_left_1.png',
+    alt: 'Apostle Dr. Ankur Narula with Open Bible',
+    caption: 'Teaching the Uncompromised Word of God with Power and Clarity',
+    category: 'Word & Revival',
+  },
+  {
+    id: 'bot-left-2',
+    src: '/gallery/bottom_left_2.png',
+    alt: 'Apostle Dr. Ankur Narula on Stage',
+    caption: 'Holy Spirit Fire and Apostolic Revival Gathering',
+    category: 'Mass Crusades',
+  },
+  {
+    id: 'bot-right-1',
+    src: '/gallery/bottom_right_1.png',
+    alt: 'Mass Congregation Gathering at Signs and Wonders Church',
+    caption: 'Hundreds of Thousands Gathering Weekly for Worship and Miracles',
+    category: 'Mass Crusades',
+  },
+  {
+    id: 'bot-right-2',
+    src: '/gallery/bottom_right_2.png',
+    alt: 'Atmosphere of Prayer and Devotion',
+    caption: 'Atmosphere of Praise and Worship at Ankur Narula Ministries',
+    category: 'Heavenly Worship',
+  },
+
+  // Row 4 - Grand Climax Row (Items 12, 13, 14, 15)
+  {
+    id: 'arch-leaders',
+    src: '/gallery/arch_leaders.png',
+    alt: 'Apostle Dr. Ankur Yoseph Narula & Pastor Sonia Yoseph Narula',
+    caption: 'Apostle Dr. Ankur Yoseph Narula & Pastor Sonia Yoseph Narula under the Holy Floral Arch',
+    category: 'Pastoral Leadership',
+  },
+  {
+    id: 'podium-hero',
+    src: '/gallery/podium_hero.png',
+    alt: 'Apostle Dr. Ankur Yoseph Narula Preaching with Signs and Wonders',
+    caption: 'Apostle Dr. Ankur Yoseph Narula Delivering the Living Word of God',
+    category: 'Word & Revival',
+  },
+  {
+    id: 'bot-right-3',
+    src: '/gallery/bottom_right_3.png',
+    alt: 'Pastoral Leaders Fellowship',
+    caption: 'Leadership Devotion and Ministry Milestones',
+    category: 'Pastoral Leadership',
+  },
+  {
+    id: 'bot-right-4',
+    src: '/gallery/bottom_right_4.png',
+    alt: 'Mass Crusade Miracle Service',
+    caption: 'Miracles, Signs, and Wonders across Multitudes',
+    category: 'Mass Crusades',
+  },
 ]
 
 export interface ImageCardProps {
-  src: string
-  alt?: string
+  item: GalleryPhotoItem
   onLoad?: () => void
   onClick?: () => void
 }
 
-export const ImageCard: React.FC<ImageCardProps> = ({ src, alt = 'Gallery Asset', onLoad, onClick }) => {
+export const ImageCard: React.FC<ImageCardProps> = ({ item, onLoad, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className="w-full h-[200px] sm:h-[280px] md:h-[360px] lg:h-[420px] flex-shrink-0 bg-[#11161d] rounded-2xl overflow-hidden border border-white/10 hover:border-[#efbf04]/70 transition-all duration-500 hover:scale-[1.03] cursor-pointer relative will-change-transform backface-hidden preserve-3d group shadow-lg hover:shadow-[0_12px_30px_rgba(239,191,4,0.2)]"
+      className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[390px] flex-shrink-0 bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-[#efbf04]/35 hover:border-[#efbf04] transition-all duration-300 hover:scale-[1.02] cursor-pointer relative will-change-transform backface-hidden preserve-3d group shadow-[0_10px_28px_rgba(0,0,0,0.08)] hover:shadow-[0_18px_40px_rgba(239,191,4,0.35)]"
     >
       <img
-        src={src}
-        alt={alt}
+        src={item.src}
+        alt={item.alt || 'AVM Church Gallery Moment'}
         loading="lazy"
         onLoad={onLoad}
-        className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 select-none"
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 select-none pointer-events-none"
       />
-      {/* Subtle gold bottom accent sheen */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      {/* Subtle gold bottom accent caption on hover */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0b0c1c]/90 via-[#0b0c1c]/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex flex-col justify-end p-4 sm:p-5">
+        {item.category && (
+          <span className="text-[#efbf04] text-[11px] sm:text-xs font-semibold uppercase tracking-wider mb-1">
+            {item.category}
+          </span>
+        )}
+        {item.caption && (
+          <p className="text-white text-xs sm:text-sm font-medium line-clamp-2 leading-snug drop-shadow-md font-lato">
+            {item.caption}
+          </p>
+        )}
+      </div>
     </div>
   )
 }
 
 export interface ParallaxUnfurlingGalleryProps {
-  images?: string[]
-  eyebrow?: string
-  title?: string
-  subtitle?: string
+  items?: GalleryPhotoItem[]
   className?: string
-  onImageClick?: (src: string, index: number) => void
+  onImageClick?: (item: GalleryPhotoItem, index: number) => void
 }
 
 export default function ParallaxUnfurlingGallery({
-  images = DEFAULT_GALLERY_IMAGES,
-  eyebrow = 'SACRED MOMENTS',
-  title = 'Moments of Glory & Faith',
-  subtitle = 'Experience the vibrant atmosphere of worship, miracle crusades, and global leadership',
+  items = DEFAULT_GALLERY_ITEMS,
   className = '',
   onImageClick,
 }: ParallaxUnfurlingGalleryProps) {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLElement>(null)
   const [isReady, setIsReady] = useState(false)
   const loadedCountRef = useRef(0)
 
@@ -83,170 +200,136 @@ export default function ParallaxUnfurlingGallery({
     return () => clearTimeout(t)
   }, [])
 
-  const activeImages = images && images.length > 0 ? images : DEFAULT_GALLERY_IMAGES
-
-  const colMedia = useMemo(() => {
-    const col1Base = activeImages.filter((_, i) => i % 4 === 0)
-    const col2Base = activeImages.filter((_, i) => i % 4 === 1)
-    const col3Base = activeImages.filter((_, i) => i % 4 === 2)
-    const col4Base = activeImages.filter((_, i) => i % 4 === 3)
-
-    return {
-      col1: [...col1Base, ...col1Base],
-      col2: [...col2Base, ...col2Base],
-      col3: [...col3Base, ...col3Base],
-      col4: [...col4Base, ...col4Base],
+  // Ensure full 16 items for clean 4x4 matrix
+  const activeItems = useMemo(() => {
+    if (!items || items.length === 0) return DEFAULT_GALLERY_ITEMS
+    if (items.length >= 16) return items.slice(0, 16)
+    // Pad to 16 items from defaults if needed
+    const padded = [...items]
+    let idx = 0
+    while (padded.length < 16) {
+      padded.push(DEFAULT_GALLERY_ITEMS[idx % DEFAULT_GALLERY_ITEMS.length])
+      idx++
     }
-  }, [activeImages])
+    return padded
+  }, [items])
 
-  // Window/Section linked scroll progress for seamless in-page scrolling
+  // Exact 4x4 Column distribution: 4 cards in each column (Rows 1, 2, 3, 4)
+  const colMedia = useMemo(() => {
+    const col1 = [activeItems[0], activeItems[4], activeItems[8], activeItems[12]]
+    const col2 = [activeItems[1], activeItems[5], activeItems[9], activeItems[13]]
+    const col3 = [activeItems[2], activeItems[6], activeItems[10], activeItems[14]]
+    const col4 = [activeItems[3], activeItems[7], activeItems[11], activeItems[15]]
+
+    return { col1, col2, col3, col4 }
+  }, [activeItems])
+
+  // Window/Section linked scroll progress across the 4-row journey
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end'],
   })
 
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 20,
-    mass: 0.5,
+    stiffness: 85,
+    damping: 24,
+    mass: 0.4,
   })
 
-  // Banner expanding animations with luxury gold accents
-  const bannerWidth = useTransform(smoothProgress, [0, 0.15], ['92vw', '100vw'])
-  const bannerHeight = useTransform(smoothProgress, [0, 0.15], ['82vh', '100vh'])
-  const bannerRadius = useTransform(smoothProgress, [0, 0.15], ['40px', '0px'])
-  const bannerBorderWidth = useTransform(smoothProgress, [0, 0.15], ['2px', '0px'])
-  const headerOpacity = useTransform(smoothProgress, [0, 0.12], [1, 0])
-  const headerY = useTransform(smoothProgress, [0, 0.12], [0, -40])
+  // 3D Matrix Parallax transforms: smoothly unrolls from 3D angled view into a 100% straight flat view by 0.75-1.0
+  const rotateY = useTransform(smoothProgress, [0, 0.75, 1], [-28, 0, 0])
+  const rotateX = useTransform(smoothProgress, [0, 0.75, 1], [16, 0, 0])
+  const rotateZ = useTransform(smoothProgress, [0, 0.75, 1], [8, 0, 0])
+  const translateZ = useTransform(smoothProgress, [0, 0.75, 1], [-220, 0, 0])
 
-  // 3D Matrix matrix transforms
-  const rotateY = useTransform(smoothProgress, [0.15, 1], [-45, -6])
-  const rotateX = useTransform(smoothProgress, [0.15, 1], [25, 4])
-  const rotateZ = useTransform(smoothProgress, [0.15, 1], [15, 2])
-  const translateZ = useTransform(smoothProgress, [0.15, 1], [-800, 0])
-
-  // Track columns parallax animations
-  const yCol1 = useTransform(smoothProgress, [0.15, 1], ['0%', '-40%'])
-  const yCol2 = useTransform(smoothProgress, [0.15, 1], ['-40%', '10%'])
-  const yCol3 = useTransform(smoothProgress, [0.15, 1], ['0%', '-40%'])
-  const yCol4 = useTransform(smoothProgress, [0.15, 1], ['-30%', '20%'])
+  // Scroll journey from Row 1 through Row 4:
+  // At progress = 0: Top row (Row 1) is visible
+  // As user scrolls: Rows 1 -> 2 -> 3 -> 4 pan through with dynamic parallax shifts
+  // At progress = 1.0: Columns shift by -37.5% so Row 4 (the 4th and final row) is 100% FULLY and EVENLY displayed!
+  const yCol1 = useTransform(smoothProgress, [0, 0.4, 0.8, 1], ['37.5%', '10%', '-25%', '-37.5%'])
+  const yCol2 = useTransform(smoothProgress, [0, 0.4, 0.8, 1], ['25%', '-5%', '-45%', '-37.5%'])
+  const yCol3 = useTransform(smoothProgress, [0, 0.4, 0.8, 1], ['42%', '15%', '-20%', '-37.5%'])
+  const yCol4 = useTransform(smoothProgress, [0, 0.4, 0.8, 1], ['30%', '0%', '-40%', '-37.5%'])
 
   return (
-    <div className={`w-full bg-[#05070B] overflow-x-hidden ${className}`}>
-      <section
-        ref={containerRef}
-        className="relative w-full h-[500vh] sm:h-[600vh] bg-[#05070B] text-white selection:bg-[#efbf04]/30 selection:text-white"
-      >
-        <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden">
-          {/* Introductory Floating Title when unfurling starts */}
-          <motion.div
-            style={{ opacity: headerOpacity, y: headerY }}
-            className="absolute top-12 md:top-16 z-30 flex flex-col items-center text-center px-4 pointer-events-none"
-          >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#efbf04]/10 border border-[#efbf04]/30 text-[#efbf04] text-[11px] sm:text-xs font-semibold uppercase tracking-[0.25em] mb-3 backdrop-blur-md shadow-[0_2px_12px_rgba(239,191,4,0.15)]">
-              <span className="text-[#efbf04]">✝</span>
-              <span>{eyebrow}</span>
-              <span className="text-[#efbf04]">✝</span>
-            </div>
-            <h2 className="font-playfair text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
-              {title}
-            </h2>
-            <p className="mt-2 text-xs sm:text-sm md:text-base text-white/70 max-w-xl font-lato">
-              {subtitle}
-            </p>
-          </motion.div>
-
-          {/* Unfurling Viewport Matrix */}
+    <section
+      ref={containerRef}
+      className={`relative w-full h-[280vh] sm:h-[300vh] bg-transparent text-[#0b0c1c] selection:bg-[#efbf04]/30 selection:text-[#0b0c1c] ${className}`}
+    >
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-center items-center overflow-hidden">
+        {/* 4x4 3D Parallax Matrix -> Lands with Row 4 (4th row) fully in view */}
+        <div
+          className="absolute inset-0 flex justify-center items-center pointer-events-none"
+          style={{ perspective: '1200px' }}
+        >
           <motion.div
             style={{
-              width: bannerWidth,
-              height: bannerHeight,
-              borderRadius: bannerRadius,
-              borderWidth: bannerBorderWidth,
-              borderColor: 'rgba(239, 191, 4, 0.4)',
+              rotateX,
+              rotateY,
+              rotateZ,
+              z: translateZ,
+              transformStyle: 'preserve-3d',
             }}
-            className="relative bg-[#080B10] overflow-hidden flex items-center justify-center max-w-[1920px] mx-auto will-change-transform backface-hidden preserve-3d shadow-[0_20px_60px_rgba(0,0,0,0.9)]"
+            className="flex gap-3.5 sm:gap-5 md:gap-6 justify-center items-center w-full max-w-[1440px] px-4 sm:px-6 mx-auto origin-center opacity-100 will-change-transform backface-hidden"
           >
-            <div
-              className="absolute inset-0 flex justify-center items-center pointer-events-none"
-              style={{ perspective: '1200px' }}
+            <motion.div
+              style={{ y: yCol1 }}
+              className="flex flex-col gap-4 sm:gap-6 w-[23vw] min-w-[170px] sm:min-w-[220px] md:min-w-[260px] max-w-[320px] pointer-events-auto flex-shrink-0"
             >
-              {/* Ambient Vignette & Sacred Gold Glow Masking */}
-              <div className="absolute inset-0 z-20 shadow-[inset_0_120px_160px_-50px_rgba(5,7,11,1),inset_0_-120px_160px_-50px_rgba(5,7,11,1)]" />
-              <div className="absolute inset-0 z-20 shadow-[inset_160px_0_160px_-50px_rgba(5,7,11,1),inset_-160px_0_160px_-50px_rgba(5,7,11,1)]" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vh] bg-[#efbf04]/5 rounded-full blur-[140px] pointer-events-none z-10" />
+              {colMedia.col1.map((item, index) => (
+                <ImageCard
+                  key={`col1-${index}`}
+                  item={item}
+                  onLoad={handleItemLoad}
+                  onClick={() => onImageClick?.(item, index)}
+                />
+              ))}
+            </motion.div>
 
-              {/* Parallax Image Grid Matrix */}
-              <motion.div
-                style={{
-                  rotateX,
-                  rotateY,
-                  rotateZ,
-                  z: translateZ,
-                  transformStyle: 'preserve-3d',
-                }}
-                className="flex gap-4 sm:gap-6 md:gap-8 justify-center items-center w-[125vw] h-[155vh] origin-center opacity-100 will-change-transform backface-hidden"
-              >
-                <motion.div
-                  style={{ y: yCol1 }}
-                  className="flex flex-col gap-4 sm:gap-6 w-[24vw] min-w-[180px] sm:min-w-[220px] md:min-w-[280px] pointer-events-auto"
-                >
-                  {colMedia.col1.map((src, index) => (
-                    <ImageCard
-                      key={`col1-${index}`}
-                      src={src}
-                      onLoad={handleItemLoad}
-                      onClick={() => onImageClick?.(src, index)}
-                    />
-                  ))}
-                </motion.div>
+            <motion.div
+              style={{ y: yCol2 }}
+              className="flex flex-col gap-4 sm:gap-6 w-[23vw] min-w-[170px] sm:min-w-[220px] md:min-w-[260px] max-w-[320px] pointer-events-auto flex-shrink-0"
+            >
+              {colMedia.col2.map((item, index) => (
+                <ImageCard
+                  key={`col2-${index}`}
+                  item={item}
+                  onLoad={handleItemLoad}
+                  onClick={() => onImageClick?.(item, index)}
+                />
+              ))}
+            </motion.div>
 
-                <motion.div
-                  style={{ y: yCol2 }}
-                  className="flex flex-col gap-4 sm:gap-6 w-[24vw] min-w-[180px] sm:min-w-[220px] md:min-w-[280px] pointer-events-auto"
-                >
-                  {colMedia.col2.map((src, index) => (
-                    <ImageCard
-                      key={`col2-${index}`}
-                      src={src}
-                      onLoad={handleItemLoad}
-                      onClick={() => onImageClick?.(src, index)}
-                    />
-                  ))}
-                </motion.div>
+            <motion.div
+              style={{ y: yCol3 }}
+              className="flex flex-col gap-4 sm:gap-6 w-[23vw] min-w-[170px] sm:min-w-[220px] md:min-w-[260px] max-w-[320px] pointer-events-auto flex-shrink-0"
+            >
+              {colMedia.col3.map((item, index) => (
+                <ImageCard
+                  key={`col3-${index}`}
+                  item={item}
+                  onLoad={handleItemLoad}
+                  onClick={() => onImageClick?.(item, index)}
+                />
+              ))}
+            </motion.div>
 
-                <motion.div
-                  style={{ y: yCol3 }}
-                  className="flex flex-col gap-4 sm:gap-6 w-[24vw] min-w-[180px] sm:min-w-[220px] md:min-w-[280px] pointer-events-auto"
-                >
-                  {colMedia.col3.map((src, index) => (
-                    <ImageCard
-                      key={`col3-${index}`}
-                      src={src}
-                      onLoad={handleItemLoad}
-                      onClick={() => onImageClick?.(src, index)}
-                    />
-                  ))}
-                </motion.div>
-
-                <motion.div
-                  style={{ y: yCol4 }}
-                  className="flex flex-col gap-4 sm:gap-6 w-[24vw] min-w-[180px] sm:min-w-[220px] md:min-w-[280px] pointer-events-auto"
-                >
-                  {colMedia.col4.map((src, index) => (
-                    <ImageCard
-                      key={`col4-${index}`}
-                      src={src}
-                      onLoad={handleItemLoad}
-                      onClick={() => onImageClick?.(src, index)}
-                    />
-                  ))}
-                </motion.div>
-              </motion.div>
-            </div>
+            <motion.div
+              style={{ y: yCol4 }}
+              className="flex flex-col gap-4 sm:gap-6 w-[23vw] min-w-[170px] sm:min-w-[220px] md:min-w-[260px] max-w-[320px] pointer-events-auto flex-shrink-0"
+            >
+              {colMedia.col4.map((item, index) => (
+                <ImageCard
+                  key={`col4-${index}`}
+                  item={item}
+                  onLoad={handleItemLoad}
+                  onClick={() => onImageClick?.(item, index)}
+                />
+              ))}
+            </motion.div>
           </motion.div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   )
 }
