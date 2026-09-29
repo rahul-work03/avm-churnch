@@ -6,7 +6,7 @@ import { BlurTextReveal } from '@/components/ui/text-reveal'
 import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
 import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { PatternedNavyCard } from '@/components/ui/patterned-navy-card'
-import { BookOpen, GraduationCap, Sparkles } from 'lucide-react'
+import { BookOpen, GraduationCap } from 'lucide-react'
 
 export interface BibleCollegeWhatIsSectionProps {
   whatIsCardTitle?: string
@@ -31,7 +31,6 @@ export const BibleCollegeWhatIsSection: React.FC<BibleCollegeWhatIsSectionProps>
           {/* Full-bleed Editorial Header with Edge-to-Edge Gold Bars */}
           <div className="w-full text-center mb-6 sm:mb-8">
             <EditorialSectionHeader
-              eyebrow="EQUIPPING THE SAINTS"
               title={whatIsCardTitle}
               variant="editorial"
               align="center"
@@ -44,8 +43,6 @@ export const BibleCollegeWhatIsSection: React.FC<BibleCollegeWhatIsSectionProps>
                 patternId="pattern-bc-whatis"
                 className="text-center"
                 hoverEffect={false}
-                badgeText="Biblical Academy"
-                badgeIcon={<Sparkles className="w-3.5 h-3.5 text-[#efbf04]" />}
               >
                 <BlurTextReveal
                   as="p"
@@ -65,7 +62,6 @@ export const BibleCollegeWhatIsSection: React.FC<BibleCollegeWhatIsSectionProps>
           {/* Full-bleed Editorial Header with Edge-to-Edge Gold Bars */}
           <div className="w-full text-center mb-6 sm:mb-8">
             <EditorialSectionHeader
-              eyebrow="OUR CALLING & MISSION"
               title={visionCardTitle}
               variant="editorial"
               align="center"
@@ -80,7 +76,6 @@ export const BibleCollegeWhatIsSection: React.FC<BibleCollegeWhatIsSectionProps>
                   <PatternedNavyCard
                     asPillar
                     patternId="pattern-bc-purpose"
-                    pillarNumber="Pillar 01"
                     title="Our Purpose"
                     icon={<BookOpen className="w-5 h-5 text-[#efbf04]" />}
                     className="h-full"
@@ -98,7 +93,6 @@ export const BibleCollegeWhatIsSection: React.FC<BibleCollegeWhatIsSectionProps>
                   <PatternedNavyCard
                     asPillar
                     patternId="pattern-bc-vision"
-                    pillarNumber="Pillar 02"
                     title="Our Vision"
                     icon={<GraduationCap className="w-5 h-5 text-[#efbf04]" />}
                     className="h-full"

@@ -101,7 +101,6 @@ export const ScenesSection: React.FC<ScenesSectionProps> = ({
     <section className="relative overflow-hidden select-none" data-node-id="279:2081">
       {/* Luminous Sapphire Header Bar */}
       <EditorialSectionHeader
-        eyebrow="HOLY GROUNDS & VISTAS"
         title={headerTitle}
         variant="atmospheric"
       />

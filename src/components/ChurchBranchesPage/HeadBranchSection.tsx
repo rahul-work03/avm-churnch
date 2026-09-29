@@ -46,7 +46,6 @@ export const HeadBranchSection: React.FC<HeadBranchSectionProps> = ({
       {/* Full-width Atmospheric Section Header with Edge-to-Edge Golden Wing Bars */}
       <div className="w-full text-center mb-8 sm:mb-12">
         <EditorialSectionHeader
-          eyebrow="APOSTOLIC HEADQUARTERS"
           title={headBranchTitle || 'HEAD BRANCH PUNJAB KHAMBRA'}
           subtitle={headBranchSubtitle || undefined}
           variant="atmospheric"

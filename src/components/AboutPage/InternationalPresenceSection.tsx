@@ -101,7 +101,6 @@ export const InternationalPresenceSection: React.FC<InternationalPresenceSection
     <section className="relative overflow-hidden select-none" data-node-id="275:810">
       {/* Luminous Sapphire Header Bar */}
       <EditorialSectionHeader
-        eyebrow="WORLDWIDE IMPACT"
         title={headerTitle}
         variant="atmospheric"
       />

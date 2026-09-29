@@ -2148,7 +2148,6 @@ export interface AboutPage {
   resourcesFgImage?: (number | null) | Media;
   resourcesFgFallback?: string | null;
   crusadesHeaderTitle?: string | null;
-  crusadesSubTitle?: string | null;
   crusadeImages?:
     | {
         image?: (number | null) | Media;
@@ -2449,7 +2448,6 @@ export interface SundaySchoolPage {
 export interface ChurchBranchesPage {
   id: number;
   heroHeaderTitle?: string | null;
-  heroSubtitle?: string | null;
   heroDescription?: string | null;
   /**
    * Upload an ambient background video for the hero banner. Takes precedence over banner image if provided.
@@ -2973,7 +2971,6 @@ export interface AboutPageSelect<T extends boolean = true> {
   resourcesFgImage?: T;
   resourcesFgFallback?: T;
   crusadesHeaderTitle?: T;
-  crusadesSubTitle?: T;
   crusadeImages?:
     | T
     | {
@@ -3274,7 +3271,6 @@ export interface SundaySchoolPageSelect<T extends boolean = true> {
  */
 export interface ChurchBranchesPageSelect<T extends boolean = true> {
   heroHeaderTitle?: T;
-  heroSubtitle?: T;
   heroDescription?: T;
   heroVideo?: T;
   heroVideoFallback?: T;

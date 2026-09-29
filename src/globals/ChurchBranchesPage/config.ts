@@ -312,12 +312,6 @@ export const ChurchBranchesPageGlobal: GlobalConfig = {
               defaultValue: 'OUR CHURCH BRANCHES',
             },
             {
-              name: 'heroSubtitle',
-              type: 'text',
-              label: 'Hero Subtitle / Eyebrow',
-              defaultValue: 'GLOBAL WORSHIP CENTERS',
-            },
-            {
               name: 'heroDescription',
               type: 'textarea',
               label: 'Hero Description',

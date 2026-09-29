@@ -41,7 +41,6 @@ export const BranchesHeroSection: React.FC<BranchesHeroSectionProps> = ({
         {/* Full-bleed Editorial Section Header */}
         <div className="w-full text-center pt-2 sm:pt-4 mb-4 sm:mb-6">
           <EditorialSectionHeader
-            eyebrow={heroSubtitle || 'GLOBAL WORSHIP CENTERS'}
             title={heroHeaderTitle || 'OUR CHURCH BRANCHES'}
             subtitle={heroDescription || undefined}
             variant="editorial"
@@ -52,7 +51,7 @@ export const BranchesHeroSection: React.FC<BranchesHeroSectionProps> = ({
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Featured 1140x620 Rounded Hero Video or Photo Container */}
           <RevealOnScroll direction="up" distance={24} duration={0.8} delay={0.15} className="mt-4 sm:mt-8 md:mt-10 max-w-[1140px] mx-auto">
-            <div className="relative w-full aspect-[16/9] sm:aspect-[1140/620] rounded-[20px] sm:rounded-[28px] overflow-hidden shadow-2xl border border-slate-200/90 bg-slate-950 group">
+            <div className="relative w-full aspect-[16/9] rounded-[20px] sm:rounded-[28px] overflow-hidden shadow-2xl border border-slate-200/90 bg-slate-950 group">
               {resolvedVideoUrl ? (
                 <video
                   src={resolvedVideoUrl}

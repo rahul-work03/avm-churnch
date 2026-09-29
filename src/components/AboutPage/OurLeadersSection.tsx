@@ -74,7 +74,6 @@ export const OurLeadersSection: React.FC<OurLeadersSectionProps> = ({
         {/* Section Editorial Header (Full width edge-to-edge gold bars) */}
         <div className="w-full mb-6 sm:mb-8 md:mb-10 text-center">
           <EditorialSectionHeader
-            eyebrow="APOSTOLIC LEADERSHIP"
             title={headerTitle}
             variant="editorial"
             align="center"

@@ -38,7 +38,6 @@ export const MoreEventsSection: React.FC<MoreEventsSectionProps> = ({
       {/* Full-width Atmospheric Section Header with Edge-to-Edge Golden Wing Bars */}
       <div className="w-full text-center mb-8 sm:mb-12">
         <EditorialSectionHeader
-          eyebrow="EXPLORE MORE GATHERINGS"
           title={headerTitle || 'MORE EVENTS'}
           subtitle="Discover upcoming live services, spiritual meetings, and regional crusades."
           variant="atmospheric"
@@ -79,7 +78,7 @@ export const MoreEventsSection: React.FC<MoreEventsSectionProps> = ({
                     alt={posterAlt}
                     fill
                     sizes="(max-width: 768px) 100vw, 367px"
-                    className="object-cover transition-transform duration-700 group-hover:scale-104"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-104"
                   />
                   {/* Subtle Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />

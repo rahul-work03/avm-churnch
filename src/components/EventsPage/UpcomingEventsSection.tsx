@@ -110,7 +110,7 @@ export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({
                   alt={currentEvent.title || 'Upcoming Event'}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 500px, 513px"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   priority
                 />
               </div>

@@ -31,7 +31,6 @@ export const SophiaInstituteWhatIsSection: React.FC<SophiaInstituteWhatIsSection
           {/* Full-bleed Editorial Header with Edge-to-Edge Gold Bars */}
           <div className="w-full text-center mb-6 sm:mb-8">
             <EditorialSectionHeader
-              eyebrow="DIVINE WISDOM & UNDERSTANDING"
               title={whatIsCardTitle}
               variant="editorial"
               align="center"
@@ -44,8 +43,6 @@ export const SophiaInstituteWhatIsSection: React.FC<SophiaInstituteWhatIsSection
                 patternId="pattern-si-whatis"
                 className="text-center"
                 hoverEffect={false}
-                badgeText="Sacred Academy"
-                badgeIcon={<Sparkles className="w-3.5 h-3.5 text-[#efbf04]" />}
               >
                 <BlurTextReveal
                   as="p"
@@ -65,7 +62,6 @@ export const SophiaInstituteWhatIsSection: React.FC<SophiaInstituteWhatIsSection
           {/* Full-bleed Editorial Header with Edge-to-Edge Gold Bars */}
           <div className="w-full text-center mb-6 sm:mb-8">
             <EditorialSectionHeader
-              eyebrow="OUR CALLING & VISION"
               title={visionCardTitle}
               variant="editorial"
               align="center"
@@ -80,7 +76,6 @@ export const SophiaInstituteWhatIsSection: React.FC<SophiaInstituteWhatIsSection
                   <PatternedNavyCard
                     asPillar
                     patternId="pattern-si-purpose"
-                    pillarNumber="Pillar 01"
                     title="Our Purpose"
                     icon={<BookOpen className="w-5 h-5 text-[#efbf04]" />}
                     className="h-full"
@@ -98,7 +93,6 @@ export const SophiaInstituteWhatIsSection: React.FC<SophiaInstituteWhatIsSection
                   <PatternedNavyCard
                     asPillar
                     patternId="pattern-si-vision"
-                    pillarNumber="Pillar 02"
                     title="Our Vision"
                     icon={<Sparkles className="w-5 h-5 text-[#efbf04]" />}
                     className="h-full"

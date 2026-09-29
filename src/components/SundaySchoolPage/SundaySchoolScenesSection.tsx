@@ -100,7 +100,6 @@ export const SundaySchoolScenesSection: React.FC<SundaySchoolScenesSectionProps>
     <section className="relative overflow-hidden select-none" data-node-id="289:3779">
       {/* Luminous Atmospheric Header Bar */}
       <EditorialSectionHeader
-        eyebrow="YOUTH FELLOWSHIP & CLASSROOMS"
         title={displayTitle}
         variant="atmospheric"
       />

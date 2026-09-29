@@ -125,7 +125,6 @@ export const TestimoniesSection: React.FC<TestimoniesSectionProps> = ({
     <section className="relative overflow-hidden select-none" data-node-id="279:2081">
       {/* Luminous Sapphire Header Bar */}
       <EditorialSectionHeader
-        eyebrow="SUPERNATURAL ENCOUNTERS"
         title={headerTitle}
         variant="atmospheric"
       />

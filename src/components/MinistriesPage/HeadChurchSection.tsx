@@ -36,7 +36,6 @@ export const HeadChurchSection: React.FC<HeadChurchSectionProps> = ({
       <EditorialSectionHeader
         variant="atmospheric"
         align="center"
-        eyebrow="MOTHER CHURCH"
         title={headerTitle}
         className="mb-8 sm:mb-12"
       />

@@ -96,7 +96,6 @@ export const PrayerHouseScenesSection: React.FC<PrayerHouseScenesSectionProps> =
     <section className="relative overflow-hidden select-none" data-node-id="282:2369">
       {/* Luminous Atmospheric Header Bar */}
       <EditorialSectionHeader
-        eyebrow="SACRED GROUNDS & MEMORIES"
         title={headerTitle}
         variant="atmospheric"
       />

@@ -85,7 +85,7 @@ export const TextWordReveal: React.FC<TextWordRevealProps> = ({
       >
         {words.map((word, i) => (
           <motion.span
-            key={i}
+            key={`${word}-${i}`}
             variants={wordVariants}
             className="inline-block whitespace-pre"
           >

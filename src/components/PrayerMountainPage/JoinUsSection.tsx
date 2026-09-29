@@ -22,7 +22,6 @@ export const JoinUsSection: React.FC<JoinUsSectionProps> = ({
     <section className="relative overflow-hidden select-none" data-node-id="279:2081">
       {/* Luminous Sapphire Header Bar */}
       <EditorialSectionHeader
-        eyebrow="DAILY GATHERINGS"
         title={joinHeaderTitle}
         variant="atmospheric"
       />

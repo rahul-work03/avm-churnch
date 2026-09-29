@@ -140,19 +140,19 @@ export const EditorialSectionHeader: React.FC<EditorialSectionHeaderProps> = ({
         {/* Left Gold Wing Bar (Starts from left screen edge) */}
         <GoldWingBar
           direction="left"
-          className="flex-1 h-[5px] sm:h-[6px] md:h-[8px]"
+          className="flex-1 h-[5px] sm:h-[6px] md:h-[8px] min-w-[16px]"
           delay={delay}
         />
 
         {/* Center Title + Emblems */}
-        <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 px-1 sm:px-3 flex-shrink min-w-0">
+        <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 px-1 sm:px-3 flex-shrink min-w-0 max-w-[88vw] sm:max-w-3xl md:max-w-4xl">
           <GoldEmblem size="md" />
 
           <TextWordReveal
             as="h2"
             delay={delay}
             staggerDelay={0.035}
-            className={`font-philosopher font-bold text-[#122f4a] text-lg sm:text-2xl md:text-[32px] lg:text-[36px] tracking-tight leading-tight text-center whitespace-nowrap ${titleClassName}`}
+            className={`font-philosopher font-bold text-[#122f4a] text-lg sm:text-2xl md:text-[30px] lg:text-[34px] tracking-tight leading-tight text-center ${titleClassName}`}
           >
             {title}
           </TextWordReveal>
@@ -163,7 +163,7 @@ export const EditorialSectionHeader: React.FC<EditorialSectionHeaderProps> = ({
         {/* Right Gold Wing Bar (Extends all the way to right screen edge) */}
         <GoldWingBar
           direction="right"
-          className="flex-1 h-[5px] sm:h-[6px] md:h-[8px]"
+          className="flex-1 h-[5px] sm:h-[6px] md:h-[8px] min-w-[16px]"
           delay={delay}
         />
       </div>

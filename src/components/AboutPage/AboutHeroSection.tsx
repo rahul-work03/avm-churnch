@@ -32,7 +32,6 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({
         {/* Editorial Section Header (Full width edge-to-edge golden bars) */}
         <div className="w-full text-center pt-2 sm:pt-4 mb-4 sm:mb-6">
           <EditorialSectionHeader
-            eyebrow="GLOBAL APOSTOLIC MOVEMENT"
             title={headerTitle}
             subtitle={description}
             variant="editorial"

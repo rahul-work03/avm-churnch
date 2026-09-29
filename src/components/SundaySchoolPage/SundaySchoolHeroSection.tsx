@@ -64,7 +64,6 @@ export const SundaySchoolHeroSection: React.FC<SundaySchoolHeroSectionProps> = (
         {/* Full-bleed Editorial Section Header */}
         <div className="w-full text-center pt-2 sm:pt-4 mb-4 sm:mb-6">
           <EditorialSectionHeader
-            eyebrow="EMPOWERING THE NEXT GENERATION"
             title={displayTitle}
             subtitle={displayDesc}
             variant="editorial"
@@ -75,7 +74,7 @@ export const SundaySchoolHeroSection: React.FC<SundaySchoolHeroSectionProps> = (
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           {/* Featured Large Hero Video or Photo Container */}
           <RevealOnScroll direction="up" distance={24} duration={0.8} delay={0.15} className="mt-4 sm:mt-8 md:mt-10 max-w-[1140px] mx-auto">
-            <div className="relative w-full aspect-[16/9] sm:aspect-[1140/580] rounded-[18px] sm:rounded-[24px] overflow-hidden shadow-2xl border border-slate-200/90 bg-slate-950 group">
+            <div className="relative w-full aspect-[16/9] rounded-[18px] sm:rounded-[24px] overflow-hidden shadow-2xl border border-slate-200/90 bg-slate-950 group">
               {resolvedVideoUrl ? (
                 <video
                   src={resolvedVideoUrl}
@@ -90,7 +89,7 @@ export const SundaySchoolHeroSection: React.FC<SundaySchoolHeroSectionProps> = (
                   src={resolvedBannerUrl}
                   alt={resolvedBannerAlt}
                   fill
-                  className="object-cover object-center sm:object-top transition-transform duration-700 group-hover:scale-103"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-103"
                   priority
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1140px"
                 />

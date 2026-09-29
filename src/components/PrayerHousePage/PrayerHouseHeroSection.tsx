@@ -41,7 +41,6 @@ export const PrayerHouseHeroSection: React.FC<PrayerHouseHeroSectionProps> = ({
         {/* Full-bleed Editorial Section Header */}
         <div className="w-full text-center pt-2 sm:pt-4 mb-4 sm:mb-6">
           <EditorialSectionHeader
-            eyebrow="SACRED DWELLING & ENCOUNTER"
             title={headerTitle}
             subtitle={description}
             variant="editorial"

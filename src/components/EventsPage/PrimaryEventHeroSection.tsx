@@ -140,7 +140,7 @@ export const PrimaryEventHeroSection: React.FC<PrimaryEventHeroSectionProps> = (
         {/* Full-bleed Editorial Section Header */}
         <div className="w-full text-center pt-2 sm:pt-4 mb-4 sm:mb-6">
           <EditorialSectionHeader
-            eyebrow="UPCOMING REVIVAL & CRUSADE"
+            key={event.id || event.title}
             title={event.title}
             subtitle={event.subheading || 'Join us for a divine encounter of healing, deliverance, and powerful apostolic ministry.'}
             variant="editorial"
@@ -158,12 +158,12 @@ export const PrimaryEventHeroSection: React.FC<PrimaryEventHeroSectionProps> = (
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
               {/* Cinematic Wide Landscape Event Banner */}
-              <div className="relative w-full aspect-[16/9] sm:aspect-[1140/560] rounded-[20px] sm:rounded-[28px] overflow-hidden shadow-2xl border border-slate-200/90 hover:border-[#d4af37]/40 transition-colors duration-500 bg-slate-950 group">
+              <div className="relative w-full aspect-[16/9] rounded-[20px] sm:rounded-[28px] overflow-hidden shadow-2xl border border-slate-200/90 hover:border-[#d4af37]/40 transition-colors duration-500 bg-slate-950 group">
                 <Image
                   src={landscapeSrc}
                   alt={landscapeAlt}
                   fill
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-102"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-102"
                   priority
                   sizes="(max-width: 768px) 100vw, 1140px"
                 />

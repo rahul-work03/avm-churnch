@@ -151,7 +151,7 @@ export const RecentEventsSection: React.FC<RecentEventsSectionProps> = ({
                     alt={event.title}
                     fill
                     sizes="(max-width: 640px) 33vw, (max-width: 1024px) 30vw, 360px"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     priority={index === 0}
                   />
                 </button>

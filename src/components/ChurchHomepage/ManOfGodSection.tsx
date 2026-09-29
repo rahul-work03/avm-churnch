@@ -55,7 +55,6 @@ export const ManOfGodSection: React.FC<ManOfGodSectionProps> = ({
         {/* ==================== EDITORIAL SECTION HEADER (Full width edge-to-edge gold bars) ==================== */}
         <div className="w-full mb-6 sm:mb-8 md:mb-10">
           <EditorialSectionHeader
-            eyebrow="GLOBAL APOSTOLIC REVIVAL"
             title={headerTitle}
             variant="editorial"
             align="center"

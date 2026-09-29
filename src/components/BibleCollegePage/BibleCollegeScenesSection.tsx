@@ -96,7 +96,6 @@ export const BibleCollegeScenesSection: React.FC<BibleCollegeScenesSectionProps>
     <section className="relative overflow-hidden select-none" data-node-id="284:2612">
       {/* Luminous Atmospheric Header Bar */}
       <EditorialSectionHeader
-        eyebrow="CAMPUS GROUNDS & FELLOWSHIP"
         title={headerTitle}
         variant="atmospheric"
       />

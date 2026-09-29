@@ -81,7 +81,6 @@ export const SophiaInstituteScenesSection: React.FC<SophiaInstituteScenesSection
     <section className="relative overflow-hidden select-none" data-node-id="sophia-scenes">
       {/* Luminous Atmospheric Header Bar */}
       <EditorialSectionHeader
-        eyebrow="CAMPUS & RESEARCH ARCHIVES"
         title={headerTitle}
         variant="atmospheric"
       />

@@ -31,7 +31,6 @@ export const SundaySchoolWhatIsSection: React.FC<SundaySchoolWhatIsSectionProps>
           {/* Full-bleed Editorial Header with Edge-to-Edge Gold Bars */}
           <div className="w-full text-center mb-6 sm:mb-8">
             <EditorialSectionHeader
-              eyebrow="NURTURING FAITH & TRUTH"
               title={whatIsCardTitle || 'What is Sunday School?'}
               variant="editorial"
               align="center"
@@ -44,8 +43,6 @@ export const SundaySchoolWhatIsSection: React.FC<SundaySchoolWhatIsSectionProps>
                 patternId="pattern-ss-whatis"
                 className="text-center"
                 hoverEffect={false}
-                badgeText="Youth & Children Ministry"
-                badgeIcon={<Sparkles className="w-3.5 h-3.5 text-[#efbf04]" />}
               >
                 <BlurTextReveal
                   as="p"
@@ -65,7 +62,6 @@ export const SundaySchoolWhatIsSection: React.FC<SundaySchoolWhatIsSectionProps>
           {/* Full-bleed Editorial Header with Edge-to-Edge Gold Bars */}
           <div className="w-full text-center mb-6 sm:mb-8">
             <EditorialSectionHeader
-              eyebrow="OUR CALLING & MISSION"
               title={visionCardTitle || 'Purpose & vision'}
               variant="editorial"
               align="center"
@@ -80,7 +76,6 @@ export const SundaySchoolWhatIsSection: React.FC<SundaySchoolWhatIsSectionProps>
                   <PatternedNavyCard
                     asPillar
                     patternId="pattern-ss-purpose"
-                    pillarNumber="Pillar 01"
                     title="Our Purpose"
                     icon={<HeartHandshake className="w-5 h-5 text-[#efbf04]" />}
                     className="h-full"
@@ -98,7 +93,6 @@ export const SundaySchoolWhatIsSection: React.FC<SundaySchoolWhatIsSectionProps>
                   <PatternedNavyCard
                     asPillar
                     patternId="pattern-ss-vision"
-                    pillarNumber="Pillar 02"
                     title="Our Vision"
                     icon={<Sparkles className="w-5 h-5 text-[#efbf04]" />}
                     className="h-full"

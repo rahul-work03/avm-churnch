@@ -46,7 +46,6 @@ export const PrayerMountainHeroSection: React.FC<PrayerMountainHeroSectionProps>
         {/* Full-bleed Editorial Section Header */}
         <div className="w-full text-center pt-2 sm:pt-4 mb-4 sm:mb-6">
           <EditorialSectionHeader
-            eyebrow="GLOBAL APOSTOLIC RETREAT"
             title={headerTitle}
             subtitle={description}
             variant="editorial"

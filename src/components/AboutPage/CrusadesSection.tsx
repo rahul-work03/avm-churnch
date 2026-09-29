@@ -23,7 +23,6 @@ export interface CrusadeItem {
 
 export interface CrusadesSectionProps {
   headerTitle?: string
-  subTitle?: string
   crusadeImages?: CrusadeItem[]
 }
 
@@ -87,7 +86,6 @@ const DEFAULT_CRUSADES: CrusadeItem[] = [
 
 export const CrusadesSection: React.FC<CrusadesSectionProps> = ({
   headerTitle = 'The Largest ankur narula ministries Crusades',
-  subTitle = 'Calvary Crusades',
   crusadeImages,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -339,7 +337,6 @@ export const CrusadesSection: React.FC<CrusadesSectionProps> = ({
     <section className="relative overflow-hidden select-none" data-node-id="275:810">
       {/* Luminous Sapphire Crusade Header Bar */}
       <EditorialSectionHeader
-        eyebrow={subTitle || 'CALVARY CRUSADES'}
         title={headerTitle}
         variant="atmospheric"
       />
