@@ -34,7 +34,6 @@ export const MinistryStatsSection: React.FC<MinistryStatsSectionProps> = ({
       <SacredCanvas tone="midnight-sapphire" className="py-8 sm:py-10 md:py-12">
         {/* Section Header */}
         <EditorialSectionHeader
-          eyebrow="GLOBAL MINISTRY IMPACT"
           title={headerTitle}
           variant="atmospheric"
           className="mb-6 sm:mb-8"

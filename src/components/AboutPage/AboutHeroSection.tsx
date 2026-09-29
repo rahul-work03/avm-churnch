@@ -49,13 +49,13 @@ export const AboutHeroSection: React.FC<AboutHeroSectionProps> = ({
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 sm:mt-10 md:mt-12 max-w-[1140px] mx-auto relative"
           >
-            <div className="relative w-full aspect-[16/9] sm:aspect-[1140/580] rounded-[18px] sm:rounded-[24px] overflow-hidden shadow-2xl border border-slate-200/90 bg-slate-900 group">
+            <div className="relative w-full aspect-[16/9] sm:aspect-[1140/580] rounded-[18px] sm:rounded-[24px] overflow-hidden shadow-2xl border border-slate-200/90 bg-slate-900">
               <Image
                 src={resolvedBannerUrl}
                 alt={resolvedBannerAlt}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1140px"
-                className="object-cover object-center sm:object-top transition-transform duration-700 group-hover:scale-105"
+                className="object-cover object-top"
                 priority
               />
             </div>

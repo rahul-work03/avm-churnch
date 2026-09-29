@@ -35,30 +35,30 @@ export const EditorialSectionHeader: React.FC<EditorialSectionHeaderProps> = ({
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
-          className="relative bg-gradient-to-r from-[#0d1e30] via-[#122f4a] to-[#0d1e30] rounded-[22px] sm:rounded-[36px] md:rounded-[44px] py-4 sm:py-5 md:py-6 px-4 sm:px-8 text-center text-white shadow-xl border border-white/15 overflow-hidden flex items-center justify-between gap-3 sm:gap-6"
+          className="relative bg-gradient-to-r from-[#0d1e30] via-[#122f4a] to-[#0d1e30] rounded-[22px] sm:rounded-[36px] md:rounded-[44px] py-4 sm:py-5 md:py-6 text-center text-white shadow-xl border border-white/15 overflow-hidden flex items-center justify-between"
         >
-          {/* Decorative Gold Side Wing - Left */}
+          {/* Decorative Gold Side Wing - Left (Starts flush from the left edge) */}
           <GoldWingBar
             direction="left"
-            className="flex-1 h-[4px] sm:h-[6px]"
+            className="flex-1 h-[5px] sm:h-[6px] md:h-[7px] min-w-[20px]"
             delay={delay}
           />
 
-          <div className="px-2 sm:px-4 flex-shrink min-w-0">
+          <div className="px-3 sm:px-6 md:px-8 flex-shrink min-w-0">
             {eyebrow && (
-              <p className="font-poppins font-semibold uppercase tracking-[0.22em] text-[#efbf04] text-[10px] sm:text-xs md:text-sm">
+              <p className="font-poppins font-semibold uppercase tracking-[0.22em] text-[#efbf04] text-[10px] sm:text-xs md:text-sm mb-0.5">
                 {eyebrow}
               </p>
             )}
-            <h2 className={`font-philosopher font-bold text-white text-base sm:text-xl md:text-[26px] lg:text-[30px] leading-tight tracking-tight mt-1 ${titleClassName}`}>
+            <h2 className={`font-philosopher font-bold text-white text-base sm:text-xl md:text-[26px] lg:text-[30px] leading-tight tracking-tight ${titleClassName}`}>
               {title}
             </h2>
           </div>
 
-          {/* Decorative Gold Side Wing - Right */}
+          {/* Decorative Gold Side Wing - Right (Extends flush to the right edge) */}
           <GoldWingBar
             direction="right"
-            className="flex-1 h-[4px] sm:h-[6px]"
+            className="flex-1 h-[5px] sm:h-[6px] md:h-[7px] min-w-[20px]"
             delay={delay}
           />
         </motion.div>

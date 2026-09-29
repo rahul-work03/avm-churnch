@@ -144,16 +144,16 @@ export const MinistriesOverviewSection: React.FC<MinistriesOverviewSectionProps>
                 whileHover={{ y: -8, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } }}
                 className="w-full max-w-[380px] md:max-w-[367px] h-full"
               >
-                {/* Outer Animated Border Container with Rotating Sacred Gold Beam */}
-                <div className="relative p-[1.5px] sm:p-[2px] rounded-[24px] overflow-hidden group/card shadow-[0_6px_24px_rgba(14,39,64,0.06)] hover:shadow-[0_20px_50px_rgba(212,175,55,0.25)] transition-all duration-500 h-full flex flex-col">
+                {/* Outer Animated Border Container with Rich Multi-layered Shadow & Gold Beam */}
+                <div className="relative p-[1.5px] sm:p-[2px] rounded-[24px] overflow-hidden group/card shadow-[0_12px_32px_rgba(14,39,64,0.13),0_3px_10px_rgba(0,0,0,0.06)] hover:shadow-[0_24px_50px_rgba(212,175,55,0.22),0_0_30px_rgba(239,191,4,0.3)] hover:-translate-y-2 transition-all duration-500 h-full flex flex-col bg-slate-200/90">
                   {/* Rotating Conic Gradient Golden Light Beam */}
-                  <div className="absolute inset-[-200%] animate-[spin_6s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,transparent_260deg,#efbf04_310deg,#d4af37_340deg,#ffffff_355deg,#efbf04_360deg)] opacity-40 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  <div className="absolute inset-[-200%] animate-[spin_6s_linear_infinite] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,transparent_240deg,#efbf04_300deg,#d4af37_335deg,#ffffff_355deg,#efbf04_360deg)] opacity-60 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                   {/* Inner Luxury Alabaster Card Canvas */}
-                  <div className="relative w-full h-full bg-gradient-to-b from-white via-[#fdfcf9] to-[#f8f6ee] rounded-[22.5px] p-5 sm:p-6 flex flex-col items-center text-center z-10 border border-slate-100/80">
+                  <div className="relative w-full h-full bg-gradient-to-b from-white via-[#fcfbf7] to-[#f6f4ea] rounded-[22.5px] p-5 sm:p-6 flex flex-col items-center text-center z-10 border border-slate-200/90 ring-1 ring-amber-100/60 shadow-xs">
                     {/* Card Image with Ambient Sheen */}
                     <Link href={targetUrl} className="block w-full cursor-pointer">
-                      <div className="relative w-full aspect-[1.92/1] rounded-[16px] overflow-hidden bg-slate-900 mb-4.5 flex-shrink-0 shadow-sm border border-slate-200/80 group-hover/card:border-[#d4af37]/60 transition-colors duration-300">
+                      <div className="relative w-full aspect-[1.92/1] rounded-[16px] overflow-hidden bg-slate-900 mb-4.5 flex-shrink-0 shadow-md border border-slate-300/80 group-hover/card:border-[#d4af37]/70 transition-colors duration-300">
                         <Image
                           src={resolvedImg}
                           alt={item.title}
