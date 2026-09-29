@@ -22,7 +22,7 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     originalPrice: 250,
     salePrice: 199,
     rating: 4,
-    productUrl: 'https://www.amazon.in/',
+    productUrl: 'https://amzn.in/d/0j2LQP4E',
     description:
       'An anointed collection of spiritual worship songs, hymns, and prayers compiled for believers to experience the manifest glory and presence of God.',
   },
@@ -34,7 +34,7 @@ const DEFAULT_PRODUCTS: ProductItem[] = [
     originalPrice: 250,
     salePrice: 199,
     rating: 4,
-    productUrl: 'https://www.amazon.in/',
+    productUrl: 'https://amzn.in/d/0eKR3CnU',
     description:
       'A profound theological exploration by Apostle Dr. Ankur Yoseph Narula unveiling the eternal nature, power, and sovereignty of the living God.',
   },

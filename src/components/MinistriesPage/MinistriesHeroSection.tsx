@@ -45,7 +45,7 @@ export const MinistriesHeroSection: React.FC<MinistriesHeroSectionProps> = ({
               muted
               loop
               playsInline
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-top"
             />
 
             {/* Gradient Overlays for readable title badge */}

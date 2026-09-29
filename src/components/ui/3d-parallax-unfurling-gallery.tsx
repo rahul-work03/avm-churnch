@@ -149,6 +149,7 @@ export const ImageCard: React.FC<ImageCardProps> = ({ item, onLoad, onClick }) =
   return (
     <div
       onClick={onClick}
+      data-cursor="View"
       className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[390px] flex-shrink-0 bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-[#efbf04]/35 hover:border-[#efbf04] transition-all duration-300 hover:scale-[1.02] cursor-pointer relative will-change-transform backface-hidden preserve-3d group shadow-[0_10px_28px_rgba(0,0,0,0.08)] hover:shadow-[0_18px_40px_rgba(239,191,4,0.35)]"
     >
       <img

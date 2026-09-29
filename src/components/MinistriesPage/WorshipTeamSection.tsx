@@ -50,7 +50,7 @@ export const WorshipTeamSection: React.FC<WorshipTeamSectionProps> = ({
               alt={resolvedAlt}
               fill
               priority
-              className="object-cover object-center transition-transform duration-700 group-hover:scale-103"
+              className="object-cover object-top transition-transform duration-700 group-hover:scale-103"
             />
           </div>
         </RevealOnScroll>
