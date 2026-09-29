@@ -59,36 +59,24 @@ const DEFAULT_DAILY_PROGRAMS = [
 
 const DEFAULT_SOCIAL_PLATFORMS = [
   {
+    name: 'YouTube',
+    handle: '@ankurnarulaministries',
+    url: 'https://www.youtube.com/@ankurnarulaministries',
+  },
+  {
     name: 'Instagram',
+    handle: '@ankurnarulaministries',
     url: 'https://www.instagram.com/ankurnarulaministries',
-    buttonImageFallback: '/figma-assets/social_btn_instagram.png',
-    iconFallback: '/figma-assets/instagram_logo.png',
-    themeGradient: 'linear-gradient(135deg, #fce1ee 0%, #fdf2f7 50%, #ffffff 100%)',
-    borderColor: 'border-pink-100',
   },
   {
     name: 'Facebook',
+    handle: 'Ankur Narula Ministries',
     url: 'https://www.facebook.com/ankurnarulaministries/',
-    buttonImageFallback: '/figma-assets/social_btn_facebook.png',
-    iconFallback: '/figma-assets/facebook_logo.png',
-    themeGradient: 'linear-gradient(135deg, #dbe8fa 0%, #f0f5fd 50%, #ffffff 100%)',
-    borderColor: 'border-blue-100',
   },
   {
-    name: 'YouTube',
-    url: 'https://www.youtube.com/@ankurnarulaministries',
-    buttonImageFallback: '/figma-assets/social_btn_youtube.png',
-    iconFallback: '/figma-assets/youtube_logo.png',
-    themeGradient: 'linear-gradient(135deg, #fce0de 0%, #fdf1f0 50%, #ffffff 100%)',
-    borderColor: 'border-red-100',
-  },
-  {
-    name: 'Twitter / X',
+    name: 'X (Twitter)',
+    handle: '@apostleankur',
     url: 'https://x.com/apostleankur',
-    buttonImageFallback: '/figma-assets/social_btn_twitter.png',
-    iconFallback: '/figma-assets/x_twitter_logo.png',
-    themeGradient: 'linear-gradient(135deg, #9ca3af 0%, #cbd5e1 45%, #f1f5f9 85%, #ffffff 100%)',
-    borderColor: 'border-slate-200',
   },
 ]
 
@@ -444,48 +432,19 @@ export const Homepage: GlobalConfig = {
                 {
                   name: 'name',
                   type: 'text',
-                  label: 'Platform Name',
+                  label: 'Platform Name (e.g. YouTube, Instagram, Facebook, X)',
                   required: true,
+                },
+                {
+                  name: 'handle',
+                  type: 'text',
+                  label: 'Handle / Channel Tag (e.g. @ankurnarulaministries)',
                 },
                 {
                   name: 'url',
                   type: 'text',
                   label: 'Platform URL',
                   required: true,
-                },
-                {
-                  name: 'icon',
-                  type: 'upload',
-                  relationTo: 'media',
-                  label: 'Platform Icon Image (Upload to replace fallback)',
-                  admin: {
-                    hidden: true,
-                  },
-                },
-                {
-                  name: 'iconFallback',
-                  type: 'text',
-                  label: 'Fallback Icon Path',
-                  admin: {
-                    hidden: true,
-                  },
-                },
-                {
-                  name: 'themeGradient',
-                  type: 'text',
-                  label: 'CSS Background Gradient',
-                  admin: {
-                    hidden: true,
-                  },
-                },
-                {
-                  name: 'borderColor',
-                  type: 'text',
-                  label: 'Tailwind Border Color Class',
-                  defaultValue: 'border-blue-100',
-                  admin: {
-                    hidden: true,
-                  },
                 },
               ],
             },

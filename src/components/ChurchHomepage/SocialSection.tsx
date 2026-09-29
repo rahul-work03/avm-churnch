@@ -1,53 +1,79 @@
 'use client'
 
 import React from 'react'
-import Image from 'next/image'
 import { motion, type Variants } from 'framer-motion'
-import { TextWordReveal, BlurTextReveal } from '@/components/ui/text-reveal'
 import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
-import { SacredCanvas } from '@/components/ui/sacred-canvas'
-import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export interface SocialPlatformItem {
   id?: string
   name: string
+  handle?: string
   url: string
-  buttonImage?: any
-  buttonImageFallback?: string
 }
 
 export interface SocialSectionProps {
   headerTitle?: string
   subtitle?: string
-  backgroundImage?: any
-  backgroundImageFallback?: string
   platforms?: SocialPlatformItem[]
 }
 
-const DEFAULT_SOCIAL_PLATFORMS: SocialPlatformItem[] = [
+function getPlatformIcon(name: string, url: string): React.ReactNode {
+  const lower = `${name} ${url}`.toLowerCase()
+  if (lower.includes('youtube') || lower.includes('youtu.be')) {
+    return (
+      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+      </svg>
+    )
+  }
+  if (lower.includes('instagram') || lower.includes('instagr.am')) {
+    return (
+      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" strokeWidth="3" />
+      </svg>
+    )
+  }
+  if (lower.includes('facebook') || lower.includes('fb.com')) {
+    return (
+      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+      </svg>
+    )
+  }
+  // Twitter / X / Default
+  return (
+    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  )
+}
+
+const DEFAULT_SOCIALS: SocialPlatformItem[] = [
   {
-    id: '361:4',
-    name: 'Instagram',
-    url: 'https://www.instagram.com/ankurnarulaministries',
-    buttonImageFallback: '/figma-assets/social_btn_instagram.png',
-  },
-  {
-    id: '361:5',
-    name: 'Facebook',
-    url: 'https://www.facebook.com/ankurnarulaministries/',
-    buttonImageFallback: '/figma-assets/social_btn_facebook.png',
-  },
-  {
-    id: '361:3',
+    id: 'youtube',
     name: 'YouTube',
+    handle: '@ankurnarulaministries',
     url: 'https://www.youtube.com/@ankurnarulaministries',
-    buttonImageFallback: '/figma-assets/social_btn_youtube.png',
   },
   {
-    id: '361:6',
-    name: 'Twitter',
+    id: 'instagram',
+    name: 'Instagram',
+    handle: '@ankurnarulaministries',
+    url: 'https://www.instagram.com/ankurnarulaministries',
+  },
+  {
+    id: 'facebook',
+    name: 'Facebook',
+    handle: 'Ankur Narula Ministries',
+    url: 'https://www.facebook.com/ankurnarulaministries/',
+  },
+  {
+    id: 'twitter',
+    name: 'X (Twitter)',
+    handle: '@apostleankur',
     url: 'https://x.com/apostleankur',
-    buttonImageFallback: '/figma-assets/social_btn_twitter.png',
   },
 ]
 
@@ -56,28 +82,26 @@ const containerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
       delayChildren: 0.05,
     },
   },
 }
 
-const itemVariants: Variants = {
+const cardVariants: Variants = {
   hidden: {
     opacity: 0,
-    y: 20,
-    scale: 0.94,
-    filter: 'blur(4px)',
+    y: 16,
+    scale: 0.96,
   },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    filter: 'blur(0px)',
     transition: {
       type: 'spring',
-      damping: 22,
-      stiffness: 280,
+      damping: 24,
+      stiffness: 300,
       mass: 0.8,
     },
   },
@@ -89,85 +113,97 @@ export const SocialSection: React.FC<SocialSectionProps> = ({
   platforms,
 }) => {
   const activePlatforms =
-    platforms && platforms.length > 0 ? platforms : DEFAULT_SOCIAL_PLATFORMS
+    platforms && platforms.length > 0 ? platforms : DEFAULT_SOCIALS
 
   return (
     <section
-      className="relative w-full overflow-hidden select-none"
+      className="relative w-full overflow-hidden select-none bg-[#fbfaf6] py-14 sm:py-16 md:py-20"
       data-node-id="361:24"
       data-name="Social"
     >
-      <SacredCanvas tone="pure-light" className="py-10 sm:py-12 md:py-16">
-        {/* Section Header Text (Full width edge-to-edge gold bars) */}
-        <div className="w-full mb-8 sm:mb-10 text-center">
-          <EditorialSectionHeader
-            eyebrow="CONNECT & FOLLOW"
-            title={headerTitle}
-            subtitle={subtitle}
-            variant="editorial"
-            align="center"
-          />
-        </div>
+      {/* Subtle modern warm gold ambient backdrop */}
+      <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-amber-100/25 to-transparent pointer-events-none" />
+      <div className="absolute -top-28 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[radial-gradient(ellipse_at_center,rgba(239,191,4,0.1),transparent_70%)] pointer-events-none" />
 
-        <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Modern Section Header */}
+      <div className="relative z-10 w-full mb-10 sm:mb-12 text-center">
+        <EditorialSectionHeader
+          eyebrow="CONNECT & FOLLOW"
+          title={headerTitle}
+          subtitle={subtitle}
+          variant="editorial"
+          align="center"
+        />
+      </div>
 
-        {/* Framer Motion Staggered Social Buttons: Strictly 1 line on desktop, vertically stacked on mobile */}
+      <div className="relative z-10 max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Minimal Clean Modern Gold Cards Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-40px' }}
-          className="grid grid-cols-1 md:grid-cols-4 items-center justify-items-center gap-4 md:gap-3.5 lg:gap-5 xl:gap-6 w-full max-w-[1200px] mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"
         >
-          {activePlatforms.map((platform, idx) => {
-            const btnImg = getMediaUrl(
-              platform.buttonImage,
-              platform.buttonImageFallback ||
-                DEFAULT_SOCIAL_PLATFORMS[idx]?.buttonImageFallback ||
-                '/figma-assets/social_btn_instagram.png'
-            )
+          {activePlatforms.map((item, idx) => {
+            const defaultItem = DEFAULT_SOCIALS[idx % DEFAULT_SOCIALS.length]
+            const name = item.name || defaultItem?.name || 'Platform'
+            const handle = item.handle || defaultItem?.handle || `@${name.toLowerCase().replace(/\s+/g, '')}`
+            const url = item.url || defaultItem?.url || '#'
+            const iconSvg = getPlatformIcon(name, url)
 
             return (
               <motion.div
-                key={platform.id || idx}
-                variants={itemVariants}
-                className="flex items-center justify-center w-full"
-                data-node-id={platform.id}
+                key={item.id || idx}
+                variants={cardVariants}
+                className="flex"
               >
                 <motion.a
-                  href={platform.url}
+                  href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Visit our ${platform.name} page`}
+                  aria-label={`Connect with us on ${name}`}
                   whileHover={{
-                    scale: 1.05,
-                    y: -3,
-                    filter: 'drop-shadow(0 12px 20px rgba(0,0,0,0.14))',
+                    y: -5,
+                    scale: 1.02,
+                    transition: { duration: 0.2, ease: 'easeOut' },
                   }}
-                  whileTap={{ scale: 0.96 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-                  className="relative block rounded-full overflow-hidden drop-shadow-sm cursor-pointer group w-full max-w-[280px] sm:max-w-[300px] md:max-w-[215px] lg:max-w-[260px] xl:max-w-[275px]"
+                  whileTap={{ scale: 0.98 }}
+                  className="relative flex items-center justify-between w-full p-5 sm:p-6 rounded-[20px] bg-white border border-[#efbf04]/30 hover:border-[#efbf04] shadow-[0_6px_24px_rgba(218,165,32,0.07)] hover:shadow-[0_12px_32px_rgba(239,191,4,0.2)] transition-all duration-300 group overflow-hidden cursor-pointer"
                 >
-                  {/* Uniform Even-Sized Pill Button Image */}
-                  <div className="relative w-full aspect-[4.91/1] flex items-center justify-center">
-                    <Image
-                      src={btnImg}
-                      alt={platform.name}
-                      fill
-                      sizes="(max-width: 768px) 300px, (max-width: 1024px) 215px, 275px"
-                      className="object-contain pointer-events-none select-none"
-                    />
+                  {/* Top Subtle Gold Accent Line */}
+                  <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#efbf04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  {/* Left: Icon + Title & Handle */}
+                  <div className="flex items-center gap-3.5 z-10 min-w-0">
+                    <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100/70 border border-[#efbf04]/50 group-hover:bg-[#efbf04] text-[#003471] group-hover:text-black flex items-center justify-center transition-all duration-300 shadow-xs group-hover:scale-105 shrink-0">
+                      {iconSvg}
+                    </div>
+
+                    <div className="text-left min-w-0">
+                      <h3 className="font-philosopher font-bold text-lg sm:text-[19px] text-[#003471] group-hover:text-[#0b131d] tracking-tight leading-snug">
+                        {name}
+                      </h3>
+                      <p className="font-poppins text-xs font-medium text-[#c59b27] group-hover:text-[#9e7a17] mt-0.5">
+                        {handle}
+                      </p>
+                    </div>
                   </div>
 
-                  {/* Subtle sweeping specular highlight reflection on hover */}
-                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none rounded-full" />
+                  {/* Right: Modern Arrow Badge */}
+                  <div className="w-8 h-8 rounded-full bg-amber-50 group-hover:bg-[#efbf04] border border-[#efbf04]/30 group-hover:border-[#efbf04] flex items-center justify-center text-[#c59b27] group-hover:text-black text-xs font-bold transition-all duration-300 group-hover:translate-x-1 shadow-xs shrink-0 ml-3 z-10">
+                    →
+                  </div>
+
+                  {/* Subtle Specular Highlight Sweep */}
+                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-[#efbf04]/10 to-transparent pointer-events-none rounded-[20px]" />
                 </motion.a>
               </motion.div>
             )
           })}
         </motion.div>
-        </div>
-      </SacredCanvas>
+      </div>
     </section>
   )
 }
+
