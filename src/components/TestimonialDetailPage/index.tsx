@@ -290,7 +290,7 @@ export const TestimonialDetailPage: React.FC<TestimonialDetailPageProps> = ({
             className="text-sm sm:text-base text-white/80 max-w-lg mx-auto justify-center"
             delay={0.15}
           >
-            God is no respecter of persons. What He has done for others, He will surely do for you.
+            God Still Does Miracles and Wonders in Those Who Believe in Him.
           </BlurTextReveal>
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>

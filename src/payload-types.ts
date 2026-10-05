@@ -2142,8 +2142,18 @@ export interface AboutPage {
   resourcesStoreLabel?: string | null;
   resourcesBgImage?: (number | null) | Media;
   resourcesBgFallback?: string | null;
+  /**
+   * Upload custom image for the first page revealed on hover (falls back to parchment scripture text if empty)
+   */
+  resourcesBgInnerImage?: (number | null) | Media;
+  resourcesBgInnerFallback?: string | null;
   resourcesFgImage?: (number | null) | Media;
   resourcesFgFallback?: string | null;
+  /**
+   * Upload custom image for the first page revealed on hover (falls back to parchment scripture text if empty)
+   */
+  resourcesFgInnerImage?: (number | null) | Media;
+  resourcesFgInnerFallback?: string | null;
   crusadesHeaderTitle?: string | null;
   crusadeImages?:
     | {
@@ -2211,9 +2221,10 @@ export interface MinistriesPage {
   headChurchAlt?: string | null;
   headChurchNarrative?: string | null;
   worshipHeaderTitle?: string | null;
-  worshipImage?: (number | null) | Media;
-  worshipFallback?: string | null;
-  worshipAlt?: string | null;
+  worshipVideo?: (number | null) | Media;
+  worshipVideoFallback?: string | null;
+  worshipPosterImage?: (number | null) | Media;
+  worshipPosterFallback?: string | null;
   worshipNarrative?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -2515,6 +2526,10 @@ export interface EventsPage {
         detailPosterFallback?: string | null;
         headingGreeting?: string | null;
         subheading?: string | null;
+        /**
+         * Short highlight description shown on the 3D flip card back face
+         */
+        cardBackfaceSummary?: string | null;
         announcementParagraph1: string;
         announcementParagraph2?: string | null;
         announcementParagraph3?: string | null;
@@ -2962,8 +2977,12 @@ export interface AboutPageSelect<T extends boolean = true> {
   resourcesStoreLabel?: T;
   resourcesBgImage?: T;
   resourcesBgFallback?: T;
+  resourcesBgInnerImage?: T;
+  resourcesBgInnerFallback?: T;
   resourcesFgImage?: T;
   resourcesFgFallback?: T;
+  resourcesFgInnerImage?: T;
+  resourcesFgInnerFallback?: T;
   crusadesHeaderTitle?: T;
   crusadeImages?:
     | T
@@ -3031,9 +3050,10 @@ export interface MinistriesPageSelect<T extends boolean = true> {
   headChurchAlt?: T;
   headChurchNarrative?: T;
   worshipHeaderTitle?: T;
-  worshipImage?: T;
-  worshipFallback?: T;
-  worshipAlt?: T;
+  worshipVideo?: T;
+  worshipVideoFallback?: T;
+  worshipPosterImage?: T;
+  worshipPosterFallback?: T;
   worshipNarrative?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -3321,6 +3341,7 @@ export interface EventsPageSelect<T extends boolean = true> {
         detailPosterFallback?: T;
         headingGreeting?: T;
         subheading?: T;
+        cardBackfaceSummary?: T;
         announcementParagraph1?: T;
         announcementParagraph2?: T;
         announcementParagraph3?: T;

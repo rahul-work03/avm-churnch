@@ -71,7 +71,7 @@ export const SophiaInstitutePageGlobal: GlobalConfig = {
               type: 'textarea',
               label: 'Intro Description Paragraph',
               defaultValue:
-                'Welcome to Sophia Institute, a place dedicated to nurturing faith, wisdom, and a deeper understanding of the Word of God. Through Scripture, prayer, teaching, and fellowship, we seek to encourage believers to grow in their relationship with Christ and live out their faith with love, truth, and purpose.',
+                'Sophia College Institute is a center of higher education committed to academic excellence, leadership development, and professional growth. We equip students with knowledge, practical skills, and strong character to lead with wisdom, live with integrity, serve faithfully, and pursue their calling with purpose.',
             },
             {
               name: 'heroBannerImage',
@@ -188,7 +188,7 @@ export const SophiaInstitutePageGlobal: GlobalConfig = {
               type: 'textarea',
               label: 'Card 1 Narrative Description',
               defaultValue:
-                "Sophia Institute is a place of learning, spiritual growth, and deeper understanding of God's Word. Through biblical teaching, prayer, study, and fellowship, it encourages believers to grow in wisdom and faith. The institute seeks to connect Scripture with everyday life, helping individuals develop a stronger relationship with God and live out their faith with purpose.",
+                "Sophia College Institute is a place of higher education, leadership development and professional preparation, where students are equipped to pursue academic excellence and develop the skills and character needed for greater responsibilities",
             },
             {
               name: 'visionCardTitle',
@@ -201,14 +201,14 @@ export const SophiaInstitutePageGlobal: GlobalConfig = {
               type: 'textarea',
               label: 'Purpose Statement Paragraph',
               defaultValue:
-                'The purpose of Sophia Institute is to nurture spiritual and intellectual growth through Christ-centered teaching and the truth of Scripture.',
+                'The purpose of Sophia College Institute is to equip individuals to use their education, knowledge and positions with integrity, wisdom and purpose.',
             },
             {
               name: 'visionParagraph',
               type: 'textarea',
               label: 'Vision Statement Paragraph',
               defaultValue:
-                "Our vision is to raise a generation grounded in God's Word, growing in wisdom, character, and faith. We seek to equip believers to understand their calling, strengthen their relationship with Christ, and become a light in their families, churches, and communities.",
+                "The vision is to develop a generation that will carry strong values, and use their knowledge, positions and influence to bring positive transformation to society.",
             },
           ],
         },

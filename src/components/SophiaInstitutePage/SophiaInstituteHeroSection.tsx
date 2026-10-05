@@ -22,7 +22,7 @@ export interface SophiaInstituteHeroSectionProps {
 
 export const SophiaInstituteHeroSection: React.FC<SophiaInstituteHeroSectionProps> = ({
   headerTitle = 'Sophia Institute',
-  description = 'Welcome to Sophia Institute, a place dedicated to nurturing faith, wisdom, and a deeper understanding of the Word of God. Through Scripture, prayer, teaching, and fellowship, we seek to encourage believers to grow in their relationship with Christ and live out their faith with love, truth, and purpose.',
+  description = 'Sophia College Institute is a center of higher education committed to academic excellence, leadership development, and professional growth. We equip students with knowledge, practical skills, and strong character to lead with wisdom, live with integrity, serve faithfully, and pursue their calling with purpose.',
   heroVideo,
   heroVideoFallback,
   bannerVideoUrl,

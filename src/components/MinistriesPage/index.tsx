@@ -39,9 +39,10 @@ export const MinistriesPage: React.FC<MinistriesPageProps> = ({ ministriesData }
   // Worship team props
   const worshipTeamProps = {
     headerTitle: ministriesData?.worshipHeaderTitle,
-    image: ministriesData?.worshipImage,
-    imageFallback: ministriesData?.worshipFallback,
-    alt: ministriesData?.worshipAlt,
+    video: ministriesData?.worshipVideo,
+    videoFallback: ministriesData?.worshipVideoFallback || '/quoir_team.mp4',
+    posterImage: ministriesData?.worshipPosterImage || ministriesData?.worshipImage,
+    posterFallback: ministriesData?.worshipPosterFallback || ministriesData?.worshipFallback || '/choir_image.png',
     narrative: ministriesData?.worshipNarrative,
   }
 

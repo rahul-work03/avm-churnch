@@ -8,6 +8,8 @@ import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/ui/r
 export interface EventItem {
   id?: string
   title: string
+  eventTargetDate?: string
+  cardBackfaceSummary?: string
   cardPoster?: any
   cardPosterFallback?: string
   buttonLabel?: string

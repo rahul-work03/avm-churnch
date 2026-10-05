@@ -1,11 +1,12 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { Calendar, Clock, MapPin, Sparkles, ArrowRight } from 'lucide-react'
 import { getMediaUrl, getMediaAlt } from '@/utilities/getMediaUrl'
 import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
-import { RevealOnScroll, StaggerContainer, StaggerItem } from '@/components/ui/reveal'
+import { StaggerContainer, StaggerItem } from '@/components/ui/reveal'
+import { PerspectiveFlipCard } from '@/components/ui/card-14'
 import type { EventItem } from './PrimaryEventHeroSection'
 
 interface MoreEventsSectionProps {
@@ -13,6 +14,299 @@ interface MoreEventsSectionProps {
   events?: EventItem[] | null
   selectedIndex?: number
   onSelectEvent?: (index: number) => void
+}
+
+interface TimeLeft {
+  days: number
+  hours: number
+  minutes: number
+  seconds: number
+  isExpired: boolean
+}
+
+/**
+ * Calculates the next upcoming occurrence for an event date.
+ * If targetDate is future, uses it. Otherwise calculates next recurring weekly slot
+ * based on scheduleDay / scheduleDate to ensure countdown always displays real upcoming time.
+ */
+function getNextUpcomingTarget(targetDateStr?: string | null, scheduleDay?: string | null): number {
+  const now = new Date()
+
+  if (targetDateStr) {
+    const parsed = new Date(targetDateStr).getTime()
+    if (!isNaN(parsed) && parsed > now.getTime()) {
+      return parsed
+    }
+  }
+
+  // Calculate next recurrence based on scheduleDay
+  const dayLower = (scheduleDay || '').toLowerCase()
+  let targetDayOfWeek = 4 // Default Thursday (0 = Sun, 4 = Thu)
+  let targetHour = 18 // 6:00 PM
+  let targetMinute = 0
+
+  if (dayLower.includes('sun')) {
+    targetDayOfWeek = 0
+    targetHour = 8
+    targetMinute = 30
+  } else if (dayLower.includes('wed')) {
+    targetDayOfWeek = 3
+    targetHour = 10
+    targetMinute = 0
+  } else if (dayLower.includes('thu')) {
+    targetDayOfWeek = 4
+    targetHour = 18
+    targetMinute = 0
+  }
+
+  const currentDay = now.getDay()
+  let daysUntil = targetDayOfWeek - currentDay
+  if (daysUntil < 0 || (daysUntil === 0 && now.getHours() >= targetHour)) {
+    daysUntil += 7
+  }
+  if (daysUntil === 0 && now.getHours() < targetHour) {
+    daysUntil = 0
+  }
+
+  const targetDate = new Date(now)
+  targetDate.setDate(now.getDate() + daysUntil)
+  targetDate.setHours(targetHour, targetMinute, 0, 0)
+
+  return targetDate.getTime()
+}
+
+function useCountdown(targetDateStr?: string | null, scheduleDay?: string | null): TimeLeft {
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    isExpired: false,
+  })
+
+  useEffect(() => {
+    const updateCountdown = () => {
+      const target = getNextUpcomingTarget(targetDateStr, scheduleDay)
+      const now = Date.now()
+      const difference = target - now
+
+      if (difference <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0, isExpired: false })
+        return
+      }
+
+      setTimeLeft({
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+        isExpired: false,
+      })
+    }
+
+    updateCountdown()
+    const timer = setInterval(updateCountdown, 1000)
+    return () => clearInterval(timer)
+  }, [targetDateStr, scheduleDay])
+
+  return timeLeft
+}
+
+function EventCardItemComponent({
+  event,
+  index,
+  isSelected,
+  onSelect,
+}: {
+  event: EventItem
+  index: number
+  isSelected: boolean
+  onSelect: (index: number) => void
+}) {
+  const posterSrc = getMediaUrl(
+    event.cardPoster || event.landscapePoster || event.detailPoster,
+    event.cardPosterFallback || event.landscapePosterFallback || event.detailPosterFallback || '/figma-assets/9c4cf0e2f9397f119d80dde4d156bbaa56343330.png'
+  )
+  const posterAlt = getMediaAlt(event.cardPoster, event.title)
+  const countdown = useCountdown(event.eventTargetDate, event.scheduleDay)
+  const btnText = event.buttonLabel || 'See Details'
+
+  // Front Face
+  const frontFace = (
+    <div
+      onClick={() => onSelect(index)}
+      className="size-full flex flex-col justify-between relative rounded-2xl overflow-hidden bg-slate-950 cursor-pointer"
+    >
+      {/* Poster Background Image */}
+      <div className="absolute inset-0 size-full">
+        <Image
+          src={posterSrc}
+          alt={posterAlt}
+          fill
+          sizes="(max-width: 768px) 100vw, 367px"
+          className="object-cover object-top transition-transform duration-700 group-hover/p-card:scale-106"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent pointer-events-none" />
+      </div>
+
+      {/* Top Floating Badge */}
+      <div className="relative z-10 p-3.5 flex justify-between items-start">
+        {isSelected ? (
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#efbf04] text-[#003471] font-poppins font-bold text-[11px] shadow-lg tracking-wider uppercase">
+            <Sparkles className="size-3" />
+            <span>Currently Viewing</span>
+          </div>
+        ) : (
+          event.subheading && (
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#003471]/90 backdrop-blur-md border border-[#efbf04]/50 text-[#efbf04] text-[11px] font-semibold shadow-lg">
+              <Sparkles className="size-3" />
+              <span className="line-clamp-1">{event.subheading}</span>
+            </div>
+          )
+        )}
+      </div>
+
+      {/* Bottom Floating Info */}
+      <div className="relative z-10 p-4 space-y-1.5">
+        <div>
+          {event.scheduleDate && (
+            <p className="text-[#efbf04] text-[11px] font-semibold flex items-center gap-1 mb-1">
+              <Calendar className="size-3" />
+              <span>{event.scheduleDate}</span>
+            </p>
+          )}
+          <h4 className="text-white font-poppins font-semibold text-base leading-snug line-clamp-2 drop-shadow-md">
+            {event.title}
+          </h4>
+        </div>
+
+        <div className="flex items-center justify-between text-[11px] font-semibold tracking-wider text-slate-300 pt-1.5 border-t border-white/10">
+          <span className="text-[#efbf04] group-hover/p-card:translate-x-1 transition-transform">
+            Hover for live countdown & info
+          </span>
+          <ArrowRight className="size-3.5 text-[#efbf04] group-hover/p-card:translate-x-1 transition-transform" />
+        </div>
+      </div>
+    </div>
+  )
+
+  // Back Face
+  const backFace = (
+    <div
+      onClick={() => onSelect(index)}
+      className="size-full flex flex-col justify-between items-center text-center p-5 cursor-pointer"
+    >
+      {/* Header Greeting */}
+      <div className="w-full">
+        <p className="text-[#efbf04] text-[11px] font-bold uppercase tracking-widest">
+          {event.headingGreeting || 'HALLELUJAH!!'}
+        </p>
+        <h4 className="text-white font-poppins font-semibold text-sm sm:text-base tracking-tight mt-1 line-clamp-1">
+          {event.title}
+        </h4>
+        <div className="w-10 h-[1.5px] bg-gradient-to-r from-transparent via-[#efbf04] to-transparent mx-auto mt-1.5 opacity-80" />
+      </div>
+
+      {/* 4 Countdown Timer Tiles */}
+      <div className="w-full my-1">
+        <p className="text-slate-300 text-[10px] font-semibold uppercase tracking-wider mb-2">
+          {countdown.isExpired ? 'Event Live / In Progress' : 'Live Event Countdown'}
+        </p>
+        <div className="grid grid-cols-4 gap-1.5 max-w-[300px] mx-auto">
+          {/* Days */}
+          <div className="flex flex-col items-center justify-center p-1.5 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md">
+            <span className="text-base sm:text-lg font-bold font-poppins text-[#efbf04] leading-none">
+              {String(countdown.days).padStart(2, '0')}
+            </span>
+            <span className="text-[9px] uppercase font-semibold text-slate-300 mt-0.5">Days</span>
+          </div>
+
+          {/* Hours */}
+          <div className="flex flex-col items-center justify-center p-1.5 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md">
+            <span className="text-base sm:text-lg font-bold font-poppins text-[#efbf04] leading-none">
+              {String(countdown.hours).padStart(2, '0')}
+            </span>
+            <span className="text-[9px] uppercase font-semibold text-slate-300 mt-0.5">Hours</span>
+          </div>
+
+          {/* Minutes */}
+          <div className="flex flex-col items-center justify-center p-1.5 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md">
+            <span className="text-base sm:text-lg font-bold font-poppins text-[#efbf04] leading-none">
+              {String(countdown.minutes).padStart(2, '0')}
+            </span>
+            <span className="text-[9px] uppercase font-semibold text-slate-300 mt-0.5">Mins</span>
+          </div>
+
+          {/* Seconds */}
+          <div className="flex flex-col items-center justify-center p-1.5 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md">
+            <span className="text-base sm:text-lg font-bold font-poppins text-[#efbf04] leading-none">
+              {String(countdown.seconds).padStart(2, '0')}
+            </span>
+            <span className="text-[9px] uppercase font-semibold text-slate-300 mt-0.5">Secs</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Highlights / Backface Summary Narrative */}
+      <div className="px-1 max-w-[280px]">
+        <p className="text-slate-200 text-xs leading-relaxed line-clamp-3 font-poppins">
+          {event.cardBackfaceSummary || event.announcementParagraph1}
+        </p>
+      </div>
+
+      {/* Schedule Meta Badges */}
+      <div className="w-full space-y-1 text-[11px] text-slate-300 border-t border-white/10 pt-2.5">
+        {event.scheduleDate && (
+          <div className="flex items-center justify-center gap-1 text-slate-200">
+            <Calendar className="size-3 text-[#efbf04] flex-shrink-0" />
+            <span className="font-medium truncate">{event.scheduleDay ? `${event.scheduleDay}, ` : ''}{event.scheduleDate}</span>
+          </div>
+        )}
+        {event.scheduleTime && (
+          <div className="flex items-center justify-center gap-1 text-slate-200">
+            <Clock className="size-3 text-[#efbf04] flex-shrink-0" />
+            <span className="font-medium">{event.scheduleTime}</span>
+          </div>
+        )}
+        {event.scheduleVenue && (
+          <div className="flex items-center justify-center gap-1 text-slate-300 line-clamp-1">
+            <MapPin className="size-3 text-[#efbf04] flex-shrink-0" />
+            <span className="truncate">{event.scheduleVenue}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+
+  return (
+    <StaggerItem className="flex flex-col justify-between w-full max-w-[367px] mx-auto">
+      {/* 3D Perspective Flip Card Container */}
+      <div className="w-full">
+        <PerspectiveFlipCard
+          front={frontFace}
+          back={backFace}
+          w="w-full"
+          h="h-[480px] sm:h-[500px]"
+          className={isSelected ? 'ring-4 ring-[#efbf04]/30 rounded-2xl' : ''}
+        />
+      </div>
+
+      {/* "See Details" Action Button */}
+      <div className="mt-4 text-center w-full flex justify-center">
+        <button
+          type="button"
+          onClick={() => onSelect(index)}
+          className={`inline-flex items-center justify-center font-poppins font-semibold text-xs sm:text-sm px-7 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all transform hover:scale-105 active:scale-95 cursor-pointer ${
+            isSelected
+              ? 'bg-[#003370] text-[#efbf04] border border-[#d4af37]/40'
+              : 'bg-[#efbf04] hover:bg-[#dfaf00] text-[#0b0c1c]'
+          }`}
+        >
+          {isSelected ? 'Viewing Event' : btnText}
+        </button>
+      </div>
+    </StaggerItem>
+  )
 }
 
 export const MoreEventsSection: React.FC<MoreEventsSectionProps> = ({
@@ -50,76 +344,15 @@ export const MoreEventsSection: React.FC<MoreEventsSectionProps> = ({
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch justify-center"
           staggerDelay={0.1}
         >
-          {eventsList.map((event, index) => {
-            const posterSrc = getMediaUrl(
-              event.cardPoster || event.landscapePoster || event.detailPoster,
-              event.cardPosterFallback || event.landscapePosterFallback || event.detailPosterFallback || '/figma-assets/9c4cf0e2f9397f119d80dde4d156bbaa56343330.png'
-            )
-            const posterAlt = getMediaAlt(event.cardPoster, event.title)
-            const isSelected = selectedIndex === index
-            const btnText = event.buttonLabel || 'See Details'
-
-            return (
-              <StaggerItem
-                key={event.id || `${event.title}-${index}`}
-                className="flex flex-col justify-between w-full max-w-[367px] mx-auto group"
-              >
-                {/* Event Poster Card Container */}
-                <div
-                  onClick={() => handleEventClick(index)}
-                  className={`relative w-full aspect-[367/550] rounded-[20px] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 cursor-pointer bg-slate-950 ${
-                    isSelected
-                      ? 'border-2 sm:border-[3px] border-[#efbf04] ring-4 ring-[#efbf04]/20'
-                      : 'border border-slate-200/90 hover:border-[#d4af37]/60'
-                  }`}
-                >
-                  <Image
-                    src={posterSrc}
-                    alt={posterAlt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 367px"
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-104"
-                  />
-                  {/* Subtle Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-
-                  {/* Active Featured Tag */}
-                  {isSelected && (
-                    <div className="absolute top-3.5 left-3.5 px-3.5 py-1 rounded-full bg-[#efbf04] text-[#003370] font-poppins font-bold text-xs shadow-md tracking-wider uppercase">
-                      Currently Viewing
-                    </div>
-                  )}
-
-                  {/* Bottom Title on Poster */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
-                    {event.scheduleDate && (
-                      <p className="text-xs font-semibold text-[#efbf04] tracking-wider uppercase mb-1">
-                        {event.scheduleDate}
-                      </p>
-                    )}
-                    <h4 className="font-poppins font-semibold text-base sm:text-lg leading-snug line-clamp-2">
-                      {event.title}
-                    </h4>
-                  </div>
-                </div>
-
-                {/* "See Details" Action Button */}
-                <div className="mt-4 text-center w-full flex justify-center">
-                  <button
-                    type="button"
-                    onClick={() => handleEventClick(index)}
-                    className={`inline-flex items-center justify-center font-poppins font-semibold text-xs sm:text-sm px-7 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all transform hover:scale-105 active:scale-95 cursor-pointer ${
-                      isSelected
-                        ? 'bg-[#003370] text-[#efbf04] border border-[#d4af37]/40'
-                        : 'bg-[#efbf04] hover:bg-[#dfaf00] text-[#0b0c1c]'
-                    }`}
-                  >
-                    {isSelected ? 'Viewing Event' : btnText}
-                  </button>
-                </div>
-              </StaggerItem>
-            )
-          })}
+          {eventsList.map((event, index) => (
+            <EventCardItemComponent
+              key={event.id || `${event.title}-${index}`}
+              event={event}
+              index={index}
+              isSelected={selectedIndex === index}
+              onSelect={handleEventClick}
+            />
+          ))}
         </StaggerContainer>
       </div>
     </section>

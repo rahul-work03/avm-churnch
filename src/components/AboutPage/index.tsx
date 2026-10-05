@@ -82,8 +82,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({
     storeLabel: aboutData?.resourcesStoreLabel,
     bgImage: aboutData?.resourcesBgImage,
     bgFallback: aboutData?.resourcesBgFallback,
+    bgInnerImage: aboutData?.resourcesBgInnerImage,
+    bgInnerFallback: aboutData?.resourcesBgInnerFallback,
     fgImage: aboutData?.resourcesFgImage,
     fgFallback: aboutData?.resourcesFgFallback,
+    fgInnerImage: aboutData?.resourcesFgInnerImage,
+    fgInnerFallback: aboutData?.resourcesFgInnerFallback,
   }
 
   // Crusades props

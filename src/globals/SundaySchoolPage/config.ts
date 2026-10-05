@@ -19,9 +19,6 @@ const DEFAULT_SCENES_ROW1 = [
     imageFallback: '/scenes_of_sunday_school/image_4.png',
     alt: 'Sunday School Young Believers Classroom 4',
   },
-]
-
-const DEFAULT_SCENES_ROW2 = [
   {
     imageFallback: '/scenes_of_sunday_school/image_5.png',
     alt: 'Sunday School Scripture Recitation 5',
@@ -37,6 +34,57 @@ const DEFAULT_SCENES_ROW2 = [
   {
     imageFallback: '/scenes_of_sunday_school/image_8.png',
     alt: 'Sunday School Praise and Fellowship 8',
+  },
+  {
+    imageFallback: '/scenes_of_sunday_school/image_9.png',
+    alt: 'Sunday School Creative Arts and Activity 9',
+  },
+  {
+    imageFallback: '/scenes_of_sunday_school/image_10.png',
+    alt: 'Sunday School Joyful Gathering 10',
+  },
+]
+
+const DEFAULT_SCENES_ROW2 = [
+  {
+    imageFallback: '/scenes_of_sunday_school/image_11.png',
+    alt: 'Sunday School Group Celebration 11',
+  },
+  {
+    imageFallback: '/scenes_of_sunday_school/image_12.png',
+    alt: 'Sunday School Worship Songs 12',
+  },
+  {
+    imageFallback: '/scenes_of_sunday_school/image_13.png',
+    alt: 'Sunday School Kids Bible Quiz 13',
+  },
+  {
+    imageFallback: '/scenes_of_sunday_school/image_14.png',
+    alt: 'Sunday School Discipleship Class 14',
+  },
+  {
+    imageFallback: '/scenes_of_sunday_school/image_15.png',
+    alt: 'Sunday School Biblical Story Time 15',
+  },
+  {
+    imageFallback: '/scenes_of_sunday_school/image_16.png',
+    alt: 'Sunday School Youth Leaders Session 16',
+  },
+  {
+    imageFallback: '/scenes_of_sunday_school/image_17.png',
+    alt: 'Sunday School Faith Foundations 17',
+  },
+  {
+    imageFallback: '/scenes_of_sunday_school/image_18.png',
+    alt: 'Sunday School Anointed Teaching 18',
+  },
+  {
+    imageFallback: '/scenes_of_sunday_school/image_19.png',
+    alt: 'Sunday School Joy in the Lord 19',
+  },
+  {
+    imageFallback: '/scenes_of_sunday_school/image_20.png',
+    alt: 'Sunday School Community Outreach 20',
   },
 ]
 
@@ -55,8 +103,8 @@ export const SundaySchoolPageGlobal: GlobalConfig = {
         if (!doc) return doc
         return {
           ...doc,
-          scenesRow1: doc.scenesRow1 && doc.scenesRow1.length > 0 ? doc.scenesRow1 : DEFAULT_SCENES_ROW1,
-          scenesRow2: doc.scenesRow2 && doc.scenesRow2.length > 0 ? doc.scenesRow2 : DEFAULT_SCENES_ROW2,
+          scenesRow1: doc.scenesRow1 && doc.scenesRow1.length >= 10 ? doc.scenesRow1 : DEFAULT_SCENES_ROW1,
+          scenesRow2: doc.scenesRow2 && doc.scenesRow2.length >= 10 ? doc.scenesRow2 : DEFAULT_SCENES_ROW2,
         }
       },
     ],

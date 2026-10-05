@@ -1,11 +1,13 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Calendar, Clock, MapPin, Sparkles, ArrowRight } from 'lucide-react'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 import { RevealOnScroll } from '@/components/ui/reveal'
+import { PerspectiveFlipCard } from '@/components/ui/card-14'
 import type { EventItem } from './RecentEventsSection'
 
 interface UpcomingEventsSectionProps {
@@ -15,6 +17,9 @@ interface UpcomingEventsSectionProps {
 
 const DEFAULT_EVENT_DETAIL: EventItem = {
   title: 'Good News in Pathankot - 11 June 2026',
+  eventTargetDate: '2026-06-11T18:00:00',
+  cardBackfaceSummary:
+    'Join Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula in Pathankot for a supernatural gathering filled with salvation, healing, and the mighty power of Christ.',
   detailPosterFallback: '/figma-assets/85761e6b2486d02d0c483eb7871b0ab19ace8c46.png',
   headingGreeting: 'HALLELUJAH!!',
   subheading: 'Grand Mega Crusade 2026',
@@ -34,6 +39,71 @@ const DEFAULT_EVENT_DETAIL: EventItem = {
   schedulePostedBy: 'By:- Church Media Team',
 }
 
+interface TimeLeft {
+  days: number
+  hours: number
+  minutes: number
+  seconds: number
+  isExpired: boolean
+}
+
+function useCountdown(targetDateString?: string): TimeLeft {
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    isExpired: false,
+  })
+
+  useEffect(() => {
+    if (!targetDateString) {
+      // Fallback target: 30 days from now if not specified
+      const fallbackTarget = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).getTime()
+      const updateFallback = () => {
+        const diff = fallbackTarget - Date.now()
+        if (diff <= 0) {
+          setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0, isExpired: true })
+          return
+        }
+        setTimeLeft({
+          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((diff / 1000 / 60) % 60),
+          seconds: Math.floor((diff / 1000) % 60),
+          isExpired: false,
+        })
+      }
+      updateFallback()
+      const interval = setInterval(updateFallback, 1000)
+      return () => clearInterval(interval)
+    }
+
+    const targetTime = new Date(targetDateString).getTime()
+
+    const calculateTime = () => {
+      const difference = targetTime - Date.now()
+      if (isNaN(difference) || difference <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0, isExpired: true })
+        return
+      }
+      setTimeLeft({
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+        isExpired: false,
+      })
+    }
+
+    calculateTime()
+    const timer = setInterval(calculateTime, 1000)
+    return () => clearInterval(timer)
+  }, [targetDateString])
+
+  return timeLeft
+}
+
 export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({
   upcomingHeaderTitle = 'Upcoming Events',
   event,
@@ -42,6 +112,145 @@ export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({
   const posterSrc = getMediaUrl(
     currentEvent.detailPoster || currentEvent.cardPoster,
     currentEvent.detailPosterFallback || currentEvent.cardPosterFallback || '/figma-assets/85761e6b2486d02d0c483eb7871b0ab19ace8c46.png'
+  )
+
+  const countdown = useCountdown(currentEvent.eventTargetDate)
+
+  // Front Face Component for 3D Perspective Card
+  const eventCardFront = (
+    <div className="size-full flex flex-col justify-between [transform-style:preserve-3d] relative rounded-2xl overflow-hidden bg-slate-950">
+      {/* Poster Background Image with Depth (Z: 40px) */}
+      <div className="absolute inset-0 size-full [transform-style:preserve-3d]">
+        <Image
+          src={posterSrc}
+          alt={currentEvent.title || 'Upcoming Event'}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 500px, 513px"
+          className="object-cover object-top transition-transform duration-700 group-hover/p-card:scale-105"
+          priority
+        />
+        {/* Soft Vignette Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent pointer-events-none" />
+      </div>
+
+      {/* Floating Top Tagline Badge (Z: 70px) */}
+      <div className="relative z-10 p-4 sm:p-5 flex justify-between items-start [transform-style:preserve-3d]">
+        {currentEvent.subheading && (
+          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#003471]/90 backdrop-blur-md border border-[#efbf04]/50 text-[#efbf04] text-[11px] sm:text-xs font-semibold shadow-lg [transform:translateZ(70px)]">
+            <Sparkles className="size-3.5" />
+            <span>{currentEvent.subheading}</span>
+          </div>
+        )}
+      </div>
+
+      {/* Bottom Information Glass Panel (Z: 60px) */}
+      <div className="relative z-10 p-4 sm:p-6 [transform-style:preserve-3d] space-y-2.5">
+        <div className="[transform:translateZ(60px)]">
+          <h3 className="text-white font-poppins font-bold text-lg sm:text-xl line-clamp-1 drop-shadow-md">
+            {currentEvent.title}
+          </h3>
+          {currentEvent.scheduleDate && (
+            <p className="text-[#efbf04] text-xs sm:text-sm font-medium flex items-center gap-1.5 mt-1 drop-shadow-sm">
+              <Calendar className="size-3.5" />
+              <span>{currentEvent.scheduleDate} {currentEvent.scheduleTime ? `• ${currentEvent.scheduleTime}` : ''}</span>
+            </p>
+          )}
+        </div>
+
+        {/* Hover Cue */}
+        <div className="flex items-center justify-between text-[11px] sm:text-xs font-semibold tracking-wider text-slate-300 [transform:translateZ(50px)] pt-1 border-t border-white/10">
+          <span className="text-[#efbf04] group-hover/p-card:translate-x-1 transition-transform">
+            Hover to view live countdown & details
+          </span>
+          <ArrowRight className="size-3.5 text-[#efbf04] group-hover/p-card:translate-x-1 transition-transform" />
+        </div>
+      </div>
+    </div>
+  )
+
+  // Back Face Component for 3D Perspective Card (Countdown + Highlights)
+  const eventCardBack = (
+    <div className="size-full flex flex-col justify-between items-center text-center [transform-style:preserve-3d] rounded-2xl bg-gradient-to-b from-[#071d36] via-[#0b2749] to-[#041427] text-white p-5 sm:p-7 border border-amber-400/30 shadow-2xl">
+      {/* Backface Header Greeting (Z: 60px) */}
+      <div className="[transform:translateZ(60px)] w-full">
+        <p className="text-[#efbf04] text-xs font-bold uppercase tracking-widest">
+          {currentEvent.headingGreeting || 'HALLELUJAH!!'}
+        </p>
+        <h4 className="text-white font-poppins font-bold text-base sm:text-lg tracking-tight mt-1 line-clamp-1">
+          {currentEvent.title}
+        </h4>
+        <div className="w-12 h-[1.5px] bg-gradient-to-r from-transparent via-[#efbf04] to-transparent mx-auto mt-2 opacity-80" />
+      </div>
+
+      {/* 4 Countdown Timer Tiles (Z: 110px) */}
+      <div className="w-full [transform-style:preserve-3d] [transform:translateZ(100px)] my-2 sm:my-3">
+        <p className="text-slate-300 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider mb-2.5">
+          {countdown.isExpired ? 'Event In Progress / Concluded' : 'Live Event Countdown'}
+        </p>
+        <div className="grid grid-cols-4 gap-2 sm:gap-2.5 max-w-[340px] mx-auto">
+          {/* Days */}
+          <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md [transform:translateZ(20px)]">
+            <span className="text-lg sm:text-2xl font-bold font-poppins text-[#efbf04] leading-none">
+              {String(countdown.days).padStart(2, '0')}
+            </span>
+            <span className="text-[9px] sm:text-[10px] uppercase font-semibold text-slate-300 mt-1">Days</span>
+          </div>
+
+          {/* Hours */}
+          <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md [transform:translateZ(20px)]">
+            <span className="text-lg sm:text-2xl font-bold font-poppins text-[#efbf04] leading-none">
+              {String(countdown.hours).padStart(2, '0')}
+            </span>
+            <span className="text-[9px] sm:text-[10px] uppercase font-semibold text-slate-300 mt-1">Hours</span>
+          </div>
+
+          {/* Minutes */}
+          <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md [transform:translateZ(20px)]">
+            <span className="text-lg sm:text-2xl font-bold font-poppins text-[#efbf04] leading-none">
+              {String(countdown.minutes).padStart(2, '0')}
+            </span>
+            <span className="text-[9px] sm:text-[10px] uppercase font-semibold text-slate-300 mt-1">Mins</span>
+          </div>
+
+          {/* Seconds */}
+          <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md [transform:translateZ(20px)]">
+            <span className="text-lg sm:text-2xl font-bold font-poppins text-[#efbf04] leading-none">
+              {String(countdown.seconds).padStart(2, '0')}
+            </span>
+            <span className="text-[9px] sm:text-[10px] uppercase font-semibold text-slate-300 mt-1">Secs</span>
+          </div>
+        </div>
+      </div>
+
+      {/* CMS Highlights / Backface Summary Narrative (Z: 70px) */}
+      <div className="[transform:translateZ(70px)] px-2 max-w-[320px]">
+        <p className="text-slate-200 text-xs sm:text-[13px] leading-relaxed line-clamp-3 font-poppins">
+          {currentEvent.cardBackfaceSummary || currentEvent.announcementParagraph1}
+        </p>
+      </div>
+
+      {/* Schedule Meta Badges (Z: 85px) */}
+      <div className="[transform:translateZ(85px)] w-full space-y-1.5 text-[11px] sm:text-xs text-slate-300 border-t border-white/10 pt-3">
+        {currentEvent.scheduleDay && currentEvent.scheduleDate && (
+          <div className="flex items-center justify-center gap-1.5 text-slate-200">
+            <Calendar className="size-3.5 text-[#efbf04] flex-shrink-0" />
+            <span className="font-medium">{currentEvent.scheduleDay}, {currentEvent.scheduleDate}</span>
+          </div>
+        )}
+        {currentEvent.scheduleTime && (
+          <div className="flex items-center justify-center gap-1.5 text-slate-200">
+            <Clock className="size-3.5 text-[#efbf04] flex-shrink-0" />
+            <span className="font-medium">{currentEvent.scheduleTime}</span>
+          </div>
+        )}
+        {currentEvent.scheduleVenue && (
+          <div className="flex items-center justify-center gap-1.5 text-slate-300 line-clamp-1">
+            <MapPin className="size-3.5 text-[#efbf04] flex-shrink-0" />
+            <span className="truncate">{currentEvent.scheduleVenue}</span>
+          </div>
+        )}
+      </div>
+    </div>
   )
 
   return (
@@ -102,18 +311,15 @@ export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
           >
-            {/* Large Featured Poster Card */}
-            <div className="max-w-[380px] sm:max-w-[460px] md:max-w-[513px] mx-auto">
-              <div className="relative w-full aspect-[513/647] rounded-[18px] sm:rounded-[24px] overflow-hidden shadow-2xl border border-amber-200/50 bg-slate-900 group">
-                <Image
-                  src={posterSrc}
-                  alt={currentEvent.title || 'Upcoming Event'}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 500px, 513px"
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  priority
-                />
-              </div>
+            {/* 3D Perspective Flip Poster Card with Live Countdown Backface */}
+            <div className="flex justify-center w-full">
+              <PerspectiveFlipCard
+                front={eventCardFront}
+                back={eventCardBack}
+                w="w-full max-w-[360px] sm:max-w-[440px] md:max-w-[480px]"
+                h="h-[520px] sm:h-[580px] md:h-[610px]"
+                className="mx-auto"
+              />
             </div>
 
             {/* Detailed Announcement & Schedule Narrative */}
@@ -206,5 +412,3 @@ export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({
     </section>
   )
 }
-
-

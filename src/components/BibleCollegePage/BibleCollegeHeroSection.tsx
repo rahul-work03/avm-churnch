@@ -22,7 +22,7 @@ export interface BibleCollegeHeroSectionProps {
 
 export const BibleCollegeHeroSection: React.FC<BibleCollegeHeroSectionProps> = ({
   headerTitle = 'BIBLE COLLEGE',
-  description = "Welcome to a place where the Word of God comes alive and transforms lives from within. Here, you will be grounded in truth, strengthened in faith, and equipped with spiritual wisdom to walk in God's purpose. Through dedicated teaching, revelation, and guidance, you will grow deeper in your relationship with Christ and discover the power of His Word working in your life. This is more than learning—it is a journey of becoming who God has called you to be.",
+  description = "Welcome to a place where the Word of God comes alive and transforms lives from within. Here, you will be abided in truth, strengthened in faith, and equipped with spiritual wisdom to walk in God's purpose. Through dedicated teaching, revelation, and guidance, you will grow deeper in your relationship with Christ and discover the power of His Word working in your life. This is more than learning—it is a journey of becoming who God has called you to be.",
   heroVideo,
   heroVideoFallback,
   bannerVideoUrl,

@@ -83,7 +83,7 @@ export const BibleCollegePageGlobal: GlobalConfig = {
               type: 'textarea',
               label: 'Intro Description Paragraph',
               defaultValue:
-                "Welcome to a place where the Word of God comes alive and transforms lives from within. Here, you will be grounded in truth, strengthened in faith, and equipped with spiritual wisdom to walk in God's purpose. Through dedicated teaching, revelation, and guidance, you will grow deeper in your relationship with Christ and discover the power of His Word working in your life. This is more than learning—it is a journey of becoming who God has called you to be.",
+                "Welcome to a place where the Word of God comes alive and transforms lives from within. Here, you will be abided in truth, strengthened in faith, and equipped with spiritual wisdom to walk in God's purpose. Through dedicated teaching, revelation, and guidance, you will grow deeper in your relationship with Christ and discover the power of His Word working in your life. This is more than learning—it is a journey of becoming who God has called you to be.",
             },
             {
               name: 'heroBannerImage',

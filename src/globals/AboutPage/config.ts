@@ -56,30 +56,6 @@ const DEFAULT_CRUSADES = [
     imageFallback: '/crusades/image_5.jpeg',
     alt: 'Historic Ankur Narula Ministries Crusade',
   },
-  {
-    imageFallback: '/crusades/image_6.jpeg',
-    alt: 'Praise and Worship Unbroken Multitude',
-  },
-  {
-    imageFallback: '/crusades/image_7.jpeg',
-    alt: 'Apostle Dr. Ankur Yoseph Narula Preaching to Hundred Thousands',
-  },
-  {
-    imageFallback: '/crusades/image_8.jpeg',
-    alt: 'Unprecedented Healing & Miracles Encounter',
-  },
-  {
-    imageFallback: '/crusades/image_9.jpeg',
-    alt: 'Overflowing Joy in the Holy Presence',
-  },
-  {
-    imageFallback: '/crusades/image_10.jpeg',
-    alt: 'Holy Spirit Fire Crusade',
-  },
-  {
-    imageFallback: '/crusades/image_11.jpeg',
-    alt: 'Great Harvest Crusade',
-  },
 ]
 
 const DEFAULT_ROW1_PRESENCE = [
@@ -359,25 +335,53 @@ export const AboutPageGlobal: GlobalConfig = {
               name: 'resourcesBgImage',
               type: 'upload',
               relationTo: 'media',
-              label: 'Background Book Image',
+              label: 'Background Book Cover Image',
             },
             {
               name: 'resourcesBgFallback',
               type: 'text',
-              label: 'Fallback Background Image Path',
+              label: 'Fallback Background Cover Image Path',
               defaultValue: '/faith_resources_background.png',
+            },
+            {
+              name: 'resourcesBgInnerImage',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Background Book Inner / First Page Image (Optional)',
+              admin: {
+                description: 'Upload custom image for the first page revealed on hover (falls back to parchment scripture text if empty)',
+              },
+            },
+            {
+              name: 'resourcesBgInnerFallback',
+              type: 'text',
+              label: 'Fallback Background Book First Page Image Path',
             },
             {
               name: 'resourcesFgImage',
               type: 'upload',
               relationTo: 'media',
-              label: 'Foreground Holy Bible Image',
+              label: 'Foreground Book Cover Image',
             },
             {
               name: 'resourcesFgFallback',
               type: 'text',
-              label: 'Fallback Foreground Image Path',
+              label: 'Fallback Foreground Cover Image Path',
               defaultValue: '/faith_resources_foreground.png',
+            },
+            {
+              name: 'resourcesFgInnerImage',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Foreground Book Inner / First Page Image (Optional)',
+              admin: {
+                description: 'Upload custom image for the first page revealed on hover (falls back to parchment scripture text if empty)',
+              },
+            },
+            {
+              name: 'resourcesFgInnerFallback',
+              type: 'text',
+              label: 'Fallback Foreground Book First Page Image Path',
             },
           ],
         },

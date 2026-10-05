@@ -18,10 +18,10 @@ export interface SophiaInstituteWhatIsSectionProps {
 
 export const SophiaInstituteWhatIsSection: React.FC<SophiaInstituteWhatIsSectionProps> = ({
   whatIsCardTitle = 'What is Sophia Institute?',
-  whatIsCardDescription = "Sophia Institute is a place of learning, spiritual growth, and deeper understanding of God's Word. Through biblical teaching, prayer, study, and fellowship, it encourages believers to grow in wisdom and faith. The institute seeks to connect Scripture with everyday life, helping individuals develop a stronger relationship with God and live out their faith with purpose.",
+  whatIsCardDescription = "Sophia College Institute is a place of higher education, leadership development and professional preparation, where students are equipped to pursue academic excellence and develop the skills and character needed for greater responsibilities",
   visionCardTitle = 'Purpose & vision',
-  purposeParagraph = 'The purpose of Sophia Institute is to nurture spiritual and intellectual growth through Christ-centered teaching and the truth of Scripture.',
-  visionParagraph = "Our vision is to raise a generation grounded in God's Word, growing in wisdom, character, and faith. We seek to equip believers to understand their calling, strengthen their relationship with Christ, and become a light in their families, churches, and communities.",
+  purposeParagraph = 'The purpose of Sophia College Institute is to equip individuals to use their education, knowledge and positions with integrity, wisdom and purpose.',
+  visionParagraph = "The vision is to develop a generation that will carry strong values, and use their knowledge, positions and influence to bring positive transformation to society.",
 }) => {
   return (
     <SacredCanvas tone="warm-alabaster" className="py-12 sm:py-16 md:py-20 select-none" data-node-id="sophia-what-is">

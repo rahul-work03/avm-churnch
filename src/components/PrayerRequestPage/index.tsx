@@ -176,7 +176,7 @@ export const PrayerRequestPage: React.FC<PrayerRequestPageProps> = ({ data }) =>
                 {helplineTitle}
               </h3>
               <p className="font-poppins text-xs sm:text-sm text-slate-300">
-                Our pastors and prayer warriors are available around the clock to pray in faith with you.
+                Our prayer warriors are available around the clock to pray for you.
               </p>
             </div>
           </div>

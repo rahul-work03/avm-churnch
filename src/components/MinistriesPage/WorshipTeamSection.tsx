@@ -1,31 +1,35 @@
 'use client'
 
 import React from 'react'
-import Image from 'next/image'
-import { motion } from 'framer-motion'
 import { RevealOnScroll } from '@/components/ui/reveal'
 import { BlurTextReveal } from '@/components/ui/text-reveal'
 import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
 import { SacredCanvas } from '@/components/ui/sacred-canvas'
-import { getMediaUrl, getMediaAlt } from '@/utilities/getMediaUrl'
+import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export interface WorshipTeamSectionProps {
   headerTitle?: string
+  video?: any
+  videoFallback?: string
+  posterImage?: any
+  posterFallback?: string
+  narrative?: string
+  // Backward compatibility
   image?: any
   imageFallback?: string
   alt?: string
-  narrative?: string
 }
 
 export const WorshipTeamSection: React.FC<WorshipTeamSectionProps> = ({
   headerTitle = 'Our Worship Team',
-  image,
-  imageFallback = '/choir_image.png',
-  alt = 'ANM Worship Team Leading Spirit-Filled Praise',
+  video,
+  videoFallback = '/quoir_team.mp4',
+  posterImage,
+  posterFallback,
   narrative = 'Our Worship Team leads the church in powerful and spirit-filled praise and worship. With dedication and passion, they help create an atmosphere where everyone can encounter God, express their faith, and grow deeper in their relationship with Christ.',
 }) => {
-  const resolvedImg = getMediaUrl(image, imageFallback)
-  const resolvedAlt = getMediaAlt(image, alt)
+  const resolvedVideo = getMediaUrl(video, videoFallback)
+  const resolvedPoster = posterImage ? getMediaUrl(posterImage, posterFallback) : undefined
 
   return (
     <SacredCanvas
@@ -42,15 +46,17 @@ export const WorshipTeamSection: React.FC<WorshipTeamSectionProps> = ({
       />
 
       <div className="max-w-[1140px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Large Featured Worship Team Stage Visual */}
+        {/* Large Featured Worship Team Stage Video Visual */}
         <RevealOnScroll direction="up" distance={24} duration={0.8} delay={0.1}>
           <div className="relative w-full aspect-[16/9] rounded-[16px] sm:rounded-[22px] overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-950 group">
-            <Image
-              src={resolvedImg}
-              alt={resolvedAlt}
-              fill
-              priority
-              className="object-cover object-top transition-transform duration-700 group-hover:scale-103"
+            <video
+              src={resolvedVideo}
+              poster={resolvedPoster}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-103"
             />
           </div>
         </RevealOnScroll>

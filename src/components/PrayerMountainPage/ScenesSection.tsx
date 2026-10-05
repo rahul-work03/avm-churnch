@@ -25,55 +25,101 @@ const DEFAULT_ROW1_PHOTOS: ScenePhotoItem[] = [
   {
     id: 'sc-1',
     src: '/scenes_of_prayer_mountain/image_1.png',
+    imageFallback: '/scenes_of_prayer_mountain/image_1.png',
     alt: 'Prayer Mountain Scenic View 1',
   },
   {
     id: 'sc-2',
     src: '/scenes_of_prayer_mountain/image_2.png',
+    imageFallback: '/scenes_of_prayer_mountain/image_2.png',
     alt: 'Prayer Mountain Scenic View 2',
   },
   {
     id: 'sc-3',
     src: '/scenes_of_prayer_mountain/image_3.png',
+    imageFallback: '/scenes_of_prayer_mountain/image_3.png',
     alt: 'Prayer Mountain Scenic View 3',
   },
   {
     id: 'sc-4',
     src: '/scenes_of_prayer_mountain/image_4.png',
+    imageFallback: '/scenes_of_prayer_mountain/image_4.png',
     alt: 'Prayer Mountain Scenic View 4',
   },
   {
     id: 'sc-5',
     src: '/scenes_of_prayer_mountain/image_5.png',
+    imageFallback: '/scenes_of_prayer_mountain/image_5.png',
     alt: 'Prayer Mountain Scenic View 5',
   },
-]
-
-const DEFAULT_ROW2_PHOTOS: ScenePhotoItem[] = [
   {
     id: 'sc-6',
     src: '/scenes_of_prayer_mountain/image_6.png',
+    imageFallback: '/scenes_of_prayer_mountain/image_6.png',
     alt: 'Prayer Mountain Scenic View 6',
   },
   {
     id: 'sc-7',
     src: '/scenes_of_prayer_mountain/image_7.png',
+    imageFallback: '/scenes_of_prayer_mountain/image_7.png',
     alt: 'Prayer Mountain Scenic View 7',
   },
   {
     id: 'sc-8',
     src: '/scenes_of_prayer_mountain/image_8.png',
+    imageFallback: '/scenes_of_prayer_mountain/image_8.png',
     alt: 'Prayer Mountain Scenic View 8',
   },
+]
+
+const DEFAULT_ROW2_PHOTOS: ScenePhotoItem[] = [
   {
     id: 'sc-9',
     src: '/scenes_of_prayer_mountain/image_9.png',
+    imageFallback: '/scenes_of_prayer_mountain/image_9.png',
     alt: 'Prayer Mountain Scenic View 9',
   },
   {
     id: 'sc-10',
     src: '/scenes_of_prayer_mountain/image_10.png',
+    imageFallback: '/scenes_of_prayer_mountain/image_10.png',
     alt: 'Prayer Mountain Scenic View 10',
+  },
+  {
+    id: 'sc-11',
+    src: '/scenes_of_prayer_mountain/image_11.png',
+    imageFallback: '/scenes_of_prayer_mountain/image_11.png',
+    alt: 'Prayer Mountain Scenic View 11',
+  },
+  {
+    id: 'sc-12',
+    src: '/scenes_of_prayer_mountain/image_12.png',
+    imageFallback: '/scenes_of_prayer_mountain/image_12.png',
+    alt: 'Prayer Mountain Scenic View 12',
+  },
+  {
+    id: 'sc-13',
+    src: '/scenes_of_prayer_mountain/image_13.png',
+    imageFallback: '/scenes_of_prayer_mountain/image_13.png',
+    alt: 'Prayer Mountain Scenic View 13',
+  },
+  {
+    id: 'sc-14',
+    src: '/scenes_of_prayer_mountain/image_14.png',
+    imageFallback: '/scenes_of_prayer_mountain/image_14.png',
+    alt: 'Prayer Mountain Scenic View 14',
+  },
+  {
+    id: 'sc-15',
+    src: '/scenes_of_prayer_mountain/image_15.png',
+    imageFallback: '/scenes_of_prayer_mountain/image_15.png',
+    alt: 'Prayer Mountain Scenic View 15',
+  },
+  {
+    id: 'sc-16',
+    src: '/scenes_of_prayer_mountain/image_16.png',
+    imageFallback: '/scenes_of_prayer_mountain/image_16.png',
+    alt: 'Prayer Mountain Scenic View 16',
   },
 ]
 
@@ -91,8 +137,8 @@ export const ScenesSection: React.FC<ScenesSectionProps> = ({
   row1Photos,
   row2Photos,
 }) => {
-  const activeRow1 = row1Photos && row1Photos.length > 0 ? row1Photos : DEFAULT_ROW1_PHOTOS
-  const activeRow2 = row2Photos && row2Photos.length > 0 ? row2Photos : DEFAULT_ROW2_PHOTOS
+  const activeRow1 = row1Photos && row1Photos.length >= 8 ? row1Photos : DEFAULT_ROW1_PHOTOS
+  const activeRow2 = row2Photos && row2Photos.length >= 8 ? row2Photos : DEFAULT_ROW2_PHOTOS
 
   const row1Duplicated = buildSeamlessMarquee(activeRow1)
   const row2Duplicated = buildSeamlessMarquee(activeRow2)

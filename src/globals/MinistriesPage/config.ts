@@ -218,22 +218,28 @@ export const MinistriesPageGlobal: GlobalConfig = {
               defaultValue: 'Our Worship Team',
             },
             {
-              name: 'worshipImage',
+              name: 'worshipVideo',
               type: 'upload',
               relationTo: 'media',
-              label: 'Worship Team Visual Photo',
+              label: 'Worship Team Video',
             },
             {
-              name: 'worshipFallback',
+              name: 'worshipVideoFallback',
               type: 'text',
-              label: 'Fallback Photo Path',
+              label: 'Fallback Video Path',
+              defaultValue: '/quoir_team.mp4',
+            },
+            {
+              name: 'worshipPosterImage',
+              type: 'upload',
+              relationTo: 'media',
+              label: 'Video Poster Image (Optional)',
+            },
+            {
+              name: 'worshipPosterFallback',
+              type: 'text',
+              label: 'Fallback Poster Image Path',
               defaultValue: '/choir_image.png',
-            },
-            {
-              name: 'worshipAlt',
-              type: 'text',
-              label: 'Alt Text',
-              defaultValue: 'ANM Worship Team Leading Spirit-Filled Praise',
             },
             {
               name: 'worshipNarrative',

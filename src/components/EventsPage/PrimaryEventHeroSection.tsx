@@ -12,6 +12,7 @@ export interface EventItem {
   id?: string
   title: string
   eventTargetDate?: string | null
+  cardBackfaceSummary?: string | null
   landscapePoster?: any
   landscapePosterFallback?: string | null
   cardPoster?: any

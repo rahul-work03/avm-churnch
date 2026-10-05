@@ -6,6 +6,8 @@ export const DEFAULT_EVENTS = [
   {
     title: 'Good News in Pathankot - 11 June 2026',
     eventTargetDate: '2026-06-11T18:00:00',
+    cardBackfaceSummary:
+      'Join Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula in Pathankot for a supernatural gathering filled with salvation, healing, and the mighty power of Christ.',
     landscapePosterFallback: '/figma-assets/85761e6b2486d02d0c483eb7871b0ab19ace8c46.png',
     cardPosterFallback: '/figma-assets/85761e6b2486d02d0c483eb7871b0ab19ace8c46.png',
     buttonLabel: 'See Details',
@@ -30,6 +32,8 @@ export const DEFAULT_EVENTS = [
   {
     title: 'Masihi Satsang - Apostle Dr. Ankur Yoseph Narula & Pastor Sonia Narula',
     eventTargetDate: '2026-06-18T10:00:00',
+    cardBackfaceSummary:
+      'A sacred time of worship, apostolic teaching, and divine fellowship at Khambra Church with anointed prayers for families, breakthroughs, and healing.',
     landscapePosterFallback: '/figma-assets/9c4cf0e2f9397f119d80dde4d156bbaa56343330.png',
     cardPosterFallback: '/figma-assets/9c4cf0e2f9397f119d80dde4d156bbaa56343330.png',
     buttonLabel: 'See Details',
@@ -54,6 +58,8 @@ export const DEFAULT_EVENTS = [
   {
     title: 'Sunday Live Service - Ankur Narula Ministries',
     eventTargetDate: '2026-06-14T08:30:00',
+    cardBackfaceSummary:
+      'Gather with over 300,000 believers for weekly mega praise, prophetic preaching, and miracle deliverance broadcast live worldwide from Jalandhar.',
     landscapePosterFallback: '/figma-assets/b3a0bba89e5f05b1a24ecbaec47a6c1170b270dc.png',
     cardPosterFallback: '/figma-assets/b3a0bba89e5f05b1a24ecbaec47a6c1170b270dc.png',
     buttonLabel: 'See Details',
@@ -224,6 +230,14 @@ export const EventsPageGlobal: GlobalConfig = {
                       admin: { width: '50%' },
                     },
                   ],
+                },
+                {
+                  name: 'cardBackfaceSummary',
+                  type: 'textarea',
+                  label: '3D Flip Card Backface Highlights / Summary',
+                  admin: {
+                    description: 'Short highlight description shown on the 3D flip card back face',
+                  },
                 },
                 {
                   name: 'announcementParagraph1',

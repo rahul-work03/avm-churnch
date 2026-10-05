@@ -52,36 +52,6 @@ const DEFAULT_CRUSADES: CrusadeItem[] = [
     src: '/crusades/image_5.jpeg',
     alt: 'Historic Ankur Narula Ministries Crusade',
   },
-  {
-    id: 6,
-    src: '/crusades/image_6.jpeg',
-    alt: 'Praise and Worship Unbroken Multitude',
-  },
-  {
-    id: 7,
-    src: '/crusades/image_7.jpeg',
-    alt: 'Apostle Dr. Ankur Yoseph Narula Preaching to Hundred Thousands',
-  },
-  {
-    id: 8,
-    src: '/crusades/image_8.jpeg',
-    alt: 'Unprecedented Healing & Miracles Encounter',
-  },
-  {
-    id: 9,
-    src: '/crusades/image_9.jpeg',
-    alt: 'Overflowing Joy in the Holy Presence',
-  },
-  {
-    id: 10,
-    src: '/crusades/image_10.jpeg',
-    alt: 'Holy Spirit Fire Crusade',
-  },
-  {
-    id: 11,
-    src: '/crusades/image_11.jpeg',
-    alt: 'Great Harvest Crusade',
-  },
 ]
 
 export const CrusadesSection: React.FC<CrusadesSectionProps> = ({

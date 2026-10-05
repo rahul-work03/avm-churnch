@@ -17,8 +17,12 @@ export interface FaithResourcesSectionProps {
   storeLabel?: string
   bgImage?: any
   bgFallback?: string
+  bgInnerImage?: any
+  bgInnerFallback?: string
   fgImage?: any
   fgFallback?: string
+  fgInnerImage?: any
+  fgInnerFallback?: string
 }
 
 interface RealisticBookCardProps {
@@ -29,6 +33,7 @@ interface RealisticBookCardProps {
   scripture: string
   scriptureRef: string
   storeLink: string
+  innerImageUrl?: string | null
   isForeground?: boolean
   className?: string
   initialOffset: { x: number; y: number; rotate: number }
@@ -43,6 +48,7 @@ const RealisticBookCard: React.FC<RealisticBookCardProps> = ({
   scripture,
   scriptureRef,
   storeLink,
+  innerImageUrl,
   isForeground = false,
   className = '',
   initialOffset,
@@ -147,53 +153,64 @@ const RealisticBookCard: React.FC<RealisticBookCardProps> = ({
             }}
           />
 
-          {/* ==================== 3. INNER PARCHMENT SCRIPTURE PAGE (Revealed on Cover Open) ==================== */}
+          {/* ==================== 3. INNER FIRST PAGE (Revealed on Cover Open) ==================== */}
           <div
-            className="absolute inset-[3px] sm:inset-[4px] rounded-r-xl rounded-l-[2px] bg-[#fdfbf7] p-3 sm:p-5 flex flex-col justify-between overflow-hidden shadow-inner border border-[#e8ddc7]"
+            className="absolute inset-[3px] sm:inset-[4px] rounded-r-xl rounded-l-[2px] bg-[#fdfbf7] overflow-hidden shadow-inner border border-[#e8ddc7]"
             style={{
               transform: 'translateZ(-1px)',
               backgroundImage:
                 'radial-gradient(ellipse at 85% 15%, rgba(239, 191, 4, 0.08) 0%, transparent 60%), linear-gradient(to right, rgba(0,0,0,0.06) 0%, transparent 8%)',
             }}
           >
-            {/* Header with delicate filigree */}
-            <div className="border-b border-[#efbf04]/35 pb-2 text-center">
-              <div className="flex items-center justify-center gap-1.5 text-[#a88214] mb-0.5">
-                <Sparkles className="w-3 h-3 text-[#d3aa3b]" />
-                <span className="font-serif text-[9px] sm:text-[11px] uppercase tracking-[0.2em] font-semibold">
-                  Ankur Narula Ministries
-                </span>
-                <Sparkles className="w-3 h-3 text-[#d3aa3b]" />
+            {innerImageUrl ? (
+              /* Custom Uploaded First Page Graphic */
+              <div className="relative size-full">
+                <Image
+                  src={innerImageUrl}
+                  alt={`${title} First Page`}
+                  fill
+                  sizes="(max-width: 640px) 200px, (max-width: 1024px) 280px, 340px"
+                  className="object-cover rounded-r-xl rounded-l-[2px]"
+                />
+                {/* Subtle Paper Grain & Ambient Border Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-transparent to-transparent pointer-events-none" />
               </div>
-              <h4 className="font-poppins font-bold text-[#003471] text-[11px] sm:text-[13px] md:text-[14px] line-clamp-1">
-                {title}
-              </h4>
-            </div>
+            ) : (
+              /* Dynamic Editorial Parchment Scripture Page (Without red ribbon) */
+              <div className="size-full p-3.5 sm:p-5 flex flex-col justify-between">
+                {/* Header with delicate filigree */}
+                <div className="border-b border-[#efbf04]/35 pb-2 text-center">
+                  <div className="flex items-center justify-center gap-1.5 text-[#a88214] mb-0.5">
+                    <Sparkles className="w-3 h-3 text-[#d3aa3b]" />
+                    <span className="font-serif text-[9px] sm:text-[11px] uppercase tracking-[0.2em] font-semibold">
+                      Ankur Narula Ministries
+                    </span>
+                    <Sparkles className="w-3 h-3 text-[#d3aa3b]" />
+                  </div>
+                  <h4 className="font-poppins font-bold text-[#003471] text-[11px] sm:text-[13px] md:text-[14px] line-clamp-1">
+                    {title}
+                  </h4>
+                </div>
 
-            {/* Scripture Quote in Classic Editorial Typography */}
-            <div className="my-auto px-1 py-1 text-center">
-              <p className="font-serif italic text-[#3a352a] text-[10px] sm:text-[12px] md:text-[13px] leading-relaxed">
-                “{scripture}”
-              </p>
-              <p className="font-poppins font-semibold text-[#a88214] text-[9px] sm:text-[10px] mt-1.5 uppercase tracking-wider">
-                — {scriptureRef}
-              </p>
-            </div>
+                {/* Scripture Quote in Classic Editorial Typography */}
+                <div className="my-auto px-1 py-1 text-center">
+                  <p className="font-serif italic text-[#3a352a] text-[10px] sm:text-[12px] md:text-[13px] leading-relaxed">
+                    “{scripture}”
+                  </p>
+                  <p className="font-poppins font-semibold text-[#a88214] text-[9px] sm:text-[10px] mt-1.5 uppercase tracking-wider">
+                    — {scriptureRef}
+                  </p>
+                </div>
 
-            {/* Footer with Gold Emblem & Store CTA Prompt */}
-            <div className="pt-2 border-t border-[#efbf04]/30 flex items-center justify-between text-[9px] sm:text-[10px] text-[#003471] font-medium font-poppins">
-              <span className="text-[#a88214] font-semibold">{subtitle}</span>
-              <span className="inline-flex items-center gap-1 text-[#003471] font-bold group-hover:text-[#a88214] transition-colors">
-                Read Book <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
-              </span>
-            </div>
-
-            {/* Satin Ribbon Bookmark Hanging Down */}
-            <div className="absolute top-0 right-7 sm:right-9 w-3 sm:w-4 h-[115%] bg-gradient-to-b from-[#900c1e] via-[#c4142f] to-[#780816] shadow-md pointer-events-none rounded-b-[2px] z-10">
-              {/* Ribbon Tail Notch Cutout */}
-              <div className="absolute bottom-0 left-0 right-0 h-2 bg-[#fdfbf7] [clip-path:polygon(0_100%,50%_0%,100%_100%)]" />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-white/20" />
-            </div>
+                {/* Footer with Gold Emblem & Store CTA Prompt */}
+                <div className="pt-2 border-t border-[#efbf04]/30 flex items-center justify-between text-[9px] sm:text-[10px] text-[#003471] font-medium font-poppins">
+                  <span className="text-[#a88214] font-semibold">{subtitle}</span>
+                  <span className="inline-flex items-center gap-1 text-[#003471] font-bold group-hover:text-[#a88214] transition-colors">
+                    Read Book <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* ==================== 4. 3D FRONT BOOK COVER (Opens on Left Hinge on Hover) ==================== */}
@@ -272,11 +289,17 @@ export const FaithResourcesSection: React.FC<FaithResourcesSectionProps> = ({
   storeLabel = 'Visit the Store Now',
   bgImage,
   bgFallback = '/faith_resources_background.png',
+  bgInnerImage,
+  bgInnerFallback,
   fgImage,
   fgFallback = '/faith_resources_foreground.png',
+  fgInnerImage,
+  fgInnerFallback,
 }) => {
   const resolvedBgUrl = getMediaUrl(bgImage, bgFallback)
+  const resolvedBgInnerUrl = getMediaUrl(bgInnerImage, bgInnerFallback || '') || null
   const resolvedFgUrl = getMediaUrl(fgImage, fgFallback)
+  const resolvedFgInnerUrl = getMediaUrl(fgInnerImage, fgInnerFallback || '') || null
 
   return (
     <section className="relative overflow-hidden select-none" data-node-id="275:810">
@@ -304,6 +327,7 @@ export const FaithResourcesSection: React.FC<FaithResourcesSectionProps> = ({
                   scripture="Your word is a lamp to my feet and a light to my path."
                   scriptureRef="Psalm 119:105"
                   storeLink={storeLink}
+                  innerImageUrl={resolvedBgInnerUrl}
                   isForeground={false}
                   className="left-0 sm:left-2 lg:left-0 top-0 sm:top-2"
                   initialOffset={{ x: -40, y: 10, rotate: -4 }}
@@ -319,6 +343,7 @@ export const FaithResourcesSection: React.FC<FaithResourcesSectionProps> = ({
                   scripture="He puts a new song in my mouth, a hymn of praise to our God."
                   scriptureRef="Psalm 40:3"
                   storeLink={storeLink}
+                  innerImageUrl={resolvedFgInnerUrl}
                   isForeground={true}
                   className="right-0 sm:right-2 lg:right-auto lg:left-[140px] top-[50px] sm:top-[65px] md:top-[75px] lg:top-[70px]"
                   initialOffset={{ x: 40, y: 30, rotate: 3 }}

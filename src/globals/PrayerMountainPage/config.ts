@@ -23,9 +23,6 @@ const DEFAULT_SCENES_ROW1 = [
     imageFallback: '/scenes_of_prayer_mountain/image_5.png',
     alt: 'Prayer Mountain Scenic View 5',
   },
-]
-
-const DEFAULT_SCENES_ROW2 = [
   {
     imageFallback: '/scenes_of_prayer_mountain/image_6.png',
     alt: 'Prayer Mountain Scenic View 6',
@@ -38,6 +35,9 @@ const DEFAULT_SCENES_ROW2 = [
     imageFallback: '/scenes_of_prayer_mountain/image_8.png',
     alt: 'Prayer Mountain Scenic View 8',
   },
+]
+
+const DEFAULT_SCENES_ROW2 = [
   {
     imageFallback: '/scenes_of_prayer_mountain/image_9.png',
     alt: 'Prayer Mountain Scenic View 9',
@@ -45,6 +45,30 @@ const DEFAULT_SCENES_ROW2 = [
   {
     imageFallback: '/scenes_of_prayer_mountain/image_10.png',
     alt: 'Prayer Mountain Scenic View 10',
+  },
+  {
+    imageFallback: '/scenes_of_prayer_mountain/image_11.png',
+    alt: 'Prayer Mountain Scenic View 11',
+  },
+  {
+    imageFallback: '/scenes_of_prayer_mountain/image_12.png',
+    alt: 'Prayer Mountain Scenic View 12',
+  },
+  {
+    imageFallback: '/scenes_of_prayer_mountain/image_13.png',
+    alt: 'Prayer Mountain Scenic View 13',
+  },
+  {
+    imageFallback: '/scenes_of_prayer_mountain/image_14.png',
+    alt: 'Prayer Mountain Scenic View 14',
+  },
+  {
+    imageFallback: '/scenes_of_prayer_mountain/image_15.png',
+    alt: 'Prayer Mountain Scenic View 15',
+  },
+  {
+    imageFallback: '/scenes_of_prayer_mountain/image_16.png',
+    alt: 'Prayer Mountain Scenic View 16',
   },
 ]
 
@@ -120,8 +144,8 @@ export const PrayerMountainPageGlobal: GlobalConfig = {
         if (!doc) return doc
         return {
           ...doc,
-          scenesRow1: doc.scenesRow1 && doc.scenesRow1.length > 0 ? doc.scenesRow1 : DEFAULT_SCENES_ROW1,
-          scenesRow2: doc.scenesRow2 && doc.scenesRow2.length > 0 ? doc.scenesRow2 : DEFAULT_SCENES_ROW2,
+          scenesRow1: doc.scenesRow1 && doc.scenesRow1.length >= 8 ? doc.scenesRow1 : DEFAULT_SCENES_ROW1,
+          scenesRow2: doc.scenesRow2 && doc.scenesRow2.length >= 8 ? doc.scenesRow2 : DEFAULT_SCENES_ROW2,
           testimonies: doc.testimonies && doc.testimonies.length > 0 ? doc.testimonies : DEFAULT_TESTIMONIES,
         }
       },
