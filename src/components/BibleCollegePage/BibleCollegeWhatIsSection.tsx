@@ -20,8 +20,8 @@ export const BibleCollegeWhatIsSection: React.FC<BibleCollegeWhatIsSectionProps>
   whatIsCardTitle = 'What is Bible College?',
   whatIsCardDescription = "Bible College is a dedicated place of learning where individuals are trained in the Word of God, spiritual disciplines, and Christian leadership. It is designed to equip believers with a deeper understanding of Scripture, helping them grow in faith, wisdom, and maturity. Here, students are nurtured to live out God's calling and serve effectively in ministry and everyday life.",
   visionCardTitle = 'Purpose & vision',
-  purposeParagraph = 'The purpose of Bible College is to provide sound biblical teaching and practical training for spiritual growth and ministry.',
-  visionParagraph = "Our vision is to raise strong, grounded believers who are rooted in God's Word, led by the Holy Spirit, and prepared to impact their communities. We aim to develop leaders who carry truth, integrity, and a heart for service.",
+  purposeParagraph = 'The purpose of The Christ Bible College is to raise and train strong, faithful, and committed workers for the Kingdom of God. To walk in obedience, humility, love, and holiness, while growing in spiritual maturity, biblical understanding, and godly character.',
+  visionParagraph = 'The vision of The Christ Bible College is to raise a generation that will make disciples, impact communities, reach the nations, and reflect the love of Jesus wherever God calls them. To carry the heart, character, and message of Jesus Christ to the world.',
 }) => {
   return (
     <SacredCanvas tone="warm-alabaster" className="py-12 sm:py-16 md:py-20 select-none" data-node-id="284:2612">

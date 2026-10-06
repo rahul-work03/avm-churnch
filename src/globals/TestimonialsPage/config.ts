@@ -59,7 +59,7 @@ export const TestimonialsPageGlobal: GlobalConfig = {
               name: 'ctaButton1Url',
               type: 'text',
               label: 'Primary Button Link URL',
-              defaultValue: '/contact-us',
+              defaultValue: '/contact',
             },
           ],
         },

@@ -127,7 +127,7 @@ export const SundaySchoolPageGlobal: GlobalConfig = {
               type: 'textarea',
               label: 'Intro Description Paragraph',
               defaultValue:
-                'Welcome to Sunday School, a place where the Word of God is taught with simplicity, love, and truth, helping hearts of all ages experience the presence of God in a personal way. Here, children, youth, and believers grow together in faith as the Scriptures come alive through teaching, stories, and fellowship.',
+                'Welcome to Sunday School, a place where the Word of God is taught with simplicity, love, and truth, helping children experience the presence of God in a personal way. Here, children grow together in faith as the Scriptures come alive through teaching, stories, and fellowship.',
             },
             {
               name: 'heroBannerImage',
@@ -244,34 +244,34 @@ export const SundaySchoolPageGlobal: GlobalConfig = {
               name: 'whatIsCardTitle',
               type: 'text',
               label: 'Card 1 Title',
-              defaultValue: 'What is Sunday School?',
+              defaultValue: 'WHAT IS ANKUR NARULA MINISTRIES SUNDAY SCHOOL',
             },
             {
               name: 'whatIsCardDescription',
               type: 'textarea',
               label: 'Card 1 Narrative Description',
               defaultValue:
-                'Sunday School is a dedicated time of learning and spiritual growth where children, youth, and adults are taught the Word of God in a simple and meaningful way. It is designed to help believers understand Bible stories, Christian values, and the love of Jesus Christ in a way that is easy to apply in daily life. Through teaching, activities, and fellowship, Sunday School builds a strong foundation of faith from an early age.',
+                'Ankur Narula Ministries Sunday School, led by Sister Sophia and Brother Yirmeyah, is a place where children are taught to grow in their relationship with God and follow Jesus Christ.',
             },
             {
               name: 'visionCardTitle',
               type: 'text',
               label: 'Card 2 Title',
-              defaultValue: 'Purpose & vision',
+              defaultValue: 'PURPOSE AND VISION',
             },
             {
               name: 'purposeParagraph',
               type: 'textarea',
               label: 'Purpose Statement Paragraph',
               defaultValue:
-                'The purpose of Sunday School is to nurture spiritual growth through Bible-based teaching, helping individuals develop a personal relationship with God. It focuses on building strong moral values, prayer life, and understanding of Scripture in a practical and engaging way.',
+                'The purpose of the Sunday School is to build a strong foundation of faith in the lives of children through the teaching of God’s Word and to help them learn the values of faith, obedience, love and godly character.',
             },
             {
               name: 'visionParagraph',
               type: 'textarea',
               label: 'Vision Statement Paragraph',
               defaultValue:
-                'Our vision is to raise a generation rooted in God’s Word, filled with the knowledge of Jesus Christ, and guided by the Holy Spirit. We aim to prepare children and believers of all ages to live out their faith boldly, grow in godly character, and become light in their families, schools, and communities.',
+                'The vision of Ankur Narula Ministries Sunday School is to raise a generation of children who know Christ, love His Word, walk in His ways, live for His Glory, and shine His light wherever they go.',
             },
           ],
         },

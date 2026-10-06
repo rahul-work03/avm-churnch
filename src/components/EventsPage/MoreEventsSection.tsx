@@ -131,60 +131,46 @@ function EventCardItemComponent({
   const countdown = useCountdown(event.eventTargetDate, event.scheduleDay)
   const btnText = event.buttonLabel || 'See Details'
 
-  // Front Face
+  // Front Face Component for 3D Perspective Card (Full bleed poster)
   const frontFace = (
     <div
       onClick={() => onSelect(index)}
-      className="size-full flex flex-col justify-between relative rounded-2xl overflow-hidden bg-slate-950 cursor-pointer"
+      className="relative size-full rounded-2xl overflow-hidden [transform-style:preserve-3d] select-none cursor-pointer"
     >
-      {/* Poster Background Image */}
-      <div className="absolute inset-0 size-full">
-        <Image
-          src={posterSrc}
-          alt={posterAlt}
-          fill
-          sizes="(max-width: 768px) 100vw, 367px"
-          className="object-cover object-top transition-transform duration-700 group-hover/p-card:scale-106"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/25 to-transparent pointer-events-none" />
-      </div>
+      {/* Full-bleed Background Poster Image */}
+      <Image
+        src={posterSrc}
+        alt={posterAlt}
+        fill
+        sizes="(max-width: 768px) 100vw, 367px"
+        className="object-cover object-top transition-transform duration-700 group-hover/p-card:scale-106"
+      />
+      {/* Smooth Dark Gradient Vignette for bottom text legibility */}
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/35 to-transparent pointer-events-none" />
 
-      {/* Top Floating Badge */}
-      <div className="relative z-10 p-3.5 flex justify-between items-start">
-        {isSelected ? (
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#efbf04] text-[#003471] font-poppins font-bold text-[11px] shadow-lg tracking-wider uppercase">
-            <Sparkles className="size-3" />
-            <span>Currently Viewing</span>
-          </div>
-        ) : (
-          event.subheading && (
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#003471]/90 backdrop-blur-md border border-[#efbf04]/50 text-[#efbf04] text-[11px] font-semibold shadow-lg">
+      {/* Floating 3D Content Overlay */}
+      <div className="relative z-10 size-full flex flex-col justify-between p-4 [transform-style:preserve-3d]">
+        {/* Top Floating Badge (Z: 60px) - Only shown when Currently Viewing */}
+        <div className="flex justify-between items-start [transform-style:preserve-3d] [transform:translateZ(60px)]">
+          {isSelected && (
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#efbf04] text-[#003471] font-poppins font-bold text-[11px] shadow-lg tracking-wider uppercase [transform:translateZ(20px)]">
               <Sparkles className="size-3" />
-              <span className="line-clamp-1">{event.subheading}</span>
+              <span>Currently Viewing</span>
             </div>
-          )
-        )}
-      </div>
+          )}
+        </div>
 
-      {/* Bottom Floating Info */}
-      <div className="relative z-10 p-4 space-y-1.5">
-        <div>
+        {/* Bottom Information (Z: 50px) */}
+        <div className="[transform-style:preserve-3d] [transform:translateZ(50px)] space-y-1.5">
           {event.scheduleDate && (
-            <p className="text-[#efbf04] text-[11px] font-semibold flex items-center gap-1 mb-1">
-              <Calendar className="size-3" />
+            <p className="text-[#efbf04] text-xs font-semibold flex items-center gap-1.5 drop-shadow-sm [transform:translateZ(15px)]">
+              <Calendar className="size-3.5" />
               <span>{event.scheduleDate}</span>
             </p>
           )}
-          <h4 className="text-white font-poppins font-semibold text-base leading-snug line-clamp-2 drop-shadow-md">
+          <h4 className="text-white font-poppins font-bold text-base sm:text-lg leading-snug line-clamp-2 drop-shadow-md [transform:translateZ(20px)]">
             {event.title}
           </h4>
-        </div>
-
-        <div className="flex items-center justify-between text-[11px] font-semibold tracking-wider text-slate-300 pt-1.5 border-t border-white/10">
-          <span className="text-[#efbf04] group-hover/p-card:translate-x-1 transition-transform">
-            Hover for live countdown & info
-          </span>
-          <ArrowRight className="size-3.5 text-[#efbf04] group-hover/p-card:translate-x-1 transition-transform" />
         </div>
       </div>
     </div>
@@ -194,10 +180,10 @@ function EventCardItemComponent({
   const backFace = (
     <div
       onClick={() => onSelect(index)}
-      className="size-full flex flex-col justify-between items-center text-center p-5 cursor-pointer"
+      className="size-full flex flex-col justify-between items-center text-center [transform-style:preserve-3d] cursor-pointer"
     >
-      {/* Header Greeting */}
-      <div className="w-full">
+      {/* Header Greeting (Z: 40px) */}
+      <div className="[transform-style:preserve-3d] [transform:translateZ(40px)] w-full">
         <p className="text-[#efbf04] text-[11px] font-bold uppercase tracking-widest">
           {event.headingGreeting || 'HALLELUJAH!!'}
         </p>
@@ -207,39 +193,39 @@ function EventCardItemComponent({
         <div className="w-10 h-[1.5px] bg-gradient-to-r from-transparent via-[#efbf04] to-transparent mx-auto mt-1.5 opacity-80" />
       </div>
 
-      {/* 4 Countdown Timer Tiles */}
-      <div className="w-full my-1">
+      {/* 4 Countdown Timer Tiles (Z: 70px) */}
+      <div className="w-full [transform-style:preserve-3d] [transform:translateZ(70px)] my-1">
         <p className="text-slate-300 text-[10px] font-semibold uppercase tracking-wider mb-2">
           {countdown.isExpired ? 'Event Live / In Progress' : 'Live Event Countdown'}
         </p>
-        <div className="grid grid-cols-4 gap-1.5 max-w-[300px] mx-auto">
+        <div className="grid grid-cols-4 gap-1.5 max-w-[300px] mx-auto [transform-style:preserve-3d]">
           {/* Days */}
-          <div className="flex flex-col items-center justify-center p-1.5 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md">
-            <span className="text-base sm:text-lg font-bold font-poppins text-[#efbf04] leading-none">
+          <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md [transform:translateZ(25px)] [transform-style:preserve-3d]">
+            <span className="text-base sm:text-lg font-bold font-poppins text-[#efbf04] leading-none [transform:translateZ(12px)]">
               {String(countdown.days).padStart(2, '0')}
             </span>
             <span className="text-[9px] uppercase font-semibold text-slate-300 mt-0.5">Days</span>
           </div>
 
           {/* Hours */}
-          <div className="flex flex-col items-center justify-center p-1.5 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md">
-            <span className="text-base sm:text-lg font-bold font-poppins text-[#efbf04] leading-none">
+          <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md [transform:translateZ(25px)] [transform-style:preserve-3d]">
+            <span className="text-base sm:text-lg font-bold font-poppins text-[#efbf04] leading-none [transform:translateZ(12px)]">
               {String(countdown.hours).padStart(2, '0')}
             </span>
             <span className="text-[9px] uppercase font-semibold text-slate-300 mt-0.5">Hours</span>
           </div>
 
           {/* Minutes */}
-          <div className="flex flex-col items-center justify-center p-1.5 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md">
-            <span className="text-base sm:text-lg font-bold font-poppins text-[#efbf04] leading-none">
+          <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md [transform:translateZ(25px)] [transform-style:preserve-3d]">
+            <span className="text-base sm:text-lg font-bold font-poppins text-[#efbf04] leading-none [transform:translateZ(12px)]">
               {String(countdown.minutes).padStart(2, '0')}
             </span>
             <span className="text-[9px] uppercase font-semibold text-slate-300 mt-0.5">Mins</span>
           </div>
 
           {/* Seconds */}
-          <div className="flex flex-col items-center justify-center p-1.5 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md">
-            <span className="text-base sm:text-lg font-bold font-poppins text-[#efbf04] leading-none">
+          <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md [transform:translateZ(25px)] [transform-style:preserve-3d]">
+            <span className="text-base sm:text-lg font-bold font-poppins text-[#efbf04] leading-none [transform:translateZ(12px)]">
               {String(countdown.seconds).padStart(2, '0')}
             </span>
             <span className="text-[9px] uppercase font-semibold text-slate-300 mt-0.5">Secs</span>
@@ -247,15 +233,15 @@ function EventCardItemComponent({
         </div>
       </div>
 
-      {/* Highlights / Backface Summary Narrative */}
-      <div className="px-1 max-w-[280px]">
+      {/* Highlights / Backface Summary Narrative (Z: 40px) */}
+      <div className="space-y-1.5 [transform-style:preserve-3d] [transform:translateZ(40px)] px-1 max-w-[280px]">
         <p className="text-slate-200 text-xs leading-relaxed line-clamp-3 font-poppins">
           {event.cardBackfaceSummary || event.announcementParagraph1}
         </p>
       </div>
 
-      {/* Schedule Meta Badges */}
-      <div className="w-full space-y-1 text-[11px] text-slate-300 border-t border-white/10 pt-2.5">
+      {/* Schedule Meta Badges (Z: 50px) */}
+      <div className="w-full space-y-1 text-[11px] text-slate-300 border-t border-white/10 pt-2.5 [transform-style:preserve-3d] [transform:translateZ(50px)]">
         {event.scheduleDate && (
           <div className="flex items-center justify-center gap-1 text-slate-200">
             <Calendar className="size-3 text-[#efbf04] flex-shrink-0" />

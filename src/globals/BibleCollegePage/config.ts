@@ -214,14 +214,14 @@ export const BibleCollegePageGlobal: GlobalConfig = {
               type: 'textarea',
               label: 'Purpose Statement Paragraph',
               defaultValue:
-                'The purpose of Bible College is to provide sound biblical teaching and practical training for spiritual growth and ministry.',
+                'The purpose of The Christ Bible College is to raise and train strong, faithful, and committed workers for the Kingdom of God. To walk in obedience, humility, love, and holiness, while growing in spiritual maturity, biblical understanding, and godly character.',
             },
             {
               name: 'visionParagraph',
               type: 'textarea',
               label: 'Vision Statement Paragraph',
               defaultValue:
-                "Our vision is to raise strong, grounded believers who are rooted in God's Word, led by the Holy Spirit, and prepared to impact their communities. We aim to develop leaders who carry truth, integrity, and a heart for service.",
+                'The vision of The Christ Bible College is to raise a generation that will make disciples, impact communities, reach the nations, and reflect the love of Jesus wherever God calls them. To carry the heart, character, and message of Jesus Christ to the world.',
             },
           ],
         },

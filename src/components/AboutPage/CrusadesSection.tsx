@@ -29,27 +29,27 @@ export interface CrusadesSectionProps {
 const DEFAULT_CRUSADES: CrusadeItem[] = [
   {
     id: 1,
-    src: '/crusades/image_1.jpeg',
+    src: '/crusades/image_1.png',
     alt: 'Massive Miracle Crusade - Sea of Believers Gathering',
   },
   {
     id: 2,
-    src: '/crusades/image_2.jpeg',
+    src: '/crusades/image_2.png',
     alt: 'Atmosphere of Fire and Deliverance Night',
   },
   {
     id: 3,
-    src: '/crusades/image_3.jpeg',
+    src: '/crusades/image_3.png',
     alt: 'Supernatural Gathering & Holy Spirit Outpouring',
   },
   {
     id: 4,
-    src: '/crusades/image_4.jpeg',
+    src: '/crusades/image_4.png',
     alt: 'Multitude of Souls Worshipping in Power',
   },
   {
     id: 5,
-    src: '/crusades/image_5.jpeg',
+    src: '/crusades/image_5.png',
     alt: 'Historic Ankur Narula Ministries Crusade',
   },
 ]

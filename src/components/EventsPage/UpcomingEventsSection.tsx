@@ -116,53 +116,37 @@ export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({
 
   const countdown = useCountdown(currentEvent.eventTargetDate)
 
-  // Front Face Component for 3D Perspective Card
+  // Front Face Component for 3D Perspective Card (Full bleed poster)
   const eventCardFront = (
-    <div className="size-full flex flex-col justify-between [transform-style:preserve-3d] relative rounded-2xl overflow-hidden bg-slate-950">
-      {/* Poster Background Image with Depth (Z: 40px) */}
-      <div className="absolute inset-0 size-full [transform-style:preserve-3d]">
-        <Image
-          src={posterSrc}
-          alt={currentEvent.title || 'Upcoming Event'}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 500px, 513px"
-          className="object-cover object-top transition-transform duration-700 group-hover/p-card:scale-105"
-          priority
-        />
-        {/* Soft Vignette Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent pointer-events-none" />
-      </div>
+    <div className="relative size-full rounded-2xl overflow-hidden [transform-style:preserve-3d] select-none">
+      {/* Full-bleed Background Poster Image */}
+      <Image
+        src={posterSrc}
+        alt={currentEvent.title || 'Upcoming Event'}
+        fill
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 500px, 513px"
+        className="object-cover object-top transition-transform duration-700 group-hover/p-card:scale-105"
+        priority
+      />
+      {/* Smooth Dark Gradient Vignette for bottom text legibility */}
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/35 to-transparent pointer-events-none" />
 
-      {/* Floating Top Tagline Badge (Z: 70px) */}
-      <div className="relative z-10 p-4 sm:p-5 flex justify-between items-start [transform-style:preserve-3d]">
-        {currentEvent.subheading && (
-          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#003471]/90 backdrop-blur-md border border-[#efbf04]/50 text-[#efbf04] text-[11px] sm:text-xs font-semibold shadow-lg [transform:translateZ(70px)]">
-            <Sparkles className="size-3.5" />
-            <span>{currentEvent.subheading}</span>
-          </div>
-        )}
-      </div>
+      {/* Floating 3D Content Overlay */}
+      <div className="relative z-10 size-full flex flex-col justify-between p-4 sm:p-6 [transform-style:preserve-3d]">
+        {/* Top spacer for 3D overlay */}
+        <div className="flex justify-between items-start [transform-style:preserve-3d] [transform:translateZ(60px)]" />
 
-      {/* Bottom Information Glass Panel (Z: 60px) */}
-      <div className="relative z-10 p-4 sm:p-6 [transform-style:preserve-3d] space-y-2.5">
-        <div className="[transform:translateZ(60px)]">
-          <h3 className="text-white font-poppins font-bold text-lg sm:text-xl line-clamp-1 drop-shadow-md">
-            {currentEvent.title}
-          </h3>
+        {/* Bottom Information (Z: 50px) */}
+        <div className="[transform-style:preserve-3d] [transform:translateZ(50px)] space-y-1.5 sm:space-y-2">
           {currentEvent.scheduleDate && (
-            <p className="text-[#efbf04] text-xs sm:text-sm font-medium flex items-center gap-1.5 mt-1 drop-shadow-sm">
+            <p className="text-[#efbf04] text-xs sm:text-sm font-semibold flex items-center gap-1.5 drop-shadow-sm [transform:translateZ(15px)]">
               <Calendar className="size-3.5" />
               <span>{currentEvent.scheduleDate} {currentEvent.scheduleTime ? `• ${currentEvent.scheduleTime}` : ''}</span>
             </p>
           )}
-        </div>
-
-        {/* Hover Cue */}
-        <div className="flex items-center justify-between text-[11px] sm:text-xs font-semibold tracking-wider text-slate-300 [transform:translateZ(50px)] pt-1 border-t border-white/10">
-          <span className="text-[#efbf04] group-hover/p-card:translate-x-1 transition-transform">
-            Hover to view live countdown & details
-          </span>
-          <ArrowRight className="size-3.5 text-[#efbf04] group-hover/p-card:translate-x-1 transition-transform" />
+          <h3 className="text-white font-poppins font-bold text-lg sm:text-xl md:text-2xl leading-snug line-clamp-2 drop-shadow-md [transform:translateZ(20px)]">
+            {currentEvent.title}
+          </h3>
         </div>
       </div>
     </div>
@@ -170,9 +154,9 @@ export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({
 
   // Back Face Component for 3D Perspective Card (Countdown + Highlights)
   const eventCardBack = (
-    <div className="size-full flex flex-col justify-between items-center text-center [transform-style:preserve-3d] rounded-2xl bg-gradient-to-b from-[#071d36] via-[#0b2749] to-[#041427] text-white p-5 sm:p-7 border border-amber-400/30 shadow-2xl">
-      {/* Backface Header Greeting (Z: 60px) */}
-      <div className="[transform:translateZ(60px)] w-full">
+    <div className="size-full flex flex-col justify-between items-center text-center [transform-style:preserve-3d]">
+      {/* Backface Header Greeting (Z: 40px) */}
+      <div className="[transform-style:preserve-3d] [transform:translateZ(40px)] w-full">
         <p className="text-[#efbf04] text-xs font-bold uppercase tracking-widest">
           {currentEvent.headingGreeting || 'HALLELUJAH!!'}
         </p>
@@ -182,39 +166,39 @@ export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({
         <div className="w-12 h-[1.5px] bg-gradient-to-r from-transparent via-[#efbf04] to-transparent mx-auto mt-2 opacity-80" />
       </div>
 
-      {/* 4 Countdown Timer Tiles (Z: 110px) */}
-      <div className="w-full [transform-style:preserve-3d] [transform:translateZ(100px)] my-2 sm:my-3">
+      {/* 4 Countdown Timer Tiles (Z: 70px) */}
+      <div className="w-full [transform-style:preserve-3d] [transform:translateZ(70px)] my-2">
         <p className="text-slate-300 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider mb-2.5">
           {countdown.isExpired ? 'Event In Progress / Concluded' : 'Live Event Countdown'}
         </p>
-        <div className="grid grid-cols-4 gap-2 sm:gap-2.5 max-w-[340px] mx-auto">
+        <div className="grid grid-cols-4 gap-2 sm:gap-2.5 max-w-[340px] mx-auto [transform-style:preserve-3d]">
           {/* Days */}
-          <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md [transform:translateZ(20px)]">
-            <span className="text-lg sm:text-2xl font-bold font-poppins text-[#efbf04] leading-none">
+          <div className="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-xl [transform:translateZ(25px)] [transform-style:preserve-3d]">
+            <span className="text-lg sm:text-2xl font-bold font-poppins text-[#efbf04] leading-none [transform:translateZ(15px)]">
               {String(countdown.days).padStart(2, '0')}
             </span>
             <span className="text-[9px] sm:text-[10px] uppercase font-semibold text-slate-300 mt-1">Days</span>
           </div>
 
           {/* Hours */}
-          <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md [transform:translateZ(20px)]">
-            <span className="text-lg sm:text-2xl font-bold font-poppins text-[#efbf04] leading-none">
+          <div className="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-xl [transform:translateZ(25px)] [transform-style:preserve-3d]">
+            <span className="text-lg sm:text-2xl font-bold font-poppins text-[#efbf04] leading-none [transform:translateZ(15px)]">
               {String(countdown.hours).padStart(2, '0')}
             </span>
             <span className="text-[9px] sm:text-[10px] uppercase font-semibold text-slate-300 mt-1">Hours</span>
           </div>
 
           {/* Minutes */}
-          <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md [transform:translateZ(20px)]">
-            <span className="text-lg sm:text-2xl font-bold font-poppins text-[#efbf04] leading-none">
+          <div className="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-xl [transform:translateZ(25px)] [transform-style:preserve-3d]">
+            <span className="text-lg sm:text-2xl font-bold font-poppins text-[#efbf04] leading-none [transform:translateZ(15px)]">
               {String(countdown.minutes).padStart(2, '0')}
             </span>
             <span className="text-[9px] sm:text-[10px] uppercase font-semibold text-slate-300 mt-1">Mins</span>
           </div>
 
           {/* Seconds */}
-          <div className="flex flex-col items-center justify-center p-2 rounded-xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-md [transform:translateZ(20px)]">
-            <span className="text-lg sm:text-2xl font-bold font-poppins text-[#efbf04] leading-none">
+          <div className="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-white/10 border border-amber-400/30 backdrop-blur-md shadow-xl [transform:translateZ(25px)] [transform-style:preserve-3d]">
+            <span className="text-lg sm:text-2xl font-bold font-poppins text-[#efbf04] leading-none [transform:translateZ(15px)]">
               {String(countdown.seconds).padStart(2, '0')}
             </span>
             <span className="text-[9px] sm:text-[10px] uppercase font-semibold text-slate-300 mt-1">Secs</span>
@@ -222,15 +206,15 @@ export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({
         </div>
       </div>
 
-      {/* CMS Highlights / Backface Summary Narrative (Z: 70px) */}
-      <div className="[transform:translateZ(70px)] px-2 max-w-[320px]">
+      {/* CMS Highlights / Backface Summary Narrative (Z: 40px) */}
+      <div className="space-y-2 [transform-style:preserve-3d] [transform:translateZ(40px)] px-2 max-w-[320px]">
         <p className="text-slate-200 text-xs sm:text-[13px] leading-relaxed line-clamp-3 font-poppins">
           {currentEvent.cardBackfaceSummary || currentEvent.announcementParagraph1}
         </p>
       </div>
 
-      {/* Schedule Meta Badges (Z: 85px) */}
-      <div className="[transform:translateZ(85px)] w-full space-y-1.5 text-[11px] sm:text-xs text-slate-300 border-t border-white/10 pt-3">
+      {/* Schedule Meta Badges (Z: 50px) */}
+      <div className="w-full space-y-1.5 text-[11px] sm:text-xs text-slate-300 border-t border-white/10 pt-3 [transform-style:preserve-3d] [transform:translateZ(50px)]">
         {currentEvent.scheduleDay && currentEvent.scheduleDate && (
           <div className="flex items-center justify-center gap-1.5 text-slate-200">
             <Calendar className="size-3.5 text-[#efbf04] flex-shrink-0" />

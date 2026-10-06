@@ -36,14 +36,14 @@ export const SundaySchoolHeroSection: React.FC<SundaySchoolHeroSectionProps> = (
   heroVideoUrl,
   heroSubtitle,
   headerTitle = 'SUNDAY SCHOOL MINISTRIES',
-  description = 'Welcome to Sunday School, a place where the Word of God is taught with simplicity, love, and truth, helping hearts of all ages experience the presence of God in a personal way. Here, children, youth, and believers grow together in faith as the Scriptures come alive through teaching, stories, and fellowship.',
+  description = 'Welcome to Sunday School, a place where the Word of God is taught with simplicity, love, and truth, helping children experience the presence of God in a personal way. Here, children grow together in faith as the Scriptures come alive through teaching, stories, and fellowship.',
   subtitle = 'Empowering the next generation to walk in faith, truth, and the power of God.',
 }) => {
   const displayTitle = heroHeaderTitle || headerTitle || 'SUNDAY SCHOOL MINISTRIES'
   const displayDesc =
     heroDescription ||
     description ||
-    'Welcome to Sunday School, a place where the Word of God is taught with simplicity, love, and truth, helping hearts of all ages experience the presence of God in a personal way. Here, children, youth, and believers grow together in faith as the Scriptures come alive through teaching, stories, and fellowship.'
+    'Welcome to Sunday School, a place where the Word of God is taught with simplicity, love, and truth, helping children experience the presence of God in a personal way. Here, children grow together in faith as the Scriptures come alive through teaching, stories, and fellowship.'
   const displaySubtitle =
     heroSubtitle || subtitle || 'Empowering the next generation to walk in faith, truth, and the power of God.'
 

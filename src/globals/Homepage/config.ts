@@ -48,7 +48,7 @@ const DEFAULT_ACTION_CARDS = [
 
 const DEFAULT_WEEKLY_SERVICES = [
   { emoji: '🕊️', title: 'Sunday Morning Service', time: '10:30 AM – 2:30 PM (IST)' },
-  { emoji: '🌙', title: 'Sunday Evening Service', time: '10:30 AM – 2:30 PM (IST)' },
+  { emoji: '🌙', title: 'Sunday Evening Service', time: '6:00 PM – 10:00 PM (IST)' },
   { emoji: '🔥', title: 'Thursday Service', time: '6:00 PM – 10:00 PM (IST)' },
 ]
 

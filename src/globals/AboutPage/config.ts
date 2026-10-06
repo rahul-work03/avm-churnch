@@ -37,23 +37,23 @@ const DEFAULT_STATS = [
 
 const DEFAULT_CRUSADES = [
   {
-    imageFallback: '/crusades/image_1.jpeg',
+    imageFallback: '/crusades/image_1.png',
     alt: 'Massive Miracle Crusade - Sea of Believers Gathering',
   },
   {
-    imageFallback: '/crusades/image_2.jpeg',
+    imageFallback: '/crusades/image_2.png',
     alt: 'Atmosphere of Fire and Deliverance Night',
   },
   {
-    imageFallback: '/crusades/image_3.jpeg',
+    imageFallback: '/crusades/image_3.png',
     alt: 'Supernatural Gathering & Holy Spirit Outpouring',
   },
   {
-    imageFallback: '/crusades/image_4.jpeg',
+    imageFallback: '/crusades/image_4.png',
     alt: 'Multitude of Souls Worshipping in Power',
   },
   {
-    imageFallback: '/crusades/image_5.jpeg',
+    imageFallback: '/crusades/image_5.png',
     alt: 'Historic Ankur Narula Ministries Crusade',
   },
 ]

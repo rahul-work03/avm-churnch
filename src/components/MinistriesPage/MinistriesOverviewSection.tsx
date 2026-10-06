@@ -28,7 +28,7 @@ const DEFAULT_MINISTRIES: MinistryCardItem[] = [
   {
     id: 'prayer-mountain',
     title: 'PRAYER MOUNTAIN',
-    subtitle: 'A peaceful place for prayer, fasting, and spiritual retreat',
+    subtitle: 'A place to pray, fast, and seek God.',
     imageFallback: '/ministries/prayer_mountain.png',
     linkUrl: '/prayer-mountain',
     buttonLabel: 'Learn More',
@@ -36,7 +36,7 @@ const DEFAULT_MINISTRIES: MinistryCardItem[] = [
   {
     id: 'prayer-house',
     title: 'PRAYER HOUSE',
-    subtitle: 'A peaceful place for prayer, fasting, and spiritual retreat',
+    subtitle: 'A peaceful place to pray and encounter God.',
     imageFallback: '/ministries/prayer_house.png',
     linkUrl: '/prayer-house',
     buttonLabel: 'Learn More',
@@ -44,7 +44,7 @@ const DEFAULT_MINISTRIES: MinistryCardItem[] = [
   {
     id: 'bible-college',
     title: 'BIBLE COLLEGE',
-    subtitle: 'A peaceful place for prayer, fasting, and spiritual retreat',
+    subtitle: 'A place to learn and grow in God’s Word.',
     imageFallback: '/ministries/bible_college.png',
     linkUrl: '/bible-college',
     buttonLabel: 'Learn More',
@@ -52,7 +52,7 @@ const DEFAULT_MINISTRIES: MinistryCardItem[] = [
   {
     id: 'sophia-institute',
     title: 'SOPHIA INSTITUTE',
-    subtitle: 'A peaceful place for prayer, fasting, and spiritual retreat',
+    subtitle: 'A place to learn, grow, and build your future.',
     imageFallback: '/ministries/sophia_institute.png',
     linkUrl: '/sophia-institute',
     buttonLabel: 'Learn More',
@@ -60,7 +60,7 @@ const DEFAULT_MINISTRIES: MinistryCardItem[] = [
   {
     id: 'church-branches',
     title: 'CHURCH BRANCHES',
-    subtitle: 'A peaceful place for prayer, fasting, and spiritual retreat',
+    subtitle: 'Connect with a church branch near you.',
     imageFallback: '/ministries/church_branches.png',
     linkUrl: '/church-branches',
     buttonLabel: 'Learn More',
@@ -68,7 +68,7 @@ const DEFAULT_MINISTRIES: MinistryCardItem[] = [
   {
     id: 'sunday-school',
     title: 'SUNDAY SCHOOL',
-    subtitle: 'A peaceful place for prayer, fasting, and spiritual retreat',
+    subtitle: 'A place for children to learn God’s Word.',
     imageFallback: '/ministries/sunday_school.png',
     linkUrl: '/sunday-school',
     buttonLabel: 'Learn More',

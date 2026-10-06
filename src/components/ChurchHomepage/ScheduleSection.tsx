@@ -25,7 +25,7 @@ export interface ScheduleSectionProps {
 
 const DEFAULT_WEEKLY: ServiceItem[] = [
   { title: 'Sunday Morning Service', time: '10:30 AM – 2:30 PM (IST)' },
-  { title: 'Sunday Evening Service', time: '10:30 AM – 2:30 PM (IST)' },
+  { title: 'Sunday Evening Service', time: '6:00 PM – 10:00 PM (IST)' },
   { title: 'Thursday Service', time: '6:00 PM – 10:00 PM (IST)' },
 ]
 

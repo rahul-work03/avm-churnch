@@ -17,11 +17,11 @@ export interface SundaySchoolWhatIsSectionProps {
 }
 
 export const SundaySchoolWhatIsSection: React.FC<SundaySchoolWhatIsSectionProps> = ({
-  whatIsCardTitle = 'What is Sunday School?',
-  whatIsCardDescription = 'Sunday School is a dedicated time of learning and spiritual growth where children, youth, and adults are taught the Word of God in a simple and meaningful way. It is designed to help believers understand Bible stories, Christian values, and the love of Jesus Christ in a way that is easy to apply in daily life. Through teaching, activities, and fellowship, Sunday School builds a strong foundation of faith from an early age.',
-  visionCardTitle = 'Purpose & vision',
-  purposeParagraph = 'The purpose of Sunday School is to nurture spiritual growth through Bible-based teaching, helping individuals develop a personal relationship with God. It focuses on building strong moral values, prayer life, and understanding of Scripture in a practical and engaging way.',
-  visionParagraph = 'Our vision is to raise a generation rooted in God’s Word, filled with the knowledge of Jesus Christ, and guided by the Holy Spirit. We aim to prepare children and believers of all ages to live out their faith boldly, grow in godly character, and become light in their families, schools, and communities.',
+  whatIsCardTitle = 'WHAT IS ANKUR NARULA MINISTRIES SUNDAY SCHOOL',
+  whatIsCardDescription = 'Ankur Narula Ministries Sunday School, led by Sister Sophia and Brother Yirmeyah, is a place where children are taught to grow in their relationship with God and follow Jesus Christ.',
+  visionCardTitle = 'PURPOSE AND VISION',
+  purposeParagraph = 'The purpose of the Sunday School is to build a strong foundation of faith in the lives of children through the teaching of God’s Word and to help them learn the values of faith, obedience, love and godly character.',
+  visionParagraph = 'The vision of Ankur Narula Ministries Sunday School is to raise a generation of children who know Christ, love His Word, walk in His ways, live for His Glory, and shine His light wherever they go.',
 }) => {
   return (
     <SacredCanvas tone="warm-alabaster" className="py-12 sm:py-16 md:py-20 select-none" data-node-id="289:3800">

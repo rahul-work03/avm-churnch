@@ -22,8 +22,9 @@ export interface PerspectiveFlipCardProps {
 }
 
 /**
- * Card 14 - Perspective 3D Flip Card
- * Built with robust vendor-prefixed backface-visibility and 3D transform hierarchy.
+ * Card 14 - Perspective Real Estate / Event Flip Card
+ * Uses standard rounded-2xl border radius and optimized true 3D depth metrics.
+ * Removed overflow-hidden from outer faces to allow Z-translations to work in full perspective.
  */
 export function PerspectiveFlipCard({
   className,
@@ -34,13 +35,12 @@ export function PerspectiveFlipCard({
 }: PerspectiveFlipCardProps) {
   return (
     <div
-      className={cn('group/p-card [perspective:1400px]', h, w, className)}
-      style={{ perspective: 1400 }}
+      className={cn('group/p-card [perspective:2000px]', h, w, className)}
+      style={{ perspective: '2000px' }}
     >
       <div
         className={cn(
-          'relative h-full w-full rounded-2xl transition-transform duration-700 ease-out will-change-transform',
-          'group-hover/p-card:[transform:rotateY(180deg)]',
+          'relative h-full w-full rounded-2xl transition-all duration-700 [transform-style:preserve-3d] group-hover/p-card:[transform:rotateY(180deg)]',
         )}
         style={{
           transformStyle: 'preserve-3d',
@@ -48,26 +48,32 @@ export function PerspectiveFlipCard({
       >
         {/* Front Face */}
         <div
-          className="absolute inset-0 size-full rounded-2xl overflow-hidden border border-slate-200/80 bg-slate-950 shadow-lg"
+          className="absolute inset-0 size-full rounded-2xl border border-amber-400/30 bg-slate-950 text-white [transform-style:preserve-3d] [backface-visibility:hidden] [-webkit-backface-visibility:hidden]"
           style={{
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
             transform: 'rotateY(0deg)',
+            transformStyle: 'preserve-3d',
           }}
         >
-          {front}
+          <div className="size-full [transform-style:preserve-3d]">
+            {front}
+          </div>
         </div>
 
         {/* Back Face */}
         <div
-          className="absolute inset-0 size-full rounded-2xl overflow-hidden border border-amber-400/30 bg-gradient-to-b from-[#071d36] via-[#0b2749] to-[#041427] text-white shadow-2xl"
+          className="absolute inset-0 size-full rounded-2xl border border-amber-400/30 bg-gradient-to-b from-[#071d36] via-[#0b2749] to-[#041427] text-white [transform-style:preserve-3d] [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:rotateY(180deg)]"
           style={{
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)',
+            transformStyle: 'preserve-3d',
           }}
         >
-          {back}
+          <div className="size-full [transform-style:preserve-3d] p-6 sm:p-7 text-center flex flex-col items-center justify-between">
+            {back}
+          </div>
         </div>
       </div>
     </div>
@@ -75,40 +81,42 @@ export function PerspectiveFlipCard({
 }
 
 const PerspectiveFront = () => (
-  <div className="size-full flex flex-col justify-between p-3 bg-card text-card-foreground rounded-2xl">
-    {/* Image Section */}
-    <div className="relative h-64 w-full rounded-xl overflow-hidden bg-muted border border-border/50">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="https://images.unsplash.com/photo-1544427920-c49ccfb85579?auto=format&fit=crop&w=800&q=80"
-        alt="Serenity Residential"
-        className="h-full w-full object-cover transition duration-700 group-hover/p-card:scale-105"
-      />
+  <div className="size-full flex flex-col [transform-style:preserve-3d]">
+    {/* Image Section (Z: 50px) */}
+    <div className="relative h-64 w-full [transform-style:preserve-3d] [transform:translateZ(50px)]">
+      <div className="absolute inset-0 rounded-xl bg-muted overflow-hidden border border-border/50">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://images.unsplash.com/photo-1544427920-c49ccfb85579?auto=format&fit=crop&w=800&q=80"
+          alt="Serenity Residential"
+          className="h-full w-full object-cover transition duration-700 group-hover/p-card:scale-110"
+        />
+      </div>
 
-      {/* Floating Rating Badge */}
-      <div className="absolute bottom-4 left-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-background/90 backdrop-blur-md border border-border text-[11px] font-medium tracking-tight text-foreground shadow-lg">
+      {/* Floating Rating Badge (Z: 80px) */}
+      <div className="absolute bottom-4 left-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-background/90 backdrop-blur-md border border-border text-[11px] font-medium tracking-tight text-foreground shadow-lg [transform:translateZ(80px)]">
         <Star className="size-3.5 fill-yellow-400 text-yellow-400" />
         <span>4.9 (120 Reviews)</span>
       </div>
     </div>
 
-    {/* Content Section */}
-    <div className="flex flex-col justify-between flex-grow p-4 space-y-3">
-      <div className="space-y-1.5">
+    {/* Content Section (Z: 60px) */}
+    <div className="flex flex-col justify-between flex-grow p-6 py-8 [transform-style:preserve-3d]">
+      <div className="space-y-2 [transform-style:preserve-3d] [transform:translateZ(60px)]">
         <div className="flex items-center gap-2 text-primary text-xs font-semibold tracking-wide">
           <Sparkles className="size-4" />
           <span>Exclusive Listing</span>
         </div>
-        <h3 className="text-xl font-bold tracking-tight text-foreground transition duration-300 group-hover/p-card:text-primary leading-tight">
+        <h3 className="text-2xl font-bold tracking-tight text-foreground transition duration-300 group-hover/p-card:text-primary leading-tight">
           Serenity Residential Home
         </h3>
-        <p className="text-xs font-medium text-muted-foreground flex items-center gap-1.5 leading-none mt-1">
+        <p className="text-[15px] font-medium text-muted-foreground flex items-center gap-1.5 leading-none mt-2">
           <MapPin className="size-4 text-primary" />
           15 S Aurora Ave, Miami
         </p>
       </div>
 
-      <div className="flex items-center justify-between text-xs font-semibold tracking-wider text-muted-foreground pt-2 border-t border-border/40">
+      <div className="flex items-center justify-between text-xs font-semibold tracking-wider text-muted-foreground [transform:translateZ(40px)]">
         <span className="group-hover/p-card:text-primary group-hover/p-card:translate-x-1 transition-all">
           Hover to see more
         </span>
@@ -119,44 +127,50 @@ const PerspectiveFront = () => (
 )
 
 const PerspectiveBack = () => (
-  <div className="size-full flex flex-col items-center justify-between p-6 text-center">
-    {/* Feature Icons */}
-    <div className="w-full flex justify-center gap-3 mt-2">
-      <div className="flex flex-col items-center gap-1.5 p-3 rounded-xl bg-white/10 border border-white/10 min-w-[80px]">
-        <div className="p-1.5 rounded-lg bg-white/20 text-[#efbf04] shadow-sm">
-          <BedDouble className="size-5" />
+  <div className="size-full flex flex-col items-center justify-center [transform-style:preserve-3d]">
+    {/* Feature Icons (Z: 130px) */}
+    <div className="mb-10 w-full [transform-style:preserve-3d] flex justify-center gap-4">
+      <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-muted/80 border border-border/50 [transform:translateZ(130px)] min-w-[90px] [transform-style:preserve-3d]">
+        <div className="p-2 rounded-xl bg-card border border-border text-primary [transform:translateZ(20px)] shadow-sm">
+          <BedDouble className="size-6" />
         </div>
-        <p className="text-[11px] font-bold tracking-tight text-white">5 Beds</p>
+        <p className="text-[11px] font-bold [transform:translateZ(10px)] tracking-tight">
+          5 Beds
+        </p>
       </div>
-      <div className="flex flex-col items-center gap-1.5 p-3 rounded-xl bg-white/10 border border-white/10 min-w-[80px]">
-        <div className="p-1.5 rounded-lg bg-white/20 text-[#efbf04] shadow-sm">
-          <Bath className="size-5" />
+      <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-muted/80 border border-border/50 [transform:translateZ(160px)] min-w-[90px] [transform-style:preserve-3d]">
+        <div className="p-2 rounded-xl bg-card border border-border text-primary [transform:translateZ(25px)] shadow-sm">
+          <Bath className="size-6" />
         </div>
-        <p className="text-[11px] font-bold tracking-tight text-white">3 Baths</p>
+        <p className="text-[11px] font-bold [transform:translateZ(10px)] tracking-tight">
+          3 Baths
+        </p>
       </div>
-      <div className="flex flex-col items-center gap-1.5 p-3 rounded-xl bg-white/10 border border-white/10 min-w-[80px]">
-        <div className="p-1.5 rounded-lg bg-white/20 text-[#efbf04] shadow-sm">
-          <Expand className="size-5" />
+      <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-muted/80 border border-border/50 [transform:translateZ(130px)] min-w-[90px] [transform-style:preserve-3d]">
+        <div className="p-2 rounded-xl bg-card border border-border text-primary [transform:translateZ(20px)] shadow-sm">
+          <Expand className="size-6" />
         </div>
-        <p className="text-[11px] font-bold tracking-tight text-white">120m²</p>
+        <p className="text-[11px] font-bold [transform:translateZ(10px)] tracking-tight">
+          120m²
+        </p>
       </div>
     </div>
 
-    {/* Description */}
-    <div className="space-y-2 px-3">
-      <h3 className="text-lg font-bold tracking-tight text-white">
+    {/* Description (Z: 80px) */}
+    <div className="space-y-3 [transform-style:preserve-3d] px-6">
+      <h3 className="text-xl font-bold tracking-tight text-foreground [transform:translateZ(80px)]">
         Property Highlights
       </h3>
-      <p className="text-xs text-slate-300 leading-relaxed max-w-[260px] mx-auto">
+      <p className="text-[13px] font-medium text-muted-foreground leading-relaxed [transform:translateZ(40px)] max-w-[280px] mx-auto">
         Award-winning residential design with 24/7 smart security and
         unparalleled tranquility.
       </p>
     </div>
 
-    {/* Action */}
-    <div className="w-full px-4 mb-2">
-      <button className="h-10 w-full rounded-xl bg-[#efbf04] text-[#071d36] text-xs font-bold tracking-wider shadow-lg transition-all hover:scale-[1.03] active:scale-95 cursor-pointer">
-        <Zap className="mr-1.5 size-3.5 inline-block fill-current" />
+    {/* Action (Z: 100px) */}
+    <div className="mt-8 [transform-style:preserve-3d] w-full px-6">
+      <button className="h-11 w-full rounded-xl bg-primary text-primary-foreground text-xs font-bold tracking-wider shadow-[0_15px_30px_-5px_rgba(0,0,0,0.3)] transition-all hover:scale-[1.03] active:scale-95 [transform:translateZ(100px)] cursor-pointer">
+        <Zap className="mr-2 size-3.5 inline-block fill-current" />
         Book Viewing
       </button>
     </div>

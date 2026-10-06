@@ -62,7 +62,7 @@ export const TestimonialsPage: React.FC<TestimonialsPageProps> = ({
     pageData?.ctaQuote ||
     '“They overcame him by the blood of the Lamb and by the word of their testimony.” — Revelation 12:11'
   const ctaButton1Label = pageData?.ctaButton1Label || 'Contact Us'
-  const ctaButton1Url = pageData?.ctaButton1Url || '/contact-us'
+  const ctaButton1Url = pageData?.ctaButton1Url || '/contact'
 
   return (
     <main className="min-h-screen bg-[#f8fafc] text-[#344054] antialiased pt-28 pb-16 sm:pt-36 sm:pb-24 select-none">
