@@ -13,6 +13,7 @@ const DEFAULT_NAV_ITEMS = [
       { label: 'Prayer House', href: '/prayer-house' },
       { label: 'Bible College', href: '/bible-college' },
       { label: 'Sophia Institute', href: '/sophia-institute' },
+      { label: 'Multimedia College', href: '/multimedia-college' },
       { label: 'Church Branches', href: '/church-branches' },
       { label: 'Sunday School', href: '/sunday-school' },
     ],

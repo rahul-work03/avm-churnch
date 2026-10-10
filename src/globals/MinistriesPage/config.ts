@@ -32,6 +32,13 @@ const DEFAULT_MINISTRIES = [
     buttonLabel: 'Learn More',
   },
   {
+    title: 'MULTIMEDIA COLLEGE',
+    subtitle: 'A place where creativity, technology, and practical skills unite.',
+    imageFallback: '/multimedia_college_hero.png',
+    linkUrl: '/multimedia-college',
+    buttonLabel: 'Learn More',
+  },
+  {
     title: 'CHURCH BRANCHES',
     subtitle: 'Connect with a church branch near you.',
     imageFallback: '/ministries/church_branches.png',

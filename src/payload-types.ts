@@ -125,6 +125,7 @@ export interface Config {
     'prayer-house-page': PrayerHousePage;
     'bible-college-page': BibleCollegePage;
     'sophia-institute-page': SophiaInstitutePage;
+    'multimedia-college-page': MultimediaCollegePage;
     'sunday-school-page': SundaySchoolPage;
     'church-branches-page': ChurchBranchesPage;
     'events-page': EventsPage;
@@ -148,6 +149,7 @@ export interface Config {
     'prayer-house-page': PrayerHousePageSelect<false> | PrayerHousePageSelect<true>;
     'bible-college-page': BibleCollegePageSelect<false> | BibleCollegePageSelect<true>;
     'sophia-institute-page': SophiaInstitutePageSelect<false> | SophiaInstitutePageSelect<true>;
+    'multimedia-college-page': MultimediaCollegePageSelect<false> | MultimediaCollegePageSelect<true>;
     'sunday-school-page': SundaySchoolPageSelect<false> | SundaySchoolPageSelect<true>;
     'church-branches-page': ChurchBranchesPageSelect<false> | ChurchBranchesPageSelect<true>;
     'events-page': EventsPageSelect<false> | EventsPageSelect<true>;
@@ -2420,6 +2422,47 @@ export interface SophiaInstitutePage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "multimedia-college-page".
+ */
+export interface MultimediaCollegePage {
+  id: number;
+  heroHeaderTitle?: string | null;
+  heroDescription?: string | null;
+  heroBannerImage?: (number | null) | Media;
+  heroBannerFallback?: string | null;
+  heroBannerAlt?: string | null;
+  heroVideo?: (number | null) | Media;
+  heroVideoFallback?: string | null;
+  bannerVideoUrl?: string | null;
+  heroVideoUrl?: string | null;
+  heroSubtitle?: string | null;
+  scenesHeaderTitle?: string | null;
+  scenesRow1?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  scenesRow2?:
+    | {
+        image?: (number | null) | Media;
+        imageFallback?: string | null;
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  whatIsCardTitle?: string | null;
+  whatIsCardDescription?: string | null;
+  visionCardTitle?: string | null;
+  purposeParagraph?: string | null;
+  visionParagraph?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "sunday-school-page".
  */
 export interface SundaySchoolPage {
@@ -3231,6 +3274,47 @@ export interface SophiaInstitutePageSelect<T extends boolean = true> {
   heroVideo?: T;
   heroVideoFallback?: T;
   bannerVideoUrl?: T;
+  heroSubtitle?: T;
+  scenesHeaderTitle?: T;
+  scenesRow1?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        id?: T;
+      };
+  scenesRow2?:
+    | T
+    | {
+        image?: T;
+        imageFallback?: T;
+        alt?: T;
+        id?: T;
+      };
+  whatIsCardTitle?: T;
+  whatIsCardDescription?: T;
+  visionCardTitle?: T;
+  purposeParagraph?: T;
+  visionParagraph?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "multimedia-college-page_select".
+ */
+export interface MultimediaCollegePageSelect<T extends boolean = true> {
+  heroHeaderTitle?: T;
+  heroDescription?: T;
+  heroBannerImage?: T;
+  heroBannerFallback?: T;
+  heroBannerAlt?: T;
+  heroVideo?: T;
+  heroVideoFallback?: T;
+  bannerVideoUrl?: T;
+  heroVideoUrl?: T;
   heroSubtitle?: T;
   scenesHeaderTitle?: T;
   scenesRow1?:

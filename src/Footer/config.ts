@@ -10,6 +10,7 @@ const DEFAULT_PAGES_LIST = [
   { label: 'Sunday School', href: '/sunday-school' },
   { label: 'Bible College', href: '/bible-college' },
   { label: 'Sophia Institute', href: '/sophia-institute' },
+  { label: 'Multimedia College', href: '/multimedia-college' },
 ]
 
 const DEFAULT_SOCIAL_LINKS = [

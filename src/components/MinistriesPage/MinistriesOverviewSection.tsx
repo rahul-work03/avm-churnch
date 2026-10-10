@@ -58,6 +58,14 @@ const DEFAULT_MINISTRIES: MinistryCardItem[] = [
     buttonLabel: 'Learn More',
   },
   {
+    id: 'multimedia-college',
+    title: 'MULTIMEDIA COLLEGE',
+    subtitle: 'A place where creativity, technology, and practical skills unite.',
+    imageFallback: '/multimedia_college_hero.png',
+    linkUrl: '/multimedia-college',
+    buttonLabel: 'Learn More',
+  },
+  {
     id: 'church-branches',
     title: 'CHURCH BRANCHES',
     subtitle: 'Connect with a church branch near you.',

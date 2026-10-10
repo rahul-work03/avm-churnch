@@ -25,6 +25,7 @@ import { PrayerMountainPageGlobal } from './globals/PrayerMountainPage/config'
 import { PrayerHousePageGlobal } from './globals/PrayerHousePage/config'
 import { BibleCollegePageGlobal } from './globals/BibleCollegePage/config'
 import { SophiaInstitutePageGlobal } from './globals/SophiaInstitutePage/config'
+import { MultimediaCollegePageGlobal } from './globals/MultimediaCollegePage/config'
 import { SundaySchoolPageGlobal } from './globals/SundaySchoolPage/config'
 import { ChurchBranchesPageGlobal } from './globals/ChurchBranchesPage/config'
 import { EventsPageGlobal } from './globals/EventsPage/config'
@@ -117,6 +118,7 @@ export default buildConfig({
     PrayerHousePageGlobal,
     BibleCollegePageGlobal,
     SophiaInstitutePageGlobal,
+    MultimediaCollegePageGlobal,
     SundaySchoolPageGlobal,
     ChurchBranchesPageGlobal,
     EventsPageGlobal,
