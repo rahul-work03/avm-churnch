@@ -244,7 +244,7 @@ export const SundaySchoolPageGlobal: GlobalConfig = {
               name: 'whatIsCardTitle',
               type: 'text',
               label: 'Card 1 Title',
-              defaultValue: 'WHAT IS ANKUR NARULA MINISTRIES SUNDAY SCHOOL',
+              defaultValue: 'WHAT IS SUNDAY SCHOOL',
             },
             {
               name: 'whatIsCardDescription',

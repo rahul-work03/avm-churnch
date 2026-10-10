@@ -6,7 +6,7 @@ import { BlurTextReveal } from '@/components/ui/text-reveal'
 import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
 import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { PatternedNavyCard } from '@/components/ui/patterned-navy-card'
-import { HeartHandshake, Sparkles } from 'lucide-react'
+import { HeartHandshake, Eye } from 'lucide-react'
 
 export interface SundaySchoolWhatIsSectionProps {
   whatIsCardTitle?: string | null
@@ -17,7 +17,7 @@ export interface SundaySchoolWhatIsSectionProps {
 }
 
 export const SundaySchoolWhatIsSection: React.FC<SundaySchoolWhatIsSectionProps> = ({
-  whatIsCardTitle = 'WHAT IS ANKUR NARULA MINISTRIES SUNDAY SCHOOL',
+  whatIsCardTitle = 'WHAT IS SUNDAY SCHOOL',
   whatIsCardDescription = 'Ankur Narula Ministries Sunday School, led by Sister Sophia and Brother Yirmeyah, is a place where children are taught to grow in their relationship with God and follow Jesus Christ.',
   visionCardTitle = 'PURPOSE AND VISION',
   purposeParagraph = 'The purpose of the Sunday School is to build a strong foundation of faith in the lives of children through the teaching of God’s Word and to help them learn the values of faith, obedience, love and godly character.',
@@ -94,7 +94,7 @@ export const SundaySchoolWhatIsSection: React.FC<SundaySchoolWhatIsSectionProps>
                     asPillar
                     patternId="pattern-ss-vision"
                     title="Our Vision"
-                    icon={<Sparkles className="w-5 h-5 text-[#efbf04]" />}
+                    icon={<Eye className="w-5 h-5 text-[#efbf04]" />}
                     className="h-full"
                   >
                     <p className="font-poppins text-slate-100 text-xs sm:text-sm md:text-[16px] lg:text-[18px] leading-relaxed font-light">

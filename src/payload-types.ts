@@ -2084,8 +2084,18 @@ export interface Homepage {
   socialPlatforms?:
     | {
         name: string;
+        badge?: string | null;
         handle?: string | null;
         url: string;
+        handles?:
+          | {
+              title: string;
+              handle: string;
+              url: string;
+              description?: string | null;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -2920,8 +2930,18 @@ export interface HomepageSelect<T extends boolean = true> {
     | T
     | {
         name?: T;
+        badge?: T;
         handle?: T;
         url?: T;
+        handles?:
+          | T
+          | {
+              title?: T;
+              handle?: T;
+              url?: T;
+              description?: T;
+              id?: T;
+            };
         id?: T;
       };
   sermonsHeaderTitle?: T;

@@ -6,7 +6,7 @@ import { BlurTextReveal } from '@/components/ui/text-reveal'
 import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
 import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { PatternedNavyCard } from '@/components/ui/patterned-navy-card'
-import { BookOpen, GraduationCap } from 'lucide-react'
+import { BookOpen, Eye } from 'lucide-react'
 
 export interface BibleCollegeWhatIsSectionProps {
   whatIsCardTitle?: string
@@ -94,7 +94,7 @@ export const BibleCollegeWhatIsSection: React.FC<BibleCollegeWhatIsSectionProps>
                     asPillar
                     patternId="pattern-bc-vision"
                     title="Our Vision"
-                    icon={<GraduationCap className="w-5 h-5 text-[#efbf04]" />}
+                    icon={<Eye className="w-5 h-5 text-[#efbf04]" />}
                     className="h-full"
                   >
                     <p className="font-poppins text-slate-100 text-xs sm:text-sm md:text-[16px] lg:text-[18px] leading-relaxed font-light">

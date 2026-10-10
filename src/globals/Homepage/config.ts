@@ -59,24 +59,119 @@ const DEFAULT_DAILY_PROGRAMS = [
 
 const DEFAULT_SOCIAL_PLATFORMS = [
   {
-    name: 'YouTube',
-    handle: '@ankurnarulaministries',
-    url: 'https://www.youtube.com/@ankurnarulaministries',
-  },
-  {
     name: 'Instagram',
     handle: '@ankurnarulaministries',
-    url: 'https://www.instagram.com/ankurnarulaministries',
+    url: 'https://www.instagram.com/ankurnarulaministries?stkn=MWd1d3dlZHJvdjF0aw==',
+    badge: '6 Handles',
+    handles: [
+      {
+        title: 'Ankur Narula Ministries',
+        handle: '@ankurnarulaministries',
+        url: 'https://www.instagram.com/ankurnarulaministries?stkn=MWd1d3dlZHJvdjF0aw==',
+        description: 'Official ministry page & daily scriptures',
+      },
+      {
+        title: 'Apostle Dr. Ankur Yoseph Narula',
+        handle: '@apostledr.ankuryosephnarula',
+        url: 'https://www.instagram.com/apostledr.ankuryosephnarula?stkn=MW9hbDhoaGx4ZGNnZA==',
+        description: 'Official personal ministry profile',
+      },
+      {
+        title: 'Pastor Sonia Yoseph Narula',
+        handle: '@pastorsoniayosephnarula',
+        url: 'https://www.instagram.com/pastorsoniayosephnarula?stkn=MTVneWFnbmdqbDc1Yw==',
+        description: 'Official personal ministry profile',
+      },
+      {
+        title: 'The Yoseph Family',
+        handle: '@the_yoseph_family',
+        url: 'https://www.instagram.com/the_yoseph_family?stkn=MThkNmNjZWh0Nmg2ZQ==',
+        description: 'Family faith journey & ministry moments',
+      },
+      {
+        title: 'Anugrah TV Official',
+        handle: '@anugrahtv_official',
+        url: 'https://www.instagram.com/anugrahtv_official?stkn=ZjFpMGpkNHZ4b2d5',
+        description: 'Christian broadcast network & shows',
+      },
+      {
+        title: 'ANM Worship Songs Official',
+        handle: '@anm_worshipsongs_official',
+        url: 'https://www.instagram.com/anm_worshipsongs_official?stkn=MTZybGo2aWFqNDMxbg==',
+        description: 'Anointed worship music & praise songs',
+      },
+    ],
   },
   {
     name: 'Facebook',
-    handle: 'Ankur Narula Ministries',
-    url: 'https://www.facebook.com/ankurnarulaministries/',
+    handle: 'Pastor Sonia Yoseph Narula',
+    url: 'https://www.facebook.com/p/Pastor-Sonia-Yoseph-Narula-61571457190633/',
+    badge: '4 Pages',
+    handles: [
+      {
+        title: 'Apostle Dr. Ankur Yoseph Narula',
+        handle: 'Ankur Narula',
+        url: 'https://www.facebook.com/ankur.narula.5/',
+        description: 'Official Facebook profile',
+      },
+      {
+        title: 'Pastor Sonia Yoseph Narula',
+        handle: 'Pastor Sonia Yoseph Narula',
+        url: 'https://www.facebook.com/p/Pastor-Sonia-Yoseph-Narula-61571457190633/',
+        description: 'Official Facebook page',
+      },
+      {
+        title: 'The Yoseph Family',
+        handle: 'The Yoseph Family',
+        url: 'https://www.facebook.com/p/The-Yoseph-Family-61577143774557/',
+        description: 'Official Facebook community',
+      },
+      {
+        title: 'Anugrah TV',
+        handle: 'Anugrah TV',
+        url: 'https://www.facebook.com/p/Anugrah-TV-61577404071596/',
+        description: 'Official Television Ministry Page',
+      },
+    ],
+  },
+  {
+    name: 'YouTube',
+    handle: '@ApostleDr.AnkurYosephNarula',
+    url: 'https://www.youtube.com/@ApostleDr.AnkurYosephNarula',
+    badge: '4 Channels',
+    handles: [
+      {
+        title: 'Apostle Dr. Ankur Yoseph Narula',
+        handle: '@ApostleDr.AnkurYosephNarula',
+        url: 'https://www.youtube.com/@ApostleDr.AnkurYosephNarula',
+        description: 'Main ministry sermons, messages & teachings',
+      },
+      {
+        title: 'Pastor Sonia Yoseph Narula',
+        handle: '@pastorsoniayosephnarula',
+        url: 'https://www.youtube.com/@pastorsoniayosephnarula',
+        description: 'Devotionals, worship & women fellowship',
+      },
+      {
+        title: 'Live Ankur Narula Ministries',
+        handle: '@liveankurnarulaministries',
+        url: 'https://www.youtube.com/@liveankurnarulaministries',
+        description: 'Live church prayer services & broadcasts',
+      },
+      {
+        title: 'The Yoseph Family',
+        handle: '@theyosephfamily',
+        url: 'https://www.youtube.com/@theyosephfamily',
+        description: 'Family life, faith journey & inspirational moments',
+      },
+    ],
   },
   {
     name: 'X (Twitter)',
     handle: '@apostleankur',
     url: 'https://x.com/apostleankur',
+    badge: '',
+    handles: [],
   },
 ]
 
@@ -99,7 +194,22 @@ export const Homepage: GlobalConfig = {
           actionCards: doc.actionCards && doc.actionCards.length > 0 ? doc.actionCards : DEFAULT_ACTION_CARDS,
           weeklyServices: doc.weeklyServices && doc.weeklyServices.length > 0 ? doc.weeklyServices : DEFAULT_WEEKLY_SERVICES,
           dailyPrograms: doc.dailyPrograms && doc.dailyPrograms.length > 0 ? doc.dailyPrograms : DEFAULT_DAILY_PROGRAMS,
-          socialPlatforms: doc.socialPlatforms && doc.socialPlatforms.length > 0 ? doc.socialPlatforms : DEFAULT_SOCIAL_PLATFORMS,
+          socialPlatforms:
+            doc.socialPlatforms && doc.socialPlatforms.length > 0
+              ? doc.socialPlatforms.map((p: any) => {
+                  const defaultMatch = DEFAULT_SOCIAL_PLATFORMS.find(
+                    (d) => d.name?.toLowerCase() === (p.name || '').toLowerCase(),
+                  )
+                  return {
+                    ...p,
+                    badge: p.badge || defaultMatch?.badge || '',
+                    handles:
+                      p.handles && p.handles.length > 0
+                        ? p.handles
+                        : defaultMatch?.handles || [],
+                  }
+                })
+              : DEFAULT_SOCIAL_PLATFORMS,
         }
       },
     ],
@@ -436,15 +546,50 @@ export const Homepage: GlobalConfig = {
                   required: true,
                 },
                 {
+                  name: 'badge',
+                  type: 'text',
+                  label: 'Optional Badge (e.g. "3 Channels", "Official Handles")',
+                },
+                {
                   name: 'handle',
                   type: 'text',
-                  label: 'Handle / Channel Tag (e.g. @ankurnarulaministries)',
+                  label: 'Primary Handle / Channel Tag (e.g. @ankurnarulaministries)',
                 },
                 {
                   name: 'url',
                   type: 'text',
-                  label: 'Platform URL',
+                  label: 'Platform URL (Primary Link)',
                   required: true,
+                },
+                {
+                  name: 'handles',
+                  type: 'array',
+                  label: 'Multiple Handles / Channels (Optional Slider Accounts)',
+                  fields: [
+                    {
+                      name: 'title',
+                      type: 'text',
+                      label: 'Account / Channel Title (e.g. "Official Church Channel")',
+                      required: true,
+                    },
+                    {
+                      name: 'handle',
+                      type: 'text',
+                      label: 'Handle Tag (e.g. @ankurnarulaministries)',
+                      required: true,
+                    },
+                    {
+                      name: 'url',
+                      type: 'text',
+                      label: 'Account URL',
+                      required: true,
+                    },
+                    {
+                      name: 'description',
+                      type: 'text',
+                      label: 'Short Description or Purpose',
+                    },
+                  ],
                 },
               ],
             },
