@@ -33,3 +33,38 @@ Deliver a structured markdown audit report detailing:
 - [ ] Covers all primary routes, key heavy UI components (carousels, marquees, iframes, animations), and bundle chunk configurations.
 - [ ] Explains the exact mechanism behind page transition delays (e.g. main-thread blocking during unmount/remount, heavy CSS/JS execution, eager loading).
 - [ ] Provides concrete, file-specific code solutions and architectural fixes ready for an implementation subagent to resolve directly.
+
+
+## Follow-up — 2026-10-11T07:59:01Z
+
+Conduct a comprehensive, page-by-page audit across all frontend routes in the Next.js / Payload CMS repository (`c:\projects\avm-church`). Identify all hardcoded UI sections lacking CMS backing, evaluate hero section multi-media capabilities (video/image formats, fallback handling), and deliver an actionable sequential remediation blueprint to fix issues one page at a time.
+
+Working directory: c:\projects\avm-church
+Integrity mode: development
+
+## Requirements
+
+### R1. Independent Page-by-Page CMS Audit
+Scan every route in `src/app/(frontend)` individually:
+- Catalog all hardcoded copy, headings, descriptions, stats, lists, contact details, and CTA links that are currently static in TSX instead of being backed by Payload CMS collections or globals.
+- Provide exact source file paths and line ranges for every hardcoded element discovered.
+- Map out which Payload CMS schema additions (new collections, global configs, or field adjustments) are required to make each page fully dynamic.
+
+### R2. Hero Section Multi-Media Capabilities Evaluation
+Examine the hero section implementation across all pages:
+- Check support for diverse media types: static images, background videos (MP4/WebM), external video streams (YouTube, Vimeo), poster frames, and fallbacks.
+- Assess responsive format handling, loading performance, aspect ratios, and format tolerances in both the `Media` collection and frontend rendering components.
+- Document gaps where heroes currently only accept static images or lack video/multi-format support.
+
+### R3. Sequential Page-by-Page Remediation Blueprint
+Synthesize the audit findings into a structured, prioritized implementation plan:
+- Grouped page-by-page so that fixes can be applied iteratively without breaking site consistency.
+- Specify prerequisites (e.g. shared CMS blocks, media schema migrations) followed by individual page migration checklists.
+
+## Acceptance Criteria
+
+### Coverage & Specificity
+- [ ] Every frontend route in `src/app/(frontend)` has a dedicated audit section in the final report.
+- [ ] All static content findings specify the exact component file path, line numbers, and proposed CMS field name/type.
+- [ ] Hero sections on every page are explicitly evaluated for multi-format media support (video/image/streaming) with identified shortcomings.
+- [ ] The remediation roadmap is broken down sequentially page-by-page with clear verification steps for each page.

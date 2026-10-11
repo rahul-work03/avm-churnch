@@ -82,7 +82,7 @@ const DEFAULT_SOCIAL_PLATFORMS = [
     name: 'YouTube',
     handle: '@ApostleDr.AnkurYosephNarula',
     url: 'https://www.youtube.com/@ApostleDr.AnkurYosephNarula',
-    badge: '4 Channels',
+    badge: '6 Channels',
     handles: [
       {
         title: 'Apostle Dr. Ankur Yoseph Narula',
@@ -108,6 +108,18 @@ const DEFAULT_SOCIAL_PLATFORMS = [
         url: 'https://www.youtube.com/@theyosephfamily',
         description: 'Family life, faith journey & inspirational moments',
       },
+      {
+        title: 'ANM Worship Songs',
+        handle: '@ANM-WorshipSongs',
+        url: 'https://www.youtube.com/@ANM-WorshipSongs',
+        description: 'Anointed worship songs & spiritual melodies',
+      },
+      {
+        title: 'Anugrah TV',
+        handle: '@AnugrahTV',
+        url: 'https://www.youtube.com/@AnugrahTV',
+        description: 'Christian broadcast network & shows',
+      },
     ],
   },
   {
@@ -125,6 +137,9 @@ async function run() {
   
   await payload.updateGlobal({
     slug: 'homepage',
+    context: {
+      disableRevalidate: true,
+    },
     data: {
       socialPlatforms: DEFAULT_SOCIAL_PLATFORMS,
     },

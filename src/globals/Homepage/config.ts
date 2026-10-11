@@ -138,7 +138,7 @@ const DEFAULT_SOCIAL_PLATFORMS = [
     name: 'YouTube',
     handle: '@ApostleDr.AnkurYosephNarula',
     url: 'https://www.youtube.com/@ApostleDr.AnkurYosephNarula',
-    badge: '4 Channels',
+    badge: '6 Channels',
     handles: [
       {
         title: 'Apostle Dr. Ankur Yoseph Narula',
@@ -163,6 +163,18 @@ const DEFAULT_SOCIAL_PLATFORMS = [
         handle: '@theyosephfamily',
         url: 'https://www.youtube.com/@theyosephfamily',
         description: 'Family life, faith journey & inspirational moments',
+      },
+      {
+        title: 'ANM Worship Songs',
+        handle: '@ANM-WorshipSongs',
+        url: 'https://www.youtube.com/@ANM-WorshipSongs',
+        description: 'Anointed worship songs & spiritual melodies',
+      },
+      {
+        title: 'Anugrah TV',
+        handle: '@AnugrahTV',
+        url: 'https://www.youtube.com/@AnugrahTV',
+        description: 'Christian broadcast network & shows',
       },
     ],
   },
@@ -202,9 +214,9 @@ export const Homepage: GlobalConfig = {
                   )
                   return {
                     ...p,
-                    badge: p.badge || defaultMatch?.badge || '',
+                    badge: p.badge !== undefined && p.badge !== null ? p.badge : defaultMatch?.badge || '',
                     handles:
-                      p.handles && p.handles.length > 0
+                      Array.isArray(p.handles)
                         ? p.handles
                         : defaultMatch?.handles || [],
                   }
