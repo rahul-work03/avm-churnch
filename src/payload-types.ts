@@ -2669,6 +2669,13 @@ export interface TestimonialsPage {
   ctaQuote?: string | null;
   ctaButton1Label?: string | null;
   ctaButton1Url?: string | null;
+  phoneNumbersPrompt?: string | null;
+  phoneNumbers?:
+    | {
+        number: string;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -3535,6 +3542,13 @@ export interface TestimonialsPageSelect<T extends boolean = true> {
   ctaQuote?: T;
   ctaButton1Label?: T;
   ctaButton1Url?: T;
+  phoneNumbersPrompt?: T;
+  phoneNumbers?:
+    | T
+    | {
+        number?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

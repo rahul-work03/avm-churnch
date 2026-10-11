@@ -110,10 +110,16 @@ const DEFAULT_SOCIALS: SocialPlatformItem[] = [
   {
     id: 'facebook',
     name: 'Facebook',
-    handle: 'Pastor Sonia Yoseph Narula',
-    url: 'https://www.facebook.com/p/Pastor-Sonia-Yoseph-Narula-61571457190633/',
-    badge: '4 Pages',
+    handle: 'Ankur Narula Ministries',
+    url: 'https://www.facebook.com/ankurnarulaministries/',
+    badge: '5 Pages',
     handles: [
+      {
+        title: 'Ankur Narula Ministries',
+        handle: 'Ankur Narula Ministries',
+        url: 'https://www.facebook.com/ankurnarulaministries/',
+        description: 'Official ministry page & community',
+      },
       {
         title: 'Apostle Dr. Ankur Yoseph Narula',
         handle: 'Ankur Narula',

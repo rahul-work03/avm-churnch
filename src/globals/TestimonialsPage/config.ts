@@ -61,6 +61,31 @@ export const TestimonialsPageGlobal: GlobalConfig = {
               label: 'Primary Button Link URL',
               defaultValue: '/contact',
             },
+            {
+              name: 'phoneNumbersPrompt',
+              type: 'text',
+              label: 'Testimony Phone Numbers Prompt Header',
+              defaultValue: "Send your testimonies for God's glory on these numbers",
+            },
+            {
+              name: 'phoneNumbers',
+              type: 'array',
+              label: 'Testimony Contact Phone Numbers',
+              defaultValue: [
+                { number: '+91-76819-62482' },
+                { number: '+91-78143-11838' },
+                { number: '+91-78142-68623' },
+                { number: '+91-77103-51888' },
+              ],
+              fields: [
+                {
+                  name: 'number',
+                  type: 'text',
+                  required: true,
+                  label: 'Phone Number',
+                },
+              ],
+            },
           ],
         },
       ],

@@ -6,7 +6,7 @@ import { BlurTextReveal } from '@/components/ui/text-reveal'
 import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
 import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { PatternedNavyCard } from '@/components/ui/patterned-navy-card'
-import { Video, Eye } from 'lucide-react'
+import { Video, Eye, Compass } from 'lucide-react'
 
 export interface MultimediaCollegeWhatIsSectionProps {
   whatIsCardTitle?: string
@@ -77,7 +77,7 @@ export const MultimediaCollegeWhatIsSection: React.FC<MultimediaCollegeWhatIsSec
                     asPillar
                     patternId="pattern-mc-purpose"
                     title="Our Purpose"
-                    icon={<Video className="w-5 h-5 text-[#efbf04]" />}
+                    icon={<Compass className="w-5 h-5 text-[#efbf04]" />}
                     className="h-full"
                   >
                     <p className="font-poppins text-slate-100 text-xs sm:text-sm md:text-[16px] lg:text-[18px] leading-relaxed font-light">

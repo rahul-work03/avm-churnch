@@ -25,12 +25,11 @@ export interface ScheduleSectionProps {
 
 const DEFAULT_WEEKLY: ServiceItem[] = [
   { title: 'Sunday Morning Service', time: '10:30 AM – 2:30 PM (IST)' },
-  { title: 'Sunday Evening Service', time: '6:00 PM – 10:00 PM (IST)' },
+  { title: 'Sunday Evening Service', time: '7:00 PM – 11:00 PM (IST)' },
   { title: 'Thursday Service', time: '6:00 PM – 10:00 PM (IST)' },
 ]
 
 const DEFAULT_DAILY: ServiceItem[] = [
-  { title: 'Everyday Manna', time: '10:30 AM – 2:30 PM (IST)' },
   { title: 'Prayer Mountain', time: '8:00 PM (Daily)' },
 ]
 
@@ -222,8 +221,14 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({
                 <div className="flex-1 h-2 sm:h-2.5 max-w-[120px] sm:max-w-[200px] border-t-2 sm:border-t-[3px] border-b-2 sm:border-b-[3px] border-dashed border-[#efbf04]/90 opacity-90 ml-2" />
               </div>
 
-              {/* 2-Column Upper Services Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+              {/* Daily Programs Layout */}
+              <div
+                className={
+                  activeDaily.length === 1
+                    ? 'flex flex-col justify-center'
+                    : 'grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6'
+                }
+              >
                 {activeDaily.map((item, idx) => (
                   <div key={idx} className="transition-transform duration-200 hover:translate-x-1">
                     <h4 className="font-lato font-bold text-white text-[15px] sm:text-[17px] md:text-[18px] leading-snug flex items-center gap-2">

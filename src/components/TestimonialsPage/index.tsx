@@ -4,7 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, type Variants } from 'framer-motion'
-import { Sparkles, ArrowRight } from 'lucide-react'
+import { Sparkles, ArrowRight, Phone } from 'lucide-react'
 import { Testimony, testimonialsData } from '@/data/testimonialsData'
 import { TextWordReveal, BlurTextReveal, GoldBarReveal } from '@/components/ui/text-reveal'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
@@ -16,7 +16,16 @@ export interface TestimonialsPageGlobalData {
   ctaQuote?: string | null
   ctaButton1Label?: string | null
   ctaButton1Url?: string | null
+  phoneNumbersPrompt?: string | null
+  phoneNumbers?: Array<{ number?: string | null } | string> | null
 }
+
+const DEFAULT_TESTIMONY_PHONES = [
+  '+91-76819-62482',
+  '+91-78143-11838',
+  '+91-78142-68623',
+  '+91-77103-51888',
+]
 
 interface TestimonialsPageProps {
   testimonials?: Testimony[]
@@ -63,6 +72,15 @@ export const TestimonialsPage: React.FC<TestimonialsPageProps> = ({
     '“They overcame him by the blood of the Lamb and by the word of their testimony.” — Revelation 12:11'
   const ctaButton1Label = pageData?.ctaButton1Label || 'Contact Us'
   const ctaButton1Url = pageData?.ctaButton1Url || '/contact'
+  const phoneNumbersPrompt =
+    pageData?.phoneNumbersPrompt || "Send your testimonies for God's glory on these numbers:"
+  const rawPhones = pageData?.phoneNumbers
+  const phoneNumbers: string[] =
+    rawPhones && rawPhones.length > 0
+      ? rawPhones
+          .map((p) => (typeof p === 'string' ? p : p?.number || ''))
+          .filter(Boolean)
+      : DEFAULT_TESTIMONY_PHONES
 
   return (
     <main className="min-h-screen bg-[#f8fafc] text-[#344054] antialiased pt-28 pb-16 sm:pt-36 sm:pb-24 select-none">
@@ -205,6 +223,41 @@ export const TestimonialsPage: React.FC<TestimonialsPageProps> = ({
               </Link>
             </motion.div>
           </div>
+
+          {/* Direct Testimony Call Numbers */}
+          {phoneNumbers.length > 0 && (
+            <div className="pt-6 sm:pt-7 max-w-xl mx-auto space-y-3.5">
+              <div className="flex items-center justify-center gap-3">
+                <div className="h-px bg-slate-200 flex-1 max-w-[60px] sm:max-w-[100px]" />
+                <p className="font-poppins text-xs sm:text-[13px] font-medium text-[#64748b] uppercase tracking-wider text-center">
+                  {phoneNumbersPrompt}
+                </p>
+                <div className="h-px bg-slate-200 flex-1 max-w-[60px] sm:max-w-[100px]" />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 justify-items-center">
+                {phoneNumbers.map((num, idx) => {
+                  const sanitizedTel = `tel:${num.replace(/[^0-9+]/g, '')}`
+                  return (
+                    <motion.a
+                      key={idx}
+                      href={sanitizedTel}
+                      whileHover={{ scale: 1.02, y: -1 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full max-w-[260px] flex items-center justify-center gap-2.5 px-4 py-2.5 rounded-full bg-white hover:bg-amber-50/70 border border-slate-200 hover:border-[#efbf04] text-[#003471] hover:text-[#00224d] font-poppins font-semibold text-xs sm:text-[13px] shadow-2xs hover:shadow-md transition-all group cursor-pointer"
+                      title={`Call ${num}`}
+                      aria-label={`Call testimony line ${num}`}
+                    >
+                      <span className="w-6 h-6 rounded-full bg-amber-50 border border-[#efbf04]/40 flex items-center justify-center text-[#efbf04] group-hover:bg-[#efbf04] group-hover:text-black transition-colors shrink-0">
+                        <Phone className="w-3 h-3" />
+                      </span>
+                      <span className="tracking-wide">{num}</span>
+                    </motion.a>
+                  )
+                })}
+              </div>
+            </div>
+          )}
         </motion.div>
       </div>
     </main>

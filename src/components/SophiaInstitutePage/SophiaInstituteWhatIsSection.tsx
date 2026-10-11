@@ -6,7 +6,7 @@ import { BlurTextReveal } from '@/components/ui/text-reveal'
 import { EditorialSectionHeader } from '@/components/ui/editorial-section-header'
 import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { PatternedNavyCard } from '@/components/ui/patterned-navy-card'
-import { BookOpen, Eye } from 'lucide-react'
+import { BookOpen, Compass, Eye } from 'lucide-react'
 
 export interface SophiaInstituteWhatIsSectionProps {
   whatIsCardTitle?: string
@@ -77,7 +77,7 @@ export const SophiaInstituteWhatIsSection: React.FC<SophiaInstituteWhatIsSection
                     asPillar
                     patternId="pattern-si-purpose"
                     title="Our Purpose"
-                    icon={<BookOpen className="w-5 h-5 text-[#efbf04]" />}
+                    icon={<Compass className="w-5 h-5 text-[#efbf04]" />}
                     className="h-full"
                   >
                     <p className="font-poppins text-slate-100 text-xs sm:text-sm md:text-[16px] lg:text-[18px] leading-relaxed font-light">

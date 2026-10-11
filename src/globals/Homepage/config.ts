@@ -48,12 +48,11 @@ const DEFAULT_ACTION_CARDS = [
 
 const DEFAULT_WEEKLY_SERVICES = [
   { emoji: '🕊️', title: 'Sunday Morning Service', time: '10:30 AM – 2:30 PM (IST)' },
-  { emoji: '🌙', title: 'Sunday Evening Service', time: '6:00 PM – 10:00 PM (IST)' },
+  { emoji: '🌙', title: 'Sunday Evening Service', time: '7:00 PM – 11:00 PM (IST)' },
   { emoji: '🔥', title: 'Thursday Service', time: '6:00 PM – 10:00 PM (IST)' },
 ]
 
 const DEFAULT_DAILY_PROGRAMS = [
-  { emoji: '🍞', title: 'Everyday Manna', time: '10:30 AM – 2:30 PM (IST)' },
   { emoji: '🙏', title: 'Prayer Mountain', time: '8:00 PM (Daily)' },
 ]
 
@@ -104,10 +103,16 @@ const DEFAULT_SOCIAL_PLATFORMS = [
   },
   {
     name: 'Facebook',
-    handle: 'Pastor Sonia Yoseph Narula',
-    url: 'https://www.facebook.com/p/Pastor-Sonia-Yoseph-Narula-61571457190633/',
-    badge: '4 Pages',
+    handle: 'Ankur Narula Ministries',
+    url: 'https://www.facebook.com/ankurnarulaministries/',
+    badge: '5 Pages',
     handles: [
+      {
+        title: 'Ankur Narula Ministries',
+        handle: 'Ankur Narula Ministries',
+        url: 'https://www.facebook.com/ankurnarulaministries/',
+        description: 'Official ministry page & community',
+      },
       {
         title: 'Apostle Dr. Ankur Yoseph Narula',
         handle: 'Ankur Narula',
