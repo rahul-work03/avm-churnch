@@ -2,6 +2,7 @@ import type { GlobalConfig } from 'payload'
 import { revalidateFooter } from './hooks/revalidateFooter'
 
 const DEFAULT_PAGES_LIST = [
+  { label: 'Store & Books', href: '/store' },
   { label: 'Branches', href: '/church-branches' },
   { label: 'Prayer Request', href: '/prayer-request' },
   { label: 'Give', href: '/give' },

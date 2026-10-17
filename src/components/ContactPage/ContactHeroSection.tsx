@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { ChevronDown, CheckCircle2, Loader2 } from 'lucide-react'
+import { ChevronDown, CheckCircle2, Loader2, AlertCircle } from 'lucide-react'
 import { TextWordReveal, BlurTextReveal } from '@/components/ui/text-reveal'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
@@ -51,6 +51,7 @@ export const ContactHeroSection: React.FC<ContactHeroSectionProps> = ({
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const heroPhotoUrl = getMediaUrl(
     heroImage,
@@ -60,18 +61,39 @@ export const ContactHeroSection: React.FC<ContactHeroSectionProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    // Simulate submission delay
-    await new Promise((resolve) => setTimeout(resolve, 800))
-    setIsSubmitting(false)
-    setIsSuccess(true)
-    setFormData({
-      firstName: '',
-      lastName: '',
-      countryCode: '+91',
-      phone: '',
-      email: '',
-      message: '',
-    })
+    setErrorMessage(null)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          countryCode: selectedCountry.code,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        setIsSuccess(true)
+        setFormData({
+          firstName: '',
+          lastName: '',
+          countryCode: '+91',
+          phone: '',
+          email: '',
+          message: '',
+        })
+      } else {
+        setErrorMessage(data.message || 'Failed to send message. Please try again.')
+      }
+    } catch (err: any) {
+      console.error('Contact submission error:', err)
+      setErrorMessage('Unable to connect to the server. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -141,6 +163,20 @@ export const ContactHeroSection: React.FC<ContactHeroSectionProps> = ({
                 <p className="font-poppins text-xs sm:text-sm text-emerald-700 mt-0.5">
                   {formSuccessMessage ||
                     'Thank you for contacting Ankur Narula Ministries. Our ministry team will connect with you soon.'}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {errorMessage && (
+            <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 flex items-start gap-3 animate-in fade-in slide-in-from-top-2 duration-300">
+              <AlertCircle className="text-red-600 w-5 h-5 flex-shrink-0 mt-0.5" />
+              <div>
+                <h4 className="font-poppins font-semibold text-red-900 text-sm sm:text-base">
+                  Submission Failed
+                </h4>
+                <p className="font-poppins text-xs sm:text-sm text-red-700 mt-0.5">
+                  {errorMessage}
                 </p>
               </div>
             </div>

@@ -909,10 +909,7 @@ export interface ZoomRegistration {
 export interface Product {
   id: number;
   title: string;
-  /**
-   * Direct link to external e-commerce store (e.g. Amazon, Flipkart, or online shop) that opens in a new tab.
-   */
-  productUrl?: string | null;
+  slug?: string | null;
   category: 'Book' | 'Hymnal' | 'Teaching' | 'Merchandise' | 'Other';
   image?: (number | null) | Media;
   imageFallback?: string | null;
@@ -920,7 +917,37 @@ export interface Product {
   salePrice: number;
   rating?: number | null;
   description: string;
+  /**
+   * Comprehensive overview displayed on the product detail page.
+   */
+  detailedDescription?: string | null;
+  author?: string | null;
+  publisher?: string | null;
+  language?: string | null;
+  pagesCount?: number | null;
+  format?: ('Paperback' | 'Hardcover' | 'Booklet' | 'Digital Audio' | 'Other') | null;
+  isbn?: string | null;
+  features?:
+    | {
+        feature?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Direct link to Amazon store listing (optional).
+   */
+  amazonUrl?: string | null;
+  /**
+   * Direct link to Flipkart store listing (optional).
+   */
+  flipkartUrl?: string | null;
+  /**
+   * Legacy or additional external shopping link.
+   */
+  productUrl?: string | null;
   inStock?: boolean | null;
+  allowDirectPurchase?: boolean | null;
+  stockQuantity?: number | null;
   order?: number | null;
   updatedAt: string;
   createdAt: string;
@@ -932,17 +959,40 @@ export interface Product {
 export interface Order {
   id: number;
   orderNumber?: string | null;
-  productTitle: string;
-  quantity: number;
+  items?:
+    | {
+        title: string;
+        slug?: string | null;
+        productId?: string | null;
+        quantity: number;
+        unitPrice: number;
+        totalPrice: number;
+        image?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  productTitle?: string | null;
+  quantity?: number | null;
   unitPrice?: number | null;
   totalAmount: number;
   customerName: string;
   customerPhone: string;
   customerEmail: string;
   shippingAddress: string;
+  landmark?: string | null;
   city: string;
+  state?: string | null;
   pincode: string;
-  status?: ('pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled') | null;
+  deliveryNotes?: string | null;
+  paymentGateway?: string | null;
+  paymentStatus?: ('pending' | 'credit' | 'failed' | 'refunded') | null;
+  paymentRequestId?: string | null;
+  paymentId?: string | null;
+  paymentUrl?: string | null;
+  paidAt?: string | null;
+  customerEmailSent?: boolean | null;
+  adminEmailSent?: boolean | null;
+  status?: ('pending_payment' | 'paid' | 'processing' | 'shipped' | 'delivered' | 'cancelled') | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1511,7 +1561,7 @@ export interface ZoomRegistrationsSelect<T extends boolean = true> {
  */
 export interface ProductsSelect<T extends boolean = true> {
   title?: T;
-  productUrl?: T;
+  slug?: T;
   category?: T;
   image?: T;
   imageFallback?: T;
@@ -1519,7 +1569,25 @@ export interface ProductsSelect<T extends boolean = true> {
   salePrice?: T;
   rating?: T;
   description?: T;
+  detailedDescription?: T;
+  author?: T;
+  publisher?: T;
+  language?: T;
+  pagesCount?: T;
+  format?: T;
+  isbn?: T;
+  features?:
+    | T
+    | {
+        feature?: T;
+        id?: T;
+      };
+  amazonUrl?: T;
+  flipkartUrl?: T;
+  productUrl?: T;
   inStock?: T;
+  allowDirectPurchase?: T;
+  stockQuantity?: T;
   order?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1530,6 +1598,18 @@ export interface ProductsSelect<T extends boolean = true> {
  */
 export interface OrdersSelect<T extends boolean = true> {
   orderNumber?: T;
+  items?:
+    | T
+    | {
+        title?: T;
+        slug?: T;
+        productId?: T;
+        quantity?: T;
+        unitPrice?: T;
+        totalPrice?: T;
+        image?: T;
+        id?: T;
+      };
   productTitle?: T;
   quantity?: T;
   unitPrice?: T;
@@ -1538,8 +1618,19 @@ export interface OrdersSelect<T extends boolean = true> {
   customerPhone?: T;
   customerEmail?: T;
   shippingAddress?: T;
+  landmark?: T;
   city?: T;
+  state?: T;
   pincode?: T;
+  deliveryNotes?: T;
+  paymentGateway?: T;
+  paymentStatus?: T;
+  paymentRequestId?: T;
+  paymentId?: T;
+  paymentUrl?: T;
+  paidAt?: T;
+  customerEmailSent?: T;
+  adminEmailSent?: T;
   status?: T;
   updatedAt?: T;
   createdAt?: T;

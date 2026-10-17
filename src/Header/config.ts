@@ -21,6 +21,7 @@ const DEFAULT_NAV_ITEMS = [
   { label: 'Events', href: '/events' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Testimonials', href: '/testimonials' },
+  { label: 'Store', href: '/store' },
   { label: 'Give', href: '/give' },
 ]
 

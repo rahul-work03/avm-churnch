@@ -1,6 +1,7 @@
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { NextRequest, NextResponse } from 'next/server'
+import { renderPrayerRequestEmail, sendEmailNotification } from '@/utilities/email'
 
 export async function POST(req: NextRequest) {
   try {
@@ -39,6 +40,17 @@ export async function POST(req: NextRequest) {
         status: 'pending',
       },
     })
+
+    // Dispatch email notification asynchronously (non-blocking for user flow)
+    try {
+      const emailContent = renderPrayerRequestEmail(body)
+      await sendEmailNotification({
+        to: process.env.PRAYER_REQUEST_EMAIL_TO || process.env.EMAIL_TO,
+        ...emailContent,
+      })
+    } catch (emailErr) {
+      console.error('[Prayer Request] Email notification failed:', emailErr)
+    }
 
     return NextResponse.json({ success: true, doc: result }, { status: 201 })
   } catch (error: any) {

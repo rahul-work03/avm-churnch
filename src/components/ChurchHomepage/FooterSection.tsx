@@ -57,6 +57,7 @@ function getIframeSrc(input?: string | null): string {
 }
 
 const DEFAULT_PAGES_LIST: FooterPageLink[] = [
+  { label: 'Store & Books', href: '/store' },
   { label: 'Branches', href: '/church-branches' },
   { label: 'Prayer Request', href: '/prayer-request' },
   { label: 'Give', href: '/give' },

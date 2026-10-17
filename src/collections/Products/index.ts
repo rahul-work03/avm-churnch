@@ -1,11 +1,12 @@
 import type { CollectionConfig } from 'payload'
+import { slugField } from '@/fields/slug'
 
 export const Products: CollectionConfig = {
   slug: 'products',
   admin: {
     useAsTitle: 'title',
     group: 'Ministry Operations',
-    defaultColumns: ['title', 'category', 'salePrice', 'originalPrice', 'productUrl', 'inStock', 'order'],
+    defaultColumns: ['title', 'slug', 'category', 'salePrice', 'originalPrice', 'inStock', 'order'],
   },
   access: {
     read: () => true,
@@ -17,15 +18,7 @@ export const Products: CollectionConfig = {
       label: 'Product Title',
       required: true,
     },
-    {
-      name: 'productUrl',
-      type: 'text',
-      label: 'E-commerce / Buy URL (Redirect Link)',
-      admin: {
-        description: 'Direct link to external e-commerce store (e.g. Amazon, Flipkart, or online shop) that opens in a new tab.',
-      },
-      defaultValue: 'https://www.amazon.in/',
-    },
+    slugField('title'),
     {
       name: 'category',
       type: 'select',
@@ -78,8 +71,121 @@ export const Products: CollectionConfig = {
     {
       name: 'description',
       type: 'textarea',
-      label: 'Product Description',
+      label: 'Product Short Description',
       required: true,
+    },
+    {
+      name: 'detailedDescription',
+      type: 'textarea',
+      label: 'Detailed Description / Theological Background',
+      admin: {
+        description: 'Comprehensive overview displayed on the product detail page.',
+      },
+    },
+    {
+      type: 'collapsible',
+      label: 'Product Specifications & Details',
+      admin: {
+        initCollapsed: true,
+      },
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'author',
+              type: 'text',
+              label: 'Author',
+              defaultValue: 'Apostle Dr. Ankur Yoseph Narula',
+            },
+            {
+              name: 'publisher',
+              type: 'text',
+              label: 'Publisher',
+              defaultValue: 'Ankur Narula Ministries',
+            },
+          ],
+        },
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'language',
+              type: 'text',
+              label: 'Language',
+              defaultValue: 'Hindi',
+            },
+            {
+              name: 'pagesCount',
+              type: 'number',
+              label: 'Number of Pages',
+            },
+            {
+              name: 'format',
+              type: 'select',
+              label: 'Format / Binding',
+              defaultValue: 'Paperback',
+              options: ['Paperback', 'Hardcover', 'Booklet', 'Digital Audio', 'Other'],
+            },
+            {
+              name: 'isbn',
+              type: 'text',
+              label: 'ISBN (Optional)',
+            },
+          ],
+        },
+        {
+          name: 'features',
+          type: 'array',
+          label: 'Key Highlights / Features',
+          labels: {
+            singular: 'Feature',
+            plural: 'Features',
+          },
+          fields: [
+            {
+              name: 'feature',
+              type: 'text',
+              label: 'Feature / Point',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: 'collapsible',
+      label: 'External E-commerce Links (Optional - Displayed Only on Detail Page)',
+      admin: {
+        initCollapsed: false,
+        description:
+          'External marketplace links are optional and only visible on the single product detail page. They are never shown on store cards.',
+      },
+      fields: [
+        {
+          name: 'amazonUrl',
+          type: 'text',
+          label: 'Amazon Product URL',
+          admin: {
+            description: 'Direct link to Amazon store listing (optional).',
+          },
+        },
+        {
+          name: 'flipkartUrl',
+          type: 'text',
+          label: 'Flipkart Product URL',
+          admin: {
+            description: 'Direct link to Flipkart store listing (optional).',
+          },
+        },
+        {
+          name: 'productUrl',
+          type: 'text',
+          label: 'General / Alternative Buy URL',
+          admin: {
+            description: 'Legacy or additional external shopping link.',
+          },
+        },
+      ],
     },
     {
       type: 'row',
@@ -89,6 +195,17 @@ export const Products: CollectionConfig = {
           type: 'checkbox',
           label: 'In Stock / Available',
           defaultValue: true,
+        },
+        {
+          name: 'allowDirectPurchase',
+          type: 'checkbox',
+          label: 'Enable Direct Instamojo Checkout',
+          defaultValue: true,
+        },
+        {
+          name: 'stockQuantity',
+          type: 'number',
+          label: 'Inventory Count (Optional)',
         },
         {
           name: 'order',

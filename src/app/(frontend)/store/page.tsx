@@ -4,8 +4,8 @@ import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { StorePage } from '@/components/StorePage'
 
-export const dynamic = 'force-static'
-export const revalidate = 600
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 export const metadata: Metadata = {
   title: 'Ministry Store & Spiritual Books | The Church of Signs and Wonders',
@@ -27,6 +27,7 @@ export default async function Page() {
         collection: 'products' as any,
         limit: 50,
         sort: 'order',
+        depth: 2,
       }),
     ])
 

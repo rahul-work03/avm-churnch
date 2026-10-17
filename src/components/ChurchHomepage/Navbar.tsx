@@ -47,6 +47,7 @@ const DEFAULT_NAV_LINKS: NavItem[] = [
   { label: 'Events', href: '/events' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Testimonials', href: '/testimonials' },
+  { label: 'Store', href: '/store' },
   { label: 'Give', href: '/give' },
 ]
 
@@ -136,12 +137,12 @@ export const ChurchNavbar: React.FC<ChurchNavbarProps> = ({ data }) => {
   return (
     <>
       <header className="absolute top-0 left-0 right-0 z-50 pt-5 sm:pt-6 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-[1140px] mx-auto bg-[#122f4a] rounded-full px-6 py-2.5 flex items-center justify-between shadow-xl border border-white/10 relative z-50">
+        <div className="max-w-[1240px] xl:max-w-[1320px] mx-auto bg-[#122f4a] rounded-full px-5 sm:px-6 py-2.5 flex items-center justify-between gap-4 lg:gap-6 xl:gap-8 shadow-xl border border-white/10 relative z-50">
           {/* Brand Logo & Name */}
           <Link
             href="/"
             prefetch={true}
-            className="flex items-center gap-3 group active:scale-95 transition-transform duration-150 select-none"
+            className="flex items-center gap-2.5 sm:gap-3 group active:scale-95 transition-transform duration-150 select-none flex-shrink-0"
           >
             <div className="relative w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0">
               <Image
@@ -158,7 +159,7 @@ export const ChurchNavbar: React.FC<ChurchNavbarProps> = ({ data }) => {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5.5 2xl:gap-6 flex-shrink-0">
             {navLinks.map((item) => {
               const hasChildren = Boolean(item.children && item.children.length > 0)
               const isDirectActive = isRouteActive(pathname, item.href)
@@ -177,7 +178,7 @@ export const ChurchNavbar: React.FC<ChurchNavbarProps> = ({ data }) => {
                     <button
                       type="button"
                       onClick={() => setDesktopDropdownOpen((prev) => !prev)}
-                      className={`font-poppins text-[15px] transition-all duration-150 active:scale-95 select-none flex items-center gap-1.5 cursor-pointer ${
+                      className={`font-poppins text-[13.5px] xl:text-[14.5px] 2xl:text-[15px] whitespace-nowrap transition-all duration-150 active:scale-95 select-none flex items-center gap-1.5 cursor-pointer ${
                         isActive
                           ? 'text-[#efbf04] font-semibold'
                           : 'text-white/90 hover:text-[#efbf04]'
@@ -226,7 +227,7 @@ export const ChurchNavbar: React.FC<ChurchNavbarProps> = ({ data }) => {
                   key={item.label}
                   href={item.href}
                   prefetch={true}
-                  className={`font-poppins text-[15px] transition-all duration-150 active:scale-95 select-none inline-block ${
+                  className={`font-poppins text-[13.5px] xl:text-[14.5px] 2xl:text-[15px] whitespace-nowrap transition-all duration-150 active:scale-95 select-none inline-block ${
                     isActive
                       ? 'text-[#efbf04] font-semibold'
                       : 'text-white/90 hover:text-[#efbf04]'
@@ -239,11 +240,11 @@ export const ChurchNavbar: React.FC<ChurchNavbarProps> = ({ data }) => {
           </nav>
 
           {/* Contact Us CTA Button */}
-          <div className="hidden lg:flex items-center">
+          <div className="hidden lg:flex items-center flex-shrink-0">
             <Link
               href={ctaUrl}
               prefetch={true}
-              className="bg-[#efbf04] text-[#0b0c1c] font-poppins font-semibold text-sm px-6 py-2 rounded-full hover:bg-yellow-400 transition-all active:scale-95 duration-150 select-none shadow-md"
+              className="bg-[#efbf04] text-[#0b0c1c] font-poppins font-semibold text-xs xl:text-sm px-5 xl:px-6 py-2 rounded-full hover:bg-yellow-400 transition-all active:scale-95 duration-150 select-none shadow-md whitespace-nowrap"
             >
               {ctaLabel}
             </Link>
