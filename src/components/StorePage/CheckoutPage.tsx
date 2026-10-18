@@ -20,6 +20,8 @@ import { useCart } from '@/providers/Cart'
 import type { ProductItem, CartItem } from './StoreTypes'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
+import { DynamicFormFieldsList } from '@/components/Forms/DynamicFormFieldRenderer'
+
 const INDIAN_STATES = [
   'Andhra Pradesh',
   'Arunachal Pradesh',
@@ -59,11 +61,13 @@ const INDIAN_STATES = [
 export interface CheckoutPageProps {
   directProduct?: ProductItem | null
   initialDirectQty?: number
+  form?: any
 }
 
 export const CheckoutPage: React.FC<CheckoutPageProps> = ({
   directProduct,
   initialDirectQty = 1,
+  form,
 }) => {
   const {
     items: cartItems,
@@ -120,7 +124,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
     [activeSubtotal, shippingFee]
   )
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Record<string, any>>({
     name: '',
     email: '',
     phone: '',
@@ -143,6 +147,26 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
   }
 
   const validateForm = () => {
+    if (form?.fields && form.fields.length > 0) {
+      for (const f of form.fields) {
+        if (f.required && f.name && (!formData[f.name] || !String(formData[f.name]).trim())) {
+          return `Please fill in required field: ${f.label || f.name}`
+        }
+      }
+      if (formData.email && (!formData.email.trim() || !formData.email.includes('@'))) {
+        return 'Please enter a valid email address.'
+      }
+      if (formData.phone) {
+        const cleanPhone = String(formData.phone).replace(/[^0-9]/g, '')
+        if (cleanPhone.length < 10) return 'Please enter a valid 10-digit mobile phone number.'
+      }
+      if (formData.pincode) {
+        const cleanPin = String(formData.pincode).replace(/[^0-9]/g, '')
+        if (cleanPin.length !== 6) return 'Please enter a valid 6-digit postal PIN code.'
+      }
+      return null
+    }
+
     if (!formData.name.trim()) return 'Please enter your full name.'
     if (!formData.email.trim() || !formData.email.includes('@'))
       return 'Please enter a valid email address.'
@@ -179,10 +203,11 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
         body: JSON.stringify({
           items: activeItems,
           isBuyNow: isDirectMode,
+          formId: form?.id,
           customer: {
             ...formData,
-            phone: formData.phone.replace(/[^0-9]/g, '').slice(-10),
-            pincode: formData.pincode.replace(/[^0-9]/g, '').slice(-6),
+            phone: formData.phone ? String(formData.phone).replace(/[^0-9]/g, '').slice(-10) : '',
+            pincode: formData.pincode ? String(formData.pincode).replace(/[^0-9]/g, '').slice(-6) : '',
           },
         }),
       })
@@ -267,8 +292,30 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
           {/* Left Column: Customer & Shipping Information Form */}
           <div className="lg:col-span-7 bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-sm">
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Section 1: Contact Details */}
-              <div>
+              {form?.fields && form.fields.length > 0 ? (
+                <div className="space-y-4">
+                  <div>
+                    <h2 className="font-poppins font-bold text-lg text-[#003471] mb-1 flex items-center gap-2">
+                      <span className="w-6 h-6 rounded-full bg-[#003471] text-white text-xs flex items-center justify-center font-bold">
+                        1
+                      </span>
+                      <span>Customer & Shipping Details</span>
+                    </h2>
+                    <p className="text-xs text-slate-500 font-poppins mb-4">
+                      Order receipts, tracking updates, and courier delivery will use these details.
+                    </p>
+                  </div>
+                  <DynamicFormFieldsList
+                    fields={form.fields}
+                    values={formData}
+                    onChange={(name, val) => setFormData((prev) => ({ ...prev, [name]: val }))}
+                    variant="light"
+                  />
+                </div>
+              ) : (
+                <>
+                  {/* Section 1: Contact Details */}
+                  <div>
                 <h2 className="font-poppins font-bold text-lg text-[#003471] mb-1 flex items-center gap-2">
                   <span className="w-6 h-6 rounded-full bg-[#003471] text-white text-xs flex items-center justify-center font-bold">
                     1
@@ -482,6 +529,8 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                   </div>
                 </div>
               </div>
+            </>
+          )}
 
               {/* Submit CTA for mobile */}
               <div className="lg:hidden pt-4">

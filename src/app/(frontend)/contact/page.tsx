@@ -18,10 +18,27 @@ export default async function Page() {
 
   try {
     const payload = await getPayload({ config: configPromise })
-    data = await payload.findGlobal({
+    data = (await payload.findGlobal({
       slug: 'contact-page' as any,
-      depth: 1,
-    })
+      depth: 2,
+    })) as any
+
+    if (!data?.form || typeof data.form !== 'object' || !data.form.fields) {
+      const formQuery = await payload.find({
+        collection: 'forms',
+        where: {
+          or: [
+            { title: { equals: 'Contact Us Form' } },
+            ...(data?.form ? [{ id: { equals: data.form } }] : []),
+          ],
+        },
+        limit: 1,
+      })
+      if (formQuery.docs.length > 0) {
+        if (!data) data = {}
+        data.form = formQuery.docs[0]
+      }
+    }
   } catch {
     // Database empty or uninitialized during build
   }

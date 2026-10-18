@@ -866,6 +866,19 @@ export interface PrayerRequest {
   surgeryTherapyDetails?: string | null;
   howDidYouHear?: string | null;
   comments?: string | null;
+  photo?: (number | null) | Media;
+  /**
+   * Stores any extra custom fields submitted via dynamic Payload Forms.
+   */
+  additionalFields?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   status?: ('pending' | 'prayed' | 'contacted' | 'archived') | null;
   updatedAt: string;
   createdAt: string;
@@ -896,6 +909,18 @@ export interface ZoomRegistration {
   medicalDevices: 'Yes' | 'No';
   zoomAvailability: string;
   additionalComments?: string | null;
+  /**
+   * Stores any extra custom fields submitted via dynamic Payload Forms.
+   */
+  additionalFields?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   status?: ('pending' | 'scheduled' | 'completed' | 'cancelled') | null;
   scheduledZoomLink?: string | null;
   scheduledDateTime?: string | null;
@@ -984,6 +1009,18 @@ export interface Order {
   state?: string | null;
   pincode: string;
   deliveryNotes?: string | null;
+  /**
+   * Stores any extra custom fields submitted via the dynamic Checkout Form.
+   */
+  additionalCustomerDetails?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   paymentGateway?: string | null;
   paymentStatus?: ('pending' | 'credit' | 'failed' | 'refunded') | null;
   paymentRequestId?: string | null;
@@ -1033,6 +1070,16 @@ export interface FormSubmission {
     | {
         field: string;
         value: string;
+        id?: string | null;
+      }[]
+    | null;
+  submissionUploads?:
+    | {
+        field: string;
+        value: {
+          relationTo: 'media';
+          value: number | Media;
+        }[];
         id?: string | null;
       }[]
     | null;
@@ -1520,6 +1567,8 @@ export interface PrayerRequestsSelect<T extends boolean = true> {
   surgeryTherapyDetails?: T;
   howDidYouHear?: T;
   comments?: T;
+  photo?: T;
+  additionalFields?: T;
   status?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1549,6 +1598,7 @@ export interface ZoomRegistrationsSelect<T extends boolean = true> {
   medicalDevices?: T;
   zoomAvailability?: T;
   additionalComments?: T;
+  additionalFields?: T;
   status?: T;
   scheduledZoomLink?: T;
   scheduledDateTime?: T;
@@ -1623,6 +1673,7 @@ export interface OrdersSelect<T extends boolean = true> {
   state?: T;
   pincode?: T;
   deliveryNotes?: T;
+  additionalCustomerDetails?: T;
   paymentGateway?: T;
   paymentStatus?: T;
   paymentRequestId?: T;
@@ -1927,6 +1978,13 @@ export interface FormsSelect<T extends boolean = true> {
 export interface FormSubmissionsSelect<T extends boolean = true> {
   form?: T;
   submissionData?:
+    | T
+    | {
+        field?: T;
+        value?: T;
+        id?: T;
+      };
+  submissionUploads?:
     | T
     | {
         field?: T;
@@ -2813,6 +2871,7 @@ export interface GivePage {
  */
 export interface ContactPage {
   id: number;
+  form?: (number | null) | Form;
   heroTitle?: string | null;
   heroSubtitle?: string | null;
   heroImage?: (number | null) | Media;
@@ -2844,6 +2903,7 @@ export interface ContactPage {
  */
 export interface PrayerRequestPage {
   id: number;
+  form?: (number | null) | Form;
   heroBannerImage?: (number | null) | Media;
   heroBannerFallback?: string | null;
   headingTitle?: string | null;
@@ -2864,6 +2924,7 @@ export interface PrayerRequestPage {
  */
 export interface ZoomLayHandPage {
   id: number;
+  form?: (number | null) | Form;
   heroBannerImage?: (number | null) | Media;
   heroBannerFallback?: string | null;
   headingTitle?: string | null;
@@ -2884,6 +2945,7 @@ export interface ZoomLayHandPage {
  */
 export interface StorePage {
   id: number;
+  checkoutForm?: (number | null) | Form;
   headerTitle?: string | null;
   headerSubtitle?: string | null;
   fastDeliveryText?: string | null;
@@ -3686,6 +3748,7 @@ export interface GivePageSelect<T extends boolean = true> {
  * via the `definition` "contact-page_select".
  */
 export interface ContactPageSelect<T extends boolean = true> {
+  form?: T;
   heroTitle?: T;
   heroSubtitle?: T;
   heroImage?: T;
@@ -3717,6 +3780,7 @@ export interface ContactPageSelect<T extends boolean = true> {
  * via the `definition` "prayer-request-page_select".
  */
 export interface PrayerRequestPageSelect<T extends boolean = true> {
+  form?: T;
   heroBannerImage?: T;
   heroBannerFallback?: T;
   headingTitle?: T;
@@ -3737,6 +3801,7 @@ export interface PrayerRequestPageSelect<T extends boolean = true> {
  * via the `definition` "zoom-lay-hand-page_select".
  */
 export interface ZoomLayHandPageSelect<T extends boolean = true> {
+  form?: T;
   heroBannerImage?: T;
   heroBannerFallback?: T;
   headingTitle?: T;
@@ -3757,6 +3822,7 @@ export interface ZoomLayHandPageSelect<T extends boolean = true> {
  * via the `definition` "store-page_select".
  */
 export interface StorePageSelect<T extends boolean = true> {
+  checkoutForm?: T;
   headerTitle?: T;
   headerSubtitle?: T;
   fastDeliveryText?: T;

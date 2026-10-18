@@ -91,6 +91,17 @@ export async function POST(req: NextRequest) {
       .filter(Boolean)
       .join(', ')
 
+    // Collect known customer fields
+    const knownCustomerKeys = new Set([
+      'name', 'email', 'phone', 'address', 'landmark', 'city', 'state', 'pincode', 'deliveryNotes'
+    ])
+    const additionalCustomerDetails: Record<string, any> = {}
+    for (const [key, val] of Object.entries(customer)) {
+      if (!knownCustomerKeys.has(key)) {
+        additionalCustomerDetails[key] = val
+      }
+    }
+
     // 1. Create Order in Payload DB with status 'pending_payment'
     const newOrder = await payload.create({
       collection: 'orders' as any,
@@ -110,6 +121,7 @@ export async function POST(req: NextRequest) {
         state: customer.state?.trim() || 'Punjab',
         pincode: customer.pincode.trim(),
         deliveryNotes: customer.deliveryNotes?.trim() || '',
+        additionalCustomerDetails: Object.keys(additionalCustomerDetails).length > 0 ? additionalCustomerDetails : undefined,
         paymentGateway: 'instamojo',
         paymentStatus: 'pending',
         status: 'pending_payment',
@@ -117,6 +129,40 @@ export async function POST(req: NextRequest) {
         adminEmailSent: false,
       },
     })
+
+    // Also record submission into Payload CMS form-submissions
+    try {
+      let formId = body.formId
+      if (!formId) {
+        const formDoc = await payload.find({
+          collection: 'forms',
+          where: { title: { equals: 'Store Checkout Form' } },
+          limit: 1,
+        })
+        if (formDoc.docs.length > 0) formId = formDoc.docs[0].id
+      }
+
+      if (formId) {
+        const submissionData = [
+          ...Object.entries(customer).map(([field, value]) => ({
+            field,
+            value: typeof value === 'object' ? JSON.stringify(value) : String(value ?? ''),
+          })),
+          { field: 'orderNumber', value: orderNumber },
+          { field: 'totalAmount', value: String(calculatedTotal) },
+        ]
+
+        await payload.create({
+          collection: 'form-submissions' as any,
+          data: {
+            form: formId,
+            submissionData,
+          },
+        })
+      }
+    } catch (subErr) {
+      console.warn('[Checkout API] Could not record form-submission:', subErr)
+    }
 
     // 2. Build Callback & Webhook URLs
     const isBuyNow = Boolean(body.isBuyNow || body.buyNow)

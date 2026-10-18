@@ -185,6 +185,14 @@ export const ZoomRegistrations: CollectionConfig = {
           type: 'textarea',
           label: 'Additional Comments',
         },
+        {
+          name: 'additionalFields',
+          type: 'json',
+          label: 'Additional Form Fields (Dynamic CMS Fields)',
+          admin: {
+            description: 'Stores any extra custom fields submitted via dynamic Payload Forms.',
+          },
+        },
       ],
     },
     {

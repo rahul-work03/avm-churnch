@@ -18,9 +18,27 @@ export default async function Page() {
 
   try {
     const payload = await getPayload({ config })
-    zoomPageData = await payload.findGlobal({
+    zoomPageData = (await payload.findGlobal({
       slug: 'zoom-lay-hand-page' as any,
-    })
+      depth: 2,
+    })) as any
+
+    if (!zoomPageData?.form || typeof zoomPageData.form !== 'object' || !zoomPageData.form.fields) {
+      const formQuery = await payload.find({
+        collection: 'forms',
+        where: {
+          or: [
+            { title: { equals: 'Zoom Lay Hand Registration Form' } },
+            ...(zoomPageData?.form ? [{ id: { equals: zoomPageData.form } }] : []),
+          ],
+        },
+        limit: 1,
+      })
+      if (formQuery.docs.length > 0) {
+        if (!zoomPageData) zoomPageData = {}
+        zoomPageData.form = formQuery.docs[0]
+      }
+    }
   } catch {
     // Database empty or uninitialized during build
   }

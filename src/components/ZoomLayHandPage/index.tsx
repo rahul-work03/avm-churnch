@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CheckCircle2, ChevronDown, Send, Video, PhoneCall, Mail, Loader2 } from 'lucide-react'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
+import { DynamicFormFieldsList } from '@/components/Forms/DynamicFormFieldRenderer'
 import type { ZoomLayHandPageData } from './ZoomLayHandTypes'
 
 interface ZoomLayHandPageProps {
@@ -13,7 +14,7 @@ interface ZoomLayHandPageProps {
 }
 
 export const ZoomLayHandPage: React.FC<ZoomLayHandPageProps> = ({ data }) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Record<string, any>>({
     firstName: '',
     gender: '',
     age: '',
@@ -39,6 +40,7 @@ export const ZoomLayHandPage: React.FC<ZoomLayHandPageProps> = ({ data }) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   // Fallbacks
+  const form = data?.form
   const heroImageSrc = getMediaUrl(
     data?.heroBannerImage,
     data?.heroBannerFallback || '/figma-assets/624a2b77f2c32df6de342821ffd6101999d243b9.png'
@@ -53,7 +55,7 @@ export const ZoomLayHandPage: React.FC<ZoomLayHandPageProps> = ({ data }) => {
     'Please ensure you have a stable internet connection and quiet environment for the Zoom Lay Hand prayer.'
   const supportPhone = data?.supportPhone || '0181 520 7777'
   const supportEmail = data?.supportEmail || 'Prayer@ankurnarula.org'
-  const submitButtonText = data?.submitButtonText || 'Submit'
+  const submitButtonText = form?.submitButtonLabel || data?.submitButtonText || 'Submit'
   const successTitle = data?.successTitle || 'Prayer Registration Received'
   const successMessage =
     data?.successMessage ||
@@ -74,7 +76,10 @@ export const ZoomLayHandPage: React.FC<ZoomLayHandPageProps> = ({ data }) => {
       const res = await fetch('/api/zoom-registration', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          formId: form?.id,
+        }),
       })
       const resData = await res.json()
       if (res.ok && resData.success) {
@@ -265,8 +270,17 @@ export const ZoomLayHandPage: React.FC<ZoomLayHandPageProps> = ({ data }) => {
                 onSubmit={handleSubmit}
                 className="space-y-10 font-poppins"
               >
-                {/* Primary Personal Info */}
-                <div className="space-y-6">
+                {form?.fields && form.fields.length > 0 ? (
+                  <DynamicFormFieldsList
+                    fields={form.fields}
+                    values={formData}
+                    onChange={(name, val) => setFormData((prev) => ({ ...prev, [name]: val }))}
+                    variant="light"
+                  />
+                ) : (
+                  <>
+                    {/* Primary Personal Info */}
+                    <div className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* First Name */}
                     <div className="space-y-2">
@@ -604,6 +618,8 @@ export const ZoomLayHandPage: React.FC<ZoomLayHandPageProps> = ({ data }) => {
                     />
                   </div>
                 </div>
+              </>
+            )}
 
                 {/* Submit Button */}
                 <div className="pt-6 flex justify-center">

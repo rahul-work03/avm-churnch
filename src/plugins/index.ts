@@ -58,6 +58,7 @@ export const plugins: Plugin[] = [
     fields: {
       payment: false,
     },
+    uploadCollections: ['media'],
     formOverrides: {
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {

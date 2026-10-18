@@ -44,6 +44,12 @@ export const PrayerRequestPageGlobal: GlobalConfig = {
           label: 'Hero and Header',
           fields: [
             {
+              name: 'form',
+              type: 'relationship',
+              relationTo: 'forms',
+              label: 'Prayer Request Form (Manage and customize fields in Forms)',
+            },
+            {
               name: 'heroBannerImage',
               type: 'upload',
               relationTo: 'media',

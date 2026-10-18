@@ -7,6 +7,8 @@ import { ChevronDown, CheckCircle2, Loader2, AlertCircle } from 'lucide-react'
 import { TextWordReveal, BlurTextReveal } from '@/components/ui/text-reveal'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
+import { DynamicFormFieldsList } from '@/components/Forms/DynamicFormFieldRenderer'
+
 const COUNTRY_CODES = [
   { code: '+91', country: 'IND', label: 'India (+91)' },
   { code: '+1', country: 'USA', label: 'United States (+1)' },
@@ -26,6 +28,7 @@ interface ContactHeroSectionProps {
   heroImageBadgeSubtitle?: string | null
   formSuccessTitle?: string | null
   formSuccessMessage?: string | null
+  form?: any
 }
 
 export const ContactHeroSection: React.FC<ContactHeroSectionProps> = ({
@@ -37,8 +40,9 @@ export const ContactHeroSection: React.FC<ContactHeroSectionProps> = ({
   heroImageBadgeSubtitle = 'The Church of Signs and Wonders',
   formSuccessTitle = 'Message Sent Successfully!',
   formSuccessMessage = 'Thank you for contacting Ankur Narula Ministries. Our ministry team will connect with you soon.',
+  form,
 }) => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Record<string, any>>({
     firstName: '',
     lastName: '',
     countryCode: '+91',
@@ -183,137 +187,148 @@ export const ContactHeroSection: React.FC<ContactHeroSectionProps> = ({
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
-            {/* First Name */}
-            <div>
-              <label
-                htmlFor="firstName"
-                className="block font-poppins font-semibold text-[#344054] text-sm mb-1.5"
-              >
-                First Name
-              </label>
-              <input
-                type="text"
-                id="firstName"
-                required
-                value={formData.firstName}
-                onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                placeholder="Your name"
-                className="w-full bg-white border border-[#d0d5dd] rounded-[8px] px-4 py-3 text-[#101828] text-base placeholder:text-[#667085] shadow-xs focus:outline-none focus:ring-2 focus:ring-[#efbf04] focus:border-transparent transition"
+            {form?.fields && form.fields.length > 0 ? (
+              <DynamicFormFieldsList
+                fields={form.fields}
+                values={formData}
+                onChange={(name, val) => setFormData((prev) => ({ ...prev, [name]: val }))}
+                variant="light"
               />
-            </div>
-
-            {/* Last Name */}
-            <div>
-              <label
-                htmlFor="lastName"
-                className="block font-poppins font-medium text-[#344054] text-sm mb-1.5"
-              >
-                Last Name
-              </label>
-              <input
-                type="text"
-                id="lastName"
-                required
-                value={formData.lastName}
-                onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                placeholder="Enter Last name.."
-                className="w-full bg-white border border-[#d0d5dd] rounded-[8px] px-4 py-3 text-[#101828] text-base placeholder:text-[#667085] shadow-xs focus:outline-none focus:ring-2 focus:ring-[#efbf04] focus:border-transparent transition"
-              />
-            </div>
-
-            {/* Phone Number with Country Code Dropdown */}
-            <div>
-              <label
-                htmlFor="phone"
-                className="block font-poppins font-medium text-[#344054] text-sm mb-1.5"
-              >
-                Phone number
-              </label>
-              <div className="relative flex items-center bg-white border border-[#d0d5dd] rounded-[8px] shadow-xs focus-within:ring-2 focus-within:ring-[#efbf04] focus-within:border-transparent">
-                <div className="relative">
-                  <button
-                    type="button"
-                    onClick={() => setDropdownOpen((prev) => !prev)}
-                    className="flex items-center gap-1.5 px-3 sm:px-4 py-3 text-sm sm:text-base font-medium text-[#101828] border-r border-[#d0d5dd] hover:bg-slate-50 transition rounded-l-[8px] focus:outline-none cursor-pointer"
+            ) : (
+              <>
+                {/* First Name */}
+                <div>
+                  <label
+                    htmlFor="firstName"
+                    className="block font-poppins font-semibold text-[#344054] text-sm mb-1.5"
                   >
-                    <span>{selectedCountry.country}</span>
-                    <ChevronDown className="w-4 h-4 text-[#667085]" />
-                  </button>
-
-                  {dropdownOpen && (
-                    <div className="absolute top-full left-0 mt-1 w-56 bg-white border border-[#d0d5dd] rounded-lg shadow-xl py-1 z-30 animate-in fade-in duration-150">
-                      {COUNTRY_CODES.map((c, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          onClick={() => {
-                            setSelectedCountry(c)
-                            setFormData({ ...formData, countryCode: c.code })
-                            setDropdownOpen(false)
-                          }}
-                          className={`w-full text-left px-3 py-2 text-sm hover:bg-slate-100 flex items-center justify-between cursor-pointer ${
-                            selectedCountry.country === c.country
-                              ? 'bg-slate-50 font-semibold text-[#003471]'
-                              : 'text-slate-700'
-                          }`}
-                        >
-                          <span>{c.label}</span>
-                          <span className="text-slate-400 text-xs">{c.code}</span>
-                        </button>
-                      ))}
-                    </div>
-                  )}
+                    First Name <span className="text-[#efbf04]">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    required
+                    value={formData.firstName || ''}
+                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                    placeholder="Your name"
+                    className="w-full bg-white border border-[#d0d5dd] rounded-[8px] px-4 py-3 text-[#101828] text-base placeholder:text-[#667085] shadow-xs focus:outline-none focus:ring-2 focus:ring-[#efbf04] focus:border-transparent transition"
+                  />
                 </div>
 
-                <input
-                  type="tel"
-                  id="phone"
-                  required
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  placeholder={`${selectedCountry.code} (000) 000-0000`}
-                  className="flex-1 px-4 py-3 text-[#101828] text-base placeholder:text-[#667085] bg-transparent focus:outline-none"
-                />
-              </div>
-            </div>
+                {/* Last Name */}
+                <div>
+                  <label
+                    htmlFor="lastName"
+                    className="block font-poppins font-medium text-[#344054] text-sm mb-1.5"
+                  >
+                    Last Name <span className="text-[#efbf04]">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    required
+                    value={formData.lastName || ''}
+                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                    placeholder="Enter Last name.."
+                    className="w-full bg-white border border-[#d0d5dd] rounded-[8px] px-4 py-3 text-[#101828] text-base placeholder:text-[#667085] shadow-xs focus:outline-none focus:ring-2 focus:ring-[#efbf04] focus:border-transparent transition"
+                  />
+                </div>
 
-            {/* Email */}
-            <div>
-              <label
-                htmlFor="email"
-                className="block font-poppins font-medium text-[#344054] text-sm mb-1.5"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="Enter Your mail"
-                className="w-full bg-white border border-[#d0d5dd] rounded-[8px] px-4 py-3 text-[#101828] text-base placeholder:text-[#667085] shadow-xs focus:outline-none focus:ring-2 focus:ring-[#efbf04] focus:border-transparent transition"
-              />
-            </div>
+                {/* Phone Number with Country Code Dropdown */}
+                <div>
+                  <label
+                    htmlFor="phone"
+                    className="block font-poppins font-medium text-[#344054] text-sm mb-1.5"
+                  >
+                    Phone number <span className="text-[#efbf04]">*</span>
+                  </label>
+                  <div className="relative flex items-center bg-white border border-[#d0d5dd] rounded-[8px] shadow-xs focus-within:ring-2 focus-within:ring-[#efbf04] focus-within:border-transparent">
+                    <div className="relative">
+                      <button
+                        type="button"
+                        onClick={() => setDropdownOpen((prev) => !prev)}
+                        className="flex items-center gap-1.5 px-3 sm:px-4 py-3 text-sm sm:text-base font-medium text-[#101828] border-r border-[#d0d5dd] hover:bg-slate-50 transition rounded-l-[8px] focus:outline-none cursor-pointer"
+                      >
+                        <span>{selectedCountry.country}</span>
+                        <ChevronDown className="w-4 h-4 text-[#667085]" />
+                      </button>
 
-            {/* Message Textarea */}
-            <div>
-              <label
-                htmlFor="message"
-                className="block font-poppins font-medium text-[#344054] text-sm mb-1.5"
-              >
-                Write a Message For Us
-              </label>
-              <textarea
-                id="message"
-                required
-                rows={4}
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Type here......."
-                className="w-full bg-white border border-[#d0d5dd] rounded-[8px] px-4 py-3 text-[#101828] text-base placeholder:text-[#667085] shadow-xs focus:outline-none focus:ring-2 focus:ring-[#efbf04] focus:border-transparent transition resize-y min-h-[120px]"
-              />
-            </div>
+                      {dropdownOpen && (
+                        <div className="absolute top-full left-0 mt-1 w-56 bg-white border border-[#d0d5dd] rounded-lg shadow-xl py-1 z-30 animate-in fade-in duration-150">
+                          {COUNTRY_CODES.map((c, idx) => (
+                            <button
+                              key={idx}
+                              type="button"
+                              onClick={() => {
+                                setSelectedCountry(c)
+                                setFormData({ ...formData, countryCode: c.code })
+                                setDropdownOpen(false)
+                              }}
+                              className={`w-full text-left px-3 py-2 text-sm hover:bg-slate-100 flex items-center justify-between cursor-pointer ${
+                                selectedCountry.country === c.country
+                                  ? 'bg-slate-50 font-semibold text-[#003471]'
+                                  : 'text-slate-700'
+                              }`}
+                            >
+                              <span>{c.label}</span>
+                              <span className="text-slate-400 text-xs">{c.code}</span>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    <input
+                      type="tel"
+                      id="phone"
+                      required
+                      value={formData.phone || ''}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder={`${selectedCountry.code} (000) 000-0000`}
+                      className="flex-1 px-4 py-3 text-[#101828] text-base placeholder:text-[#667085] bg-transparent focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block font-poppins font-medium text-[#344054] text-sm mb-1.5"
+                  >
+                    Email <span className="text-[#efbf04]">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    value={formData.email || ''}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="Enter Your mail"
+                    className="w-full bg-white border border-[#d0d5dd] rounded-[8px] px-4 py-3 text-[#101828] text-base placeholder:text-[#667085] shadow-xs focus:outline-none focus:ring-2 focus:ring-[#efbf04] focus:border-transparent transition"
+                  />
+                </div>
+
+                {/* Message Textarea */}
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block font-poppins font-medium text-[#344054] text-sm mb-1.5"
+                  >
+                    Write a Message For Us <span className="text-[#efbf04]">*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    required
+                    rows={4}
+                    value={formData.message || ''}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    placeholder="Type here......."
+                    className="w-full bg-white border border-[#d0d5dd] rounded-[8px] px-4 py-3 text-[#101828] text-base placeholder:text-[#667085] shadow-xs focus:outline-none focus:ring-2 focus:ring-[#efbf04] focus:border-transparent transition resize-y min-h-[120px]"
+                  />
+                </div>
+              </>
+            )}
 
             {/* Submit Button */}
             <div className="pt-2">
@@ -328,7 +343,7 @@ export const ContactHeroSection: React.FC<ContactHeroSectionProps> = ({
                     <span>Submitting...</span>
                   </>
                 ) : (
-                  <span>Submit Now</span>
+                  <span>{form?.submitButtonLabel || 'Submit Now'}</span>
                 )}
               </button>
             </div>

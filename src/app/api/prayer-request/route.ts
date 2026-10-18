@@ -8,6 +8,23 @@ export async function POST(req: NextRequest) {
     const body = await req.json()
     const payload = await getPayload({ config })
 
+    // Collect standard schema keys
+    const knownKeys = new Set([
+      'firstName', 'lastName', 'gender', 'age', 'nationality', 'profession',
+      'phone', 'email', 'address', 'relativesName', 'relativesPhone', 'relativesEmail',
+      'hasSickness', 'sicknessDetails', 'problemNature', 'problemDuration',
+      'medications', 'dailyLivingImpact', 'hospitalized', 'useBrace',
+      'useWalkingAid', 'useMedicalDevice', 'dailyActivitiesNormal',
+      'surgeryTherapyDetails', 'howDidYouHear', 'comments', 'formId'
+    ])
+
+    const additionalFields: Record<string, any> = {}
+    for (const [key, val] of Object.entries(body)) {
+      if (!knownKeys.has(key)) {
+        additionalFields[key] = val
+      }
+    }
+
     const result = await payload.create({
       collection: 'prayer-requests' as any,
       data: {
@@ -37,9 +54,42 @@ export async function POST(req: NextRequest) {
         surgeryTherapyDetails: body.surgeryTherapyDetails,
         howDidYouHear: body.howDidYouHear,
         comments: body.comments,
+        additionalFields: Object.keys(additionalFields).length > 0 ? additionalFields : undefined,
         status: 'pending',
       },
     })
+
+    // Also record submission into Payload CMS form-submissions
+    try {
+      let formId = body.formId
+      if (!formId) {
+        const formDoc = await payload.find({
+          collection: 'forms',
+          where: { title: { equals: 'Prayer Request Form' } },
+          limit: 1,
+        })
+        if (formDoc.docs.length > 0) formId = formDoc.docs[0].id
+      }
+
+      if (formId) {
+        const submissionData = Object.entries(body)
+          .filter(([key]) => key !== 'formId')
+          .map(([field, value]) => ({
+            field,
+            value: typeof value === 'object' ? JSON.stringify(value) : String(value ?? ''),
+          }))
+
+        await payload.create({
+          collection: 'form-submissions' as any,
+          data: {
+            form: formId,
+            submissionData,
+          },
+        })
+      }
+    } catch (subErr) {
+      console.warn('[Prayer Request] Could not record form-submission:', subErr)
+    }
 
     // Dispatch email notification asynchronously (non-blocking for user flow)
     try {

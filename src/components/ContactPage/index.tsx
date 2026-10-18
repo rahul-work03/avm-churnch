@@ -23,6 +23,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ data }) => {
         heroImageBadgeSubtitle={data?.heroImageBadgeSubtitle}
         formSuccessTitle={data?.formSuccessTitle}
         formSuccessMessage={data?.formSuccessMessage}
+        form={data?.form}
       />
 
       {/* 2. Contact Information Cards / Grid */}

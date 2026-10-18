@@ -211,6 +211,20 @@ export const PrayerRequests: CollectionConfig = {
           type: 'textarea',
           label: 'Additional Comments',
         },
+        {
+          name: 'photo',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Attached Photo / Medical Document',
+        },
+        {
+          name: 'additionalFields',
+          type: 'json',
+          label: 'Additional Form Fields (Dynamic CMS Fields)',
+          admin: {
+            description: 'Stores any extra custom fields submitted via dynamic Payload Forms.',
+          },
+        },
       ],
     },
     {

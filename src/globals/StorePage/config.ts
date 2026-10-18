@@ -30,6 +30,12 @@ export const StorePageGlobal: GlobalConfig = {
   },
   fields: [
     {
+      name: 'checkoutForm',
+      type: 'relationship',
+      relationTo: 'forms',
+      label: 'Store Checkout Shipping Form (Manage and customize fields in Forms)',
+    },
+    {
       name: 'headerTitle',
       type: 'text',
       label: 'Store Page Heading Title',

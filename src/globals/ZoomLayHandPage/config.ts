@@ -44,6 +44,12 @@ export const ZoomLayHandPageGlobal: GlobalConfig = {
           label: 'Hero and Header',
           fields: [
             {
+              name: 'form',
+              type: 'relationship',
+              relationTo: 'forms',
+              label: 'Zoom Lay Hand Form (Manage and customize fields in Forms)',
+            },
+            {
               name: 'heroBannerImage',
               type: 'upload',
               relationTo: 'media',

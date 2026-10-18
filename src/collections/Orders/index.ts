@@ -177,6 +177,14 @@ export const Orders: CollectionConfig = {
       label: 'Special Delivery Instructions or Prayer Burden',
     },
     {
+      name: 'additionalCustomerDetails',
+      type: 'json',
+      label: 'Additional Customer & Shipping Details (Dynamic Fields)',
+      admin: {
+        description: 'Stores any extra custom fields submitted via the dynamic Checkout Form.',
+      },
+    },
+    {
       type: 'collapsible',
       label: 'Instamojo Payment Details',
       admin: {

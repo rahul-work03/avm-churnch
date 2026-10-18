@@ -7,6 +7,7 @@ export interface ContactPageData {
   heroImageBadgeSubtitle?: string | null
   formSuccessTitle?: string | null
   formSuccessMessage?: string | null
+  form?: any
   infoSectionTitle?: string | null
   infoSectionSubtitle?: string | null
   generalInquiriesTitle?: string | null

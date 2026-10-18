@@ -11,4 +11,5 @@ export interface ZoomLayHandPageData {
   submitButtonText?: string | null
   successTitle?: string | null
   successMessage?: string | null
+  form?: any
 }

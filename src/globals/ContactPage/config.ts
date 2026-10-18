@@ -19,6 +19,12 @@ export const ContactPageGlobal: GlobalConfig = {
           label: 'Hero & Form',
           fields: [
             {
+              name: 'form',
+              type: 'relationship',
+              relationTo: 'forms',
+              label: 'Contact Us Form (Manage and customize fields in Forms)',
+            },
+            {
               name: 'heroTitle',
               type: 'text',
               label: 'Hero Main Title',

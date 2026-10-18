@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { UploadCloud, CheckCircle, ChevronDown, PhoneCall, Mail, Loader2, HeartHandshake } from 'lucide-react'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
+import { DynamicFormFieldsList } from '@/components/Forms/DynamicFormFieldRenderer'
 import type { PrayerRequestPageData } from './PrayerRequestTypes'
 
 interface PrayerRequestPageProps {
@@ -16,7 +17,7 @@ export const PrayerRequestPage: React.FC<PrayerRequestPageProps> = ({ data }) =>
   const [submitted, setSubmitted] = useState(false)
   const [photoFile, setPhotoFile] = useState<File | null>(null)
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Record<string, any>>({
     firstName: '',
     lastName: '',
     gender: '',
@@ -46,6 +47,7 @@ export const PrayerRequestPage: React.FC<PrayerRequestPageProps> = ({ data }) =>
   })
 
   // Fallbacks
+  const form = data?.form
   const heroImageSrc = getMediaUrl(
     data?.heroBannerImage,
     data?.heroBannerFallback || '/figma-assets/0c9f2208a82bd40d24f4da377e83cfe370d48e0a.png'
@@ -57,7 +59,7 @@ export const PrayerRequestPage: React.FC<PrayerRequestPageProps> = ({ data }) =>
   const helplineTitle = data?.helplineTitle || '24/7 Urgent Prayer Call Center'
   const helplinePhone = data?.helplinePhone || '0181 520 7777'
   const helplineEmail = data?.helplineEmail || 'Prayer@ankurnarula.org'
-  const submitButtonText = data?.submitButtonText || 'Submit Your Prayer Request'
+  const submitButtonText = form?.submitButtonLabel || data?.submitButtonText || 'Submit Your Prayer Request'
   const successTitle = data?.successTitle || 'Prayer Request Submitted!'
   const successMessage =
     data?.successMessage ||
@@ -87,7 +89,10 @@ export const PrayerRequestPage: React.FC<PrayerRequestPageProps> = ({ data }) =>
       const res = await fetch('/api/prayer-request', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          formId: form?.id,
+        }),
       })
 
       const resData = await res.json()
@@ -255,7 +260,17 @@ export const PrayerRequestPage: React.FC<PrayerRequestPageProps> = ({ data }) =>
               onSubmit={handleSubmit}
               className="space-y-6 sm:space-y-7 font-poppins"
             >
-              {/* Row 1: First Name & Last Name */}
+              {form?.fields && form.fields.length > 0 ? (
+                <DynamicFormFieldsList
+                  fields={form.fields}
+                  values={formData}
+                  onChange={(name, val) => setFormData((prev) => ({ ...prev, [name]: val }))}
+                  onFileChange={(name, file) => setPhotoFile(file)}
+                  variant="light"
+                />
+              ) : (
+                <>
+                  {/* Row 1: First Name & Last Name */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                 <div className="space-y-1.5">
                   <label className="font-poppins font-semibold text-[14px] text-[#344054] block">
@@ -719,6 +734,8 @@ export const PrayerRequestPage: React.FC<PrayerRequestPageProps> = ({ data }) =>
                   className="w-full p-4 rounded-[8px] border border-[#d0d5dd] bg-white text-[#344054] text-sm focus:outline-none focus:ring-2 focus:ring-[#003471]/30 focus:border-[#003471] shadow-[0px_1px_2px_0px_rgba(16,24,40,0.05)] resize-y min-h-[100px]"
                 />
               </div>
+            </>
+          )}
 
               {/* Submit Button */}
               <div className="pt-6 sm:pt-10 flex justify-center">

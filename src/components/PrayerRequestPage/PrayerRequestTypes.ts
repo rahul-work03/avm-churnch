@@ -11,4 +11,5 @@ export interface PrayerRequestPageData {
   successTitle?: string | null
   successMessage?: string | null
   successVerse?: string | null
+  form?: any
 }

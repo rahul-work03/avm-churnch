@@ -18,9 +18,27 @@ export default async function Page() {
 
   try {
     const payload = await getPayload({ config })
-    prayerRequestData = await payload.findGlobal({
+    prayerRequestData = (await payload.findGlobal({
       slug: 'prayer-request-page' as any,
-    })
+      depth: 2,
+    })) as any
+
+    if (!prayerRequestData?.form || typeof prayerRequestData.form !== 'object' || !prayerRequestData.form.fields) {
+      const formQuery = await payload.find({
+        collection: 'forms',
+        where: {
+          or: [
+            { title: { equals: 'Prayer Request Form' } },
+            ...(prayerRequestData?.form ? [{ id: { equals: prayerRequestData.form } }] : []),
+          ],
+        },
+        limit: 1,
+      })
+      if (formQuery.docs.length > 0) {
+        if (!prayerRequestData) prayerRequestData = {}
+        prayerRequestData.form = formQuery.docs[0]
+      }
+    }
   } catch {
     // Database empty or uninitialized during build
   }
