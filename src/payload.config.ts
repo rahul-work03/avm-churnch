@@ -1,3 +1,4 @@
+import { postgresAdapter } from '@payloadcms/db-postgres'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import sharp from 'sharp'
@@ -84,16 +85,36 @@ export default buildConfig({
   },
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
-  db: process.env.DATABASE_URL?.startsWith('mongodb')
-    ? mongooseAdapter({
-        url: process.env.DATABASE_URL,
-      })
-    : sqliteAdapter({
-        client: {
-          url: process.env.DATABASE_URL || 'file:./payload.db',
-        },
-        push: true,
-      }),
+  db:
+    process.env.DB_HOST && process.env.DB_USER
+      ? postgresAdapter({
+          pool: {
+            host: process.env.DB_HOST,
+            port: process.env.DB_PORT ? Number(process.env.DB_PORT) : 5432,
+            user: process.env.DB_USER,
+            password: process.env.DB_PASSWORD,
+            database: process.env.DB_NAME,
+            ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false,
+          },
+          push: true,
+        })
+      : process.env.DATABASE_URL?.startsWith('postgres')
+      ? postgresAdapter({
+          pool: {
+            connectionString: process.env.DATABASE_URL,
+          },
+          push: true,
+        })
+      : process.env.DATABASE_URL?.startsWith('mongodb')
+      ? mongooseAdapter({
+          url: process.env.DATABASE_URL,
+        })
+      : sqliteAdapter({
+          client: {
+            url: process.env.DATABASE_URL || 'file:./payload.db',
+          },
+          push: true,
+        }),
   collections: [
     Pages,
     Posts,
