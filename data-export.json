@@ -1,0 +1,3905 @@
+{
+  "collections": {
+    "users": [
+      {
+        "id": 1,
+        "name": "AVM Admin",
+        "roles": [
+          "admin"
+        ],
+        "updatedAt": "2026-09-20T09:41:17.968Z",
+        "createdAt": "2026-09-20T09:41:17.967Z",
+        "email": "admin@avmchurch.com",
+        "resetPasswordToken": null,
+        "resetPasswordExpiration": null,
+        "salt": "e743cb4a6f1a60c97856fe021a066b77055cd20bce884c7b4edc31c871ee1db7",
+        "hash": "17e9172329580fe7ddd46b67f4fb6d3796e6415e30cd1e986d0cacdd67c8325a18be4a1b48ed47628285af4d99ca5c3038d97c6587396120e6ef0495ad26101ed1aab2d4d0bb074abf9b18fa1fd2467e9e00b6ec4b4494f8cf98461e2050b470e976b294f3d213ddb42b65cad96c1151e49433451cded5e61b0cbc714c6d17cf5b705e8a3513d5c492a93778a8bce9d667a76667c9f9eba4c6a8210ca6e608d8dd6019ddbeaea8f171ba557e4d73470e3c0959e424dd448fc89edd79ab3b90f8d7c0c01a001261fc64305526c0c3bedcb7fc815e3e74d6ff5d1a61fffd6073698255d1d0834caa88a2b0e8cceca846eda8465edccdef280685d60a68db19ec5d4708f512e96b93a2d339fb035314d3c74344824971093b35dd37ed8fefbcc092563feaa9894d2c8e6311a765415903c927ea5c613e82c40c3bb7470a84d331abf0cfadeb01a618a11a896235607d1b7dd35143d56d4a8c61368b18bf3fa80c95175008a546b7af1229f970efd2718ab1bd3e79ed67868bc6b8d96f470b734764af61eec0b87774aa1c96db0da45cf7ffc9e6c1d89c6f69c97aee60318f5ce609eb0e0b048c04d9a9189947ff9f47a9439471adc65544c71254243be9087294aaef4cbadda44bd334f2e299d6a009ac971e23ea42862b957a7ec8159b2cf92d6ab07f8d8264d000782f9ddb0e1bb5e1b5b8f59694e04cd4fe7e220b40f70662c6",
+        "loginAttempts": 0,
+        "lockUntil": null,
+        "sessions": [
+          {
+            "id": "b96c2ade-6580-4de4-9c8d-3ed12527305b",
+            "createdAt": "2026-10-17T19:08:39.483Z",
+            "expiresAt": "2026-10-17T21:08:39.483Z"
+          }
+        ],
+        "collection": "users"
+      }
+    ],
+    "media": [
+      {
+        "id": 1,
+        "alt": "banner2",
+        "caption": null,
+        "updatedAt": "2026-09-20T09:43:58.445Z",
+        "createdAt": "2026-09-20T09:43:58.445Z",
+        "url": "/api/media/file/38c0e2d311bde0d312937a97c60e92a2e2d34116.png",
+        "thumbnailURL": "/api/media/file/38c0e2d311bde0d312937a97c60e92a2e2d34116-300x269.png",
+        "filename": "38c0e2d311bde0d312937a97c60e92a2e2d34116.png",
+        "mimeType": "image/png",
+        "filesize": 298952,
+        "width": 383,
+        "height": 343,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "/api/media/file/38c0e2d311bde0d312937a97c60e92a2e2d34116-300x269.png",
+            "width": 300,
+            "height": 269,
+            "mimeType": "image/png",
+            "filesize": 241186,
+            "filename": "38c0e2d311bde0d312937a97c60e92a2e2d34116-300x269.png"
+          },
+          "square": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "small": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "medium": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "large": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "xlarge": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          },
+          "og": {
+            "url": null,
+            "width": null,
+            "height": null,
+            "mimeType": null,
+            "filesize": null,
+            "filename": null
+          }
+        }
+      }
+    ],
+    "categories": [],
+    "pages": [],
+    "posts": [],
+    "sermons": [
+      {
+        "id": 6,
+        "title": "परमेश्वर अभिमानियों का विरोध और दीनों पर अनुग्रह करता है | Powerful Message by Ankur Yoseph Narula",
+        "youtubeUrl": "https://youtu.be/TMQW9sIjHEI?si=7WxEkpgSUFyNviqt",
+        "thumbnail": null,
+        "customThumbnailUrl": null,
+        "speaker": "Apostle Dr. Ankur Yoseph Narula",
+        "publishedDate": null,
+        "isFeatured": false,
+        "order": 6,
+        "updatedAt": "2026-09-23T13:38:49.000Z",
+        "createdAt": "2026-09-23T11:53:24.000Z"
+      },
+      {
+        "id": 5,
+        "title": "5 STEPS TO STAND FIRM IN FAITH #apostleankuryosephnarula #ankurnarulaministries",
+        "youtubeUrl": "https://youtu.be/WzCmeeKme_A?si=6Mj2EkozyZsVYaUN",
+        "thumbnail": null,
+        "customThumbnailUrl": null,
+        "speaker": "Apostle Dr. Ankur Yoseph Narula",
+        "publishedDate": null,
+        "isFeatured": false,
+        "order": 5,
+        "updatedAt": "2026-09-23T13:38:49.000Z",
+        "createdAt": "2026-09-23T11:53:24.000Z"
+      },
+      {
+        "id": 4,
+        "title": "Spiritual Life में Discipline ज़रूरी है | Powerful Sermon by Apostle Dr. Ankur Yoseph Narula",
+        "youtubeUrl": "https://youtu.be/C4BZnGqs6OM?si=OHxDh8pK43tRw3N3",
+        "thumbnail": null,
+        "customThumbnailUrl": null,
+        "speaker": "Apostle Dr. Ankur Yoseph Narula",
+        "publishedDate": null,
+        "isFeatured": false,
+        "order": 4,
+        "updatedAt": "2026-09-23T13:38:49.000Z",
+        "createdAt": "2026-09-23T11:53:24.000Z"
+      },
+      {
+        "id": 3,
+        "title": "बिना कर्म के परमेश्वर आपके जीवन में बदलाव नहीं करता | Ankur Narula Ministries #sermon #bibleteaching",
+        "youtubeUrl": "https://youtu.be/paFWE9SEnp0?si=ePvuE2uJUya5c3MS",
+        "thumbnail": null,
+        "customThumbnailUrl": null,
+        "speaker": "Apostle Dr. Ankur Yoseph Narula",
+        "publishedDate": null,
+        "isFeatured": false,
+        "order": 3,
+        "updatedAt": "2026-09-23T13:38:49.000Z",
+        "createdAt": "2026-09-23T11:53:24.000Z"
+      },
+      {
+        "id": 2,
+        "title": "अत्मिक जीवन की नींव कैसे मजबूत करें? Powerful Sermon By #apostleankuryosephnarula | ANM",
+        "youtubeUrl": "https://youtu.be/3Yf7o0ZFtrs?si=-WvKrgbmeTMYtCGK",
+        "thumbnail": null,
+        "customThumbnailUrl": null,
+        "speaker": "Apostle Dr. Ankur Yoseph Narula",
+        "publishedDate": null,
+        "isFeatured": false,
+        "order": 2,
+        "updatedAt": "2026-09-23T13:38:49.000Z",
+        "createdAt": "2026-09-23T11:53:24.000Z"
+      },
+      {
+        "id": 1,
+        "title": "To Reach The Mountain Top You Have to Go Through the Valley #ankurnarulaministries #powerfulsermons",
+        "youtubeUrl": "https://youtu.be/uho9yd6qOwk?si=kpPWYX9PuOuOtQnK",
+        "thumbnail": null,
+        "customThumbnailUrl": null,
+        "speaker": "Apostle Dr. Ankur Yoseph Narula",
+        "publishedDate": null,
+        "isFeatured": false,
+        "order": 1,
+        "updatedAt": "2026-09-23T13:38:49.000Z",
+        "createdAt": "2026-09-23T11:53:24.000Z"
+      }
+    ],
+    "testimonials": [
+      {
+        "id": 6,
+        "person": "Sister / Anointed Deliverance",
+        "title": "Supernatural Freedom from Chronic Depression & Heavy Spiritual Heaviness",
+        "slug": "sister-depression-freedom-deliverance",
+        "category": "Peace & Freedom",
+        "image": null,
+        "imageFallback": "/figma-assets/f3cf64793395daaddbe693a452d8ed494c902fce.png",
+        "hindiHeadline": "सामर्थी प्रार्थना ग्रहण करते ही पहली बार HEAVENLY EXPERIENCE हुआ और यह DEPRESSION से पूरी तरह आज़ाद हो गईं। प्रभु यीशु मसीह ने जीवन में नई शांति और आनंद भर दिया।",
+        "englishHeadline": "AS SHE RECEIVED THE POWERFUL PRAYER, SHE EXPERIENCED THE HEAVENLY PRESENCE OF GOD AND WAS SET FREE FROM CRIPPLING DEPRESSION FOREVER.",
+        "shortDescription": "सामर्थी प्रार्थना ग्रहण करते ही पहली बार HEAVENLY EXPERIENCE हुआ और यह DEPRESSION से पूरी तरह आज़ाद हो गईं। प्रभु यीशु मसीह ने जीवन में नई शांति और आनंद भर दिया।",
+        "fullStory": "This sister suffered from long-standing severe clinical depression, persistent panic attacks, and dark emotional heaviness that medications failed to resolve. During the anointed worship and prayer service, the Holy Spirit touched her heart deeply. She experienced the supernatural presence of God, felt an immediate release of peace, and was permanently set free from all symptoms of depression.",
+        "verse": "Isaiah 61:3 - \"To give them beauty for ashes, the oil of joy for mourning, the garment of praise for the spirit of heaviness.\"",
+        "isFeatured": false,
+        "order": 6,
+        "updatedAt": "2026-09-20T13:18:46.292Z",
+        "createdAt": "2026-09-20T13:18:46.292Z"
+      },
+      {
+        "id": 5,
+        "person": "Brother / Miracle Report",
+        "title": "Broken Leg & Bedridden State Healed after Supernatural Miracle Prayer",
+        "slug": "bedridden-leg-fracture-healing",
+        "category": "Bone & Body Healing",
+        "image": null,
+        "imageFallback": "/figma-assets/cb08309c4d7b9a6d1f8b27168f919c7a3b62074c.png",
+        "hindiHeadline": "जादू-टोने के कारण दो मौतें हो चुकी थीं, भारी हमले में फ्रैक्चर हुआ था और पूरी तरह BEDRIDDEN थे। सामर्थी प्रार्थना के बाद बिस्तर से खड़े हुए और बड़ी चंगाई पाई।",
+        "englishHeadline": "HEAVY ATTACKS CAUSED BEDRIDDEN IMMOBILITY AND SEVERE FRACTURES. THE SUPERNATURAL POWER OF GOD RESTORED BONE STRUCTURE AND HE WALKED OUT COMPLETELY HEALED.",
+        "shortDescription": "जादू-टोने के कारण दो मौतें हो चुकी थीं, भारी हमले में फ्रैक्चर हुआ था और पूरी तरह BEDRIDDEN थे। सामर्थी प्रार्थना के बाद बिस्तर से खड़े हुए और बड़ी चंगाई पाई।",
+        "fullStory": "Heavy dark attacks resulted in tragic losses in this brother’s household and left him severely injured with multiple fractures in his left leg, rendering him completely immobile and bedridden. Doctors held very low hopes for complete unassisted mobility. When the power of God moved during the church service, he felt a warm divine sensation in his bones. He stood up unassisted, started walking, and medical x-rays confirmed miraculous bone restoration.",
+        "verse": "Acts 3:6 - \"In the name of Jesus Christ of Nazareth, rise up and walk.\"",
+        "isFeatured": false,
+        "order": 5,
+        "updatedAt": "2026-09-20T13:18:46.287Z",
+        "createdAt": "2026-09-20T13:18:46.287Z"
+      },
+      {
+        "id": 4,
+        "person": "Brother Satnam Singh & Family",
+        "title": "Total Deliverance of Family from Decades of Witchcraft & Evil Afflictions",
+        "slug": "brother-satnam-singh-family-deliverance",
+        "category": "Family Deliverance",
+        "image": null,
+        "imageFallback": "/figma-assets/c8eb0d478ae3815378a25f9eb398d8649eb46e5d.png",
+        "hindiHeadline": "जादू-टोने के कारण इस भाई और इनकी बेटी पर DEMONIC ATTACK होते थे। इलाज के लिए कर्ज़ उठाया और सोना भी बेच दिया। सामर्थी प्रार्थना ग्रहण करने से पूरा परिवार हुआ आज़ाद।",
+        "englishHeadline": "BECAUSE OF BLACK MAGIC, HE AND HIS DAUGHTER SUFFERED SEVERE DEMONIC ATTACKS. ANOINTED PRAYER BROKE THE GENERATIONAL CURSE AND DELIVERED THE ENTIRE FAMILY.",
+        "shortDescription": "जादू-टोने के कारण इस भाई और इनकी बेटी पर DEMONIC ATTACK होते थे। इलाज के लिए कर्ज़ उठाया और सोना भी बेच दिया। सामर्थी प्रार्थना ग्रहण करने से पूरा परिवार हुआ आज़ाद।",
+        "fullStory": "Brother Satnam Singh and his beloved daughter were severely afflicted by occult attacks and witchcraft for generations. In search of freedom, they depleted all family savings, took high-interest loans, and sold family gold without any remedy. Upon arriving at the ministry and receiving deliverance prayer in the mighty name of Jesus Christ, every demonic bondage was dismantled. Today, their home is filled with divine health, joy, and prosperity.",
+        "verse": "Luke 10:19 - \"Behold, I give you the authority to trample on serpents and scorpions, and over all the power of the enemy.\"",
+        "isFeatured": false,
+        "order": 4,
+        "updatedAt": "2026-09-20T13:18:46.284Z",
+        "createdAt": "2026-09-20T13:18:46.284Z"
+      },
+      {
+        "id": 3,
+        "person": "Sister Shinder",
+        "title": "Miraculous Recovery from Critical Dengue, Fluid Build-up & Heart Risk in ICU",
+        "slug": "sister-shinder-dengue-recovery",
+        "category": "Supernatural Healing",
+        "image": null,
+        "imageFallback": "/figma-assets/ea471bfad2bfef480a29d7e89b4a1abc99619073.png",
+        "hindiHeadline": "डेंगू का रोग होने के कारण इनके पेट में पानी भर गया था, यह ICU में थे और इन्हें DIAPER लगाकर रखते थे। परमेश्वर के दास द्वारा प्रार्थना ग्रहण करने से मिली बड़ी चंगाई।",
+        "englishHeadline": "ADMITTED TO ICU WITH ABDOMINAL FLUID ACCUMULATION AND HIGH HEART ATTACK RISK. ANOINTED PRAYER DRIED UP THE FLUID AND RESTORED HER TO COMPLETE HEALTH.",
+        "shortDescription": "डेंगू का रोग होने के कारण इनके पेट में पानी भर गया था, यह ICU में थे और इन्हें DIAPER लगाकर रखते थे। परमेश्वर के दास द्वारा प्रार्थना ग्रहण करने से मिली बड़ी चंगाई।",
+        "fullStory": "Sister Shinder was admitted to the Intensive Care Unit in critical condition due to severe complicated Dengue fever. Her abdomen became severely distended with ascites (fluid accumulation), and doctors warned of high risk of cardiac arrest. While in utter hopelessness, anointed prayer was offered. God performed an instant miracle—the fluid dried up supernaturally, her platelet and vital counts normalized, and she walked out of the ICU completely healed.",
+        "verse": "Psalm 107:20 - \"He sent His word and healed them, and delivered them from their destructions.\"",
+        "isFeatured": false,
+        "order": 3,
+        "updatedAt": "2026-09-20T13:18:46.280Z",
+        "createdAt": "2026-09-20T13:18:46.280Z"
+      },
+      {
+        "id": 2,
+        "person": "Sister Sukhdeep Kaur",
+        "title": "Supernatural Deliverance from Severe Mental Attacks & Oppression",
+        "slug": "sister-sukhdeep-kaur-deliverance",
+        "category": "Deliverance",
+        "image": null,
+        "imageFallback": "/figma-assets/6b7f869d048b1af39a42b08c4bacff57cb6ed577.png",
+        "hindiHeadline": "MENTALLY ATTACK होने के कारण यह घर का सामान तोड़ देते थे, लड़ाई-झगड़ा करते थे। परमेश्वर के दास द्वारा सामर्थी प्रार्थना ग्रहण करने से मिली पूरी आज़ादी।",
+        "englishHeadline": "DUE TO VIOLENT DEMONIC MENTAL ATTACKS, SHE SUFFERED SEVERE OUTBURSTS AND AGONY. AFTER RECEIVING ANOINTED PRAYER, SHE WAS MIRACULOUSLY DELIVERED AND RESTORED TO SOUND MIND.",
+        "shortDescription": "MENTALLY ATTACK होने के कारण यह घर का सामान तोड़ देते थे, लड़ाई-झगड़ा करते थे। परमेश्वर के दास द्वारा सामर्थी प्रार्थना ग्रहण करने से मिली पूरी आज़ादी।",
+        "fullStory": "Sister Sukhdeep Kaur was bound by tormenting demonic mental attacks for years. During violent episodes, she lost complete self-control, broke household belongings, and caused profound anguish to her family. When brought to The Church of Signs and Wonders and ministered to under the apostolic power of God, every dark oppression broke instantly. She is now completely sound in mind, peaceful, and glorifying Jesus Christ.",
+        "verse": "2 Timothy 1:7 - \"For God has not given us a spirit of fear, but of power and of love and of a sound mind.\"",
+        "isFeatured": false,
+        "order": 2,
+        "updatedAt": "2026-09-20T13:18:46.275Z",
+        "createdAt": "2026-09-20T13:18:46.275Z"
+      },
+      {
+        "id": 1,
+        "person": "Sister Randeep",
+        "title": "Complete Healing from Tuberculosis, Lung Complications & Paralysis",
+        "slug": "sister-randeep-healing",
+        "category": "Supernatural Healing",
+        "image": null,
+        "imageFallback": "/figma-assets/88fe21040a6d042f53b945fa5a996447efd6bcfd.png",
+        "hindiHeadline": "TB का रोग, RIGHT LUNG में पानी था, इन्हें सांस लेने में बहुत दिक्कत रहती थी, ज्यादातर यह BED पर रहती थी। परमेश्वर की दासी द्वारा अभिषिक्त प्रार्थना ग्रहण करने से मिली बड़ी चंगाई।",
+        "englishHeadline": "DUE TO TB AND FLUID IN THE RIGHT LUNG, SHE HAD DIFFICULTY IN BREATHING AND REMAINED BEDRIDDEN. AFTER RECEIVING ANOINTED PRAYER BY WOMAN OF GOD, SHE GOT REMARKABLE HEALING.",
+        "shortDescription": "TB का रोग, RIGHT LUNG में पानी था, इन्हें सांस लेने में बहुत दिक्कत रहती थी, ज्यादातर यह BED पर रहती थी। परमेश्वर की दासी द्वारा अभिषिक्त प्रार्थना ग्रहण करने से मिली बड़ी चंगाई।",
+        "fullStory": "Sister Randeep suffered from severe Tuberculosis that led to heavy fluid accumulation in her right lung. She experienced extreme breathlessness, fatigue, and was bedridden for months with paralysis complications. After receiving Lay Hand prayer during the Easter Meeting by the anointed grace of God through the ministry of Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Narula, medical reports confirmed complete clearing of lung fluid and total supernatural healing.",
+        "verse": "Jeremiah 30:17 - \"For I will restore health to you and heal you of your wounds,\" says the Lord.",
+        "isFeatured": false,
+        "order": 1,
+        "updatedAt": "2026-09-20T13:18:46.270Z",
+        "createdAt": "2026-09-20T13:18:46.270Z"
+      }
+    ],
+    "products": [
+      {
+        "id": 2,
+        "title": "Sanatan Parameswar Kaun Hai Hindi Religious",
+        "slug": "sanatan-parameswar-kaun-hai-hindi-religious",
+        "category": "Book",
+        "image": null,
+        "imageFallback": "/store/book_sanatan_parameswar_kaun_hai.png",
+        "originalPrice": 250,
+        "salePrice": 199,
+        "rating": 4,
+        "description": "A profound theological exploration by Apostle Dr. Ankur Yoseph Narula unveiling the eternal nature, power, and sovereignty of the living God.",
+        "detailedDescription": "In this groundbreaking theological and spiritual work, Apostle Dr. Ankur Yoseph Narula unveils biblical truths concerning the everlasting sovereignty, majesty, and living presence of the Almighty God. Deepen your understanding of scripture, understand your divine identity, and build unshakeable faith in the promises of God.",
+        "author": "Apostle Dr. Ankur Yoseph Narula",
+        "publisher": "Ankur Narula Ministries",
+        "language": "Hindi",
+        "pagesCount": 220,
+        "format": "Paperback",
+        "isbn": null,
+        "features": [],
+        "amazonUrl": "https://amzn.in/d/0eKR3CnU",
+        "flipkartUrl": null,
+        "productUrl": "https://amzn.in/d/0eKR3CnU",
+        "inStock": true,
+        "allowDirectPurchase": true,
+        "stockQuantity": null,
+        "order": 2,
+        "updatedAt": "2026-09-22T16:00:21.000Z",
+        "createdAt": "2026-09-20T15:18:50.847Z"
+      },
+      {
+        "id": 1,
+        "title": "Abhishikth Geeton Ki Mala, Hindi Book",
+        "slug": "abhishikth-geeton-ki-mala-hindi-book",
+        "category": "Book",
+        "image": null,
+        "imageFallback": "/store/book_abhishikth_geeton_ki_mala.png",
+        "originalPrice": 250,
+        "salePrice": 199,
+        "rating": 4,
+        "description": "An anointed collection of spiritual worship songs, hymns, and prayers compiled for believers to experience the manifest glory and presence of God.",
+        "detailedDescription": "A powerful and life-transforming treasury of anointed spiritual worship songs, divine prayers, and hymns. Designed for personal devotion, church services, and prayer groups to elevate believers into intimate fellowship with the Lord Jesus Christ and receive prophetic breakthroughs in worship.",
+        "author": "Apostle Dr. Ankur Yoseph Narula",
+        "publisher": "Ankur Narula Ministries",
+        "language": "Hindi",
+        "pagesCount": 168,
+        "format": "Paperback",
+        "isbn": null,
+        "features": [],
+        "amazonUrl": "https://amzn.in/d/0j2LQP4E",
+        "flipkartUrl": null,
+        "productUrl": "https://amzn.in/d/0j2LQP4E",
+        "inStock": true,
+        "allowDirectPurchase": true,
+        "stockQuantity": null,
+        "order": 1,
+        "updatedAt": "2026-09-22T16:00:21.000Z",
+        "createdAt": "2026-09-20T15:18:50.847Z"
+      }
+    ],
+    "orders": [
+      {
+        "id": 7,
+        "orderNumber": "ANM-3C80DE",
+        "items": [
+          {
+            "id": "6ad3c74baeea845c75fb9276",
+            "title": "Abhishikth Geeton Ki Mala, Hindi Book",
+            "slug": "abhishikth-geeton-ki-mala-hindi-book",
+            "productId": "1",
+            "quantity": 1,
+            "unitPrice": 199,
+            "totalPrice": 199,
+            "image": "/store/book_abhishikth_geeton_ki_mala.png"
+          }
+        ],
+        "productTitle": "Abhishikth Geeton Ki Mala, Hindi Book",
+        "quantity": 1,
+        "unitPrice": 199,
+        "totalAmount": 199,
+        "customerName": "Abhi",
+        "customerPhone": "6789876567",
+        "customerEmail": "abhi@gmail.com",
+        "shippingAddress": "Old Guntur",
+        "landmark": "",
+        "city": "Guntur",
+        "state": "Andhra Pradesh",
+        "pincode": "522007",
+        "deliveryNotes": "",
+        "additionalCustomerDetails": null,
+        "paymentGateway": "instamojo",
+        "paymentStatus": "pending",
+        "paymentRequestId": "b4256cafb298428dab01ca161371b4e4",
+        "paymentId": null,
+        "paymentUrl": "https://www.instamojo.com/@brightmedia/b4256cafb298428dab01ca161371b4e4",
+        "paidAt": null,
+        "customerEmailSent": false,
+        "adminEmailSent": false,
+        "status": "pending_payment",
+        "updatedAt": "2026-10-17T19:06:53.578Z",
+        "createdAt": "2026-10-17T19:06:51.747Z"
+      },
+      {
+        "id": 6,
+        "orderNumber": "ANM-A78EE1",
+        "items": [
+          {
+            "id": "6ace946752f3bb07c8a0d5c0",
+            "title": "Sanatan Parameswar Kaun Hai Hindi Religious",
+            "slug": "sanatan-parameswar-kaun-hai-hindi-religious",
+            "productId": "2",
+            "quantity": 1,
+            "unitPrice": 199,
+            "totalPrice": 199,
+            "image": "/store/book_sanatan_parameswar_kaun_hai.png"
+          }
+        ],
+        "productTitle": "Sanatan Parameswar Kaun Hai Hindi Religious",
+        "quantity": 1,
+        "unitPrice": 199,
+        "totalAmount": 199,
+        "customerName": "Testing",
+        "customerPhone": "6789876567",
+        "customerEmail": "test@gmail.com",
+        "shippingAddress": "Test Address",
+        "landmark": "",
+        "city": "Test",
+        "state": "Punjab",
+        "pincode": "839039",
+        "deliveryNotes": "",
+        "additionalCustomerDetails": null,
+        "paymentGateway": "instamojo",
+        "paymentStatus": "pending",
+        "paymentRequestId": "4ea404aaa6964e9e863b65ad42318d70",
+        "paymentId": null,
+        "paymentUrl": "https://www.instamojo.com/@brightmedia/4ea404aaa6964e9e863b65ad42318d70",
+        "paidAt": null,
+        "customerEmailSent": false,
+        "adminEmailSent": false,
+        "status": "pending_payment",
+        "updatedAt": "2026-10-13T20:28:25.590Z",
+        "createdAt": "2026-10-13T20:28:23.972Z"
+      },
+      {
+        "id": 5,
+        "orderNumber": "ANM-57A1C6",
+        "items": [
+          {
+            "id": "6ace855b83c313fafb8d41e8",
+            "title": "Abhishikth Geeton Ki Mala, Hindi Book",
+            "slug": "abhishikth-geeton-ki-mala-hindi-book",
+            "productId": "1",
+            "quantity": 2,
+            "unitPrice": 199,
+            "totalPrice": 398,
+            "image": "/store/book_abhishikth_geeton_ki_mala.png"
+          }
+        ],
+        "productTitle": "Abhishikth Geeton Ki Mala, Hindi Book",
+        "quantity": 2,
+        "unitPrice": 199,
+        "totalAmount": 398,
+        "customerName": "test",
+        "customerPhone": "7890123456",
+        "customerEmail": "test@gmail.com",
+        "shippingAddress": "Old Guntur",
+        "landmark": "",
+        "city": "Guntur",
+        "state": "Andhra Pradesh",
+        "pincode": "522001",
+        "deliveryNotes": "",
+        "additionalCustomerDetails": null,
+        "paymentGateway": "instamojo",
+        "paymentStatus": "pending",
+        "paymentRequestId": "6c89a72b9a1943159443dd60133727f1",
+        "paymentId": null,
+        "paymentUrl": "https://www.instamojo.com/@brightmedia/6c89a72b9a1943159443dd60133727f1",
+        "paidAt": null,
+        "customerEmailSent": false,
+        "adminEmailSent": false,
+        "status": "pending_payment",
+        "updatedAt": "2026-10-13T19:24:13.297Z",
+        "createdAt": "2026-10-13T19:24:11.720Z"
+      },
+      {
+        "id": 4,
+        "orderNumber": "ANM-F3B404",
+        "items": [
+          {
+            "id": "6ace82b85411e1f5db14b953",
+            "title": "Abhishikth Geeton Ki Mala, Hindi Book",
+            "slug": "abhishikth-geeton-ki-mala-hindi-book",
+            "productId": "1",
+            "quantity": 1,
+            "unitPrice": 199,
+            "totalPrice": 199,
+            "image": "/store/book_abhishikth_geeton_ki_mala.png"
+          }
+        ],
+        "productTitle": "Abhishikth Geeton Ki Mala, Hindi Book",
+        "quantity": 1,
+        "unitPrice": 199,
+        "totalAmount": 199,
+        "customerName": "Abhi",
+        "customerPhone": "7584993939",
+        "customerEmail": "test@gmail.com",
+        "shippingAddress": "Old Guntur",
+        "landmark": "",
+        "city": "Guntur",
+        "state": "Andhra Pradesh",
+        "pincode": "522001",
+        "deliveryNotes": "",
+        "additionalCustomerDetails": null,
+        "paymentGateway": "instamojo",
+        "paymentStatus": "pending",
+        "paymentRequestId": "782c16534aed46d4b18f025cd69c96eb",
+        "paymentId": null,
+        "paymentUrl": "https://www.instamojo.com/@brightmedia/782c16534aed46d4b18f025cd69c96eb",
+        "paidAt": null,
+        "customerEmailSent": false,
+        "adminEmailSent": false,
+        "status": "pending_payment",
+        "updatedAt": "2026-10-13T19:12:57.762Z",
+        "createdAt": "2026-10-13T19:12:56.133Z"
+      },
+      {
+        "id": 3,
+        "orderNumber": "ANM-CF50FA",
+        "items": [
+          {
+            "id": "6ace81b95411e1f5db14b952",
+            "title": "Abhishikth Geeton Ki Mala, Hindi Book",
+            "slug": "abhishikth-geeton-ki-mala-hindi-book",
+            "productId": "1",
+            "quantity": 1,
+            "unitPrice": 199,
+            "totalPrice": 199,
+            "image": "/store/book_abhishikth_geeton_ki_mala.png"
+          }
+        ],
+        "productTitle": "Abhishikth Geeton Ki Mala, Hindi Book",
+        "quantity": 1,
+        "unitPrice": 199,
+        "totalAmount": 199,
+        "customerName": "Test",
+        "customerPhone": "7849339999",
+        "customerEmail": "test@gmail.com",
+        "shippingAddress": "Old Guntur",
+        "landmark": "",
+        "city": "Guntur",
+        "state": "Andhra Pradesh",
+        "pincode": "522001",
+        "deliveryNotes": "",
+        "additionalCustomerDetails": null,
+        "paymentGateway": "instamojo",
+        "paymentStatus": "failed",
+        "paymentRequestId": null,
+        "paymentId": null,
+        "paymentUrl": null,
+        "paidAt": null,
+        "customerEmailSent": false,
+        "adminEmailSent": false,
+        "status": "cancelled",
+        "updatedAt": "2026-10-13T19:08:42.834Z",
+        "createdAt": "2026-10-13T19:08:41.535Z"
+      },
+      {
+        "id": 2,
+        "orderNumber": "ANM-489479",
+        "items": [
+          {
+            "id": "6ace811c5411e1f5db14b951",
+            "title": "Abhishikth Geeton Ki Mala, Hindi Book",
+            "slug": "abhishikth-geeton-ki-mala-hindi-book",
+            "productId": "1",
+            "quantity": 2,
+            "unitPrice": 199,
+            "totalPrice": 398,
+            "image": "/store/book_abhishikth_geeton_ki_mala.png"
+          }
+        ],
+        "productTitle": "Abhishikth Geeton Ki Mala, Hindi Book",
+        "quantity": 2,
+        "unitPrice": 199,
+        "totalAmount": 398,
+        "customerName": "Abhi",
+        "customerPhone": "9846543210",
+        "customerEmail": "abhi@gmail.com",
+        "shippingAddress": "Old Guntur, Guntur",
+        "landmark": "",
+        "city": "Guntur",
+        "state": "Andhra Pradesh",
+        "pincode": "522001",
+        "deliveryNotes": "",
+        "additionalCustomerDetails": null,
+        "paymentGateway": "instamojo",
+        "paymentStatus": "failed",
+        "paymentRequestId": null,
+        "paymentId": null,
+        "paymentUrl": null,
+        "paidAt": null,
+        "customerEmailSent": false,
+        "adminEmailSent": false,
+        "status": "cancelled",
+        "updatedAt": "2026-10-13T19:06:06.261Z",
+        "createdAt": "2026-10-13T19:06:04.819Z"
+      },
+      {
+        "id": 1,
+        "orderNumber": "ANM-761E98",
+        "items": [
+          {
+            "id": "6ace81095411e1f5db14b950",
+            "title": "Abhishikth Geeton Ki Mala, Hindi Book",
+            "slug": "abhishikth-geeton-ki-mala-hindi-book",
+            "productId": "1",
+            "quantity": 2,
+            "unitPrice": 199,
+            "totalPrice": 398,
+            "image": "/store/book_abhishikth_geeton_ki_mala.png"
+          }
+        ],
+        "productTitle": "Abhishikth Geeton Ki Mala, Hindi Book",
+        "quantity": 2,
+        "unitPrice": 199,
+        "totalAmount": 398,
+        "customerName": "Abhi",
+        "customerPhone": "9846543210",
+        "customerEmail": "abhi@gmail.com",
+        "shippingAddress": "Old Guntur, Guntur",
+        "landmark": "",
+        "city": "Guntur",
+        "state": "Andhra Pradesh",
+        "pincode": "522001",
+        "deliveryNotes": "",
+        "additionalCustomerDetails": null,
+        "paymentGateway": "instamojo",
+        "paymentStatus": "failed",
+        "paymentRequestId": null,
+        "paymentId": null,
+        "paymentUrl": null,
+        "paidAt": null,
+        "customerEmailSent": false,
+        "adminEmailSent": false,
+        "status": "cancelled",
+        "updatedAt": "2026-10-13T19:05:45.321Z",
+        "createdAt": "2026-10-13T19:05:45.113Z"
+      }
+    ],
+    "prayer-requests": [
+      {
+        "id": 1,
+        "fullName": "Abhi Abhi",
+        "firstName": "Abhi",
+        "lastName": "Abhi",
+        "gender": "Male",
+        "age": 22,
+        "nationality": "Indian",
+        "profession": "Software Engineer",
+        "phone": "7890123456",
+        "email": "abhi@gmail.com",
+        "address": "Guntur, AP",
+        "relativesName": "Nobody",
+        "relativesPhone": "7809237483",
+        "relativesEmail": "",
+        "hasSickness": "No",
+        "hospitalized": "Nope",
+        "problemNature": "Testing",
+        "problemDuration": "20 days",
+        "medications": "Nothing",
+        "dailyLivingImpact": "sleep",
+        "useBrace": "No",
+        "useWalkingAid": "No",
+        "useMedicalDevice": "No",
+        "dailyActivitiesNormal": "No",
+        "surgeryTherapyDetails": "Nope",
+        "howDidYouHear": "I'm the guy building your website dude",
+        "comments": "None",
+        "photo": null,
+        "additionalFields": null,
+        "status": "pending",
+        "updatedAt": "2026-10-13T17:55:22.783Z",
+        "createdAt": "2026-10-13T17:55:22.783Z"
+      }
+    ],
+    "zoom-registrations": [],
+    "forms": [
+      {
+        "id": 4,
+        "title": "Store Checkout Form",
+        "fields": [
+          {
+            "id": "6ad3d030f1066e82cd12f726",
+            "name": "name",
+            "label": "Full Name",
+            "width": 100,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f727",
+            "name": "email",
+            "label": "Email Address",
+            "width": 50,
+            "required": true,
+            "blockName": null,
+            "blockType": "email"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f728",
+            "name": "phone",
+            "label": "Mobile Phone (10 Digits)",
+            "width": 50,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f729",
+            "name": "address",
+            "label": "Delivery Street Address / Flat & House No.",
+            "width": 100,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "textarea"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f72a",
+            "name": "landmark",
+            "label": "Nearby Landmark (Optional)",
+            "width": 50,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f72b",
+            "name": "city",
+            "label": "City / District",
+            "width": 50,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f73f",
+            "name": "state",
+            "label": "State / Union Territory",
+            "width": 50,
+            "defaultValue": null,
+            "placeholder": null,
+            "required": true,
+            "blockName": null,
+            "options": [
+              {
+                "id": "6ad3d030f1066e82cd12f72c",
+                "label": "Punjab",
+                "value": "Punjab"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f72d",
+                "label": "Delhi",
+                "value": "Delhi"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f72e",
+                "label": "Haryana",
+                "value": "Haryana"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f72f",
+                "label": "Chandigarh",
+                "value": "Chandigarh"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f730",
+                "label": "Himachal Pradesh",
+                "value": "Himachal Pradesh"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f731",
+                "label": "Jammu and Kashmir",
+                "value": "Jammu and Kashmir"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f732",
+                "label": "Uttar Pradesh",
+                "value": "Uttar Pradesh"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f733",
+                "label": "Rajasthan",
+                "value": "Rajasthan"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f734",
+                "label": "Maharashtra",
+                "value": "Maharashtra"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f735",
+                "label": "Gujarat",
+                "value": "Gujarat"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f736",
+                "label": "Karnataka",
+                "value": "Karnataka"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f737",
+                "label": "Tamil Nadu",
+                "value": "Tamil Nadu"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f738",
+                "label": "Kerala",
+                "value": "Kerala"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f739",
+                "label": "Telangana",
+                "value": "Telangana"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f73a",
+                "label": "Andhra Pradesh",
+                "value": "Andhra Pradesh"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f73b",
+                "label": "West Bengal",
+                "value": "West Bengal"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f73c",
+                "label": "Bihar",
+                "value": "Bihar"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f73d",
+                "label": "Madhya Pradesh",
+                "value": "Madhya Pradesh"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f73e",
+                "label": "Other State / Union Territory",
+                "value": "Other"
+              }
+            ],
+            "blockType": "select"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f740",
+            "name": "pincode",
+            "label": "Postal PIN Code (6 Digits)",
+            "width": 50,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f741",
+            "name": "deliveryNotes",
+            "label": "Delivery Notes / Special Instructions",
+            "width": 100,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "textarea"
+          }
+        ],
+        "submitButtonLabel": "Proceed to Secure Payment",
+        "confirmationType": "message",
+        "confirmationMessage": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Redirecting to payment gateway...",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "textFormat": 0,
+                "textStyle": "",
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "redirect": {
+          "url": null
+        },
+        "emails": [],
+        "updatedAt": "2026-10-17T19:44:48.095Z",
+        "createdAt": "2026-10-17T19:44:48.095Z"
+      },
+      {
+        "id": 3,
+        "title": "Zoom Lay Hand Registration Form",
+        "fields": [
+          {
+            "id": "6ad3d030f1066e82cd12f70a",
+            "name": "firstName",
+            "label": "Full Name",
+            "width": 50,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f70e",
+            "name": "gender",
+            "label": "Gender",
+            "width": 50,
+            "defaultValue": null,
+            "placeholder": null,
+            "required": true,
+            "blockName": null,
+            "options": [
+              {
+                "id": "6ad3d030f1066e82cd12f70b",
+                "label": "Male",
+                "value": "Male"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f70c",
+                "label": "Female",
+                "value": "Female"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f70d",
+                "label": "Other",
+                "value": "Other"
+              }
+            ],
+            "blockType": "select"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f70f",
+            "name": "age",
+            "label": "Age",
+            "width": 50,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "number"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f710",
+            "name": "nationality",
+            "label": "Nationality",
+            "width": 50,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f711",
+            "name": "profession",
+            "label": "Profession",
+            "width": 50,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f712",
+            "name": "phone",
+            "label": "WhatsApp / Phone Number",
+            "width": 50,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f713",
+            "name": "email",
+            "label": "Email Address (for Zoom Link)",
+            "width": 50,
+            "required": true,
+            "blockName": null,
+            "blockType": "email"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f714",
+            "name": "relativeName",
+            "label": "Relative's Full Name",
+            "width": 50,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f715",
+            "name": "relativePhone",
+            "label": "Relative's Contact Number",
+            "width": 50,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f716",
+            "name": "relativeEmail",
+            "label": "Relative's Email",
+            "width": 50,
+            "required": false,
+            "blockName": null,
+            "blockType": "email"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f717",
+            "name": "address",
+            "label": "Full Residential Address",
+            "width": 100,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "textarea"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f718",
+            "name": "healthSituation",
+            "label": "Health Situation / Prayer Need",
+            "width": 100,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "textarea"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f719",
+            "name": "problemNature",
+            "label": "Nature and Progression of the Problem",
+            "width": 100,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "textarea"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f71a",
+            "name": "duration",
+            "label": "Duration of Condition",
+            "width": 50,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f71b",
+            "name": "dailyLifeEffect",
+            "label": "Effect on Daily Life and Mobility",
+            "width": 100,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "textarea"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f71e",
+            "name": "hospitalized",
+            "label": "Currently Hospitalized or Bedridden?",
+            "width": 50,
+            "defaultValue": null,
+            "placeholder": null,
+            "required": false,
+            "blockName": null,
+            "options": [
+              {
+                "id": "6ad3d030f1066e82cd12f71c",
+                "label": "No",
+                "value": "No"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f71d",
+                "label": "Yes",
+                "value": "Yes"
+              }
+            ],
+            "blockType": "select"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f71f",
+            "name": "medicalDevices",
+            "label": "Medical devices or support currently used",
+            "width": 50,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f724",
+            "name": "zoomAvailability",
+            "label": "Preferred Zoom Prayer Time Window",
+            "width": 50,
+            "defaultValue": null,
+            "placeholder": null,
+            "required": true,
+            "blockName": null,
+            "options": [
+              {
+                "id": "6ad3d030f1066e82cd12f720",
+                "label": "Morning Session (10:00 AM - 1:00 PM IST)",
+                "value": "Morning (10 AM - 1 PM IST)"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f721",
+                "label": "Afternoon Session (2:00 PM - 5:00 PM IST)",
+                "value": "Afternoon (2 PM - 5 PM IST)"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f722",
+                "label": "Evening Session (6:00 PM - 9:00 PM IST)",
+                "value": "Evening (6 PM - 9 PM IST)"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f723",
+                "label": "Any Available Session Window",
+                "value": "Any Time Available"
+              }
+            ],
+            "blockType": "select"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f725",
+            "name": "additionalComments",
+            "label": "Additional Information or Special Notes",
+            "width": 100,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "textarea"
+          }
+        ],
+        "submitButtonLabel": "Submit Registration",
+        "confirmationType": "message",
+        "confirmationMessage": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Thank you for submitting your Zoom Lay Hand request. Our ministry team will review your details and send the Zoom session instructions and time slots to your email.",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "textFormat": 0,
+                "textStyle": "",
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "redirect": {
+          "url": null
+        },
+        "emails": [],
+        "updatedAt": "2026-10-17T19:44:48.084Z",
+        "createdAt": "2026-10-17T19:44:48.084Z"
+      },
+      {
+        "id": 2,
+        "title": "Prayer Request Form",
+        "fields": [
+          {
+            "id": "6ad3d030f1066e82cd12f6e4",
+            "name": "firstName",
+            "label": "First Name",
+            "width": 50,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6e5",
+            "name": "lastName",
+            "label": "Last Name",
+            "width": 50,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6e9",
+            "name": "gender",
+            "label": "Gender",
+            "width": 50,
+            "defaultValue": null,
+            "placeholder": null,
+            "required": true,
+            "blockName": null,
+            "options": [
+              {
+                "id": "6ad3d030f1066e82cd12f6e6",
+                "label": "Male",
+                "value": "Male"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f6e7",
+                "label": "Female",
+                "value": "Female"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f6e8",
+                "label": "Other",
+                "value": "Other"
+              }
+            ],
+            "blockType": "select"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6ea",
+            "name": "age",
+            "label": "Age",
+            "width": 50,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "number"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6eb",
+            "name": "nationality",
+            "label": "Nationality",
+            "width": 50,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6ec",
+            "name": "profession",
+            "label": "Profession",
+            "width": 50,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6ed",
+            "name": "phone",
+            "label": "Phone Number",
+            "width": 50,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6ee",
+            "name": "email",
+            "label": "Email Address",
+            "width": 50,
+            "required": true,
+            "blockName": null,
+            "blockType": "email"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6ef",
+            "name": "address",
+            "label": "Residential Address",
+            "width": 100,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "textarea"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6f0",
+            "name": "relativesName",
+            "label": "Relative's Name",
+            "width": 50,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6f1",
+            "name": "relativesPhone",
+            "label": "Relative's Phone",
+            "width": 50,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6f2",
+            "name": "relativesEmail",
+            "label": "Relative's Email",
+            "width": 50,
+            "required": false,
+            "blockName": null,
+            "blockType": "email"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6f5",
+            "name": "hasSickness",
+            "label": "Do you currently have sickness or physical pain?",
+            "width": 50,
+            "defaultValue": null,
+            "placeholder": null,
+            "required": true,
+            "blockName": null,
+            "options": [
+              {
+                "id": "6ad3d030f1066e82cd12f6f3",
+                "label": "Yes",
+                "value": "Yes"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f6f4",
+                "label": "No",
+                "value": "No"
+              }
+            ],
+            "blockType": "select"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6f6",
+            "name": "sicknessDetails",
+            "label": "Sickness / Diagnosis Details",
+            "width": 100,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "textarea"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6f7",
+            "name": "problemNature",
+            "label": "Nature of Problem / Prayer Request Burden",
+            "width": 100,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "textarea"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6f8",
+            "name": "problemDuration",
+            "label": "How long have you faced this problem?",
+            "width": 50,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6f9",
+            "name": "medications",
+            "label": "Current Medications / Treatment Plan",
+            "width": 100,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "textarea"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6fa",
+            "name": "dailyLivingImpact",
+            "label": "How does this affect your day-to-day life?",
+            "width": 100,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "textarea"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6fd",
+            "name": "hospitalized",
+            "label": "Are you or the patient currently hospitalized?",
+            "width": 50,
+            "defaultValue": null,
+            "placeholder": null,
+            "required": false,
+            "blockName": null,
+            "options": [
+              {
+                "id": "6ad3d030f1066e82cd12f6fb",
+                "label": "No",
+                "value": "No"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f6fc",
+                "label": "Yes",
+                "value": "Yes"
+              }
+            ],
+            "blockType": "select"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f700",
+            "name": "useBrace",
+            "label": "Do you use a brace, collar, or lumbar support?",
+            "width": 50,
+            "defaultValue": null,
+            "placeholder": null,
+            "required": false,
+            "blockName": null,
+            "options": [
+              {
+                "id": "6ad3d030f1066e82cd12f6fe",
+                "label": "No",
+                "value": "No"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f6ff",
+                "label": "Yes",
+                "value": "Yes"
+              }
+            ],
+            "blockType": "select"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f703",
+            "name": "useWalkingAid",
+            "label": "Do you use a wheelchair, crutches, or walking stick?",
+            "width": 50,
+            "defaultValue": null,
+            "placeholder": null,
+            "required": false,
+            "blockName": null,
+            "options": [
+              {
+                "id": "6ad3d030f1066e82cd12f701",
+                "label": "No",
+                "value": "No"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f702",
+                "label": "Yes",
+                "value": "Yes"
+              }
+            ],
+            "blockType": "select"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f706",
+            "name": "useMedicalDevice",
+            "label": "Do you rely on oxygen, catheter, or other medical device?",
+            "width": 50,
+            "defaultValue": null,
+            "placeholder": null,
+            "required": false,
+            "blockName": null,
+            "options": [
+              {
+                "id": "6ad3d030f1066e82cd12f704",
+                "label": "No",
+                "value": "No"
+              },
+              {
+                "id": "6ad3d030f1066e82cd12f705",
+                "label": "Yes",
+                "value": "Yes"
+              }
+            ],
+            "blockType": "select"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f707",
+            "name": "surgeryTherapyDetails",
+            "label": "Details of any Past or Scheduled Surgeries",
+            "width": 100,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "textarea"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f708",
+            "name": "howDidYouHear",
+            "label": "How did you hear about Ankur Narula Ministries?",
+            "width": 50,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f709",
+            "name": "comments",
+            "label": "Additional Comments / Prayer Message",
+            "width": 100,
+            "defaultValue": null,
+            "required": false,
+            "blockName": null,
+            "blockType": "textarea"
+          }
+        ],
+        "submitButtonLabel": "Submit Your Prayer Request",
+        "confirmationType": "message",
+        "confirmationMessage": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Thank you. Your prayer request has been received. Apostle Dr. Ankur Yoseph Narula and the ministry prayer team will stand in faith with you.",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "textFormat": 0,
+                "textStyle": "",
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "redirect": {
+          "url": null
+        },
+        "emails": [],
+        "updatedAt": "2026-10-17T19:44:48.072Z",
+        "createdAt": "2026-10-17T19:44:48.071Z"
+      },
+      {
+        "id": 1,
+        "title": "Contact Us Form",
+        "fields": [
+          {
+            "id": "6ad3d030f1066e82cd12f6df",
+            "name": "firstName",
+            "label": "First Name",
+            "width": 50,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6e0",
+            "name": "lastName",
+            "label": "Last Name",
+            "width": 50,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6e1",
+            "name": "phone",
+            "label": "Phone Number (with Country Code)",
+            "width": 50,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "text"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6e2",
+            "name": "email",
+            "label": "Email Address",
+            "width": 50,
+            "required": true,
+            "blockName": null,
+            "blockType": "email"
+          },
+          {
+            "id": "6ad3d030f1066e82cd12f6e3",
+            "name": "message",
+            "label": "Your Message / Inquiry",
+            "width": 100,
+            "defaultValue": null,
+            "required": true,
+            "blockName": null,
+            "blockType": "textarea"
+          }
+        ],
+        "submitButtonLabel": "Send Message",
+        "confirmationType": "message",
+        "confirmationMessage": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "Thank you for contacting Ankur Narula Ministries. Our ministry team will connect with you soon.",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "textFormat": 0,
+                "textStyle": "",
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "redirect": {
+          "url": null
+        },
+        "emails": [],
+        "updatedAt": "2026-10-17T19:44:48.055Z",
+        "createdAt": "2026-10-17T19:44:48.055Z"
+      }
+    ]
+  },
+  "globals": {
+    "header": {
+      "id": 1,
+      "logo": null,
+      "logoFallback": "/figma-assets/a12f7a8578aca49746f879f50d3567e9cc929dad.png",
+      "brandName": "Ankur Narula Ministries",
+      "navItems": [
+        {
+          "id": "6aca8ef74f51e821b8d23762",
+          "label": "Home",
+          "href": "/",
+          "children": []
+        },
+        {
+          "id": "6aca8ef74f51e821b8d23763",
+          "label": "About",
+          "href": "/about",
+          "children": []
+        },
+        {
+          "id": "6aca8ef74f51e821b8d2376c",
+          "label": "Ministries & More",
+          "href": "/ministries",
+          "children": [
+            {
+              "id": "6aca8ef74f51e821b8d23764",
+              "label": "Ministries",
+              "href": "/ministries"
+            },
+            {
+              "id": "6aca8ef74f51e821b8d23765",
+              "label": "Prayer Mountain",
+              "href": "/prayer-mountain"
+            },
+            {
+              "id": "6aca8ef74f51e821b8d23766",
+              "label": "Prayer House",
+              "href": "/prayer-house"
+            },
+            {
+              "id": "6aca8ef74f51e821b8d23767",
+              "label": "Bible College",
+              "href": "/bible-college"
+            },
+            {
+              "id": "6aca8ef74f51e821b8d23768",
+              "label": "Sophia Institute",
+              "href": "/sophia-institute"
+            },
+            {
+              "id": "6aca8ef74f51e821b8d23769",
+              "label": "Multimedia College",
+              "href": "/multimedia-college"
+            },
+            {
+              "id": "6aca8ef74f51e821b8d2376a",
+              "label": "Church Branches",
+              "href": "/church-branches"
+            },
+            {
+              "id": "6aca8ef74f51e821b8d2376b",
+              "label": "Sunday School",
+              "href": "/sunday-school"
+            }
+          ]
+        },
+        {
+          "id": "6aca8ef74f51e821b8d2376d",
+          "label": "Events",
+          "href": "/events",
+          "children": []
+        },
+        {
+          "id": "6aca8ef74f51e821b8d2376e",
+          "label": "Gallery",
+          "href": "/gallery",
+          "children": []
+        },
+        {
+          "id": "6aca8ef74f51e821b8d2376f",
+          "label": "Testimonials",
+          "href": "/testimonials",
+          "children": []
+        },
+        {
+          "id": "6ace91ce29f26a09228d75c2",
+          "label": "Store",
+          "href": "/store",
+          "children": []
+        },
+        {
+          "id": "6aca8ef74f51e821b8d23770",
+          "label": "Give",
+          "href": "/give",
+          "children": []
+        }
+      ],
+      "ctaButtonLabel": "Contact Us",
+      "ctaButtonUrl": "/contact",
+      "updatedAt": "2026-10-13T20:17:18.425Z",
+      "createdAt": "2026-09-20T14:41:27.945Z",
+      "globalType": "header"
+    },
+    "footer": {
+      "id": 1,
+      "logo": null,
+      "logoFallback": "/avm_church_logo.webp",
+      "ministryName": "Ankur Narula Ministries",
+      "aboutText": "The Church of Signs and Wonders is the biggest and fastest growing church ministry in World. Apostle Ankur Narula is the Senior Pastor and Overseer in The Church of Signs and Wonders.",
+      "copyrightText": "© 2026 Ankur Narula Ministries. All Rights Reserved.",
+      "contactEmail": "info@ankurnarula.org",
+      "contactPhone": "Phone: 0181-520-7777",
+      "privacyPolicyUrl": "/privacy-policy",
+      "termsUrl": "/terms-and-conditions",
+      "pagesList": [
+        {
+          "id": "6ace91e466f69a099b77e4d1",
+          "label": "Store & Books",
+          "href": "/store"
+        },
+        {
+          "id": "e01870258aa674c2aeb10e1d",
+          "label": "Branches",
+          "href": "/church-branches"
+        },
+        {
+          "id": "8d5c933227f9f7ae37441120",
+          "label": "Prayer Request",
+          "href": "/prayer-request"
+        },
+        {
+          "id": "9bb6a5eeb478d747f69dc96f",
+          "label": "Give",
+          "href": "/give"
+        },
+        {
+          "id": "e3b98b7f1a0209630eb949e5",
+          "label": "Prayer Mountain",
+          "href": "/prayer-mountain"
+        },
+        {
+          "id": "ffceab81137793f8805b9305",
+          "label": "Prayer House",
+          "href": "/prayer-house"
+        },
+        {
+          "id": "325a25c9fca6367d31e2c69e",
+          "label": "Sunday School",
+          "href": "/sunday-school"
+        },
+        {
+          "id": "85a9ef468d2859d494fc0891",
+          "label": "Bible College",
+          "href": "/bible-college"
+        },
+        {
+          "id": "399df3f8e8c3c8549cf63565",
+          "label": "Sophia Institute",
+          "href": "/sophia-institute"
+        },
+        {
+          "id": "6acb39c3501db65f6c55618d",
+          "label": "Multimedia College",
+          "href": "/multimedia-college"
+        }
+      ],
+      "socialLinks": [
+        {
+          "id": "soc-foot-1",
+          "name": "Instagram",
+          "url": "https://www.instagram.com/ankurnarulaministries",
+          "icon": null,
+          "iconFallback": "/instagram_logo_footer.png",
+          "width": 27,
+          "height": 27
+        },
+        {
+          "id": "soc-foot-2",
+          "name": "Facebook",
+          "url": "https://www.facebook.com/ankurnarulaministries/",
+          "icon": null,
+          "iconFallback": "/facebook_logo_footer.png",
+          "width": 26,
+          "height": 27
+        },
+        {
+          "id": "soc-foot-3",
+          "name": "YouTube",
+          "url": "https://www.youtube.com/@ankurnarulaministries",
+          "icon": null,
+          "iconFallback": "/youtube_logo_footer.png",
+          "width": 25,
+          "height": 24
+        },
+        {
+          "id": "soc-foot-4",
+          "name": "X Twitter",
+          "url": "https://x.com/apostleankur",
+          "icon": null,
+          "iconFallback": "/twitter_logo_footer.png",
+          "width": 27,
+          "height": 27
+        }
+      ],
+      "mapEmbedUrl": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.0779467068696!2d75.56073407539549!3d31.273939074327686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5b50b36a88a1%3A0x3d8b66ec2e189bf6!2sAnkur%20Narula%20Ministries!5e0!3m2!1sen!2sin!4v1790533216619!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\"></iframe>",
+      "mapImage": null,
+      "mapImageFallback": "/figma-assets/f1c7c30e211dc39094fc986db7a7e7d876202f58.png",
+      "mapUrl": "https://maps.google.com/?q=The+Church+of+Signs+and+Wonders+Khambra+Jalandhar",
+      "updatedAt": "2026-10-13T20:17:40.925Z",
+      "createdAt": "2026-09-20T14:41:27.945Z",
+      "globalType": "footer"
+    },
+    "homepage": {
+      "id": 1,
+      "heroHeadline1": "Welcome to Ankur Narula Ministries Homepage",
+      "heroHeadline2": "The Church Of Signs and Wonders",
+      "heroMobileHeadline2": "Jesus Christ’s Power in Signs and Wonders",
+      "heroDescription": "Experience the power of Jesus Christ through signs, wonders, and faith. We believe in the living Word of God and in His mighty works among those who believe.",
+      "heroVideoDesktop": null,
+      "heroVideoDesktopFallback": "/homepage_hero.mp4",
+      "heroVideoMobile": null,
+      "heroVideoMobileFallback": "/homepage_hero_mobile.mp4",
+      "heroBannerImage": null,
+      "heroBannerFallback": "/homepage_banner.png",
+      "heroBannerAlt": "200+ ANM Churches",
+      "mogHeaderTitle": "The church of signs and wonders",
+      "mogBadgeTitle": "Man Of God",
+      "mogSingleImage": null,
+      "mogSingleImageFallback": "/man_of_god/image_1.png",
+      "mogSingleImageAlt": "Apostle Dr. Ankur Yoseph Narula - Man of God",
+      "mogSlides": [
+        {
+          "id": "6aafacad72388d92906c6963",
+          "image": null,
+          "imageFallback": "/man_of_god/image_1.png",
+          "title": null,
+          "subtitle": null,
+          "alt": "Apostle Dr. Ankur Yoseph Narula Ministering at Pulpit"
+        },
+        {
+          "id": "6aafacad72388d92906c6964",
+          "image": null,
+          "imageFallback": "/man_of_god/image_2.png",
+          "title": null,
+          "subtitle": null,
+          "alt": "Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula at Main Stage"
+        },
+        {
+          "id": "6aafacad72388d92906c6965",
+          "image": null,
+          "imageFallback": "/man_of_god/image_3.png",
+          "title": null,
+          "subtitle": null,
+          "alt": "Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula"
+        },
+        {
+          "id": "6aafacad72388d92906c6966",
+          "image": null,
+          "imageFallback": "/man_of_god/image_4.png",
+          "title": null,
+          "subtitle": null,
+          "alt": "Apostle Dr. Ankur Yoseph Narula in Ministry Attire"
+        },
+        {
+          "id": "6aafacad72388d92906c6967",
+          "image": null,
+          "imageFallback": "/man_of_god/image_5.png",
+          "title": null,
+          "subtitle": null,
+          "alt": "Prophetic Impartation & Deliverance Ministry"
+        }
+      ],
+      "leaderName": "Apostle Dr. Ankur Yoseph Narula",
+      "leaderRole": "Founder & Senior Pastor",
+      "leaderBio": "Apostle Dr. Ankur Yoseph Narula is the Founder and Overseer of The Church of Signs and Wonders Ankur Narula Ministries, which is one of the fastest-growing churches in India.",
+      "knowMoreLink": "/about",
+      "knowMoreLabel": "Know More",
+      "actionCards": [
+        {
+          "id": "6aafacad72388d92906c6968",
+          "title": "Prayer Request",
+          "image": null,
+          "imageFallback": "/prayer_request_homepage.png",
+          "href": "/prayer-request",
+          "buttonVariant": "solid"
+        },
+        {
+          "id": "6aafacad72388d92906c6969",
+          "title": "Offerings",
+          "image": null,
+          "imageFallback": "/offerings_homepage.png",
+          "href": "/give",
+          "buttonVariant": "outline"
+        },
+        {
+          "id": "6aafacad72388d92906c696a",
+          "title": "Zoom Lay Hand",
+          "image": null,
+          "imageFallback": "/zoom_lay_hand_homepage.png",
+          "href": "/zoom-lay-hand",
+          "buttonVariant": "outline"
+        }
+      ],
+      "scheduleHeaderTitle": "Live Prayer & Worship Schedule",
+      "scheduleVideoBannerUrl": "/homepage_schedule.mp4",
+      "weeklyServices": [
+        {
+          "id": "6acb7f177625f22670d728d2",
+          "emoji": "🕊️",
+          "title": "Sunday Morning Service",
+          "time": "10:30 AM – 2:30 PM (IST)"
+        },
+        {
+          "id": "6acb7f177625f22670d728d3",
+          "emoji": "🌙",
+          "title": "Sunday Evening Service",
+          "time": "7:00 PM – 11:00 PM (IST)"
+        },
+        {
+          "id": "6acb7f177625f22670d728d4",
+          "emoji": "🔥",
+          "title": "Thursday Service",
+          "time": "6:00 PM – 10:00 PM (IST)"
+        }
+      ],
+      "dailyPrograms": [
+        {
+          "id": "6acb7f177625f22670d728d5",
+          "emoji": "🙏",
+          "title": "Prayer Mountain",
+          "time": "8:00 PM (Daily)"
+        }
+      ],
+      "joinLiveLink": "https://www.youtube.com/@ankurnarulaministries",
+      "joinLiveLabel": "Join Live",
+      "socialHeaderTitle": "Our Social Media Platforms",
+      "socialSubtitle": "Be a Part of Our Family",
+      "socialPlatforms": [
+        {
+          "id": "6acb766b5f57b72884c2197b",
+          "name": "Instagram",
+          "badge": "6 Handles",
+          "handle": "@ankurnarulaministries",
+          "url": "https://www.instagram.com/ankurnarulaministries?stkn=MWd1d3dlZHJvdjF0aw==",
+          "handles": [
+            {
+              "id": "6acb766b5f57b72884c21975",
+              "title": "Ankur Narula Ministries",
+              "handle": "@ankurnarulaministries",
+              "url": "https://www.instagram.com/ankurnarulaministries?stkn=MWd1d3dlZHJvdjF0aw==",
+              "description": "Official ministry page & daily scriptures"
+            },
+            {
+              "id": "6acb766b5f57b72884c21976",
+              "title": "Apostle Dr. Ankur Yoseph Narula",
+              "handle": "@apostledr.ankuryosephnarula",
+              "url": "https://www.instagram.com/apostledr.ankuryosephnarula?stkn=MW9hbDhoaGx4ZGNnZA==",
+              "description": "Official personal ministry profile"
+            },
+            {
+              "id": "6acb766b5f57b72884c21977",
+              "title": "Pastor Sonia Yoseph Narula",
+              "handle": "@pastorsoniayosephnarula",
+              "url": "https://www.instagram.com/pastorsoniayosephnarula?stkn=MTVneWFnbmdqbDc1Yw==",
+              "description": "Official personal ministry profile"
+            },
+            {
+              "id": "6acb766b5f57b72884c21978",
+              "title": "The Yoseph Family",
+              "handle": "@the_yoseph_family",
+              "url": "https://www.instagram.com/the_yoseph_family?stkn=MThkNmNjZWh0Nmg2ZQ==",
+              "description": "Family faith journey & ministry moments"
+            },
+            {
+              "id": "6acb766b5f57b72884c21979",
+              "title": "Anugrah TV Official",
+              "handle": "@anugrahtv_official",
+              "url": "https://www.instagram.com/anugrahtv_official?stkn=ZjFpMGpkNHZ4b2d5",
+              "description": "Christian broadcast network & shows"
+            },
+            {
+              "id": "6acb766b5f57b72884c2197a",
+              "title": "ANM Worship Songs Official",
+              "handle": "@anm_worshipsongs_official",
+              "url": "https://www.instagram.com/anm_worshipsongs_official?stkn=MTZybGo2aWFqNDMxbg==",
+              "description": "Anointed worship music & praise songs"
+            }
+          ]
+        },
+        {
+          "id": "6acb766b5f57b72884c21981",
+          "name": "Facebook",
+          "badge": "5 Pages",
+          "handle": "Ankur Narula Ministries",
+          "url": "https://www.facebook.com/ankurnarulaministries/",
+          "handles": [
+            {
+              "id": "6acb766b5f57b72884c2197c",
+              "title": "Ankur Narula Ministries",
+              "handle": "Ankur Narula Ministries",
+              "url": "https://www.facebook.com/ankurnarulaministries/",
+              "description": "Official ministry page & community"
+            },
+            {
+              "id": "6acb766b5f57b72884c2197d",
+              "title": "Apostle Dr. Ankur Yoseph Narula",
+              "handle": "Ankur Narula",
+              "url": "https://www.facebook.com/ankur.narula.5/",
+              "description": "Official Facebook profile"
+            },
+            {
+              "id": "6acb766b5f57b72884c2197e",
+              "title": "Pastor Sonia Yoseph Narula",
+              "handle": "Pastor Sonia Yoseph Narula",
+              "url": "https://www.facebook.com/p/Pastor-Sonia-Yoseph-Narula-61571457190633/",
+              "description": "Official Facebook page"
+            },
+            {
+              "id": "6acb766b5f57b72884c2197f",
+              "title": "The Yoseph Family",
+              "handle": "The Yoseph Family",
+              "url": "https://www.facebook.com/p/The-Yoseph-Family-61577143774557/",
+              "description": "Official Facebook community"
+            },
+            {
+              "id": "6acb766b5f57b72884c21980",
+              "title": "Anugrah TV",
+              "handle": "Anugrah TV",
+              "url": "https://www.facebook.com/p/Anugrah-TV-61577404071596/",
+              "description": "Official Television Ministry Page"
+            }
+          ]
+        },
+        {
+          "id": "6acb766b5f57b72884c21988",
+          "name": "YouTube",
+          "badge": "6 Channels",
+          "handle": "@ApostleDr.AnkurYosephNarula",
+          "url": "https://www.youtube.com/@ApostleDr.AnkurYosephNarula",
+          "handles": [
+            {
+              "id": "6acb766b5f57b72884c21982",
+              "title": "Apostle Dr. Ankur Yoseph Narula",
+              "handle": "@ApostleDr.AnkurYosephNarula",
+              "url": "https://www.youtube.com/@ApostleDr.AnkurYosephNarula",
+              "description": "Main ministry sermons, messages & teachings"
+            },
+            {
+              "id": "6acb766b5f57b72884c21983",
+              "title": "Pastor Sonia Yoseph Narula",
+              "handle": "@pastorsoniayosephnarula",
+              "url": "https://www.youtube.com/@pastorsoniayosephnarula",
+              "description": "Devotionals, worship & women fellowship"
+            },
+            {
+              "id": "6acb766b5f57b72884c21984",
+              "title": "Live Ankur Narula Ministries",
+              "handle": "@liveankurnarulaministries",
+              "url": "https://www.youtube.com/@liveankurnarulaministries",
+              "description": "Live church prayer services & broadcasts"
+            },
+            {
+              "id": "6acb766b5f57b72884c21985",
+              "title": "The Yoseph Family",
+              "handle": "@theyosephfamily",
+              "url": "https://www.youtube.com/@theyosephfamily",
+              "description": "Family life, faith journey & inspirational moments"
+            },
+            {
+              "id": "6acb766b5f57b72884c21986",
+              "title": "ANM Worship Songs",
+              "handle": "@ANM-WorshipSongs",
+              "url": "https://www.youtube.com/@ANM-WorshipSongs",
+              "description": "Anointed worship songs & spiritual melodies"
+            },
+            {
+              "id": "6acb766b5f57b72884c21987",
+              "title": "Anugrah TV",
+              "handle": "@AnugrahTV",
+              "url": "https://www.youtube.com/@AnugrahTV",
+              "description": "Christian broadcast network & shows"
+            }
+          ]
+        },
+        {
+          "id": "6acb766b5f57b72884c21989",
+          "name": "X (Twitter)",
+          "badge": "",
+          "handle": "@apostleankur",
+          "url": "https://x.com/apostleankur",
+          "handles": []
+        }
+      ],
+      "sermonsHeaderTitle": "Watch Our Latest Sermons",
+      "sermonsFeaturedVideoImage": null,
+      "sermonsFeaturedVideoFallback": "/figma-assets/7943a96b8cbd9a1d629265528efec1a38a3d4265.png",
+      "sermonsFeaturedVideoAlt": "Thursday Full Night Prayer Service",
+      "sermonsFeaturedVideoUrl": "https://www.youtube.com/embed/CPIhQW-8bgo?si=cZrZoi8mfbTqkTYg",
+      "updatedAt": "2026-10-17T19:10:06.562Z",
+      "createdAt": "2026-09-20T09:41:36.244Z",
+      "globalType": "homepage"
+    },
+    "about-page": {
+      "id": 1,
+      "heroHeaderTitle": "About us",
+      "heroDescription": "The Church of Signs and Wonders (Ankur Narula Ministries) is a global revival ministry dedicated to spreading the Gospel of Jesus Christ through the power of the Holy Spirit. Founded in 2004 in Punjab, India, the ministry has grown from three members into a worldwide movement bringing healing, deliverance, and transformed lives.",
+      "heroBannerImage": null,
+      "heroBannerFallback": "/figma-assets/457a3354faefcf652c2110710588f40233c79c64.png",
+      "heroBannerAlt": "Ankur Narula Ministries Ministry Congregation",
+      "vmIdentityBadge": "Our Identity",
+      "vmHeaderTitle": "Our Vision and Our mission",
+      "visionTitle": "Our Vision",
+      "visionDescription": "“Not one soul would be lost” — The ministry aims to see a global revival of faith, hope, and love through the transformative power of Jesus Christ.",
+      "missionTitle": "Our Mission",
+      "missionDescription": "Spreading the Gospel of Jesus Christ. Leading people into a personal relationship with God. Demonstrating His power through healing, deliverance, and transformation.",
+      "leadersHeaderTitle": "Our Leaders",
+      "leaderImages": [
+        {
+          "id": "6aafb82566f1586d84c96c19",
+          "image": null,
+          "imageFallback": "/figma-assets/our_leaders_image_1.png",
+          "title": null,
+          "subtitle": null,
+          "alt": "Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula"
+        },
+        {
+          "id": "6aafb82566f1586d84c96c1a",
+          "image": null,
+          "imageFallback": "/figma-assets/our_leaders_image_2.png",
+          "title": null,
+          "subtitle": null,
+          "alt": "Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula at Pulpit"
+        },
+        {
+          "id": "6aafb82566f1586d84c96c1b",
+          "image": null,
+          "imageFallback": "/figma-assets/our_leaders_image_3.png",
+          "title": null,
+          "subtitle": null,
+          "alt": "Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula - Ministry Attire"
+        },
+        {
+          "id": "6aafb82566f1586d84c96c1c",
+          "image": null,
+          "imageFallback": "/figma-assets/man_of_god_image_1.png",
+          "title": null,
+          "subtitle": null,
+          "alt": "Apostle Dr. Ankur Yoseph Narula Ministering at Main Stage"
+        },
+        {
+          "id": "6aafb82566f1586d84c96c1d",
+          "image": null,
+          "imageFallback": "/figma-assets/b833aca853efbb1993ea3ceec33bdb2370c72d55.png",
+          "title": null,
+          "subtitle": null,
+          "alt": "Pastor Sonia Yoseph Narula Preaching to Multitudes"
+        },
+        {
+          "id": "6aafb82566f1586d84c96c1e",
+          "image": null,
+          "imageFallback": "/figma-assets/0ad2c07b6a72c78c1e66fec5b816a26e3f587185.png",
+          "title": null,
+          "subtitle": null,
+          "alt": "Pastor Sonia Yoseph Narula Ministering at Podium"
+        }
+      ],
+      "leaderParagraph1": "The Church of Signs and Wonders (Ankur Narula Ministries) is a fast-growing revival ministry based in Punjab, India, committed to preaching the Gospel of Jesus Christ through the power of the Holy Spirit. Founded in 2004 with just three members, the ministry has grown by God’s grace into a global revival movement where lakhs gather weekly to worship, receive the Word, and experience healing, deliverance, and transformation.",
+      "leaderParagraph2": "Led by Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula, the ministry serves millions through church services, live broadcasts, revival crusades, and the establishment of 200+ churches worldwide. With a strong heart for compassion, the ministry also supports the needy through charitable initiatives and a 24×7 Prayer Call Center, offering prayer and counsel to people across the world—reflecting the love and power of Christ in action.",
+      "leaderParagraph3": "Ankur Narula Ministries, led by Apostle Dr. Ankur Yoseph Narula, is a powerful Holy Spirit-led movement based in Punjab, India. Known for healing, deliverance, and prophetic ministry, to lead souls to Christ and transform lives. Follow for powerful sermons, live broadcasts, testimonies, and daily encouragement.",
+      "statsHeaderTitle": "Ministry Statistics",
+      "stats": [
+        {
+          "id": "6aafb82566f1586d84c96c1f",
+          "value": "500,000+",
+          "label": "Weekly Attendees"
+        },
+        {
+          "id": "6aafb82566f1586d84c96c20",
+          "value": "200+",
+          "label": "Branches Worldwide"
+        },
+        {
+          "id": "6aafb82566f1586d84c96c21",
+          "value": "2008",
+          "label": "Year Established"
+        }
+      ],
+      "resourcesHeaderTitle": "Faith Resources",
+      "resourcesDescription": "Explore books, teachings, and spiritual resources that will strengthen your walk with God.",
+      "resourcesStoreLink": "/store",
+      "resourcesStoreLabel": "Visit the Store Now",
+      "resourcesBgImage": null,
+      "resourcesBgFallback": "/faith_resources_background.png",
+      "resourcesBgInnerImage": null,
+      "resourcesBgInnerFallback": null,
+      "resourcesFgImage": null,
+      "resourcesFgFallback": "/faith_resources_foreground.png",
+      "resourcesFgInnerImage": null,
+      "resourcesFgInnerFallback": null,
+      "crusadesHeaderTitle": "The Largest ankur narula ministries Crusades",
+      "crusadeImages": [
+        {
+          "id": "995f8297cba626eee125323d",
+          "image": null,
+          "imageFallback": "/crusades/image_1.png",
+          "title": null,
+          "location": null,
+          "alt": "Massive Miracle Crusade - Sea of Believers Gathering"
+        },
+        {
+          "id": "bbf4b05250f387b636c81ae4",
+          "image": null,
+          "imageFallback": "/crusades/image_2.png",
+          "title": null,
+          "location": null,
+          "alt": "Atmosphere of Fire and Deliverance Night"
+        },
+        {
+          "id": "5932aae349f99adaa25a0d73",
+          "image": null,
+          "imageFallback": "/crusades/image_3.png",
+          "title": null,
+          "location": null,
+          "alt": "Supernatural Gathering & Holy Spirit Outpouring"
+        },
+        {
+          "id": "6cb8d5842a1f0fd787537ae4",
+          "image": null,
+          "imageFallback": "/crusades/image_4.png",
+          "title": null,
+          "location": null,
+          "alt": "Multitude of Souls Worshipping in Power"
+        },
+        {
+          "id": "56229555ce90d05f4a69ec97",
+          "image": null,
+          "imageFallback": "/crusades/image_5.png",
+          "title": null,
+          "location": null,
+          "alt": "Historic Ankur Narula Ministries Crusade"
+        },
+        {
+          "id": "51172d67d7cb7c2a5b0e84bc",
+          "image": null,
+          "imageFallback": "/crusades/image_6.png",
+          "title": null,
+          "location": null,
+          "alt": "Praise and Worship Unbroken Multitude"
+        },
+        {
+          "id": "101dc5d3e73a7adf96794ad9",
+          "image": null,
+          "imageFallback": "/crusades/image_7.png",
+          "title": null,
+          "location": null,
+          "alt": "Apostle Dr. Ankur Yoseph Narula Preaching to Hundred Thousands"
+        },
+        {
+          "id": "83045c76b344369358fbb65f",
+          "image": null,
+          "imageFallback": "/crusades/image_8.png",
+          "title": null,
+          "location": null,
+          "alt": "Unprecedented Healing & Miracles Encounter"
+        },
+        {
+          "id": "134251f2c705b1cda0166b25",
+          "image": null,
+          "imageFallback": "/crusades/image_9.png",
+          "title": null,
+          "location": null,
+          "alt": "Overflowing Joy in the Holy Presence"
+        },
+        {
+          "id": "400e75188dde0abfc9a7a8c6",
+          "image": null,
+          "imageFallback": "/crusades/image_10.png",
+          "title": null,
+          "location": null,
+          "alt": "Holy Spirit Fire Crusade"
+        },
+        {
+          "id": "4eb34502909a3fb44a128216",
+          "image": null,
+          "imageFallback": "/crusades/image_11.png",
+          "title": null,
+          "location": null,
+          "alt": "Great Harvest Crusade"
+        }
+      ],
+      "presenceHeaderTitle": "Man Of God International Presence",
+      "presenceSubtitle": "Spreading the revival fire, establishing branches, and connecting with global leadership across continents.",
+      "presenceRow1": [
+        {
+          "id": "ab921ce4d8125eccdbb1b7fe",
+          "image": null,
+          "imageFallback": "/man_of_god_international_presence/image_1.png",
+          "title": null,
+          "country": null,
+          "alt": "Man of God International Presence 1"
+        },
+        {
+          "id": "db70b403e6a27b40d3e147af",
+          "image": null,
+          "imageFallback": "/man_of_god_international_presence/image_2.png",
+          "title": null,
+          "country": null,
+          "alt": "Man of God International Presence 2"
+        },
+        {
+          "id": "9b25e19a77d6eab0f9838707",
+          "image": null,
+          "imageFallback": "/man_of_god_international_presence/image_3.png",
+          "title": null,
+          "country": null,
+          "alt": "Man of God International Presence 3"
+        },
+        {
+          "id": "6692d2f97f399924cb362441",
+          "image": null,
+          "imageFallback": "/man_of_god_international_presence/image_4.png",
+          "title": null,
+          "country": null,
+          "alt": "Man of God International Presence 4"
+        },
+        {
+          "id": "ce7fb68f040af70dbf5a48ea",
+          "image": null,
+          "imageFallback": "/man_of_god_international_presence/image_5.png",
+          "title": null,
+          "country": null,
+          "alt": "Man of God International Presence 5"
+        }
+      ],
+      "presenceRow2": [
+        {
+          "id": "b3a284a5f244beb8a7c6368d",
+          "image": null,
+          "imageFallback": "/man_of_god_international_presence/image_6.png",
+          "title": null,
+          "country": null,
+          "alt": "Man of God International Presence 6"
+        },
+        {
+          "id": "59ce8dba268b6727efcb987c",
+          "image": null,
+          "imageFallback": "/man_of_god_international_presence/image_7.png",
+          "title": null,
+          "country": null,
+          "alt": "Man of God International Presence 7"
+        },
+        {
+          "id": "1cda784d25877a63eaac4886",
+          "image": null,
+          "imageFallback": "/man_of_god_international_presence/image_8.png",
+          "title": null,
+          "country": null,
+          "alt": "Man of God International Presence 8"
+        },
+        {
+          "id": "35af964d9bc982ed93090452",
+          "image": null,
+          "imageFallback": "/man_of_god_international_presence/image_9.png",
+          "title": null,
+          "country": null,
+          "alt": "Man of God International Presence 9"
+        }
+      ],
+      "updatedAt": "2026-09-20T10:58:34.218Z",
+      "createdAt": "2026-09-20T10:58:20.124Z",
+      "globalType": "about-page"
+    },
+    "ministries-page": {
+      "id": 1,
+      "heroBadgeText": "OUR MINISTRIES",
+      "heroSubtitle": "Transforming Lives Through Service",
+      "heroVideo": null,
+      "heroVideoFallback": "/ministries_hero_video.mp4",
+      "heroBannerImage": null,
+      "heroBannerFallback": "/figma-assets/1293a243cd5f4ddaa9c70378ddffe38c61e7ffb6.png",
+      "heroBannerAlt": "Our Ministries - Ankur Narula Ministries",
+      "overviewHeaderTitle": "Ministries Overview",
+      "ministryCards": [
+        {
+          "title": "PRAYER MOUNTAIN",
+          "subtitle": "A place to pray, fast, and seek God.",
+          "imageFallback": "/ministries/prayer_mountain.png",
+          "linkUrl": "/prayer-mountain",
+          "buttonLabel": "Learn More",
+          "id": "6ae389820d9c320a2a4db548"
+        },
+        {
+          "title": "PRAYER HOUSE",
+          "subtitle": "A peaceful place to pray and encounter God.",
+          "imageFallback": "/ministries/prayer_house.png",
+          "linkUrl": "/prayer-house",
+          "buttonLabel": "Learn More",
+          "id": "6ae389820d9c320a2a4db549"
+        },
+        {
+          "title": "BIBLE COLLEGE",
+          "subtitle": "A place to learn and grow in God’s Word.",
+          "imageFallback": "/ministries/bible_college.png",
+          "linkUrl": "/bible-college",
+          "buttonLabel": "Learn More",
+          "id": "6ae389820d9c320a2a4db54a"
+        },
+        {
+          "title": "SOPHIA INSTITUTE",
+          "subtitle": "A place to learn, grow, and build your future.",
+          "imageFallback": "/ministries/sophia_institute.png",
+          "linkUrl": "/sophia-institute",
+          "buttonLabel": "Learn More",
+          "id": "6ae389820d9c320a2a4db54b"
+        },
+        {
+          "title": "MULTIMEDIA COLLEGE",
+          "subtitle": "A place where creativity, technology, and practical skills unite.",
+          "imageFallback": "/multimedia_college_hero.png",
+          "linkUrl": "/multimedia-college",
+          "buttonLabel": "Learn More",
+          "id": "6ae389820d9c320a2a4db54c"
+        },
+        {
+          "title": "CHURCH BRANCHES",
+          "subtitle": "Connect with a church branch near you.",
+          "imageFallback": "/ministries/church_branches.png",
+          "linkUrl": "/church-branches",
+          "buttonLabel": "Learn More",
+          "id": "6ae389820d9c320a2a4db54d"
+        },
+        {
+          "title": "SUNDAY SCHOOL",
+          "subtitle": "A place for children to learn God’s Word.",
+          "imageFallback": "/ministries/sunday_school.png",
+          "linkUrl": "/sunday-school",
+          "buttonLabel": "Learn More",
+          "id": "6ae389820d9c320a2a4db54e"
+        }
+      ],
+      "headChurchHeaderTitle": "Our Head Church Jalandhar",
+      "headChurchImage": null,
+      "headChurchFallback": "/head_church.png",
+      "headChurchAlt": "Head Church Jalandhar - Ankur Narula Ministries",
+      "headChurchNarrative": "Ankur Narula Ministries (The Church of Signs and Wonders) is the biggest and fastest growing church ministry in Punjab, India. Apostle Ankur Yoseph Narula is the Senior Pastor and Overseer in The Church of Signs and Wonders. The Church has become a channel of Salvation for India. Every Thursday and Sunday, our live services are broadcasted to millions around the globe through Anugrah TV, and the church is always filled more than capacity with overflows of people sitting outside the church on the roads and the empty plots. The church has become the biggest congregation of more than 300,000 people attending weekly services in The Church of Signs and Wonders.",
+      "worshipHeaderTitle": "Our Worship Team",
+      "worshipVideo": null,
+      "worshipVideoFallback": "/quoir_team.mp4",
+      "worshipPosterImage": null,
+      "worshipPosterFallback": null,
+      "worshipNarrative": "Our Worship Team leads the church in powerful and spirit-filled praise and worship. With dedication and passion, they help create an atmosphere where everyone can encounter God, express their faith, and grow deeper in their relationship with Christ.",
+      "updatedAt": "2026-09-23T13:55:38.000Z",
+      "createdAt": "2026-09-22T19:33:06.299Z",
+      "globalType": "ministries-page"
+    },
+    "prayer-mountain-page": {
+      "id": 1,
+      "heroHeaderTitle": "PRAYER MOUNTAIN",
+      "heroDescription": "The Prayer Mountain is a sacred place dedicated to prayer, meditation, and spiritual renewal. It is where believers gather to seek God's presence, intercede for their needs, and grow in faith. Here, individuals can experience deep encounters with God and leave spiritually rejuvenated.",
+      "heroVideo": null,
+      "heroVideoFallback": null,
+      "bannerVideoUrl": null,
+      "heroBannerImage": null,
+      "heroBannerFallback": "/prayer_mountain_hero.png",
+      "heroBannerAlt": "Prayer Mountain - Ankur Narula Ministries",
+      "heroSubtitle": "A consecrated place to seek God—daily at 8:00 PM we gather in expectation of His presence.",
+      "scenesHeaderTitle": "SCENES OF PRAYER MOUNTAIN",
+      "scenesRow1": [
+        {
+          "imageFallback": "/scenes_of_prayer_mountain/image_1.png",
+          "alt": "Prayer Mountain Scenic View 1",
+          "id": "6ae389820d9c320a2a4db54f"
+        },
+        {
+          "imageFallback": "/scenes_of_prayer_mountain/image_2.png",
+          "alt": "Prayer Mountain Scenic View 2",
+          "id": "6ae389820d9c320a2a4db550"
+        },
+        {
+          "imageFallback": "/scenes_of_prayer_mountain/image_3.png",
+          "alt": "Prayer Mountain Scenic View 3",
+          "id": "6ae389820d9c320a2a4db551"
+        },
+        {
+          "imageFallback": "/scenes_of_prayer_mountain/image_4.png",
+          "alt": "Prayer Mountain Scenic View 4",
+          "id": "6ae389820d9c320a2a4db552"
+        },
+        {
+          "imageFallback": "/scenes_of_prayer_mountain/image_5.png",
+          "alt": "Prayer Mountain Scenic View 5",
+          "id": "6ae389820d9c320a2a4db553"
+        },
+        {
+          "imageFallback": "/scenes_of_prayer_mountain/image_6.png",
+          "alt": "Prayer Mountain Scenic View 6",
+          "id": "6ae389820d9c320a2a4db554"
+        },
+        {
+          "imageFallback": "/scenes_of_prayer_mountain/image_7.png",
+          "alt": "Prayer Mountain Scenic View 7",
+          "id": "6ae389820d9c320a2a4db555"
+        },
+        {
+          "imageFallback": "/scenes_of_prayer_mountain/image_8.png",
+          "alt": "Prayer Mountain Scenic View 8",
+          "id": "6ae389820d9c320a2a4db556"
+        }
+      ],
+      "scenesRow2": [
+        {
+          "imageFallback": "/scenes_of_prayer_mountain/image_9.png",
+          "alt": "Prayer Mountain Scenic View 9",
+          "id": "6ae389820d9c320a2a4db557"
+        },
+        {
+          "imageFallback": "/scenes_of_prayer_mountain/image_10.png",
+          "alt": "Prayer Mountain Scenic View 10",
+          "id": "6ae389820d9c320a2a4db558"
+        },
+        {
+          "imageFallback": "/scenes_of_prayer_mountain/image_11.png",
+          "alt": "Prayer Mountain Scenic View 11",
+          "id": "6ae389820d9c320a2a4db559"
+        },
+        {
+          "imageFallback": "/scenes_of_prayer_mountain/image_12.png",
+          "alt": "Prayer Mountain Scenic View 12",
+          "id": "6ae389820d9c320a2a4db55a"
+        },
+        {
+          "imageFallback": "/scenes_of_prayer_mountain/image_13.png",
+          "alt": "Prayer Mountain Scenic View 13",
+          "id": "6ae389820d9c320a2a4db55b"
+        },
+        {
+          "imageFallback": "/scenes_of_prayer_mountain/image_14.png",
+          "alt": "Prayer Mountain Scenic View 14",
+          "id": "6ae389820d9c320a2a4db55c"
+        },
+        {
+          "imageFallback": "/scenes_of_prayer_mountain/image_15.png",
+          "alt": "Prayer Mountain Scenic View 15",
+          "id": "6ae389820d9c320a2a4db55d"
+        },
+        {
+          "imageFallback": "/scenes_of_prayer_mountain/image_16.png",
+          "alt": "Prayer Mountain Scenic View 16",
+          "id": "6ae389820d9c320a2a4db55e"
+        }
+      ],
+      "whatIsCardTitle": "What is Prayer Mountain?",
+      "whatIsCardDescription": "Prayer Mountain is a sacred place dedicated to prayer, meditation, and spiritual renewal. It is where believers gather to seek God's presence, intercede for their needs, and grow in faith. Here, individuals can experience deep encounters with God and leave spiritually rejuvenated.",
+      "visionCardTitle": "Purpose & vision",
+      "purposeParagraph": "The purpose of Prayer Mountain is to provide a quiet, holy space where believers can seek God's direction, receive healing, and find peace in the midst of life's challenges.",
+      "visionParagraph": "Our vision is to make it a place where individuals and families connect with God on a deeper level, and where the ministry can pray for the needs of the community.",
+      "testimoniesHeaderTitle": "TESTIMONIES OF PRAYER MOUTAIN",
+      "testimonies": [
+        {
+          "person": "Sister Randeep",
+          "title": "Complete Healing from Tuberculosis, Lung Complications & Paralysis",
+          "summary": "DUE TO TB AND FLUID IN THE RIGHT LUNG, SHE HAD DIFFICULTY IN BREATHING AND REMAINED BEDRIDDEN. AFTER RECEIVING ANOINTED PRAYER BY WOMAN OF GOD, SHE GOT REMARKABLE HEALING.",
+          "slug": "sister-randeep-healing",
+          "imageFallback": "/figma-assets/88fe21040a6d042f53b945fa5a996447efd6bcfd.png",
+          "buttonLabel": "READ FULL TESTIMONY",
+          "id": "6ae389820d9c320a2a4db55f"
+        },
+        {
+          "person": "Sister Sukhdeep Kaur",
+          "title": "Supernatural Deliverance from Severe Mental Attacks & Oppression",
+          "summary": "DUE TO VIOLENT DEMONIC MENTAL ATTACKS, SHE SUFFERED SEVERE OUTBURSTS AND AGONY. AFTER RECEIVING ANOINTED PRAYER, SHE WAS MIRACULOUSLY DELIVERED AND RESTORED TO SOUND MIND.",
+          "slug": "sister-sukhdeep-kaur-deliverance",
+          "imageFallback": "/figma-assets/6b7f869d048b1af39a42b08c4bacff57cb6ed577.png",
+          "buttonLabel": "READ FULL TESTIMONY",
+          "id": "6ae389820d9c320a2a4db560"
+        },
+        {
+          "person": "Brother Gurpreet Singh",
+          "title": "Instant Miracle Healing from Chronic Spinal Cord Degeneration",
+          "summary": "AFTER SUFFERING INTENSE LOWER BACK PAIN AND SPINAL IMMOBILITY FOR OVER 4 YEARS, HE WAS SUPERNATURALLY HEALED AT PRAYER MOUNTAIN AND CAN NOW WALK FREELY WITHOUT ANY PAIN.",
+          "slug": "brother-gurpreet-healing",
+          "imageFallback": "/figma-assets/88fe21040a6d042f53b945fa5a996447efd6bcfd.png",
+          "buttonLabel": "READ FULL TESTIMONY",
+          "id": "6ae389820d9c320a2a4db561"
+        },
+        {
+          "person": "Sister Manpreet Kaur",
+          "title": "Divine Restoration of Broken Marriage & Peaceful Family Revival",
+          "summary": "FACING IMMINENT DIVORCE AND CONTINUOUS TURMOIL, SHE SOUGHT GOD AT PRAYER MOUNTAIN. GOD HEARD HER CRIES, RECONCILED HER MARRIAGE, AND FILLED HER HOME WITH HIS BLESSING.",
+          "slug": "sister-manpreet-deliverance",
+          "imageFallback": "/figma-assets/6b7f869d048b1af39a42b08c4bacff57cb6ed577.png",
+          "buttonLabel": "READ FULL TESTIMONY",
+          "id": "6ae389820d9c320a2a4db562"
+        },
+        {
+          "person": "Brother Harjit Singh",
+          "title": "Delivered from 12 Years of Severe Substance Addiction & Depression",
+          "summary": "BOUND IN ALCOHOLISM AND SUICIDAL DEPRESSION, HIS LIFE WAS SHATTERED. AFTER COMMITTING TO FASTING AND PRAYER ON THE MOUNTAIN, HE WAS TOTALLY SET FREE AND TRANSFORMED.",
+          "slug": "brother-harjit-deliverance",
+          "imageFallback": "/figma-assets/88fe21040a6d042f53b945fa5a996447efd6bcfd.png",
+          "buttonLabel": "READ FULL TESTIMONY",
+          "id": "6ae389820d9c320a2a4db563"
+        },
+        {
+          "person": "Sister Jaswinder Kaur",
+          "title": "Miraculous Childbirth Testimony after 8 Years of Barrenness",
+          "summary": "DOCTORS DECLARED IT MEDICALLY IMPOSSIBLE FOR HER TO CONCEIVE. SHE ANOINTED HERSELF AND WEPT BEFORE GOD AT PRAYER MOUNTAIN; WITHIN A YEAR, GOD BLESSED HER WITH A HEALTHY BABY BOY.",
+          "slug": "sister-jaswinder-healing",
+          "imageFallback": "/figma-assets/6b7f869d048b1af39a42b08c4bacff57cb6ed577.png",
+          "buttonLabel": "READ FULL TESTIMONY",
+          "id": "6ae389820d9c320a2a4db564"
+        }
+      ],
+      "joinHeaderTitle": "JOIN US IN PRAYERS",
+      "timeCardTitle": "Time - Every Day at 8 PM",
+      "timeCardDescription": "Join in Person or Connect with The Ministry Broadcast Schedule.",
+      "locationCardTitle": null,
+      "locationCardDescription": null,
+      "locationUrl": null,
+      "updatedAt": "2026-09-22T19:51:35.193Z",
+      "createdAt": "2026-09-22T19:51:35.193Z",
+      "globalType": "prayer-mountain-page"
+    },
+    "prayer-house-page": {
+      "id": 1,
+      "heroHeaderTitle": "PRAYER HOUSE",
+      "heroDescription": "Welcome to a dwelling of divine presence, where every soul finds rest and every prayer rises to heaven. This is not just a place, but a powerful encounter with the living God, where broken hearts are healed and weary spirits are strengthened. As you seek Him here, you will discover His love, His peace, and His transforming power working in your life. Come with expectation, and leave with a testimony of His goodness.",
+      "heroBannerImage": null,
+      "heroBannerFallback": "/prayer_house_hero.png",
+      "heroBannerAlt": "Prayer House - Ankur Narula Ministries",
+      "heroVideo": null,
+      "heroVideoFallback": null,
+      "bannerVideoUrl": null,
+      "heroSubtitle": "Encounter God. Experience Healing. Walk in His Presence.",
+      "scenesHeaderTitle": "SCENES OF PRAYER HOUSE",
+      "scenesRow1": [
+        {
+          "id": "ph_sc_1",
+          "image": null,
+          "imageFallback": "/scenes_of_prayer_house/image_1.png",
+          "alt": "Prayer House Scenic View 1"
+        },
+        {
+          "id": "ph_sc_2",
+          "image": null,
+          "imageFallback": "/scenes_of_prayer_house/image_2.png",
+          "alt": "Prayer House Scenic View 2"
+        },
+        {
+          "id": "ph_sc_3",
+          "image": null,
+          "imageFallback": "/scenes_of_prayer_house/image_3.png",
+          "alt": "Prayer House Scenic View 3"
+        },
+        {
+          "id": "ph_sc_4",
+          "image": null,
+          "imageFallback": "/scenes_of_prayer_house/image_4.png",
+          "alt": "Prayer House Scenic View 4"
+        },
+        {
+          "id": "ph_sc_5",
+          "image": null,
+          "imageFallback": "/scenes_of_prayer_house/image_5.png",
+          "alt": "Prayer House Scenic View 5"
+        }
+      ],
+      "scenesRow2": [
+        {
+          "id": "ph_sc_6",
+          "image": null,
+          "imageFallback": "/scenes_of_prayer_house/image_6.png",
+          "alt": "Prayer House Scenic View 6"
+        },
+        {
+          "id": "ph_sc_7",
+          "image": null,
+          "imageFallback": "/scenes_of_prayer_house/image_7.png",
+          "alt": "Prayer House Scenic View 7"
+        },
+        {
+          "id": "ph_sc_8",
+          "image": null,
+          "imageFallback": "/scenes_of_prayer_house/image_8.png",
+          "alt": "Prayer House Scenic View 8"
+        },
+        {
+          "id": "ph_sc_9",
+          "image": null,
+          "imageFallback": "/scenes_of_prayer_house/image_9.png",
+          "alt": "Prayer House Scenic View 9"
+        }
+      ],
+      "whatIsCardTitle": "What is Prayer House?",
+      "whatIsCardDescription": "Prayer House is a sacred space dedicated to prayer, worship, and spiritual renewal. It is a place where believers gather to seek God's presence, lift up their needs, and grow deeper in faith. Here, individuals and families can encounter God intimately and experience peace, restoration, and encouragement in their spiritual journey.",
+      "visionCardTitle": "Purpose & vision",
+      "purposeParagraph": "The purpose of Prayer House is to provide a peaceful, holy environment where people can come aside from daily distractions and connect with God.",
+      "visionParagraph": "Our vision is to build a strong prayer community where lives are transformed, faith is strengthened, and hearts are aligned with God's will. It is a place where continuous prayer is offered for individuals, families, and the needs of the community.",
+      "updatedAt": "2026-09-22T20:20:44.357Z",
+      "createdAt": "2026-09-22T20:20:44.357Z",
+      "globalType": "prayer-house-page"
+    },
+    "bible-college-page": {
+      "id": 1,
+      "heroHeaderTitle": "BIBLE COLLEGE",
+      "heroDescription": "Welcome to a place where the Word of God comes alive and transforms lives from within. Here, you will be grounded in truth, strengthened in faith, and equipped with spiritual wisdom to walk in God's purpose. Through dedicated teaching, revelation, and guidance, you will grow deeper in your relationship with Christ and discover the power of His Word working in your life. This is more than learning—it is a journey of becoming who God has called you to be.",
+      "heroBannerImage": null,
+      "heroBannerFallback": "/bible_college_hero.png",
+      "heroBannerAlt": "Bible College - Ankur Narula Ministries",
+      "heroVideo": null,
+      "heroVideoFallback": null,
+      "bannerVideoUrl": null,
+      "heroSubtitle": "Equipping believers with the Word of God to walk in truth, power, and purpose.",
+      "scenesHeaderTitle": "SCENES OF BIBLE COLLEGE",
+      "scenesRow1": [
+        {
+          "id": "bc_sc_1",
+          "image": null,
+          "imageFallback": "/scenes_of_bible_college/image_1.png",
+          "alt": "Bible College Scenic View 1"
+        },
+        {
+          "id": "bc_sc_2",
+          "image": null,
+          "imageFallback": "/scenes_of_bible_college/image_2.png",
+          "alt": "Bible College Scenic View 2"
+        },
+        {
+          "id": "bc_sc_3",
+          "image": null,
+          "imageFallback": "/scenes_of_bible_college/image_3.png",
+          "alt": "Bible College Scenic View 3"
+        },
+        {
+          "id": "bc_sc_4",
+          "image": null,
+          "imageFallback": "/scenes_of_bible_college/image_4.png",
+          "alt": "Bible College Scenic View 4"
+        },
+        {
+          "id": "bc_sc_5",
+          "image": null,
+          "imageFallback": "/scenes_of_bible_college/image_5.png",
+          "alt": "Bible College Scenic View 5"
+        }
+      ],
+      "scenesRow2": [
+        {
+          "id": "bc_sc_6",
+          "image": null,
+          "imageFallback": "/scenes_of_bible_college/image_6.png",
+          "alt": "Bible College Scenic View 6"
+        },
+        {
+          "id": "bc_sc_7",
+          "image": null,
+          "imageFallback": "/scenes_of_bible_college/image_7.png",
+          "alt": "Bible College Scenic View 7"
+        },
+        {
+          "id": "bc_sc_8",
+          "image": null,
+          "imageFallback": "/scenes_of_bible_college/image_8.png",
+          "alt": "Bible College Scenic View 8"
+        },
+        {
+          "id": "bc_sc_9",
+          "image": null,
+          "imageFallback": "/scenes_of_bible_college/image_9.png",
+          "alt": "Bible College Scenic View 9"
+        }
+      ],
+      "whatIsCardTitle": "What is Bible College?",
+      "whatIsCardDescription": "Bible College is a dedicated place of learning where individuals are trained in the Word of God, spiritual disciplines, and Christian leadership. It is designed to equip believers with a deeper understanding of Scripture, helping them grow in faith, wisdom, and maturity. Here, students are nurtured to live out God's calling and serve effectively in ministry and everyday life.",
+      "visionCardTitle": "Purpose & vision",
+      "purposeParagraph": "The purpose of The Christ Bible College is to raise and train strong, faithful, and committed workers for the Kingdom of God. To walk in obedience, humility, love, and holiness, while growing in spiritual maturity, biblical understanding, and godly character.",
+      "visionParagraph": "The vision of The Christ Bible College is to raise a generation that will make disciples, impact communities, reach the nations, and reflect the love of Jesus wherever God calls them. To carry the heart, character, and message of Jesus Christ to the world.",
+      "updatedAt": "2026-09-22T20:31:31.844Z",
+      "createdAt": "2026-09-22T20:31:31.844Z",
+      "globalType": "bible-college-page"
+    },
+    "sophia-institute-page": {
+      "id": 1,
+      "heroHeaderTitle": "Sophia Institute",
+      "heroDescription": "Welcome to Sophia Institute, a place dedicated to nurturing faith, wisdom, and a deeper understanding of the Word of God. Through Scripture, prayer, teaching, and fellowship, we seek to encourage believers to grow in their relationship with Christ and live out their faith with love, truth, and purpose.",
+      "heroBannerImage": null,
+      "heroBannerFallback": "/sophia_institute_hero.png",
+      "heroBannerAlt": "Sophia Institute - Learning and Theological Wisdom",
+      "heroVideo": null,
+      "heroVideoFallback": null,
+      "bannerVideoUrl": null,
+      "heroSubtitle": "Nurturing faith, wisdom, and purpose through the truth of God's Word.",
+      "scenesHeaderTitle": "SCENES OF SOPHIA INSTITUTE",
+      "scenesRow1": [
+        {
+          "id": "si-1",
+          "image": null,
+          "imageFallback": "/scenes_of_sophia_institute/image_1.png",
+          "alt": "Sophia Institute Theological Lecture Hall & Classroom"
+        },
+        {
+          "id": "si-2",
+          "image": null,
+          "imageFallback": "/scenes_of_sophia_institute/image_2.png",
+          "alt": "Study & Scripture Research Center"
+        },
+        {
+          "id": "si-3",
+          "image": null,
+          "imageFallback": "/scenes_of_sophia_institute/image_3.png",
+          "alt": "Scriptural Library & Resource Archives"
+        }
+      ],
+      "scenesRow2": [
+        {
+          "id": "si-4",
+          "image": null,
+          "imageFallback": "/scenes_of_sophia_institute/image_4.png",
+          "alt": "Digital Study & Computer Lab Stations"
+        },
+        {
+          "id": "si-5",
+          "image": null,
+          "imageFallback": "/scenes_of_sophia_institute/image_5.png",
+          "alt": "Student Fellowship & Discussion Space"
+        },
+        {
+          "id": "si-6",
+          "image": null,
+          "imageFallback": "/scenes_of_sophia_institute/image_6.png",
+          "alt": "Institute Campus & Meditation Sanctuary"
+        }
+      ],
+      "whatIsCardTitle": "WHAT IS SOPHIA INSTITUTE",
+      "whatIsCardDescription": "Sophia Institute is an academic and spiritual center dedicated to theological excellence, leadership cultivation, and scriptural depth for Christian educators, scholars, and church leaders.",
+      "visionCardTitle": "PURPOSE AND VISION",
+      "purposeParagraph": "To cultivate theological insight and biblical wisdom, preparing servants of God for academic, pastoral, and educational ministry worldwide.",
+      "visionParagraph": "To be a premier institution of divine wisdom, equipping leaders to teach and uphold the uncompromised Word of God with excellence.",
+      "updatedAt": "2026-09-23T07:54:00.000Z",
+      "createdAt": "2026-09-22T15:12:16.000Z",
+      "globalType": "sophia-institute-page"
+    },
+    "multimedia-college-page": {
+      "scenesRow1": [
+        {
+          "imageFallback": "/scenes_of_multimedia/image_1.png",
+          "alt": "Multimedia College Studio & Technology 1",
+          "id": "6ae389820d9c320a2a4db565"
+        },
+        {
+          "imageFallback": "/scenes_of_multimedia/image_2.png",
+          "alt": "Multimedia College Production Session 2",
+          "id": "6ae389820d9c320a2a4db566"
+        },
+        {
+          "imageFallback": "/scenes_of_multimedia/image_3.png",
+          "alt": "Multimedia College Creative Learning 3",
+          "id": "6ae389820d9c320a2a4db567"
+        },
+        {
+          "imageFallback": "/scenes_of_multimedia/image_4.png",
+          "alt": "Multimedia College Media Lab 4",
+          "id": "6ae389820d9c320a2a4db568"
+        },
+        {
+          "imageFallback": "/scenes_of_multimedia/image_5.png",
+          "alt": "Multimedia College Broadcasting 5",
+          "id": "6ae389820d9c320a2a4db569"
+        },
+        {
+          "imageFallback": "/scenes_of_multimedia/image_6.png",
+          "alt": "Multimedia College Practical Training 6",
+          "id": "6ae389820d9c320a2a4db56a"
+        },
+        {
+          "imageFallback": "/scenes_of_multimedia/image_7.png",
+          "alt": "Multimedia College Digital Arts 7",
+          "id": "6ae389820d9c320a2a4db56b"
+        },
+        {
+          "imageFallback": "/scenes_of_multimedia/image_8.png",
+          "alt": "Multimedia College Creative Team 8",
+          "id": "6ae389820d9c320a2a4db56c"
+        }
+      ],
+      "scenesRow2": [
+        {
+          "imageFallback": "/scenes_of_multimedia/image_9.png",
+          "alt": "Multimedia College Editing & Design 9",
+          "id": "6ae389820d9c320a2a4db56d"
+        },
+        {
+          "imageFallback": "/scenes_of_multimedia/image_10.png",
+          "alt": "Multimedia College Camera & Audio Setup 10",
+          "id": "6ae389820d9c320a2a4db56e"
+        },
+        {
+          "imageFallback": "/scenes_of_multimedia/image_11.png",
+          "alt": "Multimedia College Live Broadcast Suite 11",
+          "id": "6ae389820d9c320a2a4db56f"
+        },
+        {
+          "imageFallback": "/scenes_of_multimedia/image_12.png",
+          "alt": "Multimedia College Students Workshop 12",
+          "id": "6ae389820d9c320a2a4db570"
+        },
+        {
+          "imageFallback": "/scenes_of_multimedia/image_13.png",
+          "alt": "Multimedia College Visual Storytelling 13",
+          "id": "6ae389820d9c320a2a4db571"
+        },
+        {
+          "imageFallback": "/scenes_of_multimedia/image_14.png",
+          "alt": "Multimedia College Media Equipment 14",
+          "id": "6ae389820d9c320a2a4db572"
+        },
+        {
+          "imageFallback": "/scenes_of_multimedia/image_15.png",
+          "alt": "Multimedia College Technical Excellence 15",
+          "id": "6ae389820d9c320a2a4db573"
+        },
+        {
+          "imageFallback": "/scenes_of_multimedia/image_16.png",
+          "alt": "Multimedia College Graduation & Impact 16",
+          "id": "6ae389820d9c320a2a4db574"
+        }
+      ],
+      "heroHeaderTitle": "MULTIMEDIA COLLEGE",
+      "heroDescription": "Welcome to Multimedia College, where creativity, technology, and faith unite to empower the next generation of Christian media creators. Through hands-on training, professional tools, and biblical values, students are equipped to lead and influence the digital world.",
+      "heroBannerFallback": "/multimedia_college_hero.png",
+      "heroBannerAlt": "Multimedia College - Ankur Narula Ministries",
+      "heroVideoUrl": "",
+      "heroSubtitle": "Empowering creative media minds to communicate truth and impact the digital generation.",
+      "scenesHeaderTitle": "SCENES OF MULTIMEDIA COLLEGE",
+      "whatIsCardTitle": "WHAT IS MULTIMEDIA COLLEGE?",
+      "whatIsCardDescription": "Multimedia College is a place where creativity, technology and practical skills come together to equip students for opportunities in the growing world of multimedia and digital communication.",
+      "visionCardTitle": "PURPOSE & VISION",
+      "purposeParagraph": "The college aims to help students turn their creativity and talents into professional skills and prepare them for successful careers and opportunities in the digital world.",
+      "visionParagraph": "The vision of Multimedia College is to raise a generation of creative and skilled media professionals who can use technology, creativity and communication to influence, inspire and make a positive impact on society"
+    },
+    "sunday-school-page": {
+      "id": 1,
+      "heroHeaderTitle": "SUNDAY SCHOOL MINISTRIES",
+      "heroDescription": "Welcome to Sunday School, a place where the Word of God is taught with simplicity, love, and truth, helping children experience the presence of God in a personal way. Here, children grow together in faith as the Scriptures come alive through teaching, stories, and fellowship.",
+      "heroBannerImage": null,
+      "heroBannerFallback": "/sunday_school_hero.png",
+      "heroBannerAlt": "Sunday School Ministries - Ankur Narula Ministries",
+      "heroVideo": null,
+      "heroVideoFallback": null,
+      "bannerVideoUrl": null,
+      "heroVideoUrl": null,
+      "heroSubtitle": "Empowering the next generation to walk in faith, truth, and the power of God.",
+      "scenesHeaderTitle": "SCENES OF SUNDAY SCHOOL MINISTRIES",
+      "scenesRow1": [
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_1.png",
+          "alt": "Sunday School Children Bible Activity 1",
+          "id": "6ae389820d9c320a2a4db575"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_2.png",
+          "alt": "Sunday School Bible Learning and Worship 2",
+          "id": "6ae389820d9c320a2a4db576"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_3.png",
+          "alt": "Sunday School Fellowship and Prayer 3",
+          "id": "6ae389820d9c320a2a4db577"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_4.png",
+          "alt": "Sunday School Young Believers Classroom 4",
+          "id": "6ae389820d9c320a2a4db578"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_5.png",
+          "alt": "Sunday School Scripture Recitation 5",
+          "id": "6ae389820d9c320a2a4db579"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_6.png",
+          "alt": "Sunday School Branch Students 6",
+          "id": "6ae389820d9c320a2a4db57a"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_7.png",
+          "alt": "Sunday School Youth Mentorship 7",
+          "id": "6ae389820d9c320a2a4db57b"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_8.png",
+          "alt": "Sunday School Praise and Fellowship 8",
+          "id": "6ae389820d9c320a2a4db57c"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_9.png",
+          "alt": "Sunday School Creative Arts and Activity 9",
+          "id": "6ae389820d9c320a2a4db57d"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_10.png",
+          "alt": "Sunday School Joyful Gathering 10",
+          "id": "6ae389820d9c320a2a4db57e"
+        }
+      ],
+      "scenesRow2": [
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_11.png",
+          "alt": "Sunday School Group Celebration 11",
+          "id": "6ae389820d9c320a2a4db57f"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_12.png",
+          "alt": "Sunday School Worship Songs 12",
+          "id": "6ae389820d9c320a2a4db580"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_13.png",
+          "alt": "Sunday School Kids Bible Quiz 13",
+          "id": "6ae389820d9c320a2a4db581"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_14.png",
+          "alt": "Sunday School Discipleship Class 14",
+          "id": "6ae389820d9c320a2a4db582"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_15.png",
+          "alt": "Sunday School Biblical Story Time 15",
+          "id": "6ae389820d9c320a2a4db583"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_16.png",
+          "alt": "Sunday School Youth Leaders Session 16",
+          "id": "6ae389820d9c320a2a4db584"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_17.png",
+          "alt": "Sunday School Faith Foundations 17",
+          "id": "6ae389820d9c320a2a4db585"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_18.png",
+          "alt": "Sunday School Anointed Teaching 18",
+          "id": "6ae389820d9c320a2a4db586"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_19.png",
+          "alt": "Sunday School Joy in the Lord 19",
+          "id": "6ae389820d9c320a2a4db587"
+        },
+        {
+          "imageFallback": "/scenes_of_sunday_school/image_20.png",
+          "alt": "Sunday School Community Outreach 20",
+          "id": "6ae389820d9c320a2a4db588"
+        }
+      ],
+      "whatIsCardTitle": "WHAT IS SUNDAY SCHOOL",
+      "whatIsCardDescription": "Ankur Narula Ministries Sunday School, led by Sister Sophia and Brother Yirmeyah, is a place where children are taught to grow in their relationship with God and follow Jesus Christ.",
+      "visionCardTitle": "PURPOSE AND VISION",
+      "purposeParagraph": "The purpose of the Sunday School is to build a strong foundation of faith in the lives of children through the teaching of God’s Word and to help them learn the values of faith, obedience, love and godly character.",
+      "visionParagraph": "The vision of Ankur Narula Ministries Sunday School is to raise a generation of children who know Christ, love His Word, walk in His ways, live for His Glory, and shine His light wherever they go.",
+      "updatedAt": "2026-10-10T17:43:20.071Z",
+      "createdAt": "2026-09-22T15:12:16.000Z",
+      "globalType": "sunday-school-page"
+    },
+    "church-branches-page": {
+      "id": 1,
+      "heroHeaderTitle": "OUR CHURCH BRANCHES",
+      "heroDescription": "Connecting believers worldwide in worship, faith, and apostolic power. Locate our Apostolic Headquarters or find a church branch near you.",
+      "heroVideo": null,
+      "heroVideoFallback": "/church_branches_hero.mp4",
+      "bannerVideoUrl": null,
+      "heroBannerImage": null,
+      "heroBannerFallback": "/church_branches_hero.png",
+      "heroBannerAlt": "Our Branches - Ankur Narula Ministries",
+      "headBranchTitle": "Head Branch Punjab Khambra",
+      "headBranchMapIframe": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.0779467068696!2d75.56073407539549!3d31.273939074327686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5b50b36a88a1%3A0x3d8b66ec2e189bf6!2sAnkur%20Narula%20Ministries!5e0!3m2!1sen!2sin!4v1790533216619!5m2!1sen!2sin\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\"></iframe>",
+      "headBranchMapImage": null,
+      "headBranchMapFallback": "/figma-assets/6627c47caaf2724af326c71d68ab4ef85b4bc42c.png",
+      "headBranchHelperText": "Here is a location pin to help you find us!",
+      "directoryHeaderTitle": "ANM CHURCHES IN INDIA",
+      "nationalBranches": [
+        {
+          "id": "03de8de725a969c0bb710a4d",
+          "name": "ANM FEROZEPUR CHURCH",
+          "line1": "Ferozepur Faridkot Road, Nurpur Sethha",
+          "line2": "near R.S. Selar Ke, opposite.",
+          "mapLink": "https://maps.app.goo.gl/2f6LDizaYevDz732A"
+        },
+        {
+          "id": "acd4e92aa14894807ed7f3bf",
+          "name": "ANM JALALABAD (FAZILKA) CHURCH",
+          "line1": "Village Mahmu Joyia, Jalalabad, near Tool Plaza",
+          "line2": "District Fazilka, PIN code 152024.",
+          "mapLink": "https://maps.app.goo.gl/2QvRRsnYKHodzuQh8"
+        },
+        {
+          "id": "2840e28685a167dda2659b63",
+          "name": "ANM MANSA CHURCH",
+          "line1": "Village Barnala Road, Mansa Kenchiyaan, 1 km ahead of ITI College",
+          "line2": "near Renaissance School, District Mansa, PIN code 151505.",
+          "mapLink": "https://maps.app.goo.gl/P2Jjp1yWWjFvYfsw5"
+        },
+        {
+          "id": "829dd1ee50eb3ece59185241",
+          "name": "ANM HOSHIARPUR CHURCH",
+          "line1": "Village Fattowal, near Bus Stand Bulhowal Road",
+          "line2": "District Hoshiarpur, PIN code 146113.",
+          "mapLink": "https://maps.app.goo.gl/Z5D1yi8idNmqNc3G7"
+        },
+        {
+          "id": "fe9bdf50e1fcf8b8ceca4599",
+          "name": "ANM LUDHIANA CHURCH",
+          "line1": "Village Mohi, Jangpur Road, Mullanpur",
+          "line2": "Ludhiana, Punjab.",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20LUDHIANA%20CHURCH%2C%20Village%20Mohi%2C%20Jangpur%20Road%2C%20Mullanpur%2C%20Ludhiana%2C%20Punjab."
+        },
+        {
+          "id": "2f1536c0b1bdd9161233ae14",
+          "name": "ANM AMRITSAR CHURCH",
+          "line1": "Village Khabe Dogra, Jandiala Road",
+          "line2": "Tarn Taran, Amritsar, Punjab.",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20AMRITSAR%20CHURCH%2C%20Village%20Khabe%20Dogra%2C%20Jandiala%20Road%2C%20Tarn%20Taran%2C%20Amritsar."
+        },
+        {
+          "id": "8f250e1e7202f3823d510048",
+          "name": "ANM GURDASPUR CHURCH",
+          "line1": "Village Dhariwal, Japowal P.O. Sohal",
+          "line2": "District Gurdaspur, PIN code 143520.",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20GURDASPUR%20CHURCH%2C%20Village%20Dhariwal%2C%20Japowal%20P.O.%20Sohal%2C%20District%20Gurdaspur%2C%20PIN%20code%20143520."
+        },
+        {
+          "id": "95e646865fb7b45d28714048",
+          "name": "ANM BARNALA CHURCH",
+          "line1": "Gupta Marriage Palace, Raikot Road",
+          "line2": "near Trident Factory Outlet, Barnala, Punjab.",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20BARNALA%20CHURCH%2C%20Gupta%20Marriage%20Palace%2C%20Raikot%20Road%2C%20near%20Trident%20Factory%20Outlet%2C%20Barnala%2C%20Punjab."
+        },
+        {
+          "id": "4586517dc1254282b9054ae0",
+          "name": "ANM PATIALA CHURCH",
+          "line1": "Bhadson Road, 500 meters from UK Palace",
+          "line2": "Village Lachkani, Patiala.",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20PATIALA%20CHURCH%2C%20Bhadson%20Road%2C%20500%20meters%20from%20UK%20Palace%2C%20Village%20Lachkani%2C%20Patiala."
+        },
+        {
+          "id": "7490b5353c092a78f71c1a46",
+          "name": "ANM NADALA CHURCH",
+          "line1": "Bhulath to Nadala Road, near Christ the King Convent School",
+          "line2": "opposite Coca Cola Agency, Bhulath, Kapurthala, PIN code 144622.",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20NADALA%20CHURCH%2C%20Bhulath%20to%20Nadala%20Road%2C%20near%20Christ%20the%20King%20Convent%20School%2C%20opposite%20Coca%20Cola%20Agency%2C%20PIN%20code%20144622%2C%20Bhulath%2C%20Kapurthala."
+        },
+        {
+          "id": "5fa5db3929cda93e3c8f482a",
+          "name": "ANM ABOHAR, FAZILKA CHURCH",
+          "line1": "Malout Road near Transport Bypass Pull, Abohar City",
+          "line2": "District Fazilka, Punjab, PIN code 152116.",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20ABOHAR%2C%20FAZILKA%20CHURCH%2C%20Malout%20Road%20near%20Transport%20Bypass%20Pull%2C%20Abohar%20City%2C%20District%20Fazilka%2C%20Punjab%2C%20PIN%20code%20152116."
+        },
+        {
+          "id": "8b1c687175eb9b5f5c49e226",
+          "name": "ANM BATHINDA CHURCH",
+          "line1": "Bhucho Mandi, near Toll Plaza, on Bathinda to Barnala Road",
+          "line2": "District Bathinda, PIN code 151101.",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20BATHINDA%20CHURCH%2C%20Bhucho%20Mandi%2C%20near%20Toll%20Plaza%2C%20on%20Bathinda%20to%20Barnala%20Road%2C%20District%20Bathinda%2C%20PIN%20code%20151101."
+        },
+        {
+          "id": "2d308f003cf9415cb1030be1",
+          "name": "ANM MOGA CHURCH",
+          "line1": "Opposite side of Dagru Adani Selar",
+          "line2": "Ferozepur Road, Moga, Punjab.",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20MOGA%20CHURCH%2C%20Opposite%20side%20of%20Dagru%20Adani%20Selar%2C%20Ferozepur%20Road%2C%20Moga."
+        },
+        {
+          "id": "131a913fed1993fbe6b46c51",
+          "name": "ANM CHANDIGARH CHURCH",
+          "line1": "Arjun Palace Building, on Chunni to Morinda Road",
+          "line2": "1 km away from Chunni Kalan, District Fatehgarh Sahib, PIN code 140406.",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20CHANDIGARH%20CHURCH%2C%20Arjun%20Palace%20Building%2C%20on%20Chunni%20to%20Morinda%20Road%2C%201%20km%20away%20from%20Chunni%20Kalan%2C%20District%20Fatehgarh%20Sahib%2C%20PIN%20code%20140406."
+        },
+        {
+          "id": "afe2ba4e327ec36d0fa48c34",
+          "name": "ANM RUPNAGAR CHURCH",
+          "line1": "Village Church of Science and Wonders, Bhufra Chowk",
+          "line2": "Ajit Palace, Rajpura (Patiala).",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20RUPNAGAR%20CHURCH%2C%20Village%20Church%20of%20Science%20and%20Wonders%2C%20Bhufra%20Chowk%2C%20Ajit%20Palace%2C%20Rajpura%20%28Patiala%29"
+        },
+        {
+          "id": "6ccd1e27e0ca20a3d2c0f162",
+          "name": "ANM RAJPURA CHURCH",
+          "line1": "Village Uppal Heri, Sirhind to Rajpura Road",
+          "line2": "near Bharat Petroleum BPCL pump, Rajpura, Patiala, PIN code 140401.",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20RAJPURA%20CHURCH%2C%20Village%20Uppal%20Heri%2C%20Sirhind%20to%20Rajpura%20Road%2C%20near%20Bharat%20Petroleum%20BPCL%20pump%2C%20Rajpura%2C%20Patiala%2C%20PIN%20code%20140401."
+        },
+        {
+          "id": "4c91ccd2843c52975aba7f79",
+          "name": "ANM SANGRUR CHURCH",
+          "line1": "Golden Palace, near Sanskar Velly, Phaguwala Kanchian",
+          "line2": "Bhawanigarh, District Sangrur, PIN code 148001.",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20SANGRUR%20CHURCH%2C%20Golden%20Palace%2C%20near%20Sanskar%20Velly%2C%20Phaguwala%20Kanchian%2C%20Bhawanigarh%2C%20District%20Sangrur%2C%20PIN%20code%20148001."
+        },
+        {
+          "id": "897d01521e2460ad576c41a3",
+          "name": "ANM BATALA CHURCH",
+          "line1": "Sunaiya Aliwal Road, near Petrol Pump",
+          "line2": "Batala, District Gurdaspur, PIN code 143505.",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20BATALA%20CHURCH%2C%20Sunaiya%20Aliwal%20Road%2C%20near%20Petrol%20Pump%2C%20Batala%2C%20District%20Gurdaspur%2C%20PIN%20code%20143505."
+        },
+        {
+          "id": "0867bc7f46287a86690bde1c",
+          "name": "ANM AJNALA CHURCH",
+          "line1": "Nijjar International Palace, in front of Dana Mandi",
+          "line2": "Chogawan Road, Ajnala, District Amritsar.",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20AJNALA%20CHURCH%2C%20Nijjar%20International%20Palace%2C%20in%20front%20of%20Dana%20Mandi%2C%20Chogawan%20Road%2C%20Ajnala%2C%20District%20Amritsar."
+        },
+        {
+          "id": "9946b70814937d1ef4c3a46e",
+          "name": "ANM FARIDKOT CHURCH",
+          "line1": "Chand Palace, Kotkapura, Talwandi Bypass",
+          "line2": "opposite Cannal, District Faridkot.",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20FARIDKOT%20CHURCH%2C%20Chand%20Palace%2C%20Kotkapura%2C%20Talwandi%20Bypass%2C%20opposite%20Cannal%2C%20District%20Faridkot."
+        }
+      ],
+      "internationalBranches": [
+        {
+          "id": "ec5af5fd5783097ee3340f45",
+          "name": "ANM OTTAWA, CANADA CHURCH",
+          "line1": "West Merivale Plaza, 1489 Merivale Rd, Nepean, ON K2E 5P3",
+          "line2": "Sunday Meeting Time: 9:30 AM to 1:30 PM (Canada time)",
+          "mapLink": "https://maps.app.goo.gl/9UztU6h7vJgGvmbP7"
+        },
+        {
+          "id": "b3c6e63a3bb0321a31b5f686",
+          "name": "ANM LONDON CITY, CANADA CHURCH",
+          "line1": "Prince William Room, 1057 Oxford Street East, London, Ontario, N5Y3L2",
+          "line2": "Sunday Meeting Time: 9:30 AM to 1:30 PM (Canada time)",
+          "mapLink": "https://maps.app.goo.gl/crKtfHRRUPhCsDNB7?g_st=aw"
+        },
+        {
+          "id": "88b4711641ca3c0cf0f252d3",
+          "name": "ANM CALGARY, CANADA CHURCH",
+          "line1": "5th Avenue Building, 3016 5 Ave NE, Calgary, AB – T2A 6K4, Canada",
+          "line2": "Sunday Meeting Time: 7:30 AM to 11:30 AM (Calgary time)",
+          "mapLink": "https://maps.app.goo.gl/f2VKdZWTmCL7oLyc7?g_st=iw"
+        },
+        {
+          "id": "014e71637560040358e1a219",
+          "name": "ANM NOVA SCOTIA, CANADA CHURCH",
+          "line1": "Hampton Inn and Suites, 65 Cromarty Dr, Dartmouth, NS, B3N 0G2",
+          "line2": "Sunday Meeting Time: 10:30 AM to 2:00 PM (Nova Scotia time)",
+          "mapLink": "https://maps.app.goo.gl/Hez3mhBHW3EDVeu4A"
+        },
+        {
+          "id": "47d520374667bd8bf1b19c98",
+          "name": "ANM TORONTO, CANADA CHURCH",
+          "line1": "Eros Convention Center, 2360 Lucknow Dr, Mississauga, ON L5S 1H3",
+          "line2": "Sunday Meeting Time: 9:30 AM to 1:00 PM (Canada time)",
+          "mapLink": "https://maps.app.goo.gl/VE3HMa6TMKzAVXMz8"
+        },
+        {
+          "id": "ed21e6b8f7e4d0ec0040eb56",
+          "name": "ANM SURREY, CANADA CHURCH",
+          "line1": "Bethany Newton United Church, 14853 60 Avenue, Surrey, BC V35 3H8",
+          "line2": "Sunday Meeting Time: 6:30 AM to 10:30 AM (Surrey time)",
+          "mapLink": "https://maps.app.goo.gl/jta7KZgJTwwSfUF86"
+        },
+        {
+          "id": "5b7eb23e9e9438c08e674b7f",
+          "name": "ANM EDMONTON, CANADA CHURCH",
+          "line1": "9158 23 Ave NW, Edmonton, AB T6N 1H9",
+          "line2": "Sunday Meeting Time: 7:30 AM to 11:30 AM (Canada time)",
+          "mapLink": "https://maps.app.goo.gl/3EcnwyZjpLVNVMsRA"
+        },
+        {
+          "id": "a486b04702c2ff9f3ca96a08",
+          "name": "ANM MONTREAL, CANADA CHURCH",
+          "line1": "8386 Boul. Saint Laurent, Montreal, QC H2P 2M3",
+          "line2": "Sunday Meeting Time: 9:30 AM to 1:00 PM (Montreal time)",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20MONTREAL%2C%20CANADA%20CHURCH%2C%208386%20Boul.%20Saint%20Laurent%2C%20Montreal%2C%20QC%20H2P%202M3"
+        },
+        {
+          "id": "8d434c6db4e6c9b556af596f",
+          "name": "ANM WINNIPEG, CANADA CHURCH",
+          "line1": "RU Banquet Hall Inc., 56 Keewaten St, Winnipeg, MB R3E 3C4",
+          "line2": "Sunday Meeting Time: 7:30 AM to 11:30 AM (Winnipeg time)",
+          "mapLink": "https://maps.app.goo.gl/a8uDcBU4VVxNkkKS6"
+        },
+        {
+          "id": "5f40ae7eaece91d946344450",
+          "name": "ANM MANCHESTER, UK CHURCH",
+          "line1": "27-29 Maine Rd, Greater, Rusholme, Manchester M14 4FS",
+          "line2": "Sunday Meeting Time: 2:30 PM to 6:30 PM (Manchester, UK time)",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20MANCHESTER%2C%20UK%20CHURCH%2C%2027-29%20Maine%20Rd%2C%20Greater%2C%20Rusholme%2C%20Manchester%20M14%204FS"
+        },
+        {
+          "id": "e3476c3f6f65807532beed18",
+          "name": "ANM LEICESTER, UK CHURCH",
+          "line1": "The Grove Community Hub, Cort Cres, Leicester LE3 1QZ",
+          "line2": "Sunday Meeting Time: 2:30 PM to 6:30 PM (Leicester time)",
+          "mapLink": "https://maps.app.goo.gl/TwH2HSvv8gmtJiYL6"
+        },
+        {
+          "id": "58a0eb5ca168fe226d9d8fe1",
+          "name": "ANM ILFORD, UK CHURCH",
+          "line1": "1 Cricklefield Place, Ilford IG1 1FY (Near Seven Kings Station)",
+          "line2": "Sunday Meeting Time: 2:30 PM to 6:30 PM (UK time)",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20ILFORD%2C%20UK%20CHURCH%2C%201%20Cricklefield%20Place%2C%20Ilford%20IG1%201FY%20%28Near%20Seven%20Kings%20Station%29"
+        },
+        {
+          "id": "062f56caef44b60afde560ee",
+          "name": "ANM BIRMINGHAM, UK CHURCH",
+          "line1": "St George’s Community Hub, Great Hampton Row, Birmingham B19 3JG",
+          "line2": "Sunday Meeting Time: 2:30 PM to 6:30 PM (Birmingham, UK time)",
+          "mapLink": "https://maps.app.goo.gl/dxFoNqKZZurKpii4A"
+        },
+        {
+          "id": "5e4308f3d96e2aeac489b315",
+          "name": "ANM OXFORD, UK CHURCH",
+          "line1": "North Oxford Association, Diamond Place, Summer town, Oxford OX2 7DP",
+          "line2": "Sunday Meeting Time: 2:30 PM to 6:30 PM (Oxford, UK time)",
+          "mapLink": "https://maps.app.goo.gl/mYum1EodQVxHGGEv5"
+        },
+        {
+          "id": "d86a0500c14416da9c165b0c",
+          "name": "ANM SOUTHALL, LONDON, UK CHURCH",
+          "line1": "Villiers High School, Boyd Ave, Southall UB1 3BT",
+          "line2": "Sunday Meeting Time: 2:30 PM to 6:30 PM (Southall, UK time)",
+          "mapLink": "https://maps.app.goo.gl/BH88Phb4vFovYtbAA"
+        },
+        {
+          "id": "bf5f421e928ec463879c0565",
+          "name": "ANM HARROW, LONDON, UK CHURCH",
+          "line1": "Masefield Suite, Harrow Leisure Centre, Christ church Ave, Harrow HA3 5BD",
+          "line2": "Sunday Meeting Time: 2:30 PM to 6:30 PM (UK time)",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20HARROW%2C%20LONDON%2C%20UK%20CHURCH%2C%20Masefield%20Suite%2C%20Harrow%20Leisure%20Centre%2C%20Christ%20church%20Ave%2C%20Harrow%20HA3%205BD"
+        },
+        {
+          "id": "a5ab54542b7e2b476a27aa05",
+          "name": "ANM GLASGOW, SCOTLAND, UK CHURCH",
+          "line1": "Destiny Hope Hub, 37 S Portland Street, Glasgow – G5 9JL, United Kingdom",
+          "line2": "Sunday Meeting Time: 2:30 PM to 6:30 PM (Scotland, UK time)",
+          "mapLink": "https://maps.app.goo.gl/9Uq1rxtzoGKYszmb6"
+        },
+        {
+          "id": "5601f280dfcbc324e694c88b",
+          "name": "ANM DALLAS, TEXAS, USA CHURCH",
+          "line1": "1981 N Central Expy, Richardson, Dallas, TX 75080, USA",
+          "line2": "Sunday Meeting Time: 8:30 AM to 1:00 PM (Texas, USA time)",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20DALLAS%2C%20TEXAS%2C%20USA%20CHURCH%2C%201981%20N%20Central%20Expy%2C%20Richardson%2C%20Dallas%2C%20TX%2075080%2C%20USA"
+        },
+        {
+          "id": "036a40c7052bc031790f2ae2",
+          "name": "ANM SEATTLE, WASHINGTON, USA CHURCH",
+          "line1": "11925 SE 238th Pl, Kent, WA 98031, USA",
+          "line2": "Sunday Meeting Time: 5:30 AM to 10:30 AM (Seattle, Washington time)",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20SEATTLE%2C%20WASHINGTON%2C%20USA%20CHURCH%2C%2011925%20SE%20238th%20Pl%2C%20Kent%2C%20WA%2098031%2C%20USA"
+        },
+        {
+          "id": "b47a23849309b09da5044c8f",
+          "name": "ANM SUGAR LAND, TEXAS, USA CHURCH",
+          "line1": "Hilton Garden Inn Sugar Land, 722 Bonaventure Pl",
+          "line2": "Sugar Land, TX 77479, Texas, USA.",
+          "mapLink": "https://www.google.com/maps/search/?api=1&query=ANM%20SUGAR%20LAND%2C%20TEXAS%2C%20USA%20CHURCH%2C%20Hilton%20Garden%20Inn%20Sugar%20Land%2C%20722%20Bonaventure%20Pl%2C%20Sugar%20Land%2C%20TX%2077479%2C%20SUGARLAND%20TEXAS"
+        }
+      ],
+      "updatedAt": "2026-09-24T04:31:15.000Z",
+      "createdAt": "2026-09-20T16:43:27.030Z",
+      "globalType": "church-branches-page"
+    },
+    "events-page": {
+      "id": 1,
+      "eventsSectionTitle": "Events",
+      "upcomingSectionTitle": "Upcoming Events",
+      "events": [
+        {
+          "id": "event_1",
+          "title": "Masihi Satsang - Apostle Dr. Ankur Yoseph Narula & Pastor Sonia Narula",
+          "eventTargetDate": null,
+          "landscapePoster": null,
+          "landscapePosterFallback": null,
+          "cardPoster": null,
+          "cardPosterFallback": "/figma-assets/9c4cf0e2f9397f119d80dde4d156bbaa56343330.png",
+          "buttonLabel": "See Details",
+          "detailPoster": null,
+          "detailPosterFallback": "/figma-assets/9c4cf0e2f9397f119d80dde4d156bbaa56343330.png",
+          "headingGreeting": "HALLELUJAH!!",
+          "subheading": "Special Spiritual Gathering & Holy Communion",
+          "cardBackfaceSummary": null,
+          "announcementParagraph1": "Join us for a spirit-filled Masihi Satsang with Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula. Come with hearts full of expectation to receive God’s miraculous blessing, divine touch, and life-transforming Word.",
+          "announcementParagraph2": "God is moving powerfully in our midst. Testimonies of healing, deliverance from generational bondage, and restoration of families are happening continuously through the power of Jesus Christ.",
+          "announcementParagraph3": "Invite your friends, relatives, and loved ones to witness the living power of God and partake in a joyful atmosphere of worship and fellowship.",
+          "announcementParagraph4": "Everyone is welcome. Experience salvation, peace, and spiritual revival in your life.",
+          "scheduleDay": "Wednesday & Thursday",
+          "scheduleDate": "Weekly Services",
+          "scheduleTime": "10:00 AM onwards",
+          "scheduleVenue": "The Church of Signs and Wonders, Khambra, Near Lambra, Nakodar Road, Jalandhar, Punjab - 144026",
+          "schedulePostedBy": "By:- Church Media Team",
+          "customLinkText": null,
+          "customLinkUrl": null
+        },
+        {
+          "id": "event_2",
+          "title": "Good News in Pathankot - 11 June 2026",
+          "eventTargetDate": null,
+          "landscapePoster": null,
+          "landscapePosterFallback": null,
+          "cardPoster": null,
+          "cardPosterFallback": "/figma-assets/85761e6b2486d02d0c483eb7871b0ab19ace8c46.png",
+          "buttonLabel": "See Details",
+          "detailPoster": null,
+          "detailPosterFallback": "/figma-assets/85761e6b2486d02d0c483eb7871b0ab19ace8c46.png",
+          "headingGreeting": "HALLELUJAH!!",
+          "subheading": "Grand Mega Crusade 2026",
+          "cardBackfaceSummary": null,
+          "announcementParagraph1": "We are delighted to share this blessed Good News that the anointed Man of God, Apostle Dr. Ankur Yoseph Narula, and Woman of God, Pastor Sonia Yoseph Narula will be coming to Pathankot on 11 June 2026 with the life-changing Gospel of Lord Jesus Christ.",
+          "announcementParagraph2": "These powerful and grace-filled gatherings will be filled with the mighty presence of the Living God. As the Word of God is preached under the anointing of the Holy Spirit, many lives will experience divine healing, restoration, deliverance, peace, and freedom in Christ. Every chain of darkness shall be broken, hearts will be renewed, and many testimonies will arise through the power of Jesus Christ.",
+          "announcementParagraph3": "This is not just a meeting, but a divine encounter with the Lord. You and your family are warmly invited to come with faith and expectation to witness the miraculous move and overflowing glory of God in Pathankot.✨",
+          "announcementParagraph4": "Don’t miss this opportunity—bring your family, friends, relatives, and loved ones. Because when Jesus enters your life, everything changes for the better.",
+          "scheduleDay": "Thursday",
+          "scheduleDate": "11 June, 2026",
+          "scheduleTime": "6:00 PM to 10:00 PM",
+          "scheduleVenue": "Growth Center, Village Chacheli, Industrial Area, Near Pepsi Plant (Sujanpur), District Pathankot",
+          "schedulePostedBy": "By:- Church Media Team",
+          "customLinkText": null,
+          "customLinkUrl": null
+        },
+        {
+          "id": "event_3",
+          "title": "Sunday Live Service - Ankur Narula Ministries",
+          "eventTargetDate": null,
+          "landscapePoster": null,
+          "landscapePosterFallback": null,
+          "cardPoster": null,
+          "cardPosterFallback": "/figma-assets/b3a0bba89e5f05b1a24ecbaec47a6c1170b270dc.png",
+          "buttonLabel": "See Details",
+          "detailPoster": null,
+          "detailPosterFallback": "/figma-assets/b3a0bba89e5f05b1a24ecbaec47a6c1170b270dc.png",
+          "headingGreeting": "HALLELUJAH!!",
+          "subheading": "Weekly Mega Sunday Worship & Deliverance Service",
+          "cardBackfaceSummary": null,
+          "announcementParagraph1": "Experience the mighty power of Jesus Christ every Sunday at The Church of Signs and Wonders. Gather with over 300,000 believers in powerful praise, prophetic word, and supernatural deliverance.",
+          "announcementParagraph2": "The blind receive sight, the lame walk, diseases are healed, and lives are eternally transformed under the heavy anointing of the Holy Spirit with Apostle Dr. Ankur Yoseph Narula.",
+          "announcementParagraph3": "Services are also broadcast live worldwide across YouTube and Anugrah TV for millions watching internationally.",
+          "announcementParagraph4": "Prepare your hearts and come expectant to meet the King of Kings. Your breakthrough is waiting!",
+          "scheduleDay": "Sunday",
+          "scheduleDate": "Every Sunday",
+          "scheduleTime": "8:30 AM to 3:00 PM",
+          "scheduleVenue": "The Church of Signs and Wonders, Khambra, Near Lambra, Nakodar Road, Jalandhar, Punjab - 144026",
+          "schedulePostedBy": "By:- Church Media Team",
+          "customLinkText": null,
+          "customLinkUrl": null
+        }
+      ],
+      "updatedAt": "2026-09-23T15:43:24.000Z",
+      "createdAt": "2026-09-23T15:43:24.000Z",
+      "globalType": "events-page"
+    },
+    "gallery-page": {
+      "photoArch": {
+        "imageFallback": "/gallery/arch_leaders.png",
+        "alt": "Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula under Floral Arch",
+        "caption": "Apostle Dr. Ankur Yoseph Narula & Pastor Sonia Yoseph Narula - Ankur Narula Ministries"
+      },
+      "topRowSidePhotos": [
+        {
+          "imageFallback": "/gallery/top_row_1.png",
+          "alt": "Pastor Sonia Yoseph Narula Preaching Grace and Faith",
+          "caption": "Pastor Sonia Yoseph Narula Ministering during Live Thursday Service",
+          "id": "6ae389820d9c320a2a4db589"
+        },
+        {
+          "imageFallback": "/gallery/top_row_2.png",
+          "alt": "Pastor Sonia Preaching with Illuminated Cross Backdrop",
+          "caption": "Worship Atmosphere with the Glorious Cross in Signs & Wonders Church",
+          "id": "6ae389820d9c320a2a4db58a"
+        },
+        {
+          "imageFallback": "/gallery/top_row_3.png",
+          "alt": "Pastor Sonia Preaching to Multitudes",
+          "caption": "Pastor Sonia Yoseph Narula Ministering with Power and Grace",
+          "id": "6ae389820d9c320a2a4db58b"
+        },
+        {
+          "imageFallback": "/gallery/top_row_4.png",
+          "alt": "Apostle Dr. Ankur Narula Delivering Prophetic Ministry",
+          "caption": "Apostle Dr. Ankur Yoseph Narula Preaching under the Holy Spirit Anointing",
+          "id": "6ae389820d9c320a2a4db58c"
+        },
+        {
+          "imageFallback": "/gallery/top_row_5.png",
+          "alt": "Apostle Dr. Ankur Narula Leading Believers in Worship",
+          "caption": "Prophetic Proclamation and Deliverance Ministry",
+          "id": "6ae389820d9c320a2a4db58d"
+        },
+        {
+          "imageFallback": "/gallery/top_row_6.png",
+          "alt": "Ministry Leadership Gathering and Blessings",
+          "caption": "Apostle Dr. Ankur Yoseph Narula & Pastor Sonia Yoseph Narula Blessing Believers",
+          "id": "6ae389820d9c320a2a4db58e"
+        }
+      ],
+      "middleRowPhotos": [
+        {
+          "imageFallback": "/gallery/middle_row_1.png",
+          "alt": "Pastor Sonia Narula Ministering on Stage",
+          "caption": "Preaching Healing and Deliverance to the Congregation",
+          "id": "6ae389820d9c320a2a4db58f"
+        },
+        {
+          "imageFallback": "/gallery/middle_row_2.png",
+          "alt": "Worship Choir in Red Robes with Pastor Sonia",
+          "caption": "The Anointed Signs and Wonders Worship Choir Leading Heavenly Praises",
+          "id": "6ae389820d9c320a2a4db590"
+        },
+        {
+          "imageFallback": "/gallery/middle_row_3.png",
+          "alt": "Pastor Sonia Preaching Live Service",
+          "caption": "Live Service Broadcast across Nations",
+          "id": "6ae389820d9c320a2a4db591"
+        },
+        {
+          "imageFallback": "/gallery/middle_row_4.png",
+          "alt": "Pastor Sonia Preaching with Golden Bokeh Lights",
+          "caption": "The Glorious Light of Christ Touching Hearts and Transforming Lives",
+          "id": "6ae389820d9c320a2a4db592"
+        },
+        {
+          "imageFallback": "/gallery/middle_row_5.png",
+          "alt": "Glorious Illuminated Holy Cross Worship",
+          "caption": "Reverent Worship before the Glorious Cross of Christ",
+          "id": "6ae389820d9c320a2a4db593"
+        }
+      ],
+      "bottomRowSidePhotosLeft": [
+        {
+          "imageFallback": "/gallery/bottom_left_1.png",
+          "alt": "Apostle Dr. Ankur Narula with Open Bible",
+          "caption": "Teaching the Uncompromised Word of God with Power and Clarity",
+          "id": "6ae389820d9c320a2a4db594"
+        },
+        {
+          "imageFallback": "/gallery/bottom_left_2.png",
+          "alt": "Apostle Dr. Ankur Narula on Stage",
+          "caption": "Holy Spirit Fire and Apostolic Revival Gathering",
+          "id": "6ae389820d9c320a2a4db595"
+        }
+      ],
+      "photoPodiumHero": {
+        "imageFallback": "/gallery/podium_hero.png",
+        "alt": "Apostle Dr. Ankur Yoseph Narula Preaching with Signs and Wonders",
+        "caption": "Man of God Apostle Dr. Ankur Yoseph Narula Delivering the Living Word of God"
+      },
+      "bottomRowSidePhotosRight": [
+        {
+          "imageFallback": "/gallery/bottom_right_1.png",
+          "alt": "Mass Congregation Gathering at Signs and Wonders Church",
+          "caption": "Hundreds of Thousands Gathering Weekly for Worship and Miracles",
+          "id": "6ae389820d9c320a2a4db596"
+        },
+        {
+          "imageFallback": "/gallery/bottom_right_2.png",
+          "alt": "Atmosphere of Prayer and Devotion",
+          "caption": "Atmosphere of Praise and Worship at Ankur Narula Ministries",
+          "id": "6ae389820d9c320a2a4db597"
+        },
+        {
+          "imageFallback": "/gallery/bottom_right_3.png",
+          "alt": "Pastoral Leaders Fellowship",
+          "caption": "Leadership Devotion and Ministry Milestones",
+          "id": "6ae389820d9c320a2a4db598"
+        },
+        {
+          "imageFallback": "/gallery/bottom_right_4.png",
+          "alt": "Mass Crusade Miracle Service",
+          "caption": "Miracles, Signs, and Wonders across Multitudes",
+          "id": "6ae389820d9c320a2a4db599"
+        }
+      ]
+    },
+    "testimonials-page": {
+      "headerTitle": "Wonderful Testimonies",
+      "headerSubtitle": "Jesus Christ: The Same Forever · Meet Jehovah Rapha, Our Healer · Undeniable Evidence of His Power",
+      "ctaTitle": "Have a Testimony to Share?",
+      "ctaQuote": "“They overcame him by the blood of the Lamb and by the word of their testimony.” — Revelation 12:11",
+      "ctaButton1Label": "Contact Us",
+      "ctaButton1Url": "/contact",
+      "phoneNumbersPrompt": "Send your testimonies for God's glory on these numbers",
+      "phoneNumbers": [
+        {
+          "number": "+91-76819-62482",
+          "id": "6ae389820d9c320a2a4db59a"
+        },
+        {
+          "number": "+91-78143-11838",
+          "id": "6ae389820d9c320a2a4db59b"
+        },
+        {
+          "number": "+91-78142-68623",
+          "id": "6ae389820d9c320a2a4db59c"
+        },
+        {
+          "number": "+91-77103-51888",
+          "id": "6ae389820d9c320a2a4db59d"
+        }
+      ]
+    },
+    "give-page": {
+      "id": 1,
+      "heroTitle": "Give your Tithe & Offerings to the Lord",
+      "scriptureVerse": "The Bible says, “Give, and it shall be given unto you” (Luke 6:38). In God’s Kingdom, giving is a seed that brings a multiplied harvest.",
+      "purposeStatement": "At Ankur Narula Ministries, your tithes, offerings, and seeds are used for God’s kingdom— spreading the Gospel, building the house of God, restoring broken families, and helping the poor, widows, and orphans through charity and compassion.",
+      "qrHeaderTitle": "Scan QR Code For Tithes & Offerings",
+      "iciciQrImage": null,
+      "iciciQrFallback": "/give/icici_qr_card.png",
+      "hdfcQrImage": null,
+      "hdfcQrFallback": "/give/hdfc_qr_card.png",
+      "axisLogo": null,
+      "axisLogoFallback": "/give/axis_bank_logo.png",
+      "axisQrImage": null,
+      "axisQrFallback": "/give/axis_qr_card.png",
+      "gpayQrImage": null,
+      "gpayQrFallback": "/give/gpay_qr_card.png",
+      "bankHeaderTitle": "YOU CAN SEND OFFERING THROUGH WITH ALL THESE BANKS",
+      "bankAccounts": [
+        {
+          "id": "bank-1",
+          "bankName": "Axis Bank",
+          "logo": null,
+          "logoFallback": "/give/axis_bank_logo.png",
+          "accountHolder": "ANKUR NARULA MINISTRY SOCIETY",
+          "accountNumber": "924010075067074",
+          "ifsc": "UTIB0004459",
+          "branch": "JALANDHAR",
+          "borderColor": "#97144d"
+        },
+        {
+          "id": "bank-2",
+          "bankName": "HDFC Bank",
+          "logo": null,
+          "logoFallback": "/give/hdfc_bank_logo.png",
+          "accountHolder": "ANKUR NARULA MINISTRY SOCIETY",
+          "accountNumber": "591300000000116",
+          "ifsc": "HDFC0000341",
+          "branch": "JALANDHAR",
+          "borderColor": "#004c8f"
+        },
+        {
+          "id": "bank-3",
+          "bankName": "ICICI Bank",
+          "logo": null,
+          "logoFallback": "/give/icici_bank_logo.png",
+          "accountHolder": "ANKUR NARULA MINISTRY SOCIETY",
+          "accountNumber": "24680500116",
+          "ifsc": "ICIC0002468",
+          "branch": "JALANDHAR",
+          "borderColor": "#f37021"
+        }
+      ],
+      "updatedAt": "2026-09-22T15:51:43.000Z",
+      "createdAt": "2026-09-22T15:51:43.000Z",
+      "globalType": "give-page"
+    },
+    "contact-page": {
+      "id": 1,
+      "form": 1,
+      "heroTitle": "We Love To Hear From You.",
+      "heroSubtitle": "Stay Connected With Us",
+      "heroImage": null,
+      "heroImageFallback": "/contact_us_hero.png",
+      "heroImageBadgeTitle": "Ankur Narula Ministries",
+      "heroImageBadgeSubtitle": "The Church of Signs and Wonders",
+      "formSuccessTitle": "Message Sent Successfully!",
+      "formSuccessMessage": "Thank you for contacting Ankur Narula Ministries. Our ministry team will connect with you soon.",
+      "infoSectionTitle": "Contact Information",
+      "infoSectionSubtitle": "Send Us Your Prayer Request Believing for God’s Urgent Intervention and Miracles.",
+      "generalInquiriesTitle": "General inquiries & prayer",
+      "generalInquiriesEmail1": "info@ankurnarula.org",
+      "generalInquiriesEmail2": "Prayer@ankurnarula.org",
+      "hospitalLineTitle": "Hospital prayer line",
+      "hospitalLineEmail": "anmhospitalprayerline@gmail.com",
+      "emergencyPrayersTitle": "Emergency prayers",
+      "emergencyPrayersEmail": "anmemergencyprayer@gmail.com",
+      "phoneSectionTitle": "Phone & address",
+      "phoneNumber": "0181 520 7777",
+      "addressSectionTitle": "Address",
+      "fullAddress": "Ankur Narula Ministries, Village Khambra, Nakodar Rd, Near T.V tower, Jalandhar-Punjab 144026",
+      "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=Ankur+Narula+Ministries+Village+Khambra+Nakodar+Rd+Near+TV+tower+Jalandhar+Punjab+144026",
+      "updatedAt": "2026-10-17T19:56:01.565Z",
+      "createdAt": "2026-09-20T16:48:47.440Z",
+      "globalType": "contact-page"
+    },
+    "prayer-request-page": {
+      "id": 1,
+      "form": 2,
+      "heroBannerImage": null,
+      "heroBannerFallback": "/figma-assets/0c9f2208a82bd40d24f4da377e83cfe370d48e0a.png",
+      "headingTitle": "How can we pray for You?",
+      "headingSubtitle": "Send your prayer request believing for God's divine intervention, healing, and breakthroughs.",
+      "helplineTitle": "24/7 Urgent Prayer Call Center",
+      "helplinePhone": "0181 520 7777",
+      "helplineEmail": "Prayer@ankurnarula.org",
+      "submitButtonText": "Submit Your Prayer Request",
+      "successTitle": "Prayer Request Submitted!",
+      "successMessage": "Thank you. Your prayer request has been received. Apostle Dr. Ankur Yoseph Narula and the ministry prayer team will stand in faith with you.",
+      "successVerse": "“And all things, whatsoever ye shall ask in prayer, believing, ye shall receive.” — Matthew 21:22",
+      "updatedAt": "2026-10-17T19:56:01.572Z",
+      "createdAt": "2026-09-20T14:56:44.160Z",
+      "globalType": "prayer-request-page"
+    },
+    "zoom-lay-hand-page": {
+      "id": 1,
+      "form": 3,
+      "heroBannerImage": null,
+      "heroBannerFallback": "/figma-assets/624a2b77f2c32df6de342821ffd6101999d243b9.png",
+      "headingTitle": "Zoom Lay hand",
+      "headingSubtitle": "Register for the global Zoom Lay Hand prayer session with Apostle Dr. Ankur Yoseph Narula.",
+      "guidelinesTitle": "Zoom Session Guidelines",
+      "guidelinesText": "Please ensure you have a stable internet connection and quiet environment for the Zoom Lay Hand prayer.",
+      "supportPhone": "0181 520 7777",
+      "supportEmail": "Prayer@ankurnarula.org",
+      "submitButtonText": "Submit",
+      "successTitle": "Prayer Registration Received",
+      "successMessage": "Thank you for submitting your Zoom Lay Hand request. Our ministry team will review your details and send the Zoom session instructions and time slots to your email.",
+      "updatedAt": "2026-10-17T19:56:01.577Z",
+      "createdAt": "2026-09-20T15:12:02.710Z",
+      "globalType": "zoom-lay-hand-page"
+    },
+    "store-page": {
+      "id": 1,
+      "checkoutForm": 4,
+      "headerTitle": "Ministry Store & Faith Resources",
+      "headerSubtitle": "Explore anointed books, worship hymnals, and life-transforming teachings by Apostle Dr. Ankur Yoseph Narula.",
+      "fastDeliveryText": "Fast Courier Delivery Across India & Worldwide",
+      "securePaymentText": "100% Secure Order Processing",
+      "supportPhone": "0181 520 7777",
+      "supportEmail": "info@ankurnarula.org",
+      "updatedAt": "2026-10-17T19:56:01.582Z",
+      "createdAt": "2026-09-20T15:18:50.847Z",
+      "globalType": "store-page"
+    },
+    "privacy-policy-page": {
+      "id": 1,
+      "pageTitle": "Privacy Policy for Ankur Narula Ministries",
+      "introText": "At Ankur Narula Ministries, we value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and safeguard your information when you visit our website, purchase products, or engage with our services.",
+      "sections": [
+        {
+          "id": "f12ea09f6412eb883fd04c19",
+          "sectionTitle": "1.1. Information We Collect",
+          "content": "We collect personal information that you provide directly to us, including: Name, Email address, Shipping address, Payment details, and other information you provide when making a purchase or contacting us."
+        },
+        {
+          "id": "21c617acaa778fcd0dd7b20f",
+          "sectionTitle": "1.2. How We Use Your Information",
+          "content": "We use your personal information to: Process your orders and deliver products, Communicate with you regarding your purchases, services, and updates, Improve our website and offerings, and Send newsletters or promotional content (with your consent)."
+        },
+        {
+          "id": "4863a6da328e649130306d47",
+          "sectionTitle": "1.3. Data Security",
+          "content": "We take reasonable steps to ensure the security of your personal information, including using encryption and secure payment processing methods."
+        },
+        {
+          "id": "76aae5f426e1ed86e1bc54ec",
+          "sectionTitle": "1.4. Third-Party Sharing",
+          "content": "We do not sell, rent, or trade your personal information. However, we may share your information with trusted third-party service providers who assist us with order fulfillment, payments, and marketing, under strict confidentiality agreements."
+        },
+        {
+          "id": "44076baae70a603de44d98e3",
+          "sectionTitle": "1.5. Cookies",
+          "content": "We use cookies to improve your experience on our website. Cookies are small files stored on your device that help us analyze website traffic and tailor content to your preferences. You can manage cookie settings in your browser."
+        },
+        {
+          "id": "0ec61aeb518572e96de57782",
+          "sectionTitle": "1.6. Your Rights",
+          "content": "You have the right to access, correct, or delete your personal information. To exercise these rights, please contact us via the contact details provided on our website."
+        },
+        {
+          "id": "a5a0c41331e0fb095752fd24",
+          "sectionTitle": "1.7. Changes to this Privacy Policy",
+          "content": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated date."
+        }
+      ],
+      "contactEmail": "anmbrightmedia5185@gmail.com",
+      "updatedAt": "2026-09-27T17:23:53.978Z",
+      "createdAt": "2026-09-20T15:23:19.154Z",
+      "globalType": "privacy-policy-page"
+    },
+    "terms-page": {
+      "id": 1,
+      "pageTitle": "Terms and Conditions for Ankur Narula Ministries",
+      "introText": "By using the website and purchasing products from Ankur Narula Ministries, you agree to the following terms and conditions. Please read them carefully.",
+      "sections": [
+        {
+          "id": "4b71359c29f3c94ff8aec743",
+          "sectionTitle": "2.1. General",
+          "content": "Ankur Narula Ministries is a Christian ministry that provides resources including books and materials related to spiritual growth. Our website allows users to purchase products, access content, and engage with our ministry. By accessing or using this website, you agree to comply with these Terms and Conditions."
+        },
+        {
+          "id": "c6818367959dee804cff87e6",
+          "sectionTitle": "2.2. Product Information and Availability",
+          "content": "We make every effort to ensure that product descriptions, images, and prices are accurate. However, we cannot guarantee that all products are available at all times. If an item is out of stock or unavailable, we will notify you."
+        },
+        {
+          "id": "df26ed9ae641981e8b21f9ca",
+          "sectionTitle": "2.3. Payment and Pricing",
+          "content": "All prices on the website are in the specified currency and are exclusive of taxes, shipping, and handling fees unless otherwise stated. We accept payments through Razorpay and other secure payment gateways. Payment must be received in full before products are shipped."
+        },
+        {
+          "id": "547ca9d907b1f1c4ed593883",
+          "sectionTitle": "2.4. Shipping and Delivery",
+          "content": "Please refer to our “Shipping and Delivery” information for detailed insights on shipping costs and estimated delivery times across India and internationally."
+        },
+        {
+          "id": "1ab3e0f27051c0b6b3d9c0c7",
+          "sectionTitle": "2.5. Limitation of Liability",
+          "content": "We are not liable for any direct, indirect, incidental, special, or consequential damages that may result from using our website or purchasing our products, except where required by law."
+        },
+        {
+          "id": "cbe05b061d8b056a80eec823",
+          "sectionTitle": "2.6. Changes to Terms and Conditions",
+          "content": "We reserve the right to modify these Terms and Conditions at any time. All changes will be posted on this page with the updated date."
+        }
+      ],
+      "contactEmail": "anmbrightmedia5185@gmail.com",
+      "updatedAt": "2026-09-20T15:23:19.154Z",
+      "createdAt": "2026-09-20T15:23:19.154Z",
+      "globalType": "terms-page"
+    }
+  }
+}
