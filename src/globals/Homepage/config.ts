@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 import { anyone } from '../../access/anyone'
 import { adminsOrEditors } from '../../access/adminsOrEditors'
+import { revalidateHomepage } from './hooks/revalidateHomepage'
 
 const DEFAULT_MOG_SLIDES = [
   {
@@ -202,6 +203,7 @@ export const Homepage: GlobalConfig = {
     group: 'Website Settings',
   },
   hooks: {
+    afterChange: [revalidateHomepage],
     beforeRead: [
       ({ doc }) => {
         if (!doc) return doc

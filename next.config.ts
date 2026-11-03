@@ -35,6 +35,10 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
+    staleTimes: {
+      dynamic: 0,
+      static: 30,
+    },
   },
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {

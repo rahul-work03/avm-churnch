@@ -84,6 +84,7 @@ const SermonVideoPlayer: React.FC<{
     const autoplayUrl = embedUrl.includes('?') ? `${embedUrl}&autoplay=1` : `${embedUrl}?autoplay=1`
     return (
       <iframe
+        key={autoplayUrl}
         src={autoplayUrl}
         title={title}
         className="w-full h-full border-0"
@@ -152,6 +153,7 @@ export const SermonsSection: React.FC<SermonsSectionProps> = ({
           <RevealOnScroll direction="up" distance={20} duration={0.6} delay={0.1} className="max-w-[1140px] mx-auto relative">
             <div className="relative w-full aspect-[16/9] sm:aspect-[1140/625] rounded-[18px] sm:rounded-[24px] overflow-hidden shadow-2xl border border-white/20 bg-black">
               <iframe
+                key={bannerEmbedUrl}
                 src={bannerEmbedUrl}
                 title={headerTitle || 'Featured Sermon Video'}
                 className="w-full h-full border-0"

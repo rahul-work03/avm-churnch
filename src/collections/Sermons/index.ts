@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 import { anyone } from '../../access/anyone'
 import { adminsOrEditors } from '../../access/adminsOrEditors'
 import { fetchYouTubeMetadata } from './hooks/fetchYouTubeMetadata'
+import { revalidateSermon, revalidateSermonDelete } from './hooks/revalidateSermon'
 
 export const Sermons: CollectionConfig = {
   slug: 'sermons',
@@ -16,6 +17,8 @@ export const Sermons: CollectionConfig = {
     useAsTitle: 'title',
   },
   hooks: {
+    afterChange: [revalidateSermon],
+    afterDelete: [revalidateSermonDelete],
     beforeChange: [fetchYouTubeMetadata],
   },
   fields: [
