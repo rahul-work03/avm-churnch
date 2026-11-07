@@ -10,19 +10,19 @@ import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export interface TestimonyItem {
-  id?: string
+  id?: string | null
   person: string
   title: string
   summary: string
-  slug?: string
-  buttonLabel?: string
+  slug?: string | null
+  buttonLabel?: string | null
   image?: any
-  imageFallback?: string
+  imageFallback?: string | null
 }
 
 export interface TestimoniesSectionProps {
-  headerTitle?: string
-  testimonies?: TestimonyItem[]
+  headerTitle?: string | null
+  testimonies?: TestimonyItem[] | null
 }
 
 const DEFAULT_TESTIMONIES: TestimonyItem[] = [
@@ -92,6 +92,7 @@ export const TestimoniesSection: React.FC<TestimoniesSectionProps> = ({
   headerTitle = 'TESTIMONIES OF PRAYER MOUNTAIN',
   testimonies,
 }) => {
+  const displayTitle = headerTitle || 'TESTIMONIES OF PRAYER MOUNTAIN'
   const activeTestimonies = testimonies && testimonies.length > 0 ? testimonies : DEFAULT_TESTIMONIES
   const count = activeTestimonies.length
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -125,7 +126,7 @@ export const TestimoniesSection: React.FC<TestimoniesSectionProps> = ({
     <section className="relative overflow-hidden select-none" data-node-id="279:2081">
       {/* Luminous Sapphire Header Bar */}
       <EditorialSectionHeader
-        title={headerTitle}
+        title={displayTitle}
         variant="atmospheric"
       />
 
@@ -248,6 +249,11 @@ const TestimonyCard: React.FC<{ item: TestimonyItem }> = ({ item }) => {
           <span className="font-poppins font-bold text-[#efbf04] text-[11px] sm:text-xs uppercase tracking-wider block">
             {item.person}
           </span>
+          {item.title && (
+            <h4 className="font-poppins font-semibold text-white text-xs sm:text-sm line-clamp-2 leading-snug">
+              {item.title}
+            </h4>
+          )}
           <p className="font-poppins text-[11px] xs:text-[12px] sm:text-[13px] md:text-[14px] font-normal leading-snug sm:leading-relaxed text-white/95 line-clamp-4 sm:line-clamp-5">
             {item.summary}
           </p>

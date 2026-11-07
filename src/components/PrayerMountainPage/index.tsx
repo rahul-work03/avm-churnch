@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import type { PrayerMountainPage as PrayerMountainPageData } from '@/payload-types'
 import { PrayerMountainHeroSection } from './PrayerMountainHeroSection'
 import { ScenesSection } from './ScenesSection'
 import { WhatIsSection } from './WhatIsSection'
@@ -8,7 +9,7 @@ import { TestimoniesSection } from './TestimoniesSection'
 import { JoinUsSection } from './JoinUsSection'
 
 export interface PrayerMountainPageProps {
-  data?: any
+  data?: PrayerMountainPageData | null
 }
 
 export const PrayerMountainPage: React.FC<PrayerMountainPageProps> = ({ data }) => {
@@ -36,11 +37,11 @@ export const PrayerMountainPage: React.FC<PrayerMountainPageProps> = ({ data }) 
 
       {/* 3. What is Prayer Mountain & Purpose / Vision */}
       <WhatIsSection
-        whatIsCardTitle={data?.whatIsCardTitle}
-        whatIsCardDescription={data?.whatIsCardDescription}
-        visionCardTitle={data?.visionCardTitle}
-        purposeParagraph={data?.purposeParagraph}
-        visionParagraph={data?.visionParagraph}
+        whatIsCardTitle={data?.whatIsCardTitle ?? undefined}
+        whatIsCardDescription={data?.whatIsCardDescription ?? undefined}
+        visionCardTitle={data?.visionCardTitle ?? undefined}
+        purposeParagraph={data?.purposeParagraph ?? undefined}
+        visionParagraph={data?.visionParagraph ?? undefined}
       />
 
       {/* 4. Testimonies of Prayer Mountain (Auto-Sliding 6-Item Carousel) */}
@@ -51,9 +52,9 @@ export const PrayerMountainPage: React.FC<PrayerMountainPageProps> = ({ data }) 
 
       {/* 5. Join Us in Prayers (Schedule & Daily Gatherings) */}
       <JoinUsSection
-        joinHeaderTitle={data?.joinHeaderTitle}
-        timeCardTitle={data?.timeCardTitle}
-        timeCardDescription={data?.timeCardDescription}
+        joinHeaderTitle={data?.joinHeaderTitle ?? undefined}
+        timeCardTitle={data?.timeCardTitle ?? undefined}
+        timeCardDescription={data?.timeCardDescription ?? undefined}
       />
     </main>
   )

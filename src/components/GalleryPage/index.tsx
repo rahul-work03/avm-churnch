@@ -145,8 +145,11 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ data }) => {
       {/* 1. Full-Width Editorial Header with Edge-to-Edge Gold Wing Bars */}
       <div className="w-full pt-28 sm:pt-32 pb-2 sm:pb-3 text-center relative z-10">
         <EditorialSectionHeader
-          title="Moments of Glory & Faith"
-          subtitle="Experience the vibrant atmosphere of worship, miracle crusades, and apostolic revival with Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula."
+          title={data?.headerTitle || 'Moments of Glory & Faith'}
+          subtitle={
+            data?.headerSubtitle ||
+            'Experience the vibrant atmosphere of worship, miracle crusades, and apostolic revival with Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula.'
+          }
           variant="editorial"
           align="center"
         />

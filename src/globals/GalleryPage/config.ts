@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 import { anyone } from '../../access/anyone'
 import { adminsOrEditors } from '../../access/adminsOrEditors'
+import { createGlobalRevalidateHook } from '@/utilities/revalidateGlobal'
 
 const DEFAULT_PHOTO_ARCH = {
   imageFallback: '/gallery/arch_leaders.png',
@@ -126,6 +127,10 @@ export const GalleryPageGlobal: GlobalConfig = {
         if (!doc) return doc
         return {
           ...doc,
+          headerTitle: doc.headerTitle || 'Moments of Glory & Faith',
+          headerSubtitle:
+            doc.headerSubtitle ||
+            'Experience the vibrant atmosphere of worship, miracle crusades, and apostolic revival with Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula.',
           photoArch: doc.photoArch?.imageFallback || doc.photoArch?.image ? doc.photoArch : DEFAULT_PHOTO_ARCH,
           topRowSidePhotos:
             doc.topRowSidePhotos && doc.topRowSidePhotos.length > 0
@@ -150,8 +155,26 @@ export const GalleryPageGlobal: GlobalConfig = {
         }
       },
     ],
+    afterChange: [createGlobalRevalidateHook('/gallery', 'gallery-page')],
   },
   fields: [
+    {
+      name: 'headerTitle',
+      type: 'text',
+      defaultValue: 'Moments of Glory & Faith',
+      admin: {
+        description: 'Main heading displayed at the top of the gallery page',
+      },
+    },
+    {
+      name: 'headerSubtitle',
+      type: 'textarea',
+      defaultValue:
+        'Experience the vibrant atmosphere of worship, miracle crusades, and apostolic revival with Apostle Dr. Ankur Yoseph Narula and Pastor Sonia Yoseph Narula.',
+      admin: {
+        description: 'Introductory description displayed beneath the gallery header',
+      },
+    },
     {
       type: 'tabs',
       tabs: [

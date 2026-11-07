@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 import { anyone } from '../../access/anyone'
 import { adminsOrEditors } from '../../access/adminsOrEditors'
+import { revalidatePrayerMountain } from './hooks/revalidatePrayerMountain'
 
 const DEFAULT_SCENES_ROW1 = [
   {
@@ -139,13 +140,14 @@ export const PrayerMountainPageGlobal: GlobalConfig = {
     group: 'Website Settings',
   },
   hooks: {
+    afterChange: [revalidatePrayerMountain],
     beforeRead: [
       ({ doc }) => {
         if (!doc) return doc
         return {
           ...doc,
-          scenesRow1: doc.scenesRow1 && doc.scenesRow1.length >= 8 ? doc.scenesRow1 : DEFAULT_SCENES_ROW1,
-          scenesRow2: doc.scenesRow2 && doc.scenesRow2.length >= 8 ? doc.scenesRow2 : DEFAULT_SCENES_ROW2,
+          scenesRow1: doc.scenesRow1 && doc.scenesRow1.length > 0 ? doc.scenesRow1 : DEFAULT_SCENES_ROW1,
+          scenesRow2: doc.scenesRow2 && doc.scenesRow2.length > 0 ? doc.scenesRow2 : DEFAULT_SCENES_ROW2,
           testimonies: doc.testimonies && doc.testimonies.length > 0 ? doc.testimonies : DEFAULT_TESTIMONIES,
         }
       },

@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 import { anyone } from '../../access/anyone'
 import { adminsOrEditors } from '../../access/adminsOrEditors'
+import { createGlobalRevalidateHook } from '@/utilities/revalidateGlobal'
 
 const DEFAULT_BANK_ACCOUNTS = [
   {
@@ -54,6 +55,7 @@ export const GivePageGlobal: GlobalConfig = {
         }
       },
     ],
+    afterChange: [createGlobalRevalidateHook('/give', 'give-page')],
   },
   fields: [
     {

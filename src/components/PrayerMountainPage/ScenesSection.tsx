@@ -8,17 +8,17 @@ import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
 export interface ScenePhotoItem {
-  id?: string
+  id?: string | null
   image?: any
-  imageFallback?: string
-  src?: string
-  alt?: string
+  imageFallback?: string | null
+  src?: string | null
+  alt?: string | null
 }
 
 export interface ScenesSectionProps {
-  headerTitle?: string
-  row1Photos?: ScenePhotoItem[]
-  row2Photos?: ScenePhotoItem[]
+  headerTitle?: string | null
+  row1Photos?: ScenePhotoItem[] | null
+  row2Photos?: ScenePhotoItem[] | null
 }
 
 const DEFAULT_ROW1_PHOTOS: ScenePhotoItem[] = [
@@ -137,8 +137,9 @@ export const ScenesSection: React.FC<ScenesSectionProps> = ({
   row1Photos,
   row2Photos,
 }) => {
-  const activeRow1 = row1Photos && row1Photos.length >= 8 ? row1Photos : DEFAULT_ROW1_PHOTOS
-  const activeRow2 = row2Photos && row2Photos.length >= 8 ? row2Photos : DEFAULT_ROW2_PHOTOS
+  const displayTitle = headerTitle || 'SCENES OF PRAYER MOUNTAIN'
+  const activeRow1 = row1Photos && row1Photos.length > 0 ? row1Photos : DEFAULT_ROW1_PHOTOS
+  const activeRow2 = row2Photos && row2Photos.length > 0 ? row2Photos : DEFAULT_ROW2_PHOTOS
 
   const row1Duplicated = buildSeamlessMarquee(activeRow1)
   const row2Duplicated = buildSeamlessMarquee(activeRow2)
@@ -147,7 +148,7 @@ export const ScenesSection: React.FC<ScenesSectionProps> = ({
     <section className="relative overflow-hidden select-none" data-node-id="279:2081">
       {/* Luminous Sapphire Header Bar */}
       <EditorialSectionHeader
-        title={headerTitle}
+        title={displayTitle}
         variant="atmospheric"
       />
 

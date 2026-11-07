@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 import { anyone } from '../../access/anyone'
 import { adminsOrEditors } from '../../access/adminsOrEditors'
+import { createGlobalRevalidateHook } from '@/utilities/revalidateGlobal'
 
 const DEFAULT_SCENES_ROW1 = [
   {
@@ -92,6 +93,7 @@ export const MultimediaCollegePageGlobal: GlobalConfig = {
         }
       },
     ],
+    afterChange: [createGlobalRevalidateHook('/multimedia-college', 'multimedia-college-page')],
   },
   fields: [
     {

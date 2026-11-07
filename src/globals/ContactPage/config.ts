@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 import { anyone } from '../../access/anyone'
 import { adminsOrEditors } from '../../access/adminsOrEditors'
+import { createGlobalRevalidateHook } from '@/utilities/revalidateGlobal'
 
 export const ContactPageGlobal: GlobalConfig = {
   slug: 'contact-page',
@@ -10,6 +11,9 @@ export const ContactPageGlobal: GlobalConfig = {
   },
   admin: {
     group: 'Website Settings',
+  },
+  hooks: {
+    afterChange: [createGlobalRevalidateHook('/contact', 'contact-page')],
   },
   fields: [
     {

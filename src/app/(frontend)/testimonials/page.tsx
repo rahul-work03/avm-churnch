@@ -15,11 +15,11 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  const payload = await getPayload({ config: configPromise })
   let docs: any[] = []
   let pageData: any = null
 
   try {
+    const payload = await getPayload({ config: configPromise })
     const [testimonialsResult, pageGlobalResult] = await Promise.all([
       payload.find({
         collection: 'testimonials' as any,

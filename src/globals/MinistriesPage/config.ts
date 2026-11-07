@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 import { anyone } from '../../access/anyone'
 import { adminsOrEditors } from '../../access/adminsOrEditors'
+import { createGlobalRevalidateHook } from '@/utilities/revalidateGlobal'
 
 const DEFAULT_MINISTRIES = [
   {
@@ -73,6 +74,7 @@ export const MinistriesPageGlobal: GlobalConfig = {
         }
       },
     ],
+    afterChange: [createGlobalRevalidateHook('/ministries', 'ministries-page')],
   },
   fields: [
     {

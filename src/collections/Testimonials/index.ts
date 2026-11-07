@@ -1,6 +1,10 @@
 import type { CollectionConfig } from 'payload'
 import { anyone } from '../../access/anyone'
 import { adminsOrEditors } from '../../access/adminsOrEditors'
+import {
+  revalidateTestimonial,
+  revalidateTestimonialDelete,
+} from './hooks/revalidateTestimonial'
 
 export const Testimonials: CollectionConfig = {
   slug: 'testimonials',
@@ -13,6 +17,10 @@ export const Testimonials: CollectionConfig = {
   admin: {
     defaultColumns: ['person', 'category', 'slug', 'isFeatured', 'order', 'updatedAt'],
     useAsTitle: 'person',
+  },
+  hooks: {
+    afterChange: [revalidateTestimonial],
+    afterDelete: [revalidateTestimonialDelete],
   },
   fields: [
     {

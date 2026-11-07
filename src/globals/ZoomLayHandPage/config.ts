@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+import { createGlobalRevalidateHook } from '@/utilities/revalidateGlobal'
 
 export const ZoomLayHandPageGlobal: GlobalConfig = {
   slug: 'zoom-lay-hand-page',
@@ -35,6 +36,7 @@ export const ZoomLayHandPageGlobal: GlobalConfig = {
         }
       },
     ],
+    afterChange: [createGlobalRevalidateHook('/zoom-lay-hand', 'zoom-lay-hand-page')],
   },
   fields: [
     {

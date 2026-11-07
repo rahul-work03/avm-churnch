@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+import { createGlobalRevalidateHook } from '@/utilities/revalidateGlobal'
 
 const DEFAULT_TERMS_SECTIONS = [
   {
@@ -59,6 +60,7 @@ export const TermsPageGlobal: GlobalConfig = {
         }
       },
     ],
+    afterChange: [createGlobalRevalidateHook(['/terms', '/terms-and-conditions'], 'terms-page')],
   },
   fields: [
     {

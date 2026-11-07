@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+import { createGlobalRevalidateHook } from '@/utilities/revalidateGlobal'
 
 export const StorePageGlobal: GlobalConfig = {
   slug: 'store-page',
@@ -27,6 +28,7 @@ export const StorePageGlobal: GlobalConfig = {
         }
       },
     ],
+    afterChange: [createGlobalRevalidateHook('/store', 'store-page')],
   },
   fields: [
     {

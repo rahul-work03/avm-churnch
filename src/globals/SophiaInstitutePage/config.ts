@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 import { anyone } from '../../access/anyone'
 import { adminsOrEditors } from '../../access/adminsOrEditors'
+import { createGlobalRevalidateHook } from '@/utilities/revalidateGlobal'
 
 const DEFAULT_SCENES_ROW1 = [
   {
@@ -52,6 +53,7 @@ export const SophiaInstitutePageGlobal: GlobalConfig = {
         }
       },
     ],
+    afterChange: [createGlobalRevalidateHook('/sophia-institute', 'sophia-institute-page')],
   },
   fields: [
     {

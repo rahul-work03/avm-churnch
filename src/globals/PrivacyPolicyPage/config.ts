@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+import { createGlobalRevalidateHook } from '@/utilities/revalidateGlobal'
 
 const DEFAULT_PRIVACY_SECTIONS = [
   {
@@ -64,6 +65,7 @@ export const PrivacyPolicyPageGlobal: GlobalConfig = {
         }
       },
     ],
+    afterChange: [createGlobalRevalidateHook('/privacy-policy', 'privacy-policy-page')],
   },
   fields: [
     {

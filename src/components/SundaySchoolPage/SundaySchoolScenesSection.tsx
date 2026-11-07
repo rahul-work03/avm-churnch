@@ -170,8 +170,8 @@ export const SundaySchoolScenesSection: React.FC<SundaySchoolScenesSectionProps>
   const displayTitle = scenesHeaderTitle || headerTitle || 'SCENES OF SUNDAY SCHOOL MINISTRIES'
   const list1 = scenesRow1 || row1Photos
   const list2 = scenesRow2 || row2Photos
-  const activeRow1 = list1 && list1.length >= 10 ? list1 : DEFAULT_ROW1_PHOTOS
-  const activeRow2 = list2 && list2.length >= 10 ? list2 : DEFAULT_ROW2_PHOTOS
+  const activeRow1 = list1 && list1.length > 0 ? list1 : DEFAULT_ROW1_PHOTOS
+  const activeRow2 = list2 && list2.length > 0 ? list2 : DEFAULT_ROW2_PHOTOS
 
   const row1Duplicated = buildSeamlessMarquee(activeRow1)
   const row2Duplicated = buildSeamlessMarquee(activeRow2)

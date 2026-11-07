@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+import { createGlobalRevalidateHook } from '@/utilities/revalidateGlobal'
 
 export const PrayerRequestPageGlobal: GlobalConfig = {
   slug: 'prayer-request-page',
@@ -35,6 +36,7 @@ export const PrayerRequestPageGlobal: GlobalConfig = {
         }
       },
     ],
+    afterChange: [createGlobalRevalidateHook('/prayer-request', 'prayer-request-page')],
   },
   fields: [
     {

@@ -10,15 +10,15 @@ import { SacredCanvas } from '@/components/ui/sacred-canvas'
 import { getMediaUrl, getMediaAlt } from '@/utilities/getMediaUrl'
 
 export interface PrayerMountainHeroSectionProps {
-  headerTitle?: string
-  description?: string
+  headerTitle?: string | null
+  description?: string | null
   heroVideo?: any
-  heroVideoFallback?: string
-  bannerVideoUrl?: string
+  heroVideoFallback?: string | null
+  bannerVideoUrl?: string | null
   bannerImage?: any
-  bannerImageFallback?: string
-  bannerAlt?: string
-  subtitle?: string
+  bannerImageFallback?: string | null
+  bannerAlt?: string | null
+  subtitle?: string | null
 }
 
 export const PrayerMountainHeroSection: React.FC<PrayerMountainHeroSectionProps> = ({
@@ -32,13 +32,27 @@ export const PrayerMountainHeroSection: React.FC<PrayerMountainHeroSectionProps>
   bannerAlt = 'Prayer Mountain - Ankur Narula Ministries',
   subtitle = 'A consecrated place to seek God—daily at 8:00 PM we gather in expectation of His presence.',
 }) => {
-  const resolvedVideoUrl =
-    bannerVideoUrl ||
-    (heroVideo
-      ? getMediaUrl(heroVideo, heroVideoFallback || '/prayer_mountain_hero.mp4')
-      : (heroVideoFallback || '/prayer_mountain_hero.mp4'))
-  const resolvedBannerUrl = getMediaUrl(bannerImage, bannerImageFallback)
-  const resolvedBannerAlt = getMediaAlt(bannerImage, bannerAlt)
+  const displayTitle = headerTitle || 'PRAYER MOUNTAIN'
+  const displayDescription =
+    description ||
+    "The Prayer Mountain is a sacred place dedicated to prayer, meditation, and spiritual renewal. It is where believers gather to seek God's presence, intercede for their needs, and grow in faith. Here, individuals can experience deep encounters with God and leave spiritually rejuvenated."
+  const displaySubtitle =
+    subtitle || 'A consecrated place to seek God—daily at 8:00 PM we gather in expectation of His presence.'
+
+  const hasCustomVideo = Boolean(bannerVideoUrl || heroVideo)
+  const hasCustomImage = Boolean(bannerImage)
+
+  let resolvedVideoUrl: string | null = null
+  if (hasCustomVideo) {
+    resolvedVideoUrl =
+      bannerVideoUrl ||
+      (heroVideo ? getMediaUrl(heroVideo, heroVideoFallback || '/prayer_mountain_hero.mp4') : null)
+  } else if (!hasCustomImage) {
+    resolvedVideoUrl = heroVideoFallback || '/prayer_mountain_hero.mp4'
+  }
+
+  const resolvedBannerUrl = getMediaUrl(bannerImage, bannerImageFallback || '/prayer_mountain_hero.png')
+  const resolvedBannerAlt = getMediaAlt(bannerImage, bannerAlt || 'Prayer Mountain - Ankur Narula Ministries')
 
   return (
     <section className="relative pt-28 pb-8 sm:pt-32 sm:pb-12 md:pt-36 md:pb-14 bg-transparent select-none" data-node-id="279:2081">
@@ -46,8 +60,8 @@ export const PrayerMountainHeroSection: React.FC<PrayerMountainHeroSectionProps>
         {/* Full-bleed Editorial Section Header */}
         <div className="w-full text-center pt-2 sm:pt-4 mb-4 sm:mb-6">
           <EditorialSectionHeader
-            title={headerTitle}
-            subtitle={description}
+            title={displayTitle}
+            subtitle={displayDescription}
             variant="editorial"
             align="center"
           />
@@ -81,7 +95,7 @@ export const PrayerMountainHeroSection: React.FC<PrayerMountainHeroSectionProps>
             </div>
 
             {/* Subtitle Below Hero */}
-            {subtitle && (
+            {displaySubtitle && (
               <div className="mt-5 sm:mt-7 text-center">
                 <BlurTextReveal
                   as="p"
@@ -89,7 +103,7 @@ export const PrayerMountainHeroSection: React.FC<PrayerMountainHeroSectionProps>
                   duration={0.6}
                   className="font-poppins font-semibold text-[#1f3a5f] text-xs sm:text-base md:text-lg lg:text-[20px] tracking-wide max-w-3xl mx-auto"
                 >
-                  {subtitle}
+                  {displaySubtitle}
                 </BlurTextReveal>
               </div>
             )}

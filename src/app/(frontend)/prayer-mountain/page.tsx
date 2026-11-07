@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { PrayerMountainPage } from '@/components/PrayerMountainPage'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
+import type { PrayerMountainPage as PrayerMountainPageData } from '@/payload-types'
 
 export const dynamic = 'force-static'
 export const revalidate = 600
@@ -14,13 +15,13 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-  let prayerMountainData = null
+  let prayerMountainData: PrayerMountainPageData | null = null
 
   try {
     const payload = await getPayload({ config: configPromise })
 
     prayerMountainData = await payload.findGlobal({
-      slug: 'prayer-mountain-page' as any,
+      slug: 'prayer-mountain-page',
       depth: 1,
     })
   } catch {

@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 import { anyone } from '../../access/anyone'
 import { adminsOrEditors } from '../../access/adminsOrEditors'
+import { createGlobalRevalidateHook } from '@/utilities/revalidateGlobal'
 
 const DEFAULT_SCENES_ROW1 = [
   {
@@ -103,11 +104,12 @@ export const SundaySchoolPageGlobal: GlobalConfig = {
         if (!doc) return doc
         return {
           ...doc,
-          scenesRow1: doc.scenesRow1 && doc.scenesRow1.length >= 10 ? doc.scenesRow1 : DEFAULT_SCENES_ROW1,
-          scenesRow2: doc.scenesRow2 && doc.scenesRow2.length >= 10 ? doc.scenesRow2 : DEFAULT_SCENES_ROW2,
+          scenesRow1: doc.scenesRow1 && doc.scenesRow1.length > 0 ? doc.scenesRow1 : DEFAULT_SCENES_ROW1,
+          scenesRow2: doc.scenesRow2 && doc.scenesRow2.length > 0 ? doc.scenesRow2 : DEFAULT_SCENES_ROW2,
         }
       },
     ],
+    afterChange: [createGlobalRevalidateHook('/sunday-school', 'sunday-school-page')],
   },
   fields: [
     {

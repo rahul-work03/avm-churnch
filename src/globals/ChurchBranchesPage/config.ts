@@ -1,6 +1,7 @@
 import type { GlobalConfig } from 'payload'
 import { anyone } from '../../access/anyone'
 import { adminsOrEditors } from '../../access/adminsOrEditors'
+import { createGlobalRevalidateHook } from '@/utilities/revalidateGlobal'
 
 const DEFAULT_NATIONAL_BRANCHES = [
   {
@@ -297,6 +298,7 @@ export const ChurchBranchesPageGlobal: GlobalConfig = {
         }
       },
     ],
+    afterChange: [createGlobalRevalidateHook(['/church-branches', '/branches'], 'church-branches-page')],
   },
   fields: [
     {
