@@ -2755,6 +2755,14 @@ export interface EventsPage {
  */
 export interface GalleryPage {
   id: number;
+  /**
+   * Main heading displayed at the top of the gallery page
+   */
+  headerTitle?: string | null;
+  /**
+   * Introductory description displayed beneath the gallery header
+   */
+  headerSubtitle?: string | null;
   photoArch?: {
     image?: (number | null) | Media;
     imageFallback?: string | null;
@@ -3628,6 +3636,8 @@ export interface EventsPageSelect<T extends boolean = true> {
  * via the `definition` "gallery-page_select".
  */
 export interface GalleryPageSelect<T extends boolean = true> {
+  headerTitle?: T;
+  headerSubtitle?: T;
   photoArch?:
     | T
     | {
