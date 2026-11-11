@@ -16,9 +16,70 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    if (!customer?.name || !customer?.email || !customer?.phone || !customer?.address || !customer?.city || !customer?.pincode) {
+    const resolvedName = (
+      customer?.name?.trim() ||
+      [customer?.firstName, customer?.lastName].filter(Boolean).join(' ').trim() ||
+      customer?.fullName?.trim() ||
+      customer?.email?.split('@')[0] ||
+      ''
+    )
+
+    const resolvedEmail = (customer?.email || '').trim().toLowerCase()
+    const resolvedPhone = (customer?.phone || '').toString().trim()
+
+    if (!resolvedName || !resolvedEmail || !resolvedPhone) {
       return NextResponse.json(
-        { success: false, message: 'Please provide all required shipping and contact details.' },
+        { success: false, message: 'Please provide your full name, email address, and mobile phone number.' },
+        { status: 400 }
+      )
+    }
+
+    if (resolvedName.length < 2) {
+      return NextResponse.json(
+        { success: false, message: 'Please provide a valid full name (at least 2 characters).' },
+        { status: 400 }
+      )
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+    if (!emailRegex.test(resolvedEmail)) {
+      return NextResponse.json(
+        { success: false, message: 'Please provide a valid email address (e.g. name@example.com).' },
+        { status: 400 }
+      )
+    }
+
+    const cleanPhone = resolvedPhone.replace(/\D/g, '')
+    if (cleanPhone.length !== 10) {
+      return NextResponse.json(
+        { success: false, message: 'Please provide a valid 10-digit mobile number.' },
+        { status: 400 }
+      )
+    }
+
+    const selectedCountry = (customer?.country || 'India').trim().toLowerCase()
+    if (selectedCountry === 'india' && !/^[6-9]\d{9}$/.test(cleanPhone)) {
+      return NextResponse.json(
+        { success: false, message: 'Please provide a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.' },
+        { status: 400 }
+      )
+    }
+
+    const rawPincode = (customer?.pincode || '').toString().trim()
+    if (selectedCountry === 'india' && rawPincode) {
+      const cleanPin = rawPincode.replace(/\D/g, '')
+      if (cleanPin.length !== 6 || cleanPin === '000000') {
+        return NextResponse.json(
+          { success: false, message: 'Please provide a valid 6-digit postal PIN code.' },
+          { status: 400 }
+        )
+      }
+    }
+
+    const rawNotes = (customer?.deliveryNotes || customer?.message || '').toString()
+    if (rawNotes.length > 500) {
+      return NextResponse.json(
+        { success: false, message: 'Additional notes or message cannot exceed 500 characters.' },
         { status: 400 }
       )
     }
@@ -91,9 +152,15 @@ export async function POST(req: NextRequest) {
       .filter(Boolean)
       .join(', ')
 
+    const shippingAddress = formattedAddress.trim() || customer.address?.trim() || 'Address to be confirmed'
+    const city = customer.city?.trim() || 'N/A'
+    const state = customer.state?.trim() || 'Punjab'
+    const pincode = customer.pincode?.trim() || '000000'
+    const country = customer.country?.trim() || 'India'
+
     // Collect known customer fields
     const knownCustomerKeys = new Set([
-      'name', 'email', 'phone', 'address', 'landmark', 'city', 'state', 'pincode', 'deliveryNotes'
+      'name', 'firstName', 'lastName', 'email', 'phone', 'address', 'landmark', 'city', 'state', 'pincode', 'country', 'deliveryNotes', 'message'
     ])
     const additionalCustomerDetails: Record<string, any> = {}
     for (const [key, val] of Object.entries(customer)) {
@@ -112,15 +179,16 @@ export async function POST(req: NextRequest) {
         quantity: totalUnits,
         unitPrice: verifiedOrderItems[0]?.unitPrice || 0,
         totalAmount: calculatedTotal,
-        customerName: customer.name.trim(),
-        customerPhone: customer.phone.trim(),
-        customerEmail: customer.email.trim().toLowerCase(),
-        shippingAddress: formattedAddress,
+        customerName: resolvedName,
+        customerPhone: resolvedPhone,
+        customerEmail: resolvedEmail,
+        shippingAddress,
         landmark: customer.landmark?.trim() || '',
-        city: customer.city.trim(),
-        state: customer.state?.trim() || 'Punjab',
-        pincode: customer.pincode.trim(),
-        deliveryNotes: customer.deliveryNotes?.trim() || '',
+        city,
+        state,
+        pincode,
+        country,
+        deliveryNotes: customer.deliveryNotes?.trim() || customer.message?.trim() || '',
         additionalCustomerDetails: Object.keys(additionalCustomerDetails).length > 0 ? additionalCustomerDetails : undefined,
         paymentGateway: 'instamojo',
         paymentStatus: 'pending',
@@ -182,9 +250,9 @@ export async function POST(req: NextRequest) {
     const paymentResult = await createInstamojoPaymentRequest({
       amount: calculatedTotal,
       purpose: `Order ${orderNumber}`,
-      buyerName: customer.name.trim(),
-      email: customer.email.trim(),
-      phone: customer.phone.trim(),
+      buyerName: resolvedName.slice(0, 100),
+      email: resolvedEmail,
+      phone: resolvedPhone.replace(/[^0-9]/g, '').slice(-10),
       redirectUrl,
       webhookUrl,
     })

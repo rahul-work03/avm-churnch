@@ -15,12 +15,13 @@ import {
   Plus,
   Minus,
   Trash2,
+  ChevronDown,
 } from 'lucide-react'
 import { useCart } from '@/providers/Cart'
 import type { ProductItem, CartItem } from './StoreTypes'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
-import { DynamicFormFieldsList } from '@/components/Forms/DynamicFormFieldRenderer'
+import { DynamicFormFieldsList, DEFAULT_COUNTRIES } from '@/components/Forms/DynamicFormFieldRenderer'
 
 const INDIAN_STATES = [
   'Andhra Pradesh',
@@ -126,56 +127,121 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
 
   const [formData, setFormData] = useState<Record<string, any>>({
     name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
+    country: 'India',
     address: '',
     landmark: '',
     city: '',
     state: 'Punjab',
     pincode: '',
     deliveryNotes: '',
+    message: '',
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
+  const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target
+    if (name === 'phone') {
+      const numeric = value.replace(/[^0-9]/g, '').slice(0, 10)
+      setFormData((prev) => ({ ...prev, [name]: numeric }))
+      return
+    }
+    if (name === 'pincode') {
+      const numeric = value.replace(/[^0-9]/g, '').slice(0, 6)
+      setFormData((prev) => ({ ...prev, [name]: numeric }))
+      return
+    }
+    if (name === 'deliveryNotes' || name === 'message') {
+      const limited = value.slice(0, 500)
+      setFormData((prev) => ({ ...prev, [name]: limited }))
+      return
+    }
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
   const validateForm = () => {
+    const resolvedName =
+      formData.name?.trim() ||
+      [formData.firstName, formData.lastName].filter(Boolean).join(' ').trim()
+
+    // 1. Dynamic form field check (if configured in CMS)
     if (form?.fields && form.fields.length > 0) {
       for (const f of form.fields) {
+        // "Your message", deliveryNotes, and landmark are always optional
+        if (f.name === 'message' || f.name === 'deliveryNotes' || f.name === 'landmark') continue
+        if (f.label && f.label.toLowerCase().includes('message')) continue
+        // If form has a "name" field, but user provided firstName / lastName, accept it
+        if (f.name === 'name' && (formData.firstName || formData.name)) continue
         if (f.required && f.name && (!formData[f.name] || !String(formData[f.name]).trim())) {
           return `Please fill in required field: ${f.label || f.name}`
         }
       }
-      if (formData.email && (!formData.email.trim() || !formData.email.includes('@'))) {
-        return 'Please enter a valid email address.'
-      }
-      if (formData.phone) {
-        const cleanPhone = String(formData.phone).replace(/[^0-9]/g, '')
-        if (cleanPhone.length < 10) return 'Please enter a valid 10-digit mobile phone number.'
-      }
-      if (formData.pincode) {
-        const cleanPin = String(formData.pincode).replace(/[^0-9]/g, '')
-        if (cleanPin.length !== 6) return 'Please enter a valid 6-digit postal PIN code.'
-      }
-      return null
+    } else {
+      if (!resolvedName) return 'Please enter your full name.'
+      if (resolvedName.length < 2) return 'Full name must be at least 2 characters.'
+      if (!formData.address?.trim()) return 'Please enter your street address / house number.'
+      if (!formData.city?.trim()) return 'Please enter your city / district.'
     }
 
-    if (!formData.name.trim()) return 'Please enter your full name.'
-    if (!formData.email.trim() || !formData.email.includes('@'))
-      return 'Please enter a valid email address.'
-    const cleanPhone = formData.phone.replace(/[^0-9]/g, '')
-    if (cleanPhone.length < 10) return 'Please enter a valid 10-digit mobile phone number.'
-    if (!formData.address.trim()) return 'Please enter your street address / house number.'
-    if (!formData.city.trim()) return 'Please enter your city / district.'
-    const cleanPin = formData.pincode.replace(/[^0-9]/g, '')
-    if (cleanPin.length !== 6) return 'Please enter a valid 6-digit postal PIN code.'
+    // 2. Name validation
+    if (resolvedName && resolvedName.length < 2) {
+      return 'Full name must be at least 2 characters.'
+    }
+
+    // 3. Email validation
+    if (!formData.email?.trim()) {
+      return 'Please enter your email address.'
+    }
+    if (!EMAIL_REGEX.test(formData.email.trim())) {
+      return 'Please enter a valid email address (e.g. name@example.com).'
+    }
+
+    // 4. Mobile phone number validation (10 digits)
+    const cleanPhone = String(formData.phone || '').replace(/[^0-9]/g, '')
+    if (!cleanPhone) {
+      return 'Please enter your 10-digit mobile number.'
+    }
+    if (cleanPhone.length !== 10) {
+      return 'Mobile number must be exactly 10 digits.'
+    }
+    if ((formData.country || 'India') === 'India' && !/^[6-9]\d{9}$/.test(cleanPhone)) {
+      return 'Please enter a valid 10-digit Indian mobile number (starts with 6, 7, 8, or 9).'
+    }
+
+    // 5. Postal PIN code validation
+    if (formData.pincode && String(formData.pincode).trim()) {
+      const cleanPin = String(formData.pincode).replace(/[^0-9]/g, '')
+      if ((formData.country || 'India') === 'India') {
+        if (cleanPin.length !== 6) {
+          return 'Postal PIN code must be exactly 6 digits.'
+        }
+        if (/^0{6}$/.test(cleanPin)) {
+          return 'Please enter a valid postal PIN code.'
+        }
+      }
+    } else if (!form?.fields || form.fields.length === 0) {
+      if ((formData.country || 'India') === 'India') {
+        return 'Please enter your 6-digit postal PIN code.'
+      }
+    }
+
+    // 6. Character limitation for additional notes / message (500 chars max)
+    if (formData.deliveryNotes && formData.deliveryNotes.length > 500) {
+      return 'Special delivery instructions must not exceed 500 characters.'
+    }
+    if (formData.message && formData.message.length > 500) {
+      return 'Your message must not exceed 500 characters.'
+    }
+
     return null
   }
 
@@ -196,6 +262,10 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
 
     setIsSubmitting(true)
 
+    const resolvedName =
+      formData.name?.trim() ||
+      [formData.firstName, formData.lastName].filter(Boolean).join(' ').trim()
+
     try {
       const response = await fetch('/api/store/checkout', {
         method: 'POST',
@@ -206,6 +276,8 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
           formId: form?.id,
           customer: {
             ...formData,
+            name: resolvedName,
+            country: formData.country || 'India',
             phone: formData.phone ? String(formData.phone).replace(/[^0-9]/g, '').slice(-10) : '',
             pincode: formData.pincode ? String(formData.pincode).replace(/[^0-9]/g, '').slice(-6) : '',
           },
@@ -311,6 +383,34 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                     onChange={(name, val) => setFormData((prev) => ({ ...prev, [name]: val }))}
                     variant="light"
                   />
+                  {!form.fields.some((f: any) => f.name === 'country' || f.blockType === 'country') && (
+                    <div className="pt-1">
+                      <label
+                        htmlFor="country"
+                        className="block font-poppins font-medium text-[#344054] text-sm mb-1.5"
+                      >
+                        Country <span className="text-[#efbf04] font-bold">*</span>
+                      </label>
+                      <div className="relative">
+                        <select
+                          id="country"
+                          name="country"
+                          value={formData.country || 'India'}
+                          onChange={handleChange}
+                          className="w-full bg-white border border-[#d0d5dd] focus:ring-2 focus:ring-[#efbf04] focus:border-transparent rounded-[8px] px-4 py-3 text-[#101828] text-base shadow-xs focus:outline-none transition appearance-none cursor-pointer pr-10"
+                        >
+                          {DEFAULT_COUNTRIES.map((c) => (
+                            <option key={c.value} value={c.value}>
+                              {c.label}
+                            </option>
+                          ))}
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-400">
+                          <ChevronDown className="w-4 h-4" />
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <>
@@ -381,6 +481,8 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                           id="phone"
                           name="phone"
                           type="tel"
+                          inputMode="numeric"
+                          pattern="[0-9]*"
                           required
                           maxLength={10}
                           placeholder="9876543210"
@@ -389,6 +491,9 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                           className="w-full px-4 py-3 rounded-r-xl border border-slate-200 focus:border-[#003471] focus:ring-2 focus:ring-[#003471]/10 text-sm outline-none transition-all"
                         />
                       </div>
+                      <p className="text-[11px] text-slate-400 mt-1 font-poppins">
+                        Must be exactly 10 digits (e.g. 9876543210)
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -407,6 +512,49 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                 </p>
 
                 <div className="space-y-4 font-poppins">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label
+                        htmlFor="country"
+                        className="block text-xs font-semibold text-slate-700 mb-1"
+                      >
+                        Country *
+                      </label>
+                      <select
+                        id="country"
+                        name="country"
+                        required
+                        value={formData.country || 'India'}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#003471] focus:ring-2 focus:ring-[#003471]/10 text-sm outline-none transition-all bg-white"
+                      >
+                        {DEFAULT_COUNTRIES.map((c) => (
+                          <option key={c.value} value={c.value}>
+                            {c.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label
+                        htmlFor="landmark"
+                        className="block text-xs font-semibold text-slate-700 mb-1"
+                      >
+                        Nearest Landmark (Optional)
+                      </label>
+                      <input
+                        id="landmark"
+                        name="landmark"
+                        type="text"
+                        placeholder="Near Gurudwara, Opp School..."
+                        value={formData.landmark}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#003471] focus:ring-2 focus:ring-[#003471]/10 text-sm outline-none transition-all"
+                      />
+                    </div>
+                  </div>
+
                   <div>
                     <label
                       htmlFor="address"
@@ -427,24 +575,6 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label
-                        htmlFor="landmark"
-                        className="block text-xs font-semibold text-slate-700 mb-1"
-                      >
-                        Nearest Landmark (Optional)
-                      </label>
-                      <input
-                        id="landmark"
-                        name="landmark"
-                        type="text"
-                        placeholder="Near Gurudwara, Opp School..."
-                        value={formData.landmark}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#003471] focus:ring-2 focus:ring-[#003471]/10 text-sm outline-none transition-all"
-                      />
-                    </div>
-
                     <div>
                       <label
                         htmlFor="city"
@@ -500,6 +630,8 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                         id="pincode"
                         name="pincode"
                         type="text"
+                        inputMode="numeric"
+                        pattern="[0-9]*"
                         required
                         maxLength={6}
                         placeholder="144001"
@@ -507,24 +639,33 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#003471] focus:ring-2 focus:ring-[#003471]/10 text-sm outline-none transition-all"
                       />
+                      <p className="text-[11px] text-slate-400 mt-1 font-poppins">
+                        Must be exactly 6 numeric digits
+                      </p>
                     </div>
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="deliveryNotes"
-                      className="block text-xs font-semibold text-slate-700 mb-1"
-                    >
-                      Special Delivery Instructions (Optional)
-                    </label>
-                    <input
+                    <div className="flex items-center justify-between mb-1">
+                      <label
+                        htmlFor="deliveryNotes"
+                        className="block text-xs font-semibold text-slate-700"
+                      >
+                        Special Delivery Instructions (Optional)
+                      </label>
+                      <span className="text-[11px] text-slate-400 font-normal">
+                        {(formData.deliveryNotes?.length || 0)}/500 characters
+                      </span>
+                    </div>
+                    <textarea
                       id="deliveryNotes"
                       name="deliveryNotes"
-                      type="text"
+                      rows={2}
+                      maxLength={500}
                       placeholder="e.g. Please call before delivery, leave with guard..."
                       value={formData.deliveryNotes}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#003471] focus:ring-2 focus:ring-[#003471]/10 text-sm outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-[#003471] focus:ring-2 focus:ring-[#003471]/10 text-sm outline-none transition-all resize-none"
                     />
                   </div>
                 </div>

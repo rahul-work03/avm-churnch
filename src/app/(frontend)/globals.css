@@ -47,10 +47,14 @@
   }
 }
 
+:root {
+  --marquee-duration: 65s;
+}
+
 .animate-stage-marquee {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 40s linear infinite;
+  animation: marquee-scroll var(--marquee-duration, 65s) linear infinite;
   will-change: transform;
 }
 
@@ -61,7 +65,7 @@
 .animate-marquee-left {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 35s linear infinite;
+  animation: marquee-scroll var(--marquee-duration, 65s) linear infinite;
   will-change: transform;
 }
 
@@ -72,7 +76,7 @@
 .animate-marquee-right {
   display: flex;
   width: max-content;
-  animation: marquee-reverse 35s linear infinite;
+  animation: marquee-reverse var(--marquee-duration, 65s) linear infinite;
   will-change: transform;
 }
 

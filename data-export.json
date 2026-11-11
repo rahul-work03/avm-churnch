@@ -1626,7 +1626,7 @@
             "label": "Your Message / Inquiry",
             "width": 100,
             "defaultValue": null,
-            "required": true,
+            "required": false,
             "blockName": null,
             "blockType": "textarea"
           }

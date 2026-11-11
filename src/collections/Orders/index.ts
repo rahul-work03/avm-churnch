@@ -139,7 +139,7 @@ export const Orders: CollectionConfig = {
           name: 'shippingAddress',
           type: 'textarea',
           label: 'Shipping Street Address / House No.',
-          required: true,
+          required: false,
         },
         {
           name: 'landmark',
@@ -152,10 +152,16 @@ export const Orders: CollectionConfig = {
       type: 'row',
       fields: [
         {
+          name: 'country',
+          type: 'text',
+          label: 'Country',
+          defaultValue: 'India',
+        },
+        {
           name: 'city',
           type: 'text',
           label: 'City / District',
-          required: true,
+          required: false,
         },
         {
           name: 'state',
@@ -167,7 +173,7 @@ export const Orders: CollectionConfig = {
           name: 'pincode',
           type: 'text',
           label: 'Postal PIN Code (6 Digits)',
-          required: true,
+          required: false,
         },
       ],
     },

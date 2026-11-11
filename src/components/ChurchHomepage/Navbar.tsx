@@ -136,15 +136,15 @@ export const ChurchNavbar: React.FC<ChurchNavbarProps> = ({ data }) => {
 
   return (
     <>
-      <header className="absolute top-0 left-0 right-0 z-50 pt-5 sm:pt-6 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-[1240px] xl:max-w-[1320px] mx-auto bg-[#122f4a] rounded-full px-5 sm:px-6 py-2.5 flex items-center justify-between gap-4 lg:gap-6 xl:gap-8 shadow-xl border border-white/10 relative z-50">
+      <header className="absolute top-0 left-0 right-0 z-50 pt-5 sm:pt-6 px-3 sm:px-5 lg:px-6 xl:px-8">
+        <div className="max-w-[1280px] xl:max-w-[1380px] 2xl:max-w-[1440px] mx-auto bg-[#122f4a] rounded-full px-4 sm:px-5 lg:px-6 py-2 sm:py-2.5 flex items-center justify-between gap-2 lg:gap-4 xl:gap-6 shadow-xl border border-white/10 relative z-50">
           {/* Brand Logo & Name */}
           <Link
             href="/"
             prefetch={true}
-            className="flex items-center gap-2.5 sm:gap-3 group active:scale-95 transition-transform duration-150 select-none flex-shrink-0"
+            className="flex items-center gap-2 sm:gap-2.5 xl:gap-3 group active:scale-95 transition-transform duration-150 select-none flex-shrink-0"
           >
-            <div className="relative w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0">
+            <div className="relative w-9 h-9 sm:w-10 sm:h-10 xl:w-11 xl:h-11 flex-shrink-0">
               <Image
                 src={logoUrl}
                 alt={brandName}
@@ -153,13 +153,13 @@ export const ChurchNavbar: React.FC<ChurchNavbarProps> = ({ data }) => {
                 priority
               />
             </div>
-            <span className="font-poppins font-semibold text-white text-sm sm:text-base tracking-wide whitespace-nowrap">
+            <span className="font-poppins font-semibold text-white text-xs sm:text-sm xl:text-[15px] 2xl:text-base tracking-wide whitespace-nowrap">
               {brandName}
             </span>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5.5 2xl:gap-6 flex-shrink-0">
+          <nav className="hidden lg:flex items-center justify-center gap-2 xl:gap-3.5 2xl:gap-5 flex-1 mx-2 lg:mx-3 xl:mx-4 min-w-0">
             {navLinks.map((item) => {
               const hasChildren = Boolean(item.children && item.children.length > 0)
               const isDirectActive = isRouteActive(pathname, item.href)
@@ -178,7 +178,7 @@ export const ChurchNavbar: React.FC<ChurchNavbarProps> = ({ data }) => {
                     <button
                       type="button"
                       onClick={() => setDesktopDropdownOpen((prev) => !prev)}
-                      className={`font-poppins text-[13.5px] xl:text-[14.5px] 2xl:text-[15px] whitespace-nowrap transition-all duration-150 active:scale-95 select-none flex items-center gap-1.5 cursor-pointer ${
+                      className={`font-poppins text-[12.5px] xl:text-[13.5px] 2xl:text-[14.5px] whitespace-nowrap transition-all duration-150 active:scale-95 select-none flex items-center gap-1 xl:gap-1.5 cursor-pointer ${
                         isActive
                           ? 'text-[#efbf04] font-semibold'
                           : 'text-white/90 hover:text-[#efbf04]'
@@ -187,7 +187,7 @@ export const ChurchNavbar: React.FC<ChurchNavbarProps> = ({ data }) => {
                     >
                       <span>{item.label}</span>
                       <ChevronDown
-                        size={15}
+                        size={14}
                         className={`transition-transform duration-200 ${
                           desktopDropdownOpen ? 'rotate-180 text-[#efbf04]' : ''
                         }`}
@@ -227,7 +227,7 @@ export const ChurchNavbar: React.FC<ChurchNavbarProps> = ({ data }) => {
                   key={item.label}
                   href={item.href}
                   prefetch={true}
-                  className={`font-poppins text-[13.5px] xl:text-[14.5px] 2xl:text-[15px] whitespace-nowrap transition-all duration-150 active:scale-95 select-none inline-block ${
+                  className={`font-poppins text-[12.5px] xl:text-[13.5px] 2xl:text-[14.5px] whitespace-nowrap transition-all duration-150 active:scale-95 select-none inline-block ${
                     isActive
                       ? 'text-[#efbf04] font-semibold'
                       : 'text-white/90 hover:text-[#efbf04]'
@@ -244,7 +244,7 @@ export const ChurchNavbar: React.FC<ChurchNavbarProps> = ({ data }) => {
             <Link
               href={ctaUrl}
               prefetch={true}
-              className="bg-[#efbf04] text-[#0b0c1c] font-poppins font-semibold text-xs xl:text-sm px-5 xl:px-6 py-2 rounded-full hover:bg-yellow-400 transition-all active:scale-95 duration-150 select-none shadow-md whitespace-nowrap"
+              className="bg-[#efbf04] text-[#0b0c1c] font-poppins font-semibold text-xs xl:text-sm px-4 xl:px-5 py-2 rounded-full hover:bg-yellow-400 transition-all active:scale-95 duration-150 select-none shadow-md whitespace-nowrap"
             >
               {ctaLabel}
             </Link>

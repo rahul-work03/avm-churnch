@@ -315,11 +315,10 @@ export const ContactHeroSection: React.FC<ContactHeroSectionProps> = ({
                     htmlFor="message"
                     className="block font-poppins font-medium text-[#344054] text-sm mb-1.5"
                   >
-                    Write a Message For Us <span className="text-[#efbf04]">*</span>
+                    Write a Message For Us <span className="text-slate-400 text-xs font-normal">(Optional)</span>
                   </label>
                   <textarea
                     id="message"
-                    required
                     rows={4}
                     value={formData.message || ''}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}

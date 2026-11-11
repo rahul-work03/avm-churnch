@@ -6,9 +6,9 @@ export async function POST(req: NextRequest) {
     const body = await req.json()
 
     // Validate minimum required fields
-    if (!body.firstName || !body.email || !body.message) {
+    if (!body.firstName || !body.email) {
       return NextResponse.json(
-        { success: false, message: 'Please provide your name, email, and message.' },
+        { success: false, message: 'Please provide your name and email address.' },
         { status: 400 }
       )
     }

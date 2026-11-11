@@ -10,6 +10,29 @@ export interface FormFieldOption {
   id?: string
 }
 
+export const DEFAULT_COUNTRIES: FormFieldOption[] = [
+  { label: 'India', value: 'India' },
+  { label: 'United States', value: 'United States' },
+  { label: 'United Kingdom', value: 'United Kingdom' },
+  { label: 'Canada', value: 'Canada' },
+  { label: 'Australia', value: 'Australia' },
+  { label: 'United Arab Emirates', value: 'United Arab Emirates' },
+  { label: 'New Zealand', value: 'New Zealand' },
+  { label: 'Singapore', value: 'Singapore' },
+  { label: 'Malaysia', value: 'Malaysia' },
+  { label: 'Germany', value: 'Germany' },
+  { label: 'France', value: 'France' },
+  { label: 'Italy', value: 'Italy' },
+  { label: 'Spain', value: 'Spain' },
+  { label: 'Saudi Arabia', value: 'Saudi Arabia' },
+  { label: 'Kuwait', value: 'Kuwait' },
+  { label: 'Qatar', value: 'Qatar' },
+  { label: 'Oman', value: 'Oman' },
+  { label: 'Bahrain', value: 'Bahrain' },
+  { label: 'South Africa', value: 'South Africa' },
+  { label: 'Other Country', value: 'Other' },
+]
+
 export interface FormField {
   blockType: string
   name?: string
@@ -53,7 +76,10 @@ export const DynamicFormField: React.FC<DynamicFormFieldProps> = ({
     ? 'block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2'
     : 'block text-xs font-semibold text-white/70 uppercase tracking-wider mb-2'
 
-  const requiredAsterisk = required ? (
+  const isMessageField = name === 'message' || label?.toLowerCase().includes('message')
+  const isRequired = isMessageField ? false : Boolean(required)
+
+  const requiredAsterisk = isRequired ? (
     <span className={isLight ? 'text-[#efbf04] ml-1 font-bold' : 'text-amber-400 ml-1'}>*</span>
   ) : null
 
@@ -120,20 +146,45 @@ export const DynamicFormField: React.FC<DynamicFormFieldProps> = ({
 
   // 2. Textarea block
   if (blockType === 'textarea') {
+    const isNotesOrMessage =
+      isMessageField ||
+      name === 'deliveryNotes' ||
+      name === 'additionalComments' ||
+      label?.toLowerCase().includes('note') ||
+      label?.toLowerCase().includes('instruction')
+    const charLimit = 500
+    const currentLength = typeof value === 'string' ? value.length : 0
+
     return (
       <div className={colSpanClass}>
-        {label && (
-          <label htmlFor={name} className={labelClass}>
-            {label}
-            {requiredAsterisk}
-          </label>
-        )}
+        <div className="flex items-center justify-between mb-1">
+          {label && (
+            <label htmlFor={name} className={labelClass}>
+              {label}
+              {requiredAsterisk}
+              {isMessageField && (
+                <span className={`text-xs ml-1.5 font-normal ${isLight ? 'text-slate-400' : 'text-white/50'}`}>
+                  (Optional)
+                </span>
+              )}
+            </label>
+          )}
+          {isNotesOrMessage && (
+            <span className={`text-[11px] font-medium ${isLight ? 'text-slate-400' : 'text-white/40'}`}>
+              {currentLength}/{charLimit} characters
+            </span>
+          )}
+        </div>
         <textarea
           id={name}
           name={name}
           value={value ?? ''}
-          required={required}
-          onChange={(e) => onChange(name!, e.target.value)}
+          required={isRequired}
+          maxLength={charLimit}
+          onChange={(e) => {
+            const val = isNotesOrMessage ? e.target.value.slice(0, charLimit) : e.target.value
+            onChange(name!, val)
+          }}
           placeholder={label || ''}
           className={textareaClass}
         />
@@ -142,8 +193,22 @@ export const DynamicFormField: React.FC<DynamicFormFieldProps> = ({
     )
   }
 
-  // 3. Select / State block
+  // 3. Select / State / Country block
   if (blockType === 'select' || blockType === 'state' || blockType === 'country') {
+    const isCountry = blockType === 'country' || name === 'country'
+    const effectiveOptions =
+      options && options.length > 0
+        ? options
+        : isCountry
+        ? DEFAULT_COUNTRIES
+        : []
+    const effectiveValue =
+      value !== undefined && value !== ''
+        ? value
+        : isCountry
+        ? (field.defaultValue || 'India')
+        : ''
+
     return (
       <div className={colSpanClass}>
         {label && (
@@ -156,21 +221,27 @@ export const DynamicFormField: React.FC<DynamicFormFieldProps> = ({
           <select
             id={name}
             name={name}
-            value={value ?? ''}
-            required={required}
+            value={effectiveValue}
+            required={isRequired}
             onChange={(e) => onChange(name!, e.target.value)}
             className={selectClass}
           >
-            <option value="" disabled className="bg-slate-900 text-slate-400">
-              Select {label || 'an option'}
-            </option>
-            {options?.map((opt, i) => (
-              <option key={opt.id || opt.value || i} value={opt.value} className="bg-slate-900 text-white">
+            {!isCountry && (
+              <option value="" disabled className={isLight ? 'text-slate-400' : 'bg-slate-900 text-slate-400'}>
+                Select {label || 'an option'}
+              </option>
+            )}
+            {effectiveOptions?.map((opt, i) => (
+              <option
+                key={opt.id || opt.value || i}
+                value={opt.value}
+                className={isLight ? 'text-[#101828]' : 'bg-slate-900 text-white'}
+              >
                 {opt.label || opt.value}
               </option>
             ))}
           </select>
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-white/50">
+          <div className={`pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 ${isLight ? 'text-slate-400' : 'text-white/50'}`}>
             <ChevronDown className="w-4 h-4" />
           </div>
         </div>
@@ -280,10 +351,11 @@ export const DynamicFormField: React.FC<DynamicFormFieldProps> = ({
           type="email"
           id={name}
           name={name}
+          inputMode="email"
           value={value ?? ''}
           required={required}
           onChange={(e) => onChange(name!, e.target.value)}
-          placeholder={label || ''}
+          placeholder={label || 'you@example.com'}
           className={inputClass}
         />
         {error && <p className="text-xs text-rose-400 mt-1">{error}</p>}
@@ -291,7 +363,10 @@ export const DynamicFormField: React.FC<DynamicFormFieldProps> = ({
     )
   }
 
-  // 8. Default: Text block
+  // 8. Default: Text block (with smart phone / pincode validation & length constraints)
+  const isPhone = name === 'phone' || label?.toLowerCase().includes('phone') || label?.toLowerCase().includes('mobile')
+  const isPincode = name === 'pincode' || label?.toLowerCase().includes('pincode') || label?.toLowerCase().includes('pin code')
+
   return (
     <div className={colSpanClass}>
       {label && (
@@ -301,15 +376,42 @@ export const DynamicFormField: React.FC<DynamicFormFieldProps> = ({
         </label>
       )}
       <input
-        type="text"
+        type={isPhone ? 'tel' : 'text'}
         id={name}
         name={name}
+        inputMode={isPhone || isPincode ? 'numeric' : undefined}
+        pattern={isPhone || isPincode ? '[0-9]*' : undefined}
+        maxLength={isPhone ? 10 : isPincode ? 6 : undefined}
         value={value ?? ''}
         required={required}
-        onChange={(e) => onChange(name!, e.target.value)}
-        placeholder={label || ''}
+        onChange={(e) => {
+          if (isPhone) {
+            onChange(name!, e.target.value.replace(/[^0-9]/g, '').slice(0, 10))
+          } else if (isPincode) {
+            onChange(name!, e.target.value.replace(/[^0-9]/g, '').slice(0, 6))
+          } else {
+            onChange(name!, e.target.value)
+          }
+        }}
+        placeholder={
+          isPhone
+            ? '9876543210 (10 digits)'
+            : isPincode
+            ? '144001 (6 digits)'
+            : label || ''
+        }
         className={inputClass}
       />
+      {isPhone && (
+        <p className={`text-[11px] mt-1 ${isLight ? 'text-slate-400' : 'text-white/40'}`}>
+          Must be exactly 10 digits
+        </p>
+      )}
+      {isPincode && (
+        <p className={`text-[11px] mt-1 ${isLight ? 'text-slate-400' : 'text-white/40'}`}>
+          6-digit postal PIN code
+        </p>
+      )}
       {error && <p className="text-xs text-rose-400 mt-1">{error}</p>}
     </div>
   )
