@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { anyone } from '../../access/anyone'
 import { adminsOrEditors } from '../../access/adminsOrEditors'
+import { formatSlug } from '../../fields/slug/formatSlug'
 import {
   revalidateTestimonial,
   revalidateTestimonialDelete,
@@ -44,6 +45,9 @@ export const Testimonials: CollectionConfig = {
       label: 'URL Slug (e.g. sister-randeep-healing)',
       admin: {
         description: 'Unique URL identifier for the testimony detail page (/testimonials/[slug])',
+      },
+      hooks: {
+        beforeValidate: [formatSlug('person')],
       },
     },
     {

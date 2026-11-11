@@ -1003,11 +1003,12 @@ export interface Order {
   customerName: string;
   customerPhone: string;
   customerEmail: string;
-  shippingAddress: string;
+  shippingAddress?: string | null;
   landmark?: string | null;
-  city: string;
+  country?: string | null;
+  city?: string | null;
   state?: string | null;
-  pincode: string;
+  pincode?: string | null;
   deliveryNotes?: string | null;
   /**
    * Stores any extra custom fields submitted via the dynamic Checkout Form.
@@ -1669,6 +1670,7 @@ export interface OrdersSelect<T extends boolean = true> {
   customerEmail?: T;
   shippingAddress?: T;
   landmark?: T;
+  country?: T;
   city?: T;
   state?: T;
   pincode?: T;

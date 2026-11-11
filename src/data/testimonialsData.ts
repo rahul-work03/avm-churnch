@@ -118,8 +118,96 @@ export const testimonialsData: Testimony[] = [
     category: 'Peace & Freedom',
     verse: 'Isaiah 61:3 - "To give them beauty for ashes, the oil of joy for mourning, the garment of praise for the spirit of heaviness."',
   },
+  {
+    id: '7',
+    slug: 'brother-gurpreet-healing',
+    title: 'Instant Miracle Healing from Chronic Spinal Cord Degeneration',
+    person: 'Brother Gurpreet Singh',
+    hindiHeadline:
+      '4 वर्षों से रीढ़ की हड्डी में भयंकर दर्द और चलने-फिरने में असमर्थ थे। प्रार्थना पर्वत पर सामर्थी प्रार्थना के बाद मिली पूर्ण चंगाई।',
+    englishHeadline:
+      'AFTER SUFFERING INTENSE LOWER BACK PAIN AND SPINAL IMMOBILITY FOR OVER 4 YEARS, HE WAS SUPERNATURALLY HEALED AT PRAYER MOUNTAIN AND CAN NOW WALK FREELY WITHOUT ANY PAIN.',
+    shortDescription:
+      'AFTER SUFFERING INTENSE LOWER BACK PAIN AND SPINAL IMMOBILITY FOR OVER 4 YEARS, HE WAS SUPERNATURALLY HEALED AT PRAYER MOUNTAIN AND CAN NOW WALK FREELY WITHOUT ANY PAIN.',
+    fullStory:
+      'Brother Gurpreet Singh suffered from chronic degenerative spinal disc disease for more than 4 years, experiencing agonizing pain, stiffness, and inability to perform basic daily activities. Medical specialists recommended high-risk surgery with no guarantee of full mobility. While seeking the presence of God at Prayer Mountain, Apostle Dr. Ankur Yoseph Narula released the prophetic healing word. Divine power surged through his spine, every trace of pain vanished immediately, and he was able to bend, run, and walk freely.',
+    image: '/figma-assets/88fe21040a6d042f53b945fa5a996447efd6bcfd.png',
+    category: 'Spinal Healing',
+    verse: 'Jeremiah 33:6 - "Behold, I will bring health and healing to it; I will heal them and reveal to them the abundance of peace and truth."',
+  },
+  {
+    id: '8',
+    slug: 'sister-manpreet-deliverance',
+    title: 'Divine Restoration of Broken Marriage & Peaceful Family Revival',
+    person: 'Sister Manpreet Kaur',
+    hindiHeadline:
+      'तलाक की कगार पर पहुंचे रिश्ते में परमेश्वर ने किया अद्भुत चमत्कार। प्रार्थना पर्वत पर प्रार्थना के बाद परिवार में लौटा प्रेम और शांति।',
+    englishHeadline:
+      'FACING IMMINENT DIVORCE AND CONTINUOUS TURMOIL, SHE SOUGHT GOD AT PRAYER MOUNTAIN. GOD HEARD HER CRIES, RECONCILED HER MARRIAGE, AND FILLED HER HOME WITH HIS BLESSING.',
+    shortDescription:
+      'FACING IMMINENT DIVORCE AND CONTINUOUS TURMOIL, SHE SOUGHT GOD AT PRAYER MOUNTAIN. GOD HEARD HER CRIES, RECONCILED HER MARRIAGE, AND FILLED HER HOME WITH HIS BLESSING.',
+    fullStory:
+      'Sister Manpreet Kaur faced severe marital breakdown and continuous domestic strife that pushed her family to the brink of legal divorce. Desperate for God’s intervention, she attended prayer and fasting meetings at Prayer Mountain. God answered her persistent prayers supernaturally. Hearts were softened, misunderstandings and hostility dissolved, and reconciliation took place. Today, their marriage is completely healed and stands as a testimony of God’s restoring grace.',
+    image: '/figma-assets/6b7f869d048b1af39a42b08c4bacff57cb6ed577.png',
+    category: 'Family Restoration',
+    verse: 'Mark 10:9 - "Therefore what God has joined together, let not man separate."',
+  },
+  {
+    id: '9',
+    slug: 'brother-harjit-deliverance',
+    title: 'Delivered from 12 Years of Severe Substance Addiction & Depression',
+    person: 'Brother Harjit Singh',
+    hindiHeadline:
+      '12 वर्षों के नशे और अवसाद के गहरे जाल से प्रभु यीशु मसीह ने किया पूरी तरह आज़ाद। प्रार्थना पर्वत पर उपवास प्रार्थना के बाद नया जीवन मिला।',
+    englishHeadline:
+      'BOUND IN ALCOHOLISM AND SUICIDAL DEPRESSION, HIS LIFE WAS SHATTERED. AFTER COMMITTING TO FASTING AND PRAYER ON THE MOUNTAIN, HE WAS TOTALLY SET FREE AND TRANSFORMED.',
+    shortDescription:
+      'BOUND IN ALCOHOLISM AND SUICIDAL DEPRESSION, HIS LIFE WAS SHATTERED. AFTER COMMITTING TO FASTING AND PRAYER ON THE MOUNTAIN, HE WAS TOTALLY SET FREE AND TRANSFORMED.',
+    fullStory:
+      'Brother Harjit Singh was trapped in severe alcohol addiction and suicidal mental depression for over twelve agonizing years. Rehabilitation centers and medications failed to break the cycle. Upon hearing the testimony of thousands being delivered at The Church of Signs and Wonders, he climbed Prayer Mountain and cried out to God in fasting and prayer. The chains of addiction were broken permanently; he has had zero cravings ever since and now serves in the ministry.',
+    image: '/figma-assets/88fe21040a6d042f53b945fa5a996447efd6bcfd.png',
+    category: 'Supernatural Deliverance',
+    verse: 'John 8:36 - "Therefore if the Son makes you free, you shall be free indeed."',
+  },
+  {
+    id: '10',
+    slug: 'sister-jaswinder-healing',
+    title: 'Miraculous Childbirth Testimony after 8 Years of Barrenness',
+    person: 'Sister Jaswinder Kaur',
+    hindiHeadline:
+      '8 वर्षों के बांझपन के बाद डॉक्टरों ने जवाब दे दिया था। प्रार्थना पर्वत पर रो-रोकर की गई प्रार्थना को परमेश्वर ने सुना और बेटे की आशीष से नवाज़ा।',
+    englishHeadline:
+      'DOCTORS DECLARED IT MEDICALLY IMPOSSIBLE FOR HER TO CONCEIVE. SHE ANOINTED HERSELF AND WEPT BEFORE GOD AT PRAYER MOUNTAIN; WITHIN A YEAR, GOD BLESSED HER WITH A HEALTHY BABY BOY.',
+    shortDescription:
+      'DOCTORS DECLARED IT MEDICALLY IMPOSSIBLE FOR HER TO CONCEIVE. SHE ANOINTED HERSELF AND WEPT BEFORE GOD AT PRAYER MOUNTAIN; WITHIN A YEAR, GOD BLESSED HER WITH A HEALTHY BABY BOY.',
+    fullStory:
+      'Sister Jaswinder Kaur endured 8 painful years of barrenness accompanied by severe medical complications that doctors ruled untreatable. In grief and faith, she sought the altar of God at Prayer Mountain during continuous prayer meetings. Apostle Dr. Ankur Yoseph Narula released the prophetic blessing of the womb. Within a few months, she conceived naturally and gave birth to a healthy baby boy, bringing immense joy to her entire household.',
+    image: '/figma-assets/6b7f869d048b1af39a42b08c4bacff57cb6ed577.png',
+    category: 'Miracle Childbirth',
+    verse: 'Psalm 113:9 - "He grants the barren woman a home, like a joyful mother of children. Praise the Lord!"',
+  },
 ]
 
+function normalizeSlug(str?: string | null): string {
+  if (!str) return ''
+  try {
+    str = decodeURIComponent(str)
+  } catch {
+    // ignore
+  }
+  return str
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]+/g, '')
+}
+
 export function getTestimonyBySlug(slug: string): Testimony | undefined {
-  return testimonialsData.find((t) => t.slug === slug || t.id === slug)
+  if (!slug) return undefined
+  const targetClean = normalizeSlug(slug)
+  return testimonialsData.find((t) => {
+    if (t.slug === slug || String(t.id) === slug) return true
+    if (normalizeSlug(t.slug) === targetClean) return true
+    return false
+  })
 }
