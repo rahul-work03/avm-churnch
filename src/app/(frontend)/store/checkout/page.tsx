@@ -50,13 +50,23 @@ export default async function Page({ searchParams }: PageProps) {
     })) as any
 
     checkoutForm = storePage?.checkoutForm
-    if (!checkoutForm || typeof checkoutForm !== 'object' || !checkoutForm.fields) {
+    const hasAddressField =
+      checkoutForm &&
+      typeof checkoutForm === 'object' &&
+      Array.isArray(checkoutForm.fields) &&
+      checkoutForm.fields.some(
+        (f: any) => f.name === 'address' || f.name === 'shippingAddress'
+      )
+
+    if (!hasAddressField) {
       const formQuery = await payload.find({
         collection: 'forms',
         where: {
           or: [
             { title: { equals: 'Store Checkout Form' } },
-            ...(checkoutForm ? [{ id: { equals: checkoutForm } }] : []),
+            ...(checkoutForm && typeof checkoutForm === 'number'
+              ? [{ id: { equals: checkoutForm } }]
+              : []),
           ],
         },
         limit: 1,
