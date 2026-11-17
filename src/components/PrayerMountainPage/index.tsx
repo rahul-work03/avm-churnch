@@ -45,10 +45,10 @@ export const PrayerMountainPage: React.FC<PrayerMountainPageProps> = ({ data }) 
       />
 
       {/* 4. Testimonies of Prayer Mountain (Auto-Sliding 6-Item Carousel) */}
-      <TestimoniesSection
+      {/* <TestimoniesSection
         headerTitle={data?.testimoniesHeaderTitle}
         testimonies={data?.testimonies}
-      />
+      /> */}
 
       {/* 5. Join Us in Prayers (Schedule & Daily Gatherings) */}
       <JoinUsSection
