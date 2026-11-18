@@ -314,66 +314,66 @@ export const PrayerMountainPageGlobal: GlobalConfig = {
             },
           ],
         },
-        {
-          label: 'Testimonies',
-          fields: [
-            {
-              name: 'testimoniesHeaderTitle',
-              type: 'text',
-              label: 'Section Header Title',
-              defaultValue: 'TESTIMONIES OF PRAYER MOUNTAIN',
-            },
-            {
-              name: 'testimonies',
-              type: 'array',
-              label: 'Testimonial Cards List',
-              defaultValue: DEFAULT_TESTIMONIES,
-              fields: [
-                {
-                  name: 'person',
-                  type: 'text',
-                  label: 'Person Name',
-                  required: true,
-                },
-                {
-                  name: 'title',
-                  type: 'text',
-                  label: 'Testimony Headline Title',
-                  required: true,
-                },
-                {
-                  name: 'summary',
-                  type: 'textarea',
-                  label: 'Card Short Summary',
-                  required: true,
-                },
-                {
-                  name: 'slug',
-                  type: 'text',
-                  label: 'Testimony Slug / Link (e.g. sister-randeep-healing)',
-                  defaultValue: 'sister-randeep-healing',
-                },
-                {
-                  name: 'buttonLabel',
-                  type: 'text',
-                  label: 'Button Label',
-                  defaultValue: 'READ FULL TESTIMONY',
-                },
-                {
-                  name: 'image',
-                  type: 'upload',
-                  relationTo: 'media',
-                  label: 'Testimony Photo',
-                },
-                {
-                  name: 'imageFallback',
-                  type: 'text',
-                  label: 'Fallback Photo Path',
-                },
-              ],
-            },
-          ],
-        },
+        // {
+        //   label: 'Testimonies',
+        //   fields: [
+        //     {
+        //       name: 'testimoniesHeaderTitle',
+        //       type: 'text',
+        //       label: 'Section Header Title',
+        //       defaultValue: 'TESTIMONIES OF PRAYER MOUNTAIN',
+        //     },
+        //     {
+        //       name: 'testimonies',
+        //       type: 'array',
+        //       label: 'Testimonial Cards List',
+        //       defaultValue: DEFAULT_TESTIMONIES,
+        //       fields: [
+        //         {
+        //           name: 'person',
+        //           type: 'text',
+        //           label: 'Person Name',
+        //           required: true,
+        //         },
+        //         {
+        //           name: 'title',
+        //           type: 'text',
+        //           label: 'Testimony Headline Title',
+        //           required: true,
+        //         },
+        //         {
+        //           name: 'summary',
+        //           type: 'textarea',
+        //           label: 'Card Short Summary',
+        //           required: true,
+        //         },
+        //         {
+        //           name: 'slug',
+        //           type: 'text',
+        //           label: 'Testimony Slug / Link (e.g. sister-randeep-healing)',
+        //           defaultValue: 'sister-randeep-healing',
+        //         },
+        //         {
+        //           name: 'buttonLabel',
+        //           type: 'text',
+        //           label: 'Button Label',
+        //           defaultValue: 'READ FULL TESTIMONY',
+        //         },
+        //         {
+        //           name: 'image',
+        //           type: 'upload',
+        //           relationTo: 'media',
+        //           label: 'Testimony Photo',
+        //         },
+        //         {
+        //           name: 'imageFallback',
+        //           type: 'text',
+        //           label: 'Fallback Photo Path',
+        //         },
+        //       ],
+        //     },
+        //   ],
+        // },
         {
           label: 'Join Us in Prayers',
           fields: [

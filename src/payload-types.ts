@@ -2429,19 +2429,6 @@ export interface PrayerMountainPage {
   visionCardTitle?: string | null;
   purposeParagraph?: string | null;
   visionParagraph?: string | null;
-  testimoniesHeaderTitle?: string | null;
-  testimonies?:
-    | {
-        person: string;
-        title: string;
-        summary: string;
-        slug?: string | null;
-        buttonLabel?: string | null;
-        image?: (number | null) | Media;
-        imageFallback?: string | null;
-        id?: string | null;
-      }[]
-    | null;
   joinHeaderTitle?: string | null;
   timeCardTitle?: string | null;
   timeCardDescription?: string | null;
@@ -3328,19 +3315,6 @@ export interface PrayerMountainPageSelect<T extends boolean = true> {
   visionCardTitle?: T;
   purposeParagraph?: T;
   visionParagraph?: T;
-  testimoniesHeaderTitle?: T;
-  testimonies?:
-    | T
-    | {
-        person?: T;
-        title?: T;
-        summary?: T;
-        slug?: T;
-        buttonLabel?: T;
-        image?: T;
-        imageFallback?: T;
-        id?: T;
-      };
   joinHeaderTitle?: T;
   timeCardTitle?: T;
   timeCardDescription?: T;
