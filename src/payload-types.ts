@@ -138,6 +138,8 @@ export interface Config {
     'store-page': StorePage;
     'privacy-policy-page': PrivacyPolicyPage;
     'terms-page': TermsPage;
+    'shipping-policy-page': ShippingPolicyPage;
+    'refund-policy-page': RefundPolicyPage;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
@@ -162,6 +164,8 @@ export interface Config {
     'store-page': StorePageSelect<false> | StorePageSelect<true>;
     'privacy-policy-page': PrivacyPolicyPageSelect<false> | PrivacyPolicyPageSelect<true>;
     'terms-page': TermsPageSelect<false> | TermsPageSelect<true>;
+    'shipping-policy-page': ShippingPolicyPageSelect<false> | ShippingPolicyPageSelect<true>;
+    'refund-policy-page': RefundPolicyPageSelect<false> | RefundPolicyPageSelect<true>;
   };
   locale: null;
   widgets: {
@@ -2136,7 +2140,13 @@ export interface Footer {
   contactEmail?: string | null;
   contactPhone?: string | null;
   privacyPolicyUrl?: string | null;
+  privacyPolicyLabel?: string | null;
   termsUrl?: string | null;
+  termsLabel?: string | null;
+  shippingPolicyUrl?: string | null;
+  shippingPolicyLabel?: string | null;
+  refundPolicyUrl?: string | null;
+  refundPolicyLabel?: string | null;
   pagesList?:
     | {
         label: string;
@@ -2992,6 +3002,44 @@ export interface TermsPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shipping-policy-page".
+ */
+export interface ShippingPolicyPage {
+  id: number;
+  pageTitle?: string | null;
+  introText?: string | null;
+  sections?:
+    | {
+        sectionTitle: string;
+        content: string;
+        id?: string | null;
+      }[]
+    | null;
+  contactEmail?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "refund-policy-page".
+ */
+export interface RefundPolicyPage {
+  id: number;
+  pageTitle?: string | null;
+  introText?: string | null;
+  sections?:
+    | {
+        sectionTitle: string;
+        content: string;
+        id?: string | null;
+      }[]
+    | null;
+  contactEmail?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -3031,7 +3079,13 @@ export interface FooterSelect<T extends boolean = true> {
   contactEmail?: T;
   contactPhone?: T;
   privacyPolicyUrl?: T;
+  privacyPolicyLabel?: T;
   termsUrl?: T;
+  termsLabel?: T;
+  shippingPolicyUrl?: T;
+  shippingPolicyLabel?: T;
+  refundPolicyUrl?: T;
+  refundPolicyLabel?: T;
   pagesList?:
     | T
     | {
@@ -3843,6 +3897,44 @@ export interface PrivacyPolicyPageSelect<T extends boolean = true> {
  * via the `definition` "terms-page_select".
  */
 export interface TermsPageSelect<T extends boolean = true> {
+  pageTitle?: T;
+  introText?: T;
+  sections?:
+    | T
+    | {
+        sectionTitle?: T;
+        content?: T;
+        id?: T;
+      };
+  contactEmail?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shipping-policy-page_select".
+ */
+export interface ShippingPolicyPageSelect<T extends boolean = true> {
+  pageTitle?: T;
+  introText?: T;
+  sections?:
+    | T
+    | {
+        sectionTitle?: T;
+        content?: T;
+        id?: T;
+      };
+  contactEmail?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "refund-policy-page_select".
+ */
+export interface RefundPolicyPageSelect<T extends boolean = true> {
   pageTitle?: T;
   introText?: T;
   sections?:

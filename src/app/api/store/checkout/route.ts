@@ -50,19 +50,30 @@ export async function POST(req: NextRequest) {
     }
 
     const cleanPhone = resolvedPhone.replace(/\D/g, '')
-    if (cleanPhone.length !== 10) {
-      return NextResponse.json(
-        { success: false, message: 'Please provide a valid 10-digit mobile number.' },
-        { status: 400 }
-      )
-    }
-
+    const countryCode = (customer?.countryCode || '+91').toString().trim()
     const selectedCountry = (customer?.country || 'India').trim().toLowerCase()
-    if (selectedCountry === 'india' && !/^[6-9]\d{9}$/.test(cleanPhone)) {
-      return NextResponse.json(
-        { success: false, message: 'Please provide a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.' },
-        { status: 400 }
-      )
+    const isIndia = countryCode === '+91' || selectedCountry === 'india'
+
+    if (isIndia) {
+      if (cleanPhone.length !== 10) {
+        return NextResponse.json(
+          { success: false, message: 'Please provide a valid 10-digit mobile number.' },
+          { status: 400 }
+        )
+      }
+      if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
+        return NextResponse.json(
+          { success: false, message: 'Please provide a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9.' },
+          { status: 400 }
+        )
+      }
+    } else {
+      if (cleanPhone.length < 6 || cleanPhone.length > 15) {
+        return NextResponse.json(
+          { success: false, message: 'Please provide a valid phone number (between 6 and 15 digits).' },
+          { status: 400 }
+        )
+      }
     }
 
     const rawPincode = (customer?.pincode || '').toString().trim()

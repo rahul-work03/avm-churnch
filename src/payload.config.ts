@@ -39,6 +39,8 @@ import { ZoomLayHandPageGlobal } from './globals/ZoomLayHandPage/config'
 import { StorePageGlobal } from './globals/StorePage/config'
 import { PrivacyPolicyPageGlobal } from './globals/PrivacyPolicyPage/config'
 import { TermsPageGlobal } from './globals/TermsPage/config'
+import { ShippingPolicyPageGlobal } from './globals/ShippingPolicyPage/config'
+import { RefundPolicyPageGlobal } from './globals/RefundPolicyPage/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
@@ -152,6 +154,8 @@ export default buildConfig({
     StorePageGlobal,
     PrivacyPolicyPageGlobal,
     TermsPageGlobal,
+    ShippingPolicyPageGlobal,
+    RefundPolicyPageGlobal,
   ],
 
   plugins,

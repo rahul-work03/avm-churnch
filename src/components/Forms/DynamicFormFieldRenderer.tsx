@@ -3,6 +3,9 @@
 import React from 'react'
 import { ChevronDown, UploadCloud } from 'lucide-react'
 import RichText from '@/components/RichText'
+import { PhoneInputWithCountry, COUNTRY_CODES } from './PhoneInputWithCountry'
+
+export { PhoneInputWithCountry, COUNTRY_CODES }
 
 export interface FormFieldOption {
   label: string
@@ -52,6 +55,7 @@ interface DynamicFormFieldProps {
   onFileChange?: (name: string, file: File | null) => void
   error?: string
   variant?: 'dark-gold' | 'checkout' | 'light'
+  countryCodeValue?: string
 }
 
 export const DynamicFormField: React.FC<DynamicFormFieldProps> = ({
@@ -61,6 +65,7 @@ export const DynamicFormField: React.FC<DynamicFormFieldProps> = ({
   onFileChange,
   error,
   variant = 'dark-gold',
+  countryCodeValue,
 }) => {
   const { blockType, name, label, required, width = 100, options } = field
 
@@ -367,6 +372,38 @@ export const DynamicFormField: React.FC<DynamicFormFieldProps> = ({
   const isPhone = name === 'phone' || label?.toLowerCase().includes('phone') || label?.toLowerCase().includes('mobile')
   const isPincode = name === 'pincode' || label?.toLowerCase().includes('pincode') || label?.toLowerCase().includes('pin code')
 
+  if (isPhone) {
+    return (
+      <div className={colSpanClass}>
+        {label && (
+          <label htmlFor={name} className={labelClass}>
+            {label}
+            {requiredAsterisk}
+          </label>
+        )}
+        <PhoneInputWithCountry
+          id={name}
+          name={name}
+          value={typeof value === 'string' ? value : ''}
+          countryCode={countryCodeValue || '+91'}
+          required={isRequired}
+          error={error}
+          variant={variant}
+          placeholder="9876543210"
+          onChange={(newPhone, newCode) => {
+            onChange(name!, newPhone)
+            if (newCode) {
+              onChange('countryCode', newCode)
+            }
+          }}
+          onCountryCodeChange={(newCode) => {
+            onChange('countryCode', newCode)
+          }}
+        />
+      </div>
+    )
+  }
+
   return (
     <div className={colSpanClass}>
       {label && (
@@ -376,37 +413,28 @@ export const DynamicFormField: React.FC<DynamicFormFieldProps> = ({
         </label>
       )}
       <input
-        type={isPhone ? 'tel' : 'text'}
+        type="text"
         id={name}
         name={name}
-        inputMode={isPhone || isPincode ? 'numeric' : undefined}
-        pattern={isPhone || isPincode ? '[0-9]*' : undefined}
-        maxLength={isPhone ? 10 : isPincode ? 6 : undefined}
+        inputMode={isPincode ? 'numeric' : undefined}
+        pattern={isPincode ? '[0-9]*' : undefined}
+        maxLength={isPincode ? 6 : undefined}
         value={value ?? ''}
         required={required}
         onChange={(e) => {
-          if (isPhone) {
-            onChange(name!, e.target.value.replace(/[^0-9]/g, '').slice(0, 10))
-          } else if (isPincode) {
+          if (isPincode) {
             onChange(name!, e.target.value.replace(/[^0-9]/g, '').slice(0, 6))
           } else {
             onChange(name!, e.target.value)
           }
         }}
         placeholder={
-          isPhone
-            ? '9876543210 (10 digits)'
-            : isPincode
+          isPincode
             ? '144001 (6 digits)'
             : label || ''
         }
         className={inputClass}
       />
-      {isPhone && (
-        <p className={`text-[11px] mt-1 ${isLight ? 'text-slate-400' : 'text-white/40'}`}>
-          Must be exactly 10 digits
-        </p>
-      )}
       {isPincode && (
         <p className={`text-[11px] mt-1 ${isLight ? 'text-slate-400' : 'text-white/40'}`}>
           6-digit postal PIN code
@@ -443,6 +471,7 @@ export const DynamicFormFieldsList: React.FC<DynamicFormFieldsListProps> = ({
           key={field.id || field.name || index}
           field={field}
           value={field.name ? values[field.name] : undefined}
+          countryCodeValue={values?.countryCode}
           onChange={onChange}
           onFileChange={onFileChange}
           error={field.name ? errors[field.name] : undefined}

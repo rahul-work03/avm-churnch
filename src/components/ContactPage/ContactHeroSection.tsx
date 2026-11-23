@@ -7,17 +7,7 @@ import { ChevronDown, CheckCircle2, Loader2, AlertCircle } from 'lucide-react'
 import { TextWordReveal, BlurTextReveal } from '@/components/ui/text-reveal'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
-import { DynamicFormFieldsList } from '@/components/Forms/DynamicFormFieldRenderer'
-
-const COUNTRY_CODES = [
-  { code: '+91', country: 'IND', label: 'India (+91)' },
-  { code: '+1', country: 'USA', label: 'United States (+1)' },
-  { code: '+44', country: 'GBR', label: 'United Kingdom (+44)' },
-  { code: '+1', country: 'CAN', label: 'Canada (+1)' },
-  { code: '+971', country: 'UAE', label: 'United Arab Emirates (+971)' },
-  { code: '+61', country: 'AUS', label: 'Australia (+61)' },
-  { code: '+64', country: 'NZL', label: 'New Zealand (+64)' },
-]
+import { DynamicFormFieldsList, PhoneInputWithCountry } from '@/components/Forms/DynamicFormFieldRenderer'
 
 interface ContactHeroSectionProps {
   heroTitle?: string | null
@@ -51,8 +41,6 @@ export const ContactHeroSection: React.FC<ContactHeroSectionProps> = ({
     message: '',
   })
 
-  const [selectedCountry, setSelectedCountry] = useState(COUNTRY_CODES[0])
-  const [dropdownOpen, setDropdownOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -73,7 +61,8 @@ export const ContactHeroSection: React.FC<ContactHeroSectionProps> = ({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
-          countryCode: selectedCountry.code,
+          countryCode: formData.countryCode || '+91',
+          formId: form?.id,
         }),
       })
 
@@ -242,52 +231,25 @@ export const ContactHeroSection: React.FC<ContactHeroSectionProps> = ({
                   >
                     Phone number <span className="text-[#efbf04]">*</span>
                   </label>
-                  <div className="relative flex items-center bg-white border border-[#d0d5dd] rounded-[8px] shadow-xs focus-within:ring-2 focus-within:ring-[#efbf04] focus-within:border-transparent">
-                    <div className="relative">
-                      <button
-                        type="button"
-                        onClick={() => setDropdownOpen((prev) => !prev)}
-                        className="flex items-center gap-1.5 px-3 sm:px-4 py-3 text-sm sm:text-base font-medium text-[#101828] border-r border-[#d0d5dd] hover:bg-slate-50 transition rounded-l-[8px] focus:outline-none cursor-pointer"
-                      >
-                        <span>{selectedCountry.country}</span>
-                        <ChevronDown className="w-4 h-4 text-[#667085]" />
-                      </button>
-
-                      {dropdownOpen && (
-                        <div className="absolute top-full left-0 mt-1 w-56 bg-white border border-[#d0d5dd] rounded-lg shadow-xl py-1 z-30 animate-in fade-in duration-150">
-                          {COUNTRY_CODES.map((c, idx) => (
-                            <button
-                              key={idx}
-                              type="button"
-                              onClick={() => {
-                                setSelectedCountry(c)
-                                setFormData({ ...formData, countryCode: c.code })
-                                setDropdownOpen(false)
-                              }}
-                              className={`w-full text-left px-3 py-2 text-sm hover:bg-slate-100 flex items-center justify-between cursor-pointer ${
-                                selectedCountry.country === c.country
-                                  ? 'bg-slate-50 font-semibold text-[#003471]'
-                                  : 'text-slate-700'
-                              }`}
-                            >
-                              <span>{c.label}</span>
-                              <span className="text-slate-400 text-xs">{c.code}</span>
-                            </button>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
-                    <input
-                      type="tel"
-                      id="phone"
-                      required
-                      value={formData.phone || ''}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder={`${selectedCountry.code} (000) 000-0000`}
-                      className="flex-1 px-4 py-3 text-[#101828] text-base placeholder:text-[#667085] bg-transparent focus:outline-none"
-                    />
-                  </div>
+                  <PhoneInputWithCountry
+                    id="phone"
+                    name="phone"
+                    value={formData.phone || ''}
+                    countryCode={formData.countryCode || '+91'}
+                    required
+                    variant="light"
+                    placeholder="9876543210"
+                    onChange={(phone, code) => {
+                      setFormData((prev) => ({
+                        ...prev,
+                        phone,
+                        ...(code ? { countryCode: code } : {}),
+                      }))
+                    }}
+                    onCountryCodeChange={(code) => {
+                      setFormData((prev) => ({ ...prev, countryCode: code }))
+                    }}
+                  />
                 </div>
 
                 {/* Email */}

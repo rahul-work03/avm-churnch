@@ -21,7 +21,7 @@ import { useCart } from '@/providers/Cart'
 import type { ProductItem, CartItem } from './StoreTypes'
 import { getMediaUrl } from '@/utilities/getMediaUrl'
 
-import { DynamicFormFieldsList, DEFAULT_COUNTRIES } from '@/components/Forms/DynamicFormFieldRenderer'
+import { DynamicFormFieldsList, DEFAULT_COUNTRIES, PhoneInputWithCountry } from '@/components/Forms/DynamicFormFieldRenderer'
 
 const INDIAN_STATES = [
   'Andhra Pradesh',
@@ -125,12 +125,19 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
     [activeSubtotal, shippingFee]
   )
 
+  const submitButtonText = form?.submitButtonLabel
+    ? form.submitButtonLabel.includes('₹')
+      ? form.submitButtonLabel
+      : `${form.submitButtonLabel} ₹${activeTotal}.00`
+    : `Proceed to Pay ₹${activeTotal}.00`
+
   const [formData, setFormData] = useState<Record<string, any>>({
     name: '',
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
+    countryCode: '+91',
     country: 'India',
     address: '',
     landmark: '',
@@ -205,16 +212,23 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
       return 'Please enter a valid email address (e.g. name@example.com).'
     }
 
-    // 4. Mobile phone number validation (10 digits)
+    // 4. Mobile phone number validation
     const cleanPhone = String(formData.phone || '').replace(/[^0-9]/g, '')
     if (!cleanPhone) {
-      return 'Please enter your 10-digit mobile number.'
+      return 'Please enter your mobile phone number.'
     }
-    if (cleanPhone.length !== 10) {
-      return 'Mobile number must be exactly 10 digits.'
-    }
-    if ((formData.country || 'India') === 'India' && !/^[6-9]\d{9}$/.test(cleanPhone)) {
-      return 'Please enter a valid 10-digit Indian mobile number (starts with 6, 7, 8, or 9).'
+    const countryCode = formData.countryCode || '+91'
+    if (countryCode === '+91') {
+      if (cleanPhone.length !== 10) {
+        return 'Mobile number must be exactly 10 digits.'
+      }
+      if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
+        return 'Please enter a valid 10-digit Indian mobile number (starts with 6, 7, 8, or 9).'
+      }
+    } else {
+      if (cleanPhone.length < 6 || cleanPhone.length > 15) {
+        return 'Please enter a valid international mobile phone number (between 6 and 15 digits).'
+      }
     }
 
     // 5. Postal PIN code validation
@@ -278,7 +292,8 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
             ...formData,
             name: resolvedName,
             country: formData.country || 'India',
-            phone: formData.phone ? String(formData.phone).replace(/[^0-9]/g, '').slice(-10) : '',
+            countryCode: formData.countryCode || '+91',
+            phone: formData.phone ? String(formData.phone).replace(/[^0-9]/g, '') : '',
             pincode: formData.pincode ? String(formData.pincode).replace(/[^0-9]/g, '').slice(-6) : '',
           },
         }),
@@ -471,29 +486,27 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                         htmlFor="phone"
                         className="block text-xs font-semibold text-slate-700 mb-1"
                       >
-                        10-Digit Mobile Number *
+                        Mobile Phone Number *
                       </label>
-                      <div className="flex">
-                        <span className="inline-flex items-center px-3 rounded-l-xl border border-r-0 border-slate-200 bg-slate-50 text-slate-500 text-xs font-medium">
-                          +91
-                        </span>
-                        <input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          inputMode="numeric"
-                          pattern="[0-9]*"
-                          required
-                          maxLength={10}
-                          placeholder="9876543210"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-r-xl border border-slate-200 focus:border-[#003471] focus:ring-2 focus:ring-[#003471]/10 text-sm outline-none transition-all"
-                        />
-                      </div>
-                      <p className="text-[11px] text-slate-400 mt-1 font-poppins">
-                        Must be exactly 10 digits (e.g. 9876543210)
-                      </p>
+                      <PhoneInputWithCountry
+                        id="phone"
+                        name="phone"
+                        value={formData.phone || ''}
+                        countryCode={formData.countryCode || '+91'}
+                        required
+                        variant="light"
+                        placeholder="9876543210"
+                        onChange={(phone, code) => {
+                          setFormData((prev) => ({
+                            ...prev,
+                            phone,
+                            ...(code ? { countryCode: code } : {}),
+                          }))
+                        }}
+                        onCountryCodeChange={(code) => {
+                          setFormData((prev) => ({ ...prev, countryCode: code }))
+                        }}
+                      />
                     </div>
                   </div>
                 </div>
@@ -686,7 +699,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                       <span>Redirecting to payment...</span>
                     </>
                   ) : (
-                    <span>Proceed to Pay ₹{activeTotal}.00</span>
+                    <span>{submitButtonText}</span>
                   )}
                 </button>
               </div>
@@ -821,7 +834,7 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({
                   ) : (
                     <>
                       <Lock className="w-4 h-4" />
-                      <span>Proceed to Pay ₹{activeTotal}.00</span>
+                      <span>{submitButtonText}</span>
                     </>
                   )}
                 </motion.button>

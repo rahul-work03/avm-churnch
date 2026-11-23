@@ -62,6 +62,28 @@ export const plugins: Plugin[] = [
     formOverrides: {
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {
+          if ('name' in field && field.name === 'fields' && field.type === 'blocks') {
+            return {
+              ...field,
+              admin: {
+                ...field.admin,
+                components: {
+                  ...field.admin?.components,
+                  RowLabel: '@/components/Forms/FormBlockRowLabel#FormBlockRowLabel',
+                },
+              },
+              blocks: field.blocks.map((block) => ({
+                ...block,
+                admin: {
+                  ...block.admin,
+                  components: {
+                    ...block.admin?.components,
+                    Label: '@/components/Forms/FormBlockRowLabel#FormBlockRowLabel',
+                  },
+                },
+              })),
+            }
+          }
           if ('name' in field && field.name === 'confirmationMessage') {
             return {
               ...field,

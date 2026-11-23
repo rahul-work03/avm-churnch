@@ -28,7 +28,13 @@ export interface FooterData {
   contactEmail?: string | null
   contactPhone?: string | null
   privacyPolicyUrl?: string | null
+  privacyPolicyLabel?: string | null
   termsUrl?: string | null
+  termsLabel?: string | null
+  shippingPolicyUrl?: string | null
+  shippingPolicyLabel?: string | null
+  refundPolicyUrl?: string | null
+  refundPolicyLabel?: string | null
   pagesList?: FooterPageLink[] | null
   socialLinks?: FooterSocialLink[] | null
   mapEmbedUrl?: string | null
@@ -136,7 +142,13 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
   const contactEmail = data?.contactEmail || 'info@ankurnarula.org'
   const contactPhone = data?.contactPhone || 'Phone: 0181-520-7777'
   const privacyPolicyUrl = data?.privacyPolicyUrl || '/privacy-policy'
+  const privacyPolicyLabel = data?.privacyPolicyLabel || 'Privacy Policy'
   const termsUrl = data?.termsUrl || '/terms-and-conditions'
+  const termsLabel = data?.termsLabel || 'Terms and Conditions'
+  const shippingPolicyUrl = data?.shippingPolicyUrl || '/shipping-and-delivery-policy'
+  const shippingPolicyLabel = data?.shippingPolicyLabel || 'Shipping & Delivery Policy'
+  const refundPolicyUrl = data?.refundPolicyUrl || '/cancellation-and-refund-policy'
+  const refundPolicyLabel = data?.refundPolicyLabel || 'Cancellation & Refund Policy'
   const pagesList = data?.pagesList && data.pagesList.length > 0 ? data.pagesList : DEFAULT_PAGES_LIST
   const socialLinks =
     data?.socialLinks && data.socialLinks.length > 0 ? data.socialLinks : DEFAULT_SOCIAL_LINKS
@@ -214,12 +226,22 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
               </h4>
               <p className="font-lato font-normal text-[15px] text-white/90 text-left mt-2">
                 <Link href={privacyPolicyUrl} className="hover:text-[#efbf04] transition">
-                  Privacy Policy
+                  {privacyPolicyLabel}
                 </Link>
               </p>
               <p className="font-lato font-normal text-[15px] text-white/90 text-left mt-1">
                 <Link href={termsUrl} className="hover:text-[#efbf04] transition">
-                  Terms and Conditions
+                  {termsLabel}
+                </Link>
+              </p>
+              <p className="font-lato font-normal text-[15px] text-white/90 text-left mt-1">
+                <Link href={shippingPolicyUrl} className="hover:text-[#efbf04] transition">
+                  {shippingPolicyLabel}
+                </Link>
+              </p>
+              <p className="font-lato font-normal text-[15px] text-white/90 text-left mt-1">
+                <Link href={refundPolicyUrl} className="hover:text-[#efbf04] transition">
+                  {refundPolicyLabel}
                 </Link>
               </p>
             </div>
@@ -347,10 +369,16 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
             <div className="w-full text-left">
               <h4 className="font-lato font-bold text-[16px] text-white text-left">Links</h4>
               <p className="font-lato font-normal text-[14px] text-white/90 text-left mt-1.5">
-                <Link href={privacyPolicyUrl} className="hover:text-[#efbf04]">Privacy Policy</Link>
+                <Link href={privacyPolicyUrl} className="hover:text-[#efbf04]">{privacyPolicyLabel}</Link>
               </p>
               <p className="font-lato font-normal text-[14px] text-white/90 text-left mt-0.5">
-                <Link href={termsUrl} className="hover:text-[#efbf04]">Terms and Conditions</Link>
+                <Link href={termsUrl} className="hover:text-[#efbf04]">{termsLabel}</Link>
+              </p>
+              <p className="font-lato font-normal text-[14px] text-white/90 text-left mt-0.5">
+                <Link href={shippingPolicyUrl} className="hover:text-[#efbf04]">{shippingPolicyLabel}</Link>
+              </p>
+              <p className="font-lato font-normal text-[14px] text-white/90 text-left mt-0.5">
+                <Link href={refundPolicyUrl} className="hover:text-[#efbf04]">{refundPolicyLabel}</Link>
               </p>
             </div>
           </div>
@@ -461,12 +489,22 @@ export const FooterSection: React.FC<FooterSectionProps> = ({ data }) => {
             <h4 className="font-lato font-bold text-[15px] text-white text-left">Links</h4>
             <p className="font-lato font-normal text-[13px] text-white/90 text-left mt-1.5">
               <Link href={privacyPolicyUrl} className="hover:text-[#efbf04]">
-                Privacy Policy
+                {privacyPolicyLabel}
               </Link>
             </p>
             <p className="font-lato font-normal text-[13px] text-white/90 text-left mt-1">
               <Link href={termsUrl} className="hover:text-[#efbf04]">
-                Terms and Conditions
+                {termsLabel}
+              </Link>
+            </p>
+            <p className="font-lato font-normal text-[13px] text-white/90 text-left mt-1">
+              <Link href={shippingPolicyUrl} className="hover:text-[#efbf04]">
+                {shippingPolicyLabel}
+              </Link>
+            </p>
+            <p className="font-lato font-normal text-[13px] text-white/90 text-left mt-1">
+              <Link href={refundPolicyUrl} className="hover:text-[#efbf04]">
+                {refundPolicyLabel}
               </Link>
             </p>
           </div>

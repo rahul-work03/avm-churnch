@@ -20,5 +20,17 @@ export const redirects: NextConfig['redirects'] = async () => {
     source: '/church-branches',
   }
 
-  return [internetExplorerRedirect, churchBranchesRedirect]
+  const shippingRedirect = {
+    destination: '/shipping-and-delivery-policy',
+    permanent: true,
+    source: '/shipping-and-delivery',
+  }
+
+  const refundRedirect = {
+    destination: '/cancellation-and-refund-policy',
+    permanent: true,
+    source: '/cancellation-and-refund',
+  }
+
+  return [internetExplorerRedirect, churchBranchesRedirect, shippingRedirect, refundRedirect]
 }
